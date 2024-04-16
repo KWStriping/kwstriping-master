@@ -54,7 +54,7 @@
     "@types/node": "18.13.0",
     "@typescript-eslint/eslint-plugin": "7.2.0",
     "@typescript-eslint/parser": "7.2.0",
-    "change-case": "^5.3.0",
+    "change-case": "^5.4.4",
     "change-case-all": "^2.1.0",
     "cypress": "^13.7.1",
     "dotenv-cli": "^7.4.1",
