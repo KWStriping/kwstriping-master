@@ -1,0 +1,74 @@
+.addFilterIcon {
+  @apply transition;
+}
+.addFilterText {
+  @apply text-primary font-medium;
+}
+.filterButton {
+  @apply py-1 px-2 mr-2 bg-background-paper border-primary/20 transition;
+}
+.filterButton:hover {
+  @apply bg-background-paper border-solid border border-primary;
+}
+.paper {
+  @apply mt-2 p-2;
+  @apply w-[240px];
+}
+.paper p {
+  @apply pb-10;
+}
+.popover {
+  @apply w-[376px];
+  z-index: 3;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.separator {
+  @apply bg-primary my-0 ml-1 mr-1.5 inline-block;
+  @apply h-[14px];
+  @apply w-[1px];
+}
+.metadataField {
+  @apply flex items-center;
+  gap: theme(spacing[0.5]);
+}
+.fieldsWrapper {
+  @apply flex flex-col;
+  gap: theme(spacing[0.5]);
+  @apply mb-1;
+}
+.formWrapper {
+  @apply flex flex-col;
+}
+.addButton {
+  @apply self-end;
+}
+.deleteButton {
+  margin-left: 0.25rem;
+  margin-right: -0.75rem;
+}
+.option {
+  @apply -left-0.5 relative;
+}
+/* .optionRadio {
+  left: theme.spacing(-0.25);
+} */
+.hr {
+  @apply bg-primary-light my-1 mx-0;
+}
+.input {
+  padding: 12px 0 9px 12px;
+}
+.inputContainer {
+  @apply mb-1 pt-1;
+}
+.noResults {
+  @apply mt-1;
+}
+.option {
+  @apply -left-0.5 relative;
+}
+.showMore {
+  @apply inline-block mt-1;
+}

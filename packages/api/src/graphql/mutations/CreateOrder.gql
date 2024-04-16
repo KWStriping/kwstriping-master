@@ -1,0 +1,11 @@
+mutation CreateOrder($id: ID!) {
+  createOrderFromCheckout(id: $id) {
+    result {
+      ...Order
+    }
+    # errors {
+    #   code
+    #   message
+    # }
+  }
+}

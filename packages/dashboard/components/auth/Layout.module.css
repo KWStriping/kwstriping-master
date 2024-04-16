@@ -1,0 +1,21 @@
+.mainPanelContent {
+  @apply w-full sm:w-[328px] md:w-[380px] m-auto;
+}
+.root {
+  @apply relative grid gap-3 h-screen w-screen overflow-hidden;
+  grid-template-columns: 1fr;
+}
+@media screen(md) {
+  .root {
+    grid-template-columns: 560px 1fr;
+  }
+}
+@media screen(lg) {
+  .root {
+    grid-template-columns: 780px 1fr;
+  }
+}
+
+.sidebarArt svg {
+  @apply w-full;
+}

@@ -1,0 +1,6 @@
+.dateInput {
+  @apply mr-2;
+}
+.errorNoticeBar {
+  @apply mt-2;
+}

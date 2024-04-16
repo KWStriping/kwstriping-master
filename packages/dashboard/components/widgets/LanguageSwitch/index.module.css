@@ -1,0 +1,26 @@
+.arrow {
+  @apply text-primary;
+  transition: theme.transitions.duration.standard + ms;
+}
+.container {
+  @apply pb-1;
+}
+.menuContainer {
+  @apply cursor-pointer flex justify-between;
+  min-width: 90;
+  padding: theme(spacing.1);
+  @apply relative;
+}
+.menuItem {
+  text-align: justify;
+}
+.menuPaper {
+  max-height: 600;
+  overflow: scroll;
+}
+.popover {
+  z-index: 1;
+}
+.rotate {
+  transform: rotate(180deg);
+}

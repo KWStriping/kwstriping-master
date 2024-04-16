@@ -1,0 +1,10 @@
+mutation FileUpload($file: Upload!) {
+  uploadFile(file: $file) {
+    result {
+      ...File
+    }
+    errors {
+      ...Error
+    }
+  }
+}

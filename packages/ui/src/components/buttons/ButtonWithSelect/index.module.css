@@ -1,0 +1,11 @@
+.popper {
+  @apply mt-1;
+  z-index: 2;
+}
+.paper {
+  max-height: ITEM_HEIGHT * 4.5;
+  overflow-y: scroll;
+}
+.buttonIcon {
+  @apply m-0;
+}

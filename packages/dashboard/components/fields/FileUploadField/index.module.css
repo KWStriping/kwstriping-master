@@ -1,0 +1,17 @@
+.errorText {
+  color: theme(colors.error.light);
+}
+.fileField {
+  display: none;
+}
+.fileUrl {
+  @apply text-primary;
+  text-decoration: none;
+}
+.uploadFileContent {
+  @apply items-center text-primary flex;
+  font-size: theme.typography.body1.font-size;
+}
+.uploadFileName {
+  @apply min-w-[6rem];
+}

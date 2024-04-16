@@ -1,0 +1,182 @@
+import { useTranslation } from '@core/i18n';
+import { Button } from '@core/ui/components/buttons/Button';
+import IconButton from '@core/ui/components/buttons/IconButton';
+import { makeStyles } from '@core/ui/theme/styles';
+import CardTitle from '@dashboard/components/core/CardTitle';
+import Checkbox from '@dashboard/components/core/Checkbox';
+import ResponsiveTable from '@dashboard/components/tables/ResponsiveTable';
+import { SortableTableBody, SortableTableRow } from '@dashboard/components/tables/SortableTable';
+import { TableButtonWrapper } from '@dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
+import TableHead from '@dashboard/components/tables/TableHead';
+import { AttributeType } from '@core/api/constants';
+import type { AttributeFragment } from '@core/api/graphql';
+import { attributeUrl } from '@dashboard/oldSrc/attributes/urls';
+import { renderCollection } from '@core/ui/utils';
+import type { ListActions, ReorderAction } from '@dashboard/oldSrc/types';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Card from '@mui/material/Card';
+import Skeleton from '@mui/material/Skeleton';
+import TableCell from '@mui/material/TableCell';
+import type { FC } from 'react';
+
+const useStyles = makeStyles(
+  {
+    colAction: {
+      '&:last-child': {
+        paddingRight: 0,
+      },
+      width: 80,
+    },
+    colGrab: {
+      width: 60,
+    },
+    colSlug: {
+      width: 300,
+    },
+    link: {
+      cursor: 'pointer',
+    },
+  },
+  { name: 'PageKlassAttributes' }
+);
+
+interface PageKlassAttributesProps extends ListActions {
+  attributes: AttributeFragment[];
+  disabled: boolean;
+  type: string;
+  onAttributeAssign: (type: AttributeType) => void;
+  onAttributeReorder: ReorderAction;
+  onAttributeUnassign: (id: string) => void;
+}
+
+const numberOfColumns = 5;
+
+const PageKlassAttributes: FC<PageKlassAttributesProps> = (props) => {
+  const {
+    attributes,
+    disabled,
+    isChecked,
+    selected,
+    toggle,
+    toggleAll,
+    toolbar,
+    type,
+    onAttributeAssign,
+    onAttributeReorder,
+    onAttributeUnassign,
+  } = props;
+  const styles = useStyles(props);
+
+  const { t } = useTranslation();
+
+  return (
+    <Card data-test-id="page-attributes">
+      <CardTitle
+        title={t(
+          'dashboard.Qxjow',
+          'Content Attributes'
+          // section header
+        )}
+        toolbar={
+          <Button
+            color="secondary"
+            onClick={() => onAttributeAssign(AttributeType[type])}
+            data-test-id="assign-attributes"
+          >
+            <>
+              {/* button */}
+
+              {t('dashboard.xPpRx', 'Assign attribute')}
+            </>
+          </Button>
+        }
+      />
+      <ResponsiveTable>
+        <colgroup>
+          <col className={styles.colGrab ?? ''} />
+          <col />
+          <col className={styles.colName ?? ''} />
+          <col className={styles.colSlug ?? ''} />
+          <col className={styles.colAction ?? ''} />
+        </colgroup>
+        {!!attributes?.length && (
+          <TableHead
+            colSpan={numberOfColumns}
+            disabled={disabled}
+            dragRows
+            selected={selected}
+            items={attributes}
+            toggleAll={toggleAll}
+            toolbar={toolbar}
+          >
+            <TableCell className={styles.colName ?? ''}>
+              {t('dashboard.Tr2o8', 'Attribute name')}
+            </TableCell>
+            <TableCell className={styles.colName ?? ''}>
+              <>
+                {/* attribute internal name */}
+
+                {t('dashboard.f3XSt', 'Slug')}
+              </>
+            </TableCell>
+            <TableCell />
+          </TableHead>
+        )}
+        <SortableTableBody items={attributes.map(({ id }) => id)} onSortEnd={onAttributeReorder}>
+          {renderCollection(
+            attributes,
+            (attribute) => {
+              if (!attribute) return null;
+              const isSelected = attribute ? isChecked(attribute.id) : false;
+              return (
+                <SortableTableRow
+                  selected={isSelected}
+                  className={styles.link ?? ''}
+                  hover={!!attribute}
+                  href={attributeUrl(attribute.id)}
+                  key={attribute.id}
+                  // index={attributeIndex || 0}
+                  data-test-id={'id-' + attribute?.id}
+                >
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      checked={isSelected}
+                      disabled={disabled}
+                      disableClickPropagation
+                      onChange={() => toggle(attribute.id)}
+                    />
+                  </TableCell>
+                  <TableCell className={styles.colName ?? ''} data-test-id="name">
+                    {attribute?.name || <Skeleton />}
+                  </TableCell>
+                  <TableCell className={styles.colSlug ?? ''} data-test-id="slug">
+                    {attribute?.slug || <Skeleton />}
+                  </TableCell>
+                  <TableCell className={styles.colAction ?? ''}>
+                    <TableButtonWrapper>
+                      <IconButton
+                        color="secondary"
+                        onClick={() => onAttributeUnassign(attribute.id)}
+                      >
+                        <DeleteIcon color="primary" />
+                      </IconButton>
+                    </TableButtonWrapper>
+                  </TableCell>
+                </SortableTableRow>
+              );
+            },
+            () => (
+              <TableRow>
+                <TableCell colSpan={numberOfColumns}>
+                  {t('dashboard.tQgD8', 'No attributes found')}
+                </TableCell>
+              </TableRow>
+            )
+          )}
+        </SortableTableBody>
+      </ResponsiveTable>
+    </Card>
+  );
+};
+PageKlassAttributes.displayName = 'PageKlassAttributes';
+export default PageKlassAttributes;

@@ -1,0 +1,22 @@
+.default {
+  grid-template-columns: 9fr 4fr;
+}
+.inverted {
+  grid-template-columns: 4fr 9fr;
+}
+.root {
+  @apply grid;
+  grid-column-gap: theme(spacing.3);
+  grid-row-gap: theme(spacing.3);
+  @media (max-width: theme(screens.sm)) {
+    grid-row-gap: theme(spacing.1);
+    grid-template-columns: 1fr;
+  }
+}
+.uniform {
+  grid-template-columns: 1fr 1fr;
+}
+
+.root > div {
+  @apply min-w-0;
+}

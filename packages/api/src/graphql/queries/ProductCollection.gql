@@ -1,0 +1,31 @@
+query ProductCollection(
+  $before: String
+  $after: String
+  $first: Int = 4
+  $filter: ProductFilter
+  $sortBy: ProductOrderingInput
+  $channel: String!
+) {
+  products(
+    first: $first
+    channel: $channel
+    after: $after
+    before: $before
+    filters: $filter
+    sortBy: $sortBy
+  ) {
+    totalCount
+    edges {
+      cursor
+      node {
+        ...ProductCard
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+}

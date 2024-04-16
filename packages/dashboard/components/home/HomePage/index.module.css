@@ -1,0 +1,20 @@
+.cardContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: theme(spacing.1);
+}
+
+@media screen(sm) {
+  .cardContainer {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: theme(spacing.3);
+  }
+}
+
+.icon {
+  font-size: inherit;
+}
+
+.icon path {
+  fill: theme(colors.primary.DEFAULT);
+}

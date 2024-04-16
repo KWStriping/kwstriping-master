@@ -1,0 +1,4 @@
+fragment TransactionEvent on TransactionEvent {
+  name
+  reference
+}

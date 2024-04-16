@@ -1,0 +1,25 @@
+fragment CollectionDetails on Collection {
+  id
+  ...CollectionBasic
+  seoTitle
+  seoDescription
+  description
+  translation {
+    id
+    description
+  }
+  backgroundImage {
+    ...Image
+  }
+  ...Metadata
+  # TODO: this should only be included in dashboard
+  channelListings {
+    id
+    isPublished
+    publishedAt
+    channel {
+      id
+      name
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.container {
+  @apply w-screen h-screen flex justify-center items-center;
+}
+.buttonsContainer {
+  @apply flex justify-end;
+}
+.dialogContent {
+  @media (min-width: 800px) {
+    min-width: 500;
+  }
+  @apply pt-0;
+}

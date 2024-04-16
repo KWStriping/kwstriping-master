@@ -1,0 +1,459 @@
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+name: "Continuous Integration"
+on:
+  pull_request:
+    branches: [main]
+    paths-ignore:
+    - .gitignore
+    - .github/**
+    - '!.github/workflows/integration.yml'
+    - .idea/**
+    - .vscode/**
+    - '**.md'
+    - '**.rst'
+    - config/hooks/**
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: Comma-separated list of names of jobs to trigger
+        required: false
+        default: setup-script,build,pytest,e2e,test-deploy
+permissions:
+  contents: read
+  pull-requests: write
+  packages: write
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SHA: ${{ github.sha }}
+
+jobs:
+  changed-files:
+    name: Get changed files
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    outputs:
+      added-files: ${{ steps.changed-files.outputs.added_files }}
+      deleted-files: ${{ steps.changed-files.outputs.deleted_files }}
+      modified-files: ${{ steps.changed-files.outputs.modified_files }}
+      all-changed-files: ${{ steps.changed-files.outputs.all_changed_files }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v44.0.0
+
+  create-dotenv:
+    name: Generate .env file
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Generate dotenv file
+      id: generate-dotenv
+      # https://github.com/iacobfred/generate-dotenv
+      uses: iacobfred/generate-dotenv@v0.3.5
+      with:
+        template-paths: |
+          _.env
+        output-path: .env
+        cache: true
+        upload: true
+        key: dotenv-${{ github.sha }}-${{ github.run_id }}
+        allow-missing-vars: true
+      env:
+        SHA: ${{ github.sha }}
+        PORT_API: ${{ vars.PORT_API }}
+        PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
+        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+        AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
+        AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
+        AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
+        AUTH_FACEBOOK_ID: ${{ secrets.AUTH_FACEBOOK_ID }}
+        AUTH_FACEBOOK_SECRET: ${{ secrets.AUTH_FACEBOOK_SECRET }}
+        AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+        AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+        AUTH_TWITTER_KEY: ${{ secrets.AUTH_TWITTER_KEY }}
+        AUTH_TWITTER_SECRET: ${{ secrets.AUTH_TWITTER_SECRET }}
+        BASE_URL: https://${{ vars.DOMAIN }}
+        DOMAIN: ${{ vars.DOMAIN }}
+        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        ENVIRONMENT: production
+        GOOGLE_MAPS_API_KEY: ${{ vars.GOOGLE_MAPS_API_KEY }}
+        LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
+        POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+        POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
+        RSA_PRIVATE_PASSWORD: ${{ secrets.RSA_PRIVATE_PASSWORD }}
+        SECRET: ${{ secrets.SECRET }}
+        STOREFRONT_EMAIL: ${{ vars.STOREFRONT_EMAIL }}
+        STOREFRONT_PHONE: ${{ vars.STOREFRONT_PHONE }}
+        TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+        TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+    outputs:
+      key: ${{ steps.generate-dotenv.outputs.key }}
+
+  build-backend:
+    name: Build backend image
+    needs: [changed-files, create-dotenv]
+    # && contains(needs.changed-files.outputs.all_changed_files, 'tempo')
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch including submodules
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build image without cache
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./tempo/Dockerfile
+        push: true
+        cache-from: type=gha,scope=tempo
+        cache-to: type=gha,mode=max,scope=tempo
+        tags: ghcr.io/sokaisolutions/tempo:${{ github.sha }}
+        build-args: |
+          PYTHON_VERSION=3.12
+
+  build-dashboard:
+    name: Build dashboard image
+    needs: [changed-files, create-dotenv]
+    #  && contains(needs.changed-files.outputs.all_changed_files, 'dashboard')
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build dashboard image
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./packages/dashboard/Dockerfile
+        build-args: |
+          APP=${{ vars.APP }}
+          PORT=${{ vars.PORT_DASHBOARD }}
+          API_URL=${{ vars.API_URL }}
+        push: true
+        cache-from: type=gha,scope=${{ vars.APP }}-dashboard
+        cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
+        tags: ghcr.io/sokaisolutions/${{ vars.APP }}-dashboard:${{ github.sha }}
+
+  build:
+    name: Build storefront image
+    needs: [changed-files, create-dotenv]
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build storefront image
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./apps/Dockerfile
+        build-args: |
+          APP=${{ vars.APP }}
+          PORT=${{ vars.PORT_STOREFRONT }}
+        push: true
+        cache-from: type=gha,scope=${{ vars.APP }}
+        cache-to: type=gha,mode=max,scope=${{ vars.APP }}
+        tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }}
+    # - name: Build image without cache
+    #   if: ${{ failure() && steps.build_with_cache.outcome == 'failure' }}
+    #   uses: docker/build-push-action@v3
+    #   with:
+    #     builder: ${{ steps.buildx.outputs.name }}
+    #     context: .
+    #     file: ./Dockerfile
+    #     push: true
+    #     no-cache: true
+    #     secret-files: ENV_FILE=./.env
+    #     tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }},ghcr.io/sokaisolutions/${{ vars.APP }}:latest
+
+
+
+  # TODO
+  # build_and_test:
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  #     TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7.11.0 # version used by Vercel
+
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "16"
+  #         cache: "pnpm"
+
+  #     - name: Turbo Cache
+  #       id: turbo-cache
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: .turbo
+  #         key: turbo-${{ github.job }}-${{ github.ref_name }}-${{ github.sha }}
+  #         restore-keys: |
+  #           turbo-${{ github.job }}-${{ github.ref_name }}-
+
+  #     - name: Install dependencies
+  #       run: pnpm --version && pnpm install --frozen-lockfile
+
+  #     - name: Build
+  #       run: pnpm run build
+
+  #     - name: Validate paths
+  #       env:
+  #         API_URL: https://master.staging.tempo.cloud/graphql/
+  #       run: |
+  #         pnpm --filter=storefront paths
+  #         pnpm prettier --write ./apps/storefront/lib/\$path.ts
+  #         git diff --exit-code ./apps/storefront/lib/\$path.ts
+
+  #     - name: Check linters
+  #       run: pnpm run lint
+
+  #     - name: Check TypeScript
+  #       run: pnpm run typecheck
+
+  #     - name: Run tests
+  #       env:
+  #         TEST_MOLLIE_KEY: ${{ secrets.TEST_MOLLIE_KEY }}
+  #         TEST_MOLLIE_PROFILE_ID: ${{ secrets.TEST_MOLLIE_PROFILE_ID }}
+
+  #         TEST_STRIPE_SECRET_KEY: ${{ secrets.TEST_STRIPE_SECRET_KEY }}
+  #         TEST_STRIPE_PUBLISHABLE_KEY: ${{ secrets.TEST_STRIPE_PUBLISHABLE_KEY }}
+  #         TEST_STRIPE_WEBHOOK_SECRET: ${{ secrets.TEST_STRIPE_WEBHOOK_SECRET }}
+
+  #         SETTINGS_ENCRYPTION_SECRET: "testng"
+
+  #         TEMPO_APP_TOKEN: "test"
+  #       run: pnpm run test
+
+
+
+  # name: Pytest
+
+  # on:
+  #   pull_request:
+  #     types: [opened, synchronize, reopened]
+  #     paths:
+  #       - "tempo/api/**"
+  #       - "api/*.py"
+  #       - ".github/workflows/pytest.yml"
+  #   push:
+  #     branches:
+  #       - main
+  #       - ci/*
+  #     paths:
+  #       - "tempo/api/**"
+  #       - "api/*.py"
+
+  # env:
+  #   BENCH_PATH: ./queries-results.json
+  #   DATABASE_URL: "postgres://tempo:tempo@postgres:5432/tempo"
+  #   SECRET_KEY: ci-test
+
+  # jobs:
+  #   build:
+  #     runs-on: ubuntu-latest
+  #     container: python:3.9
+
+  #     services:
+  #       postgres:
+  #         image: postgres
+  #         env:
+  #           POSTGRES_PASSWORD: tempo
+  #           POSTGRES_USER: tempo
+  #         options: >-
+  #           --health-cmd pg_isready
+  #           --health-interval 10s
+  #           --health-timeout 5s
+  #           --health-retries 5
+
+  #     steps:
+  #       - uses: actions/checkout@v4
+
+  #       - name: Install system dependencies
+  #         run: apt-get install -y libpq-dev
+
+  #       - uses: actions/cache@v3
+  #         with:
+  #           path: ~/.cache/pip
+  #           key: ${{ runner.os }}-pip-${{ hashFiles('**/poetry.lock') }}
+  #           restore-keys: |
+  #             ${{ runner.os }}-pip-
+
+  #       - name: Install dependencies
+  #         run: |
+  #           python -m pip install wheel
+  #           python -m pip install -r requirements_dev.txt
+
+  #       - name: Run tests
+  #         run: |
+  #           pytest \
+  #             --cov \
+  #             --junitxml=junit/test-results.xml \
+  #             --django-db-bench=${{ env.BENCH_PATH }}
+
+  #       - uses: actions/cache@v3
+  #         with:
+  #           path: ~/.cache/pre-commit
+  #           key: ${{ runner.os }}-pre-commit-${{ hashFiles('**/.pre-commit-config.yaml') }}
+  #           restore-keys: |
+  #             ${{ runner.os }}-pre-commit-
+
+  #       # Publish coverage and test results
+  #       - uses: codecov/codecov-action@v3
+
+  #       - uses: actions/upload-artifact@v3
+  #         with:
+  #           name: pytest-results
+  #           path: junit/test-results.xml
+  #         if: ${{ always() }}
+
+  #       # Publish detected differences as comment
+  #       - uses: NyanKiyoshi/pytest-django-queries-ci-tools@v1
+  #         with:
+  #           query_raw_dump_path: ${{ env.BENCH_PATH }}
+  #           diff_endpoint: "https://dtab784j47g1o.cloudfront.net/default/tempo-db-queries-bot-diff"
+  #           diff_results_base_url: "https://dtab784j47g1o.cloudfront.net"
+  #         if: github.event_name == 'pull_request' && github.repository == 'tempo/tempo'
+
+  #       # Save results for future comparison against pull requests
+  #       - uses: NyanKiyoshi/pytest-django-queries-ci-tools@v1
+  #         with:
+  #           query_raw_dump_path: ${{ env.BENCH_PATH }}
+  #           upload_endpoint: ${{ secrets.QUERIES_UPLOAD_ENDPOINT_URL }}
+  #           upload_secret_key: ${{ secrets.QUERIES_UPLOAD_SECRET }}
+  #         if: github.event_name == 'push' && github.repository == 'tempo/tempo'
+
+  #       # Run linters and Django related checks
+  #       - name: Run Linters and Checks
+  #         run: |
+  #           pre-commit run --all
+  #         if: ${{ always() }}
+
+
+
+
+
+
+# name: Test migrations compatibility
+
+# on:
+#   pull_request:
+#     branches:
+#       - "3.*"
+#       - "main"
+#     paths:
+#       - "api/**/migrations/**"
+
+# env:
+#   DATABASE_URL: "postgres://tempo:tempo@postgres:5432/tempo"
+#   SECRET_KEY: ci-test
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     container: python:3.9
+
+#     services:
+#       postgres:
+#         image: postgres
+#         env:
+#           POSTGRES_PASSWORD: tempo
+#           POSTGRES_USER: tempo
+#         options: >-
+#           --health-cmd pg_isready
+#           --health-interval 10s
+#           --health-timeout 5s
+#           --health-retries 5
+
+#     steps:
+#       - name: Checkout branch
+#         uses: actions/checkout@v4
+
+#       - name: Install system dependencies
+#         run: apt-get install -y libpq-dev
+
+#       - name: Cache pip
+#         uses: actions/cache@v3
+#         with:
+#           path: ~/.cache/pip
+#           key: ${{ runner.os }}-pip-${{ hashFiles('**/poetry.lock') }}
+#           restore-keys: |
+#             ${{ runner.os }}-pip-
+
+#       - name: Install dependencies
+#         run: |
+#           python -m pip install wheel
+#           python -m pip install -r requirements_dev.txt
+
+#       - name: Migrate
+#         run: |
+#           export DJANGO_SETTINGS_MODULE=api.tests.settings
+#           ./manage.py migrate
+
+#       - name: Checkout base
+#         uses: actions/checkout@v4
+#         with:
+#           ref: ${{ github['base_ref'] }}
+
+#       - name: Run tests
+#         run: |
+#           export PYTEST_DB_URL=$DATABASE_URL
+#           pytest -n 0 --reuse-db

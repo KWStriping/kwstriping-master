@@ -1,0 +1,5 @@
+fragment Error on ErrorInterface {
+  message
+  field
+  code
+}

@@ -1,0 +1,12 @@
+query PagePaths($after: String) {
+  pages(first: 100, after: $after) {
+    pageInfo {
+      ...PageInfo
+    }
+    edges {
+      node {
+        slug
+      }
+    }
+  }
+}

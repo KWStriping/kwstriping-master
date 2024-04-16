@@ -1,0 +1,29 @@
+fragment HomepageBlock on MenuItem {
+  id
+  name
+  translation {
+    id
+    name
+  }
+  category {
+    id
+    slug
+  }
+  collection {
+    id
+    slug
+  }
+  page {
+    id
+    slug
+  }
+  page {
+    id
+    content
+    title
+    translation {
+      content
+      title
+    }
+  }
+}

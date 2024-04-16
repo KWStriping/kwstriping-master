@@ -1,0 +1,54 @@
+subscription TransactionActionRequestSubscription {
+  event {
+    ... on TransactionActionRequest {
+      # temporary paste fragment due to Tempo validation issues
+      transaction {
+        id
+        reference
+        type
+        amountAuthorized {
+          amount
+          currency
+        }
+        amountCharged {
+          amount
+        }
+        amountVoided {
+          amount
+        }
+        amountRefunded {
+          amount
+        }
+      }
+      action {
+        actionType
+        amount
+      }
+    }
+  }
+}
+
+fragment TransactionActionPayload on TransactionActionRequest {
+  transaction {
+    id
+    reference
+    type
+    amountAuthorized {
+      amount
+      currency
+    }
+    amountCharged {
+      amount
+    }
+    amountVoided {
+      amount
+    }
+    amountRefunded {
+      amount
+    }
+  }
+  action {
+    actionType
+    amount
+  }
+}

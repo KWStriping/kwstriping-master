@@ -1,0 +1,5 @@
+query ChannelBySlug($slug: String!) {
+  channel(slug: $slug) {
+    ...Channel
+  }
+}

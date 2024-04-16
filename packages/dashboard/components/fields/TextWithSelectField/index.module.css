@@ -1,0 +1,34 @@
+.container {
+  @apply w-[400px];
+}
+.innerContainer {
+  @apply w-full;
+}
+.textField {
+  @apply w-full;
+  padding-right: 0;
+  input {
+    @apply w-full;
+  }
+}
+.textFieldCentered {
+  input {
+    padding-top: 17;
+    padding-bottom: 16;
+  }
+}
+/* // It may seem lazy to set these CSS properties with !important tags, but
+// specificity of overriden styles is really high and refer to mutliple
+// internal styles. Instead of dealing with it and trying to create
+// complex selectors with volatile class names, it's both easier and safer
+// to enforce these styles with !important. */
+.input {
+  box-shadow: none !important;
+  border: none;
+}
+.noBorder {
+  border-color: transparent !important;
+}
+.noBackground {
+  background-color: transparent !important;
+}

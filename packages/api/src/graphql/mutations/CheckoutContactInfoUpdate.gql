@@ -1,0 +1,11 @@
+mutation CheckoutContactInfoUpdate($id: ID!, $input: CheckoutContactInfoUpdateInput!) {
+  updateCheckoutContactInfo(data: $input, id: $id) {
+    result {
+      ...Checkout
+    }
+    # errors {
+    #   field
+    #   message
+    # }
+  }
+}

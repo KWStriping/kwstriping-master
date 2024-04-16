@@ -1,0 +1,11 @@
+.avatar {
+  &:first-child {
+    @apply pl-0;
+  }
+}
+.checkboxCell {
+  @apply pl-0;
+}
+.wideCell {
+  @apply w-full;
+}

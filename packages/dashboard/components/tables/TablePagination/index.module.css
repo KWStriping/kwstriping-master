@@ -1,0 +1,42 @@
+.dark {
+  svg {
+    @apply text-primary;
+  }
+  &$disabled {
+    svg {
+      color: alpha(theme.colors.primary.main, 0.2);
+    }
+  }
+  &: focus;
+  &:hover {
+    > span:first-of-type {
+      background-color: alpha(theme.colors.primary.main, 0.2);
+    }
+  }
+}
+.disabled {
+}
+.iconButton {
+  > span:first-of-type {
+    background-color: theme(colors.background.DEFAULT);
+    border-radius: 100%;
+    transition: theme.transitions.duration.standard + ms;
+  }
+  svg {
+    border: solid 1px #bdbdbd;
+    border-radius: 50%;
+  }
+  &: focus;
+  &:hover {
+    > span:first-of-type {
+      background-color: alpha(theme.colors.primary.main, 0.2);
+    }
+    background-color: transparent;
+  }
+  padding: 6;
+}
+.root {
+  color: theme(colors.text.secondary);
+  flexshrink: 0;
+  margin: theme.spacing(0, 2.5);
+}

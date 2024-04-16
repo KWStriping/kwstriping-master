@@ -1,0 +1,82 @@
+fragment Checkout on Checkout {
+  id
+  customerEmail
+  customerFirstName
+  customerLastName
+  customerPhone
+  voucherCode
+  billingAddress {
+    ...Address
+  }
+  shippingAddress {
+    ...Address
+  }
+  fulfillmentMethod {
+    ...FulfillmentMethod
+  }
+  isShippingRequired
+  availableShippingMethods {
+    ...FulfillmentMethod
+  }
+  availablePaymentGateways {
+    id
+    name
+    config {
+      field
+      value
+    }
+  }
+  lines {
+    ...CheckoutLine
+  }
+  discount {
+    ...Money
+  }
+  discountName
+  translatedDiscountName
+  giftCards {
+    ...GiftCard
+  }
+  subtotalPrice {
+    gross {
+      ...Money
+    }
+    net {
+      ...Money
+    }
+    tax {
+      ...Money
+    }
+  }
+  shippingPrice {
+    gross {
+      ...Money
+    }
+  }
+  totalPrice {
+    gross {
+      ...Money
+    }
+    tax {
+      ...Money
+    }
+  }
+  channel {
+    id
+    slug
+  }
+  user {
+    id
+    email
+    firstName
+    lastName
+  }
+  fulfillmentDeadline
+  pointsOfContact {
+    ...PointOfContact
+  }
+  validationErrors {
+    field
+    message
+  }
+}

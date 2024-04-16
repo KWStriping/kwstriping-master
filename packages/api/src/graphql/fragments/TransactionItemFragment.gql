@@ -1,0 +1,19 @@
+fragment TransactionItem on TransactionItem {
+  id
+  reference
+  amountVoided {
+    ...Money
+  }
+  amountRefunded {
+    ...Money
+  }
+  amountCharged {
+    ...Money
+  }
+  amountAuthorized {
+    ...Money
+  }
+  events {
+    ...TransactionEvent
+  }
+}

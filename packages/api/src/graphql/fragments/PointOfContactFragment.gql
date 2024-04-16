@@ -1,0 +1,8 @@
+fragment PointOfContact on PointOfContact {
+  id
+  firstName
+  lastName
+  email
+  phone
+  notes
+}

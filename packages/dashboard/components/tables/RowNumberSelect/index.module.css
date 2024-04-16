@@ -1,0 +1,19 @@
+.label {
+  font-size: 14;
+}
+.select {
+  div {
+    &:focus {
+      background: none;
+    }
+    @apply text-primary ml-1;
+  }
+  svg {
+    @apply text-primary;
+  }
+  &: after;
+  &: before;
+  &:hover {
+    border: none !important;
+  }
+}

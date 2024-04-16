@@ -1,0 +1,11 @@
+mutation refreshToken($csrfToken: String!, $refreshToken: String, $pluginInput: AuthPluginInput) {
+  refreshToken(csrfToken: $csrfToken, refreshToken: $refreshToken, pluginInput: $pluginInput) {
+    result {
+    accessToken
+    csrfToken
+    }
+    errors {
+      ...Error
+    }
+  }
+}

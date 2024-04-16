@@ -1,0 +1,77 @@
+.actions {
+  @apply py-2 px-4;
+  flex-direction: row;
+}
+.container {
+  @apply bg-gray-200;
+}
+.darkContainer {
+  @apply bg-gray-800;
+  /* background: `${theme.vars.palette.grey[800]} !important`; */
+}
+.deleteButton {
+  @apply mr-1;
+}
+.dragIcon {
+  cursor: grab;
+}
+.nodeTitle {
+  cursor: pointer;
+  @apply ml-7;
+}
+
+.nodeActions {
+  display: flex;
+  gap: theme(spacing.1);
+}
+.root .rst__collapseButton {
+  display: none;
+}
+/* .root .rst__node:first-of-type {
+  & $row {
+    border-top: `1px ${theme.vars.palette.divider} solid`;
+  }
+} */
+
+.row {
+  @apply flex items-center pl-3 border-b border-solid border-divider;
+  /* background: theme.vars.palette.background.paper; */
+  border-radius: 0;
+  flex-direction: row;
+  /* height: NODE_HEIGHT; */
+  justify-content: flex-start;
+}
+.rowContainer > * {
+  @apply transition;
+  opacity: 1;
+  /* transition: `opacity ${theme.transitions.duration.standard}ms`; */
+}
+.rowContainer {
+  @apply transition;
+  /* transition: `margin ${theme.transitions.duration.standard}ms`; */
+}
+/* .rowContainerDragged {
+  &$rowContainer {
+    &:before {
+      background: theme.vars.palette.background.paper;
+      border: `1px solid ${theme.vars.palette.primary.main}`;
+      border-radius: 100%;
+      content: "";
+      height: 7;
+      left: 0;
+      position: absolute;
+      top: -3;
+      width: 7;
+    }
+    border-top: `1px solid ${theme.vars.palette.primary.main}`;
+    height: 0;
+    position: relative;
+    top: -1;
+  }
+} */
+.rowContainerPlaceholder {
+  opacity: 0;
+}
+.spacer {
+  flex: 1;
+}

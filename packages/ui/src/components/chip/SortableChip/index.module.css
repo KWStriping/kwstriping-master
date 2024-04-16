@@ -1,0 +1,22 @@
+.closeButton {
+  @apply ml-1;
+  background: none;
+  border: none;
+}
+.closeIcon {
+  @apply cursor-pointer;
+  font-size: 16;
+  vertical-align: middle;
+}
+.content {
+  @apply items-center flex;
+}
+.root {
+  border: 1px solid theme(colors.divider);
+  border-radius: 18;
+  @apply inline-block mr-2;
+  padding: 6px 12px;
+}
+.sortableHandle {
+  @apply mr-1;
+}

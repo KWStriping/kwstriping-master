@@ -1,0 +1,26 @@
+.menuContainer {
+  @apply p-2;
+}
+.row {
+  @apply flex justify-between;
+}
+.row:not(:last-child) {
+  @apply mb-2;
+}
+.caption {
+  text-transform: uppercase;
+  color: theme(colors.primary[300]);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+.hr {
+  left: -theme(spacing.1);
+  @apply relative;
+  width: calc(100% + theme(spacing.2));
+}
+.menuItem {
+  @apply block;
+}
+.title {
+  @apply py-1 px-2;
+}

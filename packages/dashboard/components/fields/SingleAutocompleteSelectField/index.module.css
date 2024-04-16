@@ -1,0 +1,79 @@
+.add {
+  background: theme(colors.background.DEFAULT);
+  border: 1px solid theme(colors.divider);
+  border-radius: 100%;
+  @apply h-[24px];
+  @apply mr-1;
+  @apply w-[24px];
+}
+.arrowContainer {
+  @apply relative;
+}
+.arrowInnerContainer {
+  @apply items-center;
+  @apply bg-gray-50;
+  /* background: theme(colors.mode === light ? theme.palette.grey[50]: theme.palette.grey[900]); */
+  @apply bottom-0;
+  @apply text-gray-500;
+  /* color: theme(colors.grey[500]); */
+  @apply flex;
+  @apply h-[30px];
+  @apply justify-center;
+  opacity: 1;
+  @apply absolute;
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+  @apply w-full;
+}
+[data-color-scheme='dark'] .arrowInnerContainer {
+  @apply bg-gray-900;
+}
+.content {
+  /* max-height: calc(${menuItemHeight * maxMenuItems}px + theme(spacing.2)); */
+  overflow: scroll;
+  padding: 8;
+}
+.hide {
+  opacity: 0;
+  z-index: -1;
+}
+.hr {
+  @apply my-1 mx-0;
+}
+.menuItem {
+  height: auto;
+  white-space: normal;
+}
+.menuItem[aria-selected='true'] {
+  @apply bg-background;
+}
+.progressContainer {
+  @apply flex justify-center;
+  @apply py-1 px-0;
+}
+.root {
+  border-bottom-left-radius: 8;
+  border-bottom-right-radius: 8;
+  @apply my-1 mx-0;
+  overflow: hidden;
+  z-index: 22;
+}
+.container {
+  flex-grow: 1;
+  @apply relative;
+}
+.nakedInput {
+  @apply py-2 px-0;
+}
+.adornment {
+  color: theme(colors.primary[300]);
+  @apply cursor-pointer;
+  user-select: none;
+}
+.adornment svg {
+  @apply transition;
+  /* transition: theme.transitions.duration.shorter + ms; */
+}
+.adornmentRotate svg {
+  transform: rotate(180deg);
+}

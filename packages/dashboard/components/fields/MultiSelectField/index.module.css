@@ -1,0 +1,9 @@
+.checkbox {
+  margin-right: -theme(spacing[2]);
+}
+.formControl {
+  @apply w-full;
+}
+.menuItem {
+  @apply items-center flex justify-between w-full;
+}

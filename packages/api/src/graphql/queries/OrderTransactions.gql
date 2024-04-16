@@ -1,0 +1,11 @@
+query OrderTransactions($id: ID!) {
+  order(id: $id) {
+    transactions {
+      ...TransactionItem
+    }
+    # errors {
+    #   code
+    #   message
+    # }
+  }
+}

@@ -1,0 +1,18 @@
+mutation removePromoCodeFromCheckout(
+  $id: ID!
+  $promoCode: String
+  $promoCodeId: ID
+) {
+  removePromoCodeFromCheckout(
+    id: $id
+    promoCode: $promoCode
+    promoCodeId: $promoCodeId
+  ) {
+    # errors {
+    #   ...CheckoutError
+    # }
+    result {
+      ...Checkout
+    }
+  }
+}

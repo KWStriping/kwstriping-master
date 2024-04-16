@@ -1,0 +1,17 @@
+fragment Channel on Channel {
+  id
+  name
+  slug
+  countries {
+    code
+  }
+  isActive
+  currencyCode
+  defaultCountry {
+    code
+    name
+  }
+  stockSettings {
+    allocationStrategy
+  }
+}

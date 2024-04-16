@@ -1,0 +1,67 @@
+fragment Order on Order {
+  id
+  createdAt
+  number
+  status
+  userEmail
+  isPaid
+  shippingTaxRate
+  shippingMethodName
+  privateMetafield(key: "payment")
+  discounts {
+    type
+    name
+    amount {
+      ...Money
+    }
+  }
+  shippingAddress {
+    ...Address
+  }
+  billingAddress {
+    ...Address
+  }
+  fulfillmentMethod {
+    ...ShippingMethod
+  }
+  total {
+    currency
+    gross {
+      ...Money
+    }
+    tax {
+      ...Money
+    }
+  }
+  voucher {
+    code
+  }
+  shippingPrice {
+    gross {
+      ...Money
+    }
+    net {
+      ...Money
+    }
+    tax {
+      ...Money
+    }
+  }
+  subtotal {
+    gross {
+      ...Money
+    }
+    net {
+      ...Money
+    }
+  }
+  lines {
+    ...OrderLine
+  }
+  totalBalance {
+    ...Money
+  }
+  totalCaptured {
+    ...Money
+  }
+}

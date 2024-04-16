@@ -1,0 +1,18 @@
+.formControl {
+  @apply w-full;
+}
+.formControl label {
+  top: -3px;
+}
+.label {
+  z-index: 3;
+}
+.noLabel {
+  padding: theme(spacing.2) theme(spacing[1.5]);
+}
+/* .paper {
+  max-height: calc(${singleSelectFieldItemHeight}px * 10 + ${singleSelectFieldItemHeight}px * 0.5);
+} */
+.disabledMenuItem {
+  pointer-events: none;
+}

@@ -1,0 +1,31 @@
+.root {
+  @apply pr-3;
+  width: 1%;
+}
+.root:not(:first-child) {
+  @apply pl-0;
+}
+.align-right {
+  @apply justify-end;
+}
+.avatar {
+  background: none;
+  border: 1px solid theme(colors.divider);
+  border-radius: 2;
+  color: #bdbdbd;
+  display: inline-flex;
+  padding: theme(spacing[0.5]);
+}
+.children {
+  @apply self-center ml-2 w-full;
+}
+.content {
+  @apply items-center flex;
+}
+.root {
+  @apply pr-3;
+  width: 1%;
+}
+.root:not(:first-child) {
+  @apply pl-0;
+}

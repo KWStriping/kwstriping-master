@@ -1,0 +1,14 @@
+.chip {
+  background: theme(colors.background.paper);
+  color: theme(colors.primary.dark);
+  @apply mb-1;
+}
+.chipHelper {
+  @apply flex justify-center items-center p-0;
+}
+.grabbing {
+  cursor: grabbing;
+}
+.errorText {
+  color: theme(colors.error.light);
+}

@@ -1,0 +1,22 @@
+.tabsRoot {
+  border-bottom: 1px solid theme(colors.divider);
+  @apply pl-4;
+}
+/* .selectedTabLabel {
+  &$tabLabel {
+    color: theme.typography.body1.color;
+  }
+} */
+.tabLabel {
+  /* color: theme.typography.caption.color;
+  font-size: theme.typography.body1.font-size; */
+  font-weight: 500;
+}
+/* .tabLabel:hover {
+  color: theme.typography.body1.color;
+} */
+.tabRoot {
+  @apply min-w-[80px];
+  opacity: 1;
+  text-transform: initial;
+}

@@ -1,0 +1,10 @@
+mutation AddressSetDefault($addressID: ID!, $userID: ID!, $addressType: AddressType!) {
+  setDefaultAddress(addressId: $addressID, type: $addressType, userId: $userID) {
+    __typename
+    errors {
+      field
+      message
+      code
+    }
+  }
+}

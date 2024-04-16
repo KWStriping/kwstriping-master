@@ -1,0 +1,52 @@
+.media {
+  @apply h-full;
+  object-fit: contain;
+  user-select: none;
+  @apply w-full;
+}
+.mediaContainer {
+  /* &: hover;
+  &.dragged {
+    $mediaOverlay {
+      @apply block;
+    }
+  } */
+  @apply bg-background-paper;
+  border: 1px solid theme(colors.divider);
+  border-radius: theme(spacing.1);
+  @apply h-[148px];
+  overflow: hidden;
+  @apply p-2 relative;
+  @apply w-[148px];
+}
+.mediaOverlay {
+  @apply bg-background;
+  opacity: 0.8;
+  cursor: move;
+  display: none;
+  @apply h-[148px];
+  @apply left-0 absolute top-0;
+  @apply w-[148px];
+}
+/* .mediaOverlayShadow {
+  &mediaOverlay {
+    @apply items-center flex justify-center;
+  }
+} */
+.mediaOverlayToolbar {
+  @apply flex justify-end;
+}
+.controlButton {
+  color: theme(colors.primary[100]);
+  background-color: transparent;
+  border: none;
+  @apply cursor-pointer;
+  margin: theme(spacing.2);
+  @apply p-0;
+}
+.controlButton:hover {
+  color: theme(colors.active[100]);
+}
+.controlButton:first-child {
+  @apply mr-0;
+}

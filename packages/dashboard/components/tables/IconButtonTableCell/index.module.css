@@ -1,0 +1,7 @@
+.root {
+  padding-right: 0;
+  width: calc(var(--icon-button-size) + theme(spacing[0.5]));
+}
+.root:last-child {
+  padding-right: 0;
+}

@@ -1,0 +1,121 @@
+x-services: &services
+  db:
+    condition: service_healthy
+  redis:
+    condition: service_healthy
+  mailhog:
+    condition: service_healthy
+
+services:
+  services:
+    depends_on:
+      <<: *services
+  db:
+    ports:
+      - "5432:5432"
+  redis:
+    ports:
+      - 6379:6379
+  jaeger:
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+  kibana:
+    ports:
+      - 127.0.0.1:5601:5601
+  otel-collector:
+    ports:
+      - 127.0.0.1:4317:4317
+  web:
+    container_name: ${DOMAIN}
+    image: nginx
+    depends_on:
+      <<: *services
+    env_file:
+      - .env
+    environment:
+      - DEBUG=1
+      - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "--silent",
+          "--insecure",
+          "--fail",
+          "https://${DOMAIN}/health"
+        ]
+      interval: 10s
+      timeout: 1s
+      retries: 30
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./.config/nginx/templates/dev:/etc/nginx/templates
+      - ./.config/nginx/certs:/etc/ssl/certs:ro
+      - ./_volumes/media:/var/www/${DOMAIN}/_volumes/media:ro
+      - ./_volumes/static:/var/www/${DOMAIN}/_volumes/static:ro
+      - ./apps/${APP}/public:/var/www/${DOMAIN}/public
+  tempo:
+    command: python dev.py
+    # command: python manage.py runserver 0.0.0.0:${PORT_API}
+    ports:
+      - "${PORT_API}:${PORT_API}"
+    pull_policy: never
+    volumes:
+      - ./tempo:${ROOT_DIR:-/root}/tempo
+      - ./apps/${APP}/fixtures:${ROOT_DIR:-/root}/apps/${APP}/fixtures
+      - type: bind
+        source: ./apps/${APP}/.env
+        target: ${ROOT_DIR:-/root}/apps/${APP}/.env
+        read_only: true
+  worker:
+    depends_on:
+      <<: *services
+    pull_policy: never
+    volumes:
+      - ./tempo:${ROOT_DIR:-/root}/tempo
+  dashboard:
+    command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
+    environment:
+      - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
+    pull_policy: never
+    volumes:
+      - ./.config/nginx/certs:/etc/ssl/certs:ro
+  storefront:
+    command: pnpm turbo run dev --filter=${APP}... --log-prefix=none
+    environment:
+      - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
+    pull_policy: never
+    volumes:
+      - ./.config/nginx/certs:/etc/ssl/certs:ro
+  mailhog:
+    # container_name: mailhog
+    healthcheck:
+      # NOTE: This is an Alpine-based image without curl; use wget instead.
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8025/"
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui. Visit http://localhost:8025/ to check emails
+    restart: unless-stopped

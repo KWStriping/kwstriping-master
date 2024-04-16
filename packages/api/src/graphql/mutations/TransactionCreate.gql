@@ -1,0 +1,15 @@
+mutation TransactionCreate(
+  $id: ID!
+  $transaction: TransactionCreationInput!
+  $transactionEvent: TransactionEventInput
+) {
+  createTransaction(id: $id, transaction: $transaction, transactionEvent: $transactionEvent) {
+    result {
+      id
+    }
+    # errors {
+    #   code
+    #   message
+    # }
+  }
+}

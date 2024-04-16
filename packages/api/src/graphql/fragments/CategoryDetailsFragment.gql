@@ -1,0 +1,29 @@
+fragment CategoryDetails on Category {
+  id
+  ...CategoryBasic
+  seoTitle
+  seoDescription
+  description
+  translation {
+    id
+    description
+  }
+  backgroundImage {
+    ...Image
+  }
+  ancestors(first: 5) {
+    edges {
+      node {
+        ...CategoryBasic
+      }
+    }
+  }
+  # children(first: 10) {
+  #   edges {
+  #     node {
+  #       ...CategoryBasic
+  #     }
+  #   }
+  # }
+  ...Metadata
+}

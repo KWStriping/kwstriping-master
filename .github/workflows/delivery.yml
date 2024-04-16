@@ -1,0 +1,352 @@
+# https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+name: "Continuous Delivery"
+on:
+  push:
+    # branches: [main]
+    tags:
+      - deploy
+    # branches-ignore:
+    #   - '*'
+    # paths-ignore:
+    # - .gitignore
+    # - .github/**
+    # - '!.github/workflows/delivery.yml'
+    # - .idea/**
+    # - .vscode/**
+    # - '**.md'
+    # - '**.rst'
+    # - '**.txt'
+    # - tests.py
+    # - package*.json
+    # - pyproject.toml
+    # - poetry.lock
+  workflow_dispatch:
+    inputs:
+      what:
+        description: 'What to deploy'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+permissions:
+  contents: read
+  packages: write
+
+env:
+  ENVIRONMENT: production
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SHA: ${{ github.sha }}
+  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
+jobs:
+  check:
+    name: Check conditions
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.check_branch.outputs.branch }}
+      tag: ${{ steps.check_tag.outputs.tag }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get branch
+        id: check_branch
+        run: |
+          raw=$(git branch -r --contains ${{ github.ref }})
+          branch=${raw##*/}
+          echo "branch=${branch}" >> "$GITHUB_OUTPUT"
+          echo "Branch: ${branch}"
+      - name: Get tag
+        id: check_tag
+        run: |
+          tag=${GITHUB_REF#refs/*/}
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "Tag: ${tag}"
+
+  changed-files:
+    name: Get changed files
+    needs: [check]
+    if: ${{ needs.check.outputs.branch == 'main' }}
+    runs-on: ubuntu-latest
+    outputs:
+      added-files: ${{ steps.changed-files.outputs.added_files }}
+      deleted-files: ${{ steps.changed-files.outputs.deleted_files }}
+      modified-files: ${{ steps.changed-files.outputs.modified_files }}
+      all-changed-files: ${{ steps.changed-files.outputs.all_changed_files }}
+      apps: ${{ steps.apps.outputs.apps }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v44.0.0
+    - name: Get changed apps
+      id: apps
+      env:
+        CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      shell: bash
+      run: |
+        changed_apps=()
+        an_app_changed=0
+        all_apps=("kwstriping" "sokai")
+        echo "CHANGED_FILES: $CHANGED_FILES"
+        # Check if the input is a JSON array
+        if [[ "$CHANGED_FILES" == "["*"]" ]]; then
+          # Use jq to parse the JSON array into a Bash array
+          readarray -t changed_files < <(echo "$CHANGED_FILES" | jq -r '.[]')
+        elif [[ "$CHANGED_FILES" == *' '* ]]; then
+          # If the input contains spaces, split it into an array
+          IFS=' ' read -r -a changed_files <<< "$CHANGED_FILES"
+        else
+          # Otherwise, treat the input as a single string
+          changed_files=("$CHANGED_FILES")
+        fi
+        echo "changed_files: $changed_files"
+        for app_name in "${all_apps[@]}"; do
+          echo "Checking if ${app_name} needs to be deployed ..."
+          for filename in "${changed_files[@]}"; do
+            if [[ $filename == *"apps/${app_name}/"* ]]; then
+              changed_apps+=$app_name
+              an_app_changed=1
+              break
+            fi
+          done
+        done
+        if (( an_app_changed == 1 )); then
+          apps=$(jq -c -n '$ARGS.positional' --args "${changed_apps[@]}")
+        else
+          apps=$(jq -c -n '$ARGS.positional' --args "${all_apps[@]}")
+        fi
+        echo "To be deployed: ${apps}"
+        # apps="${apps//\"/\\\"}"
+        echo "apps=$apps" >> $GITHUB_OUTPUT
+
+  create-dotenv:
+    name: Generate .env file
+    needs: [check, changed-files]
+    if: ${{ needs.check.outputs.branch == 'main' }}
+    strategy:
+      matrix:
+        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
+    environment: ${{ matrix.app }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Generate dotenv file
+      id: generate-dotenv
+      # https://github.com/iacobfred/generate-dotenv
+      uses: iacobfred/generate-dotenv@v0.3.5
+      with:
+        template-paths: |
+          _.env
+        output-path: .env
+        cache: true
+        upload: true
+        key: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+        allow-missing-vars: true
+      env:
+        APP: ${{ matrix.app }}
+        SHA: ${{ github.sha }}
+        PORT_API: ${{ vars.PORT_API }}
+        PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
+        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+        AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
+        AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
+        AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
+        AUTH_FACEBOOK_ID: ${{ secrets.AUTH_FACEBOOK_ID }}
+        AUTH_FACEBOOK_SECRET: ${{ secrets.AUTH_FACEBOOK_SECRET }}
+        AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+        AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+        AUTH_TWITTER_KEY: ${{ secrets.AUTH_TWITTER_KEY }}
+        AUTH_TWITTER_SECRET: ${{ secrets.AUTH_TWITTER_SECRET }}
+        BASE_URL: https://${{ vars.DOMAIN }}
+        DOMAIN: ${{ vars.DOMAIN }}
+        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        ENVIRONMENT: production
+        GOOGLE_MAPS_API_KEY: ${{ vars.GOOGLE_MAPS_API_KEY }}
+        LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
+        POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+        POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
+        RSA_PRIVATE_PASSWORD: ${{ secrets.RSA_PRIVATE_PASSWORD }}
+        SECRET: ${{ secrets.SECRET }}
+        STOREFRONT_EMAIL: ${{ vars.STOREFRONT_EMAIL }}
+        STOREFRONT_PHONE: ${{ vars.STOREFRONT_PHONE }}
+        TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+        TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+    outputs:
+      key: ${{ steps.generate-dotenv.outputs.key }}
+
+  build-backend:
+    name: Build backend image
+    needs: [changed-files, create-dotenv]
+    # && contains(needs.changed-files.outputs.all_changed_files, 'tempo')
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix:
+        python-version: ["3.12"]
+        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
+    environment: ${{ matrix.app }}
+    steps:
+    - name: Check out main branch including submodules
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build tempo image
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./tempo/Dockerfile
+        push: true
+        cache-from: type=gha,scope=tempo
+        cache-to: type=gha,mode=max,scope=tempo
+        tags: ghcr.io/sokaisolutions/tempo:${{ github.sha }}
+        build-args: |
+          PYTHON_VERSION=${{ matrix.python-version }}
+
+  build-dashboard:
+    name: Build dashboard image
+    needs: [changed-files, create-dotenv]
+    #  && contains(needs.changed-files.outputs.all_changed_files, 'dashboard')
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
+    environment: ${{ matrix.app }}
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build dashboard image
+      if: ${{ inputs.what != 'backend' }}
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./packages/dashboard/Dockerfile
+        build-args: |
+          APP=${{ matrix.app }}
+          PORT=${{ vars.PORT_DASHBOARD }}
+          API_URL=${{ vars.API_URL }}
+        push: true
+        cache-from: type=gha,scope=${{ matrix.app }}-dashboard
+        cache-to: type=gha,mode=max,scope=${{ matrix.app }}-dashboard
+        tags: ghcr.io/sokaisolutions/${{ matrix.app }}-dashboard:${{ github.sha }}
+
+  build-storefront:
+    name: Build storefront image
+    needs: [changed-files, create-dotenv]
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
+    environment: ${{ matrix.app }}
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3.1.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build storefront image
+      if: ${{ inputs.what != 'backend' }}
+      uses: docker/build-push-action@v5
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./apps/Dockerfile
+        build-args: |
+          APP=${{ matrix.app }}
+          PORT=${{ vars.PORT_STOREFRONT }}
+          API_URL=${{ vars.API_URL }}
+        push: true
+        cache-from: type=gha,scope=${{ matrix.app }}
+        cache-to: type=gha,mode=max,scope=${{ matrix.app }}
+        tags: ghcr.io/sokaisolutions/${{ matrix.app }}:${{ github.sha }}
+
+  deploy:
+    name: Deploy
+    needs: [changed-files, create-dotenv, build-storefront, build-dashboard, build-backend]
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
+    environment: ${{ matrix.app}}
+    if: ${{ success() || (inputs.what == 'backend' && needs.build-backend.result == 'success') }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v4
+    - name: Restore dotenv
+      uses: actions/download-artifact@v4
+      with:
+        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+    - name: Deploy to server
+      uses: iacobfred/deploy-docker-ssh@v0.4.9
+      with:
+        host: ${{ vars.DOMAIN }}
+        user: jacob
+        target-dir: /var/www/${{ vars.DOMAIN }}
+        files: ".env docker-compose.yml scripts"
+        ssh-port: ${{ vars.SSH_PORT }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        # echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
+        command: python3 scripts/deploy.py ${{ matrix.app }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
+    # - run: |
+    #     echo "github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }}";
+    #     echo "github.sha: ${{ github.sha }}";

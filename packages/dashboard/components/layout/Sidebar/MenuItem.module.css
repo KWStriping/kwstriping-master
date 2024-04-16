@@ -1,0 +1,67 @@
+.menuItem {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  @apply flex items-center transition justify-between;
+  @apply text-primary/60 cursor-pointer h-[56px] pt-2 pr-3 pb-2 pl-3;
+  width: 100%;
+}
+.menuItem:hover,
+.menuItem:active,
+.menuItem:focus-visible {
+  @apply text-primary/70 bg-background-paper/60;
+  outline: 0;
+}
+.menuItemActive {
+  @apply text-primary bg-background-paper;
+}
+
+.menuItemBtn {
+  @apply relative inline-flex cursor-pointer m-0 p-0;
+  background: none;
+  border: none;
+  color: inherit;
+}
+.menuItemBtn:focus {
+  @apply text-primary;
+  outline: 0;
+}
+.icon {
+  /* transition: theme.transitions.duration.shortest + ms; */
+}
+.icon .svg {
+  @apply h-[24px] w-[24px];
+}
+.label {
+  @apply cursor-pointer block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  opacity: 1;
+  @apply transition-opacity;
+  /* transition: theme.transitions.duration.shortest + ms; */
+}
+.labelRoot {
+  @apply left-[60px] grow;
+  text-align: left;
+  pointer-events: none;
+}
+
+.subMenuHeader {
+  text-transform: uppercase;
+  @apply text-secondary pt-2 pr-2 pb-0.5 pl-2;
+}
+.subMenuLabel {
+  background: none;
+  border: none;
+  @apply text-primary;
+  font-weight: 500;
+  @apply h-[48px];
+  line-height: 36px;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+}
+.subMenuLabel.Mui-selected {
+  background: unset !important;
+}

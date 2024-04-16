@@ -1,0 +1,21 @@
+.container {
+  z-index: 1;
+}
+.iconButton {
+  background: theme(colors.background.paper);
+  border-radius: 100%;
+  @apply h-[32px];
+  @apply p-0;
+  @apply w-[32px];
+}
+.paper {
+  @apply mt-2;
+  max-height: ITEM_HEIGHT * 4.5;
+  overflow-y: scroll;
+}
+.loadingContent {
+  @apply w-full grid;
+  grid-template-columns: 1fr 24px;
+  gap: theme(spacing.2);
+  @apply items-center justify-end;
+}

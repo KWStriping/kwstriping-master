@@ -1,0 +1,61 @@
+# ignore everything
+*
+
+# Allow these files & directories
+!/apps
+!/assets
+!/data
+!/packages
+!/tempo
+!/package.json
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/poetry.lock
+!/pyproject.toml
+!/yarn.lock
+!/tsconfig.json
+!/turbo.json
+!/.env
+!/.gitignore
+!/.npmrc
+
+# Ignore from allowed directories
+**/*~
+**/*.log
+**/*.pyc
+**/*.sqlite
+**/.DS_Store
+**/Thumbs.db
+**/.cache*
+**/.eslintcache*
+**/.git*
+**/.husky*
+**/.idea*
+**/.next*
+**/.turbo*
+**/.venv*
+**/.vscode*
+**/cypress*
+**/docker-compose.*
+**/Dockerfile*
+**/logs*
+**/node_modules*
+**/tmp*
+**/tsconfig.tsbuildinfo
+Dockerfile
+LICENSE
+
+# Secrets
+**/.env.local
+**/.env.*.local
+
+# Used when building with nextjs (next-eslint)
+!.eslintrc.base.json
+!.prettierignore
+!.prettierrc.js
+!.eslintignore
+
+# Yarn
+!.yarnrc.yml
+!.yarn/plugins
+!.yarn/releases

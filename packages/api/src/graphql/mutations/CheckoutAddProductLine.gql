@@ -1,0 +1,17 @@
+mutation CheckoutAddProductLine(
+  $checkoutId: ID!
+  $productId: ID!
+) {
+  addCheckoutLines(id: $checkoutId, lines: [{ quantity: 1, productId: $productId }]) {
+    result {
+      ...Checkout
+    }
+    errors {
+      message
+      ... on CheckoutError {
+        code
+        field
+      }
+    }
+  }
+}

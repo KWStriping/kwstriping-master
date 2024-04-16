@@ -1,0 +1,27 @@
+fragment MenuItemWithChildren on MenuItem {
+  id
+  name
+  translation {
+    id
+    name
+  }
+  category {
+    id
+    slug
+  }
+  collection {
+    id
+    slug
+  }
+  page {
+    id
+    slug
+  }
+  children {
+    ...MenuItem
+    children {
+      ...MenuItem
+    }
+  }
+  url
+}

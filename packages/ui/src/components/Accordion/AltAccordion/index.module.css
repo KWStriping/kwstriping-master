@@ -1,0 +1,19 @@
+.content {
+  @apply py-3 px-0;
+}
+.expandButton {
+  @apply relative;
+  right: -theme(spacing[2]);
+  top: theme(spacing[0.5]);
+}
+.root {
+  border: 1px solid theme(colors.divider);
+  border-radius: 12;
+  @apply py-0 px-3;
+}
+.title {
+  @apply flex justify-between;
+}
+.titleText {
+  @apply py-2 px-0;
+}

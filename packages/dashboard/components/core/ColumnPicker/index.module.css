@@ -1,0 +1,44 @@
+.popper {
+  @apply mt-1;
+  z-index: 1;
+}
+.icon {
+  @apply ml-2;
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.root {
+  @apply pr-1;
+}
+.root span {
+  @apply text-primary;
+}
+.rootActive {
+  @apply bg-primary/10;
+  /* background: alpha(theme.colors.primary.main, 0.1); */
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.actions {
+  flex-direction: row-reverse;
+  gap: theme(spacing.1);
+  @apply pb-2;
+}
+.content {
+  @apply pb-2;
+  @apply w-[450px];
+}
+.subHeader {
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  @apply mb-1;
+}
+.choicesContainer {
+  max-height: 500;
+  overflow: hidden scroll;
+}
+.choicesContainer span {
+  word-break: break-all;
+}

@@ -1,0 +1,70 @@
+/apps/
+!/apps/Dockerfile
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*
+
+# Volumes
+_volumes/
+_*/
+
+# Caches
+.pytest_cache
+.ruff_cache
+.*_cache
+.*cache
+.cache
+.turbo
+*.cache
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Temporary files
+*.tmp.*
+
+# Next.js
+.next/
+out/
+build
+dist
+
+# testing
+coverage
+
+# misc
+.DS_Store
+*.pem
+
+# cypress
+cypress/screenshots
+cypress/videos
+
+.idea
+
+.auth_token
+
+# Python
+*.pyc
+*.pyi
+
+# Sentry
+.sentryclirc
+
+# workbox
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js

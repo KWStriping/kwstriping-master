@@ -1,0 +1,16 @@
+.primary {
+  /* color: theme(colors.textHighlighted.active); */
+}
+.secondary {
+  @apply text-primary;
+}
+.underline {
+  text-decoration: underline;
+}
+.noUnderline {
+  text-decoration: none;
+}
+.disabled {
+  cursor: default;
+  /* color: theme(colors.textHighlighted.inactive); */
+}

@@ -1,0 +1,9 @@
+mutation AddressDelete($id: ID!) {
+  deleteAddress(id: $id) {
+    user {
+      addresses {
+        ...Address
+      }
+    }
+  }
+}

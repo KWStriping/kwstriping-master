@@ -1,0 +1,15 @@
+.picker {
+  @apply flex;
+}
+.saturation {
+  width: 220px !important;
+  height: 220px !important;
+}
+.colorInput {
+  white-space: nowrap;
+  width: 170px;
+  @apply mb-1;
+}
+.colorInput input {
+  @apply text-right p-[15px];
+}

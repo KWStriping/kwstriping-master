@@ -1,0 +1,20 @@
+.label {
+  font-size: 14;
+  textalign: center;
+}
+.root {
+  border-bottom: 1px solid theme(colors.divider);
+  @apply flex justify-between mb-3;
+}
+.tab {
+  flex: 1;
+  @apply pb-1;
+  user-select: none;
+}
+.tabActive {
+  font-weight: 600;
+}
+.tabVisited {
+  border-bottom: 3px solid theme(colors.primary.main);
+  @apply cursor-pointer;
+}

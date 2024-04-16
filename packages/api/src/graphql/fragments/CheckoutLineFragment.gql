@@ -1,0 +1,63 @@
+fragment CheckoutLine on CheckoutLine {
+  id
+  totalPrice {
+    gross {
+      ...Money
+    }
+  }
+  unitPrice {
+    gross {
+      ...Money
+    }
+  }
+  undiscountedUnitPrice {
+    ...Money
+  }
+  product {
+    id
+    name
+    parent {
+      id
+      name
+      translation {
+        id
+        name
+      }
+      slug
+      thumbnail {
+        ...Image
+      }
+      media {
+        alt
+        type
+        url(size: 72)
+      }
+    }
+    attributes(variantSelection: ALL) {
+      values {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    pricing {
+      price {
+        gross {
+          ...Money
+        }
+      }
+    }
+    translation {
+      id
+      name
+    }
+    media {
+      alt
+      type
+      url(size: 72)
+    }
+  }
+  quantity
+}

@@ -1,0 +1,19 @@
+fragment AttributeFilter on Attribute {
+  id
+  inputType
+  name
+  translation {
+    id
+    name
+  }
+  slug
+  withChoices
+  values(first: 20) {
+    edges {
+      node {
+        ...AttributeFilterChoice
+      }
+      cursor
+    }
+  }
+}

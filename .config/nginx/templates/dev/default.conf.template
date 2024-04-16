@@ -1,0 +1,180 @@
+##
+# Nginx config file references:
+# https://www.nginx.com/resources/wiki/start/
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+# https://wiki.debian.org/Nginx/DirectoryStructure
+##
+
+# http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_path
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=STATIC:10m inactive=7d use_temp_path=off max_size=10g;
+
+# Enable compression.
+gzip on;
+gzip_proxied any;
+gzip_comp_level 4;
+gzip_types text/css application/javascript image/svg+xml;
+
+# Remove the Nginx version from response headers.
+server_tokens off;
+
+# https://serverfault.com/questions/1030551/force-nginx-to-use-browser-port-on-redirect-instead-of-docker-mapping-port
+# port_in_redirect off;
+
+# Set the maximum upload size.
+client_max_body_size 200M;
+
+server {
+    listen 80;
+    server_name ${DOMAIN};
+
+    location = /health {
+        access_log off;
+        add_header 'Content-Type' 'text/plain';
+        return 200 "healthy\n";
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://${DOMAIN}$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+
+    server_name ${DOMAIN};
+
+    # 証明書の設定
+    ssl_certificate /etc/ssl/certs/${DOMAIN}.pem;
+
+    # 秘密鍵の設定
+    ssl_certificate_key /etc/ssl/certs/${DOMAIN}.key.pem;
+
+    resolver 127.0.0.11 valid=30s;
+    set $backend_server http://host.docker.internal:${PORT_API};
+    set $storefront_server http://host.docker.internal:${PORT_STOREFRONT};
+    set $dashboard_server http://host.docker.internal:${PORT_DASHBOARD};
+
+    location = /health {
+        access_log off;
+        add_header 'Content-Type' 'text/plain';
+        return 200 "healthy\n";
+    }
+
+    location = /favicon.ico {
+        alias /var/www/${DOMAIN}/public/favicon.ico;
+    }
+
+    # https://nextjs.org/docs/going-to-production#caching
+    location ^~ /_next/static/ {
+        proxy_cache STATIC;
+        proxy_pass $storefront_server;
+
+        # Use the following to test the cache; remove before deploying to production.
+        # add_header X-Cache-Status $upstream_cache_status;
+    }
+
+    # location ~* ^/.*\\.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|ttf)$ {
+    #     proxy_cache STATIC;
+    #     proxy_ignore_headers Cache-Control;
+    #     proxy_ignore_headers Set-Cookie;
+    #     proxy_cache_valid 60m;
+    #     proxy_pass $storefront_server;
+    #
+    #     # Use the following to test the cache; remove before deploying to production.
+    #     # add_header X-Cache-Status $upstream_cache_status;
+    # }
+
+    # Serve media files.
+    location /media/ {
+        alias /var/www/${DOMAIN}/_volumes/media/;
+        add_header Access-Control-Allow-Origin *;
+        expires 30d;  # cache in browser
+    }
+
+    # Serve static files.
+    location /static/ {
+        # proxy_cache STATIC_CACHE;
+        alias /var/www/${DOMAIN}/_volumes/static/;
+        add_header Access-Control-Allow-Origin *;
+        expires 7d;  # cache in browser
+    }
+
+    # location /error.htm {
+    #     root /app/core/templates/;
+    #     ssi on;
+    #     internal;
+    #     auth_basic off;
+    # }
+
+    # Route matching requests to the Django server:
+    # - paths beginning with `/_admin`
+    # - paths beginning with `/graphql` or `/graphiql`
+    # - paths beginning with `/silk`
+    location ~ ^/(_admin.*|graphi?ql.*|model-graph|silk.*)/?$ {
+        # Use the error page idiom to redirect to the named backend location.
+        # Note: there supposedly is no performance penalty for this.
+        # https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
+        try_files /dev/null @backend;
+    }
+
+    location ^~ /dashboard {
+        proxy_pass $dashboard_server;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        # Websockets
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_cache_bypass $http_upgrade;
+
+        error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511 /error.htm;
+    }
+
+    location / {
+        proxy_pass $storefront_server;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        # Websockets
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_cache_bypass $http_upgrade;
+
+        # Note: This cannot remove the slash from the base path ("/").
+        # All requests must have a path, and the base path is a single slash.
+        # Hence, we use + rather than * before the trailing slash in the regex.
+        rewrite ^([^.]+)/$ $1 permanent;
+
+        # error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511 /error.htm;
+    }
+
+    location @backend {
+        proxy_pass $backend_server;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;  # http in dev, https in prod
+        proxy_set_header X-Real-IP $remote_addr;
+
+        # Add a trailing slash if necessary, since Django expects trailing slashes.
+        # NOTE: This only affects requests that come through Nginx; it does not affect
+        # server-side requests that go directly to the Django container (http://django:8002/...).
+        rewrite ^([^.]*[^/])$ $1/ permanent;
+
+        # error_page 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 421 422 423 424 425 426 428 429 431 451 500 501 502 503 504 505 506 507 508 510 511 /error.htm;
+    }
+}

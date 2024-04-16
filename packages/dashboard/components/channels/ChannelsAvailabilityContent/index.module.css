@@ -1,0 +1,40 @@
+.content {
+  hr {
+    left: -24;
+    @apply relative;
+    width: calc(100% + 48px);
+  }
+}
+.contentTitle {
+  @apply my-1 mx-0;
+}
+.dialog {
+  margin-bottom: -30;
+  @apply mt-2;
+}
+.input {
+  label {
+    overflow-x: inherit;
+  }
+}
+.label {
+  font-size: 14;
+}
+.notFound {
+  @apply pb-2;
+}
+.option {
+  &:last-child {
+    hr {
+      display: none;
+    }
+  }
+  @apply my-1 mx-0;
+}
+.scrollArea {
+  max-height: 400;
+  overflow-y: scroll;
+}
+.text {
+  margin-bottom: 5;
+}

@@ -1,0 +1,35 @@
+.error {
+  @apply bg-error text-error-contrast;
+}
+.error:hover {
+  @apply bg-error;
+}
+.icon {
+  position: absolute;
+  @apply transition ml-0;
+  /* margin-left: 0 !important; */
+  /* transition-duration: theme.transitions.duration.standard + ms; */
+}
+.invisible {
+  opacity: 0;
+}
+.label {
+  align-items: center;
+  display: flex;
+  @apply transition;
+  /* transition-duration: theme.transitions.duration.standard + ms; */
+}
+.progress {
+  position: absolute;
+  @apply transition;
+  /* transition-duration: theme.transitions.duration.standard + ms; */
+}
+.progress svg {
+  margin: 0;
+}
+.success {
+  @apply bg-primary text-primary-contrast;
+}
+.success:hover {
+  @apply bg-primary;
+}

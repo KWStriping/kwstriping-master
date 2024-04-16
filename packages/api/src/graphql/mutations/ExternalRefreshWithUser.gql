@@ -1,0 +1,17 @@
+mutation externalRefreshWithUser(
+  $pluginId: String = "mirumee.authentication.openidconnect"
+  $input: JSONString!
+) {
+  refreshToken(pluginInput: {pluginId: $pluginId, data: $input}) {
+    result {
+      accessToken
+      csrfToken
+      user {
+        ...UserDetails
+      }
+    }
+    errors {
+      ...Error
+    }
+  }
+}

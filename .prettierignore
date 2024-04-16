@@ -1,0 +1,11 @@
+_backups/
+_media/
+_static/
+.git/
+.next/
+.npm/
+.yarn/
+*lock.yaml
+dist/
+node_modules/
+generated/

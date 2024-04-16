@@ -1,0 +1,13 @@
+mutation createAccountAddress($input: AddressUpdateInput!) {
+  addAddress(data: $input) {
+    address {
+      ...Address
+    }
+    user {
+      ...UserDetails
+    }
+    errors {
+      ...Error
+    }
+  }
+}

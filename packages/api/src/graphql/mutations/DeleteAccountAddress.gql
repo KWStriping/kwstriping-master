@@ -1,0 +1,10 @@
+mutation deleteAddress($addressId: ID!) {
+  deleteAddress(id: $addressId) {
+    user {
+      ...UserDetails
+    }
+    errors {
+      ...Error
+    }
+  }
+}

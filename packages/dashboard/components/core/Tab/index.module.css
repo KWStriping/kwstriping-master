@@ -1,0 +1,24 @@
+.active {
+  color: theme(colors.text.secondary);
+}
+.root {
+  border-bottom: 1px solid transparent;
+  @apply text-secondary/60;
+  @apply cursor-pointer inline-block;
+  /* font-weight: theme.typography.font-weightRegular; */
+  @apply mr-2;
+  min-width: 40;
+  @apply p-1 transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.root.active {
+  border-bottom-color: theme(colors.primary.main);
+  /* color: theme.typography.body1.color; */
+}
+.root:focus,
+.root:hover {
+  @apply text-primary;
+}
+.root {
+  border-bottom: 1px solid theme(colors.divider);
+}

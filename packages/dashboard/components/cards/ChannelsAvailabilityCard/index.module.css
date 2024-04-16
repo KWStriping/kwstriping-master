@@ -1,0 +1,76 @@
+.container {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.radioField {
+  padding-left: 0.8rem;
+}
+.arrow {
+  @apply transition;
+}
+.card {
+  @apply pt-0;
+}
+.card:last-child {
+  @apply pb-0;
+}
+.channelBtn {
+  background: transparent;
+  border: none;
+  @apply cursor-pointer;
+  text-align: left;
+}
+.channelBtn:focus {
+  outline: none;
+}
+.channelInfo {
+  font-size: 14;
+  @apply py-2 px-0;
+  padding: 1.6rem;
+}
+.channelItem {
+  @apply py-2 px-0;
+  padding: 1.6rem;
+}
+.channelItem:last-child hr {
+  display: none;
+}
+.channelName {
+  @apply items-center flex justify-between;
+  @apply mb-0.5;
+  margin-bottom: 0.4rem;
+}
+.checkbox {
+  @apply items-start;
+  margin-top: 10;
+}
+.date {
+  margin-top: 0.8rem;
+}
+.date svg {
+  fill: theme(colors.primary.main);
+}
+.hr {
+  @apply relative;
+}
+.label {
+  line-height: 1.2;
+}
+.listingLabel {
+  margin-top: 9;
+}
+.radioLabel > span {
+  @apply py-0 px-0.5;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.secondLabel {
+  /* color: theme(colors.text.hint); */
+  font-size: 12;
+}
+.setPublicationDate {
+  @apply text-primary cursor-pointer;
+  font-size: 14;
+  @apply pb-10 pt-0;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@core/api",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/generated/graphql.tsx",
+    "./*": "./src/generated/*.ts",
+    "./schema.json": "./src/generated/graphql.schema.json",
+    "./introspection.json": "./src/generated/introspection.json"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tslib": "^2.6.2"
+  },
+  "peerDependencies": {
+    "graphql": "16.8.1",
+    "react": "18.2.0"
+  }
+}

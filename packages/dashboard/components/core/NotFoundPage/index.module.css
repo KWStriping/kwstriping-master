@@ -1,0 +1,36 @@
+.button {
+  @apply mt-2;
+  padding: 20;
+}
+.container {
+  @apply grid;
+  grid-template-columns: 1fr 487px;
+  margin: 0 auto;
+  @apply w-[830px];
+}
+@media (max-width: theme(screens.sm)) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: theme(spacing.3);
+    @apply w-full;
+  }
+}
+.header {
+  font-weight: 600 as 600;
+}
+.innerContainer {
+  @apply flex flex-col justify-center;
+}
+@media (max-width: theme(screens.sm)) {
+  .innerContainer {
+    order: 1;
+    @apply text-center;
+  }
+}
+.notFoundImage svg {
+  @apply w-full;
+}
+.root {
+  @apply items-center flex;
+  height: calc(100vh - 180px);
+}

@@ -1,0 +1,33 @@
+.arrow {
+  @apply relative;
+  @apply top-[6px];
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.highlighted {
+  background: theme(colors.background.DEFAULT);
+}
+.menuItem {
+  &:not(:last-of-type) {
+    @apply mb-1;
+  }
+  border-radius: 4px;
+}
+.paper {
+  padding: theme(spacing.1);
+}
+.popper {
+  @apply mt-1;
+  z-index: 2;
+}
+.root {
+  &: focus;
+  &:hover {
+    text-decoration: underline;
+  }
+  outline: 0;
+  @apply relative;
+}
+.rotate {
+  transform: rotate(180deg);
+}

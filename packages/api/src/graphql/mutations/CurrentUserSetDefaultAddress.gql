@@ -1,0 +1,18 @@
+enum AddressType {
+  BILLING
+  SHIPPING
+}
+
+mutation SetAddressDefault($id: ID!, $type: AddressType!) {
+  setDefaultAddress(addressId: $id, type: $type) {
+    result {
+      addresses {
+        ...Address
+      }
+    }
+    errors {
+      code
+      message
+    }
+  }
+}

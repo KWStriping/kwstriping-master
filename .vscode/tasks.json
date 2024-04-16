@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "autofix",
+      "type": "shell",
+      "command": "cd tempo && poetry install --no-root && cd .. && source ${HOME}/.nvm/nvm.sh && nvm use && corepack enable && corepack prepare pnpm@latest --activate && pnpm install && tempo/.venv/bin/python tools/autofix.py",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "runOptions": {
+        // "runOn": "folderOpen"
+        "runOn": "default"
+      }
+    }
+  ]
+}

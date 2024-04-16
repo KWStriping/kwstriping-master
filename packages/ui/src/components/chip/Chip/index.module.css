@@ -1,0 +1,16 @@
+.closeIcon {
+  @apply cursor-pointer;
+  font-size: 16;
+  @apply ml-1;
+  vertical-align: middle;
+}
+.label {
+  @apply text-white;
+}
+.root {
+  @apply bg-primary/80;
+  /* background: alpha(theme.colors.primary.main, 0.8); */
+  border-radius: 18;
+  @apply inline-block mr-2;
+  padding: 6px 12px;
+}

@@ -1,0 +1,17 @@
+.columnDrag {
+  /* && {
+    @apply pl-3 pr-2;
+  } */
+  cursor: grab;
+  width: calc(48px + theme(spacing[1.5]));
+}
+.ghost {
+  background: theme(colors.background.paper);
+  /* font-family: theme.typography.fontFamily; */
+  /* // FIXME: you damn know what
+  // font-size: theme.overrides.MuiTableCell.root.font-size; */
+  opacity: 0.5;
+}
+.ghost td {
+  border-bottom: none;
+}

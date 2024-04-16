@@ -1,0 +1,10 @@
+mutation attachCustomerToCheckout($id: ID!) {
+  attachCustomerToCheckout(id: $id) {
+    # errors {
+    #   ...CheckoutError
+    # }
+    result {
+      ...Checkout
+    }
+  }
+}
