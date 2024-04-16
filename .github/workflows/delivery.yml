@@ -22,15 +22,6 @@ on:
     # - pyproject.toml
     # - poetry.lock
   workflow_dispatch:
-    inputs:
-      what:
-        description: 'What to deploy'
-        required: true
-        default: 'all'
-        type: choice
-        options:
-          - all
-          - backend
 permissions:
   contents: read
   packages: write
@@ -131,10 +122,6 @@ jobs:
     name: Generate .env file
     needs: [check, changed-files]
     if: ${{ needs.check.outputs.branch == 'main' }}
-    strategy:
-      matrix:
-        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
-    environment: ${{ matrix.app }}
     runs-on: ubuntu-latest
     steps:
     - name: Check out main branch
@@ -149,10 +136,10 @@ jobs:
         output-path: .env
         cache: true
         upload: true
-        key: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+        key: dotenv-${{ github.sha }}-${{ github.run_id }}
         allow-missing-vars: true
       env:
-        APP: ${{ matrix.app }}
+        APP: ${{ vars.APP }}
         SHA: ${{ github.sha }}
         PORT_API: ${{ vars.PORT_API }}
         PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
@@ -188,47 +175,6 @@ jobs:
     outputs:
       key: ${{ steps.generate-dotenv.outputs.key }}
 
-  build-backend:
-    name: Build backend image
-    needs: [changed-files, create-dotenv]
-    # && contains(needs.changed-files.outputs.all_changed_files, 'tempo')
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 2
-      matrix:
-        python-version: ["3.12"]
-        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
-    environment: ${{ matrix.app }}
-    steps:
-    - name: Check out main branch including submodules
-      uses: actions/checkout@v4
-    - name: Restore dotenv
-      uses: actions/download-artifact@v4
-      with:
-        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v3.1.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build tempo image
-      uses: docker/build-push-action@v5
-      with:
-        builder: ${{ steps.buildx.outputs.name }}
-        context: .
-        file: ./tempo/Dockerfile
-        push: true
-        cache-from: type=gha,scope=tempo
-        cache-to: type=gha,mode=max,scope=tempo
-        tags: ghcr.io/sokaisolutions/tempo:${{ github.sha }}
-        build-args: |
-          PYTHON_VERSION=${{ matrix.python-version }}
-
   build-dashboard:
     name: Build dashboard image
     needs: [changed-files, create-dotenv]
@@ -236,19 +182,13 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
     continue-on-error: true
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
-    environment: ${{ matrix.app }}
     steps:
     - name: Check out main branch
       uses: actions/checkout@v4
     - name: Restore dotenv
       uses: actions/download-artifact@v4
       with:
-        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v3
@@ -259,39 +199,32 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build dashboard image
-      if: ${{ inputs.what != 'backend' }}
       uses: docker/build-push-action@v5
       with:
         builder: ${{ steps.buildx.outputs.name }}
         context: .
         file: ./packages/dashboard/Dockerfile
         build-args: |
-          APP=${{ matrix.app }}
+          APP=${{ vars.APP }}
           PORT=${{ vars.PORT_DASHBOARD }}
           API_URL=${{ vars.API_URL }}
         push: true
-        cache-from: type=gha,scope=${{ matrix.app }}-dashboard
-        cache-to: type=gha,mode=max,scope=${{ matrix.app }}-dashboard
-        tags: ghcr.io/sokaisolutions/${{ matrix.app }}-dashboard:${{ github.sha }}
+        cache-from: type=gha,scope=${{ vars.APP }}-dashboard
+        cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
+        tags: ghcr.io/sokaisolutions/${{ vars.APP }}-dashboard:${{ github.sha }}
 
   build-storefront:
     name: Build storefront image
     needs: [changed-files, create-dotenv]
     if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 2
-      fail-fast: false
-      matrix:
-        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
-    environment: ${{ matrix.app }}
     steps:
     - name: Check out main branch
       uses: actions/checkout@v4
     - name: Restore dotenv
       uses: actions/download-artifact@v4
       with:
-        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v3
@@ -302,32 +235,24 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build storefront image
-      if: ${{ inputs.what != 'backend' }}
       uses: docker/build-push-action@v5
       with:
         builder: ${{ steps.buildx.outputs.name }}
         context: .
         file: ./apps/Dockerfile
         build-args: |
-          APP=${{ matrix.app }}
+          APP=${{ vars.APP }}
           PORT=${{ vars.PORT_STOREFRONT }}
           API_URL=${{ vars.API_URL }}
         push: true
-        cache-from: type=gha,scope=${{ matrix.app }}
-        cache-to: type=gha,mode=max,scope=${{ matrix.app }}
-        tags: ghcr.io/sokaisolutions/${{ matrix.app }}:${{ github.sha }}
+        cache-from: type=gha,scope=${{ vars.APP }}
+        cache-to: type=gha,mode=max,scope=${{ vars.APP }}
+        tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }}
 
   deploy:
     name: Deploy
-    needs: [changed-files, create-dotenv, build-storefront, build-dashboard, build-backend]
+    needs: [changed-files, create-dotenv, build-storefront, build-dashboard]
     continue-on-error: true
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        app: ${{ fromJSON(needs.changed-files.outputs.apps) }}
-    environment: ${{ matrix.app}}
-    if: ${{ success() || (inputs.what == 'backend' && needs.build-backend.result == 'success') }}
     runs-on: ubuntu-latest
     steps:
     - name: Check out main branch
@@ -335,7 +260,7 @@ jobs:
     - name: Restore dotenv
       uses: actions/download-artifact@v4
       with:
-        name: dotenv-${{ matrix.app }}-${{ github.sha }}-${{ github.run_id }}
+        name: dotenv-${{ github.sha }}-${{ github.run_id }}
     - name: Deploy to server
       uses: iacobfred/deploy-docker-ssh@v0.4.9
       with:
@@ -346,7 +271,7 @@ jobs:
         ssh-port: ${{ vars.SSH_PORT }}
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         # echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
-        command: python3 scripts/deploy.py ${{ matrix.app }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
+        command: python3 scripts/deploy.py ${{ vars.APP }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
     # - run: |
     #     echo "github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }}";
     #     echo "github.sha: ${{ github.sha }}";
