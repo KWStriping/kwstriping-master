@@ -10,10 +10,12 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
   "eslint.lintTask.enable": false,
   "eslint.format.enable": true,
   "eslint.workingDirectories": [
@@ -35,7 +37,7 @@
     "**/__pycache__": true,
     "**/.*_cache": true,
     "**/.cache": false,
-    "**/.git": true,
+    "**/.git": false,
     "**/.hg": true,
     "**/.next": true,
     "**/.rollup.cache": true,
@@ -56,7 +58,9 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": false,
-  "python.analysis.extraPaths": ["./tempo"],
+  "python.analysis.extraPaths": [
+    "./tempo"
+  ],
   "python.analysis.typeCheckingMode": "basic",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.languageServer": "Pylance",
@@ -73,8 +77,12 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
-  "ruff.format.args": ["--config=${workspaceFolder}/pyproject.toml"],
-  "ruff.lint.args": ["--config=${workspaceFolder}/pyproject.toml"],
+  "ruff.format.args": [
+    "--config=${workspaceFolder}/pyproject.toml"
+  ],
+  "ruff.lint.args": [
+    "--config=${workspaceFolder}/pyproject.toml"
+  ],
   "search.exclude": {
     "**/.git": true,
     "**/.next": true,
@@ -89,7 +97,10 @@
   },
   "search.maxResults": 100,
   "tailwindCSS.experimental.configFile": {
-    "packages/ui/src/tailwind.config.cjs": ["apps/**", "packages/**"]
+    "packages/ui/src/tailwind.config.cjs": [
+      "apps/**",
+      "packages/**"
+    ]
   },
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.files.exclude": [

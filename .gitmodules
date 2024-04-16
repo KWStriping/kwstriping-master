@@ -3,4 +3,4 @@
 	url = git@github.com:SokaiSolutions/tempo.git
 [submodule "apps/kwstriping"]
 	path = apps/kwstriping
-	url = git@github.com:KWStriping/kwstriping-master.git
+	url = git@github.com:KWStriping/kwstriping.git
