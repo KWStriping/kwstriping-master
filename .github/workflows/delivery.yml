@@ -211,7 +211,7 @@ jobs:
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}-dashboard
         cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
-        tags: ghcr.io/sokaisolutions/${{ vars.APP }}-dashboard:${{ github.sha }}
+        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
 
   build-storefront:
     name: Build storefront image
@@ -247,7 +247,7 @@ jobs:
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}
         cache-to: type=gha,mode=max,scope=${{ vars.APP }}
-        tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }}
+        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}:${{ github.sha }}
 
   deploy:
     name: Deploy
