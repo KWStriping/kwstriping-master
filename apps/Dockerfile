@@ -72,7 +72,7 @@ RUN pnpm install
 # Copy all files necessary for building
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
-COPY --from=files ${ROOT_DIR}/data ./data
+COPY --from=files ${ROOT_DIR}/packages/data ./packages/data
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
