@@ -28,7 +28,7 @@
   "devDependencies": {
     "@core/api": "workspace:*",
     "@core/i18n": "workspace:*",
-    "@mui/icons-material": "^5.14.18",
+    "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.10",
     "@mui/styles": "^5.15.10",
     "@swc-node/register": "^1.9.0",

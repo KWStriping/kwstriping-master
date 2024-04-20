@@ -36,7 +36,7 @@
     "@core/types": "workspace:*",
     "@core/ui": "workspace:*",
     "@core/urql": "workspace:*",
-    "@mui/icons-material": "^5.14.18",
+    "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.10",
     "@stripe/react-stripe-js": "1.16.4",
     "@types/google.maps": "^3.55.4",
