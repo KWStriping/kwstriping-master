@@ -18,16 +18,16 @@
     "libphonenumber-js": "^1.10.52"
   },
   "devDependencies": {
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "next": "13.3.4",
-    "react-hook-form": "^7.43.1",
+    "react-hook-form": "^7.51.3",
     "typescript": "5.4.2"
   },
   "peerDependencies": {
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.43.1"
+    "react-hook-form": "^7.51.3"
   }
 }
