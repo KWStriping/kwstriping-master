@@ -52,7 +52,7 @@
     "@js-temporal/polyfill": "^0.4.4",
     "@mollie/api-client": "^3.7.0",
     "@mui/base": "5.0.0-beta.38",
-    "@mui/icons-material": "^5.14.18",
+    "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.10",
     "@mui/material-nextjs": "^5.15.9",
     "@mui/styles": "^5.15.10",

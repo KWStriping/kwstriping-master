@@ -325,8 +325,8 @@ importers:
         specifier: workspace:*
         version: link:../urql
       '@mui/icons-material':
-        specifier: ^5.14.18
-        version: 5.15.0(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
+        specifier: ^5.15.15
+        version: 5.15.15(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
       '@mui/material':
         specifier: ^5.15.10
         version: 5.15.10(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -454,8 +454,8 @@ importers:
         specifier: 5.0.0-beta.38
         version: 5.0.0-beta.38(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       '@mui/icons-material':
-        specifier: ^5.14.18
-        version: 5.15.0(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
+        specifier: ^5.15.15
+        version: 5.15.15(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
       '@mui/material':
         specifier: ^5.15.10
         version: 5.15.10(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -1004,8 +1004,8 @@ importers:
         specifier: workspace:*
         version: link:../i18n
       '@mui/icons-material':
-        specifier: ^5.14.18
-        version: 5.15.0(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
+        specifier: ^5.15.15
+        version: 5.15.15(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0)
       '@mui/material':
         specifier: ^5.15.10
         version: 5.15.10(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -5897,8 +5897,8 @@ packages:
   /@mui/core-downloads-tracker@5.15.10:
     resolution: {integrity: sha512-qPv7B+LeMatYuzRjB3hlZUHqinHx/fX4YFBiaS19oC02A1e9JFuDKDvlyRQQ5oRSbJJt0QlaLTlr0IcauVcJRQ==}
 
-  /@mui/icons-material@5.15.0(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0):
-    resolution: {integrity: sha512-zHY6fOkaK7VfhWeyxO8MjO3IAjEYpYMXuqUhX7TkUZJ9+TSH/9dn4ClG4K2j6hdgBU5Yrq2Z/89Bo6BHHp7AdQ==}
+  /@mui/icons-material@5.15.15(@mui/material@5.15.10)(@types/react@18.2.45)(react@18.2.0):
+    resolution: {integrity: sha512-kkeU/pe+hABcYDH6Uqy8RmIsr2S/y5bP2rp+Gat4CcRjCcVne6KudS1NrZQhUCRysrTDCAhcbcf9gt+/+pGO2g==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@mui/material': ^5.0.0
