@@ -14,7 +14,6 @@ ARG PNPM_VERSION=8.15.3
 
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 
-ARG APP
 ARG ROOT_DIR
 
 LABEL org.opencontainers.image.source https://github.com/SokaiSolutions/dashboard
@@ -39,12 +38,10 @@ WORKDIR ${ROOT_DIR}
 
 FROM base AS files
 
-ARG APP
-
 # Copy and prune files
 # https://turbo.build/repo/docs/handbook/deploying-with-docker
 COPY . .
-RUN turbo prune --scope=${APP} --docker
+RUN turbo prune --scope=dashboard --docker
 
 ###################################################################
 # Stage 2: Build                                                  #
@@ -53,7 +50,6 @@ RUN turbo prune --scope=${APP} --docker
 
 FROM base AS builder
 
-ARG APP
 ARG PNPM_VERSION
 ARG API_URL
 ARG ROOT_DIR
@@ -75,7 +71,7 @@ COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/packages/data ./packages/data
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
-RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
+RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=dashboard && rm .env
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #
@@ -83,7 +79,6 @@ RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && r
 
 FROM base AS final
 
-ARG APP
 ARG PORT
 
 RUN chown -R nextjs:nodejs .
@@ -94,7 +89,7 @@ COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/packages/dashboard/.next/s
 # since the service worker files from next-pwa are generated during the build.
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/packages/dashboard/public ./packages/dashboard/public
 
-RUN mv packages/dashboard/server.js packages/dashboard/server.mjs
+RUN ls && mv packages/dashboard/server.js packages/dashboard/server.mjs
 
 # Switch to non-root user.
 USER nextjs
