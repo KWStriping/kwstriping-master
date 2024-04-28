@@ -13,7 +13,7 @@
   "dependencies": {
     "@emotion/cache": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@headlessui/react": "^1.7.17",
+    "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^2.0.18",
     "@js-temporal/polyfill": "^0.4.4",
     "@marsidev/react-turnstile": "0.5.3",
