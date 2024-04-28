@@ -50,6 +50,7 @@ RUN turbo prune --scope=dashboard --docker
 
 FROM base AS builder
 
+ARG APP
 ARG PNPM_VERSION
 ARG API_URL
 ARG ROOT_DIR
@@ -71,7 +72,7 @@ COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/packages/data ./packages/data
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
-RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=dashboard && rm .env
+RUN APP=${APP} NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=dashboard && rm .env
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #
