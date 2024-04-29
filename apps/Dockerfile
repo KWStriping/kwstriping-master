@@ -6,7 +6,7 @@ ARG ROOT_DIR=/root
 
 ARG NODE_VERSION=18
 ARG ALPINE_VERSION=3.17
-ARG PNPM_VERSION=8.15.3
+ARG PNPM_VERSION=9.0.6
 
 ###################################################################
 # Stage 0: Base image                                             #
