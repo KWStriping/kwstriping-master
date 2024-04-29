@@ -126,7 +126,7 @@ services:
         - PORT=${PORT_DASHBOARD}
         - API_URL=${NEXT_PUBLIC_API_URL}
       network: host
-    image: "ghcr.io/sokaisolutions/${APP}-dashboard:${SHA}"
+    image: "ghcr.io/kwstriping/${APP}-dashboard:${SHA}"
     env_file:
       - .env
     environment:
