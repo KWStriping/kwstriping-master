@@ -110,6 +110,10 @@ jobs:
     steps:
     - name: Check out main branch
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        submodules: 'true'
+        token: ${{ secrets.KWSTRIPING_PAT }}
     - name: Restore dotenv
       uses: actions/download-artifact@v4
       with:
@@ -146,6 +150,10 @@ jobs:
     steps:
     - name: Check out main branch
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        submodules: 'true'
+        token: ${{ secrets.KWSTRIPING_PAT }}
     - name: Restore dotenv
       uses: actions/download-artifact@v4
       with:
