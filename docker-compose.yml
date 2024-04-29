@@ -33,7 +33,7 @@ services:
         - PORT=${PORT_STOREFRONT}
         - API_URL=${NEXT_PUBLIC_API_URL}
       network: host
-    image: "ghcr.io/sokaisolutions/${APP}:${SHA}"
+    image: "ghcr.io/kwstriping/${APP}:${SHA}"
     depends_on:
       - tempo
       - dashboard
