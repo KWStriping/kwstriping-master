@@ -5,7 +5,6 @@
   "scripts": {
     "_dev": "npx kill-port $PORT; dotenv -e ../../.env -e ./.env -- next dev --port $PORT --hostname $DOMAIN",
     "build": "NEXTJS_IGNORE_TYPECHECK=1 NEXTJS_IGNORE_ESLINT=1 next build",
-    "postbuild": "next-sitemap",
     "build:analyze": "ANALYZE=true pnpm build",
     "check-types": "tsc --noEmit",
     "clean": "rm -rf .next .turbo",
