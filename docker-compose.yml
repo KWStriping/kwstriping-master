@@ -24,16 +24,6 @@ services:
   storefront:
     container_name: ${APP}
     command: node apps/${APP}/server.mjs
-    build:
-      context: .
-      dockerfile: apps/Dockerfile
-      args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
-        - ORG=${ORG}
-        - APP=${APP}
-        - PORT=${PORT_STOREFRONT}
-        - API_URL=${NEXT_PUBLIC_API_URL}
-      network: host
     image: "ghcr.io/kwstriping/${APP}:${SHA}"
     depends_on:
       - tempo
@@ -49,11 +39,6 @@ services:
       - ./scripts/prebuild.ts:${ROOT_DIR:-/root}/scripts/prebuild.ts
 
   tempo:
-    build:
-      context: .
-      dockerfile: ./tempo/Dockerfile
-      args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
     image: "ghcr.io/sokaisolutions/tempo:${SHA}"
     entrypoint: ${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
     command:
@@ -118,16 +103,6 @@ services:
 
   dashboard:
     command: node packages/dashboard/server.mjs
-    build:
-      context: .
-      dockerfile: packages/dashboard/Dockerfile
-      args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
-        - ORG=${ORG}
-        - APP=${APP}
-        - PORT=${PORT_DASHBOARD}
-        - API_URL=${NEXT_PUBLIC_API_URL}
-      network: host
     image: "ghcr.io/kwstriping/${APP}-dashboard:${SHA}"
     env_file:
       - .env

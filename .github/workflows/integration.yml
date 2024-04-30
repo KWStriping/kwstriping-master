@@ -178,6 +178,7 @@ jobs:
           ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}
           PORT=${{ vars.PORT_STOREFRONT }}
+          API_URL=${{ vars.API_URL }}
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}
         cache-to: type=gha,mode=max,scope=${{ vars.APP }}
