@@ -39,7 +39,8 @@ services:
       - ./scripts/prebuild.ts:${ROOT_DIR:-/root}/scripts/prebuild.ts
 
   tempo:
-    image: "ghcr.io/sokaisolutions/tempo:${SHA}"
+    # TODO: select tempo version
+    image: "ghcr.io/sokaisolutions/tempo:latest"
     entrypoint: ${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
     command:
       [
