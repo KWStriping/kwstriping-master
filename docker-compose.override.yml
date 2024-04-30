@@ -68,6 +68,11 @@ services:
   tempo:
     command: python dev.py
     # command: python manage.py runserver 0.0.0.0:${PORT_API}
+    build:
+      context: .
+      dockerfile: ./tempo/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
     ports:
       - "${PORT_API}:${PORT_API}"
     pull_policy: never
@@ -86,6 +91,16 @@ services:
       - ./tempo:${ROOT_DIR:-/root}/tempo
   dashboard:
     command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
+    build:
+      context: .
+      dockerfile: packages/dashboard/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
+        - ORG=${ORG}
+        - APP=${APP}
+        - PORT=${PORT_DASHBOARD}
+        - API_URL=${NEXT_PUBLIC_API_URL}
+      network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
     pull_policy: never
@@ -93,6 +108,16 @@ services:
       - ./.config/nginx/certs:/etc/ssl/certs:ro
   storefront:
     command: pnpm turbo run dev --filter=${APP}... --log-prefix=none
+    build:
+      context: .
+      dockerfile: apps/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
+        - ORG=${ORG}
+        - APP=${APP}
+        - PORT=${PORT_STOREFRONT}
+        - API_URL=${NEXT_PUBLIC_API_URL}
+      network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
     pull_policy: never
