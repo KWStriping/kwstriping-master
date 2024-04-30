@@ -29,6 +29,7 @@ services:
       dockerfile: apps/Dockerfile
       args:
         - ROOT_DIR=${ROOT_DIR:-/root}
+        - ORG=${ORG}
         - APP=${APP}
         - PORT=${PORT_STOREFRONT}
         - API_URL=${NEXT_PUBLIC_API_URL}
@@ -122,6 +123,7 @@ services:
       dockerfile: packages/dashboard/Dockerfile
       args:
         - ROOT_DIR=${ROOT_DIR:-/root}
+        - ORG=${ORG}
         - APP=${APP}
         - PORT=${PORT_DASHBOARD}
         - API_URL=${NEXT_PUBLIC_API_URL}
