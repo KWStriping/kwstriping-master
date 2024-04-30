@@ -134,6 +134,7 @@ jobs:
         context: .
         file: ./packages/dashboard/Dockerfile
         build-args: |
+          ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}
           PORT=${{ vars.PORT_DASHBOARD }}
           API_URL=${{ vars.API_URL }}
@@ -174,6 +175,7 @@ jobs:
         context: .
         file: ./apps/Dockerfile
         build-args: |
+          ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}
           PORT=${{ vars.PORT_STOREFRONT }}
         push: true
