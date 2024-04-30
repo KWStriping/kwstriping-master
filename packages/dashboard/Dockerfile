@@ -1,3 +1,4 @@
+ARG ORG
 ARG APP
 ARG PORT
 ARG API_URL
@@ -16,7 +17,7 @@ FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 
 ARG ROOT_DIR
 
-LABEL org.opencontainers.image.source https://github.com/SokaiSolutions/dashboard
+LABEL org.opencontainers.image.source https://github.com/${ORG}/${APP}
 
 ENV CYPRESS_INSTALL_BINARY 0
 ENV ENABLE_EXPERIMENTAL_COREPACK 1

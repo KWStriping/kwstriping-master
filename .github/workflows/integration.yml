@@ -140,7 +140,7 @@ jobs:
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}-dashboard
         cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
-        tags: ghcr.io/sokaisolutions/${{ vars.APP }}-dashboard:${{ github.sha }}
+        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
 
   build:
     name: Build storefront image
@@ -179,19 +179,7 @@ jobs:
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}
         cache-to: type=gha,mode=max,scope=${{ vars.APP }}
-        tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }}
-    # - name: Build image without cache
-    #   if: ${{ failure() && steps.build_with_cache.outcome == 'failure' }}
-    #   uses: docker/build-push-action@v3
-    #   with:
-    #     builder: ${{ steps.buildx.outputs.name }}
-    #     context: .
-    #     file: ./Dockerfile
-    #     push: true
-    #     no-cache: true
-    #     secret-files: ENV_FILE=./.env
-    #     tags: ghcr.io/sokaisolutions/${{ vars.APP }}:${{ github.sha }},ghcr.io/sokaisolutions/${{ vars.APP }}:latest
-
+        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}:${{ github.sha }}
 
 
   # TODO
