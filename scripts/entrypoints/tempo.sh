@@ -5,13 +5,13 @@
 
 # update dependencies in dev to avoid requiring image rebuild
 [[ "$ENVIRONMENT" = development ]] && poetry install --no-root
-# python src/tempo/manage.py cleanup_django_defender  # TODO
+# python manage.py cleanup_django_defender  # TODO
 
 # Set up the environment as needed.
-python src/tempo/manage.py setup || exit 1
+python manage.py setup || exit 1
 
 # Create a db backup, if there are any migrations to apply.
-# python src/tempo/manage.py migrate --check || {
+# python manage.py migrate --check || {
 #     [[ "$ENVIRONMENT" = prod ]] && {
 #         invoke db.backup || {
 #             echo "Failed to create db backup."
@@ -21,7 +21,7 @@ python src/tempo/manage.py setup || exit 1
 # }
 
 # Apply migrations.
-python src/tempo/manage.py migrate --no-input || {
+python manage.py migrate --no-input || {
     echo "Failed to run migrations."
     exit 1
 }
@@ -31,7 +31,7 @@ python src/tempo/manage.py migrate --no-input || {
     fixtures_file="${ROOT_DIR}/apps/${APP}/fixtures/data.dev.json"
     if test -f "$fixtures_file"; then
         # TODO: opt in to resetdata
-        python src/tempo/manage.py resetdata --no-input || {
+        python manage.py resetdata --no-input || {
             echo "Failed to load data."
             exit 1
         }
@@ -41,23 +41,23 @@ python src/tempo/manage.py migrate --no-input || {
 }
 
 # Collect static files.
-python src/tempo/manage.py collectstatic --no-input || {
+python manage.py collectstatic --no-input || {
     echo "Failed to collect static files."
     exit 1
 }
 
 # https://django-cachalot.readthedocs.io/en/latest/quickstart.html#manage-py-command
-python src/tempo/manage.py invalidate_cachalot
+python manage.py invalidate_cachalot
 
 # # Rebuild indexes.
-# python src/tempo/manage.py search_index --rebuild -f || {
+# python manage.py search_index --rebuild -f || {
 #     echo "Failed to rebuild elasticsearch indexes."
 #     exit 1
 # }
 
 # if [ ! "$ENVIRONMENT" = prod ]; then
 #     # Create superuser if necessary.
-#     python src/tempo/manage.py createsuperuser --no-input --username="$DJANGO_SUPERUSER_EMAIL" --email="$DJANGO_SUPERUSER_EMAIL" &>/dev/null
+#     python manage.py createsuperuser --no-input --username="$DJANGO_SUPERUSER_EMAIL" --email="$DJANGO_SUPERUSER_EMAIL" &>/dev/null
 # fi
 
 exec "$@"
