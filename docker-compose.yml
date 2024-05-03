@@ -41,7 +41,7 @@ services:
   tempo:
     # TODO: select tempo version
     image: "ghcr.io/sokaisolutions/tempo:latest"
-    entrypoint: ${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
+    # entrypoint: ${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
     command:
       [
         "gunicorn",
@@ -79,7 +79,7 @@ services:
       - ./_volumes/media:${ROOT_DIR:-/root}/_volumes/media
       - ./_volumes/static:${ROOT_DIR:-/root}/_volumes/static
       - ./_volumes/logs:${ROOT_DIR:-/root}/_volumes/logs
-      - ./scripts/entrypoints/tempo.sh:${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
+      # - ./scripts/entrypoints/tempo.sh:${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
       - ./.jwt_rsa.pem:${ROOT_DIR:-/root}/.jwt_rsa.pem
 
   db:
