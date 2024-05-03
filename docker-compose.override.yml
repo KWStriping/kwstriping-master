@@ -79,10 +79,6 @@ services:
     volumes:
       - ./tempo:${ROOT_DIR:-/root}/tempo
       - ./apps/${APP}/fixtures:${ROOT_DIR:-/root}/apps/${APP}/fixtures
-      - type: bind
-        source: ./apps/${APP}/.env
-        target: ${ROOT_DIR:-/root}/apps/${APP}/.env
-        read_only: true
   worker:
     depends_on:
       <<: *services
