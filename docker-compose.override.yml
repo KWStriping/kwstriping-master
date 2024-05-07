@@ -66,36 +66,32 @@ services:
       - ./_volumes/static:/var/www/${DOMAIN}/_volumes/static:ro
       - ./apps/${APP}/public:/var/www/${DOMAIN}/public
   tempo:
-    command: python dev.py
-    # command: python manage.py runserver 0.0.0.0:${PORT_API}
-    build:
-      context: .
-      dockerfile: ./tempo/Dockerfile
-      args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
+    # command: python manage.py dev
+    # build:
+    #   context: .
+    #   dockerfile: ./tempo/Dockerfile
     ports:
       - "${PORT_API}:${PORT_API}"
     pull_policy: never
     volumes:
-      - ./tempo:${ROOT_DIR:-/root}/tempo
-      - ./apps/${APP}/fixtures:${ROOT_DIR:-/root}/apps/${APP}/fixtures
+      - ./tempo:/root/tempo
+      - ./apps/${APP}/fixtures:/root/apps/${APP}/fixtures
   worker:
     depends_on:
       <<: *services
     pull_policy: never
     volumes:
-      - ./tempo:${ROOT_DIR:-/root}/tempo
+      - ./tempo:/root/tempo
   dashboard:
     command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
     build:
       context: .
       dockerfile: packages/dashboard/Dockerfile
       args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
         - ORG=${ORG}
         - APP=${APP}
         - PORT=${PORT_DASHBOARD}
-        - API_URL=${NEXT_PUBLIC_API_URL}
+        - API_URL=${API_URL}
       network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
@@ -108,11 +104,10 @@ services:
       context: .
       dockerfile: apps/Dockerfile
       args:
-        - ROOT_DIR=${ROOT_DIR:-/root}
         - ORG=${ORG}
         - APP=${APP}
         - PORT=${PORT_STOREFRONT}
-        - API_URL=${NEXT_PUBLIC_API_URL}
+        - API_URL=${API_URL}
       network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
