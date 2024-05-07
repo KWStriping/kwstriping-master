@@ -43,7 +43,7 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
         <div className="flex mb-14 sm:mb-10">
           <Link href={paths.home()} className="hidden sm:inline-block">
             <div style={{ width: '14rem' }} className="mt-px group block h-16 grayscale relative">
-              {!logo || !logoIsString ? (
+              {!logo || logoIsString ? (
                 <Image
                   src={(logo as string) || '/logo-black.svg'}
                   alt={`${shopName} logo`}
