@@ -173,7 +173,7 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         context: .
-        file: ./apps/Dockerfile
+        file: ./Dockerfile
         build-args: |
           ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}
