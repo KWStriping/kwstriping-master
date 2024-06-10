@@ -75,7 +75,7 @@ COPY scripts ${ROOT_DIR}/scripts
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN ls && ls scripts
-RUN APP=${APP} NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=dashboard && rm .env
+RUN APP=${APP} NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=@tempo/dashboard && rm .env
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #

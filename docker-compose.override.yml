@@ -80,7 +80,7 @@ services:
     volumes:
       - ./tempo:/root/tempo
   dashboard:
-    command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
+    command: pnpm turbo run dev --filter=@tempo/dashboard... --log-prefix=none
     build:
       context: .
       dockerfile: ./@tempo/dashboard/Dockerfile
