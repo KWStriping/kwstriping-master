@@ -1,13 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": [
-    "apps/**/*",
-    "@tempo/**/*",
-    "scripts/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["apps/**/*", "@tempo/**/*", "scripts/*"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -25,11 +19,7 @@
     "inlineSources": false,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
@@ -53,36 +43,14 @@
     "target": "ESNext",
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@tempo/api": [
-        "@tempo/api/*"
-      ],
-      "@tempo/blog": [
-        "@tempo/blog/*"
-      ],
-      "@tempo/checkout": [
-        "@tempo/checkout/*"
-      ],
-      "@tempo/data": [
-        "@tempo/data/*"
-      ],
-      "@tempo/forms": [
-        "@tempo/forms/*"
-      ],
-      "@tempo/next": [
-        "@tempo/next/*"
-      ],
-      "@tempo/ui": [
-        "@tempo/ui/*"
-      ],
-      "@tempo/utils": [
-        "@tempo/utils/*"
-      ],
-      "@paraglide/*": [
-        "apps/kwstriping/paraglide/*"
-      ],
-      "@kwstriping/*": [
-        "apps/kwstriping/*"
-      ]
+      "@tempo/api": ["@tempo/api/*"],
+      "@tempo/blog": ["@tempo/blog/*"],
+      "@tempo/checkout": ["@tempo/checkout/*"],
+      "@tempo/data": ["@tempo/data/*"],
+      "@tempo/forms": ["@tempo/forms/*"],
+      "@tempo/next": ["@tempo/next/*"],
+      "@tempo/ui": ["@tempo/ui/*"],
+      "@tempo/utils": ["@tempo/utils/*"]
     }
   }
 }
