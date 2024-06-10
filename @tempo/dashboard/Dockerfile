@@ -42,7 +42,7 @@ FROM base AS files
 # Copy and prune files
 # https://turbo.build/repo/docs/handbook/deploying-with-docker
 COPY . .
-RUN turbo prune --scope=dashboard --docker
+RUN turbo prune --scope=@tempo/dashboard --docker
 
 ###################################################################
 # Stage 2: Build                                                  #

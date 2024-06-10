@@ -148,7 +148,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          file: ./packages/dashboard/Dockerfile
+          file: ./@tempo/dashboard/Dockerfile
           build-args: |
             ORG=${{ vars.ORG }}
             APP=${{ vars.APP }}
@@ -159,8 +159,8 @@ jobs:
           cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
           tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
 
-  build-storefront:
-    name: Build storefront image
+  build-front:
+    name: Build front image
     needs: [changed-files, create-dotenv]
     if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
@@ -188,7 +188,7 @@ jobs:
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          file: ./apps/Dockerfile
+          file: ./Dockerfile
           build-args: |
             ORG=${{ vars.ORG }}
             APP=${{ vars.APP }}
@@ -201,7 +201,7 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: [changed-files, create-dotenv, build-storefront, build-dashboard]
+    needs: [changed-files, create-dotenv, build-front, build-dashboard]
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
