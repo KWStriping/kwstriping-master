@@ -68,7 +68,7 @@ COPY --from=files ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
 COPY --from=files ${ROOT_DIR}/out/json/ .
 COPY --from=files ${ROOT_DIR}/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN pnpm install
+RUN pnpm install --ignore-scripts
 
 # Copy all files necessary for building
 COPY --from=files ${ROOT_DIR}/out/full/ .
