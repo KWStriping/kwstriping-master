@@ -74,7 +74,10 @@ RUN pnpm install --ignore-scripts
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+# TODO
 COPY scripts ${ROOT_DIR}/scripts
+COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
+COPY apps/${APP}/paraglide ${ROOT_DIR}/apps/${APP}/paraglide
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN ls && ls scripts
