@@ -68,7 +68,7 @@
     "change-case": "^5.4.4",
     "change-case-all": "^2.1.0",
     "commander": "^12.1.0",
-    "cypress": "^13.10.0",
+    "cypress": "^13.8.1",
     "dotenv": "^16.3.1",
     "dotenv-cli": "^7.4.2",
     "dotenv-expand": "^11.0.6",
