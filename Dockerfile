@@ -74,9 +74,10 @@ RUN pnpm install --ignore-scripts
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
-COPY --from=files ${ROOT_DIR}/scripts ${ROOT_DIR}/scripts
+COPY scripts ${ROOT_DIR}/scripts
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
+RUN ls && ls scripts
 RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
 
 ###################################################################
