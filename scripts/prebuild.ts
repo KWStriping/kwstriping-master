@@ -1,3 +1,8 @@
+import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
+
+dotenvExpand.expand(dotenv.config());
+
 async function checkApiUrl() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
   if (!API_URL) throw new Error('NEXT_PUBLIC_API_URL is not defined');

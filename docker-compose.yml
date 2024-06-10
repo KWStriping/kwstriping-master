@@ -16,11 +16,6 @@ x-services: &services
 name: ${APP}
 
 services:
-  services:
-    image: tianon/true
-    restart: "no"
-    depends_on:
-      <<: *services
   storefront:
     container_name: ${APP}
     command: node apps/${APP}/server.mjs

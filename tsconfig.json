@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["apps/**/*", "assets/**/*", "data/**/*", "packages/**/*"],
+  "include": ["apps/**/*", "dashboard/**/*", "@tempo/**/*", "scripts/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "allowJs": true,
@@ -22,10 +22,11 @@
     "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
+    /* @todo */
+    "noImplicitAny": false,
     "noImplicitOverride": true,
     /* @todo */
     "noImplicitReturns": false,
@@ -47,30 +48,18 @@
     /* @todo */
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@core/api": ["packages/api/src"],
-      "@core/api/*": ["packages/api/src/generated/*"],
-      "@core/auth": ["packages/auth/src"],
-      "@core/auth/*": ["packages/auth/src/*"],
-      "@core/checkout": ["packages/checkout/src"],
-      "@core/checkout/*": ["packages/checkout/src/*"],
-      "@core/eslint-rules": ["packages/eslint-rules/src/bases"],
-      "@core/eslint-rules/rules": ["packages/eslint-rules/src/rules"],
-      "@core/i18n": ["packages/i18n/src/index"],
-      "@core/i18n/*": ["packages/i18n/src/*"],
-      "@core/next/*": ["packages/next/src/*"],
-      "@core/types": ["packages/types/src"],
-      "@core/types/*": ["packages/types/src/*"],
-      "@core/ui": ["packages/ui/src"],
-      "@core/ui/*": ["packages/ui/src/*"],
-      "@core/urql": ["packages/urql/src"],
-      "@core/urql/*": ["packages/urql/src/*"],
-      "@core/utils": ["packages/utils/src"],
-      "@core/utils/*": ["packages/utils/src/*"],
-      "@data/*": ["packages/data/*"],
-      "@dashboard/*": ["packages/dashboard/*"],
-      "@kwstriping/*": ["apps/kwstriping/*"],
-      "@sokai/*": ["apps/sokai/*"],
-      "@types/react": ["node_modules/@types/react"]
+      "@tempo/api": ["@tempo/api/*"],
+      "@tempo/blog": ["@tempo/blog/*"],
+      "@tempo/checkout": ["@tempo/checkout/*"],
+      "@tempo/data": ["@tempo/data/*"],
+      "@tempo/forms": ["@tempo/forms/*"],
+      "@tempo/next": ["@tempo/next/*"],
+      "@tempo/ui": ["@tempo/ui/*"],
+      "@tempo/utils": ["@tempo/utils/*"],
+      "@dashboard/*": ["dashboard/*"],
+      "@paraglide/*": ["apps/kwstriping/paraglide/*"],
+      "@kwstriping/*": ["apps/kwstriping/*"]
+      /* "@types/react": ["node_modules/@types/react"] */
     }
   }
 }

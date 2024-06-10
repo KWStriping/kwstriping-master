@@ -1,18 +1,21 @@
 import type { IGraphQLConfig } from 'graphql-config';
 import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 
-dotenv.config();
+dotenvExpand.expand(dotenv.config());
 
-const API_URL = `http://localhost:${process.env.PORT_API}/graphql/`;
-const LOCAL_SCHEMA = './tempo/api/generated/schema.graphql';
-const INTROSPECTION_SCHEMA = './packages/api/src/generated/graphql.schema.json';
+const API_URL = process.env.API_URL;
+
+if (!API_URL) throw new Error("API_URL is undefined.");
+
+// const LOCAL_SCHEMA = './tempo/api/generated/schema.graphql';
+// const INTROSPECTION_SCHEMA = './@tempo/api/generated/graphql.schema.json';
 
 // https://the-guild.dev/graphql/codegen/docs/config-reference/documents-field
 const documents = [
-  '**/graphql/**/*.{ts,gql}',
-  'packages/dashboard/oldSrc/fragments/*.{ts,tsx}',
+  'dashboard/oldSrc/fragments/*.{ts,tsx}',
   'apps/**/*.{ts,tsx}',
-  'packages/**/*.{ts,tsx}',
+  '@tempo/**/*.{ts,tsx,gql}',
   // '!**/dashboard/**',
   '!**/generated/**',
   '!**/node_modules/**',
@@ -41,7 +44,7 @@ const SCALAR_TYPES = {
 
 const introspectionCodegenConfig = {
   generates: {
-    'packages/api/src/generated/graphql.schema.json': {
+    '@tempo/api/generated/graphql.schema.json': {
       plugins: ['introspection'],
       config: { minify: true },
     },
@@ -52,7 +55,11 @@ const introspectionCodegenConfig = {
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
-  plugins: [],
+  plugins: [
+    'typescript',
+    'typescript-operations',
+    'typescript-urql',
+  ],
   config: {
     dedupeFragments: true,
     enumsAsTypes: true,
@@ -86,16 +93,16 @@ const constantsConfig = {
 
 const apiCodegenConfig = {
   generates: {
-    'packages/api/src/generated/introspection.json': {
+    '@tempo/api/generated/introspection.json': {
       plugins: ['urql-introspection'],
     },
-    'packages/api/src/generated/': {
+    '@tempo/api/generated/': {
       ...clientPreset,
     },
-    'packages/api/src/generated/constants.ts': {
+    '@tempo/api/generated/constants.ts': {
       ...constantsConfig,
     },
-    'packages/api/src/generated/resolvers.ts': {
+    '@tempo/api/generated/resolvers.ts': {
       plugins: [
         {
           add: {
@@ -114,7 +121,7 @@ const apiCodegenConfig = {
 
 const dashboardCodegenConfig = {
   generates: {
-    'packages/dashboard/generated/introspection.json': {
+    '@tempo/dashboard/generated/introspection.json': {
       plugins: ['urql-introspection'],
     },
     // "generated/fragments.ts": {
@@ -152,10 +159,10 @@ const dashboardCodegenConfig = {
     //     enumsAsTypes: false, // TODO
     //   },
     // },
-    'packages/dashboard/generated/': {
+    '@tempo/dashboard/generated/': {
       ...clientPreset,
     },
-    'packages/dashboard/generated/constants.ts': {
+    '@tempo/dashboard/generated/constants.ts': {
       ...constantsConfig,
     },
   },
@@ -168,7 +175,7 @@ const dashboardCodegenConfig = {
 const config = {
   projects: {
     default: {
-      schema: [LOCAL_SCHEMA],
+      schema: [API_URL],
       documents,
       extensions: {
         codegen: {
@@ -182,11 +189,11 @@ const config = {
       },
     },
     dashboard: {
-      schema: [LOCAL_SCHEMA],
+      schema: [API_URL],
       documents: [
-        'packages/ui/src/**/*.{ts,tsx}',
-        'packages/dashboard/oldSrc/fragments/*.{ts,tsx}',
-        'packages/dashboard/**/*.{ts,tsx}',
+        '@tempo/ui/**/*.{ts,tsx}',
+        '@tempo/dashboard/oldSrc/fragments/*.{ts,tsx}',
+        '@tempo/dashboard/**/*.{ts,tsx}',
         '!**/generated/**',
         '!**/node_modules/**',
       ],

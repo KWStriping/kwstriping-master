@@ -1,0 +1,30 @@
+# Sync with template repo
+
+on:
+  schedule:
+  - cron:  "0 0 1 * *"
+  workflow_dispatch:
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # https://github.com/actions/checkout#usage
+          # uncomment if you use submodules within the repository
+          # submodules: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: SokaiSolutions/tempo-master
+          upstream_branch: main
+          # pr_labels: <label1>,<label2>[,...] # defaults to template_sync
+          source_repo_ssh_private_key: ${{ secrets.TEMPLATE_SYNC_TOKEN }}

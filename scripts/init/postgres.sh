@@ -1,8 +1,7 @@
 #!/bin/sh
 set -e
 
-# -- Script being executed on DB init, creates read only user
-# -- for replicas purposes.
+# -- Executed on DB init; creates read-only user for replica's purposes.
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
   CREATE EXTENSION IF NOT EXISTS pg_trgm;
   CREATE EXTENSION IF NOT EXISTS btree_gin;

@@ -1,0 +1,133 @@
+.primary:hover,
+.primary.Mui-focusVisible,
+.primary:hover,
+.primary.active {
+  @apply text-primary-100 border-primary-100;
+}
+.primary:active,
+.primary.active {
+  @apply bg-primary-500;
+}
+.primary:disabled {
+  @apply bg-primary-500 text-primary-400;
+}
+
+.secondary {
+  background: transparent;
+  border-radius: 4px;
+  @apply border border-solid border-primary-600 text-primary-300;
+  padding: 8px;
+  transition: 200ms;
+}
+[data-color-scheme='dark'] .secondary {
+  @apply border border-solid border-primary-400 text-primary-200;
+}
+.secondary:hover,
+.secondary.Mui-focusVisible,
+.secondary:active,
+.secondary.active {
+  @apply text-primary-100;
+}
+.secondary:disabled,
+.secondary.disabled {
+  @apply text-primary-500 border-transparent;
+}
+[data-color-scheme='dark'] .secondary:disabled,
+[data-color-scheme='dark'] .secondary.disabled {
+  @apply text-primary-200;
+}
+
+.ghost {
+  @apply bg-transparent text-primary-500;
+  border-radius: 4px;
+  padding: 8px;
+  transition: 200ms;
+}
+[data-color-scheme='dark'] .ghost {
+  @apply text-primary-200;
+}
+.ghost:hover,
+.ghost.Mui-focusVisible,
+.ghost:active,
+.ghost.active {
+  @apply text-primary-100 bg-primary-500;
+}
+.ghost:disabled,
+.ghost.disabled {
+  @apply text-primary-300;
+}
+[data-color-scheme='dark'] .ghost:disabled,
+[data-color-scheme='dark'] .ghost.disabled {
+  @apply text-primary-200;
+}
+
+.hoverOutline.secondary:hover,
+.hoverOutline.secondary.Mui-focusVisible,
+.hoverOutline.secondary:hover {
+  @apply bg-primary-600 border-primary-100;
+}
+[data-color-scheme='dark'] .hoverOutline.secondary:hover,
+.hoverOutline.secondary.Mui-focusVisible,
+.hoverOutline.secondary:hover {
+  background: transparent;
+}
+.hoverOutline.secondary:active,
+.hoverOutline.secondary.active {
+  @apply bg-primary-400;
+}
+
+.error {
+  @apply text-background-paper bg-error-100 border-error-100;
+}
+[data-color-scheme='dark'] .error {
+  @apply text-primary-100;
+}
+.error:hover,
+.error.Mui-focusVisible,
+.error:hover {
+  @apply border-error-100 text-error-100;
+}
+.error:active,
+.error.active {
+  @apply bg-error-500 text-error-100 border-error-200;
+}
+
+.error.secondary {
+  @apply bg-background-paper text-error-200 border-error-500;
+}
+.error.secondary:hover,
+.error.secondary.Mui-focusVisible,
+.error.secondary:hover {
+  @apply bg-background-paper border-error-100 text-error-100;
+}
+.error.secondary:active,
+.error.secondary.active {
+  @apply bg-error-500 text-error-100;
+}
+.error.secondary:disabled,
+.error.secondary.disabled {
+  border-color: transparent;
+}
+
+.error.ghost {
+  @apply bg-background text-error-200;
+}
+.error.ghost:hover,
+.error.ghost.Mui-focusVisible {
+  @apply text-error-100 bg-error-400;
+}
+.error.ghost:active,
+.error.ghost.active {
+  @apply bg-error-300 text-error-100;
+}
+.error.ghost:disabled,
+.error.ghost.disabled {
+  @apply text-error-300;
+}
+
+.disabledError {
+  @apply border-transparent text-error-500;
+}
+[data-color-scheme='dark'] .disabledError {
+  @apply bg-error-400 text-primary-300;
+}
