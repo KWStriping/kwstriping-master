@@ -5,19 +5,21 @@
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
       "request": "launch",
-      "command": "yarn dev"
+      "command": "pnpm dev",
+      "cwd": "${workspaceFolder}/apps/kwstriping"
     },
     {
       "name": "Next.js: debug client-side",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3005"
     },
     {
       "name": "Next.js: debug full stack",
       "type": "node-terminal",
       "request": "launch",
-      "command": "yarn dev",
+      "command": "pnpm dev",
+      "cwd": "${workspaceFolder}/apps/kwstriping",
       "serverReadyAction": {
         "pattern": "started server on .+, url: (https?://.+)",
         "uriFormat": "%s",

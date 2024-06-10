@@ -132,7 +132,7 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         context: .
-        file: ./packages/dashboard/Dockerfile
+        file: ./@tempo/dashboard/Dockerfile
         build-args: |
           ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}

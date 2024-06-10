@@ -1,6 +1,6 @@
 # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
-name: "Continuous Delivery"
+name: 'Continuous Delivery'
 on:
   workflow_dispatch:
 permissions:
@@ -53,12 +53,12 @@ jobs:
       modified-files: ${{ steps.changed-files.outputs.modified_files }}
       all-changed-files: ${{ steps.changed-files.outputs.all_changed_files }}
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v44.0.1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44.0.1
 
   create-dotenv:
     name: Generate .env file
@@ -66,54 +66,54 @@ jobs:
     if: ${{ needs.check.outputs.branch == 'main' }}
     runs-on: ubuntu-latest
     steps:
-    - name: Check out main branch
-      uses: actions/checkout@v4
-    - name: Generate dotenv file
-      id: generate-dotenv
-      # https://github.com/iacobfred/generate-dotenv
-      uses: iacobfred/generate-dotenv@v0.3.7
-      with:
-        template-paths: |
-          _.env
-        output-path: .env
-        cache: true
-        upload: true
-        key: dotenv-${{ github.sha }}-${{ github.run_id }}
-        allow-missing-vars: true
-      env:
-        APP: ${{ vars.APP }}
-        SHA: ${{ github.sha }}
-        PORT_API: ${{ vars.PORT_API }}
-        PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
-        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
-        AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
-        AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
-        AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
-        AUTH_FACEBOOK_ID: ${{ secrets.AUTH_FACEBOOK_ID }}
-        AUTH_FACEBOOK_SECRET: ${{ secrets.AUTH_FACEBOOK_SECRET }}
-        AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
-        AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
-        AUTH_TWITTER_KEY: ${{ secrets.AUTH_TWITTER_KEY }}
-        AUTH_TWITTER_SECRET: ${{ secrets.AUTH_TWITTER_SECRET }}
-        BASE_URL: https://${{ vars.DOMAIN }}
-        DOMAIN: ${{ vars.DOMAIN }}
-        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-        ENVIRONMENT: production
-        GOOGLE_MAPS_API_KEY: ${{ vars.GOOGLE_MAPS_API_KEY }}
-        LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
-        POSTGRES_DB: ${{ vars.POSTGRES_DB }}
-        POSTGRES_USER: ${{ vars.POSTGRES_USER }}
-        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
-        RSA_PRIVATE_PASSWORD: ${{ secrets.RSA_PRIVATE_PASSWORD }}
-        SECRET: ${{ secrets.SECRET }}
-        STOREFRONT_EMAIL: ${{ vars.STOREFRONT_EMAIL }}
-        STOREFRONT_PHONE: ${{ vars.STOREFRONT_PHONE }}
-        TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
-        TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+      - name: Check out main branch
+        uses: actions/checkout@v4
+      - name: Generate dotenv file
+        id: generate-dotenv
+        # https://github.com/iacobfred/generate-dotenv
+        uses: iacobfred/generate-dotenv@v0.3.7
+        with:
+          template-paths: |
+            _.env
+          output-path: .env
+          cache: true
+          upload: true
+          key: dotenv-${{ github.sha }}-${{ github.run_id }}
+          allow-missing-vars: true
+        env:
+          APP: ${{ vars.APP }}
+          SHA: ${{ github.sha }}
+          PORT_API: ${{ vars.PORT_API }}
+          PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
+          PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+          AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
+          AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
+          AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
+          AUTH_FACEBOOK_ID: ${{ secrets.AUTH_FACEBOOK_ID }}
+          AUTH_FACEBOOK_SECRET: ${{ secrets.AUTH_FACEBOOK_SECRET }}
+          AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+          AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+          AUTH_TWITTER_KEY: ${{ secrets.AUTH_TWITTER_KEY }}
+          AUTH_TWITTER_SECRET: ${{ secrets.AUTH_TWITTER_SECRET }}
+          BASE_URL: https://${{ vars.DOMAIN }}
+          DOMAIN: ${{ vars.DOMAIN }}
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          ENVIRONMENT: production
+          GOOGLE_MAPS_API_KEY: ${{ vars.GOOGLE_MAPS_API_KEY }}
+          LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
+          POSTGRES_DB: ${{ vars.POSTGRES_DB }}
+          POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
+          RSA_PRIVATE_PASSWORD: ${{ secrets.RSA_PRIVATE_PASSWORD }}
+          SECRET: ${{ secrets.SECRET }}
+          STOREFRONT_EMAIL: ${{ vars.STOREFRONT_EMAIL }}
+          STOREFRONT_PHONE: ${{ vars.STOREFRONT_PHONE }}
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+          TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
     outputs:
       key: ${{ steps.generate-dotenv.outputs.key }}
 
@@ -125,39 +125,39 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-    - name: Check out main branch
-      uses: actions/checkout@v4
-      with:
-        submodules: 'true'
-        token: ${{ secrets.KWSTRIPING_PAT }}
-    - name: Restore dotenv
-      uses: actions/download-artifact@v4
-      with:
-        name: dotenv-${{ github.sha }}-${{ github.run_id }}
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v3.1.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build dashboard image
-      uses: docker/build-push-action@v5
-      with:
-        builder: ${{ steps.buildx.outputs.name }}
-        context: .
-        file: ./packages/dashboard/Dockerfile
-        build-args: |
-          ORG=${{ vars.ORG }}
-          APP=${{ vars.APP }}
-          PORT=${{ vars.PORT_DASHBOARD }}
-          API_URL=${{ vars.API_URL }}
-        push: true
-        cache-from: type=gha,scope=${{ vars.APP }}-dashboard
-        cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
-        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
+      - name: Check out main branch
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          token: ${{ secrets.KWSTRIPING_PAT }}
+      - name: Restore dotenv
+        uses: actions/download-artifact@v4
+        with:
+          name: dotenv-${{ github.sha }}-${{ github.run_id }}
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build dashboard image
+        uses: docker/build-push-action@v5
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          file: ./packages/dashboard/Dockerfile
+          build-args: |
+            ORG=${{ vars.ORG }}
+            APP=${{ vars.APP }}
+            PORT=${{ vars.PORT_DASHBOARD }}
+            API_URL=${{ vars.API_URL }}
+          push: true
+          cache-from: type=gha,scope=${{ vars.APP }}-dashboard
+          cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
+          tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
 
   build-storefront:
     name: Build storefront image
@@ -165,39 +165,39 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
-    - name: Check out main branch
-      uses: actions/checkout@v4
-      with:
-        submodules: 'true'
-        token: ${{ secrets.KWSTRIPING_PAT }}
-    - name: Restore dotenv
-      uses: actions/download-artifact@v4
-      with:
-        name: dotenv-${{ github.sha }}-${{ github.run_id }}
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v3.1.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build storefront image
-      uses: docker/build-push-action@v5
-      with:
-        builder: ${{ steps.buildx.outputs.name }}
-        context: .
-        file: ./apps/Dockerfile
-        build-args: |
-          ORG=${{ vars.ORG }}
-          APP=${{ vars.APP }}
-          PORT=${{ vars.PORT_STOREFRONT }}
-          API_URL=${{ vars.API_URL }}
-        push: true
-        cache-from: type=gha,scope=${{ vars.APP }}
-        cache-to: type=gha,mode=max,scope=${{ vars.APP }}
-        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}:${{ github.sha }}
+      - name: Check out main branch
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+          token: ${{ secrets.KWSTRIPING_PAT }}
+      - name: Restore dotenv
+        uses: actions/download-artifact@v4
+        with:
+          name: dotenv-${{ github.sha }}-${{ github.run_id }}
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build storefront image
+        uses: docker/build-push-action@v5
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          context: .
+          file: ./apps/Dockerfile
+          build-args: |
+            ORG=${{ vars.ORG }}
+            APP=${{ vars.APP }}
+            PORT=${{ vars.PORT_STOREFRONT }}
+            API_URL=${{ vars.API_URL }}
+          push: true
+          cache-from: type=gha,scope=${{ vars.APP }}
+          cache-to: type=gha,mode=max,scope=${{ vars.APP }}
+          tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}:${{ github.sha }}
 
   deploy:
     name: Deploy
@@ -205,23 +205,24 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-    - name: Check out main branch
-      uses: actions/checkout@v4
-    - name: Restore dotenv
-      uses: actions/download-artifact@v4
-      with:
-        name: dotenv-${{ github.sha }}-${{ github.run_id }}
-    - name: Deploy to server
-      uses: iacobfred/deploy-docker-ssh@v0.4.9
-      with:
-        host: ${{ vars.DOMAIN }}
-        user: jacob
-        target-dir: /var/www/${{ vars.DOMAIN }}
-        files: ".env docker-compose.yml scripts"
-        ssh-port: ${{ vars.SSH_PORT }}
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        # echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
-        command: python3 scripts/deploy.py ${{ vars.APP }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
+      - name: Check out main branch
+        uses: actions/checkout@v4
+      - name: Restore dotenv
+        uses: actions/download-artifact@v4
+        with:
+          name: dotenv-${{ github.sha }}-${{ github.run_id }}
+      - name: Deploy to server
+        uses: iacobfred/deploy-docker-ssh@v0.4.9
+        with:
+          host: ${{ vars.DOMAIN }}
+          user: jacob
+          target-dir: /var/www/${{ vars.DOMAIN }}
+          files: '.env docker-compose.yml scripts'
+          ssh-port: ${{ vars.SSH_PORT }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
+          command: |
+            python3 scripts/deploy.py ${{ vars.APP }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
     # - run: |
     #     echo "github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }}";
     #     echo "github.sha: ${{ github.sha }}";

@@ -1,0 +1,42 @@
+.keyTile {
+  @apply items-center;
+  background: theme(colors.background.DEFAULT);
+  border-radius: 8;
+  display: inline-flex;
+  @apply h-[32px];
+  @apply justify-center;
+  margin-left: theme(spacing[0.5]);
+  padding: theme(spacing.1);
+  @apply w-[32px];
+}
+.keyTile:first-child {
+  @apply ml-1;
+}
+.keyTileLabel {
+  vertical-align: middle;
+}
+.paper {
+  border: 1px solid theme(colors.divider);
+  border-radius: 6;
+  @apply mt-2 p-2 relative;
+}
+.paper::after {
+  /* ...triangle(theme.palette.background.paper, 7); */
+  content: '';
+  @apply left-[18px];
+  @apply absolute;
+  top: -7;
+}
+.paper::before {
+  /* ...triangle(theme(colors.divider), 8); */
+  content: '';
+  left: calc(1px + theme(spacing.2));
+  @apply absolute;
+  top: -theme(spacing.1);
+}
+.root {
+  @apply w-[40px];
+}
+.root:hover path {
+  @apply text-primary;
+}

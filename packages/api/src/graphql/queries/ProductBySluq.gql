@@ -1,5 +1,0 @@
-query ProductBySlug($slug: String!, $channel: String!) {
-  product(slug: $slug, channel: $channel) {
-    ...ProductDetails
-  }
-}

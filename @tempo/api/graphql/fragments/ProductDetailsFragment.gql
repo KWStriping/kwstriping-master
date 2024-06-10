@@ -1,0 +1,87 @@
+fragment ProductVariant on Product {
+  id
+  name
+  slug
+}
+
+fragment ProductAncestor on AbstractProduct {
+  id
+  name
+  slug
+  variants {
+    ...ProductVariant
+  }
+}
+
+fragment BaseProductDetails on Product {
+  id
+  name
+  slug
+  description
+  seoDescription
+  seoTitle
+  isAvailableForPurchase
+  translation {
+    id
+    description
+    name
+  }
+  attributes {
+    ...AttributeDetails
+  }
+  category {
+    ...CategoryBasic
+  }
+  media {
+    ...ProductMediaItem
+  }
+  thumbnail {
+    ...Image
+  }
+  category {
+    name
+  }
+}
+
+fragment AbstractProductDetails on AbstractProduct {
+  ...BaseProductDetails
+  pricing {
+    priceRange {
+      start {
+        gross {
+          ...Money
+        }
+      }
+    }
+  }
+  ancestors {
+    ...ProductAncestor
+  }
+  variants {
+    ...ProductVariant
+  }
+}
+
+fragment ConcreteProductDetails on ConcreteProduct {
+  ...BaseProductDetails
+  quantityAvailable
+  ancestors {
+    ...ProductAncestor
+  }
+  pricing {
+    price {
+      gross {
+        ...Money
+      }
+    }
+  }
+}
+
+fragment ProductDetails on Product {
+  ... on ConcreteProduct {
+    ...ConcreteProductDetails
+  }
+  ... on AbstractProduct {
+    ...AbstractProductDetails
+  }
+}

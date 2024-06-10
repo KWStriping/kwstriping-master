@@ -1,0 +1,10 @@
+fragment AttributeDetails on Attribute {
+  ...Attribute
+  ...Metadata
+  availableInGrid
+  inputType
+  entityType
+  unit
+  storefrontSearchPosition
+  valueRequired
+}
