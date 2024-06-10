@@ -15,6 +15,7 @@ ARG PNPM_VERSION=9.1.2
 
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
 
+ARG APP
 ARG ROOT_DIR
 
 LABEL org.opencontainers.image.source https://github.com/${ORG}/${APP}
@@ -29,7 +30,7 @@ RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
 RUN npm i -g turbo
 
-RUN mkdir -p ${ROOT_DIR}/scripts
+RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/apps/${APP}
 
 WORKDIR ${ROOT_DIR}
 
@@ -71,7 +72,9 @@ RUN pnpm install --ignore-scripts
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+# TODO
 COPY scripts ${ROOT_DIR}/scripts
+COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN ls && ls scripts
