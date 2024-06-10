@@ -5,7 +5,7 @@ ARG API_URL
 
 ARG ROOT_DIR=/root
 
-ARG NODE_VERSION=18
+ARG NODE_VERSION=20
 ARG ALPINE_VERSION=3.17
 ARG PNPM_VERSION=9.1.2
 
@@ -91,7 +91,7 @@ COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/@tempo/dashboard/.next/sta
 # since the service worker files from next-pwa are generated during the build.
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/@tempo/dashboard/public ./@tempo/dashboard/public
 
-RUN ls && mv packages/dashboard/server.js packages/dashboard/server.mjs
+RUN ls && mv @tempo/dashboard/server.js @tempo/dashboard/server.mjs
 
 # Switch to non-root user.
 USER nextjs
@@ -105,4 +105,4 @@ HEALTHCHECK --interval=30s --timeout=7s --start-period=60s --retries=3 \
   CMD ["sh", "-c", "curl --fail http://localhost:${PORT}/ || exit 1"]
 
 # Start the app.
-CMD node packages/dashboard/server.mjs
+CMD node @tempo/dashboard/server.mjs

@@ -16,7 +16,7 @@ x-services: &services
 name: ${APP}
 
 services:
-  storefront:
+  front:
     container_name: ${APP}
     command: node apps/${APP}/server.mjs
     image: "ghcr.io/kwstriping/${APP}:${SHA}"
@@ -96,7 +96,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   dashboard:
-    command: node packages/dashboard/server.mjs
+    command: node @tempo/dashboard/server.mjs
     image: "ghcr.io/kwstriping/${APP}-dashboard:${SHA}"
     env_file:
       - .env

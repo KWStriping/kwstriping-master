@@ -5,14 +5,12 @@
 !/apps
 !/assets
 !/data
-!/packages
+!/@tempo
 !/tempo
 !/package.json
 !/pnpm-lock.yaml
 !/pnpm-workspace.yaml
-!/poetry.lock
 !/pyproject.toml
-!/yarn.lock
 !/tsconfig.json
 !/turbo.json
 !/.env

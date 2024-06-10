@@ -7,9 +7,6 @@ x-services: &services
     condition: service_healthy
 
 services:
-  services:
-    depends_on:
-      <<: *services
   db:
     ports:
       - "5432:5432"
@@ -86,7 +83,7 @@ services:
     command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
     build:
       context: .
-      dockerfile: packages/dashboard/Dockerfile
+      dockerfile: ./@tempo/dashboard/Dockerfile
       args:
         - ORG=${ORG}
         - APP=${APP}
@@ -98,11 +95,11 @@ services:
     pull_policy: never
     volumes:
       - ./.config/nginx/certs:/etc/ssl/certs:ro
-  storefront:
+  front:
     command: pnpm turbo run dev --filter=${APP}... --log-prefix=none
     build:
       context: .
-      dockerfile: apps/Dockerfile
+      dockerfile: ./Dockerfile
       args:
         - ORG=${ORG}
         - APP=${APP}
