@@ -74,6 +74,7 @@ RUN pnpm install
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+COPY --from=files ${ROOT_DIR}/scripts ${ROOT_DIR}/scripts
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
@@ -91,6 +92,8 @@ RUN chown -R nextjs:nodejs .
 
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/.next/standalone/ .
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/.next/static ./apps/${APP}/.next/static
+COPY --from=builder ${ROOT_DIR}/scripts ${ROOT_DIR}/scripts
+
 # Note: The public dir also must be copied from the builder rather than from the host,
 # since the service worker files from next-pwa are generated during the build.
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/public ./apps/${APP}/public
