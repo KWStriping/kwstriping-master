@@ -3,9 +3,8 @@
 
 # Allow these files & directories
 !/apps
-!/assets
-!/data
 !/@tempo
+!/scripts
 !/tempo
 !/package.json
 !/pnpm-lock.yaml
