@@ -5,7 +5,6 @@
   "workspaces": [
     "@tempo",
     "apps/*",
-    "dashboard",
     "tempo"
   ],
   "scripts": {
