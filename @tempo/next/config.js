@@ -10,6 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const workspaceRoot = path.resolve(__dirname, '..', '..');
 const paraglideDir = path.resolve(workspaceRoot, `apps/${process.env.APP}/paraglide`);
+const messagesDir = path.resolve(workspaceRoot, `apps/${process.env.APP}/messages`);
 
 console.debug('Workspace root:', workspaceRoot);
 
@@ -44,7 +45,7 @@ export const generate = ({
 } = {}) =>
   paraglide({
     paraglide: {
-      project: path.resolve(paraglideDir, `${process.env.APP}.inlang`),
+      project: path.resolve(messagesDir, `${process.env.APP}.inlang`),
       outdir: paraglideDir,
     },
     eslint: {
