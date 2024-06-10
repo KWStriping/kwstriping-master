@@ -1,4 +1,4 @@
 .github/dependabot.yml
+.github/workflows/*
 README.md
 SECURITY.md
-.github/workflows/*
