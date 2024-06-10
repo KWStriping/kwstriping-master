@@ -1,0 +1,135 @@
+.action-btn-bar {
+  @apply absolute mt-px ml-[50px] h-[48px] flex items-center justify-end p-1;
+  z-index: 1;
+  /* background: theme.vars.palette.background.paper; */
+  border-radius: 8;
+  /* // Right and left toolbars */
+  width: calc(100% - 64px - 48px - 1px);
+}
+.ghostIcon {
+  @apply text-primary-300;
+}
+.portal input::-webkit-outer-spin-button,
+.portal input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.portal input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  text-align: right;
+  width: 100%;
+}
+.portal .clip-region {
+  @apply border border-solid border-primary-100;
+}
+.portal .gdg-growing-entry {
+  flex: 1;
+  margin-top: 0;
+}
+.portal .gdg-style {
+  /* background: theme.vars.palette.background.paper; */
+  border: none;
+  /* // Setting these with !important because we never intend to style
+  // this particular element, like, never ever */
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.portal input,
+.portal textarea {
+  /* ...theme.typography.body1; */
+  appearance: none;
+  background: none;
+  border: none;
+  /* font-size: theme.typography.body1.font-size; */
+  letter-spacing: 0.44px;
+  @apply py-[1.4rem] px-1;
+  outline: 0;
+}
+.datagrid {
+  @apply border-t border-b border-solid border-divider border-collapse;
+  border-radius: 0;
+  box-sizing: content-box;
+  width: 100%;
+  padding-bottom: 1px;
+  color: red;
+}
+.datagrid .dvn-scroller {
+  overscroll-behavior-x: none;
+}
+.root {
+  position: relative;
+}
+.rowAction-bar {
+  height: 100%;
+  /* background: theme.vars.palette.background.paper; */
+  border-left: 1px solid #d4d4d4;
+  width: 48;
+}
+[data-color-scheme='dark'] .rowAction-bar {
+  border-left: 1px solid #232323;
+}
+.rowAction-bar-scrolledToRight {
+  border-left-color: theme(colors.divider);
+}
+.rowAction {
+  @apply border border-solid border-divider;
+  border-left-color: #d4d4d4;
+  border-right: none;
+  cursor: pointer;
+  @apply text-primary-500;
+  margin-left: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 47;
+}
+[data-color-scheme='dark'] .rowAction {
+  border-left-color: 1px solid #232323;
+}
+
+.rowAction:hover,
+.rowAction.rowActionSelected {
+  /* background: theme.vars.palette.background.paper, */
+  @apply text-primary-100;
+}
+.rowAction:not(:last-child) {
+  margin-bottom: -1;
+}
+.rowActionScrolledToRight {
+  border-left-color: theme(colors.divider);
+}
+.columnGroupFixer {
+  position: absolute;
+  top: 1;
+  left: 0;
+  height: 48;
+  width: 10;
+  border-left: 0;
+  /* background: theme.vars.palette.background.paper; */
+}
+.editorContainer {
+  @apply relative h-full border-collapse;
+}
+.rowAction-bar-shadow {
+  height: 100%;
+  width: 1;
+  position: absolute;
+  z-index: -1;
+  @apply transition;
+  /* transition: theme.transitions.create(box-shadow, {
+    duration: theme.transitions.duration.short;
+  }); */
+  box-shadow: -1px 0px 12px transparent;
+}
+.rowAction-bar-shadowActive {
+  box-shadow: -1px 0px 12px rgba(0, 0, 0, 0.8);
+}
+.rowActionSelected {
+  /* background: theme.vars.palette.background.paper, */
+  @apply text-primary-100;
+}
+.cardContentRoot {
+  padding: 0 0 2.4rem 0;
+  flex: 1;
+}

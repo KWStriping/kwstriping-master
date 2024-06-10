@@ -1,0 +1,35 @@
+fragment ProductCard on Product {
+  id
+  slug
+  name
+  translation {
+    id
+    name
+  }
+  thumbnail {
+    ...Image
+  }
+  category {
+    id
+    name
+    translation {
+      id
+      name
+    }
+  }
+  media {
+    url
+    alt
+    type
+  }
+  attributes {
+    slug
+    values {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}

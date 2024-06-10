@@ -1,0 +1,32 @@
+.content {
+  padding-top: theme(spacing[1.5]);
+}
+.maxRefundRow {
+  font-weight: 600;
+}
+.priceField {
+  margin-top: theme(spacing[2]);
+}
+.refundButton {
+  margin-top: theme(spacing[2]);
+}
+.refundCaution {
+  margin-top: theme(spacing[1]);
+}
+
+.maxRefundRow {
+  font-weight: 600;
+}
+.priceField {
+  margin-top: theme(spacing[2]);
+}
+.refundButton {
+  margin-top: theme(spacing[2]);
+}
+.refundCaution {
+  margin-top: theme(spacing[1]);
+}
+.root {
+  /* ...theme.typography.body1, */
+  @apply w-full;
+}

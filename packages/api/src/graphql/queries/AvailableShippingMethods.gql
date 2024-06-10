@@ -1,0 +1,16 @@
+query AvailableShippingMethods($channel: String!) {
+  shop {
+    id
+    availableShippingMethods(channelSlug: $channel) {
+      id
+      # name
+      translation {
+        id
+        name
+      }
+      price {
+        ...Money
+      }
+    }
+  }
+}

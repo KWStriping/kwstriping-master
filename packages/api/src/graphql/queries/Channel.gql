@@ -1,0 +1,5 @@
+query Channel($id: ID!) {
+  channel(id: $id) {
+    ...Channel
+  }
+}

@@ -1,0 +1,14 @@
+.container {
+  flex-grow: 1;
+  @apply relative;
+}
+.menuBack {
+  @apply -ml-0.5 mr-1;
+}
+.paper {
+  @apply left-0 mt-1;
+  padding: theme(spacing.1);
+  @apply absolute;
+  @apply right-0;
+  z-index: 2;
+}

@@ -1,0 +1,16 @@
+query Page($slug: String!) {
+  page(slug: $slug) {
+    id
+    title
+    translation {
+      id
+      title
+      content
+    }
+    seoTitle
+    seoDescription
+    slug
+    createdAt
+    content
+  }
+}

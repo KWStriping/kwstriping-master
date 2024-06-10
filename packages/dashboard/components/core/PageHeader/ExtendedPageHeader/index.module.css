@@ -1,0 +1,29 @@
+.action {
+  flex: 0 0 auto;
+}
+
+.grid {
+  @apply p-2;
+}
+
+.menuButton {
+  flex: 0 0 auto;
+  margin-left: -theme(spacing[2]);
+  @apply mr-3;
+  margin-top: -theme(spacing[2]);
+}
+
+.root {
+  @apply items-center flex mb-3;
+  word-break: break-all;
+}
+
+.subtitle {
+  @apply items-center flex mb-2;
+}
+
+.titleRow {
+  flex: 1;
+  @apply flex flex-row items-center justify-between min-w-0;
+  text-overflow: ellipsis;
+}

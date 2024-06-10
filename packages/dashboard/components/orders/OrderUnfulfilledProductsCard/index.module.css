@@ -1,0 +1,32 @@
+.actions {
+  flex-direction: row-reverse;
+  @apply gap-1;
+}
+.table {
+  table-layout: fixed;
+}
+.table td:not(:first-child):not(:last-child),
+.table th:not(:first-child):not(:last-child) {
+  @apply px-1;
+}
+.toolbarButton {
+  border: 0;
+}
+.toolbarButtonContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.cardTitle {
+  justify-content: space-between;
+}
+.cardTitle > div:first-child {
+  flex: 0;
+  white-space: nowrap;
+}
+.cardTitle > div:last-child {
+  flex: 0 1 auto;
+  min-width: 0;
+  @apply ml-1;
+}

@@ -16,10 +16,24 @@ x-services: &services
 name: ${APP}
 
 services:
+  services:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      <<: *services
   storefront:
     container_name: ${APP}
     command: node apps/${APP}/server.mjs
-    image: "ghcr.io/kwstriping/${APP}:${SHA}"
+    build:
+      context: .
+      dockerfile: apps/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
+        - APP=${APP}
+        - PORT=${PORT_STOREFRONT}
+        - API_URL=${NEXT_PUBLIC_API_URL}
+      network: host
+    image: "ghcr.io/sokaisolutions/${APP}:${SHA}"
     depends_on:
       - tempo
       - dashboard
@@ -31,11 +45,16 @@ services:
     ports:
       - ${PORT_STOREFRONT}:${PORT_STOREFRONT}
     volumes:
-      - ./scripts/prebuild.ts:/root/scripts/prebuild.ts
+      - ./scripts/prebuild.ts:${ROOT_DIR:-/root}/scripts/prebuild.ts
 
   tempo:
-    # TODO: select tempo version
-    image: "ghcr.io/sokaisolutions/tempo:latest"
+    build:
+      context: .
+      dockerfile: ./tempo/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
+    image: "ghcr.io/sokaisolutions/tempo:${SHA}"
+    entrypoint: ${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
     command:
       [
         "gunicorn",
@@ -68,12 +87,13 @@ services:
       - ${PORT_API}:${PORT_API}
     restart: unless-stopped
     volumes:
-      - ./_volumes/backups:/root/_volumes/backups
-      - ./_volumes/media:/root/_volumes/media
-      - ./_volumes/static:/root/_volumes/static
-      - ./_volumes/logs:/root/_volumes/logs
-      # - ./scripts/entrypoints/tempo.sh:/root/scripts/entrypoints/tempo.sh
-      - ./.jwt_rsa.pem:/root/.jwt_rsa.pem
+      - ./.env:${ROOT_DIR:-/root}/.env
+      - ./_volumes/backups:${ROOT_DIR:-/root}/_volumes/backups
+      - ./_volumes/media:${ROOT_DIR:-/root}/_volumes/media
+      - ./_volumes/static:${ROOT_DIR:-/root}/_volumes/static
+      - ./_volumes/logs:${ROOT_DIR:-/root}/_volumes/logs
+      - ./scripts/entrypoints/tempo.sh:${ROOT_DIR:-/root}/scripts/entrypoints/tempo.sh
+      - ./.jwt_rsa.pem:${ROOT_DIR:-/root}/.jwt_rsa.pem
 
   db:
     # https://registry.hub.docker.com/r/postgis/postgis/
@@ -97,7 +117,16 @@ services:
 
   dashboard:
     command: node packages/dashboard/server.mjs
-    image: "ghcr.io/kwstriping/${APP}-dashboard:${SHA}"
+    build:
+      context: .
+      dockerfile: packages/dashboard/Dockerfile
+      args:
+        - ROOT_DIR=${ROOT_DIR:-/root}
+        - APP=${APP}
+        - PORT=${PORT_DASHBOARD}
+        - API_URL=${NEXT_PUBLIC_API_URL}
+      network: host
+    image: "ghcr.io/sokaisolutions/${APP}-dashboard:${SHA}"
     env_file:
       - .env
     environment:
@@ -132,7 +161,7 @@ services:
       - .env
     restart: unless-stopped
     volumes:
-      - ./_volumes/media:/root/_volumes/media
+      - ./_volumes/media:${ROOT_DIR:-/root}/_volumes/media
 
   jaeger:
     image: jaegertracing/all-in-one

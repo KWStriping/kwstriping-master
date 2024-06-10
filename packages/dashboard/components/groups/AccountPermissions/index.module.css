@@ -1,0 +1,9 @@
+.checkboxContainer {
+  @apply mt-1;
+}
+.hr {
+  background-color: theme(colors.divider);
+  border: none;
+  @apply h-[1px];
+  @apply mb-0 mt-0;
+}

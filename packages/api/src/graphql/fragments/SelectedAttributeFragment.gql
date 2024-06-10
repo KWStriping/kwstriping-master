@@ -1,0 +1,24 @@
+fragment SelectedAttributeDetails on Attribute {
+  id
+  name
+  translation {
+    id
+    name
+  }
+  type
+  unit
+  values {
+    edges {
+      node {
+        id
+        name
+        translation {
+          id
+          name
+          richText
+        }
+        value
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.root {
+  @apply grid;
+  grid-column-gap: theme(spacing.2);
+  grid-template-columns: 5rem 1fr;
+}

@@ -1,0 +1,7 @@
+.arrowIcon {
+  text-align: right;
+  @apply w-[100px];
+}
+.tableCard {
+  overflow: hidden;
+}

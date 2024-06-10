@@ -1,0 +1,14 @@
+query User {
+  me {
+    ...UserDetails
+    checkout {
+      ...Checkout
+    }
+  }
+}
+
+query UserWithoutDetails {
+  me {
+    ...UserBase
+  }
+}

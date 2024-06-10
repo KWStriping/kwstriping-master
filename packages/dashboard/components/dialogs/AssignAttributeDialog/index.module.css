@@ -1,0 +1,25 @@
+.actions {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.checkboxCell {
+  @apply pl-0;
+}
+.dialogPaper {
+  overflow: hidden;
+}
+.dropShadow {
+  box-shadow: 0px -5px 10px 0px theme(colors.divider);
+}
+.loadMoreLoaderContainer {
+  @apply items-center flex mt-2;
+  height: theme(spacing.3);
+  @apply justify-center;
+}
+.scrollArea {
+  max-height: 700;
+  overflow-y: scroll;
+  @apply pt-0 mb-3;
+}
+.wideCell {
+  @apply w-full;
+}

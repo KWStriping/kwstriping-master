@@ -1,0 +1,143 @@
+.add {
+  @apply bg-background;
+  border: 1px solid theme(colors.divider);
+  border-radius: 100%;
+  @apply h-[24px];
+  @apply m-1;
+  @apply w-[24px];
+}
+.addIcon {
+  @apply h-[24px];
+  margin: 9;
+  @apply w-[20px];
+}
+.arrowContainer {
+  @apply relative;
+}
+.arrowInnerContainer {
+  @apply items-center;
+  @apply bg-gray-50;
+  /* background: theme(colors.mode === light ? theme.palette.gray[50] : theme.palette.gray[900]); */
+  @apply bottom-0;
+  color: theme(colors.gray[500]);
+  @apply flex;
+  @apply h-[30px];
+  @apply justify-center;
+  opacity: 1;
+  @apply absolute;
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+  @apply w-full;
+}
+[data-color-scheme='dark'] .arrowInnerContainer {
+  @apply bg-gray-900;
+}
+.checkbox {
+  @apply h-[24px];
+  @apply w-[20px];
+}
+.content {
+  /* max-height: calc(menuItemHeight * maxMenuItems)px + theme(spacing.2)); */
+  overflow-y: scroll;
+  padding: 8;
+}
+.hide {
+  opacity: 0;
+  z-index: -1;
+}
+.hr {
+  @apply my-1 mx-0;
+}
+.menuItem {
+  @apply pl-1.5;
+  border-radius: 4px;
+  @apply grid;
+  grid-column-gap: theme(spacing.1);
+  grid-template-columns: 30px 1fr;
+  height: auto;
+  @apply mb-0.5 p-0;
+  white-space: normal;
+}
+.menuItem:focus {
+  @apply bg-background;
+  @apply text-primary;
+  font-weight: 400;
+}
+.menuItem:hover {
+  @apply bg-background;
+  @apply text-primary;
+  font-weight: 700;
+}
+.menuItemLabel {
+  @apply flex;
+  overflow-wrap: break-word;
+}
+.progressContainer {
+  @apply flex justify-center py-1 px-0;
+}
+.root {
+  border-bottom-left-radius: 8;
+  border-bottom-right-radius: 8;
+  @apply my-1 mx-0;
+  overflow: hidden;
+  z-index: 22;
+}
+.chip {
+  @apply w-full;
+}
+.chipClose {
+  @apply h-[32px];
+  @apply p-0;
+  @apply w-[32px];
+  border: 0;
+}
+.chipContainer {
+  @apply flex;
+  flex-direction: column;
+  @apply mt-1;
+}
+.chipInner {
+  @apply items-center;
+  @apply bg-primary/80;
+  border-radius: 18;
+  color: theme(colors.primary.contrast);
+  @apply flex justify-between my-1 mx-0 pl-2 pr-1;
+}
+.chipInner[data-color-scheme='dark'] {
+  @apply bg-secondary;
+}
+.chipInner svg {
+  color: theme(colors.primary.contrast);
+}
+.chipLabel {
+  color: theme(colors.primary.contrast);
+}
+.container {
+  flex-grow: 1;
+  @apply relative;
+}
+.disabledChipInner {
+  @apply items-center;
+  @apply bg-gray-400/80;
+  /* background: alpha(theme.palette.gray[400], 0.8); */
+  border-radius: 18px;
+  @apply text-primary-contrast;
+  /* color: theme(colors.primary.contrast); */
+  @apply flex justify-between my-1 mx-0 pl-2 pr-1;
+}
+.disabledChipInner svg {
+  color: theme(colors.gray[200]);
+}
+.adornment {
+  color: theme(colors.primary[300]);
+  @apply cursor-pointer;
+  user-select: none;
+  @apply flex items-center;
+}
+.adornment svg {
+  @apply transition;
+  /* transition: theme.transitions.duration.shorter + ms; */
+}
+.adornmentRotate svg {
+  transform: rotate(180deg);
+}

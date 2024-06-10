@@ -1,0 +1,15 @@
+mutation CheckoutShippingMethodUpdate(
+  $id: ID!
+  $shippingMethodId: ID!
+) {
+  updateCheckoutShippingMethod(shippingMethodId: $shippingMethodId, id: $id) {
+    result {
+      ...Checkout
+    }
+    # errors {
+    #   field
+    #   message
+    #   code
+    # }
+  }
+}

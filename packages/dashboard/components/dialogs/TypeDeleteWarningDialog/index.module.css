@@ -1,0 +1,16 @@
+.centerContainer {
+  @apply flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.content {
+  width: 600;
+}
+.consentLabel {
+  @apply text-primary;
+}
+.buttonsSection {
+  @apply flex;
+  justify-content: flex-end;
+}

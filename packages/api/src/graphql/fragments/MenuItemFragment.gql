@@ -1,0 +1,22 @@
+fragment MenuItem on MenuItem {
+  id
+  name
+  level
+  translation {
+    id
+    name
+  }
+  category {
+    id
+    slug
+  }
+  collection {
+    id
+    slug
+  }
+  page {
+    id
+    slug
+  }
+  url
+}

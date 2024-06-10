@@ -1,0 +1,25 @@
+mutation CreateWebhooks($targetUrl: String!, $query: String) {
+  createWebhook(
+    data: {
+      name: "Checkout app payment notifications"
+      targetUrl: $targetUrl
+      events: [TRANSACTION_ACTION_REQUEST]
+      isActive: true
+      query: $query
+    }
+  ) {
+    __typename
+    errors {
+      ...Error
+    }
+  }
+}
+
+query CheckWebhooks {
+  app {
+    webhooks {
+      id
+      targetUrl
+    }
+  }
+}

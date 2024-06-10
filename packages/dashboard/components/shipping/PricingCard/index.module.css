@@ -1,0 +1,23 @@
+.caption {
+  font-size: 14;
+  @apply pt-0 pr-3 pb-2 pl-3;
+}
+.colName {
+  font-size: 14;
+  width: auto;
+}
+.colType {
+  font-size: 14;
+  text-align: right;
+  width: 250;
+}
+.pricingContent {
+  padding-left: 0;
+  padding-right: 0;
+}
+.pricingContent:last-child {
+  padding-bottom: 0;
+}
+.table {
+  table-layout: fixed;
+}

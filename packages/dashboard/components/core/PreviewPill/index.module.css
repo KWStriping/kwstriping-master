@@ -1,0 +1,24 @@
+.popper {
+  z-index: 1302;
+}
+.tooltip {
+  /*
+  // TO-FIX
+  // Triangle's position is hard coded
+  // &:before {
+  //   ...triangle(theme.palette.warning.main, 8);
+  //   content: '';
+  //   @apply absolute;
+  //   @apply left-[17px];
+  //   top: -8
+  // }
+  */
+  background: theme(colors.warning.main);
+  border-radius: 8;
+  @apply mt-1.5 p-2.5;
+  max-width: 400;
+  @apply relative;
+}
+.tooltipText {
+  @apply text-black;
+}

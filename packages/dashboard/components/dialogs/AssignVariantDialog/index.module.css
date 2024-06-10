@@ -1,0 +1,39 @@
+.avatar {
+  @apply pl-0;
+  @apply w-[64px];
+}
+.colVariantCheckbox {
+  @apply p-0;
+}
+.noContentText {
+  @apply mb-3;
+}
+.content {
+  overflow-y: scroll;
+  @apply pt-0 mb-3;
+}
+.grayText {
+  color: theme(colors.text.disabled);
+}
+.loadMoreLoaderContainer {
+  @apply items-center flex;
+  height: theme(spacing.3);
+  @apply justify-center mt-3;
+}
+.overflow {
+  overflow-y: hidden;
+}
+.productCheckboxCell:first-child {
+  @apply pl-0;
+  padding-right: 0;
+}
+.textRight {
+  text-align: right;
+}
+.variantCheckbox {
+  @apply left-1;
+  @apply relative;
+}
+.wideCell {
+  @apply w-full;
+}

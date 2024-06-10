@@ -1,0 +1,8 @@
+query CurrentUserAddresses {
+  me {
+    id
+    addresses {
+      ...Address
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.limit {
+  @apply mr-4;
+}
+.preview {
+  @apply absolute;
+  top: -theme(spacing.4);
+}
+.root {
+  @apply items-center flex;
+}
+@media (max-width: theme(screens.xs)) {
+  .root {
+    @apply flex-col items-start;
+  }
+  .root > * {
+    @apply w-full;
+  }
+  .root > *:not(:first-child) {
+    @apply mt-2;
+  }
+}
+.title {
+  flex: 1;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+}
+@media (max-width: theme(screens.sm)) {
+  .title {
+    font-size: 20;
+    @apply p-0;
+  }
+}

@@ -1,0 +1,63 @@
+.arrow {
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.card {
+  &:last-child {
+    @apply pb-0;
+  }
+  @apply pt-0;
+}
+.channelBtn {
+  background: transparent;
+  border: none;
+  @apply cursor-pointer;
+  text-align: left;
+}
+.channelBtn:focus {
+  outline: none;
+}
+.channelInfo {
+  font-size: 14;
+  @apply py-2 px-0;
+}
+.channelItem {
+  &:last-child hr {
+    display: none;
+  }
+  @apply py-2 px-0;
+}
+.channelName {
+  @apply items-center flex justify-between mb-0.5;
+}
+.checkbox {
+  @apply items-start;
+  margin-top: 10;
+}
+.date {
+  svg {
+    fill: theme(colors.primary.main);
+  }
+  @apply mt-1;
+}
+.hr {
+  @apply relative;
+}
+.label {
+  line-height: 1.2;
+}
+.listingLabel {
+  margin-top: 9;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.secondLabel {
+  color: theme(colors.text.secondary);
+  font-size: 12;
+}
+.setPublicationDate {
+  @apply text-primary cursor-pointer;
+  font-size: 14;
+  @apply pb-10 pt-0;
+}

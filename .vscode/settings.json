@@ -13,6 +13,7 @@
   "editor.rulers": [100],
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
+  "eslint.experimental.useFlatConfig": true,
   "eslint.lintTask.enable": false,
   "eslint.format.enable": true,
   "eslint.workingDirectories": [
@@ -31,21 +32,21 @@
   "files.autoSaveDelay": 5000,
   "files.eol": "\n",
   "files.exclude": {
-    "**/.git": false,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
     "**/__pycache__": true,
     "**/.*_cache": true,
     "**/.cache": false,
+    "**/.git": true,
+    "**/.hg": true,
     "**/.next": true,
     "**/.rollup.cache": true,
+    "**/.svn": true,
     "**/.turbo": true,
     "**/.venv": true,
+    "**/.DS_Store": true,
     "**/*.pyc": true,
     "**/*.tmp.*": true,
+    "**/CVS": true,
+    "**/Thumbs.db": true,
     "**/tsconfig.tsbuildinfo": true,
     "**/node_modules": true
   },
@@ -83,12 +84,12 @@
     "**/tsconfig.tsbuildinfo": true,
     "**/workbox-*": true,
     "**/yarn-*.cjs": true,
-    "**/generated/**": false,
+    "**/generated/**": true,
     "**/*.tmp.*": true
   },
   "search.maxResults": 100,
   "tailwindCSS.experimental.configFile": {
-    "@tempo/ui/tailwind.config.cjs": ["apps/**", "@tempo/**"]
+    "packages/ui/src/tailwind.config.cjs": ["apps/**", "packages/**"]
   },
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.files.exclude": [
@@ -106,6 +107,5 @@
   "workbench.editor.limit.value": 7,
   "workbench.tree.indent": 21,
   "workbench.iconTheme": "material-icon-theme",
-  "black-formatter.args": [],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "black-formatter.args": []
 }

@@ -1,0 +1,24 @@
+.colName {
+  font-size: 14;
+  width: auto;
+}
+.colType {
+  font-size: 14;
+  text-align: right;
+  width: 250;
+}
+.content {
+  @apply py-3 px-0;
+}
+.info {
+  font-size: 14;
+}
+.price {
+  vertical-align: top;
+}
+.subheader {
+  @apply py-0 px-3;
+}
+.table {
+  table-layout: fixed;
+}

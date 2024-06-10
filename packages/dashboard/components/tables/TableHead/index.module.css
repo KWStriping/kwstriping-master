@@ -1,0 +1,28 @@
+.cell {
+  @apply h-[56px];
+}
+.container {
+  @apply items-center flex;
+  @apply h-[47px];
+  margin-right: -theme(spacing[2]);
+}
+.dragRows {
+  @apply p-0;
+  @apply w-[52px];
+}
+.padding:last-child {
+  @apply p-0;
+}
+
+.root {
+  @apply pl-0 pr-4;
+}
+.spacer {
+  flex: 1;
+}
+.toolbar {
+  margin-right: theme.spacing(1.5);
+}
+.toolbar > * {
+  @apply ml-1;
+}

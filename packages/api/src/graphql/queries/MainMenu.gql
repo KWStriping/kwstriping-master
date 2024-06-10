@@ -1,0 +1,8 @@
+query MainMenu($channel: String!) {
+  menu(slug: "navbar", channel: $channel) {
+    id
+    items {
+      ...MenuItemWithChildren
+    }
+  }
+}

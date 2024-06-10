@@ -1,0 +1,37 @@
+.iconCell {
+  width: calc(48px + theme(spacing.4));
+}
+.iconCell:last-child {
+  @apply pr-3 pl-0;
+}
+.indicator {
+  color: theme(colors.text.disabled);
+  @apply inline-block absolute left-0 px-4;
+}
+.offsetCell {
+  @apply relative;
+}
+.offsetCell:first-child {
+  @apply pl-8;
+}
+.pointer {
+  @apply cursor-pointer;
+}
+.root {
+  @apply pt-0;
+}
+.root:last-child {
+  @apply pb-0;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.textRight {
+  text-align: right;
+}
+.toLeft:first-child {
+  @apply pl-0;
+}
+.wideColumn {
+  @apply w-full;
+}

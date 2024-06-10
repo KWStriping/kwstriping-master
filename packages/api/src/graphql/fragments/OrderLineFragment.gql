@@ -1,0 +1,70 @@
+fragment OrderLine on OrderLine {
+  id
+  isShippingRequired
+  productName
+  quantity
+  taxRate
+  quantity
+  quantityFulfilled
+  quantityToFulfill
+  allocations {
+    id
+    quantity
+    warehouse {
+      id
+      name
+    }
+  }
+  product {
+    id
+    name
+    sku
+    preorder {
+      endDate
+    }
+    category {
+      name
+    }
+    productKlass {
+      isDigital
+      kind
+    }
+    # TODO
+    # attributes(variantSelection: ALL) {
+    #   values {
+    #     edges {
+    #       node {
+    #         name
+    #       }
+    #     }
+    #   }
+    # }
+    trackInventory
+    stocks {
+      ...Stock
+    }
+  }
+  unitPrice {
+    gross {
+      ...Money
+    }
+  }
+  undiscountedUnitPrice {
+    gross {
+      ...Money
+    }
+  }
+  totalPrice {
+    gross {
+      ...Money
+    }
+    tax {
+      ...Money
+    }
+  }
+  # TODO
+  # thumbnail {
+  #   alt
+  #   url
+  # }
+}

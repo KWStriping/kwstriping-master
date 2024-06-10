@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid theme(colors.divider);
+}
+.container {
+  @apply relative;
+}
+.overlay {
+  @apply cursor-pointer h-screen left-0 fixed top-0 w-screen;
+  z-index: 1;
+}
+.root {
+  @apply left-0 min-w-20 absolute top-0;
+  width: calc(100% + theme(spacing.4));
+  z-index: 2;
+}
+.text {
+  @apply cursor-pointer;
+  font-size: 0.8125rem;
+}

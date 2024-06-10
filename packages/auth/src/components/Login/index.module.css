@@ -1,0 +1,35 @@
+.arrow {
+  transform: rotate(180deg);
+}
+.backBtn {
+  @apply mb-3;
+}
+.buttonContainer {
+  @apply flex justify-end;
+}
+.link {
+  @apply block text-primary text-right underline cursor-pointer my-2 mx-0;
+}
+.loading {
+  @apply items-center flex;
+  min-height: 80vh;
+  @apply justify-center;
+}
+.loginButton {
+  @apply w-full;
+}
+.panel span {
+  @apply text-error-contrast;
+}
+.panel {
+  /* ...theme.typography.body1; */
+  /* background: theme.palette.alert.paper.error; */
+  border-radius: 8;
+  @apply mb-2 p-2.5;
+}
+.passwordWrapper {
+  @apply relative;
+}
+.submit {
+  @apply w-full;
+}

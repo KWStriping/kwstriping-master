@@ -1,0 +1,18 @@
+.currencySymbol {
+  font-size: 0.875rem;
+}
+.inputContainer {
+  @apply grid;
+  grid-template-columns: 1fr 2rem 1fr;
+}
+.pullDown {
+  @apply mt-2;
+}
+.separator {
+  @apply mt-3;
+  text-align: center;
+  @apply w-full;
+}
+.widgetContainer {
+  @apply mt-2;
+}

@@ -1,0 +1,5 @@
+fragment ShippingMethod on ShippingMethod {
+  name
+  minimumDeliveryDays
+  maximumDeliveryDays
+}

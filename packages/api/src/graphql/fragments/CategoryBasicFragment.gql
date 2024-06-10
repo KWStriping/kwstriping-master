@@ -1,0 +1,9 @@
+fragment CategoryBasic on Category {
+  id
+  name
+  slug
+  translation {
+    id
+    name
+  }
+}

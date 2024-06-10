@@ -1,0 +1,44 @@
+.addressBar {
+  color: #006621;
+  font-size: 13px;
+  line-height: 16px;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.container {
+  @apply w-full;
+}
+.descriptionBar {
+  color: #545454;
+  font-size: 13px;
+  line-height: 18px;
+  overflow-wrap: break-word;
+}
+.helperText {
+  @apply mb-3;
+}
+.label {
+  flex: 1;
+}
+.labelContainer {
+  @apply flex;
+}
+.labelContainer span {
+  padding-right: 30px;
+}
+.preview {
+  min-height: theme(spacing.10);
+}
+.title {
+  @apply p-0;
+}
+.titleBar {
+  color: #1a0dab;
+  font-size: 18px;
+  line-height: 21px;
+  overflow-wrap: break-word;
+  text-decoration: none;
+  word-wrap: break-word;
+}

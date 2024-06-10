@@ -1,0 +1,42 @@
+.arrow {
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.arrowLeft {
+  margin-left: -24;
+}
+.arrowUp {
+  transform: rotate(180deg);
+}
+.disabled {
+  opacity: 0.7;
+  /* & {
+    cursor: unset;
+  } */
+}
+.label {
+  @apply self-center inline-block;
+  user-select: none;
+}
+.labelContainer {
+  @apply flex;
+  @apply h-[24px];
+}
+.labelContainer:hover {
+  color: theme(colors.text.primary);
+}
+.labelContainerActive {
+  color: theme(colors.text.primary);
+}
+.labelContainerCenter {
+  @apply justify-center;
+}
+.labelContainerRight {
+  @apply justify-end;
+}
+.root {
+  @apply cursor-pointer;
+}
+.notSortable {
+  cursor: unset;
+}

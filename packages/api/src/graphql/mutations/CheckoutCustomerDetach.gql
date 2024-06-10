@@ -1,0 +1,10 @@
+mutation detachCustomerFromCheckout($id: ID!) {
+  detachCustomerFromCheckout(id: $id) {
+    # errors {
+    #   ...CheckoutError
+    # }
+    result {
+      ...Checkout
+    }
+  }
+}

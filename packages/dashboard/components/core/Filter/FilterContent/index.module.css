@@ -1,0 +1,25 @@
+.andLabel {
+  @apply my-0 mx-2;
+}
+.arrow {
+  @apply mr-2;
+}
+.filterSettings {
+  @apply bg-primary/10 py-2 px-3;
+  /* background: alpha(theme.palette.primary.main, 0.1); */
+}
+.inputRange {
+  align-items: center;
+  display: flex;
+}
+
+.option {
+  @apply -left-0.5 relative;
+}
+.optionRadio {
+  left: theme(spacing[-0.25]);
+}
+
+.fieldInput {
+  padding: 12px 0 9px 12px;
+}

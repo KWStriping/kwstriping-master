@@ -1,0 +1,3 @@
+.spacer {
+  @apply xs:max-sm:mt-2 mt-4;
+}

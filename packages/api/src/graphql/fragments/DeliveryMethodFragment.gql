@@ -1,0 +1,20 @@
+fragment FulfillmentMethod on FulfillmentMethod {
+  ...on ShippingMethod {
+    id
+    name
+    description
+    translation {
+      id
+      name
+      description
+    }
+    price {
+      ...Money
+    }
+    minimumDeliveryDays
+    maximumDeliveryDays
+  }
+  ...on Warehouse {
+    id
+  }
+}

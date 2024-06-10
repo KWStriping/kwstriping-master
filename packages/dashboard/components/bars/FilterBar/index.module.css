@@ -1,0 +1,7 @@
+.root {
+  border-bottom: 1px solid theme(colors.divider);
+  @apply flex flex-wrap py-1 px-4 items-center;
+}
+.tabActionButton {
+  @apply ml-2 pl-4 pr-4 bg-background-paper text-primary border border-primary border-solid;
+}

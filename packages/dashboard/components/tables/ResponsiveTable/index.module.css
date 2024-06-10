@@ -1,0 +1,8 @@
+.table {
+  table-layout: auto;
+}
+@media screen(md) {
+  .table {
+    table-layout: fixed;
+  }
+}

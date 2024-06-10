@@ -1,0 +1,13 @@
+.clickableRow {
+  cursor: pointer;
+  user-select: none;
+}
+.checkboxCell {
+  padding-left: 0;
+}
+.table {
+  @apply border border-solid border-gray-200;
+}
+.wideCell {
+  width: 100%;
+}

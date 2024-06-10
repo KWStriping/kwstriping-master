@@ -1,0 +1,11 @@
+query FooterMenu($channel: String!) {
+  menu(slug: "footer", channel: $channel) {
+    id
+    items {
+      children {
+        ...MenuItem
+      }
+      ...MenuItem
+    }
+  }
+}

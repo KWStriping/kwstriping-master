@@ -55,8 +55,6 @@ server {
     # 秘密鍵の設定
     ssl_certificate_key /etc/ssl/certs/${DOMAIN}.key.pem;
 
-    ssl_password_file /etc/ssl/certs/${DOMAIN}.txt;
-
     resolver 127.0.0.11 valid=30s;
     set $backend_server http://host.docker.internal:${PORT_API};
     set $storefront_server http://host.docker.internal:${PORT_STOREFRONT};

@@ -1,0 +1,14 @@
+mutation refreshExternalToken(
+  $pluginId: String = "mirumee.authentication.openidconnect"
+  $input: JSONString!
+) {
+  refreshToken(pluginInput: {pluginId: $pluginId, data: $input}) {
+    errors {
+      ...Error
+    }
+    result {
+      accessToken
+      csrfToken
+    }
+  }
+}

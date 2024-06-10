@@ -1,0 +1,16 @@
+.disabled {
+  @apply text-gray-500;
+}
+.root {
+  border-radius: 4px;
+  height: 48px;
+  @apply text-primary bg-background-paper transition;
+  width: 48px;
+}
+.root:active {
+  @apply bg-active-400;
+}
+.root:hover,
+.root:focus-visible {
+  @apply bg-active-500;
+}

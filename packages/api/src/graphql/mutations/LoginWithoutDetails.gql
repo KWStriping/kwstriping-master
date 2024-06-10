@@ -1,0 +1,16 @@
+mutation loginWithoutDetails($email: String!, $password: String!) {
+  obtainToken(authInput: { email: $email, password: $password }) {
+    result {
+      accessToken
+      csrfToken
+      user {
+        ...UserBase
+      }
+    }
+    errors {
+      message
+      field
+      code
+    }
+  }
+}

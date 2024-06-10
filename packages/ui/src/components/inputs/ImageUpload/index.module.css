@@ -1,0 +1,31 @@
+.backdrop {
+  @apply bg-primary/10 text-primary;
+}
+.fileField {
+  display: none;
+}
+.imageContainer {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: theme(spacing.1);
+  @apply h-[148px];
+  justify-self: start;
+  overflow: hidden;
+  @apply p-2 relative transition;
+  @apply w-[148px];
+}
+.photosIcon {
+  @apply h-[32px];
+  margin: 0 auto;
+  @apply w-[32px];
+}
+.photosIconContainer {
+  @apply text-center px-5 py-0;
+  /* padding: theme.spacing(5, 0); */
+}
+.uploadText {
+  @apply uppercase;
+  /* color: theme.typography.body1.color; */
+  font-size: 12;
+  font-weight: 600;
+}

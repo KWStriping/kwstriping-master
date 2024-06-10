@@ -1,0 +1,40 @@
+.root {
+  margin-left: 20px;
+  padding-left: 21px;
+  @apply flex flex-col gap-3 relative py-2;
+}
+.avatar {
+  left: -19px;
+  position: absolute;
+  top: 20px;
+}
+.button {
+  padding: 7px;
+  /* borderTopLeftRadius: 0;
+  borderBottomLeftRadius: 0; */
+}
+.cardActionsExpanded {
+  @apply max-h-6;
+}
+.input {
+  /* background: vars.colors.background.surfaceNeutralPlain; */
+}
+.input > div {
+  padding: 0 0 0 14px;
+}
+.input textarea::placeholder {
+  opacity: 1 !important;
+}
+.noteRoot {
+  @apply mb-3;
+  top: 0;
+  left: -19;
+  right: 0;
+}
+.noteTitle {
+  padding-left: 0;
+}
+.noteTitle:last-child {
+  padding-bottom: 0;
+  padding-right: 0;
+}

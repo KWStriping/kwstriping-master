@@ -1,0 +1,5 @@
+mutation OrderUpdatePaymentMetafield($orderId: ID!, $data: String!) {
+  updatePrivateMetadata(id: $orderId, data: { key: "payment", value: $data }) {
+    __typename
+  }
+}

@@ -1,0 +1,9 @@
+fragment CollectionBasic on Collection {
+  id
+  name
+  translation {
+    id
+    name
+  }
+  slug
+}

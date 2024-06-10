@@ -1,0 +1,44 @@
+.wrapper {
+  @apply w-full;
+  background-color: inherit;
+  padding: 0 13px;
+  font-size: theme(spacing[1.5]);
+}
+.borderedWrapper {
+  @apply flex;
+  flex-direction: row;
+  @apply justify-between items-center;
+  max-height: theme(spacing[7.5]);
+  flex: 0 0 auto;
+  @apply py-3 px-0;
+  background-image: linear-gradient(to right, darkgray 13%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: theme(spacing[1.5]) theme(spacing[0.125]);
+  background-repeat: repeat-x;
+}
+.logoWrapper {
+  line-height: 0;
+}
+.linkList {
+  @apply flex items-center;
+}
+.link {
+  @apply flex p-2;
+  color: textColor;
+}
+.textEmphasis {
+  color: emphasisedTextBlue;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-style: normal;
+  padding-left: 5px;
+}
+.divider {
+  /* TODO: use dark gray from theme */
+  border-right: 1px solid darkgray;
+  height: theme(spacing.2);
+}
+.githubStarButton {
+  line-height: 0;
+  margin-left: 15px;
+}

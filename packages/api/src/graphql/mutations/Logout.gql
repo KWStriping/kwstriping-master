@@ -1,0 +1,10 @@
+mutation logout(
+  $input: AuthPluginInput
+) {
+  logout(pluginInput: $input) {
+    data
+    errors {
+      ...Error
+    }
+  }
+}

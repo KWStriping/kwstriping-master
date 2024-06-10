@@ -1,0 +1,4 @@
+fragment UserPermission on UserPermission {
+  code
+  name
+}

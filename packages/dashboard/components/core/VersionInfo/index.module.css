@@ -1,0 +1,18 @@
+.container {
+  @apply flex justify-end;
+}
+
+.versionItem {
+  font-size: theme(spacing[1.5]);
+  @apply text-primary-300;
+  /* line-height: theme(spacing[3.2]); */
+  font-size: theme(spacing.2);
+  margin-left: theme(spacing[1.5]);
+  letter-spacing: 0.02em;
+}
+
+@media screen(md) {
+  .versionItem {
+    font-size: theme(spacing.2);
+  }
+}

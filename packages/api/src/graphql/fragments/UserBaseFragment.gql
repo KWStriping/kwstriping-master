@@ -1,0 +1,13 @@
+fragment UserBase on User {
+  id
+  email
+  firstName
+  lastName
+  isStaff
+  userPermissions {
+    ...UserPermission
+  }
+  avatar {
+    url
+  }
+}

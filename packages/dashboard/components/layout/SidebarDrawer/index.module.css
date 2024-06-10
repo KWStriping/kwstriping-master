@@ -1,0 +1,49 @@
+.activeMenuLabel {
+  @apply flex;
+}
+.container {
+  overflow-x: hidden;
+  width: 100%;
+}
+.containerSubMenu.container {
+  overflow: hidden;
+}
+.content {
+  width: 50%;
+}
+.icon {
+  @apply mr-2;
+}
+.innerContainer {
+  right: 0;
+  @apply transition-all flex relative;
+  width: 200%;
+}
+.label {
+  font-weight: bold;
+}
+.logo {
+  @apply block mb-4;
+}
+.subMenuHeader {
+  text-transform: uppercase;
+  @apply text-secondary pt-1 px-0 pb-2.5;
+}
+.menuItemBtn {
+  background: none;
+  border: none;
+  @apply text-text-secondary mb-3 flex p-0 cursor-pointer items-center;
+  text-decoration: none;
+}
+.root {
+  @apply bg-background p-3;
+  border-bottom-right-radius: 32px;
+  border-top-right-radius: 32px;
+  width: 260px;
+}
+.secondaryContentActive {
+  right: 100%;
+}
+.subMenuTopBar {
+  @apply flex items-center mb-3 justify-between;
+}

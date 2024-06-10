@@ -1,0 +1,9 @@
+.headerContainer {
+  @apply items-end flex justify-between mb-6;
+}
+.pageHeader {
+  font-weight: 600 as 600;
+}
+/* .subtitle {
+    color: theme.typography.caption.color;
+} */

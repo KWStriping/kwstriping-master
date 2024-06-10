@@ -1,0 +1,66 @@
+.attributeSection {
+  @apply py-2 px-0;
+}
+.attributeSection:last-of-type {
+  @apply pb-0;
+}
+.attributeSectionLabel {
+  @apply items-center flex;
+}
+.card {
+  overflow: visible;
+}
+.cardContent {
+  @apply pt-1;
+}
+.cardContent:last-child {
+  @apply pb-2;
+}
+.expansionBar {
+  @apply flex;
+}
+.expansionBarButton {
+  padding: 4px;
+  @apply mb-1;
+}
+.expansionBarButtonIcon {
+  @apply transition;
+  /* transition: theme.transitions.duration.short + ms; */
+}
+.expansionBarLabel {
+  color: theme(colors.text.disabled);
+  font-size: 14;
+}
+.expansionBarLabelContainer {
+  @apply items-center flex;
+  flex: 1;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.uploadFileButton {
+  float: right;
+}
+.uploadFileContent {
+  @apply text-text-primary;
+  /* color: theme(colors.text.main); */
+  float: right;
+  /* font-size: theme.typography.body1.font-size; */
+}
+.fileField {
+  float: right;
+}
+.pullRight {
+  @apply flex justify-end;
+}
+.swatchInput {
+  padding-top: 16.5;
+  padding-bottom: 16.5;
+}
+.swatchPreview {
+  @apply w-[32px];
+  @apply h-[32px];
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+}

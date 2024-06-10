@@ -1,0 +1,15 @@
+mutation TransactionUpdate(
+  $id: ID!
+  $transaction: TransactionUpdateInput!
+  $transactionEvent: TransactionEventInput
+) {
+  updateTransaction(id: $id, transaction: $transaction, transactionEvent: $transactionEvent) {
+    result {
+      id
+    }
+    # errors {
+    #   code
+    #   message
+    # }
+  }
+}

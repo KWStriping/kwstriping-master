@@ -1,0 +1,21 @@
+.root {
+  @apply text-primary/70;
+}
+.root:hover {
+  @apply text-primary;
+}
+.menuButton {
+  flex: '0 0 auto';
+  @apply -ml-2 mr-1 -mt-2;
+}
+/* [theme.breakpoints.down('md')] {
+  margin: theme.spacing(4, 0, 0, 0),
+} */
+.skeleton {
+  width: '10rem';
+}
+.title {
+  line-height: 1.1;
+  flex: 1;
+  @apply ml-1;
+}

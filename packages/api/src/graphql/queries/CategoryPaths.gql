@@ -1,0 +1,12 @@
+query CategoryPaths($after: String) {
+  categories(first: 100, after: $after) {
+    pageInfo {
+      ...PageInfo
+    }
+    edges {
+      node {
+        slug
+      }
+    }
+  }
+}

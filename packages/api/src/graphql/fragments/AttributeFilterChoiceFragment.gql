@@ -1,0 +1,8 @@
+fragment AttributeFilterChoice on Value {
+  id
+  name
+  slug
+  translation {
+    name
+  }
+}

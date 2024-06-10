@@ -1,0 +1,16 @@
+.button {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+a > .button,
+a:hover > .button,
+a > .button *,
+a:hover > .button * {
+  text-decoration: none;
+  @apply no-underline;
+}
+
+.button svg {
+  margin-right: 8px;
+}

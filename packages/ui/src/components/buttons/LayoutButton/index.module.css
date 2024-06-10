@@ -1,0 +1,14 @@
+.root:hover,
+.root:focus-visible {
+  @apply bg-paper text-primary;
+}
+.root:active {
+  @apply bg-paper text-primary;
+}
+.root {
+  @apply bg-paper/40 font-semibold h-[40px] text-center transition self-center px-4 mt-0;
+  /* margin-top: 0 !important; */
+  /* ...theme.typography.body1; */
+  border-radius: 4px;
+  /* fontSize: theme.typography.body1.fontSize; */
+}

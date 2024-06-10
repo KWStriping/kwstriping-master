@@ -1,0 +1,13 @@
+query FilteringAttributes(
+  $filter: AttributeFilter!
+  $channel: String!
+) {
+  attributes(filters: $filter, first: 100, channel: $channel) {
+    totalCount
+    edges {
+      node {
+        ...AttributeFilter
+      }
+    }
+  }
+}

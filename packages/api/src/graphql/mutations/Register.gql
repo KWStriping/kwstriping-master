@@ -1,0 +1,8 @@
+mutation register($input: UserCreationInput!) {
+  createUser(data: $input) {
+    errors {
+      ...Error
+    }
+    requiresConfirmation
+  }
+}

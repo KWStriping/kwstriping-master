@@ -1,0 +1,20 @@
+
+
+
+
+query TransactionProcessedEvents($id: ID!) {
+  transaction(id: $id) {
+    processedEvents: metafield(key: "processedEvents")
+  }
+}
+
+mutation TransactionUpdateProcessedEvents($id: ID!, $input: String!) {
+  updateMetadata(id: $id, data: { key: "processedEvents", value: $input }) {
+    __typename
+    errors {
+      # code
+      field
+      message
+    }
+  }
+}

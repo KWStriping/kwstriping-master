@@ -1,0 +1,11 @@
+/// <reference types="next/image-types/global" />
+
+// https://github.com/i18next/next-i18next/blob/master/UPGRADING.md#keys-typings
+import type { I18nNamespaces } from '@core/i18n/types';
+
+declare module 'i18next' {
+  interface CustomTypeOptions {
+    defaultNS: 'common';
+    resources: I18nNamespaces;
+  }
+}

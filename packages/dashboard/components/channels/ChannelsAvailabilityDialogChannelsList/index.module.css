@@ -1,0 +1,9 @@
+.label {
+  font-size: 14;
+}
+.option {
+  @apply my-1 mx-0;
+}
+.open:last-chil hr {
+  display: none;
+}

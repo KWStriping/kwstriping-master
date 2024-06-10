@@ -1,0 +1,44 @@
+.checkbox {
+  @apply items-start;
+  margin-top: 10;
+}
+.children button {
+  margin: 0 9px;
+}
+.children label {
+  @apply mt-2.5;
+}
+
+.date {
+  @apply mt-1;
+}
+.date svg {
+  fill: theme(colors.primary.main);
+}
+.label {
+  line-height: 1.2;
+  margin-bottom: 5;
+  @apply mt-0;
+}
+.listingLabel {
+  margin-top: 9;
+}
+.secondLabel {
+  color: theme(colors.text.secondary);
+  font-size: 12;
+  @apply mb-2;
+}
+.switchField {
+  @apply mt-1;
+}
+.buttonText {
+  @apply text-primary cursor-pointer;
+  font-size: 14;
+  @apply my-1 mx-0 pb-10 pt-0;
+}
+.container {
+  @apply items-baseline flex flex-row justify-between;
+}
+.icon {
+  @apply cursor-pointer ml-2;
+}

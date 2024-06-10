@@ -1,0 +1,13 @@
+mutation updateCheckoutLines(
+  $checkoutId: ID!
+  $lines: [CheckoutLineUpdateInput!]!
+) {
+  updateCheckoutLines(id: $checkoutId, lines: $lines) {
+    # errors {
+    #   ...CheckoutError
+    # }
+    result {
+      ...Checkout
+    }
+  }
+}

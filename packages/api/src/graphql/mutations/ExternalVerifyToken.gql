@@ -1,0 +1,22 @@
+mutation verifyExternalToken(
+  $pluginId: String = "mirumee.authentication.openidconnect"
+  $input: JSONString!
+) {
+  verifyToken(token: "", pluginInput: {pluginId: $pluginId, data: $input}) {
+    isValid
+    payload {
+      # TODO
+      __typename
+    }
+    user {
+      ...UserDetails
+      userPermissions {
+        code
+        name
+      }
+    }
+    errors {
+      ...Error
+    }
+  }
+}

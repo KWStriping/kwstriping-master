@@ -1,0 +1,4 @@
+fragment Warehouse on Warehouse {
+  id
+  name
+}

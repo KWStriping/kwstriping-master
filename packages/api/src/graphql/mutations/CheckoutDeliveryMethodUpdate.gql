@@ -1,0 +1,14 @@
+mutation updateCheckoutFulfillmentMethod(
+  $id: ID!
+  $fulfillmentMethodId: ID!
+  $fulfillmentDeadline: DateTime
+) {
+  updateCheckoutFulfillmentMethod(id: $id, fulfillmentMethodId: $fulfillmentMethodId, fulfillmentDeadline: $fulfillmentDeadline) {
+    # errors {
+    #   ...CheckoutError
+    # }
+    result {
+      ...Checkout
+    }
+  }
+}

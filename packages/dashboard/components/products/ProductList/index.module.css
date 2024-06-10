@@ -1,0 +1,57 @@
+@media screen(md) {
+  .colName {
+    min-width: 300;
+  }
+  .colPrice {
+    width: 300;
+  }
+  .colPublished {
+    width: 200;
+  }
+  .colType {
+    width: 300;
+  }
+  .colDate {
+    width: 200;
+  }
+}
+.colAttribute {
+  width: 200;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.colFill {
+  padding: 0;
+  width: 100%;
+}
+.colName {
+  word-break: break-all;
+  /* &$colNameFixed {
+    width: 300;
+  } */
+}
+.colAvatar {
+  word-break: break-all;
+}
+/* .colNameHeader {
+  margin-left: AVATAR_MARGIN;
+} */
+.colNameWrapper {
+  display: block;
+}
+.colPrice {
+  text-align: right;
+}
+.colType {
+  word-break: break-all;
+}
+.link {
+  cursor: pointer;
+}
+.table {
+  table-layout: fixed;
+}
+.tableContainer {
+  overflow-x: scroll;
+}

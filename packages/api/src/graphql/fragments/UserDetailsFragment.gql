@@ -1,0 +1,16 @@
+fragment UserDetails on User {
+  ...UserBase
+  metadata {
+    key
+    value
+  }
+  defaultShippingAddress {
+    ...Address
+  }
+  defaultBillingAddress {
+    ...Address
+  }
+  addresses {
+    ...Address
+  }
+}

@@ -1,3 +1,5 @@
+/apps/
+!/apps/Dockerfile
 
 # Local env files
 .env

@@ -1,0 +1,10 @@
+mutation userAddressCreate($address: AddressUpdateInput!, $type: AddressType) {
+  addAddress(type: $type, data: $address) {
+    address {
+      ...Address
+    }
+    errors {
+      ...Error
+    }
+  }
+}

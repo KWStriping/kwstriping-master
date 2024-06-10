@@ -1,0 +1,10 @@
+mutation setAccountDefaultAddress($id: ID!, $type: AddressType!) {
+  setDefaultAddress(addressId: $id, type: $type) {
+    result {
+      ...UserDetails
+    }
+    errors {
+      ...Error
+    }
+  }
+}

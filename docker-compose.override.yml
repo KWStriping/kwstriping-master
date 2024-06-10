@@ -66,33 +66,26 @@ services:
       - ./_volumes/static:/var/www/${DOMAIN}/_volumes/static:ro
       - ./apps/${APP}/public:/var/www/${DOMAIN}/public
   tempo:
-    # command: python manage.py dev
-    # build:
-    #   context: .
-    #   dockerfile: ./tempo/Dockerfile
+    command: python dev.py
+    # command: python manage.py runserver 0.0.0.0:${PORT_API}
     ports:
       - "${PORT_API}:${PORT_API}"
     pull_policy: never
     volumes:
-      - ./tempo:/root/tempo
-      - ./apps/${APP}/fixtures:/root/apps/${APP}/fixtures
+      - ./tempo:${ROOT_DIR:-/root}/tempo
+      - ./apps/${APP}/fixtures:${ROOT_DIR:-/root}/apps/${APP}/fixtures
+      - type: bind
+        source: ./apps/${APP}/.env
+        target: ${ROOT_DIR:-/root}/apps/${APP}/.env
+        read_only: true
   worker:
     depends_on:
       <<: *services
     pull_policy: never
     volumes:
-      - ./tempo:/root/tempo
+      - ./tempo:${ROOT_DIR:-/root}/tempo
   dashboard:
     command: pnpm turbo run dev --filter=dashboard... --log-prefix=none
-    build:
-      context: .
-      dockerfile: packages/dashboard/Dockerfile
-      args:
-        - ORG=${ORG}
-        - APP=${APP}
-        - PORT=${PORT_DASHBOARD}
-        - API_URL=${API_URL}
-      network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
     pull_policy: never
@@ -100,15 +93,6 @@ services:
       - ./.config/nginx/certs:/etc/ssl/certs:ro
   storefront:
     command: pnpm turbo run dev --filter=${APP}... --log-prefix=none
-    build:
-      context: .
-      dockerfile: apps/Dockerfile
-      args:
-        - ORG=${ORG}
-        - APP=${APP}
-        - PORT=${PORT_STOREFRONT}
-        - API_URL=${API_URL}
-      network: host
     environment:
       - NODE_EXTRA_CA_CERTS=/etc/ssl/certs/${DOMAIN}.pem
     pull_policy: never

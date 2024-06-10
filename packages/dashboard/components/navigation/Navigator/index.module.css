@@ -1,0 +1,46 @@
+.modal {
+  @apply flex items-center justify-center;
+  padding: theme(spacing.3);
+}
+.paper {
+  overflow: hidden;
+}
+.root {
+  @apply h-[500px];
+  max-width: 900;
+  outline: 0;
+  @apply w-full;
+}
+@media (max-width: theme(screens.sm)) {
+  .root {
+    height: auto;
+  }
+}
+.item {
+  /* &&& {
+    color: theme(colors.text.secondary);
+    font-weight: 400;
+  } */
+  @apply flex my-1 mx-0;
+}
+.itemLabel {
+  @apply inline-block;
+}
+.label {
+  @apply pl-2;
+  text-transform: uppercase;
+}
+.root {
+  @apply my-2 mx-0;
+}
+.root:last-child {
+  @apply mb-0;
+}
+.spacer {
+  flex: 1;
+}
+.symbol {
+  @apply inline-block;
+  font-weight: 600;
+  width: theme(spacing.4);
+}

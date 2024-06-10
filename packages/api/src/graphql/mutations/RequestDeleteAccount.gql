@@ -1,0 +1,14 @@
+mutation requestAccountDeletion(
+  $channel: String!,
+  # $redirectUrl: String!
+) {
+    requestAccountDeletion(
+      channel: $channel,
+      # redirectUrl: $redirectUrl
+    ) {
+      __typename
+      # errors {
+      #   ...Error
+      # }
+    }
+  }

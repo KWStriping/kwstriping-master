@@ -1,0 +1,23 @@
+@media screen(lg) {
+  .colName {
+    width: auto;
+  }
+}
+.colAction {
+  @apply text-right pr-3 w-[140px];
+}
+.colName {
+  width: 250;
+}
+.colRight {
+  text-align: right;
+}
+.columnPicker {
+  @apply mr-3;
+}
+.table {
+  table-layout: fixed;
+}
+.tableRow {
+  cursor: pointer;
+}
