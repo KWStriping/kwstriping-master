@@ -78,7 +78,7 @@ function generateMessages() {
   console.log(stdout.toString());
 }
 
-function main() {
+export default function main() {
   generateTsConfig();
   generateMessages();
 }

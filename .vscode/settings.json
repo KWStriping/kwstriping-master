@@ -20,7 +20,7 @@
       "pattern": "apps/*/"
     },
     {
-      "pattern": "packages/*/"
+      "pattern": "@tempo/*/"
     }
   ],
   "explorer.autoReveal": "focusNoScroll",
@@ -31,7 +31,7 @@
   "files.autoSaveDelay": 5000,
   "files.eol": "\n",
   "files.exclude": {
-    "**/.git": false,
+    "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
