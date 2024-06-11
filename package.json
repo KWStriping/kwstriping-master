@@ -104,7 +104,7 @@
     "nginxbeautifier": "^1.0.19",
     "npm-run-all": "^4.1.5",
     "pathpida": "^0.22.0",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "prettier-plugin-multiline-arrays": "^3.0.6",
     "prettier-plugin-packagejson": "^2.5.0",
     "rollup": "^4.18.0",

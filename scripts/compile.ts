@@ -3,15 +3,37 @@ import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import mergePatch from 'json-merge-patch';
-import baseTsConfig from '../tsconfig.base.json';
 
 dotenvExpand.expand(dotenv.config());
 const APP = process.env.APP;
 const ROOT_DIR = process.env.ROOT_DIR;
 
+// Define interfaces for the tsconfig.json structure
+interface TsPaths {
+  [key: string]: string[];
+}
+interface CompilerOptions {
+  paths?: TsPaths;
+  [key: string]: any;
+}
+interface TsConfig {
+  compilerOptions: CompilerOptions;
+  [key: string]: any;
+}
+
 function generateTsConfig() {
   const outputFile = 'tsconfig.json';
-  const tsConfig = baseTsConfig;
+  const tsBaseConfigPath = `${ROOT_DIR}/tsconfig.base.json`;
+  if (!fs.existsSync(tsBaseConfigPath)) {
+    console.log(`${tsBaseConfigPath} does not exist.`);
+    return;
+  }
+  if (fs.existsSync(outputFile)) {
+    console.log(`${outputFile} already exists.`);
+    return;
+  }
+  // Read the tsconfig.json file synchronously
+  const tsConfig: TsConfig = JSON.parse(fs.readFileSync(tsBaseConfigPath, 'utf8'));
   if (APP) {
     const newPaths = {
       '@paraglide/*': [`apps/${APP}/paraglide/*`],
@@ -32,6 +54,7 @@ function generateMessages() {
   }
   const appDir = `apps/${APP}`;
   const messagesDir = `${appDir}/messages`;
+  const paraglideDir = `${appDir}/paraglide`;
   const inlangDir = `${messagesDir}/${APP}.inlang`;
   const inlangSettingsFile = `${inlangDir}/settings.json`;
   if (!fs.existsSync(messagesDir)) fs.mkdirSync(messagesDir);
@@ -57,7 +80,7 @@ function generateMessages() {
   }
 
   const files = [`${messagesDir}/en.json`, `@tempo/next/messages/common.json`];
-  const output = `${appDir}/paraglide/generated/en.json`;
+  const output = `${paraglideDir}/generated/en.json`;
 
   const merged = files
     .map((file) => {
@@ -72,10 +95,12 @@ function generateMessages() {
 
   // stderr is sent to stderr of parent process
   // you can set options.stdio if you want it to go elsewhere
-  const stdout = execSync(
-    `paraglide-js compile --project ${inlangDir} --outdir apps/${APP}/paraglide`
-  );
+  const stdout = execSync(`paraglide-js compile --project ${inlangDir} --outdir ${paraglideDir}`);
   console.log(stdout.toString());
+
+  // Remove the .gitignore; we prefer to commit the generated files.
+  const gitIgnoreFile = `${paraglideDir}/.gitignore`;
+  if (fs.existsSync(gitIgnoreFile)) fs.unlinkSync(gitIgnoreFile);
 }
 
 export default function main() {
