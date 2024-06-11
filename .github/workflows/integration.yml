@@ -66,10 +66,7 @@ jobs:
         key: dotenv-${{ github.sha }}-${{ github.run_id }}
         allow-missing-vars: true
       env:
-        SHA: ${{ github.sha }}
-        PORT_API: ${{ vars.PORT_API }}
-        PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
-        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+        APP: ${{ vars.APP }}
         AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
         AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
         AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
@@ -88,12 +85,16 @@ jobs:
         ENVIRONMENT: production
         GOOGLE_MAPS_API_KEY: ${{ vars.GOOGLE_MAPS_API_KEY }}
         LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
+        PORT_API: ${{ vars.PORT_API }}
+        PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
+        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
         POSTGRES_DB: ${{ vars.POSTGRES_DB }}
         POSTGRES_USER: ${{ vars.POSTGRES_USER }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
         RSA_PRIVATE_PASSWORD: ${{ secrets.RSA_PRIVATE_PASSWORD }}
         SECRET: ${{ secrets.SECRET }}
+        SHA: ${{ github.sha }}
         STOREFRONT_EMAIL: ${{ vars.STOREFRONT_EMAIL }}
         STOREFRONT_PHONE: ${{ vars.STOREFRONT_PHONE }}
         TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}

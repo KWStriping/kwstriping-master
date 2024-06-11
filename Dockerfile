@@ -5,7 +5,7 @@ ARG API_URL
 
 ARG ROOT_DIR=/root
 
-ARG NODE_VERSION=18
+ARG NODE_VERSION=20
 ARG ALPINE_VERSION=3.17
 ARG PNPM_VERSION=9.1.2
 
@@ -68,14 +68,19 @@ COPY --from=files ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
 COPY --from=files ${ROOT_DIR}/out/json/ .
 COPY --from=files ${ROOT_DIR}/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN pnpm install
+RUN pnpm install --ignore-scripts
 
 # Copy all files necessary for building
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+# TODO
+COPY scripts ${ROOT_DIR}/scripts
+COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
+COPY apps/${APP}/paraglide ${ROOT_DIR}/apps/${APP}/paraglide
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
+RUN ls && ls scripts
 RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
 
 ###################################################################
@@ -91,6 +96,8 @@ RUN chown -R nextjs:nodejs .
 
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/.next/standalone/ .
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/.next/static ./apps/${APP}/.next/static
+COPY --from=builder ${ROOT_DIR}/scripts ${ROOT_DIR}/scripts
+
 # Note: The public dir also must be copied from the builder rather than from the host,
 # since the service worker files from next-pwa are generated during the build.
 COPY --from=builder --chown=nextjs:nodejs ${ROOT_DIR}/apps/${APP}/public ./apps/${APP}/public
