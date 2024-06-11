@@ -10,11 +10,17 @@
 !/pnpm-lock.yaml
 !/pnpm-workspace.yaml
 !/pyproject.toml
-!/tsconfig.json
+!/tsconfig.*json
 !/turbo.json
 !/.env
 !/.gitignore
 !/.npmrc
+
+# Used when building with nextjs (next-eslint)
+!.eslintrc.base.json
+!.prettierignore
+!.prettierrc.js
+!.eslintignore
 
 # Ignore from allowed directories
 **/*~
@@ -41,18 +47,3 @@
 **/tsconfig.tsbuildinfo
 Dockerfile
 LICENSE
-
-# Secrets
-**/.env.local
-**/.env.*.local
-
-# Used when building with nextjs (next-eslint)
-!.eslintrc.base.json
-!.prettierignore
-!.prettierrc.js
-!.eslintignore
-
-# Yarn
-!.yarnrc.yml
-!.yarn/plugins
-!.yarn/releases

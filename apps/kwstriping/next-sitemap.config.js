@@ -1,9 +1,11 @@
 const excludedPaths = ['/cart', '/checkout', '/account/*'];
 
-module.exports = {
-  siteUrl: process.env.BASE_URL,
+/** @type {import('next-sitemap').IConfig} */
+export default {
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   generateRobotsTxt: true,
   exclude: excludedPaths + ['/sitemap.xml'],
+  output: 'standalone',
   robotsTxtOptions: {
     policies: [
       {
