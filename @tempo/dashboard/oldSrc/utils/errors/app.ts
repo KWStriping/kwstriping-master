@@ -1,6 +1,5 @@
 import type { AppErrorFragment } from '@tempo/api/generated/graphql';
 import { AppErrorCode } from '@tempo/api/generated/constants';
-import type { TFunction } from '@tempo/next/i18n';
 
 import { getCommonFormFieldErrorMessage } from './common';
 

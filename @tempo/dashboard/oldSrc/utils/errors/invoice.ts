@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { InvoiceErrorFragment } from '@tempo/api/generated/graphql';
 import { InvoiceErrorCode } from '@tempo/api/generated/constants';
 

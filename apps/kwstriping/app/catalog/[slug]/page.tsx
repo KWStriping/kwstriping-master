@@ -28,7 +28,6 @@ export default async function Page({
   const response = await client
     .query<CategoryBySlugQuery, CategoryBySlugQueryVariables>(CategoryBySlugDocument, {
       slug,
-      // languageCode: contextToRegionQuery(context).languageCode,
     })
     .toPromise();
   const attributesResponse = await client
@@ -39,6 +38,7 @@ export default async function Page({
         filter: {
           inCategory: response.data?.category?.id ? [response.data.category.id] : [],
         },
+        channel: 'default', // TODO
       }
     )
     .toPromise();

@@ -130,6 +130,7 @@
     "postbuild",
     "preauthorized",
     "predev",
+    "preinstall",
     "preorder",
     "preordered",
     "preorders",

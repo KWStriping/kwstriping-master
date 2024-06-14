@@ -1,4 +1,3 @@
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import type { Placement, Side } from '@floating-ui/react-dom-interactions';
 import {
   arrow,
@@ -20,7 +19,8 @@ import { cloneElement, useMemo, useState, useRef, useCallback } from 'react';
 import type { MouseEventHandler, ReactElement, Ref, FC, ReactNode } from 'react';
 
 import { Arrow } from './Arrow';
-// import useStyles from './styles';
+import useStyles from './styles';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 
 export interface TooltipProps {
   variant?: 'success' | 'warning' | 'error';
@@ -108,9 +108,9 @@ export const Tooltip: FC<TooltipProps> = ({
     return placement.split('-')[0] as Side;
   }, [placement]);
 
-  // const styles = useStyles({ variant, side });
+  const styles = useStyles({ variant, side });
 
-  const styles = {};
+  // const styles = {};
 
   const mountReference = useCallback(mergeRefs(reference, referenceRef), []);
   const mountFloating = useCallback(mergeRefs(floating, floatingRef), []);

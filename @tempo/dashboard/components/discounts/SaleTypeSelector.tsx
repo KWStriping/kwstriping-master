@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

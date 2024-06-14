@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { isValidElement } from 'react';
 import type { ReactNode } from 'react';
 import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';

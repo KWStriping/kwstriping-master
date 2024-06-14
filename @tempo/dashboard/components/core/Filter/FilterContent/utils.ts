@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { joinDateTime } from '@tempo/utils/datetime';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';

@@ -1,10 +1,16 @@
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import mergePatch from 'json-merge-patch';
 
-dotenvExpand.expand(dotenv.config());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenvExpand.expand(dotenv.config({ path: resolve(__dirname, '../.env') }));
+
 const APP = process.env.APP;
 const ROOT_DIR = process.env.ROOT_DIR;
 

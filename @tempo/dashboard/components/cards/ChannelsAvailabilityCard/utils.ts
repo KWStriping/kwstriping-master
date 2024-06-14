@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { LocalizeDate } from '@tempo/dashboard/hooks/useDateLocalize';
 import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
 

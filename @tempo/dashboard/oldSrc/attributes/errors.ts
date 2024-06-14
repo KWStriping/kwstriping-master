@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { AttributeErrorCode } from '@tempo/api/generated/constants';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
 import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';

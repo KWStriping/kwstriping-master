@@ -1,8 +1,7 @@
 import * as m from '@paraglide/messages';
 import type { MutationFunction } from '@tempo/api';;
 import { score } from 'fuzzaldrin';
-import type { TFunction } from '@tempo/next/i18n';
-
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchActionInput, QuickSearchMode } from '../../types';
 import { sortScores } from '../utils';
 import { groupAddUrl } from '@tempo/dashboard/oldSrc/groups/urls';
@@ -18,8 +17,7 @@ interface Command {
 }
 export function searchInCommands(
   search: string,
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   createOrder: MutationFunction<OrderDraftCreateMutation, {}>,
   setMode: (mode: QuickSearchMode) => void
 ): QuickSearchActionInput[] {
@@ -93,8 +91,7 @@ export function searchInCommands(
 
 function getCommandModeActions(
   query: string,
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   createOrder: MutationFunction<OrderDraftCreateMutation, {}>,
   setMode: (mode: QuickSearchMode) => void
 ): QuickSearchActionInput[] {

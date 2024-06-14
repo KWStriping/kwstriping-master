@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 import type { FileChoiceType } from '@tempo/dashboard/components/fields/FileUploadField';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';

@@ -15,14 +15,6 @@
   "editor.tabSize": 2,
   "eslint.lintTask.enable": false,
   "eslint.format.enable": true,
-  "eslint.workingDirectories": [
-    {
-      "pattern": "apps/*/"
-    },
-    {
-      "pattern": "@tempo/*/"
-    }
-  ],
   "explorer.autoReveal": "focusNoScroll",
   "files.associations": {
     "*.css": "tailwindcss"
@@ -40,14 +32,14 @@
     "**/__pycache__": true,
     "**/.*_cache": true,
     "**/.cache": false,
-    "**/.next": true,
+    "**/.next": false,
     "**/.rollup.cache": true,
     "**/.turbo": true,
     "**/.venv": true,
     "**/*.pyc": true,
     "**/*.tmp.*": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/node_modules": true
+    "**/node_modules": false
   },
   "files.saveConflictResolution": "overwriteFileOnDisk",
   "html.autoClosingTags": true,

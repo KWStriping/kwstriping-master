@@ -1,7 +1,6 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { MutationFunction } from '@tempo/api';;
 import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
-import type { NextRouter } from 'next/router';
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction, QuickSearchMode } from '../types';
 import getCatalogModeActions from './catalog';
 import getCommandModeActions from './commands';
@@ -14,11 +13,10 @@ import type { ActionQueries } from './types';
 function getModeActions(
   mode: QuickSearchMode,
   query: string,
-  t: TFunction,
   queries: ActionQueries,
   cbs: {
     createOrder: MutationFunction<OrderDraftCreateMutation, {}>;
-    router: NextRouter;
+    router: AppRouterInstance;
     setMode: (mode: QuickSearchMode) => void;
   }
 ): QuickSearchAction[] {

@@ -6,7 +6,8 @@
     "scripts/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "_*"
   ],
   "compilerOptions": {
     "allowJs": true,

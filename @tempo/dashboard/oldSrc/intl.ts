@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 
 export const errorMessages = {
   imageUploadErrorTitle: {

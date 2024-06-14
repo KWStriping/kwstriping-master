@@ -1,9 +1,8 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { CheckIfOrderExistsQuery } from '@tempo/api/generated/graphql';
 import { transformOrderStatus } from '@tempo/dashboard/oldSrc/misc';
 import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
-
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction } from '../types';
 
 export function isQueryValidOrderNumber(query: string): boolean {
@@ -16,8 +15,7 @@ export function getGqlOrderId(orderNumber: string): string {
 
 function getOrdersModeActions(
   query: string,
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   order: CheckIfOrderExistsQuery['order']
 ): QuickSearchAction[] {
   const gqlId = getGqlOrderId(query);

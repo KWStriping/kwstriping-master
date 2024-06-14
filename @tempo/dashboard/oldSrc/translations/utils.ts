@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { fieldNames } from '@tempo/dashboard/components/translations/TranslationsAttributesPage';
 import { translationsAttributesPageFieldsMessages as messages } from '@tempo/dashboard/components/translations/TranslationsAttributesPage/messages';

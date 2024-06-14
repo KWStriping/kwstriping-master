@@ -103,7 +103,7 @@ services:
       args:
         - ORG=${ORG}
         - APP=${APP}
-        - PORT=${PORT_STOREFRONT}
+        - PORT=${PORT_FRONT}
         - API_URL=${API_URL}
       network: host
     environment:

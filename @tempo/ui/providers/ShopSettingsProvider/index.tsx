@@ -1,6 +1,11 @@
 'use client';
 
-import type { CountryCode, ShopSettingsFragment } from '@tempo/api/generated/graphql';
+import type {
+  CountryCode,
+  ShopInfoQuery,
+  ShopInfoQueryVariables,
+  ShopSettingsFragment,
+} from '@tempo/api/generated/graphql';
 import { ShopInfoDocument } from '@tempo/api/generated/graphql';
 import { gql } from '@tempo/api';
 import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
@@ -176,7 +181,7 @@ export const ShopSettingsProvider: FC<ShopSettingsProviderProps> = ({
   settings: settingsFromProps = {},
   children,
 }) => {
-  const [{ data }] = useQuery(ShopInfoDocument, {});
+  const [{ data }] = useQuery<ShopInfoQuery, ShopInfoQueryVariables>(ShopInfoDocument, {});
   const [settings, setSettings] = useState<ShopSettings>({
     ...DEFAULTS,
     ...settingsFromProps,

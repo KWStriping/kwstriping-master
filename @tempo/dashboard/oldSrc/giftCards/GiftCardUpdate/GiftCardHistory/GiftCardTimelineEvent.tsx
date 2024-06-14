@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import Link from '@tempo/ui/components/Link';
 import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 import { GiftCardEventsEnum } from '@tempo/api/generated/constants';

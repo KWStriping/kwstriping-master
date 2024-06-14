@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { GiftCardErrorFragment } from '@tempo/api/generated/graphql';
 import { GiftCardErrorCode } from '@tempo/api/generated/constants';
 import commonErrorMessages, {

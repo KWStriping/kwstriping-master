@@ -1,5 +1,4 @@
 import type { MenuErrorFragment } from '@tempo/api/generated/graphql';
-import type { TFunction } from '@tempo/next/i18n';
 
 import { getCommonFormFieldErrorMessage } from './common';
 

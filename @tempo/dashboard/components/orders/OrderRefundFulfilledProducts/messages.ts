@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 
 export const messages = {

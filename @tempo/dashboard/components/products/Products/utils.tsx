@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { GridCell } from '@glideapps/glide-data-grid';
 import { sentenceCase } from 'change-case';
-import type { TFunction } from '@tempo/next/i18n';
 import type { MutableRefObject } from 'react';
 import {
   booleanCell,

@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { Temporal } from '@js-temporal/polyfill';
 import type { AddressTypeInput } from './customers/types';
 import {

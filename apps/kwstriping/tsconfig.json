@@ -1,7 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["../../@tempo/**/*", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "cypress", "**/*.test.ts", "**/__tests__/**/*", "**/_pages/**/*"],
+  "exclude": [
+    "../../@tempo/dashboard/**/*",
+    "node_modules",
+    "cypress",
+    "**/*.test.ts",
+    "**/__tests__/**/*"
+  ],
   "compilerOptions": {
     "plugins": [
       {

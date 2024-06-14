@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
 import { ShippingErrorCode } from '@tempo/api/generated/constants';
 

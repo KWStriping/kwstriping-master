@@ -1,5 +1,4 @@
 import { hasAnyPermissions } from '@tempo/api/auth/misc';
-import type { TFunction } from '@tempo/next/i18n';
 import type { PermissionCode, UserFragment } from '@tempo/api/generated/graphql';
 import { createConfigurationMenu } from '@tempo/dashboard/_app/configuration';
 

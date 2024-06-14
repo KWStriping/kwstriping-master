@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type {
   TaxClassCreateErrorFragment,
   TaxClassDeleteErrorFragment,

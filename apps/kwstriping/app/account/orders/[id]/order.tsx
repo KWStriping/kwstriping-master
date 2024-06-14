@@ -1,27 +1,11 @@
-import { OrderDocument } from '@tempo/api/generated/graphql';
-import { useUser } from '@tempo/api/auth/react/hooks';
+import type { OrderQuery } from '@tempo/api/generated/graphql';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
-import { Spinner } from '@tempo/ui/components/Spinner';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { useQuery } from '@tempo/api/hooks/useQuery';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
-function OrderPage({ id }: { id: string }) {
+function OrderPage({ order }: { order: NonNullable<OrderQuery['order']> }) {
   const { formatPrice } = useLocalization();
-  const { authenticated } = useUser();
-  const [{ fetching: loading, error, data }] = useQuery(OrderDocument, {
-    variables: { id: id as string },
-    pause: !id || !authenticated,
-  });
-
-  if (loading) return <Spinner />;
-  if (error) {
-    return <div>Error :{error.message}</div>;
-  }
-
-  if (!data || !data?.order) return null;
-  const order = data?.order;
 
   return (
     <>

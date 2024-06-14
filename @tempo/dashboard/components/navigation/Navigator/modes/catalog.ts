@@ -1,13 +1,12 @@
 import * as m from '@paraglide/messages';
 import { score } from 'fuzzaldrin';
-import type { NextRouter } from 'next/router';
-import type { TFunction } from '@tempo/next/i18n';
+import { useRouter } from 'next/navigation';
 import type { SearchCatalogQuery } from '@tempo/api/generated/graphql';
 import { categoryUrl } from '@tempo/dashboard/oldSrc/categories/urls';
 import { collectionUrl } from '@tempo/dashboard/oldSrc/collections/urls';
 import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction, QuickSearchActionInput } from '../types';
 import { sortScores } from './utils';
 
@@ -15,10 +14,10 @@ const maxActions = 5;
 
 export function searchInCatalog(
   search: string,
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   catalog: SearchCatalogQuery
 ): QuickSearchAction[] {
+  const router = useRouter();
   const categories: QuickSearchActionInput[] = (mapEdgesToItems(catalog?.categories) || [])
     .map<QuickSearchActionInput>((category) => ({
       caption: (m.dashboard_category() ?? 'Category'),
@@ -78,8 +77,7 @@ export function searchInCatalog(
 
 function getCatalogModeActions(
   query: string,
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   catalog: SearchCatalogQuery
 ): QuickSearchAction[] {
   return searchInCatalog(query, t, router, catalog);

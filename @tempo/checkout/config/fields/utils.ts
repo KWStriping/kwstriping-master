@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 
 interface MessageDescriptor {
   id: string;
@@ -11,7 +10,6 @@ export const withLabels = <
   K extends string | number | symbol,
   T extends Record<string, any> & { id: K }
 >(
-  t: TFunction,
   messages: Record<K, MessageDescriptor>,
   items: T[]
 ): (T & { id: K; label: string })[] => {
@@ -25,7 +23,6 @@ export const withNames = <
   K extends string | number | symbol,
   T extends Record<string, any> & { id: K }
 >(
-  t: TFunction,
   messages: Record<K, MessageDescriptor>,
   items: T[]
 ): (T & { id: K; name: string })[] => {

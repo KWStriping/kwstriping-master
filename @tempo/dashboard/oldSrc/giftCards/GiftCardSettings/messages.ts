@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { GiftCardSettingsErrorFragment } from '@tempo/api/generated/graphql';
 import { getCommonFormFieldErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors/common';
 

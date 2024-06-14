@@ -27,9 +27,9 @@ services:
       - .env
     environment:
       <<: *common-env-vars
-      PORT: ${PORT_STOREFRONT}
+      PORT: ${PORT_FRONT}
     ports:
-      - ${PORT_STOREFRONT}:${PORT_STOREFRONT}
+      - ${PORT_FRONT}:${PORT_FRONT}
     volumes:
       - ./scripts/prebuild.ts:/root/scripts/prebuild.ts
 

@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { IMessage } from '@dashboard/components/messages';
 import { Temporal } from '@js-temporal/polyfill';
 
@@ -48,7 +47,6 @@ export const getGiftCardExpiryError = (t: TFunction): IMessage => ({
 
 export const getGiftCardCreateOnCompletedMessage = (
   errors: GiftCardCreateMutation['createGiftCard']['errors'],
-  t: TFunction,
   successMessage?: IMessage
 ): IMessage => {
   const hasExpiryError = errors.some((error) => error.field === 'expiryDate');

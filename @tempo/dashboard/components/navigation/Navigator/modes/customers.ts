@@ -1,14 +1,12 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { SearchCustomersQuery } from '@tempo/api/generated/graphql';
 import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction } from '../types';
 
 export function searchInCustomers(
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   customers: RelayToFlat<NonNullable<SearchCustomersQuery['search']>>
 ): QuickSearchAction[] {
   return customers.map((customer) => ({
@@ -30,8 +28,7 @@ export function searchInCustomers(
 }
 
 function getCustomersModeActions(
-  t: TFunction,
-  router: NextRouter,
+  router: AppRouterInstance,
   customers: RelayToFlat<NonNullable<SearchCustomersQuery['search']>>
 ): QuickSearchAction[] {
   return searchInCustomers(t, router, customers);

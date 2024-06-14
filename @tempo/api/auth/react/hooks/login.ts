@@ -17,6 +17,7 @@ export const useLogin = (): [
   { loading: boolean; error: CombinedError | undefined },
 ] => {
   const router = useRouter();
+
   const { next } = router.query;
   assert(!Array.isArray(next));
 

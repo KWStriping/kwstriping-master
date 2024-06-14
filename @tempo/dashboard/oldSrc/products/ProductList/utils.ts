@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { isInEnum } from '@tempo/utils/enums';
 import { ProductKlassKind } from '@tempo/api/generated/constants';
 

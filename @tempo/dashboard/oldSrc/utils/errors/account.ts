@@ -1,5 +1,4 @@
 import type { SetPasswordData } from '@tempo/api/auth';
-import type { TFunction } from '@tempo/next/i18n';
 import { AccountErrorCode } from '@tempo/api/generated/constants';
 
 import { getCommonFormFieldErrorMessage } from './common';
