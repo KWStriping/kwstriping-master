@@ -1,13 +1,13 @@
 'use client';
 
 import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql';
-import { translate } from '@tempo/ui/utils/translations';
 import clsx from 'clsx';
 import { useState } from 'react';
 
 import { NavigationAnchor } from '../../NavigationAnchor';
 import styles from './BurgerMenu.module.css';
 import SubCollapseMenu from './SubCollapseMenu';
+import { translate } from '@tempo/ui/utils/translations';
 
 export interface CollapseMenuProps {
   menuItem: Omit<MenuItemWithChildrenFragment, '__typename'>;

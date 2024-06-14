@@ -1,13 +1,13 @@
-import styles from './RichTextEditorContent.module.css';
-import type { EditorJsProps } from '@tempo/ui/components/inputs/RichTextEditor/RichTextEditor';
 import type { LogLevels } from '@editorjs/editorjs';
 import { useId } from '@reach/auto-id';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { createReactEditorJS } from 'react-editor-js';
+import styles from './RichTextEditorContent.module.css';
 
 import { tools } from './consts';
 import { useHasRendered } from './hooks';
+import type { EditorJsProps } from '@tempo/ui/components/inputs/RichTextEditor/RichTextEditor';
 
 export interface RichTextEditorContentProps extends Omit<EditorJsProps, 'defaultValue'> {
   id?: string;

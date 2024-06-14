@@ -1,8 +1,6 @@
 import * as m from '@paraglide/messages';
 import { passwordResetUrl } from '@tempo/api/auth/urls';
 // import { useTranslation } from '@tempo/next/i18n';
-import Button from '@tempo/ui/components/buttons/Button';
-import IconButton from '@tempo/ui/components/buttons/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
@@ -13,6 +11,8 @@ import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import styles from './index.module.css';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
+import Button from '@tempo/ui/components/buttons/Button';
 
 export interface LoginFormData {
   email: string;

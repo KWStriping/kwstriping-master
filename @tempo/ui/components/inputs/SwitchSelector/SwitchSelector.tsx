@@ -1,6 +1,6 @@
+import type { FC, ReactNode } from 'react';
 import styles from './SwitchSelector.module.css';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import type { FC, ReactNode } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   switchSelector: {
@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SwitchSelector: FC<{ children: ReactNode }> = ({ children }) => {
-
   return <div className={styles.switchSelector ?? ''}>{children}</div>;
 };
 

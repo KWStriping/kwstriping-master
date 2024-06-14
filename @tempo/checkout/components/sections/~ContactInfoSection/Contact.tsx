@@ -2,11 +2,11 @@ import { useUser } from '@tempo/api/auth/react/hooks';
 import { useQueryParams } from '@tempo/utils/url';
 import type { FC } from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { useCustomerAttach } from '@tempo/checkout/hooks/useCustomerAttach';
 import { GuestUserForm } from './GuestUserForm';
 import { ResetPassword } from './ResetPassword';
 import { SignedInUser } from './SignedInUser';
 import { SignInForm } from './SignInForm';
+import { useCustomerAttach } from '@tempo/checkout/hooks/useCustomerAttach';
 
 type Section = 'signedInUser' | 'guestUser' | 'signIn' | 'resetPassword';
 

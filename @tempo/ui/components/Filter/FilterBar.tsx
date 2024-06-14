@@ -1,14 +1,12 @@
-import styles from './FilterBar.module.css';
 import PlusIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import { forwardRef, useRef, useState, useEffect } from 'react';
-import type { ForwardedRef, FC, ReactNode } from 'react';
+import type { ForwardedRef, ReactNode } from 'react';
+import styles from './FilterBar.module.css';
 
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { Button } from '@tempo/ui/components/buttons/Button';
 import { useFilterData } from './context';
 import type { FilterMenuLabels } from './FilterMenu';
 import { FilterMenu } from './FilterMenu';
@@ -16,6 +14,8 @@ import { FilterMenu } from './FilterMenu';
 import type { FilterData, Filter, FilterLabels } from './types';
 import * as utils from './utils';
 import { FilterRow } from '.';
+import { Button } from '@tempo/ui/components/buttons/Button';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export interface FilterBarProps {
   initial?: Filter[];
@@ -25,10 +25,10 @@ export interface FilterBarProps {
   children: ReactNode;
 }
 
-export const FilterBar: FC<FilterBarProps> = forwardRef(
+export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
   ({ children, labels, onChange: changeCb, onClose }, ref: ForwardedRef<HTMLDivElement>) => {
     const filterData = useFilterData();
-      const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const button = useRef(null);
     utils.validate(filterData);
     const availableFilters = utils.getAvailableFilters(filterData);

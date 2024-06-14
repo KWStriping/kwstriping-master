@@ -1,5 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { CompleteIcon, NotAllowedIcon } from '@tempo/ui/icons';
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
 import WarningIcon from '@mui/icons-material/Warning';
@@ -10,6 +8,8 @@ import { useState } from 'react';
 import type { AlertBaseProps, AlertVariant } from './AlertBase';
 import { AlertBase } from './AlertBase';
 import styles from './index.module.css';
+import { CompleteIcon, NotAllowedIcon } from '@tempo/ui/icons';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export * from './AlertBase';
 

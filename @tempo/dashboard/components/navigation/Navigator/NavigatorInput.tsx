@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import SearchLargeIcon from '@mui/icons-material/Search';
 import { forwardRef } from 'react';
@@ -58,56 +57,50 @@ interface NavigatorInputProps extends InputHTMLAttributes<HTMLInputElement> {
   mode: QuickSearchMode;
 }
 
-const NavigatorInput: FC<NavigatorInputProps> = forwardRef<HTMLInputElement, NavigatorInputProps>(
-  (props, ref) => {
-    const { mode, ...rest } = props;
-    const styles = useStyles(props);
+const NavigatorInput = forwardRef<HTMLInputElement, NavigatorInputProps>((props, ref) => {
+  const { mode, ...rest } = props;
+  const styles = useStyles(props);
 
-    return (
-      <div className={styles.root ?? ''}>
-        {mode !== 'default' ? (
-          <span className={styles.adornment ?? ''}>
-            {mode === 'orders'
-              ? '#'
-              : mode === 'customers'
-                ? '@'
-                : mode === 'catalog'
-                  ? '$'
-                  : mode === 'help'
-                    ? '?'
-                    : '>'}
-          </span>
-        ) : (
-          <SearchLargeIcon className={styles.searchIcon ?? ''} />
-        )}
-        <input
-          autoFocus
-          autoComplete="off"
-          className={styles.input ?? ''}
-          placeholder={
-            mode === 'orders'
-              ? m.dashboard_navigatorPlaceholders_orderNumber() ?? 'Order Number'
-              : mode === 'commands'
-                ? m.dashboard_navigatorPlaceholders_typeCommand() ?? 'Type Command'
-                : mode === 'catalog'
-                  ? m.dashboard_navigatorPlaceholders_searchInCatalog() ?? 'Search in Catalog'
-                  : mode === 'customers'
-                    ? m.dashboard_navigatorPlaceholders_searchCustomer() ?? 'Search Customer'
-                    : mode === 'default'
-                      ? t(
-                          'dashboard_navigatorPlaceholders_typeToSeeAvailableActions',
-                          'Type {{key}} to see available actions',
-                          { key: "'?'" }
-                        )
-                      : ''
-          }
-          ref={ref}
-          {...rest}
-        />
-      </div>
-    );
-  }
-);
+  return (
+    <div className={styles.root ?? ''}>
+      {mode !== 'default' ? (
+        <span className={styles.adornment ?? ''}>
+          {mode === 'orders'
+            ? '#'
+            : mode === 'customers'
+              ? '@'
+              : mode === 'catalog'
+                ? '$'
+                : mode === 'help'
+                  ? '?'
+                  : '>'}
+        </span>
+      ) : (
+        <SearchLargeIcon className={styles.searchIcon ?? ''} />
+      )}
+      <input
+        autoFocus
+        autoComplete="off"
+        className={styles.input ?? ''}
+        placeholder={
+          mode === 'orders'
+            ? 'Order Number'
+            : mode === 'commands'
+              ? 'Type Command'
+              : mode === 'catalog'
+                ? 'Search in Catalog'
+                : mode === 'customers'
+                  ? 'Search Customer'
+                  : mode === 'default'
+                    ? `Type ${"'?'"} to see available actions`
+                    : ''
+        }
+        ref={ref}
+        {...rest}
+      />
+    </div>
+  );
+});
 
 NavigatorInput.displayName = 'NavigatorInput';
 export default NavigatorInput;

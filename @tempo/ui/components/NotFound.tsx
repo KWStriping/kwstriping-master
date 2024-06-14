@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import Typography from '@mui/material/Typography';
 
 export const NotFound = () => {

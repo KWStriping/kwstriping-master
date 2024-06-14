@@ -2,13 +2,13 @@ import type {
   ProductDetailsFragment,
   ProductMediaItemFragment,
 } from '@tempo/api/generated/graphql';
-import { ImageExpand } from '@tempo/ui/components/product/ImageExpand';
-import { VideoExpand } from '@tempo/ui/components/product/VideoExpand';
-import { getGalleryMedia, getVideoThumbnail } from '@tempo/ui/utils/media';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
+import { getGalleryMedia, getVideoThumbnail } from '@tempo/ui/utils/media';
+import { VideoExpand } from '@tempo/ui/components/product/VideoExpand';
+import { ImageExpand } from '@tempo/ui/components/product/ImageExpand';
 
 export interface ProductGalleryProps {
   product: Maybe<ProductDetailsFragment>;

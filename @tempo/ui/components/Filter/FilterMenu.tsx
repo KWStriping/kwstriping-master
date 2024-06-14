@@ -1,4 +1,3 @@
-import styles from './FilterMenu.module.css';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';

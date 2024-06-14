@@ -1,6 +1,5 @@
-import * as m from '@paraglide/messages';
-import { Button } from '@tempo/ui/components/buttons/Button';
 import type { FC, ReactNode } from 'react';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface DeleteButtonProps {
   onClick: () => void;
@@ -17,7 +16,7 @@ const DeleteButton: FC<DeleteButtonProps> = ({ onClick, label, testId, disabled 
       data-test-id={testId ? 'confirm-delete' : 'button-bar-delete'}
       disabled={disabled}
     >
-      {label || (m.delete() ?? 'Delete')}
+      {label || 'Delete'}
     </Button>
   );
 };

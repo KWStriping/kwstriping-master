@@ -1,6 +1,6 @@
-import { useColorScheme } from '@tempo/ui/theme/styles';
 import type { TurnstileProps as ReactTurnstileProps } from '@marsidev/react-turnstile';
 import { Turnstile as ReactTurnstile } from '@marsidev/react-turnstile';
+import { useColorScheme } from '@tempo/ui/theme/styles';
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 

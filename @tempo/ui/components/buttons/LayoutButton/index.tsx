@@ -1,4 +1,3 @@
-import type { UserInteraction } from '@tempo/ui/utils';
 import type { ButtonBaseProps } from '@mui/material/ButtonBase';
 import ButtonBase from '@mui/material/ButtonBase';
 import clsx from 'clsx';
@@ -6,6 +5,7 @@ import { forwardRef } from 'react';
 import type { ElementType, ForwardedRef } from 'react';
 
 import styles from './index.module.css';
+import type { UserInteraction } from '@tempo/ui/utils';
 
 export type LayoutButtonProps<T extends ElementType> = ButtonBaseProps<T, { component?: T }> & {
   state?: UserInteraction;

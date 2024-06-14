@@ -1,19 +1,18 @@
+import MenuItem from '@mui/material/MenuItem';
+import type { FC } from 'react';
+import type { FilterData } from '../types';
 import styles from './MultipleValueAutocompleteFilterField.module.css';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import { MultipleValueAutocomplete } from '@tempo/ui/components/inputs/MultipleValueAutocomplete';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import MenuItem from '@mui/material/MenuItem';
-import type { FC } from 'react';
 
 // import useStyles from '../styles';
-import type { FilterData } from '../types';
 
 export interface FilterContentProps {
   filter: FilterData;
 }
 
 export const MultipleValueAutocompleteFilterField: FC<FilterContentProps> = ({ filter }) => {
-
   const { onChange } = useFilterActions();
 
   const { name, options } = filter;

@@ -1,10 +1,9 @@
-import ArrowSort from '@tempo/dashboard/oldSrc/icons/ArrowSort';
 import TableCell from '@mui/material/TableCell';
 import type { TableCellProps } from '@mui/material/TableCell';
 import clsx from 'clsx';
-import type { FC } from 'react';
 import { forwardRef } from 'react';
 import styles from './index.module.css';
+import ArrowSort from '@tempo/dashboard/oldSrc/icons/ArrowSort';
 
 export type TableCellHeaderArrowDirection = 'asc' | 'desc';
 export type TableCellHeaderArrowPosition = 'left' | 'right';
@@ -15,7 +14,7 @@ export interface TableCellHeaderProps extends TableCellProps {
   disabled?: boolean;
 }
 
-const TableCellHeader: FC<TableCellHeaderProps> = forwardRef<unknown, TableCellHeaderProps>(
+const TableCellHeader = forwardRef<HTMLTableHeaderCellElement, TableCellHeaderProps>(
   (props, ref) => {
     const {
       arrowPosition,
