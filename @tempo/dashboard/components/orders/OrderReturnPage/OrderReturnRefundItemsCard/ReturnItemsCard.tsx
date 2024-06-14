@@ -177,8 +177,7 @@ const ItemsCard: FC<OrderReturnRefundLinesCardProps> = ({
                   productName,
                   variant,
                 } = line;
-                // const styles = useStyles();
-                const styles = {};
+                              const styles = {};
                 const isValueError = false;
                 const { isRefunded, currentQuantity } = getQuantityDataFromItems(
                   itemsQuantities,

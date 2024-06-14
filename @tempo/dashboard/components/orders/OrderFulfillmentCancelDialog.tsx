@@ -72,8 +72,7 @@ const OrderFulfillmentCancelDialog: FC<OrderFulfillmentCancelDialogProps> = (pro
             setDisplayValue,
             choices
           );
-          // const styles = useStyles();
-          const styles = {};
+                  const styles = {};
           return (
             <>
               <DialogTitle>

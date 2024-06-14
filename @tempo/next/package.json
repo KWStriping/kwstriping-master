@@ -2,9 +2,6 @@
   "name": "@tempo/next",
   "private": true,
   "type": "module",
-  "exports": {
-    "./config": "./config.js"
-  },
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {

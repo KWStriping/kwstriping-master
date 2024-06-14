@@ -1,10 +1,3 @@
-import styles from './index.module.css';
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { RemovableChip } from '@tempo/ui/components/chip/RemovableChip';
-import type { Choice } from '@tempo/ui/components/Filter';
-import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools/useElementScroll';
-import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import PlusIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grow from '@mui/material/Grow';
@@ -17,9 +10,18 @@ import clsx from 'clsx';
 import type { UseComboboxGetItemPropsOptions } from 'downshift';
 import type { CSSProperties, ReactNode, FC } from 'react';
 import { useEffect } from 'react';
-
+import styles from './index.module.css';
 
 import useMultipleValueAutocomplete from './useMultipleValueAutocomplete';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
+import type { SyntheticChangeEvent } from '@tempo/ui/utils';
+import {
+  isScrolledToBottom,
+  useElementScroll,
+} from '@tempo/ui/components/tools/useElementScroll';
+import type { Choice } from '@tempo/ui/components/Filter';
+import { RemovableChip } from '@tempo/ui/components/chip/RemovableChip';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export interface MultipleValueAutocompleteProps
   extends Omit<StandardTextFieldProps, 'onChange' | 'children' | 'name'> {
@@ -59,7 +61,7 @@ export const MultipleValueAutocomplete: FC<MultipleValueAutocompleteProps> = ({
 }: MultipleValueAutocompleteProps) => {
   const {
     anchor,
-    comboboxProps,
+    // comboboxProps,
     filteredChoices,
     getItemProps,
     getSelectedItemProps,
@@ -72,7 +74,7 @@ export const MultipleValueAutocomplete: FC<MultipleValueAutocompleteProps> = ({
     isOpen,
     labelProps,
     menuProps,
-    ref,
+    // ref,
     removeSelectedItem,
     selectedItems,
   } = useMultipleValueAutocomplete({
@@ -100,13 +102,13 @@ export const MultipleValueAutocomplete: FC<MultipleValueAutocompleteProps> = ({
     <>
       <TextField
         {...rest}
-        {...comboboxProps}
+        // {...comboboxProps}
         name={name}
         InputLabelProps={{
-          shrink: isOpen || selectedItems.length || inputValue.length,
+          // shrink: isOpen || selectedItems.length || inputValue.length, // TODO
           ...labelProps,
         }}
-        ref={ref}
+        // ref={ref}
         InputProps={{
           ...InputProps,
           ...inputProps,
@@ -152,7 +154,7 @@ export const MultipleValueAutocomplete: FC<MultipleValueAutocompleteProps> = ({
         inputProps={{ ref: inputRef, style: { width: inputWidth } }}
       />
       <Popper
-        className={clsx(styles.popper, menuProps.className)}
+        className={clsx(styles.popper)} // , menuProps.className
         open={isOpen}
         anchorEl={anchor.current}
         transition

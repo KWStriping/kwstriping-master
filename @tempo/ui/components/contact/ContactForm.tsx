@@ -74,7 +74,7 @@ export default function ContactForm() {
           </Typography>
         ) : status === 'submitted' ? (
           <Box>
-            <Typography>{m.success()}</Typography>
+            <Typography>{'Sent successfully'}</Typography>
             <Box mt={3} display={'flex'} justifyContent={'center'}>
               <Button
                 variant={'outlined'}
@@ -101,7 +101,7 @@ export default function ContactForm() {
       >
         <form onSubmit={handleSubmit} style={{ width: '100%', position: 'relative' }}>
           <TextField
-            label={m.nameFieldLabel()}
+            label={'Name'}
             name={'name'}
             value={contactFormData.name ?? ''}
             onChange={(event) => handleChange('name', event.target.value)}
@@ -110,7 +110,7 @@ export default function ContactForm() {
             margin={'dense'}
           />
           <TextField
-            label={m.emailFieldLabel()}
+            label={'E-mail address'}
             name={'email'}
             value={contactFormData.email ?? ''}
             onChange={(event) => handleChange('email', event.target.value)}
@@ -119,7 +119,7 @@ export default function ContactForm() {
             margin={'dense'}
           />
           <TextField
-            label={m.messageFieldLabel()}
+            label={'Message'}
             name={'message'}
             value={contactFormData.message ?? ''}
             onChange={(event) => handleChange('message', event.target.value)}

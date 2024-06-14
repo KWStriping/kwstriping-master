@@ -23,6 +23,7 @@ export interface SelectProps<TData extends string = string>
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   options: Option<TData>[];
   classNames?: ClassNames<'container'>;
+  placeholder?: string;
 }
 
 const SelectComponent = <TData extends string = string>(

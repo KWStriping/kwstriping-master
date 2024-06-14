@@ -28,8 +28,7 @@ export interface FilterBarProps {
 export const FilterBar: FC<FilterBarProps> = forwardRef(
   ({ children, labels, onChange: changeCb, onClose }, ref: ForwardedRef<HTMLDivElement>) => {
     const filterData = useFilterData();
-    // const styles = useStyles();
-    const [menuOpen, setMenuOpen] = useState(false);
+      const [menuOpen, setMenuOpen] = useState(false);
     const button = useRef(null);
     utils.validate(filterData);
     const availableFilters = utils.getAvailableFilters(filterData);

@@ -1,4 +1,3 @@
-import { Trans } from '@tempo/next/i18n';
 import type { Node } from '@tempo/ui/types';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import TableCell from '@mui/material/TableCell';

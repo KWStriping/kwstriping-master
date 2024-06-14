@@ -54,28 +54,28 @@
     "target": "ESNext",
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@tempo/api": [
+      "@tempo/api/*": [
         "@tempo/api/*"
       ],
-      "@tempo/blog": [
+      "@tempo/blog/*": [
         "@tempo/blog/*"
       ],
-      "@tempo/checkout": [
+      "@tempo/checkout/*": [
         "@tempo/checkout/*"
       ],
-      "@tempo/data": [
+      "@tempo/data/*": [
         "@tempo/data/*"
       ],
-      "@tempo/forms": [
+      "@tempo/forms/*": [
         "@tempo/forms/*"
       ],
-      "@tempo/next": [
+      "@tempo/next/*": [
         "@tempo/next/*"
       ],
-      "@tempo/ui": [
+      "@tempo/ui/*": [
         "@tempo/ui/*"
       ],
-      "@tempo/utils": [
+      "@tempo/utils/*": [
         "@tempo/utils/*"
       ],
       "@paraglide/*": [
