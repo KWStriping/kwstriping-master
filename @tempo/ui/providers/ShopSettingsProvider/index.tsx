@@ -128,6 +128,7 @@ const DEFAULTS: ShopSettings = {
     name: '', // TODO
   },
   defaultLocale: DEFAULT_LOCALE,
+  defaultWeightUnit: 'LB',
   demoMode: DEMO_MODE,
   domain: '',
   displayProductImages: true,
@@ -152,8 +153,8 @@ const DEFAULTS: ShopSettings = {
   logo: {
     __typename: 'Image',
     url: '/logo-black.svg',
-    height: '48',
-    width: '192',
+    height: 48,
+    width: 192,
     alt: 'Logo',
   },
   name: STOREFRONT_NAME,
@@ -168,6 +169,7 @@ const DEFAULTS: ShopSettings = {
   shopPhone: STOREFRONT_PHONE,
   shopEmail: STOREFRONT_EMAIL,
   allowedStates: [],
+  trackInventoryByDefault: true,
 };
 
 const ShopSettingsContext = createContext<ShopSettings>(DEFAULTS);

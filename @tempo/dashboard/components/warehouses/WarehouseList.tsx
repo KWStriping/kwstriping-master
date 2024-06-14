@@ -66,7 +66,6 @@ const numberOfColumns = 3;
 
 const WarehouseList: FC<WarehouseListProps> = (props) => {
   const { warehouses, disabled, settings, sort, onUpdateListSettings, onRemove, onSort } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

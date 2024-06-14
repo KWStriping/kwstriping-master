@@ -58,7 +58,6 @@ const WarehouseSettings: FC<WarehouseSettingsProps> = ({
       });
     }
   }, [data?.isPrivate]);
-  // const styles = useStyles();
   const styles = {};
 
   const booleanRadioHandler = ({ target: { name, value } }) => {

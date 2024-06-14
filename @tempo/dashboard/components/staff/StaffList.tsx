@@ -71,7 +71,6 @@ const numberOfColumns = 2;
 
 const StaffList: FC<StaffListProps> = (props) => {
   const { settings, disabled, onUpdateListSettings, onSort, sort, staffMembers } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

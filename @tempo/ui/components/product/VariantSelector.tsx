@@ -4,9 +4,8 @@ import type {
 } from '@tempo/api/generated/graphql';
 import { RadioGroup } from '@headlessui/react';
 import clsx from 'clsx';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { translate } from '@tempo/ui/utils/translations';
 import Typography from '@mui/material/Typography';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useShopSettings } from '@tempo/ui/providers';
 
 export interface VariantSelectorProps {
@@ -66,7 +65,8 @@ export function VariantSelector({
                         className={'grow font-semibold text-md'}
                         data-testid={`variantOf${variant.name}`}
                       >
-                        {translate(variant, 'name')}
+                        {/* TODO translate */}
+                        {variant.name}
                       </Typography>
                       <div>
                         {shouldDisplayPrice && formatPrice(variant.pricing?.price?.gross)}

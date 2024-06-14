@@ -4,12 +4,9 @@ import type {
   ProductFilter,
   ProductOrdering,
 } from '@tempo/api/generated/graphql';
-import type { TransitionOptions } from 'next-usequerystate';
 import { queryTypes, useQueryState } from 'next-usequerystate';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import { translate } from '@tempo/ui/utils/translations';
-import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
 import type { UrlFilter } from './attributes';
 import {
   getFilterOptions,
@@ -24,6 +21,8 @@ import type { UrlSorting } from './sorting';
 import { parseQuerySort, serializeQuerySort } from './sorting';
 import { SortingDropdown } from './SortingDropdown';
 import { StockToggle } from './StockToggle';
+import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
+import { translate } from '@tempo/ui/utils/translations';
 
 const INCLUDE_STOCK_TOGGLE = false;
 const INCLUDE_FILTER_DROPDOWN = false;
@@ -56,10 +55,8 @@ export function FilteredProductList({
   const [sortByQuery, setSortByQuery] = useQueryState('sortBy', {});
 
   const sortBy = parseQuerySort(sortByQuery);
-  const setSortBy = (
-    value: UrlSorting | undefined | null,
-    transitionOptions?: TransitionOptions | undefined
-  ) => setSortByQuery(serializeQuerySort(value), transitionOptions);
+  const setSortBy = (value: UrlSorting | undefined | null, transitionOptions?: any) =>
+    setSortByQuery(serializeQuerySort(value), transitionOptions);
 
   const [inStockFilter, setInStockFilter] = useQueryState(
     'inStock',

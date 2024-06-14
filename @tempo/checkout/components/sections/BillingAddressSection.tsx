@@ -3,7 +3,7 @@ import { CheckoutBillingAddressUpdateDocument } from '@tempo/api/generated/graph
 import { useUser } from '@tempo/api/auth/react/hooks';
 // import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types';
-import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
+import { AddressDisplay } from '@tempo/ui';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';

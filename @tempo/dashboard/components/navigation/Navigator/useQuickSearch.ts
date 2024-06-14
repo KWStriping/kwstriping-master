@@ -1,5 +1,5 @@
 import { useSearch, useMutation } from '@tempo/api/hooks';
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 import {
   OrderDraftCreateDocument,
   SearchCatalogDocument,

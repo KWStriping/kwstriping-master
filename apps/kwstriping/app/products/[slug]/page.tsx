@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import { createClient } from '@urql/core';
 import { registerUrql } from '@urql/next/rsc';
 import React from 'react';
-import Layout from '@kwstriping/app/client/Layout';
 import { cacheExchange, fetchExchange } from '@tempo/api/exchanges';
 import { gql } from '@tempo/api';
 import AbstractProductPage from './abstractproduct';
 import ConcreteProductPage from './concreteproduct';
+import Layout from '@kwstriping/app/client/Layout';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');
@@ -47,6 +47,29 @@ export const metadata: Metadata = {
 //         {
 //           url: thumbnailUrl,
 //           alt: thumbnailAlt,
+//         },
+//       ],
+//       site_name: 'Tempo Tutorial',
+//     }}
+//   />
+// );
+
+// NOT FOUND SEO
+// const { name: shopName } = useShopSettings();
+// const title = `Page Not found - ${shopName}`;
+// const description = 'Page not found.';
+
+// return (
+//   <NextSeo
+//     title={title}
+//     description={description}
+//     openGraph={{
+//       title,
+//       description,
+//       images: [
+//         {
+//           url: 'https://og-image.vercel.app/React%20Storefront.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fvercel-triangle-black.svg&images=https%3A%2F%2Ftempo.io%2Fstatic%2Flogo-ad1b99aa7c6f5acf58a61640af760cfd.svg',
+//           alt: 'Tempo tutorial hero image',
 //         },
 //       ],
 //       site_name: 'Tempo Tutorial',

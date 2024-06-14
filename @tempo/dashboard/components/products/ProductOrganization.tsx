@@ -96,7 +96,6 @@ const ProductOrganization: FC<ProductOrganizationProps> = (props) => {
     onCollectionChange,
     onProductKlassChange,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const formErrors = getFormErrors(
     ['productKlass', 'category', 'collections', 'isPublished'],

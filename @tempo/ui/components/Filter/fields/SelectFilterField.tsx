@@ -1,3 +1,4 @@
+import styles from './SelectFilterField.module.css';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -12,9 +13,7 @@ export interface FilterContentProps {
 }
 
 export const SelectFilterField: FC<FilterContentProps> = ({ filter }) => {
-  // const styles = useStyles();
 
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name, options } = filter;

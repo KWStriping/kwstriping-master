@@ -1,3 +1,4 @@
+import styles from './RangeFilterField.module.css';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
@@ -14,9 +15,7 @@ export interface FilterContentProps {
 }
 
 export const RangeFilterField: FC<FilterContentProps> = ({ filter, labels }) => {
-  // const styles = useStyles();
 
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name } = filter;

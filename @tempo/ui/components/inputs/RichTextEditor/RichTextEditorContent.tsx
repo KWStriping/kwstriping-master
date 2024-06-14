@@ -1,3 +1,4 @@
+import styles from './RichTextEditorContent.module.css';
 import type { EditorJsProps } from '@tempo/ui/components/inputs/RichTextEditor/RichTextEditor';
 import type { LogLevels } from '@editorjs/editorjs';
 import { useId } from '@reach/auto-id';
@@ -7,7 +8,6 @@ import { createReactEditorJS } from 'react-editor-js';
 
 import { tools } from './consts';
 import { useHasRendered } from './hooks';
-// import useStyles from './styles';
 
 export interface RichTextEditorContentProps extends Omit<EditorJsProps, 'defaultValue'> {
   id?: string;
@@ -22,8 +22,6 @@ const RichTextEditorContent: FC<RichTextEditorContentProps> = ({
   value,
   ...props
 }) => {
-  // const styles = useStyles();
-  const styles = {};
   const id = useId(defaultId);
 
   // We need to render FormControl first to get id from @reach/auto-id

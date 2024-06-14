@@ -20,7 +20,6 @@ const useStyles = makeStyles(
 export type FilterGroupLabelProps<K extends string = string> = FilterFieldBaseProps<K>;
 
 const FilterGroupLabel: FC<FilterGroupLabelProps> = ({ filter, onFilterPropertyChange }) => {
-  // const styles = useStyles();
   const styles = {};
   if (!filter) return null;
 

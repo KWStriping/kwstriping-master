@@ -6,7 +6,7 @@ const ALLOW_ROOT_LEVEL_PATHS = true;
 const BASE_URL = process.env.NEXT_PUBLIC_STOREFRONT_URL || '';
 
 export const getLinkPath = (
-  item: Omit<MenuItemFragment, '__typename'>,
+  item: Pick<MenuItemFragment, 'category' | 'collection' | 'page' | 'url'>,
   paths: ReturnType<typeof usePaths>
 ) => {
   if (item.category) {

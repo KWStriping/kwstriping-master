@@ -1,4 +1,4 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
+/* import { makeStyles } from '@tempo/ui/theme/styles';
 
 const iconWidth = 40;
 
@@ -101,4 +101,4 @@ const useStyles = makeStyles(
   { name: 'Notification' }
 );
 
-export default useStyles;
+export default useStyles; */

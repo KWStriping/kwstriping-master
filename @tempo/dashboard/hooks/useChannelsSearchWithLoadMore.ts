@@ -1,3 +1,4 @@
+import type { BaseChannelsQuery, BaseChannelsQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { BaseChannelsDocument } from '@tempo/api/generated/graphql';
 import type { ChannelsWithLoadMoreProps } from '@tempo/dashboard/hooks/useChannelsSearch';
@@ -13,7 +14,7 @@ const INITIAL_INDEX = 0;
 export const useChannelsSearchWithLoadMore = (
   itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE
 ): ChannelsWithLoadMoreProps => {
-  const [{ data, fetching: loading }] = useQuery(BaseChannelsDocument, {});
+  const [{ data, fetching: loading }] = useQuery<BaseChannelsQuery, BaseChannelsQueryVariables>(BaseChannelsDocument, {});
 
   const {
     query,

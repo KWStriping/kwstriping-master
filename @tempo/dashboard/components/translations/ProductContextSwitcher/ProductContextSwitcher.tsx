@@ -1,3 +1,4 @@
+import type { ProductListQuery, ProductListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { useQuery } from '@tempo/api/hooks';
@@ -67,10 +68,9 @@ const ProductContextSwitcher: FC<ProductContextSwitcherProps> = ({
   selectedId,
 }) => {
   const router = useRouter();
-  const [{ data }] = useQuery(ProductListDocument, {
+  const [{ data }] = useQuery<ProductListQuery, ProductListQueryVariables>(ProductListDocument, {
     variables: { id: productId },
   });
-  // const styles = useStyles();
   const styles = {};
   const [isExpanded, setExpandedState] = useState(false);
   const anchor = useRef<HTMLDivElement | null>(null);

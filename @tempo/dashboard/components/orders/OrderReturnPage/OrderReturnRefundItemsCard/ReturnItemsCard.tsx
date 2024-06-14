@@ -111,7 +111,6 @@ const ItemsCard: FC<OrderReturnRefundLinesCardProps> = ({
   fulfilmentId,
   order,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const handleChangeQuantity = (id: string) => (event: ChangeEvent<HTMLInputElement>) =>

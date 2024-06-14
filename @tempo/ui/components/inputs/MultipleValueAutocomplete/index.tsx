@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { RemovableChip } from '@tempo/ui/components/chip/RemovableChip';
 import type { Choice } from '@tempo/ui/components/Filter';
@@ -17,7 +18,6 @@ import type { UseComboboxGetItemPropsOptions } from 'downshift';
 import type { CSSProperties, ReactNode, FC } from 'react';
 import { useEffect } from 'react';
 
-// import useStyles from './styles';
 
 import useMultipleValueAutocomplete from './useMultipleValueAutocomplete';
 
@@ -57,8 +57,6 @@ export const MultipleValueAutocomplete: FC<MultipleValueAutocompleteProps> = ({
   onScrollToBottom,
   ...rest
 }: MultipleValueAutocompleteProps) => {
-  // const styles = useStyles();
-  const styles = {};
   const {
     anchor,
     comboboxProps,

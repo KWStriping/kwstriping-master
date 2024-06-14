@@ -1,5 +1,6 @@
 'use client';
 
+import type { MainMenuQuery, MainMenuQueryVariables } from '@tempo/api/generated/graphql';
 import { useMemo } from 'react';
 
 import { MainMenuDocument } from '@tempo/api/generated/graphql';
@@ -16,7 +17,7 @@ type LayoutProps = Pick<CoreLayoutProps, 'children' | 'transparentBg'>;
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
   const { query } = useLocalization();
-  const [{ data }] = useQuery(MainMenuDocument, {
+  const [{ data }] = useQuery<MainMenuQuery, MainMenuQueryVariables>(MainMenuDocument, {
     variables: { ...query },
   });
   const navbarItems = useMemo(

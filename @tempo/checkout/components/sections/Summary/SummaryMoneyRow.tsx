@@ -1,5 +1,5 @@
-import type { MoneyProps } from '@tempo/ui/components/Money';
-import { Money } from '@tempo/ui/components/Money';
+import type { MoneyProps } from '@tempo/ui';
+import { Money } from '@tempo/ui';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 

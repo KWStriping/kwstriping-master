@@ -1,3 +1,4 @@
+import type { WarehouseListQuery, WarehouseListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { useShopSettings } from '@tempo/ui';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
@@ -49,7 +50,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
   const router = useRouter();
   const { enableMetadata } = useShopSettings();
   const { autoApproveFulfillment, fulfillmentAllowUnpaid } = useShopSettings();
-  const [{ data: warehousesData }] = useQuery(WarehouseListDocument, {
+  const [{ data: warehousesData }] = useQuery<WarehouseListQuery, WarehouseListQueryVariables>(WarehouseListDocument, {
     displayLoader: true,
     variables: {
       first: 30,

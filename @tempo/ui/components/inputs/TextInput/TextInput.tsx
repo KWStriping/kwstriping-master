@@ -1,4 +1,4 @@
-import type { ClassNames } from '@tempo/types';
+import type { ClassNames } from '@tempo/next/types';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { Ref, InputHTMLAttributes, ReactNode } from 'react';
@@ -57,7 +57,11 @@ export const TextInput = forwardRef(
         </Label>
       )}
       {error && (
-        <Typography fontSize="sm" color="error" className={styles['text-input-error-caption'] ?? ''}>
+        <Typography
+          fontSize="sm"
+          color="error"
+          className={styles['text-input-error-caption'] ?? ''}
+        >
           {error}
         </Typography>
       )}

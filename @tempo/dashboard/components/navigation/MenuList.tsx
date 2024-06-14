@@ -69,7 +69,6 @@ const MenuList: FC<MenuListProps> = (props) => {
     toggleAll,
     toolbar,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

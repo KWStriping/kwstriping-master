@@ -31,7 +31,6 @@ const MaximalButton: FC<MaximalButtonProps> = ({ onClick }) => {
       </>
     </Button>
   );
-  // const styles = useStyles();
   const styles = {};
 };
 

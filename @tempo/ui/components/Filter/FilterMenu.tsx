@@ -1,3 +1,4 @@
+import styles from './FilterMenu.module.css';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
@@ -6,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import { useFilterActions, useFilterData } from './context';
-// import useStyles from './styles';
 
 import { getAvailableFilters } from './utils';
 
@@ -19,8 +19,6 @@ export interface FilterMenuProps {
 }
 
 export const FilterMenu: FC<FilterMenuProps> = ({ anchorEl, labels, open, onClose }) => {
-  // const styles = useStyles();
-  const styles = {};
   const filters = useFilterData();
   const { toggle } = useFilterActions();
 

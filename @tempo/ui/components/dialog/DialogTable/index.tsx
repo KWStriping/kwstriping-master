@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import type { TableProps } from '@mui/material/Table';
 import Table from '@mui/material/Table';
 import { forwardRef } from 'react';
@@ -11,7 +12,6 @@ export interface DialogTableProps extends TableProps {
 export const DialogTable: FC<DialogTableProps> = forwardRef<HTMLDivElement, DialogTableProps>(
   ({ children, innerRef, ...props }, ref) => {
     // const styles = useStyles();
-    const styles = {};
 
     return (
       <div className={styles.wrapper ?? ''} ref={ref}>

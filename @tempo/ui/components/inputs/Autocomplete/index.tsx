@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import type { Choice } from '@tempo/ui/components/Filter';
 import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
@@ -16,7 +17,6 @@ import { useCombobox } from 'downshift';
 import { useRef, useEffect } from 'react';
 import type { CSSProperties, FC, ReactNode } from 'react';
 
-// import useStyles from './styles';
 
 export interface AutocompleteProps extends Omit<StandardTextFieldProps, 'children'> {
   children: (data: {
@@ -47,8 +47,6 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   onScrollToBottom,
   ...rest
 }) => {
-  // const styles = useStyles();
-  const styles = {};
   const anchor = useRef<HTMLDivElement | null>(null);
   const input = useRef<HTMLInputElement>();
 

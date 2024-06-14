@@ -1,3 +1,4 @@
+import type { TData, TVariables } from '@tempo/api/generated/graphql';
 import type {
   AnyVariables,
   OperationResult,

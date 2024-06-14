@@ -1,3 +1,4 @@
+import type { CurrentUserAddressesQuery, CurrentUserAddressesQueryVariables } from '@tempo/api/generated/graphql';
 import type { AddressFragment, CheckoutError } from '@tempo/api/generated/graphql';
 import { CurrentUserAddressesDocument } from '@tempo/api/generated/graphql';
 import { CountryCode } from '@tempo/api/generated/constants';
@@ -13,7 +14,7 @@ interface SavedAddressSelectionListProps {
 }
 
 export function SavedAddressSelectionList({ updateAddress }: SavedAddressSelectionListProps) {
-  const [{ fetching: loading, error, data }] = useQuery(CurrentUserAddressesDocument, {});
+  const [{ fetching: loading, error, data }] = useQuery<CurrentUserAddressesQuery, CurrentUserAddressesQueryVariables>(CurrentUserAddressesDocument, {});
   const [selectedSavedAddress, setSelectedSavedAddress] = useState<AddressFragment | null>();
 
   if (loading) {

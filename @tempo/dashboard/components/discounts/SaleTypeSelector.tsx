@@ -51,7 +51,6 @@ function createChoices(t: TFunction): RadioGroupFieldChoice[] {
 
 const SaleTypeSelector: FC<SaleTypeProps> = (props) => {
   const { data, disabled, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const choices = createChoices(t);

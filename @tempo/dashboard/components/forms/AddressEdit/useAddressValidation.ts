@@ -1,3 +1,4 @@
+import type { AddressValidationRulesQuery, AddressValidationRulesQueryVariables } from '@tempo/api/generated/graphql';
 import type { ChoiceValue } from '@tempo/api/auth/dist/apollo/types';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import type { AddressValidationRulesQuery, CountryCode } from '@tempo/api/generated/graphql';
@@ -20,7 +21,7 @@ const selectRules = (data: AddressValidationRulesQuery) =>
   data ? data?.addressValidationRules : { countryAreaChoices: [], allowedFields: [] };
 
 const useValidationRules = (countryCode?: CountryCode) => {
-  const [{ data, fetching: loading }] = useQuery(AddressValidationRulesDocument, {
+  const [{ data, fetching: loading }] = useQuery<AddressValidationRulesQuery, AddressValidationRulesQueryVariables>(AddressValidationRulesDocument, {
     variables: { countryCode: countryCode as CountryCode },
     pause: !countryCode,
   });

@@ -17,9 +17,9 @@ import { useColorScheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import { cloneElement, useMemo, useState, useRef, useCallback } from 'react';
 import type { MouseEventHandler, ReactElement, Ref, FC, ReactNode } from 'react';
-
+import styles from './Tooltip.module.css';
 import { Arrow } from './Arrow';
-import useStyles from './styles';
+
 import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 
 export interface TooltipProps {
@@ -108,13 +108,9 @@ export const Tooltip: FC<TooltipProps> = ({
     return placement.split('-')[0] as Side;
   }, [placement]);
 
-  const styles = useStyles({ variant, side });
-
-  // const styles = {};
-
   const mountReference = useCallback(mergeRefs(reference, referenceRef), []);
   const mountFloating = useCallback(mergeRefs(floating, floatingRef), []);
-  const mountArrow = useCallback((el: HTMLDivElement) => {
+  const mountArrow = useCallback((el: HTMLDivElement | null) => {
     arrowRef.current = el;
     update();
   }, []);

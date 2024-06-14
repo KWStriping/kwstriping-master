@@ -64,7 +64,6 @@ const CategoryList: FC<CategoryListProps> = (props) => {
     onUpdateListSettings,
     onSort,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const numberOfColumns = categories?.length === 0 ? 3 : 4;
 

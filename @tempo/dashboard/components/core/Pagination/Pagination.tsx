@@ -4,7 +4,6 @@ import type { PaginationActionsProps } from './PaginationActions';
 import { PaginationActions } from './PaginationActions';
 import type { PaginationRowNumberSelectProps } from './PaginationRowNumberSelect';
 import { PaginationRowNumberSelect } from './PaginationRowNumberSelect';
-// import useStyles from './styles';
 
 export interface PaginationProps<ActionProps = {}>
   extends PaginationActionsProps<ActionProps>,
@@ -29,7 +28,6 @@ export const Pagination = <ActionProps,>({
   onRowNumberUpdate,
   ...other
 }: PaginationProps<ActionProps>): ReactElement => {
-  // const styles = useStyles();
   const styles = {};
 
   return (

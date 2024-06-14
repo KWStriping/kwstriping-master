@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { default as MuiAccordion } from '@mui/material/Accordion';
 import { default as MuiAAccordionDetails } from '@mui/material/AccordionDetails';
@@ -6,11 +7,8 @@ import { default as MuiAccordionSummary } from '@mui/material/AccordionSummary';
 import type { FC } from 'react';
 import { forwardRef } from 'react';
 
-// import useStyles from './styles';
 
 export const AccordionSummary: FC<AccordionSummaryProps> = forwardRef((props, ref) => {
-  // const styles = useStyles();
-  const styles = {};
 
   return (
     <MuiAccordionSummary

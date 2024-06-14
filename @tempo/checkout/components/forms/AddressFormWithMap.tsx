@@ -2,7 +2,7 @@ import latLngData from '@tempo/data/stateLatLngs.json';
 import stateNames from '@tempo/data/stateNames.json';
 import { useCallback } from 'react';
 import Typography from '@mui/material/Typography';
-import AddressDisplay from '@tempo/ui/components/AddressDisplay';
+import AddressDisplay from '@tempo/ui';
 import Map, { useMap } from '../Map';
 import { AddressForm } from './AddressForm';
 import type { AddressFormProps } from './AddressForm';

@@ -120,7 +120,6 @@ interface ExtendedTimelineEventProps {
 
 const ExtendedTimelineEvent: FC<ExtendedTimelineEventProps> = ({ event, orderCurrency }) => {
   const { id, date, type, lines, amount, transactionReference, shippingCostsIncluded } = event;
-  // const styles = useStyles();
   const styles = {};
 
   const eventTypeInCamelCase = camelCase(type);

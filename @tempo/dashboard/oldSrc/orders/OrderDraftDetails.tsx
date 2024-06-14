@@ -1,3 +1,4 @@
+import type { ChannelUsabilityDataQuery, ChannelUsabilityDataQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useSearch } from '@tempo/api/hooks';
@@ -95,7 +96,7 @@ export const OrderDraftDetails: FC<OrderDraftDetailsProps> = ({
   const order = data?.order;
   const router = useRouter();
 
-  const [{ data: channelUsabilityData }] = useQuery(ChannelUsabilityDataDocument, {
+  const [{ data: channelUsabilityData }] = useQuery<ChannelUsabilityDataQuery, ChannelUsabilityDataQueryVariables>(ChannelUsabilityDataDocument, {
     variables: {
       channel: order.channel.slug,
     },

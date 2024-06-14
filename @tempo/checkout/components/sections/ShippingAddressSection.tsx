@@ -4,7 +4,7 @@ import { CheckoutShippingAddressUpdateDocument } from '@tempo/api/generated/grap
 import { useUser } from '@tempo/api/auth/react/hooks';
 // import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types/addresses';
-import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
+import { AddressDisplay } from '@tempo/ui';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';

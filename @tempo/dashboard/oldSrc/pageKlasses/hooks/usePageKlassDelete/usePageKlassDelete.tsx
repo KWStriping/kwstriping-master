@@ -35,7 +35,7 @@ function usePageKlassDelete({
   const shouldSkipPageListQuery = !pageKlasses.length || !isDeleteDialogOpen;
 
   const { data: pagesAssignedToSelectedTypesData, loading: loadingPagesAssignedToSelectedTypes } =
-    useQuery(PageCountDocument, {
+    useQuery<PageCountQuery, PageCountQueryVariables>(PageCountDocument, {
       variables: pagesAssignedToSelectedTypesQueryVars,
       pause: shouldSkipPageListQuery,
     });

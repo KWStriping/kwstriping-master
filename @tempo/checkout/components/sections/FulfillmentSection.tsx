@@ -31,7 +31,7 @@ interface FulfillmentSectionFormData {
 }
 
 export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, className }) => {
-  const { locale } = useRouter();
+  const { locale } = useLocale();
   const { enableFulfillmentDeadline, displayPrices } = useShopSettings();
   const { availableShippingMethods, shippingAddress, fulfillmentMethod, fulfillmentDeadline } =
     checkout || {};

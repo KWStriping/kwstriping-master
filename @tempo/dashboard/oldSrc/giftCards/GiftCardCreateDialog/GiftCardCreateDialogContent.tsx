@@ -1,3 +1,4 @@
+import type { ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -30,7 +31,7 @@ const GiftCardCreateDialogContent: FC<GiftCardCreateDialogContentProps> = ({
 }) => {
   const notify = useNotifier();
 
-  const [{ fetching: loadingChannelCurrencies }] = useQuery(ChannelCurrenciesDocument, {});
+  const [{ fetching: loadingChannelCurrencies }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
 
   const [cardCode, setCardCode] = useState(null);
 

@@ -1,3 +1,4 @@
+import type { ShopInfoQuery, ShopInfoQueryVariables } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useQuery } from '@tempo/api/hooks';
 import appleTouchIcon from '@dashboard/assets/favicons/apple-touch-icon.png';
@@ -19,7 +20,7 @@ export const ShopContext: Context<ShopContextType | undefined> = createContext<
 export const ShopProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { authenticated, user } = useUser();
   console.log('>>> authenticated', authenticated);
-  const [{ data }] = useQuery(ShopInfoDocument, {
+  const [{ data }] = useQuery<ShopInfoQuery, ShopInfoQueryVariables>(ShopInfoDocument, {
     pause: !authenticated || !user,
   });
 

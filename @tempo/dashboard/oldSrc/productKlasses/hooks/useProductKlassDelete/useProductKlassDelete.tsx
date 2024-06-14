@@ -1,3 +1,4 @@
+import type { ProductCountQuery, ProductCountQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { ProductCountDocument } from '@tempo/api/generated/graphql';
 import type { ProductCountQueryVariables } from '@tempo/api/generated/graphql';
@@ -40,7 +41,7 @@ function useProductKlassDelete({
   const {
     data: productsAssignedToSelectedTypesData,
     loading: loadingProductsAssignedToSelectedTypes,
-  } = useQuery(ProductCountDocument, {
+  } = useQuery<ProductCountQuery, ProductCountQueryVariables>(ProductCountDocument, {
     variables: productsAssignedToSelectedTypesQueryVars,
     pause: shouldSkipProductListQuery,
   });

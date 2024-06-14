@@ -1,20 +1,20 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import styles from './index.module.css';
+import { useLocale } from '@tempo/ui/hooks/useLocale';
 
-const useStyles = makeStyles(
-  {
-    root: {
-      fontWeight: 500,
-    },
-    currency: {
-      fontSize: '0.87em',
-      marginRight: '0.2rem',
-    },
-  },
-  { name: 'Money' }
-);
+// const useStyles = makeStyles(
+//   {
+//     root: {
+//       fontWeight: 500,
+//     },
+//     currency: {
+//       fontSize: '0.87em',
+//       marginRight: '0.2rem',
+//     },
+//   },
+//   { name: 'Money' }
+// );
 
 export interface IMoney {
   amount: number;
@@ -27,9 +27,7 @@ export interface MoneyProps {
 }
 
 export const Money: FC<MoneyProps> = ({ money, className }) => {
-  const { locale } = useRouter();
-  // const styles = useStyles();
-  const styles = {};
+  const { locale } = useLocale();
   if (!money) return null;
 
   const currencyFractionDigits = new Intl.NumberFormat(locale, {

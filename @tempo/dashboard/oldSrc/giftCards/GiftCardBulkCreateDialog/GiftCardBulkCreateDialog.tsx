@@ -1,3 +1,4 @@
+import type { ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -37,7 +38,7 @@ const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
 
   const onIssueSuccessDialogClose = () => setOpenIssueSuccessDialog(false);
 
-  const [{ fetching: loadingChannelCurrencies }] = useQuery(ChannelCurrenciesDocument, {});
+  const [{ fetching: loadingChannelCurrencies }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
 
   const currentDate = useCurrentDate();
 

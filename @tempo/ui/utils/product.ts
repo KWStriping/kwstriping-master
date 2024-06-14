@@ -1,4 +1,7 @@
-import type { ProductDetailsFragment, AttributeDetailsFragment } from '@tempo/api/generated/graphql';
+import type {
+  ProductDetailsFragment,
+  AttributeDetailsFragment,
+} from '@tempo/api/generated/graphql';
 
 /**
  * When a variant is selected, the variant attributes are shown together with
@@ -16,5 +19,3 @@ export const getProductAttributes = (
   if (selectedVariant) return product.attributes.concat(selectedVariant.attributes);
   return product.attributes;
 };
-
-

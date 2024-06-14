@@ -42,7 +42,6 @@ const ExtendedDiscountTimelineEvent: FC<ExtendedTimelineEventProps> = ({
   event,
   titleElements,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const { lines, date, type } = event;

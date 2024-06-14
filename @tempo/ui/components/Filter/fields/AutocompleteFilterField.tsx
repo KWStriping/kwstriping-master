@@ -1,3 +1,4 @@
+import styles from './AutocompleteFilterField.module.css';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import { Autocomplete } from '@tempo/ui/components/inputs/Autocomplete';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
@@ -12,9 +13,7 @@ export interface FilterContentProps {
 }
 
 export const AutocompleteFilterField: FC<FilterContentProps> = ({ filter }) => {
-  // const styles = useStyles();
 
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name, options } = filter;

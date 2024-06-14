@@ -68,7 +68,6 @@ const ShippingMethodProducts: FC<ShippingMethodProductsProps> = (props) => {
     toggleAll,
     toolbar,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

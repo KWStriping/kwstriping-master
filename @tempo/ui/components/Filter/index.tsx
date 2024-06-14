@@ -1,3 +1,4 @@
+import styles from './index.module.css';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,7 +11,6 @@ import type { FC } from 'react';
 
 import { useFilterActions, useFilterData } from './context';
 import { FilterContent } from './FilterContent';
-// import useStyles from './styles';
 
 import type { FilterDetailedOptions, FilterLabels, FilterOptions } from './types';
 import { FilterType } from './types';
@@ -60,8 +60,6 @@ export interface FilterRowProps {
   labels: FilterLabels;
 }
 export const FilterRow: FC<FilterRowProps> = ({ first, name, labels }) => {
-  // const styles = useStyles();
-  const styles = {};
   const filters = useFilterData();
   const { toggle, toggleRange, swap } = useFilterActions();
 

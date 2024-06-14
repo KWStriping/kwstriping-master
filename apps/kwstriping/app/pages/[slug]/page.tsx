@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Layout from '@kwstriping/app/client/Layout';
 import { PageDocument } from '@tempo/api/generated/graphql';
 import { createClient } from '@urql/core';
 import { registerUrql } from '@urql/next/rsc';
 import React from 'react';
 import { cacheExchange, fetchExchange } from '@tempo/api/exchanges';
 import FlatPage from './flatpage';
+import Layout from '@kwstriping/app/client/Layout';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');

@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 // import { getOperationAST } from 'graphql';
 
 export const giftCardDetails = gql(`

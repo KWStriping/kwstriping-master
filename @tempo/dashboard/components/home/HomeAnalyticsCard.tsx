@@ -62,7 +62,6 @@ interface HomeAnalyticsCardProps {
 
 const HomeAnalyticsCard: FC<HomeAnalyticsCardProps> = (props) => {
   const { children, title, icon, testId } = props;
-  // const styles = useStyles();
   const styles = {};
   return (
     <Card className={styles.cardSpacing ?? ''}>

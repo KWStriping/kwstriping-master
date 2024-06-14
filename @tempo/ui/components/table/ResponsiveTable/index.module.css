@@ -1,4 +1,4 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
+/* import { makeStyles } from '@tempo/ui/theme/styles';
 import type { ResponsiveTableProps } from './ResponsiveTable';
 
 const useStyles = makeStyles<Pick<ResponsiveTableProps, 'flexBreakpoint'>>(
@@ -21,4 +21,4 @@ const useStyles = makeStyles<Pick<ResponsiveTableProps, 'flexBreakpoint'>>(
   }
 );
 
-export default useStyles;
+export default useStyles; */

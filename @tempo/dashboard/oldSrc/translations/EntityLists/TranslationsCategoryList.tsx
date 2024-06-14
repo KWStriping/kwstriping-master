@@ -1,3 +1,4 @@
+import type { CategoryTranslationsQuery, CategoryTranslationsQueryVariables } from '@tempo/api/generated/graphql';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks';
 import type { FC } from 'react';
@@ -9,7 +10,7 @@ import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePagina
 import { languageEntityUrl, TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
 
 const TranslationsCategoryList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery(CategoryTranslationsDocument, {
+  const [{ data, fetching: loading }] = useQuery<CategoryTranslationsQuery, CategoryTranslationsQueryVariables>(CategoryTranslationsDocument, {
     displayLoader: true,
     variables,
   });

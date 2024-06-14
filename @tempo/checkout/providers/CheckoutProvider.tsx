@@ -1,4 +1,8 @@
-import type { CheckoutFragment } from '@tempo/api/generated/graphql';
+import type {
+  CheckoutQuery,
+  CheckoutQueryVariables,
+  CheckoutFragment,
+} from '@tempo/api/generated/graphql';
 import { CheckoutDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useLocale } from '@tempo/ui/hooks/useLocale';
@@ -28,7 +32,10 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
   const [checkoutId, setCheckoutId] = useCheckoutId();
 
   // TODO: get checkout from db if not in localstorage
-  const [{ data, fetching, error: checkoutError }, refetch] = useQuery(CheckoutDocument, {
+  const [{ data, fetching, error: checkoutError }, refetch] = useQuery<
+    CheckoutQuery,
+    CheckoutQueryVariables
+  >(CheckoutDocument, {
     variables: { id: checkoutId as string, languageCode },
     pause: !checkoutId || !!user?.checkout,
   });

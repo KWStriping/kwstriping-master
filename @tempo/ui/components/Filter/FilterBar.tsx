@@ -1,3 +1,4 @@
+import styles from './FilterBar.module.css';
 import PlusIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import Card from '@mui/material/Card';
@@ -28,7 +29,6 @@ export const FilterBar: FC<FilterBarProps> = forwardRef(
   ({ children, labels, onChange: changeCb, onClose }, ref: ForwardedRef<HTMLDivElement>) => {
     const filterData = useFilterData();
     // const styles = useStyles();
-    const styles = {};
     const [menuOpen, setMenuOpen] = useState(false);
     const button = useRef(null);
     utils.validate(filterData);

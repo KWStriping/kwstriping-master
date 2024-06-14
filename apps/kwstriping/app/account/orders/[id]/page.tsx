@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Layout from '@kwstriping/app/client/Layout';
 import type { OrderQuery, OrderQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderDocument } from '@tempo/api/generated/graphql';
 import { getClient } from '@tempo/api/server';
 import OrderPage from './order';
+import Layout from '@kwstriping/app/client/Layout';
 
 export const metadata: Metadata = {
   title: 'Orders',

@@ -1,3 +1,4 @@
+import type { ChannelQuery, ChannelQueryVariables } from '@tempo/api/generated/graphql';
 import type { CountryCode } from '@tempo/api/generated/graphql';
 import { ChannelDocument } from '@tempo/api/generated/graphql';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
@@ -12,7 +13,7 @@ interface UseAvailableShippingCountries {
 export const useAvailableShippingCountries = (): UseAvailableShippingCountries => {
   const { checkout } = useCheckout();
   assert(!!checkout);
-  const [{ data }] = useQuery(ChannelDocument, {
+  const [{ data }] = useQuery<ChannelQuery, ChannelQueryVariables>(ChannelDocument, {
     variables: { id: checkout.channel.id },
     pause: !checkout?.channel.id,
   });

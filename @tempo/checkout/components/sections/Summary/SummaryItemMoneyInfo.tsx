@@ -1,9 +1,9 @@
 import * as m from '@paraglide/messages';
 import type { Money as MoneyType } from '@tempo/api/generated/graphql';
 // import { useTranslation } from '@tempo/next/i18n';
-import type { ClassNames } from '@tempo/types';
+import type { ClassNames } from '@tempo/next/types';
 import type { GrossMoney } from '@tempo/types/misc';
-import { Money } from '@tempo/ui/components/Money';
+import { Money } from '@tempo/ui';
 import { getFormattedMoney } from '@tempo/ui/utils/money';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';

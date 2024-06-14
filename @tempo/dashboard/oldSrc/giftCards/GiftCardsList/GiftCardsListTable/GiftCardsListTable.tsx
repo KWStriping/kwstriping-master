@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import DeleteIconButton from '@tempo/ui/components/buttons/DeleteIconButton';
 import Link from '@tempo/ui/components/Link';
-import { PillLink } from '@tempo/ui/components/pill/PillLink';
 import { renderCollection } from '@tempo/ui/utils';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
@@ -22,7 +21,6 @@ import { GiftCardUrlOrdering } from '../types';
 import GiftCardsListTableFooter from './GiftCardsListTableFooter';
 import GiftCardsListTableHeader from './GiftCardsListTableHeader';
 import { getTagCellText } from './utils';
-import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
 import { PLACEHOLDER } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/types';
 import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
@@ -115,7 +113,8 @@ const GiftCardsListTable: FC = () => {
                   <TableCell>
                     {product ? (
                       <TableButtonWrapper>
-                        <PillLink
+                        {product?.name}
+                        {/* <PillLink
                           className={styles.pill ?? ''}
                           component={RouterLink}
                           to={productUrl(product?.id)}
@@ -125,7 +124,7 @@ const GiftCardsListTable: FC = () => {
                           }}
                         >
                           {product?.name}
-                        </PillLink>
+                        </PillLink> */}
                       </TableButtonWrapper>
                     ) : (
                       PLACEHOLDER

@@ -33,7 +33,6 @@ export interface ProductDeleteDialogProps {
 
 const ProductDeleteDialog: FC<ProductDeleteDialogProps> = (props) => {
   const { confirmButtonState, name, open, onConfirm, onClose } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

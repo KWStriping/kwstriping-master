@@ -81,7 +81,6 @@ const TableLine: FC<TableLineProps> = ({
   updateOrderLineDiscountStatus,
 }) => {
   const popperAnchorRef = useRef<HTMLTableRowElement | null>(null);
-  // const styles = useStyles();
   const styles = {};
   const { id, thumbnail, productName, productSku, quantity } = line;
 

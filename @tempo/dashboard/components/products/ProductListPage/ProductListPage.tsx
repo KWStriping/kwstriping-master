@@ -106,7 +106,6 @@ export const ProductListPage: FC<ProductListPageProps> = ({
   selectedProductIds,
   ...listProps
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const staticColumns = [

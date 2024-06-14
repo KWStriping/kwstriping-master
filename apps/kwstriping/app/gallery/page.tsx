@@ -3,9 +3,9 @@ import { Suspense } from 'react';
 
 import { getClient } from '@tempo/api/server';
 
-import Layout from '@kwstriping/app/client/Layout';
 import { gql } from '@tempo/api';
 import GalleryPage from './gallery';
+import Layout from '@kwstriping/app/client/Layout';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');

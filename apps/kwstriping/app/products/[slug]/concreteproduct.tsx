@@ -1,6 +1,5 @@
 'use client';
 
-import * as m from '@paraglide/messages';
 import type {
   ConcreteProductDetailsFragment,
   CheckoutError,
@@ -21,9 +20,10 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
-import { usePaths } from '@kwstriping/hooks/usePaths';
 import { gql } from '@tempo/api';
 import ProductPage from './product';
+import { usePaths } from '@kwstriping/hooks/usePaths';
+import * as m from '@paraglide/messages';
 
 const DISPLAY_CATEGORY = false; // TODO
 const DISPLAY_PRICES = false;

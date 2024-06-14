@@ -1,3 +1,4 @@
+import type { ChannelBySlugQuery, ChannelBySlugQueryVariables } from '@tempo/api/generated/graphql';
 import type { CountryCode } from '@tempo/api/generated/graphql';
 import { ChannelBySlugDocument } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks/useQuery';
@@ -10,7 +11,7 @@ interface UseAddressAvailabilityProps {
 export const useAddressAvailability = (
   { pause }: UseAddressAvailabilityProps = { pause: false }
 ) => {
-  const [{ data }] = useQuery(ChannelBySlugDocument, {
+  const [{ data }] = useQuery<ChannelBySlugQuery, ChannelBySlugQueryVariables>(ChannelBySlugDocument, {
     variables: { slug: 'default' },
     pause,
   });

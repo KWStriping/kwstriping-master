@@ -34,7 +34,6 @@ export interface CategoryDeleteDialogProps {
 
 const CategoryDeleteDialog: FC<CategoryDeleteDialogProps> = (props) => {
   const { name, open, onConfirm, onClose } = props;
-  // const styles = useStyles();
   const styles = {};
   return (
     <Dialog onClose={onClose} open={open}>

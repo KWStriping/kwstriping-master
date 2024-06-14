@@ -91,7 +91,7 @@ export const GiftCardsListProvider: FC<GiftCardsListProviderProps> = ({ children
     }
   };
 
-  const [{ data, fetching: loading }] = useQuery(GiftCardListDocument, {
+  const [{ data, fetching: loading }] = useQuery<GiftCardListQuery, GiftCardListQueryVariables>(GiftCardListDocument, {
     displayLoader: true,
     variables: queryVariables,
     handleError: handleGiftCardListError,

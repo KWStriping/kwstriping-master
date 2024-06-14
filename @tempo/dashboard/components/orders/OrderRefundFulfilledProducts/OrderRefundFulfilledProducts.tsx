@@ -85,7 +85,6 @@ const OrderRefundFulfilledProducts: FC<OrderRefundFulfilledProductsProps> = (pro
     onRefundedProductQuantityChange,
     onSetMaximalQuantities,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

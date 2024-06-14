@@ -1,3 +1,4 @@
+import styles from './MultipleSelectFilterField.module.css';
 import { Chip } from '@tempo/ui/components/chip/Chip';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import Checkbox from '@mui/material/Checkbox';
@@ -16,9 +17,7 @@ export interface FilterContentProps {
 }
 
 export const MultipleSelectFilterField: FC<FilterContentProps> = ({ filter }) => {
-  // const styles = useStyles();
 
-  const styles = {};
   const { onChange } = useFilterActions();
   const [displayValues] = useState(filter.options.displayValues || filter.options.choices);
 
