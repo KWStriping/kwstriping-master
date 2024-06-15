@@ -67,7 +67,7 @@ export const useMultipleRichText = <TKey extends string>({
       ([, value]) => value !== null
     ) as Array<[string, EditorCore]>;
 
-    const results = await gather(
+    const results = await Promise.all(
       availableRefs.map(async ([key, ref]) => {
         const value = await ref.save();
         return [key, value] as [string, OutputData];

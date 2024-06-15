@@ -6,7 +6,7 @@ import {
   UserAddressUpdateDocument,
 } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
 import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
 import { useMutation } from '@tempo/api/hooks/useMutation';

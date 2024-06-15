@@ -1,5 +1,5 @@
 import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import type { UseErrors } from '@tempo/ui/hooks/useErrors';
 import { getAddressFormDataFromAddress } from '@tempo/utils';
 import type { FC } from 'react';

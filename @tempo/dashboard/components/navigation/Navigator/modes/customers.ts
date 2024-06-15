@@ -31,7 +31,7 @@ function getCustomersModeActions(
   router: AppRouterInstance,
   customers: RelayToFlat<NonNullable<SearchCustomersQuery['search']>>
 ): QuickSearchAction[] {
-  return searchInCustomers(t, router, customers);
+  return searchInCustomers(router, customers);
 }
 
 export default getCustomersModeActions;

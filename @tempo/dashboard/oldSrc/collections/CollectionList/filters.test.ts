@@ -29,7 +29,7 @@ describe('Filtering query params', () => {
 describe('Filtering URL params', () => {
   const intl = createIntl(config);
 
-  const filters = createFilterStructure(t, {
+  const filters = createFilterStructure({
     status: {
       active: false,
       value: CollectionPublished.PUBLISHED,
@@ -44,7 +44,7 @@ describe('Filtering URL params', () => {
   });
 
   it('should not be empty if active filters are present', () => {
-    const filters = createFilterStructure(t, {
+    const filters = createFilterStructure({
       status: {
         active: true,
         value: CollectionPublished.PUBLISHED,

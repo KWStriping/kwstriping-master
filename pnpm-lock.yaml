@@ -453,17 +453,26 @@ importers:
   '@tempo/checkout':
     dependencies:
       '@adyen/adyen-web':
-        specifier: 5.33.0
-        version: 5.33.0
+        specifier: 5.64.0
+        version: 5.64.0
       '@adyen/api-library':
-        specifier: 14.4.0
-        version: 14.4.0
+        specifier: 16.3.0
+        version: 16.3.0
       '@googlemaps/react-wrapper':
         specifier: ^1.1.35
         version: 1.1.35(react@18.3.1)
       '@js-temporal/polyfill':
         specifier: ^0.4.4
         version: 0.4.4
+      '@mollie/api-client':
+        specifier: ^3.7.0
+        version: 3.7.0
+      '@stripe/react-stripe-js':
+        specifier: 2.7.1
+        version: 2.7.1(@stripe/stripe-js@3.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@stripe/stripe-js':
+        specifier: 3.4.0
+        version: 3.4.0
       crypto-js:
         specifier: ^4.1.1
         version: 4.2.0
@@ -488,6 +497,9 @@ importers:
       tsafe:
         specifier: ^1.6.5
         version: 1.7.2
+      url-join:
+        specifier: 5.0.0
+        version: 5.0.0
       yup:
         specifier: 1.4.0
         version: 1.4.0
@@ -510,9 +522,6 @@ importers:
       '@mdx-js/react':
         specifier: 3.0.1
         version: 3.0.1(@types/react@18.3.2)(react@18.3.1)
-      '@mollie/api-client':
-        specifier: ^3.7.0
-        version: 3.7.0
       '@mui/icons-material':
         specifier: ^5.15.15
         version: 5.15.20(@mui/material@5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.2)(react@18.3.1)
@@ -528,12 +537,6 @@ importers:
       '@mui/system':
         specifier: ^5.15.15
         version: 5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1)
-      '@stripe/react-stripe-js':
-        specifier: 2.7.1
-        version: 2.7.1(@stripe/stripe-js@3.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@stripe/stripe-js':
-        specifier: 3.4.0
-        version: 3.4.0
       '@types/crypto-js':
         specifier: ^4.2.1
         version: 4.2.2
@@ -698,7 +701,7 @@ importers:
         version: 1.4.3(@babel/runtime@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@urql/next':
         specifier: ^1.1.1
-        version: 1.1.1(next@14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(urql@4.1.0(@urql/core@5.0.3(graphql@16.8.1))(react@18.3.1))
+        version: 1.1.1(next@14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(urql@4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1))
       change-case:
         specifier: ^5.3.0
         version: 5.4.4
@@ -1850,11 +1853,11 @@ packages:
   '@adobe/css-tools@4.4.0':
     resolution: {integrity: sha512-Ff9+ksdQQB3rMncgqDK78uLznstjyfIf2Arnh22pW8kBpLs6rpKDwgnZT46hin5Hl1WzazzK64DOrhSwYpS7bQ==}
 
-  '@adyen/adyen-web@5.33.0':
-    resolution: {integrity: sha512-UKYjlEVasf4D4ujVxsAb9dvY+oDhNxM7KaBZMFJ7l3sU9bHE037g3Y1+3yraUxJaHfSJQnNVHGrTd3QmQZntbA==}
+  '@adyen/adyen-web@5.64.0':
+    resolution: {integrity: sha512-yM4X9n+tEIUIGAZSZ0xUunskslH+wJtztni7KMbW+TPBlQNTFq2sDi5Ukj5LnrdIXx5RbTJ2SoqbRlGkyn2S+w==}
 
-  '@adyen/api-library@14.4.0':
-    resolution: {integrity: sha512-HHX9tJQxJud0ZWRgh2qGejqQMASR/Gk/u/y9M3cx4a/cFqMWBh+nWHkvTRYuGHrTf65uLzfNLT2dA/tHD/MENA==}
+  '@adyen/api-library@16.3.0':
+    resolution: {integrity: sha512-YeMSzfxbKF/bJ7JNfffC7fE8gOjnSrnCoDzOtt1mZUdo4VGdZUtYeb05i7EkoYsI/IACgH944GQ+y+bRmLG1nQ==}
     engines: {node: '>=18'}
 
   '@alloc/quick-lru@5.2.0':
@@ -4861,8 +4864,8 @@ packages:
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
 
-  '@types/applepayjs@3.0.4':
-    resolution: {integrity: sha512-RqaVZWy1Kj4e1PoUoOI8uA+4UuuLpicQFxfU9Y/xWJFZFT6mFB4PiiY911iDxFk7pdvaj5HKH7VsWRisRca1Rg==}
+  '@types/applepayjs@14.0.6':
+    resolution: {integrity: sha512-nyq2+UXJL7rtcaWRtD3Tr028YTtthVFe0Y1vBhm34b+gmFdNi3VFDTsVbIxii3OgyD3CHskICZJd0tEhanqrFg==}
 
   '@types/aria-query@5.0.4':
     resolution: {integrity: sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==}
@@ -4960,8 +4963,8 @@ packages:
   '@types/google.maps@3.55.9':
     resolution: {integrity: sha512-phaOMtezbT3NaXPKiI3m0OosUS7Nly0auw3Be5s/CgMWLVoDAUP1Yb/Ld0TRoRp8ibrlT4VqM5kmzfvUA0UNLQ==}
 
-  '@types/googlepay@0.6.4':
-    resolution: {integrity: sha512-PTt/UCllzl8z5HmhymPpSj6uENZvVKZvCBYdDVmbBVJnLStitxtWrterAOQZkKGlqVdzxNXYeif5hOAMNMS5mw==}
+  '@types/googlepay@0.7.6':
+    resolution: {integrity: sha512-5003wG+qvf4Ktf1hC9IJuRakNzQov00+Xf09pAWGJLpdOjUrq0SSLCpXX7pwSeTG9r5hrdzq1iFyZcW7WVyr4g==}
 
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
@@ -5044,8 +5047,8 @@ packages:
   '@types/mysql@2.15.22':
     resolution: {integrity: sha512-wK1pzsJVVAjYCSZWQoWHziQZbNggXFDUEIGf54g4ZM/ERuP86uGdWeKZWMYlqTPMZfHJJvLPyogXGvCOg87yLQ==}
 
-  '@types/node@14.18.61':
-    resolution: {integrity: sha512-1mFT4DqS4/s9tlZbdkwEB/EnSykA9MDeDLIk3FHApGvIMGY//qgstB2gu9GKGESWyW/qiRUO+jhlLJ9bBJ8j+Q==}
+  '@types/node@14.18.63':
+    resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
 
   '@types/node@18.13.0':
     resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
@@ -5433,6 +5436,9 @@ packages:
 
   '@urql/core@5.0.3':
     resolution: {integrity: sha512-NZ3YqRr6IphbpFjGqujJOuVuV8/QegYxfjy1zdmOSWpYYFLpmMBfVtzZ/L8IiqPERVAEAIKjUsryLnVtXJQo4w==}
+
+  '@urql/core@5.0.4':
+    resolution: {integrity: sha512-gl86J6B6gWXvvkx5omZ+CaGiPQ0chCUGM0jBsm0zTtkDQPRqufv0NSUN6sp2JhGGtTOB0NR6Pd+w7XAVGGyUOA==}
 
   '@urql/devtools@2.0.3':
     resolution: {integrity: sha512-TktPLiBS9LcBPHD6qcnb8wqOVcg3Bx0iCtvQ80uPpfofwwBGJmqnQTjUdEFU6kwaLOFZULQ9+Uo4831G823mQw==}
@@ -9575,6 +9581,9 @@ packages:
   preact@10.11.3:
     resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
 
+  preact@10.13.2:
+    resolution: {integrity: sha512-q44QFLhOhty2Bd0Y46fnYW0gD/cbVM9dUVtNTDKPcdXSMA7jfY+Jpd6rk3GB0lcQss0z5s/6CmVP0Z/hV+g6pw==}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -11442,21 +11451,21 @@ snapshots:
 
   '@adobe/css-tools@4.4.0': {}
 
-  '@adyen/adyen-web@5.33.0':
+  '@adyen/adyen-web@5.64.0':
     dependencies:
       '@babel/runtime': 7.24.7
       '@babel/runtime-corejs3': 7.24.7
-      '@types/applepayjs': 3.0.4
-      '@types/googlepay': 0.6.4
+      '@types/applepayjs': 14.0.6
+      '@types/googlepay': 0.7.6
       classnames: 2.5.1
       core-js-pure: 3.37.1
-      preact: 10.11.3
+      preact: 10.13.2
 
-  '@adyen/api-library@14.4.0':
+  '@adyen/api-library@16.3.0':
     dependencies:
       https-proxy-agent: 5.0.1
     optionalDependencies:
-      '@types/node': 14.18.61
+      '@types/node': 14.18.63
     transitivePeerDependencies:
       - supports-color
 
@@ -15333,7 +15342,7 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.5
 
-  '@types/applepayjs@3.0.4': {}
+  '@types/applepayjs@14.0.6': {}
 
   '@types/aria-query@5.0.4': {}
 
@@ -15451,7 +15460,7 @@ snapshots:
 
   '@types/google.maps@3.55.9': {}
 
-  '@types/googlepay@0.6.4': {}
+  '@types/googlepay@0.7.6': {}
 
   '@types/graceful-fs@4.1.9':
     dependencies:
@@ -15543,7 +15552,7 @@ snapshots:
     dependencies:
       '@types/node': 20.14.2
 
-  '@types/node@14.18.61':
+  '@types/node@14.18.63':
     optional: true
 
   '@types/node@18.13.0': {}
@@ -16033,6 +16042,13 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
+  '@urql/core@5.0.4(graphql@16.8.1)':
+    dependencies:
+      '@0no-co/graphql.web': 1.0.7(graphql@16.8.1)
+      wonka: 6.3.4
+    transitivePeerDependencies:
+      - graphql
+
   '@urql/devtools@2.0.3(@urql/core@5.0.3(graphql@16.8.1))(graphql@16.8.1)':
     dependencies:
       '@urql/core': 5.0.3(graphql@16.8.1)
@@ -16067,6 +16083,12 @@ snapshots:
       next: 14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       urql: 4.1.0(@urql/core@5.0.3(graphql@16.8.1))(react@18.3.1)
+
+  '@urql/next@1.1.1(next@14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(urql@4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1))':
+    dependencies:
+      next: 14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      urql: 4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1)
 
   '@vue/compiler-sfc@2.7.16':
     dependencies:
@@ -20939,7 +20961,7 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 4.2.0
-      semver: 7.6.0
+      semver: 7.6.2
       validate-npm-package-name: 5.0.1
 
   npm-run-all@4.1.5:
@@ -21361,6 +21383,8 @@ snapshots:
       pretty-format: 3.8.0
 
   preact@10.11.3: {}
+
+  preact@10.13.2: {}
 
   prelude-ls@1.2.1: {}
 
@@ -23105,6 +23129,12 @@ snapshots:
   urql@4.1.0(@urql/core@5.0.3(graphql@16.8.1))(react@18.3.1):
     dependencies:
       '@urql/core': 5.0.3(graphql@16.8.1)
+      react: 18.3.1
+      wonka: 6.3.4
+
+  urql@4.1.0(@urql/core@5.0.4(graphql@16.8.1))(react@18.3.1):
+    dependencies:
+      '@urql/core': 5.0.4(graphql@16.8.1)
       react: 18.3.1
       wonka: 6.3.4
 

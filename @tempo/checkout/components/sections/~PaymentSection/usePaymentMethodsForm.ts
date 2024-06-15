@@ -1,11 +1,9 @@
-import { usePaymentDataActions } from '@tempo/checkout/state/paymentDataStore';
 import { useCallback, useEffect, useState } from 'react';
 import { usePaymentMethods } from '@tempo/checkout/hooks/usePaymentMethods';
-import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
-import type { ChannelActivePaymentProvidersByChannel } from '@tempo/checkout/types/payments-api';
+import type { PaymentMethodID } from '@tempo/checkout/types/payments';
 
 export const usePaymentMethodsForm = () => {
-  const { setPaymentData } = usePaymentDataActions();
+  const setPaymentData = (data: any) => null;
 
   // possibly change to form once we switch to formik
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentMethodID | null>(
@@ -13,23 +11,20 @@ export const usePaymentMethodsForm = () => {
   );
 
   const {
-    availablePaymentMethods,
-    availablePaymentProviders,
-    activePaymentProvidersByChannel,
+    methods: availablePaymentMethods,
+    providers: availablePaymentProviders,
+    // activePaymentProvidersByChannel,
     loading,
-  } = usePaymentMethods();
+  } = usePaymentMethods('default'); // TODO
 
   const handleSelect = useCallback(
     (paymentMethod: PaymentMethodID) => {
       setSelectedPaymentMethod(paymentMethod);
       setPaymentData({
         paymentMethod,
-        paymentProvider: (
-          activePaymentProvidersByChannel as ChannelActivePaymentProvidersByChannel
-        )[paymentMethod] as PaymentProviderID,
       });
     },
-    [activePaymentProvidersByChannel, setPaymentData]
+    [setPaymentData]
   );
 
   const firstAvailableMethod = availablePaymentMethods[0];
@@ -39,14 +34,13 @@ export const usePaymentMethodsForm = () => {
       return;
     }
 
-    if (activePaymentProvidersByChannel && !availablePaymentMethods.length) {
+    if (!availablePaymentMethods.length) {
       throw new Error('No available payment providers');
     } else if (!selectedPaymentMethod && firstAvailableMethod) {
       handleSelect(firstAvailableMethod);
     }
   }, [
     loading,
-    activePaymentProvidersByChannel,
     availablePaymentMethods.length,
     selectedPaymentMethod,
     handleSelect,
@@ -57,7 +51,6 @@ export const usePaymentMethodsForm = () => {
     onSelectPaymentMethod: handleSelect,
     availablePaymentMethods,
     availablePaymentProviders,
-    activePaymentProvidersByChannel,
     selectedPaymentMethod,
   };
 };

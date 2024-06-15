@@ -1,12 +1,9 @@
-import { useFetch } from '@tempo/ui/hooks/useFetch';
 import { useEffect, useState } from 'react';
 import type {
   ChannelActivePaymentProvidersByChannel,
   PaymentMethodID,
   PaymentProviderID,
 } from '@tempo/checkout';
-import { CHECKOUT_API_URL } from '@tempo/checkout/constants';
-import { getPaymentMethods } from '@tempo/checkout/fetch';
 
 type AvailablePaymentMethods = PaymentMethodID[];
 
@@ -44,12 +41,9 @@ export const usePaymentMethods = (channelId?: string) => {
     PaymentMethodID | undefined
   >();
 
-  const [{ data: allPaymentMethods, loading }] = useFetch(getPaymentMethods, {
-    args: { channelId, checkoutApiUrl: CHECKOUT_API_URL },
-    skip: !channelId,
-  });
+  const [{ data: allPaymentMethods, fetching: loading }] = [] as any; // TODO
 
-  const availablePaymentMethods = getAllPaymentMethods(allPaymentMethods);
+  const availablePaymentMethods = getAllPaymentMethods(allPaymentMethods as any); // TODO
 
   useEffect(() => {
     if (!loading && allPaymentMethods && !availablePaymentMethods.length) {

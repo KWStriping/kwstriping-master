@@ -3,7 +3,7 @@ import { CheckoutDocument, CreateOrderDocument } from '@tempo/api/generated/grap
 import { getClient } from '@tempo/api/server';
 import type { RequestContext } from '@tempo/api/types';
 
-import type { Errors } from './types';
+import type { ErrorCode } from './types';
 
 export const createOrder = async (
   {
@@ -21,11 +21,11 @@ export const createOrder = async (
       data: OrderFragment;
     }
   | {
-      errors: Errors;
+      errors: ErrorCode[];
     }
 > => {
   // Start by checking if total amount is correct
-  const client = getClient(ctx);
+  const client = getClient();
   const checkout = await client
     .query(CheckoutDocument, {
       id: checkoutId,
@@ -40,7 +40,7 @@ export const createOrder = async (
   if (!checkout.data?.checkout) {
     console.error('Checkout not found', checkout);
     return {
-      errors: ['CHECKOUT_NOT_FOUND'],
+      errors: ['CHECKOUT_NOT_FOUND' as any], // TODO
     };
   }
 
@@ -61,8 +61,8 @@ export const createOrder = async (
   if (!data?.createOrderFromCheckout?.result) {
     return {
       errors: error?.graphQLErrors.map((e) => {
-        console.error(e.code, ':', e.message);
-        return e.code;
+        console.error(e.extensions.code, ':', e.message);
+        return e.extensions.code as any; // TODO
       }) || ['COULD_NOT_CREATE_ORDER_FROM_CHECKOUT'],
     };
   }

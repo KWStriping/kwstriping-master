@@ -2,12 +2,11 @@ import type { Exact, LanguageCode } from '@tempo/api/generated/graphql';
 import type { FormDataBase } from '@tempo/next/types';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
 import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
-import type { OperationResult } from '@tempo/api';;
+import type { OperationResult } from '@tempo/api';
 import { extractMutationErrors } from '@tempo/api/utils';
-import type { Locale } from '@tempo/utils';
 import { localeToLanguageCode } from '@tempo/utils';
-import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { useSectionState } from '@tempo/checkout/hooks/state';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import type { CheckoutSectionKey } from '@tempo/checkout/types';
@@ -33,7 +32,7 @@ export type SubmitReturnWithErrors<TData extends FormDataBase> = Promise<{
 
 interface UseSubmitProps<
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>
+  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
 > {
   scope: CheckoutSectionKey;
   onSubmit: (vars: MutationVars<TMutationFn>) => Promise<MutationData<TMutationFn>>;
@@ -49,7 +48,7 @@ type SubmitFn<TData extends FormDataBase> = (formData: TData) => SubmitReturnWit
 
 export const useSubmit = <
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>
+  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
 >({
   onSuccess,
   onError,
@@ -63,7 +62,7 @@ export const useSubmit = <
   const { checkout } = useCheckout();
   const [, updateState] = useSectionState(scope);
   const { showErrors } = useAlerts('updateCheckoutFulfillmentMethod');
-  const { locale = 'en-US' } = useRouter();
+  const locale = useLocale();
   return useCallback(
     async (formData: TData = {} as TData) => {
       if (!checkout) throw new Error('Checkout is not defined');
@@ -79,7 +78,7 @@ export const useSubmit = <
         return { hasErrors: false, errors: [] };
       }
       const commonData: CommonVars = {
-        languageCode: localeToLanguageCode(locale as Locale),
+        languageCode: localeToLanguageCode(locale.languageCode as any), // TODO
         channel: checkout.channel.slug,
         checkoutId: checkout.id,
       };

@@ -26,7 +26,7 @@ function getModeActions(
     case 'commands':
       return getCommandModeActions(query, cbs.router, cbs.createOrder, cbs.setMode);
     case 'customers':
-      return getCustomersModeActions(t, cbs.router, queries.customers);
+      return getCustomersModeActions(cbs.router, queries.customers);
     case 'help':
       return getHelpModeActions(query, cbs.setMode);
     case 'orders':

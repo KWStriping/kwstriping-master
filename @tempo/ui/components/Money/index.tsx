@@ -3,19 +3,6 @@ import type { FC } from 'react';
 import styles from './index.module.css';
 import { useLocale } from '@tempo/ui/hooks/useLocale';
 
-// const useStyles = makeStyles(
-//   {
-//     root: {
-//       fontWeight: 500,
-//     },
-//     currency: {
-//       fontSize: '0.87em',
-//       marginRight: '0.2rem',
-//     },
-//   },
-//   { name: 'Money' }
-// );
-
 export interface IMoney {
   amount: number;
   currency: string;

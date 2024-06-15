@@ -3,7 +3,7 @@ import { AddressForm } from '@tempo/checkout/components/forms/~AddressForm';
 import type { AddressFormProps } from '@tempo/checkout/components/forms/~AddressForm';
 import { useAddressForm } from '@tempo/checkout/components/forms/~AddressForm/useAddressForm';
 import type { UseAddressFormProps } from '@tempo/checkout/components/forms/~AddressForm/useAddressForm';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { IconButton } from '@tempo/ui/components/buttons/IconButton';
 import type { UseErrors } from '@tempo/ui/hooks';

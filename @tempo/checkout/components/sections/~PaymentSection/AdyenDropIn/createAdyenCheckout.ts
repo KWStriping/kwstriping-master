@@ -6,7 +6,7 @@ import type {
   AdyenDropInCreateSessionResponse,
   PostAdyenDropInPaymentsDetailsResponse,
   PostAdyenDropInPaymentsResponse,
-} from '@tempo/checkout';
+} from '@tempo/checkout/adyen-drop-in';
 
 export type AdyenCheckoutInstanceOnSubmit = (
   state: {

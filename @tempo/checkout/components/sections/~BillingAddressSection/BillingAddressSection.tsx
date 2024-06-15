@@ -2,7 +2,7 @@ import type { CheckoutBillingAddressUpdateMutation, CheckoutBillingAddressUpdate
 import * as m from '@paraglide/messages';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
 import { useUserQuery } from '@tempo/api/generated/graphql';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { Checkbox } from '@tempo/ui/components/inputs/Checkbox';
 import { useErrors } from '@tempo/ui/hooks/useErrors';
 import { useMutation } from '@tempo/api/hooks/useMutation';

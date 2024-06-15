@@ -1,5 +1,5 @@
 import type { AddressFragment } from '@tempo/api/generated/graphql';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { getAddressFormDataFromAddress, isMatchingAddress } from '@tempo/utils';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';

@@ -1,18 +1,6 @@
 import * as m from '@paraglide/messages';
 import AppleIcon from '@mui/icons-material/Apple';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import type {
-  Customization,
-  CustomizationSettings,
-  SettingID,
-  CustomizationID,
-} from '@tempo/checkout/types/common';
-import type {
-  PaymentMethod,
-  PaymentProvider,
-  PaymentProviderSettings,
-  PaymentProviderID,
-} from '@tempo/checkout/types/payments';
 import AdyenIcon from './icons/Adyen';
 import DummyIcon from './icons/Dummy';
 import MollieIcon from './icons/Mollie';
@@ -30,6 +18,18 @@ import {
   stripePaymentProviderMessages,
 } from './messages/paymentProviders';
 import { withLabels, withNames } from './utils';
+import type {
+  PaymentMethod,
+  PaymentProvider,
+  PaymentProviderSettings,
+  PaymentProviderID,
+} from '@tempo/checkout/types/payments';
+import type {
+  Customization,
+  CustomizationSettings,
+  SettingID,
+  CustomizationID,
+} from '@tempo/checkout/types/common';
 
 const paymentMethods: Omit<PaymentMethod, 'name'>[] = [
   {
@@ -178,45 +178,42 @@ export const fields: Record<SettingID[number], Record<string, CommonField[]>> = 
 };
 
 export const usePaymentMethods = (): PaymentMethod[] => {
-
-  return withNames(t, paymentMethodsMessages, paymentMethods);
+  return withNames(paymentMethodsMessages, paymentMethods);
 };
 
 export const useMolliePaymentProvider = (): PaymentProvider<'mollie'> => {
-
   return {
     id: 'mollie',
-    label: (m[paymentProvidersMessages.mollie.id] ?? paymentProvidersMessages.mollie.defaultMessage),
+    label:
+      m[paymentProvidersMessages.mollie.id] ?? paymentProvidersMessages.mollie.defaultMessage,
     logo: MollieIcon,
-    settings: withLabels(t, molliePaymentProviderMessages, molliePaymentProvider),
+    settings: withLabels(molliePaymentProviderMessages, molliePaymentProvider),
   };
 };
 
 export const useAdyenPaymentProvider = (): PaymentProvider<'adyen'> => {
-
   return {
     id: 'adyen',
-    label: (m[paymentProvidersMessages.adyen.id] ?? paymentProvidersMessages.adyen.defaultMessage),
+    label: m[paymentProvidersMessages.adyen.id] ?? paymentProvidersMessages.adyen.defaultMessage,
     logo: AdyenIcon,
-    settings: withLabels(t, adyenPaymentProviderMessages, adyenPaymentProvider),
+    settings: withLabels(adyenPaymentProviderMessages, adyenPaymentProvider),
   };
 };
 
 export const useStripePaymentProvider = (): PaymentProvider<'stripe'> => {
-
   return {
     id: 'stripe',
-    label: (m[paymentProvidersMessages.stripe.id] ?? paymentProvidersMessages.stripe.defaultMessage),
+    label:
+      m[paymentProvidersMessages.stripe.id] ?? paymentProvidersMessages.stripe.defaultMessage,
     logo: StripeIcon,
-    settings: withLabels(t, stripePaymentProviderMessages, stripePaymentProvider),
+    settings: withLabels(stripePaymentProviderMessages, stripePaymentProvider),
   };
 };
 
 export const useDummyPaymentProvider = (): PaymentProvider<'dummy'> => {
-
   return {
     id: 'dummy',
-    label: (m[paymentProvidersMessages.dummy.id] ?? paymentProvidersMessages.dummy.defaultMessage),
+    label: m[paymentProvidersMessages.dummy.id] ?? paymentProvidersMessages.dummy.defaultMessage,
     settings: [],
   };
 };
@@ -228,24 +225,21 @@ export const usePaymentProviders = (): PaymentProvider<PaymentProviderID>[] => [
 ];
 
 export const useBrandingCustomization = (): Customization<'branding'> => {
-
   return {
     id: 'branding',
-    label: (m[customizationMessages.branding.id] ?? customizationMessages.branding.defaultMessage),
-    settings: withLabels(t, brandingCustomizationMessages, brandingCustomization),
+    label: m[customizationMessages.branding.id] ?? customizationMessages.branding.defaultMessage,
+    settings: withLabels(brandingCustomizationMessages, brandingCustomization),
   };
 };
 
 export const useSectionsCustomization = (): Customization<'productSettings'> => {
-
   return {
     id: 'productSettings',
-    label: (m[customizationMessages.productSettings.id] ?? customizationMessages.productSettings.defaultMessage),
-    settings: withLabels(t, sectionsCustomizationMessages, sectionsCustomization),
+    label:
+      m[customizationMessages.productSettings.id] ??
+      customizationMessages.productSettings.defaultMessage,
+    settings: withLabels(sectionsCustomizationMessages, sectionsCustomization),
   };
 };
 
-export const useCustomizations = () => [
-  useBrandingCustomization(),
-  useSectionsCustomization(),
-];
+export const useCustomizations = () => [useBrandingCustomization(), useSectionsCustomization()];

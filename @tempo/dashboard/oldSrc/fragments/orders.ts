@@ -243,9 +243,11 @@ export const fragmentOrderDetails = gql(`
       __typename
       ... on ShippingMethod {
         id
+        name
       }
       ... on Warehouse {
         id
+        name
         clickAndCollectOption
       }
     }

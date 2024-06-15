@@ -4,6 +4,7 @@
   "exclude": [
     "../../@tempo/dashboard/**/*",
     "../../@tempo/**/*.test.ts",
+    "../../@tempo/**/fixtures/**/*",
     "node_modules",
     "cypress",
     "**/*.test.ts",

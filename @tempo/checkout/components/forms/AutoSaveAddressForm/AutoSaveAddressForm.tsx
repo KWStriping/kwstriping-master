@@ -2,7 +2,7 @@ import type { AddressFormProps } from '@tempo/checkout/components/forms/~Address
 import { AddressForm } from '@tempo/checkout/components/forms/~AddressForm';
 import { useAddressForm } from '@tempo/checkout/components/forms/~AddressForm/useAddressForm';
 import type { UseAddressFormProps } from '@tempo/checkout/components/forms/~AddressForm/useAddressForm';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { useFormDebouncedSubmit } from '@tempo/ui/hooks/useFormDebouncedSubmit';
 import type { FC } from 'react';
 

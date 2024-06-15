@@ -1,5 +1,8 @@
-import type { CreateOrderMutation, CreateOrderMutationVariables } from '@tempo/api/generated/graphql';
-import type { CheckoutFragment } from '@tempo/api/generated/graphql';
+import type {
+  CreateOrderMutation,
+  CreateOrderMutationVariables,
+  CheckoutFragment,
+} from '@tempo/api/generated/graphql';
 import Spinner from '@tempo/ui/components/Spinner';
 import Typography from '@mui/material/Typography';
 import { Turnstile } from '@tempo/ui/components/Turnstile';
@@ -7,7 +10,6 @@ import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 import Link from '@tempo/ui/components/Link';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { CreateOrderDocument } from '@tempo/api/generated/graphql';
@@ -22,6 +24,7 @@ import { ContactInfoSection } from './sections/ContactInfoSection';
 import { FulfillmentSection } from './sections/FulfillmentSection';
 import { PaymentSection } from './sections/PaymentSection';
 import { ShippingAddressSection } from './sections/ShippingAddressSection';
+import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 
 export interface CheckoutProps {
   checkout: Maybe<CheckoutFragment>;
@@ -38,7 +41,10 @@ function Checkout({ checkout, loading }: CheckoutProps) {
   const [submitting, setSubmitting] = useState(false);
 
   const [processPayment, { loading: paying, error: payError }] = usePay();
-  const [createOrderFromCheckout] = useMutation<CreateOrderMutation, CreateOrderMutationVariables>(CreateOrderDocument);
+  const [createOrderFromCheckout] = useMutation<
+    CreateOrderMutation,
+    CreateOrderMutationVariables
+  >(CreateOrderDocument);
 
   useEffect(() => {
     if (checkout) {

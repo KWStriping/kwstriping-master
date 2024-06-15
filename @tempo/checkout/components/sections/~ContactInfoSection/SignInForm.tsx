@@ -3,7 +3,7 @@ import * as m from '@paraglide/messages';
 import type { AccountErrorCode } from '@tempo/api/generated/graphql';
 import { RequestPasswordResetDocument } from '@tempo/api/generated/graphql';
 import { useAuth, useUser } from '@tempo/api/auth/src';
-import type { ApiError } from '@tempo/types/errors';
+import type { ApiError } from '@tempo/next/types/errors';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { PasswordInput } from '@tempo/ui/components/PasswordInput';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';

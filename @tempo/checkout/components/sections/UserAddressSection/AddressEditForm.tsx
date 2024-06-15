@@ -1,5 +1,5 @@
 import type { AddressFormProps } from '@tempo/checkout/components/forms/~AddressForm';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { useErrors } from '@tempo/ui/hooks/useErrors';
 import type { FC } from 'react';
 import { ManualSaveAddressForm } from '@tempo/checkout/components/forms/ManualSaveAddressForm';

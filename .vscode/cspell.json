@@ -20,6 +20,7 @@
     "asgi",
     "asyncify",
     "atobarai",
+    "authorisation",
     "autobuild",
     "autohide",
     "autoimport",

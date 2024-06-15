@@ -2,11 +2,10 @@ import * as m from '@paraglide/messages';
 import type {
   CheckoutLineFragment,
   GiftCardFragment,
-  Money as MoneyType,
+  MoneyFragment,
   OrderLineFragment,
 } from '@tempo/api/generated/graphql';
-import type { GrossMoney, GrossMoneyWithTax } from '@tempo/types/misc';
-import Money from '@tempo/ui';
+import Money from '@tempo/ui/components/Money';
 import { getFormattedMoney } from '@tempo/ui/utils/money';
 import { Transition } from '@headlessui/react';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -34,12 +33,12 @@ const LG_BREAKPOINT = 1024;
 interface SummaryProps {
   editable?: boolean;
   lines?: SummaryLine[];
-  totalPrice?: GrossMoneyWithTax;
-  subtotalPrice?: GrossMoney;
+  totalPrice?: MoneyFragment;
+  subtotalPrice?: MoneyFragment;
   giftCards?: Maybe<GiftCardFragment[]>;
   voucherCode?: string | null;
-  discount?: MoneyType | null;
-  shippingPrice?: GrossMoney;
+  discount?: Pick<MoneyFragment, 'amount' | 'currency'> | null;
+  shippingPrice?: MoneyFragment;
 }
 
 export const Summary: FC<SummaryProps> = ({
@@ -135,8 +134,8 @@ export const Summary: FC<SummaryProps> = ({
             label={
               m[summaryMessages.subtotalPrice.id] ?? summaryMessages.subtotalPrice.defaultMessage
             }
-            money={subtotalPrice?.gross}
-            ariaLabel={
+            money={subtotalPrice?.gross ?? null}
+            aria-label={
               m[summaryLabels.subtotalPrice.id] ?? summaryLabels.subtotalPrice.defaultMessage
             }
           />
@@ -144,22 +143,22 @@ export const Summary: FC<SummaryProps> = ({
             <SummaryPromoCodeRow
               editable={editable}
               promoCode={voucherCode}
-              ariaLabel={m[summaryLabels.voucher.id] ?? summaryLabels.voucher.defaultMessage}
+              aria-label={m[summaryLabels.voucher.id] ?? summaryLabels.voucher.defaultMessage}
               label={
                 m[summaryMessages.voucher.id]({
                   voucherCode,
                 }) ?? summaryMessages.voucher.defaultMessage
               }
-              money={discount}
+              money={discount ?? null}
               negative
             />
           )}
-          {giftCards.map(({ currentBalance, displayCode, id }, index) => (
+          {giftCards?.map(({ currentBalance, displayCode, id }, index) => (
             <SummaryPromoCodeRow
               key={index}
               editable={editable}
               promoCodeId={id}
-              ariaLabel={m[summaryLabels.giftCard.id] ?? summaryLabels.giftCard.defaultMessage}
+              aria-label={m[summaryLabels.giftCard.id] ?? summaryLabels.giftCard.defaultMessage}
               label={
                 m[summaryMessages.giftCard.id]({
                   giftCardCode: `•••• •••• ${displayCode}`,
@@ -173,7 +172,7 @@ export const Summary: FC<SummaryProps> = ({
             label={
               m[summaryMessages.shippingCost.id] ?? summaryMessages.shippingCost.defaultMessage
             }
-            ariaLabel={
+            aria-label={
               m[summaryLabels.shippingCost.id] ?? summaryLabels.shippingCost.defaultMessage
             }
             money={shippingPrice?.gross}
