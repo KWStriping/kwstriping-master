@@ -5,6 +5,7 @@
     "../../@tempo/dashboard/**/*",
     "../../@tempo/**/*.test.ts",
     "../../@tempo/**/fixtures/**/*",
+    "../../@tempo/**/_*/**/*",
     "node_modules",
     "cypress",
     "**/*.test.ts",

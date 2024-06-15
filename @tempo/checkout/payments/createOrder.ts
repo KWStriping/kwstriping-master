@@ -13,7 +13,7 @@ export const createOrder = async (
   }: {
     checkoutId: string;
     totalAmount: number;
-    languageCode: LanguageCode;
+    languageCode?: LanguageCode;
   },
   ctx: RequestContext
 ): Promise<

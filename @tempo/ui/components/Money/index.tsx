@@ -1,15 +1,13 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
+import type { MoneyFragment } from '@tempo/api/generated/graphql';
 import styles from './index.module.css';
 import { useLocale } from '@tempo/ui/hooks/useLocale';
 
-export interface IMoney {
-  amount: number;
-  currency: string;
-}
+type TMoney = Pick<MoneyFragment, 'amount' | 'currency'>;
 
 export interface MoneyProps {
-  money: IMoney | null;
+  money: TMoney | null;
   className?: string;
 }
 
@@ -38,20 +36,20 @@ export const Money: FC<MoneyProps> = ({ money, className }) => {
 Money.displayName = 'Money';
 export default Money;
 
-export function addMoney(init: IMoney, ...args: IMoney[]): IMoney {
+export function addMoney(init: TMoney, ...args: TMoney[]): TMoney {
   return {
     amount: args.reduce((acc, curr) => acc + curr.amount, init.amount),
     currency: init.currency,
   };
 }
-export function subtractMoney(init: IMoney, ...args: IMoney[]): IMoney {
+export function subtractMoney(init: TMoney, ...args: TMoney[]): TMoney {
   return {
     amount: args.reduce((acc, curr) => acc - curr.amount, init.amount),
     currency: init.currency,
   };
 }
 
-export const formatMoney = (money: IMoney, locale: string) => {
+export const formatMoney = (money: TMoney, locale: string) => {
   try {
     return Intl.NumberFormat(locale, {
       style: 'currency',
@@ -62,7 +60,7 @@ export const formatMoney = (money: IMoney, locale: string) => {
   }
 };
 
-export const formatMoneyRange = (moneyFrom: IMoney, moneyTo: IMoney, locale: string) => {
+export const formatMoneyRange = (moneyFrom: TMoney, moneyTo: TMoney, locale: string) => {
   try {
     return Intl.NumberFormat(locale, {
       style: 'currency',

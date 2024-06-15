@@ -1,21 +1,20 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import { useFetch } from '@tempo/ui/hooks/useFetch';
+// import { useFetch } from '@tempo/ui/hooks/useFetch';
 import CheckIcon from '@mui/icons-material/Check';
-import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { orderInfoLabels, orderInfoMessages } from './messages';
 import { Section } from './Section';
-import { CHECKOUT_API_URL } from '@tempo/checkout/constants';
-import { getOrderPaymentStatus } from '@tempo/checkout/fetch';
+// import { getOrderPaymentStatus } from '@tempo/checkout/fetch';
 import { usePay } from '@tempo/checkout/hooks/usePay';
 
 export const PaymentSection = ({ orderId }: { orderId: string }) => {
-  const { loading: orderPayLoading, orderPay } = usePay();
+  const [orderPay, { loading: orderPayLoading }] = usePay();
 
-  const [{ data: paymentData, loading: paymentStatusLoading }] = useFetch(getOrderPaymentStatus, {
-    args: { orderId, checkoutApiUrl: CHECKOUT_API_URL },
-  });
+  const paymentData = {} as any;
+  // const [{ data: paymentData, loading: paymentStatusLoading }] = useFetch(getOrderPaymentStatus, {
+  //   args: { orderId },
+  // });
 
   const handlePay = () => {
     return orderPay({
@@ -26,10 +25,6 @@ export const PaymentSection = ({ orderId }: { orderId: string }) => {
   };
 
   const renderPaymentDetails = () => {
-    if (paymentStatusLoading) {
-      return <Skeleton className="w-1/2" />;
-    }
-
     if (paymentData?.status === 'PAID') {
       return (
         <div className="flex flex-row items-center">

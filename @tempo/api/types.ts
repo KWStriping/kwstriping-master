@@ -4,13 +4,13 @@ import type { NextApiRequest } from 'next';
 import type {
   UseMutationResponse as BaseUseMutationResponse,
   AnyVariables,
-  CombinedError as BaseCombinedError,
+  CombinedError,
 } from '@urql/next';
 export type { IntrospectionData } from './client/types';
 export type Data = Record<string, unknown>;
-export type { OperationResult };
+export type { OperationResult, CombinedError };
 
-export type GraphQLError = Omit<BaseCombinedError['graphQLErrors'][0], 'extensions'> & {
+export type GraphQLError = Omit<CombinedError['graphQLErrors'][0], 'extensions'> & {
   extensions: {
     code: string;
     // TODO
@@ -20,9 +20,9 @@ export type GraphQLError = Omit<BaseCombinedError['graphQLErrors'][0], 'extensio
   };
 };
 
-export type CombinedError = Omit<BaseCombinedError, 'graphQLErrors'> & {
-  graphQLErrors: GraphQLError[];
-};
+// export type CombinedError = Omit<BaseCombinedError, 'graphQLErrors'> & {
+//   graphQLErrors: GraphQLError[];
+// };
 
 export type MutationFunction<
   TData extends Data,

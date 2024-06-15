@@ -1,5 +1,7 @@
-import type { CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables } from '@tempo/api/generated/graphql';
-import * as m from '@paraglide/messages';
+import type {
+  CheckoutContactInfoUpdateMutation,
+  CheckoutContactInfoUpdateMutationVariables,
+} from '@tempo/api/generated/graphql';
 import { CheckoutContactInfoUpdateDocument } from '@tempo/api/generated/graphql';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
@@ -7,11 +9,11 @@ import { useMutation } from '@tempo/api/hooks/useMutation';
 import { assert } from 'tsafe/assert';
 import Button from '@tempo/ui/components/buttons/Button';
 import { useEffect } from 'react';
-import { useSectionState } from '@tempo/checkout/hooks/state';
 import type { PointOfContact } from '../forms/ContactInfoForm';
 import ContactInfoForm from '../forms/ContactInfoForm';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection, { INCLUDE_SAVE_BUTTON } from './CheckoutSection';
+import { useSectionState } from '@tempo/checkout/hooks/state';
 
 export function ContactInfoSection({
   checkout,
@@ -28,7 +30,10 @@ export function ContactInfoSection({
     }
   }, [checkout, editing, updateState]);
 
-  const [updateCheckoutContactInfo] = useMutation<CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables>(CheckoutContactInfoUpdateDocument);
+  const [updateCheckoutContactInfo] = useMutation<
+    CheckoutContactInfoUpdateMutation,
+    CheckoutContactInfoUpdateMutationVariables
+  >(CheckoutContactInfoUpdateDocument);
 
   const saveCheckoutContactInfo = async (formData: PointOfContact) => {
     assert(!!checkout);
@@ -44,11 +49,11 @@ export function ContactInfoSection({
       },
       // languageCode: query.languageCode,
     });
-    const mutationErrors = result.data?.updateCheckoutContactInfo?.errors || [];
-    if (mutationErrors?.length) {
-      mutationErrors.forEach((e) => setError('email', { message: e.message || '' }));
-      return;
-    }
+    // const mutationErrors = result.data?.updateCheckoutContactInfo?.errors || [];
+    // if (mutationErrors?.length) {
+    //   mutationErrors.forEach((e) => setError('email', { message: e.message || '' }));
+    //   return;
+    // }
     // setEditing(false);
     updateState({ validating: true });
   };
@@ -61,14 +66,19 @@ export function ContactInfoSection({
   return (
     <CheckoutSection
       sectionId="contactInfo"
-      header={m.checkout_contactInfo_header() ?? 'Contact info'}
+      header={'Contact info'}
       validate={validate}
       className={className}
     >
       {editing ? (
         <>
           <ContactInfoForm
-            poc={checkout}
+            poc={{
+              firstName: checkout?.customerFirstName,
+              lastName: checkout?.customerLastName,
+              email: checkout?.customerEmail,
+              phone: checkout?.customerPhone,
+            }}
             onChange={saveCheckoutContactInfo}
             // onSubmit={saveCheckoutContactInfo}
             defaultValues={{
@@ -99,7 +109,7 @@ export function ContactInfoSection({
                     throw new Error('Not yet implemented');
                   }}
                 >
-                  {m.checkout_contactInfo_addPointOfContact() ?? 'Add point of contact'}
+                  {'Add point of contact'}
                 </Button>
               </div>
             </>
@@ -108,9 +118,9 @@ export function ContactInfoSection({
             <Button
               disabled={disabled}
               className={'w-full mt-2'}
-              onClick={handleSubmit(saveCheckoutContactInfo)}
+              // onClick={handleSubmit(saveCheckoutContactInfo)}
             >
-              {m.checkout_contactInfo_save() ?? 'Save'}
+              {'Save'}
             </Button>
           )}
         </>

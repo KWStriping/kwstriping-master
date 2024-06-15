@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["apps/**/*", "@tempo/**/*", "scripts/*"],
+  "include": ["apps/**/*", "@tempo/**/*", "scripts/*", "*.ts"],
   "exclude": ["node_modules", "**/*.test.ts", "**/fixtures/**/*", "_*"],
   "compilerOptions": {
     "allowJs": true,

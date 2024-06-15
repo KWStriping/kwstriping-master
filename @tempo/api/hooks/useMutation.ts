@@ -53,7 +53,7 @@ export function useMutation<
       }
     } else {
       if (!data) return;
-      if (!disableErrorHandling) handleNestedMutationErrors({ result: mutationState, t });
+      if (!disableErrorHandling) handleNestedMutationErrors({ result: mutationState });
       if (onCompleted) onCompleted(data);
     }
   }, [data, error]);

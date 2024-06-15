@@ -5,7 +5,7 @@ import type { FC, ReactNode } from 'react';
 
 export interface SummaryMoneyRowProps extends MoneyProps {
   label: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export const SummaryMoneyRow: FC<SummaryMoneyRowProps> = ({ label, children, ...moneyProps }) => {

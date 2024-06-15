@@ -1,5 +1,5 @@
-/// <reference types="google.maps" />
 /// <reference types="@types/react" />
+/// <reference types="google.maps" />
 
 import type { GraphQLError as BaseGraphQLError } from '@urql/core';
 
@@ -9,11 +9,8 @@ declare module '@urql/core' {
   }
   export interface GraphQLError extends BaseGraphQLError {
     extensions: {
-      code: string;
       // TODO
-      // exception: {
-      //   code: string;
-      // };
+      code: string;
     };
   }
   export interface CombinedError {

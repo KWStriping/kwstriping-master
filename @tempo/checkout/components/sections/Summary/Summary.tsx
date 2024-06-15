@@ -1,5 +1,6 @@
 import * as m from '@paraglide/messages';
 import type {
+  CheckoutFragment,
   CheckoutLineFragment,
   GiftCardFragment,
   MoneyFragment,
@@ -33,7 +34,7 @@ const LG_BREAKPOINT = 1024;
 interface SummaryProps {
   editable?: boolean;
   lines?: SummaryLine[];
-  totalPrice?: MoneyFragment;
+  totalPrice?: CheckoutFragment['totalPrice'];
   subtotalPrice?: MoneyFragment;
   giftCards?: Maybe<GiftCardFragment[]>;
   voucherCode?: string | null;
@@ -134,7 +135,7 @@ export const Summary: FC<SummaryProps> = ({
             label={
               m[summaryMessages.subtotalPrice.id] ?? summaryMessages.subtotalPrice.defaultMessage
             }
-            money={subtotalPrice?.gross ?? null}
+            money={subtotalPrice ?? null}
             aria-label={
               m[summaryLabels.subtotalPrice.id] ?? summaryLabels.subtotalPrice.defaultMessage
             }
@@ -150,7 +151,7 @@ export const Summary: FC<SummaryProps> = ({
                 }) ?? summaryMessages.voucher.defaultMessage
               }
               money={discount ?? null}
-              negative
+              // negative
             />
           )}
           {giftCards?.map(({ currentBalance, displayCode, id }, index) => (
@@ -165,7 +166,7 @@ export const Summary: FC<SummaryProps> = ({
                 }) ?? summaryMessages.giftCard.defaultMessage
               }
               money={currentBalance}
-              negative
+              // negative
             />
           ))}
           <SummaryMoneyRow
@@ -175,7 +176,7 @@ export const Summary: FC<SummaryProps> = ({
             aria-label={
               m[summaryLabels.shippingCost.id] ?? summaryLabels.shippingCost.defaultMessage
             }
-            money={shippingPrice?.gross}
+            money={shippingPrice ?? null}
           />
           <Divider className="my-4" />
           <div className="summary-row pb-4 items-baseline">

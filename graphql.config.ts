@@ -55,11 +55,7 @@ const introspectionCodegenConfig = {
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
-  plugins: [
-    'typescript',
-    'typescript-operations',
-    'typescript-urql',
-  ],
+  plugins: [],
   config: {
     dedupeFragments: true,
     enumsAsTypes: true,
@@ -101,19 +97,6 @@ const apiCodegenConfig = {
     },
     '@tempo/api/generated/constants.ts': {
       ...constantsConfig,
-    },
-    '@tempo/api/generated/resolvers.ts': {
-      plugins: [
-        {
-          add: {
-            content: '/// <reference path="./graphql.ts" />',
-          },
-        },
-        'typescript-resolvers',
-      ],
-      config: {
-        useTypeImports: true,
-      },
     },
   },
   overwrite: true,
@@ -185,6 +168,9 @@ const config = {
             // ...dashboardCodegenConfig.generates,
           },
           overwrite: true,
+          hooks: {
+            afterOneFileWrite: ['eslint --fix'],
+          },
         },
       },
     },

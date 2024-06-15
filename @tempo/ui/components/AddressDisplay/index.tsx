@@ -2,7 +2,7 @@ import type { AddressFragment } from '@tempo/api/generated/graphql';
 import Typography from '@mui/material/Typography';
 
 export interface AddressDisplayProps {
-  address: Maybe<AddressFragment>;
+  address: Maybe<Omit<AddressFragment, '__typename' | 'id'>>;
   excludeCountry?: boolean;
 }
 
