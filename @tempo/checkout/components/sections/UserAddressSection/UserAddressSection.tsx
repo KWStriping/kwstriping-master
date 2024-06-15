@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql';
-import { AddressSectionSkeleton } from '@tempo/checkout/components/sections/ShippingAddressSection/AddressSectionSkeleton';
 import type { AddressFormData } from '@tempo/next/types/addresses';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import type { UseErrors } from '@tempo/ui/hooks/useErrors';
@@ -42,7 +41,7 @@ export const UserAddressSection: FC<UserAddressSectionProps> = ({
   const editedAddress = addresses.find(getById(editedAddressId as string)) as AddressFragment;
 
   return (
-    <Suspense fallback={<AddressSectionSkeleton />}>
+    <Suspense>
       <AddressListProvider
         checkoutAddress={
           type === 'SHIPPING' ? checkout?.shippingAddress : checkout?.billingAddress

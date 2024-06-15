@@ -24,14 +24,14 @@ export const UserAddressList: FC<UserAddressListProps> = ({ onEditChange, type }
           ? m.shippingAddresses() ?? 'Shipping addresses'
           : m.billingAddresses() ?? 'Billing addresses'
       }
+      value={selectedAddressId}
+      onChange={(event) => setSelectedAddressId(event.target.value)}
     >
       {addressList.map(({ id, ...rest }: AddressFragment) => (
         <AddressSelectBox
           value={id}
           key={`${type}-${id}`}
           id={`${type}-${id}`}
-          selectedValue={selectedAddressId}
-          onChange={() => setSelectedAddressId(id)}
           address={{ ...rest }}
           onEdit={() => onEditChange(id)}
           unavailable={!isAvailable(rest)}
