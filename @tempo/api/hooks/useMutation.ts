@@ -12,7 +12,6 @@ import type {
   MutationHookOptions,
   CombinedError,
   OperationResult,
-  GraphQLError,
 } from '@tempo/api/types';
 import { getMutationStatus, getMutationErrors, getAllErrorMessages } from '@tempo/api/utils';
 
@@ -30,11 +29,12 @@ export function useMutation<
 ): UseMutationResponse<TData, TVariables> {
   const notify = useNotifier();
   const [mutationState, mutate] = _useMutation(mutation);
-  const { data, error, fetching } = mutationState;
+  const { data, error: _error, fetching } = mutationState;
+  const error = _error as Maybe<CombinedError>; // TODO
   const extendedMutationState = {
     ...mutationState,
     called: Boolean(fetching || data || error),
-    errors: error?.graphQLErrors as Maybe<GraphQLError[]>,
+    errors: error?.graphQLErrors,
   };
   useEffect(() => {
     if (error) {

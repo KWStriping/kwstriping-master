@@ -32,7 +32,7 @@ const DISPLAY_PRICES = false;
 const ENABLE_CART = false; // TODO
 
 const createCheckoutMutation = gql(`
-  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String!) {
+  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String) {
     createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {
       result {
         id

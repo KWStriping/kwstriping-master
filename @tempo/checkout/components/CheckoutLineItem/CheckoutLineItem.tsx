@@ -51,17 +51,19 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
   };
 
   const onQuantityUpdate = async (event: SyntheticEvent<HTMLInputElement>) => {
+    if (!checkoutId) return;
     changeLineState(event);
     if (!event?.currentTarget?.validity?.valid || event?.currentTarget?.value === '') return;
     const { error } = await checkoutLineUpdateMutation({
       id: checkoutId,
       lines: [
         {
+          lineId: line?.id,
           quantity: parseFloat(event.currentTarget.value),
-          productId: line?.product.id || '',
+          // productId: line?.product.id || '',
         },
       ],
-      languageCode: query.languageCode,
+      // languageCode: query.languageCode,
     });
     // const mutationErrors = result.data?.updateCheckoutLines?.errors;
     // if (mutationErrors && mutationErrors?.length) {

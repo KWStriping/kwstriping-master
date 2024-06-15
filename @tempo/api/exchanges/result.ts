@@ -1,12 +1,10 @@
 // import * as m from '@paraglide/messages';
 import type { Exchange } from '@urql/core';
 import { toast } from 'react-toastify';
-import { mapExchange } from 'urql';
+import { mapExchange } from '@urql/core';
 import type { CombinedError } from '../types';
 import { isJwtError, isTokenExpired } from '@tempo/api/auth/errors';
 
-const IS_DEV = process.env.NODE_ENV === 'development';
-// const DEBUG = IS_DEV && process.env.DEBUG_URQL === 'true' && false; // TODO
 const DEBUG = false;
 
 export const resultExchange: Exchange = mapExchange({

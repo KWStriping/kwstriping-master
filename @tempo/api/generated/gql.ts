@@ -79,7 +79,7 @@ const documents = {
     "mutation CheckoutShippingAddressUpdate($id: ID!, $address: AddressUpdateInput!) {\n  updateCheckoutShippingAddress(data: $address, id: $id) {\n    result {\n      ...Checkout\n    }\n  }\n}": types.CheckoutShippingAddressUpdateDocument,
     "mutation CheckoutShippingMethodUpdate($id: ID!, $shippingMethodId: ID!) {\n  updateCheckoutShippingMethod(shippingMethodId: $shippingMethodId, id: $id) {\n    result {\n      ...Checkout\n    }\n  }\n}": types.CheckoutShippingMethodUpdateDocument,
     "mutation accountConfirm($email: String!, $token: String!) {\n  confirmAccount(email: $email, token: $token) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}": types.AccountConfirmDocument,
-    "mutation confirmEmailChange($token: String!, $channel: String!) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}": types.ConfirmEmailChangeDocument,
+    "mutation confirmEmailChange($token: String!, $channel: String) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}": types.ConfirmEmailChangeDocument,
     "mutation createAccountAddress($input: AddressUpdateInput!) {\n  addAddress(data: $input) {\n    address {\n      ...Address\n    }\n    user {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}": types.CreateAccountAddressDocument,
     "mutation CreateOrder($id: ID!) {\n  createOrderFromCheckout(id: $id) {\n    result {\n      ...Order\n    }\n  }\n}": types.CreateOrderDocument,
     "mutation SetAddressDefault($id: ID!, $type: AddressType!) {\n  setDefaultAddress(addressId: $id, type: $type) {\n    result {\n      addresses {\n        ...Address\n      }\n    }\n    errors {\n      code\n      message\n    }\n  }\n}": types.SetAddressDefaultDocument,
@@ -112,27 +112,27 @@ const documents = {
     "mutation verifyToken($token: String!) {\n  verifyToken(token: $token) {\n    isValid\n    payload {\n      accessToken\n      refreshToken\n    }\n    user {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}": types.VerifyTokenDocument,
     "query addressValidationRules($countryCode: CountryCode!) {\n  addressValidationRules(countryCode: $countryCode) {\n    ...ValidationRules\n  }\n}": types.AddressValidationRulesDocument,
     "query App {\n  app {\n    id\n    name\n  }\n}": types.AppDocument,
-    "query AvailableShippingMethods($channel: String!) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}": types.AvailableShippingMethodsDocument,
+    "query AvailableShippingMethods($channel: String) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}": types.AvailableShippingMethodsDocument,
     "query CategoryBySlug($slug: String!) {\n  category(slug: $slug) {\n    ...CategoryDetails\n  }\n}": types.CategoryBySlugDocument,
     "query CategoryPaths($after: String) {\n  categories(first: 100, after: $after) {\n    pageInfo {\n      ...PageInfo\n    }\n    edges {\n      node {\n        slug\n      }\n    }\n  }\n}": types.CategoryPathsDocument,
     "query Channel($id: ID!) {\n  channel(id: $id) {\n    ...Channel\n  }\n}": types.ChannelDocument,
     "query ChannelBySlug($slug: String!) {\n  channel(slug: $slug) {\n    ...Channel\n  }\n}": types.ChannelBySlugDocument,
     "query Channels {\n  channels {\n    ...Channel\n  }\n}": types.ChannelsDocument,
     "query Checkout($id: ID!) {\n  checkout(id: $id) {\n    ...Checkout\n  }\n}": types.CheckoutDocument,
-    "query CollectionBySlug($slug: String!, $channel: String!) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}": types.CollectionBySlugDocument,
+    "query CollectionBySlug($slug: String!, $channel: String) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}": types.CollectionBySlugDocument,
     "query CollectionPaths($after: String, $channel: String) {\n  collections(first: 20, channel: $channel, after: $after) {\n    pageInfo {\n      ...PageInfo\n    }\n    edges {\n      node {\n        slug\n      }\n    }\n  }\n}": types.CollectionPathsDocument,
     "query CurrentUserDetails {\n  me {\n    id\n    lastLogin\n    dateJoined\n    email\n    firstName\n    lastName\n    avatar {\n      ...Image\n    }\n    orders {\n      totalCount\n    }\n  }\n}": types.CurrentUserDetailsDocument,
     "query FilteringAttributes($filter: AttributeFilter!, $channel: String!) {\n  attributes(filters: $filter, first: 100, channel: $channel) {\n    totalCount\n    edges {\n      node {\n        ...AttributeFilter\n      }\n    }\n  }\n}": types.FilteringAttributesDocument,
-    "query FooterMenu($channel: String!) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}": types.FooterMenuDocument,
-    "query HomepageBlocks($slug: String!, $channel: String!) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}": types.HomepageBlocksDocument,
-    "query MainMenu($channel: String!) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}": types.MainMenuDocument,
+    "query FooterMenu($channel: String) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}": types.FooterMenuDocument,
+    "query HomepageBlocks($slug: String!, $channel: String) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}": types.HomepageBlocksDocument,
+    "query MainMenu($channel: String) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}": types.MainMenuDocument,
     "query Order($id: ID!) {\n  order(id: $id) {\n    ...Order\n  }\n}": types.OrderDocument,
     "query OrderPaymentDetails($id: ID!) {\n  order(id: $id) {\n    authorizeStatus\n    chargeStatus\n    isPaid\n    status\n    privateMetafield(key: \"payment\")\n  }\n}": types.OrderPaymentDetailsDocument,
     "query OrderTransactions($id: ID!) {\n  order(id: $id) {\n    transactions {\n      ...TransactionItem\n    }\n  }\n}": types.OrderTransactionsDocument,
     "query Orders($before: String, $after: String) {\n  me {\n    orders(first: 10, before: $before, after: $after) {\n      edges {\n        cursor\n        node {\n          ...Order\n        }\n      }\n      pageInfo {\n        hasNextPage\n        hasPreviousPage\n        startCursor\n        endCursor\n      }\n      totalCount\n    }\n  }\n}": types.OrdersDocument,
-    "query Page($slug: String!) {\n  page(slug: $slug) {\n    id\n    title\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    slug\n    createdAt\n    content\n  }\n}": types.PageDocument,
+    "query Page($slug: String!) {\n  page(slug: $slug) {\n    ...Page\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    createdAt\n  }\n}": types.PageDocument,
     "query PagePaths($after: String) {\n  pages(first: 100, after: $after) {\n    pageInfo {\n      ...PageInfo\n    }\n    edges {\n      node {\n        slug\n      }\n    }\n  }\n}": types.PagePathsDocument,
-    "query ProductById($id: ID!, $channel: String!) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}": types.ProductByIdDocument,
+    "query ProductById($id: ID!, $channel: String) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}": types.ProductByIdDocument,
     "query ProductCollection($before: String, $after: String, $first: Int = 4, $filter: ProductFilter, $sortBy: ProductOrderingInput, $channel: String!) {\n  products(\n    first: $first\n    channel: $channel\n    after: $after\n    before: $before\n    filters: $filter\n    sortBy: $sortBy\n  ) {\n    totalCount\n    edges {\n      cursor\n      node {\n        ...ProductCard\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}": types.ProductCollectionDocument,
     "query ProductPaths($after: String, $channel: String) {\n  products(first: 100, channel: $channel, after: $after) {\n    pageInfo {\n      ...PageInfo\n    }\n    edges {\n      node {\n        slug\n      }\n    }\n  }\n}": types.ProductPathsDocument,
     "query User {\n  me {\n    ...UserDetails\n    checkout {\n      ...Checkout\n    }\n  }\n}\n\nquery UserWithoutDetails {\n  me {\n    ...UserBase\n  }\n}": types.UserDocument,
@@ -567,10 +567,10 @@ const documents = {
     "\n  query WarehousesCount {\n    warehouses {\n      totalCount\n    }\n  }\n": types.WarehousesCountDocument,
     "\n  fragment ShopSettings on Site {\n    countries {\n      ...Country\n    }\n    allowedStates\n    defaultCountry {\n      ...Country\n    }\n    defaultWeightUnit\n    domain\n    languages {\n      ...Language\n    }\n    logo {\n      url\n      alt\n      height\n      width\n    }\n    name\n    trackInventoryByDefault\n    maxItemCountPerCheckout\n  }\n": types.ShopSettingsFragmentDoc,
     "\n  query ShopInfo {\n    shop {\n      id\n      ...ShopSettings\n      permissions {\n        code\n        name\n      }\n    }\n  }\n": types.ShopInfoDocument,
-    "\n  query MainMenu($channel: String!) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n": types.MainMenuDocument,
+    "\n  query MainMenu($channel: String) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n": types.MainMenuDocument,
     "\n  query GalleryMedia($first: Int) {\n    media(first: $first) {\n      edges {\n        node {\n          id\n          type\n          title\n          alt\n          file {\n            url\n            contentType\n          }\n          width\n          height\n          aspectRatio\n          placeholder\n        }\n      }\n      pageInfo {\n        hasPreviousPage\n        hasNextPage\n        startCursor\n        endCursor\n      }\n      totalCount\n    }\n  }\n": types.GalleryMediaDocument,
-    "\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String!) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n": types.CreateCheckoutDocument,
-    "\n  query ProductBySlug($slug: String!, $channel: String!) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n": types.ProductBySlugDocument,
+    "\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n": types.CreateCheckoutDocument,
+    "\n  query ProductBySlug($slug: String!, $channel: String) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n": types.ProductBySlugDocument,
 };
 
 /**
@@ -854,7 +854,7 @@ export function graphql(source: "mutation accountConfirm($email: String!, $token
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation confirmEmailChange($token: String!, $channel: String!) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}"): (typeof documents)["mutation confirmEmailChange($token: String!, $channel: String!) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}"];
+export function graphql(source: "mutation confirmEmailChange($token: String!, $channel: String) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}"): (typeof documents)["mutation confirmEmailChange($token: String!, $channel: String) {\n  confirmEmailChange(token: $token, channel: $channel) {\n    result {\n      ...UserDetails\n    }\n    errors {\n      ...Error\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -986,7 +986,7 @@ export function graphql(source: "query App {\n  app {\n    id\n    name\n  }\n}"
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query AvailableShippingMethods($channel: String!) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}"): (typeof documents)["query AvailableShippingMethods($channel: String!) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}"];
+export function graphql(source: "query AvailableShippingMethods($channel: String) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}"): (typeof documents)["query AvailableShippingMethods($channel: String) {\n  shop {\n    id\n    availableShippingMethods(channelSlug: $channel) {\n      id\n      translation {\n        id\n        name\n      }\n      price {\n        ...Money\n      }\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -1014,7 +1014,7 @@ export function graphql(source: "query Checkout($id: ID!) {\n  checkout(id: $id)
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query CollectionBySlug($slug: String!, $channel: String!) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}"): (typeof documents)["query CollectionBySlug($slug: String!, $channel: String!) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}"];
+export function graphql(source: "query CollectionBySlug($slug: String!, $channel: String) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}"): (typeof documents)["query CollectionBySlug($slug: String!, $channel: String) {\n  collection(slug: $slug, channel: $channel) {\n    id\n    ...CollectionDetails\n    backgroundImage {\n      ...Image\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -1030,15 +1030,15 @@ export function graphql(source: "query FilteringAttributes($filter: AttributeFil
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query FooterMenu($channel: String!) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}"): (typeof documents)["query FooterMenu($channel: String!) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}"];
+export function graphql(source: "query FooterMenu($channel: String) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}"): (typeof documents)["query FooterMenu($channel: String) {\n  menu(slug: \"footer\", channel: $channel) {\n    id\n    items {\n      children {\n        ...MenuItem\n      }\n      ...MenuItem\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query HomepageBlocks($slug: String!, $channel: String!) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}"): (typeof documents)["query HomepageBlocks($slug: String!, $channel: String!) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}"];
+export function graphql(source: "query HomepageBlocks($slug: String!, $channel: String) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}"): (typeof documents)["query HomepageBlocks($slug: String!, $channel: String) {\n  menu(channel: $channel, slug: $slug) {\n    id\n    name\n    slug\n    items {\n      ...HomepageBlock\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query MainMenu($channel: String!) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}"): (typeof documents)["query MainMenu($channel: String!) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}"];
+export function graphql(source: "query MainMenu($channel: String) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}"): (typeof documents)["query MainMenu($channel: String) {\n  menu(slug: \"navbar\", channel: $channel) {\n    id\n    items {\n      ...MenuItemWithChildren\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -1058,7 +1058,7 @@ export function graphql(source: "query Orders($before: String, $after: String) {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query Page($slug: String!) {\n  page(slug: $slug) {\n    id\n    title\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    slug\n    createdAt\n    content\n  }\n}"): (typeof documents)["query Page($slug: String!) {\n  page(slug: $slug) {\n    id\n    title\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    slug\n    createdAt\n    content\n  }\n}"];
+export function graphql(source: "query Page($slug: String!) {\n  page(slug: $slug) {\n    ...Page\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    createdAt\n  }\n}"): (typeof documents)["query Page($slug: String!) {\n  page(slug: $slug) {\n    ...Page\n    translation {\n      id\n      title\n      content\n    }\n    seoTitle\n    seoDescription\n    createdAt\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -1066,7 +1066,7 @@ export function graphql(source: "query PagePaths($after: String) {\n  pages(firs
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query ProductById($id: ID!, $channel: String!) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}"): (typeof documents)["query ProductById($id: ID!, $channel: String!) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}"];
+export function graphql(source: "query ProductById($id: ID!, $channel: String) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}"): (typeof documents)["query ProductById($id: ID!, $channel: String) {\n  product(id: $id, channel: $channel) {\n    ...ProductDetails\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -2806,7 +2806,7 @@ export function graphql(source: "\n  query ShopInfo {\n    shop {\n      id\n   
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query MainMenu($channel: String!) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n"): (typeof documents)["\n  query MainMenu($channel: String!) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query MainMenu($channel: String) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n"): (typeof documents)["\n  query MainMenu($channel: String) {\n    menu(slug: \"navbar\", channel: $channel) {\n      id\n      items {\n        ...MenuItemWithChildren\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -2814,11 +2814,11 @@ export function graphql(source: "\n  query GalleryMedia($first: Int) {\n    medi
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String!) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String!) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String) {\n    createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {\n      result {\n        id\n      }\n      errors {\n        field\n        message\n        code\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query ProductBySlug($slug: String!, $channel: String!) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n"): (typeof documents)["\n  query ProductBySlug($slug: String!, $channel: String!) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n"];
+export function graphql(source: "\n  query ProductBySlug($slug: String!, $channel: String) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n"): (typeof documents)["\n  query ProductBySlug($slug: String!, $channel: String) {\n    product(slug: $slug, channel: $channel) {\n      ...ProductDetails\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

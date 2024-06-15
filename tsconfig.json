@@ -3,7 +3,8 @@
   "include": [
     "apps/**/*",
     "@tempo/**/*",
-    "scripts/*"
+    "./scripts/*",
+    "./*.ts",
   ],
   "exclude": [
     "node_modules",
@@ -56,6 +57,10 @@
     "strict": true,
     "target": "ESNext",
     "noPropertyAccessFromIndexSignature": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@tempo/api/types"
+    ],
     "paths": {
       "@tempo/api/*": [
         "@tempo/api/*"

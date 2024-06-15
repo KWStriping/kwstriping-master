@@ -39,7 +39,7 @@
     "**/*.pyc": true,
     "**/*.tmp.*": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/node_modules": true
+    "**/node_modules": false
   },
   "files.saveConflictResolution": "overwriteFileOnDisk",
   "html.autoClosingTags": true,

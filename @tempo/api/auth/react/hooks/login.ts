@@ -21,33 +21,34 @@ export const useLogin = (): [
 
   assert(!Array.isArray(next));
 
-  const [mutate, { data, fetching, error }] = useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
+  const [mutate, { data, fetching, error }] = useMutation<LoginMutation, LoginMutationVariables>(
+    LoginDocument
+  );
   const [_loading, setLoading] = useState(false);
   const loading = _loading || fetching;
 
   const login = useCallback(
     async (variables: LoginMutationVariables) => {
-      let result = undefined;
       const valid = true;
       if (!valid) return;
       setLoading(true);
       if (USE_SERVER_SIDE_AUTH) {
         console.log('Logging in with server-side auth...');
-        result = await signIn('credentials', {
+        await signIn('credentials', {
           email: variables.email,
           password: variables.password,
           redirect: false,
         });
       } else {
         console.log('Logging in with client-side auth...');
-        const { data } = await mutate(variables, { dropAuth: true });
+        const { data, error } = await mutate(variables, { dropAuth: true });
         if (data?.obtainToken) {
-          result = data?.obtainToken;
-          if (result.errors?.length) {
-            toast(result.errors[0]?.message);
+          if (error?.graphQLErrors.length) {
+            toast(error.graphQLErrors[0]?.message);
+          } else if (!data) {
+            throw new Error('no login result');
           } else {
-            result = result.result;
-            const { user, accessToken, refreshToken, csrfToken } = result;
+            const { user, accessToken, refreshToken, csrfToken } = data.obtainToken.result;
             console.log('Completed client-side auth. Logging in with server-side auth...');
             const signInResult = await signIn('credentials', {
               id: user.id,

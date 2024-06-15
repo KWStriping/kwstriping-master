@@ -1,7 +1,8 @@
-import { isJwtError } from '@tempo/api/auth/errors';
 import { authExchange as _authExchange } from '@urql/exchange-auth';
+import { isJwtError } from '@tempo/api/auth/errors';
 import type { Session } from '@tempo/api/auth/types';
 import { auth } from '@tempo/api/auth';
+import type { CombinedError } from '@tempo/api/types';
 
 export const authExchange = () =>
   _authExchange(async (utils) => {
@@ -15,7 +16,7 @@ export const authExchange = () =>
           Authorization: `Bearer ${session?.accessToken}`,
         });
       },
-      didAuthError(error) {
+      didAuthError(error: CombinedError) {
         return error.graphQLErrors.some((e) => isJwtError(e));
       },
       willAuthError(operation) {

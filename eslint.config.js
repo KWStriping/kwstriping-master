@@ -904,7 +904,7 @@ const configs = [
           plugins: {
             custom: {
               rules: {
-                missing,
+                // missing,
               },
             },
           },

@@ -78,7 +78,7 @@ export const metadata: Metadata = {
 // );
 
 const productBySlugQueryDocument = gql(`
-  query ProductBySlug($slug: String!, $channel: String!) {
+  query ProductBySlug($slug: String!, $channel: String) {
     product(slug: $slug, channel: $channel) {
       ...ProductDetails
     }

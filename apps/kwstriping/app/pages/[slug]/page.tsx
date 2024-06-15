@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const result = await getClient().query(PageDocument, { slug }).toPromise();
   const page = result?.data?.page;
+  if (!page) return { notFound: true };
   return (
     <Layout>
       <FlatPage page={page} />

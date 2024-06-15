@@ -1,14 +1,13 @@
 'use client';
 
-import type { LogoutMutation, LogoutMutationVariables } from '@tempo/api/generated/graphql';
-import { signOut } from '@tempo/api/auth/react';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { signOut } from '@tempo/api/auth/react';
+import type { LogoutMutation, LogoutMutationVariables } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { LogoutDocument } from '@tempo/api/generated/graphql';
-import type { LogoutMutation } from '@tempo/api/generated/graphql';
 import type { MutationState } from '@tempo/api/types';
 
 interface UseLogoutResult {
@@ -21,7 +20,10 @@ export const useLogout = (): UseLogoutResult => {
   const { resetCheckoutId } = useCheckout();
   const router = useRouter();
   const paths = usePaths();
-  const [logoutBackend, logoutBackendResult] = useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument);
+  const [logoutBackend, logoutBackendResult] = useMutation<
+    LogoutMutation,
+    LogoutMutationVariables
+  >(LogoutDocument);
   const logout = useCallback(async () => {
     console.log('Signing out...');
     await logoutBackend({});
