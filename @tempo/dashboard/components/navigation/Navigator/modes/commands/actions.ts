@@ -95,7 +95,7 @@ function getCommandModeActions(
   createOrder: MutationFunction<OrderDraftCreateMutation, {}>,
   setMode: (mode: QuickSearchMode) => void
 ): QuickSearchActionInput[] {
-  return [...searchInCommands(query, t, router, createOrder, setMode)]
+  return [...searchInCommands(query, router, createOrder, setMode)]
     .filter((action) => action.score >= threshold)
     .sort(sortScores)
     .slice(0, maxActions);

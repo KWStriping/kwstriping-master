@@ -20,16 +20,16 @@ export interface AlertProps extends AlertBaseProps {
 interface IconProps extends SVGProps<SVGSVGElement> {
   variant: AlertVariant;
 }
-const Icon: FC<IconProps> = ({ variant, ...props }) => {
+const Icon: FC<IconProps> = ({ variant }) => {
   switch (variant) {
     case 'error':
-      return <NotAllowedIcon {...props} />;
+      return <NotAllowedIcon />;
     case 'warning':
-      return <WarningIcon {...props} />;
+      return <WarningIcon />;
     case 'success':
-      return <CompleteIcon {...props} />;
+      return <CompleteIcon />;
     default:
-      return <InfoIcon {...props} />;
+      return <InfoIcon />;
   }
 };
 

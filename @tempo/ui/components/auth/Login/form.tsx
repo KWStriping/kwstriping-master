@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { passwordResetUrl } from '@tempo/api/auth/urls';
-// import { useTranslation } from '@tempo/next/i18n';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
@@ -49,7 +48,7 @@ const LoginForm: FC<LoginFormProps> = ({ loading = false, onSubmit }) => {
             <TextField
               fullWidth
               autoComplete="email"
-              label={m.auth_email() ?? 'Email address'}
+              label={'Email address'}
               name="email"
               onChange={onChange}
               value={value}
@@ -70,7 +69,7 @@ const LoginForm: FC<LoginFormProps> = ({ loading = false, onSubmit }) => {
               <TextField
                 fullWidth
                 autoComplete="password"
-                label={m.auth_password() ?? 'Password'}
+                label={'Password'}
                 name="password"
                 onChange={onChange}
                 type={showPassword ? 'text' : 'password'}
@@ -94,9 +93,7 @@ const LoginForm: FC<LoginFormProps> = ({ loading = false, onSubmit }) => {
           )}
         />
         <Link href={passwordResetUrl} data-test-id="reset-password-link">
-          <Typography className={styles.link ?? ''}>
-            {m.auth_tbL_x() ?? 'Forgot password?'}
-          </Typography>
+          <Typography className={styles.link ?? ''}>{'Forgot password?'}</Typography>
         </Link>
         <div className={styles.buttonContainer ?? ''}>
           <Button
@@ -106,13 +103,13 @@ const LoginForm: FC<LoginFormProps> = ({ loading = false, onSubmit }) => {
             color="primary"
             data-test-id="submit"
           >
-            {m.auth_auth_signIn_header() ?? 'Sign in'}
+            {m.auth_signIn_header() ?? 'Sign in'}
           </Button>
         </div>
         {!!externalLoginMethods?.length && (
           <>
             <Divider />
-            <Typography>{m.auth_orLoginUsing() ?? 'or login using'}</Typography>
+            <Typography>{'or login using'}</Typography>
           </>
         )}
         {/* {[{ id: "", name: "" }].map((externalAuthentication) => (

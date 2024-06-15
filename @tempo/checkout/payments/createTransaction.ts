@@ -1,9 +1,9 @@
 import type { TransactionCreateMutation, TransactionCreateMutationVariables } from '@tempo/api/generated/graphql';
 import { TransactionCreateDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 export const createTransaction = async (args: TransactionCreateMutationVariables) => {
-  const { data, error } = await getServerSideClient()
+  const { data, error } = await getClient()
     .mutation<TransactionCreateMutation, TransactionCreateMutationVariables>(
       TransactionCreateDocument,
       args

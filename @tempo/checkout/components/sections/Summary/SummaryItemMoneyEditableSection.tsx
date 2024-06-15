@@ -1,8 +1,8 @@
+import type { CheckoutLinesUpdateMutation, CheckoutLinesUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { CheckoutLineFragment } from '@tempo/api/generated/graphql';
 import { CheckoutLinesUpdateDocument } from '@tempo/api/generated/graphql';
 
-// import { useTranslation } from '@tempo/next/i18n';
 import { useErrorMessages } from '@tempo/ui/hooks';
 import { useErrors } from '@tempo/ui/hooks/useErrors';
 import { useGetInputProps } from '@tempo/ui/hooks/useGetInputProps';
@@ -26,8 +26,8 @@ export interface SummaryLineFormData {
 }
 
 export const SummaryItemMoneyEditableSection: FC<LineItemQuantitySelectorProps> = ({ line }) => {
-  const [updateLines, { fetching: updating }] = useMutation(CheckoutLinesUpdateDocument);
-  const [deleteLines] = useMutation(CheckoutLineDeleteDocument);
+  const [updateLines, { fetching: updating }] = useMutation<CheckoutLinesUpdateMutation, CheckoutLinesUpdateMutationVariables>(CheckoutLinesUpdateDocument);
+  const [deleteLines] = useMutation<CheckoutLineDeleteMutation, CheckoutLineDeleteMutationVariables>(CheckoutLineDeleteDocument);
   const { setApiErrors } = useErrors<SummaryLineFormData>();
   const { errorMessages } = useErrorMessages();
 

@@ -7,7 +7,6 @@ import type {
   ValidationRulesFragment,
 } from '@tempo/api/generated/graphql';
 import { AddressValidationRulesDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressField } from '@tempo/next/types/addresses';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { getRequiredAddressFields, getOrderedAddressFields } from '@tempo/utils/address';

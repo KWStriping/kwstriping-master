@@ -80,7 +80,7 @@ function getCatalogModeActions(
   router: AppRouterInstance,
   catalog: SearchCatalogQuery
 ): QuickSearchAction[] {
-  return searchInCatalog(query, t, router, catalog);
+  return searchInCatalog(query, router, catalog);
 }
 
 export default getCatalogModeActions;

@@ -1,3 +1,4 @@
+import type { GiftCardAddNoteMutation, GiftCardAddNoteMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -22,7 +23,7 @@ const GiftCardHistory: FC = () => {
   const notify = useNotifier();
   const { id, events } = useGiftCardHistoryEvents();
 
-  const [addTimelineNote, { loading }] = useMutation(GiftCardAddNoteDocument, {
+  const [addTimelineNote, { loading }] = useMutation<GiftCardAddNoteMutation, GiftCardAddNoteMutationVariables>(GiftCardAddNoteDocument, {
     refetchQueries: [GIFT_CARD_DETAILS_QUERY],
     onCompleted: ({ addNoteToGiftCard }) => {
       const { errors } = addNoteToGiftCard;

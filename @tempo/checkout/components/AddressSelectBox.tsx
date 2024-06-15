@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressField } from '@tempo/next/types';
 import { Address } from '@tempo/ui/components/Address';
 import { Button } from '@tempo/ui/components/buttons/Button';

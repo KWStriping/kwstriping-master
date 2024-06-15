@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": ["apps/**/*", "@tempo/**/*", "scripts/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "**/*.test.ts", "_*"],
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

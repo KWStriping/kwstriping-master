@@ -128,7 +128,6 @@ export function getMultiDisplayValue(
 
 export function getErrorMessage(
   err: ProductErrorWithAttributesFragment | PageErrorWithAttributesFragment,
-  t: TFunction
 ): string {
   switch (err?.__typename) {
     case 'ProductError':

@@ -1,6 +1,6 @@
+import type { RequestPasswordResetMutation, RequestPasswordResetMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { RequestPasswordResetDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { PasswordInput } from '@tempo/ui/components/PasswordInput';
 import { useErrorMessages } from '@tempo/ui/hooks/useErrorMessages';
@@ -31,7 +31,7 @@ export const ResetPassword: FC<ResetPasswordProps> = ({
 }) => {
   const { errorMessages } = useErrorMessages();
   const router = useRouter();
-  const [passwordReset] = useMutation(RequestPasswordResetDocument);
+  const [passwordReset] = useMutation<RequestPasswordResetMutation, RequestPasswordResetMutationVariables>(RequestPasswordResetDocument);
 
   const schema = object({
     password: string().required(errorMessages.required),

@@ -1,3 +1,4 @@
+import type { OrderUpdateMutation, OrderUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import type { WarehouseListQuery, WarehouseListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { useShopSettings } from '@tempo/ui';
@@ -71,7 +72,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
       pause: !order?.user?.id,
     }
   );
-  const [updateOrder, updateOrderMutationState] = useMutation(OrderUpdateDocument);
+  const [updateOrder, updateOrderMutationState] = useMutation<OrderUpdateMutation, OrderUpdateMutationVariables>(OrderUpdateDocument);
 
   const handleCustomerChangeAddresses = async (
     data: Partial<OrderCustomerAddressesEditDialogOutput>
@@ -124,7 +125,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
     return disabled;
   };
 
-  const [cancelOrder, cancelOrderMutationState] = useMutation(OrderCancelDocument);
+  const [cancelOrder, cancelOrderMutationState] = useMutation<OrderCancelMutation, OrderCancelMutationVariables>(OrderCancelDocument);
 
   const selectCardMenuItems = filteredConditionalItems([
     {

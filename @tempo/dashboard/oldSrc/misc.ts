@@ -27,7 +27,6 @@ export const removeDoubleSlashes = (url: string) => url.replace(/([^:]\/)\/+/g, 
 
 export const transformPaymentStatus = (
   status: string,
-  t: TFunction
 ): { localized: string; status: StatusType } => {
   switch (status) {
     case ChargeStatus.PartiallyCharged:
@@ -86,7 +85,6 @@ export const transformPaymentStatus = (
 
 export const transformOrderStatus = (
   status: string,
-  t: TFunction
 ): { localized: string; status: StatusType } => {
   switch (status) {
     case OrderStatus.Fulfilled:
@@ -169,11 +167,9 @@ export function hasErrors(errorList: UserError[] | null): boolean {
 }
 
 export const parseLogMessage = ({
-  t,
   code,
   field,
 }: {
-  t: TFunction;
   code: string;
   field?: string;
 }) =>

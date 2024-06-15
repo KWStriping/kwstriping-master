@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql';
 import { useUser, useLogout } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { OrderFragment } from '@tempo/api/generated/graphql';
 import { shippingMessages } from '@tempo/checkout/components/sections/ShippingAddressSection/messages';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Address } from '@tempo/ui/components/Address';
 import Typography from '@mui/material/Typography';
 

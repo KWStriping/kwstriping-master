@@ -1,8 +1,13 @@
+import type {
+  SetAddressDefaultMutation,
+  SetAddressDefaultMutationVariables,
+  AddressDeleteMutation,
+  AddressDeleteMutationVariables,
+  AddressFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import type { AddressFragment } from '@tempo/api/generated/graphql';
 import { AddressDeleteDocument, SetAddressDefaultDocument } from '@tempo/api/generated/graphql';
 import { AddressType } from '@tempo/api/generated/constants';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { Button } from '@tempo/ui/components/buttons/Button';
@@ -13,8 +18,14 @@ export interface AddressBookCardProps {
 }
 
 export function AddressBookCard({ address, onRefreshBook }: AddressBookCardProps) {
-  const [setAddressDefaultMutation] = useMutation(SetAddressDefaultDocument);
-  const [deleteAddressMutation] = useMutation(AddressDeleteDocument);
+  const [setAddressDefaultMutation] = useMutation<
+    SetAddressDefaultMutation,
+    SetAddressDefaultMutationVariables
+  >(SetAddressDefaultDocument);
+  const [deleteAddressMutation] = useMutation<
+    AddressDeleteMutation,
+    AddressDeleteMutationVariables
+  >(AddressDeleteDocument);
 
   let cardHeader = '';
   if (address?.isDefaultShippingAddress && address?.isDefaultBillingAddress) {

@@ -296,7 +296,6 @@ export function getColumnData(
   channels: ChannelData[],
   warehouses: WarehouseFragment[],
   variantAttributes: ProductFragment['productKlass']['variantAttributes'],
-  t: TFunction
 ): AvailableColumn {
   const common = {
     id: name,

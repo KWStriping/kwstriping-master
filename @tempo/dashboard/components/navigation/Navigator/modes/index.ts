@@ -22,17 +22,17 @@ function getModeActions(
 ): QuickSearchAction[] {
   switch (mode) {
     case 'catalog':
-      return getCatalogModeActions(query, t, cbs.router, queries.catalog);
+      return getCatalogModeActions(query, cbs.router, queries.catalog);
     case 'commands':
-      return getCommandModeActions(query, t, cbs.router, cbs.createOrder, cbs.setMode);
+      return getCommandModeActions(query, cbs.router, cbs.createOrder, cbs.setMode);
     case 'customers':
       return getCustomersModeActions(t, cbs.router, queries.customers);
     case 'help':
-      return getHelpModeActions(query, t, cbs.setMode);
+      return getHelpModeActions(query, cbs.setMode);
     case 'orders':
-      return getOrdersModeActions(query, t, cbs.router, queries.order);
+      return getOrdersModeActions(query, cbs.router, queries.order);
     default:
-      return getDefaultModeActions(query, t, cbs.router, cbs.createOrder, cbs.setMode);
+      return getDefaultModeActions(query, cbs.router, cbs.createOrder, cbs.setMode);
   }
 }
 

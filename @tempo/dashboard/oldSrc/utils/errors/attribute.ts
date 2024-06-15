@@ -20,7 +20,6 @@ const messages = {
 
 function getAttributeErrorMessage(
   err: Omit<AttributeErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

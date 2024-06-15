@@ -28,7 +28,6 @@ const messages = {
 
 function getPageErrorMessage(
   err: Omit<PageErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

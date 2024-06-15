@@ -1,10 +1,10 @@
 import type { OrderTransactionsQuery, OrderTransactionsQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderTransactionsDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 export const getOrderTransactions = async (args: OrderTransactionsQueryVariables) => {
   // @todo handle errors
-  const { data, error: _error } = await getServerSideClient()
+  const { data, error: _error } = await getClient()
     .query(
       OrderTransactionsDocument,
       args

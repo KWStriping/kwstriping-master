@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
@@ -38,9 +37,7 @@ const Login: FC<LoginProps> = ({ loading, onSubmit }) => {
     <div className={'flex items-center justify-center w-full'}>
       {!!user && showSignedIn ? (
         <>
-          <Typography>
-            {m.auth_signIn_alreadySignedIn() ?? 'You are already signed in.'}
-          </Typography>
+          <Typography>{'You are already signed in.'}</Typography>
           <Link href={'/'}>{'Home'}</Link>
         </>
       ) : (

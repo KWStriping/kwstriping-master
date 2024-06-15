@@ -1,7 +1,7 @@
+import type { UpdateCheckoutFulfillmentMethodMutation, UpdateCheckoutFulfillmentMethodMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { CountryCode } from '@tempo/api/generated/graphql';
 import { UpdateCheckoutFulfillmentMethodDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import DateTimeField from '@tempo/ui/components/inputs/DateTimeField';
 import { SelectBox } from '@tempo/ui/components/inputs/SelectBox';
 import { SelectBoxGroup } from '@tempo/ui/components/inputs/SelectBoxGroup';
@@ -39,7 +39,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
     shippingAddress?.country?.code as CountryCode | undefined
   );
   const [{ editing }, updateState] = useSectionState('fulfillmentMethod');
-  const [updateFulfillmentMethod] = useMutation(UpdateCheckoutFulfillmentMethodDocument);
+  const [updateFulfillmentMethod] = useMutation<UpdateCheckoutFulfillmentMethodMutation, UpdateCheckoutFulfillmentMethodMutationVariables>(UpdateCheckoutFulfillmentMethodDocument);
 
   const getAutoSetMethod = useCallback(
     (deadline?: Maybe<string>) => {

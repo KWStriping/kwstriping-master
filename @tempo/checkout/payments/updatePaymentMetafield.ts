@@ -3,14 +3,14 @@ import type {
   OrderUpdatePaymentMetafieldMutationVariables,
 } from '@tempo/api/generated/graphql';
 import { OrderUpdatePaymentMetafieldDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 import type { OrderPaymentMetafield } from '@tempo/checkout/types/common';
 
 export const updatePaymentMetafield = async (
   orderId: OrderUpdatePaymentMetafieldMutationVariables['orderId'],
   payment: OrderPaymentMetafield
 ) => {
-  const { data, error } = await getServerSideClient()
+  const { data, error } = await getClient()
     .mutation<OrderUpdatePaymentMetafieldMutation, OrderUpdatePaymentMetafieldMutationVariables>(
       OrderUpdatePaymentMetafieldDocument,
       {
@@ -20,5 +20,5 @@ export const updatePaymentMetafield = async (
     )
     .toPromise();
 
-  return error || data?.updatePrivateMetadata?.errors ? false : true;
+  return !!error?.graphQLErrors.length;
 };

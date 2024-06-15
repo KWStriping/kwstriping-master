@@ -16,8 +16,8 @@ function getDefaultModeActions(
   setMode: (mode: QuickSearchMode) => void
 ): QuickSearchAction[] {
   return [
-    ...searchInViews(query, t, router),
-    ...searchInCommands(query, t, router, createOrder, setMode),
+    ...searchInViews(query, router),
+    ...searchInCommands(query, router, createOrder, setMode),
   ]
     .filter((action) => action.score >= threshold)
     .sort(sortScores)

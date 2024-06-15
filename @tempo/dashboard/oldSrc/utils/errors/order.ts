@@ -71,7 +71,7 @@ const messages = {
   },
 };
 
-function getOrderErrorMessage(err: OrderErrorFragment, t: TFunction): string {
+function getOrderErrorMessage(err: OrderErrorFragment): string {
   if (err) {
     switch (err.code) {
       case OrderErrorCode.BillingAddressNotSet:

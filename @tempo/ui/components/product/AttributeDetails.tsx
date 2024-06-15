@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { ProductDetailsFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { getProductAttributes } from '@tempo/ui/utils/product';
 
 export interface AttributeDetailsProps {

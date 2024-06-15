@@ -1,6 +1,6 @@
+import type { CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutContactInfoUpdateDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -28,7 +28,7 @@ export function ContactInfoSection({
     }
   }, [checkout, editing, updateState]);
 
-  const [updateCheckoutContactInfo] = useMutation(CheckoutContactInfoUpdateDocument);
+  const [updateCheckoutContactInfo] = useMutation<CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables>(CheckoutContactInfoUpdateDocument);
 
   const saveCheckoutContactInfo = async (formData: PointOfContact) => {
     assert(!!checkout);

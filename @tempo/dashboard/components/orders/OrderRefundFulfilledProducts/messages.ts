@@ -19,7 +19,7 @@ export const messages = {
   },
 };
 
-export const getTitle = (fulfillmentStatus: FulfillmentStatus, t: TFunction) => {
+export const getTitle = (fulfillmentStatus: FulfillmentStatus) => {
   switch (fulfillmentStatus) {
     case FulfillmentStatus.Returned:
       return (m.dashboard_ulfillmentReturned() ?? 'Fulfillment returned');

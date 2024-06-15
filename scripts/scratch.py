@@ -4,7 +4,7 @@ from typing import Pattern, Match
 
 # Set the root directory of your repository
 root_dir = Path("/Users/jacob/code/kwstriping-master")
-pattern = re.compile(r".+= useQuery<(.+?)>")
+pattern = re.compile(r".+= useMutation<(.+?)>")
 
 
 def update_file(file_path: Path, match: Match) -> None:

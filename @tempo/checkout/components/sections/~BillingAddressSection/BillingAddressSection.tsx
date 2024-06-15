@@ -1,7 +1,7 @@
+import type { CheckoutBillingAddressUpdateMutation, CheckoutBillingAddressUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
 import { useUserQuery } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/types/addresses';
 import { Checkbox } from '@tempo/ui/components/inputs/Checkbox';
 import { useErrors } from '@tempo/ui/hooks/useErrors';
@@ -29,7 +29,7 @@ export const BillingAddressSection = () => {
   const errorProps = useErrors<AddressFormData>();
   const { setApiErrors } = errorProps;
 
-  const [updateCheckoutBillingAddress] = useMutation(CheckoutBillingAddressUpdateDocument);
+  const [updateCheckoutBillingAddress] = useMutation<CheckoutBillingAddressUpdateMutation, CheckoutBillingAddressUpdateMutationVariables>(CheckoutBillingAddressUpdateDocument);
 
   const handleSubmit = useSubmit<AddressFormData, typeof updateCheckoutBillingAddress>({
     scope: 'checkoutBillingUpdate',

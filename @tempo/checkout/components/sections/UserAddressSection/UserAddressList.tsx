@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { SelectBoxGroup } from '@tempo/ui/components/inputs/SelectBoxGroup';
 import type { FC } from 'react';
 import { AddressSelectBox } from '@tempo/checkout/components/AddressSelectBox';

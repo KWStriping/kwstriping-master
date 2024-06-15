@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useShopSettings } from '@tempo/ui/hooks/useShopSettings';
 import CatalogIcon from '@dashboard/assets/images/menu-catalog-icon.svg';
 import ConfigurationIcon from '@dashboard/assets/images/menu-configure-icon.svg';

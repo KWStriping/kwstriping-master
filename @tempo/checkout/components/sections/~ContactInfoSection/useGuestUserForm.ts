@@ -1,3 +1,4 @@
+import type { CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutContactInfoUpdateDocument, RegisterDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -24,8 +25,8 @@ export const useGuestUserForm = ({ createAccount }: { createAccount: boolean }) 
   const { errorMessages } = useErrorMessages();
   const { setCheckoutUpdateState: setRegisterState } =
     useCheckoutUpdateStateChange('userRegister');
-  const [updateEmail] = useMutation(CheckoutContactInfoUpdateDocument);
-  const [userRegister] = useMutation(RegisterDocument);
+  const [updateEmail] = useMutation<CheckoutContactInfoUpdateMutation, CheckoutContactInfoUpdateMutationVariables>(CheckoutContactInfoUpdateDocument);
+  const [userRegister] = useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
   const [userRegisterDisabled, setUserRegistrationDisabled] = useState(false);
 
   const schema = object({

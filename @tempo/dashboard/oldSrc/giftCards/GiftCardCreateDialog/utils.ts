@@ -33,7 +33,7 @@ export const getExpiryPeriodTerminationDate = (
   }
 };
 
-export const getGiftCardExpiryError = (t: TFunction): IMessage => ({
+export const getGiftCardExpiryError = (): IMessage => ({
   title: t(
     'dashboard_giftCardInvalidExpiryDateHeader',
     updateGiftCardFormMessages.giftCardInvalidExpiryDateHeader.defaultMessage

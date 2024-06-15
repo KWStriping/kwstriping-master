@@ -1,3 +1,4 @@
+import type { CreateOrderMutation, CreateOrderMutationVariables } from '@tempo/api/generated/graphql';
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import Spinner from '@tempo/ui/components/Spinner';
 import Typography from '@mui/material/Typography';
@@ -37,7 +38,7 @@ function Checkout({ checkout, loading }: CheckoutProps) {
   const [submitting, setSubmitting] = useState(false);
 
   const [processPayment, { loading: paying, error: payError }] = usePay();
-  const [createOrderFromCheckout] = useMutation(CreateOrderDocument);
+  const [createOrderFromCheckout] = useMutation<CreateOrderMutation, CreateOrderMutationVariables>(CreateOrderDocument);
 
   useEffect(() => {
     if (checkout) {

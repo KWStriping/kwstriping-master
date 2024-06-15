@@ -13,7 +13,6 @@ const messages = {
 
 function getShopErrorMessage(
   err: Omit<ShopErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

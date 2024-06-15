@@ -38,7 +38,7 @@ const messages = {
   },
 };
 
-function getAppErrorMessage(err: AppErrorFragment, t: TFunction): string {
+function getAppErrorMessage(err: AppErrorFragment): string {
   if (err) {
     switch (err.code) {
       case AppErrorCode.InvalidManifestFormat:

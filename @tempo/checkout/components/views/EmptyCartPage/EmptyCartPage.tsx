@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Title } from '@tempo/checkout/components/Title';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import Typography from '@mui/material/Typography';
 import { emptyCartLabels, emptyCartMessages } from './messages';

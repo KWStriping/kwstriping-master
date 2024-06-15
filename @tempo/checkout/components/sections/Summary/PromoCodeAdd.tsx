@@ -1,6 +1,6 @@
+import type { CheckoutAddPromoCodeMutation, CheckoutAddPromoCodeMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutAddPromoCodeDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
 import { useErrors } from '@tempo/ui/hooks/useErrors';
@@ -30,7 +30,7 @@ export const PromoCodeAdd: FC = ({ className }: { className?: string }) => {
   });
   const resolver = useValidationResolver(schema);
 
-  const [addPromoCodeToCheckout] = useMutation(CheckoutAddPromoCodeDocument);
+  const [addPromoCodeToCheckout] = useMutation<CheckoutAddPromoCodeMutation, CheckoutAddPromoCodeMutationVariables>(CheckoutAddPromoCodeDocument);
 
   const formProps = useForm<FormData>({
     resolver,

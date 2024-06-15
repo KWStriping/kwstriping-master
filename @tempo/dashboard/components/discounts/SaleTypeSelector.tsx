@@ -28,7 +28,7 @@ const useStyles = makeStyles(
   }
 );
 
-function createChoices(t: TFunction): RadioGroupFieldChoice[] {
+function createChoices(): RadioGroupFieldChoice[] {
   return [
     {
       label: t(

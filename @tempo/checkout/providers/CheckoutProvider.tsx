@@ -5,7 +5,6 @@ import type {
 } from '@tempo/api/generated/graphql';
 import { CheckoutDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
@@ -27,7 +26,7 @@ interface CheckoutProviderProps {
 }
 
 export function CheckoutProvider({ children }: CheckoutProviderProps) {
-  const { languageCode } = useLocale();
+  // const { languageCode } = useLocale();
   const { authenticated, user } = useUser();
   const [checkoutId, setCheckoutId] = useCheckoutId();
 
@@ -36,7 +35,7 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
     CheckoutQuery,
     CheckoutQueryVariables
   >(CheckoutDocument, {
-    variables: { id: checkoutId as string, languageCode },
+    variables: { id: checkoutId as string },
     pause: !checkoutId || !!user?.checkout,
   });
 

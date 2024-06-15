@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment, CheckoutError } from '@tempo/api/generated/graphql';
 import { CountryCode } from '@tempo/api/generated/constants';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData, OmissibleAddressData } from '@tempo/next/types/addresses';
 import Button from '@tempo/ui/components/buttons/Button';
 import latLngData from '@tempo/data/stateLatLngs.json';

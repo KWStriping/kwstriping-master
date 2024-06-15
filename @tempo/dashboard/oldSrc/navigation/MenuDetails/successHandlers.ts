@@ -13,7 +13,6 @@ export function handleItemCreate(
   data: MenuItemCreateMutation,
   notify: UseNotifierResult,
   closeModal: () => void,
-  t: TFunction
 ) {
   if (data?.createMenuItem?.errors?.length === 0) {
     closeModal();
@@ -28,7 +27,6 @@ export function handleItemUpdate(
   id: string,
   router: NextRouter,
   notify: UseNotifierResult,
-  t: TFunction
 ) {
   if (data?.updateMenuItem?.errors?.length === 0) {
     notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
@@ -47,7 +45,6 @@ export function handleDelete(
   data: MenuDeleteMutation,
   router: NextRouter,
   notify: UseNotifierResult,
-  t: TFunction
 ) {
   if (data?.deleteMenu?.errors?.length === 0) {
     notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
@@ -61,7 +58,6 @@ export function handleUpdate(
   data: MenuUpdateMutation,
   notify: UseNotifierResult,
   refetch: () => void,
-  t: TFunction
 ) {
   if (
     data?.deleteMenuItems?.errors?.length === 0 &&

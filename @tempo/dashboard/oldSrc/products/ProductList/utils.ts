@@ -15,7 +15,6 @@ export const getAvailableProductKinds = (): ProductKindChoice[] =>
 
 export const getProductKindOpts = (
   availableProducts: ProductKindChoice[],
-  t: TFunction
 ): ProductKindChoice[] =>
   availableProducts.map((kind) => {
     switch (kind.value) {

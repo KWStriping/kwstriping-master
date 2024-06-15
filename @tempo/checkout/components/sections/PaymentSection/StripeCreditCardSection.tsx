@@ -1,3 +1,4 @@
+import type { CheckoutPaymentCreateMutation, CheckoutPaymentCreateMutationVariables } from '@tempo/api/generated/graphql';
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import { CheckoutPaymentCreateDocument } from '@tempo/api/generated/graphql';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
@@ -25,8 +26,8 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
   const router = useRouter();
   const paths = usePaths();
   const { resetCheckoutId: resetCheckoutToken } = useCheckout();
-  const [createCheckoutPaymentMutation] = useMutation(CheckoutPaymentCreateDocument);
-  const [completeCheckoutMutation] = useMutation(CheckoutCompleteDocument);
+  const [createCheckoutPaymentMutation] = useMutation<CheckoutPaymentCreateMutation, CheckoutPaymentCreateMutationVariables>(CheckoutPaymentCreateDocument);
+  const [completeCheckoutMutation] = useMutation<CheckoutCompleteMutation, CheckoutCompleteMutationVariables>(CheckoutCompleteDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const totalPrice = checkout.totalPrice?.gross;
   const payLabel = `Pay ${formatPrice(totalPrice)}`;

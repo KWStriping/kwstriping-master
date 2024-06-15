@@ -78,7 +78,7 @@ export const homeQuery = gql(`
 `);
 
 // export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   const [client, ssrExchange] = getServerSideClientAndSsrExchange(ctx);
+//   const [client, ssrExchange] = getClientAndSsrExchange(ctx);
 //   if (!ctx) throw new Error('No ctx');
 //   await client.query(homeQuery, {}).toPromise();
 //   return {

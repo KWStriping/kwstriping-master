@@ -22,7 +22,6 @@ const messages = {
 
 export function getShippingPriceRateErrorMessage(
   err: ShippingErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.code) {
     case ShippingErrorCode.MaxLessThanMin:
@@ -34,7 +33,6 @@ export function getShippingPriceRateErrorMessage(
 
 export function getShippingWeightRateErrorMessage(
   err: ShippingErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.code) {
     case ShippingErrorCode.MaxLessThanMin:

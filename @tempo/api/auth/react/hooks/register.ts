@@ -8,7 +8,7 @@ export const useRegister = (): [
   (options: RegisterMutationVariables) => Promise<OperationResult<RegisterMutation> | undefined>,
   { fetching: boolean },
 ] => {
-  const [mutate, { fetching, error }] = useMutation(RegisterDocument);
+  const [mutate, { fetching, error }] = useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
   const register = useCallback(
     (options: RegisterMutationVariables) => {
       // setTokens({ accessToken: null, csrfToken: null });

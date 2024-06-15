@@ -31,7 +31,6 @@ export interface CompanyAddressFormProps {
 
 function getErrorMessage(
   err: AccountErrorFragment | ShopErrorFragment | WarehouseErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.__typename) {
     case 'AccountError':

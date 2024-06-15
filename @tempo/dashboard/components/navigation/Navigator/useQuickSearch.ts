@@ -1,3 +1,4 @@
+import type { OrderDraftCreateMutation, OrderDraftCreateMutationVariables } from '@tempo/api/generated/graphql';
 import { useSearch, useMutation } from '@tempo/api/hooks';
 import { gql } from '@tempo/api';
 import {
@@ -62,7 +63,7 @@ function useQuickSearch(open: boolean, input: RefObject<HTMLInputElement>): UseQ
     },
     pause: !query,
   });
-  const [createOrder] = useMutation(OrderDraftCreateDocument, {
+  const [createOrder] = useMutation<OrderDraftCreateMutation, OrderDraftCreateMutationVariables>(OrderDraftCreateDocument, {
     onCompleted: (result) => {
       if (!result.createDraftOrder?.order?.id) return;
       if (result.createDraftOrder?.errors?.length === 0) {
@@ -132,8 +133,7 @@ function useQuickSearch(open: boolean, input: RefObject<HTMLInputElement>): UseQ
     getModeActions(
       mode,
       query,
-      t,
-      {
+          {
         catalog,
         customers: mapEdgesToItems(customers?.data?.search) || [],
         order: orderData?.order,

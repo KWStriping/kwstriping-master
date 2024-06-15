@@ -1,11 +1,14 @@
-import type { RefreshTokenMutation, RefreshTokenMutationVariables } from '@tempo/api/generated/graphql';
-import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
 import debounce from 'lodash-es/debounce';
 import type { NextApiRequest } from 'next';
 import type { Account, CallbacksOptions, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
 import { assert } from 'tsafe/assert';
 import { ACCESS_TOKEN_TTL } from '../constants';
+import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
+import type {
+  RefreshTokenMutation,
+  RefreshTokenMutationVariables,
+} from '@tempo/api/generated/graphql';
 
 // https://next-auth.js.org/configuration/callbacks
 const signIn: CallbacksOptions['signIn'] = async ({
@@ -21,7 +24,7 @@ const signIn: CallbacksOptions['signIn'] = async ({
     const _profile = profile as { email_verified: boolean };
     if (!_profile?.email_verified) return false;
   }
-  // const client = getServerSideClient();
+  // const client = getClient();
   // TODO
   // const { data } = await client.mutate<AuthorizeMutation, AuthorizeMutationVariables>({
   //   mutation: AuthorizeDocument,

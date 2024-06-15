@@ -20,6 +20,7 @@
     "lodash-es": "^4.17.21",
     "react-hook-form": "^7.43.1",
     "stripe": "15.10.0",
+    "ts-invariant": "0.10.3",
     "tsafe": "^1.6.5",
     "yup": "1.4.0",
     "zustand": "^4.4.7"

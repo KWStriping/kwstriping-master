@@ -1,7 +1,7 @@
+import type { CheckoutCustomerDetachMutation, CheckoutCustomerDetachMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutCustomerDetachDocument } from '@tempo/api/generated/graphql';
 import { useAuthActions, useUser } from '@tempo/api/auth/src';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { Locale } from '@tempo/utils';
@@ -25,7 +25,7 @@ export const SignedInUser: FC<SignedInUserProps> = ({ onSectionChange, onSignOut
   const { logout } = useAuthActions();
   const { user } = useUser();
 
-  const [customerDetach] = useMutation(CheckoutCustomerDetachDocument);
+  const [customerDetach] = useMutation<CheckoutCustomerDetachMutation, CheckoutCustomerDetachMutationVariables>(CheckoutCustomerDetachDocument);
 
   const handleLogout = async () => {
     checkout?.id &&

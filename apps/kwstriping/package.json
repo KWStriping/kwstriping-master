@@ -78,7 +78,6 @@
     "rooks": "^7.14.1",
     "sharp": "^0.33.1",
     "swc-plugin-graphql-codegen-client-preset-optimizer-test": "^0.1.4",
-    "ts-invariant": "0.10.3",
     "url-join": "5.0.0",
     "urql": "^4.1.0",
     "yup": "1.4.0"

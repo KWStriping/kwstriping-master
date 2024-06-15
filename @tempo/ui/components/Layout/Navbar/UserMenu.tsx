@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { UserDetailsFragment } from '@tempo/api/generated/graphql';
 import { useLogout } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';

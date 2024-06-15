@@ -36,7 +36,7 @@ const messages = {
   },
 };
 
-function getInvoiceErrorMessage(err: InvoiceErrorFragment, t: TFunction): string {
+function getInvoiceErrorMessage(err: InvoiceErrorFragment): string {
   if (err) {
     switch (err.code) {
       case InvoiceErrorCode.EmailNotSet:

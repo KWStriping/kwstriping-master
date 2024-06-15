@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { OrderEventType } from '@tempo/api/generated/constants';
-// import { useTranslation } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';

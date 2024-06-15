@@ -1,3 +1,4 @@
+import type { GiftCardBulkCreateMutation, GiftCardBulkCreateMutationVariables } from '@tempo/api/generated/graphql';
 import type { ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
@@ -65,7 +66,7 @@ const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
     };
   };
 
-  const [bulkCreateGiftCard, bulkCreateGiftCardOpts] = useMutation(GiftCardBulkCreateDocument, {
+  const [bulkCreateGiftCard, bulkCreateGiftCardOpts] = useMutation<GiftCardBulkCreateMutation, GiftCardBulkCreateMutationVariables>(GiftCardBulkCreateDocument, {
     onCompleted: (data) => {
       const errors = data?.createGiftCards?.errors;
       const cardsAmount = data?.createGiftCards?.giftCards?.length || 0;
@@ -85,7 +86,7 @@ const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
         ),
       };
 
-      notify(getGiftCardCreateOnCompletedMessage(errors, t, giftCardsBulkIssueSuccessMessage));
+      notify(getGiftCardCreateOnCompletedMessage(errors, giftCardsBulkIssueSuccessMessage));
 
       setFormErrors(getFormErrors(createGiftCardsErrorKeys, errors));
 

@@ -41,7 +41,7 @@ export const itemsQuantityMessages = {
   },
 };
 
-export const translateVoucherTypes = (t: TFunction) => ({
+export const translateVoucherTypes = () => ({
   [VoucherType.Shipping]: t('dashboard_shipment', messages.shipment.defaultMessage),
   [VoucherType.EntireOrder]: t('dashboard_order', messages.order.defaultMessage),
   [VoucherType.SpecificProduct]: t('dashboard_products', messages.products.defaultMessage),

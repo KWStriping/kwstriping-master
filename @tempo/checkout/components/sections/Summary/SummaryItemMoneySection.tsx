@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { OrderLineFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { SummaryItemMoneyInfo } from '@tempo/checkout/components/sections/Summary/SummaryItemMoneyInfo';

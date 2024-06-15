@@ -1,7 +1,7 @@
+import type { CheckoutPaymentCreateMutation, CheckoutPaymentCreateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import { CheckoutPaymentCreateDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -29,8 +29,8 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
   const paths = usePaths();
   const router = useRouter();
   const { formatPrice } = useLocalization();
-  const [createCheckoutPaymentMutation] = useMutation(CheckoutPaymentCreateDocument);
-  const [completeCheckoutMutation] = useMutation(CheckoutCompleteDocument);
+  const [createCheckoutPaymentMutation] = useMutation<CheckoutPaymentCreateMutation, CheckoutPaymentCreateMutationVariables>(CheckoutPaymentCreateDocument);
+  const [completeCheckoutMutation] = useMutation<CheckoutCompleteMutation, CheckoutCompleteMutationVariables>(CheckoutCompleteDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const totalPrice = checkout.totalPrice?.gross;
   const payLabel =

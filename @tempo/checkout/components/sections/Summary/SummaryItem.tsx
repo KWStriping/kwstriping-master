@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { CheckoutLineFragment, OrderLineFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import PhotoIcon from '@mui/icons-material/Photo';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';

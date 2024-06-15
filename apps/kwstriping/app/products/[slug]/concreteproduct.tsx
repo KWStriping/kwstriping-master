@@ -5,6 +5,8 @@ import type {
   CheckoutError,
   CreateCheckoutMutation,
   CreateCheckoutMutationVariables,
+  CheckoutAddProductLineMutation,
+  CheckoutAddProductLineMutationVariables,
 } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -64,7 +66,10 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
   );
   const { user } = useUser();
 
-  const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
+  const [addProductToCheckout] = useMutation<
+    CheckoutAddProductLineMutation,
+    CheckoutAddProductLineMutationVariables
+  >(CheckoutAddProductLineDocument);
 
   const [oneClickCheckoutEnabled, setOneClickCheckoutEnabled] = useState(false);
 

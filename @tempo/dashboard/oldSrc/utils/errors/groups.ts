@@ -25,7 +25,7 @@ const messages = {
   },
 };
 
-function getGroupErrorMessage(err: GroupErrorFragment, t: TFunction): string {
+function getGroupErrorMessage(err: GroupErrorFragment): string {
   if (err) {
     switch (err.code) {
       case GroupErrorCode.AssignNonStaffMember:

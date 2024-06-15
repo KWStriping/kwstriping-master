@@ -13,7 +13,6 @@ const messages = {
 
 function getDiscountErrorMessage(
   err: Omit<DiscountErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

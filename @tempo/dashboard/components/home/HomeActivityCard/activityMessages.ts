@@ -4,7 +4,6 @@ import type { ActivityFragment } from '@tempo/api/generated/graphql';
 
 export const getActivityMessage = (
   activity: Pick<ActivityFragment, 'type' | 'relatedOrder' | 'user' | 'message'>,
-  t: TFunction
 ) => {
   switch (activity.type) {
     case OrderEventType.OrderFullyPaid:

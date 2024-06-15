@@ -23,7 +23,7 @@ interface AddressEditProps {
   onCountryChange: (event: ChangeEvent<unknown>) => void;
 }
 
-function getErrorMessage(err: AccountErrorFragment | OrderErrorFragment, t: TFunction): string {
+function getErrorMessage(err: AccountErrorFragment | OrderErrorFragment): string {
   if (err?.__typename === 'AccountError') {
     return getAccountErrorMessage(err, t);
   }

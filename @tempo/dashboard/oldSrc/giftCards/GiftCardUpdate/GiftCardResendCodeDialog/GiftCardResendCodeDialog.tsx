@@ -1,3 +1,4 @@
+import type { GiftCardResendMutation, GiftCardResendMutationVariables } from '@tempo/api/generated/graphql';
 import type { ChannelsQuery, ChannelsQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
@@ -71,7 +72,7 @@ const GiftCardResendCodeDialog: FC<DialogProps> = ({ open, onClose }) => {
 
   const { data, change, submit, reset } = useForm(initialFormData, handleSubmit);
 
-  const [resendGiftCardCode, resendGiftCardCodeOpts] = useMutation(GiftCardResendDocument, {
+  const [resendGiftCardCode, resendGiftCardCodeOpts] = useMutation<GiftCardResendMutation, GiftCardResendMutationVariables>(GiftCardResendDocument, {
     onCompleted: (data) => {
       const errors = data?.resendGiftCard?.errors;
 

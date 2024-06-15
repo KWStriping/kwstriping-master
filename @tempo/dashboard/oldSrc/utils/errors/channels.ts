@@ -20,7 +20,6 @@ const messages = {
 
 function getChannelsErrorMessage(
   err: Omit<ChannelErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { useOrderQuery } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useFetch, useGetInputProps } from '@tempo/ui/hooks';
 import { useQueryParams } from '@tempo/utils/url';

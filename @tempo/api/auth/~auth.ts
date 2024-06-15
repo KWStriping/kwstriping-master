@@ -185,7 +185,10 @@ export const login = ({ includeDetails = true, ...opts }: LoginOpts): Promise<Lo
 export const useLogout = () => {
   const [pluginId] = useAuthPlugin();
   const auth = useAuthActions();
-  const [logout, { fetching, error }] = useMutation(ExternalLogoutDocument);
+  const [logout, { fetching, error }] = useMutation<
+    ExternalLogoutMutation,
+    ExternalLogoutMutationVariables
+  >(ExternalLogoutDocument);
   return useCallback(() => {
     auth.clear();
     if (pluginId) {

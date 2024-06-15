@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import Link from 'next/link';
-// import { useTranslation } from '@tempo/next/i18n';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 export function NavigationPanel() {

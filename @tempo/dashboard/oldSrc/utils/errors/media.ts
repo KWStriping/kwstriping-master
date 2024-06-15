@@ -24,7 +24,6 @@ const messages = {
 
 function getMediaErrorMessage(
   err: Omit<MediaErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

@@ -5,7 +5,6 @@ import type {
   Money as MoneyType,
   OrderLineFragment,
 } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { GrossMoney, GrossMoneyWithTax } from '@tempo/types/misc';
 import Money from '@tempo/ui';
 import { getFormattedMoney } from '@tempo/ui/utils/money';

@@ -1,3 +1,4 @@
+import type { GiftCardCreateMutation, GiftCardCreateMutationVariables } from '@tempo/api/generated/graphql';
 import type { ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
@@ -63,7 +64,7 @@ const GiftCardCreateDialogContent: FC<GiftCardCreateDialogContentProps> = ({
     };
   };
 
-  const [createGiftCard, createGiftCardOpts] = useMutation(GiftCardCreateDocument, {
+  const [createGiftCard, createGiftCardOpts] = useMutation<GiftCardCreateMutation, GiftCardCreateMutationVariables>(GiftCardCreateDocument, {
     onCompleted: (data) => {
       const errors = data?.createGiftCard?.errors;
 

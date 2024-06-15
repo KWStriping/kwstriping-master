@@ -18,7 +18,6 @@ const messages = {
 
 function getShippingErrorMessage(
   err: Omit<ShippingErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

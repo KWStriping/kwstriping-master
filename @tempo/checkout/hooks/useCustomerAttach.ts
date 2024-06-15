@@ -1,3 +1,4 @@
+import type { CheckoutCustomerAttachMutation, CheckoutCustomerAttachMutationVariables } from '@tempo/api/generated/graphql';
 import { CheckoutCustomerAttachDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -9,7 +10,7 @@ export const useCustomerAttach = () => {
   const { checkout, loading } = useCheckout();
   const { user, authenticated } = useUser();
 
-  const [customerAttach, { fetching }] = useMutation(CheckoutCustomerAttachDocument);
+  const [customerAttach, { fetching }] = useMutation<CheckoutCustomerAttachMutation, CheckoutCustomerAttachMutationVariables>(CheckoutCustomerAttachDocument);
 
   const handleSubmit = useSubmit<{}, typeof customerAttach>({
     scope: 'attachCustomerToCheckout',

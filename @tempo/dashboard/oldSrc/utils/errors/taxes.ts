@@ -15,7 +15,6 @@ export type TaxClassError =
 
 function getTaxesErrorMessage(
   err: Omit<TaxClassError, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getCommonFormFieldErrorMessage(err, t);
 }

@@ -51,7 +51,7 @@ interface ErrorFragment {
   field: string | null;
 }
 
-function getAccountErrorMessage(err: ErrorFragment, t: TFunction): string {
+function getAccountErrorMessage(err: ErrorFragment): string {
   if (err) {
     switch (err.code) {
       case AccountErrorCode.InvalidPassword:

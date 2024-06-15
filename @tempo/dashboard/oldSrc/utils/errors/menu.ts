@@ -4,7 +4,6 @@ import { getCommonFormFieldErrorMessage } from './common';
 
 function getMenuErrorMessage(
   err: Omit<MenuErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getCommonFormFieldErrorMessage(err, t);
 }

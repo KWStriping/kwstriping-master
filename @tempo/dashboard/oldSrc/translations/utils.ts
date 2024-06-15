@@ -39,7 +39,6 @@ export const getParsedTranslationInputData = ({
 
 export const getTranslationFields = (
   fields: AttributeTranslationDetailsFragment['attribute']['choices'],
-  t: TFunction
 ) =>
   mapEdgesToItems(fields).map(({ id, name, translation }, valueIndex) => {
     const displayName = (m.dashboard_valueNumber({
@@ -55,7 +54,7 @@ export const getTranslationFields = (
     };
   }) || [];
 
-export const mapValuesToTranslationFields = (values: ValueTranslatableFragment[], t: TFunction) =>
+export const mapValuesToTranslationFields = (values: ValueTranslatableFragment[]) =>
   values.map<TranslationField>((attrVal) => ({
     id: attrVal.value.id,
     displayName: (m.dashboard_gqPGF({

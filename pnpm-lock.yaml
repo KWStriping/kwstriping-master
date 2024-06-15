@@ -368,6 +368,21 @@ importers:
       '@mdx-js/react':
         specifier: 3.0.1
         version: 3.0.1(@types/react@18.3.2)(react@18.3.1)
+      '@mui/icons-material':
+        specifier: ^5.15.15
+        version: 5.15.20(@mui/material@5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.2)(react@18.3.1)
+      '@mui/material':
+        specifier: ^5.15.15
+        version: 5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@mui/material-nextjs':
+        specifier: ^5.15.11
+        version: 5.15.11(@emotion/cache@11.11.0)(@mui/material@5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.2)(next@14.2.4(@babel/core@7.24.7)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      '@mui/styles':
+        specifier: ^5.15.10
+        version: 5.15.20(@types/react@18.3.2)(react@18.3.1)
+      '@mui/system':
+        specifier: ^5.15.15
+        version: 5.15.20(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1))(@types/react@18.3.2)(react@18.3.1)
       '@stripe/react-stripe-js':
         specifier: 2.7.1
         version: 2.7.1(@stripe/stripe-js@3.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -467,6 +482,9 @@ importers:
       stripe:
         specifier: 15.10.0
         version: 15.10.0
+      ts-invariant:
+        specifier: 0.10.3
+        version: 0.10.3
       tsafe:
         specifier: ^1.6.5
         version: 1.7.2
@@ -765,9 +783,6 @@ importers:
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
-      ts-invariant:
-        specifier: 0.10.3
-        version: 0.10.3
       tsafe:
         specifier: ^1.6.5
         version: 1.7.2
@@ -1682,9 +1697,6 @@ importers:
       swc-plugin-graphql-codegen-client-preset-optimizer-test:
         specifier: ^0.1.4
         version: 0.1.4
-      ts-invariant:
-        specifier: 0.10.3
-        version: 0.10.3
       url-join:
         specifier: 5.0.0
         version: 5.0.0

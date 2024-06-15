@@ -21,7 +21,7 @@ export const useLogin = (): [
 
   assert(!Array.isArray(next));
 
-  const [mutate, { data, fetching, error }] = useMutation(LoginDocument);
+  const [mutate, { data, fetching, error }] = useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
   const [_loading, setLoading] = useState(false);
   const loading = _loading || fetching;
 

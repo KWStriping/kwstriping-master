@@ -11,7 +11,6 @@ export const giftCardSettingsPageMessages = {
 
 export function getGiftCardSettingsErrorMessage(
   error: Omit<GiftCardSettingsErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getCommonFormFieldErrorMessage(error, t);
 }

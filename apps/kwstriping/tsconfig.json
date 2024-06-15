@@ -3,6 +3,7 @@
   "include": ["../../@tempo/**/*", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": [
     "../../@tempo/dashboard/**/*",
+    "../../@tempo/**/*.test.ts",
     "node_modules",
     "cypress",
     "**/*.test.ts",

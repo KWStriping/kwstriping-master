@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Title } from '@tempo/checkout/components/Title';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { CommonSectionProps } from '@tempo/types/misc';
 import Divider from '@mui/material/Divider';
 import type { FC } from 'react';

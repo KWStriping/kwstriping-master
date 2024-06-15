@@ -71,7 +71,6 @@ export function queueInvoiceGenerate(
   tasks: MutableRefObject<QueuedTask[]>,
   fetch: () => Promise<OperationResult<CheckOrderInvoicesStatusQuery>>,
   notify: IMessageContext,
-  t: TFunction
 ) {
   if (!generateInvoice) {
     throw new Error('generateInvoice is required when creating custom task');
@@ -123,7 +122,6 @@ export function queueExport(
   tasks: MutableRefObject<QueuedTask[]>,
   fetch: () => Promise<ApolloOperationResult<CheckExportFileStatusQuery>>,
   notify: IMessageContext,
-  t: TFunction
 ) {
   tasks.current = [
     ...tasks.current,

@@ -14,7 +14,7 @@ const messages = {
   },
 };
 
-function getPluginErrorMessage(err: PluginErrorFragment, t: TFunction): string {
+function getPluginErrorMessage(err: PluginErrorFragment): string {
   if (err) {
     switch (err.code) {
       case PluginErrorCode.PluginMisconfigured:

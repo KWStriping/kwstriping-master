@@ -14,7 +14,6 @@ const messages = {
 
 function getStockErrorMessage(
   err: Omit<StockErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {
@@ -28,7 +27,6 @@ function getStockErrorMessage(
 
 export function getBulkStockErrorMessage(
   err: Omit<BulkStockErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getProductErrorMessage(err, t);
 }

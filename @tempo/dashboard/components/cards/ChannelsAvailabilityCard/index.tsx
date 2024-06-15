@@ -47,8 +47,7 @@ export const ChannelsAvailabilityCard: FC<ChannelsAvailabilityCardProps> = ({
   const channelsMessages = getChannelsAvailabilityMessages({
     messages,
     channels: channels ?? [],
-    t,
-    localizeDate,
+      localizeDate,
   });
 
   return (

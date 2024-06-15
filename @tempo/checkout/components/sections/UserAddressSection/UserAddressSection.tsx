@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql';
 import { AddressSectionSkeleton } from '@tempo/checkout/components/sections/ShippingAddressSection/AddressSectionSkeleton';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/types/addresses';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import type { UseErrors } from '@tempo/ui/hooks/useErrors';

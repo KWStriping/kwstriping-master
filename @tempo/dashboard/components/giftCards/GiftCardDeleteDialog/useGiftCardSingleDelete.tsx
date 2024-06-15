@@ -1,3 +1,4 @@
+import type { DeleteGiftCardMutation, DeleteGiftCardMutationVariables } from '@tempo/api/generated/graphql';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { MutationResultWithOpts } from '@tempo/api/hooks/useMutation';
@@ -23,7 +24,7 @@ const useGiftCardSingleDelete = ({
 }): UseGiftCardSingleDeleteProps => {
   const notify = useNotifier();
 
-  const [deleteGiftCard, deleteGiftCardOpts] = useMutation(DeleteGiftCardDocument, {
+  const [deleteGiftCard, deleteGiftCardOpts] = useMutation<DeleteGiftCardMutation, DeleteGiftCardMutationVariables>(DeleteGiftCardDocument, {
     onCompleted: (data) => {
       const errors = data?.deleteGiftCard?.errors;
 

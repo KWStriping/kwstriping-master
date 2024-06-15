@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import { PageHeader } from '@tempo/checkout/components/PageHeader';
 import { useOrder } from '@tempo/checkout/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import Typography from '@mui/material/Typography';
 import { Suspense } from 'react';
 import { OrderInfo } from '@tempo/checkout/components/sections/OrderInfo';

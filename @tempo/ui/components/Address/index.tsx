@@ -9,10 +9,9 @@ interface AddressProps extends TypographyProps {
 }
 
 export const Address: FC<AddressProps> = ({ address, children, ...textProps }) => {
+  if (!address) return null;
   const name = `${address.firstName} ${address.lastName}`;
-
   const { phone, city, countryArea, postalCode, streetAddress1, country } = address;
-
   return (
     <div className="flex flex-col pointer-events-none">
       <Typography {...textProps} fontWeight="semibold">

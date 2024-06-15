@@ -22,7 +22,6 @@ const giftCardErrorMessages = {
 
 export function getGiftCardErrorMessage(
   error: Omit<GiftCardErrorFragment, '__typename' | 'message'> | undefined,
-  t: TFunction
 ): string {
   if (error) {
     switch (error.code) {

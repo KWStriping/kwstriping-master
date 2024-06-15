@@ -169,59 +169,59 @@ const OrderOperations: FC<OrderOperationsProps> = ({
   onInvoiceRequest,
   onInvoiceSend,
 }) => {
-  const voidOrder = useMutation(OrderVoidDocument, {
+  const voidOrder = useMutation<OrderVoidMutation, OrderVoidMutationVariables>(OrderVoidDocument, {
     onCompleted: onOrderVoid,
   });
-  const cancelOrder = useMutation(OrderCancelDocument, {
+  const cancelOrder = useMutation<OrderCancelMutation, OrderCancelMutationVariables>(OrderCancelDocument, {
     onCompleted: onOrderCancel,
   });
-  const paymentCapture = useMutation(OrderCaptureDocument, {
+  const paymentCapture = useMutation<OrderCaptureMutation, OrderCaptureMutationVariables>(OrderCaptureDocument, {
     onCompleted: onPaymentCapture,
   });
-  const addNote = useMutation(OrderAddNoteDocument, {
+  const addNote = useMutation<OrderAddNoteMutation, OrderAddNoteMutationVariables>(OrderAddNoteDocument, {
     onCompleted: onNoteAdd,
   });
-  const update = useMutation(OrderUpdateDocument, {
+  const update = useMutation<OrderUpdateMutation, OrderUpdateMutationVariables>(OrderUpdateDocument, {
     onCompleted: onUpdate,
   });
-  const updateDraft = useMutation(OrderDraftUpdateDocument, {
+  const updateDraft = useMutation<OrderDraftUpdateMutation, OrderDraftUpdateMutationVariables>(OrderDraftUpdateDocument, {
     onCompleted: onDraftUpdate,
   });
-  const updateShippingMethod = useMutation(OrderShippingMethodUpdateDocument, {
+  const updateShippingMethod = useMutation<OrderShippingMethodUpdateMutation, OrderShippingMethodUpdateMutationVariables>(OrderShippingMethodUpdateDocument, {
     onCompleted: onShippingMethodUpdate,
   });
-  const deleteOrderLine = useMutation(OrderLineDeleteDocument, {
+  const deleteOrderLine = useMutation<OrderLineDeleteMutation, OrderLineDeleteMutationVariables>(OrderLineDeleteDocument, {
     onCompleted: onOrderLineDelete,
   });
-  const addOrderLine = useMutation(OrderLinesAddDocument, {
+  const addOrderLine = useMutation<OrderLinesAddMutation, OrderLinesAddMutationVariables>(OrderLinesAddDocument, {
     onCompleted: onOrderLinesAdd,
   });
-  const updateOrderLine = useMutation(OrderLineUpdateDocument, {
+  const updateOrderLine = useMutation<OrderLineUpdateMutation, OrderLineUpdateMutationVariables>(OrderLineUpdateDocument, {
     onCompleted: onOrderLineUpdate,
   });
-  const approveFulfillment = useMutation(OrderFulfillmentApproveDocument, {
+  const approveFulfillment = useMutation<OrderFulfillmentApproveMutation, OrderFulfillmentApproveMutationVariables>(OrderFulfillmentApproveDocument, {
     onCompleted: onOrderFulfillmentApprove,
     disableErrorHandling: true,
   });
-  const cancelFulfillment = useMutation(OrderFulfillmentCancelDocument, {
+  const cancelFulfillment = useMutation<OrderFulfillmentCancelMutation, OrderFulfillmentCancelMutationVariables>(OrderFulfillmentCancelDocument, {
     onCompleted: onOrderFulfillmentCancel,
   });
-  const updateTrackingNumber = useMutation(OrderFulfillmentUpdateTrackingDocument, {
+  const updateTrackingNumber = useMutation<OrderFulfillmentUpdateTrackingMutation, OrderFulfillmentUpdateTrackingMutationVariables>(OrderFulfillmentUpdateTrackingDocument, {
     onCompleted: onOrderFulfillmentUpdate,
   });
-  const finalizeDraft = useMutation(OrderDraftFinalizeDocument, {
+  const finalizeDraft = useMutation<OrderDraftFinalizeMutation, OrderDraftFinalizeMutationVariables>(OrderDraftFinalizeDocument, {
     onCompleted: onDraftFinalize,
   });
-  const cancelDraft = useMutation(OrderDraftCancelDocument, {
+  const cancelDraft = useMutation<OrderDraftCancelMutation, OrderDraftCancelMutationVariables>(OrderDraftCancelDocument, {
     onCompleted: onDraftCancel,
   });
-  const markAsPaid = useMutation(OrderMarkAsPaidDocument, {
+  const markAsPaid = useMutation<OrderMarkAsPaidMutation, OrderMarkAsPaidMutationVariables>(OrderMarkAsPaidDocument, {
     onCompleted: onOrderMarkAsPaid,
   });
-  const requestInvoice = useMutation(InvoiceRequestDocument, {
+  const requestInvoice = useMutation<InvoiceRequestMutation, InvoiceRequestMutationVariables>(InvoiceRequestDocument, {
     onCompleted: onInvoiceRequest,
   });
-  const invoiceEmailSend = useMutation(InvoiceEmailSendDocument, {
+  const invoiceEmailSend = useMutation<InvoiceEmailSendMutation, InvoiceEmailSendMutationVariables>(InvoiceEmailSendDocument, {
     onCompleted: onInvoiceSend,
   });
 

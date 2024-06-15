@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';

@@ -78,7 +78,6 @@ function getProductErrorMessage(
       '__typename'
     >
     | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {
@@ -129,7 +128,6 @@ function getProductErrorMessage(
 
 export function getProductAttributeErrorMessage(
   err: Omit<ProductErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {
@@ -145,7 +143,6 @@ export function getProductAttributeErrorMessage(
 
 export function getBulkProductErrorMessage(
   err: BulkProductErrorFragment | undefined,
-  t: TFunction
 ): string {
   if (err?.code === ProductErrorCode.Unique && err.field === 'sku') {
     return t('dashboard_kuUnique', messages.skuUnique.defaultMessage);

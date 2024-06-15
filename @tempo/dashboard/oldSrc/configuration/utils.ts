@@ -4,7 +4,7 @@ import { createConfigurationMenu } from '@tempo/dashboard/_app/configuration';
 
 import type { MenuItem } from './types';
 
-export const getConfigMenuItemsPermissions = (t: TFunction): PermissionCode[] =>
+export const getConfigMenuItemsPermissions = (): PermissionCode[] =>
   createConfigurationMenu(t).reduce((prev: PermissionCode[], { menuItems }) => {
     const permissions = menuItems.map(({ permissions }) => permissions ?? []).flat();
     return [...prev, ...permissions];

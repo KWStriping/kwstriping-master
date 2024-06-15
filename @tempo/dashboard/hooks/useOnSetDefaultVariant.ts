@@ -1,4 +1,5 @@
 
+import type { ProductSetDefaultMutation, ProductSetDefaultMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -9,7 +10,7 @@ import { getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
 function useOnSetDefaultVariant(productId: string, variant: Node) {
   const notify = useNotifier();
 
-  const [setDefaultProduct] = useMutation(ProductSetDefaultDocument, {
+  const [setDefaultProduct] = useMutation<ProductSetDefaultMutation, ProductSetDefaultMutationVariables>(ProductSetDefaultDocument, {
     onCompleted: (data) => {
       const errors = data?.setDefaultProduct?.errors;
       if (errors?.length) {

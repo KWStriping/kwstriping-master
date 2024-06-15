@@ -1,3 +1,4 @@
+import type { ProductKlassDeleteMutation, ProductKlassDeleteMutationVariables } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks';
 import type {
   AssignProductAttributeMutation,
@@ -52,16 +53,16 @@ function useProductKlassOperations({
   onUnassignAttribute,
   productKlass,
 }: ProductKlassOperationsProps) {
-  const deleteProductKlass = useMutation(ProductKlassDeleteDocument, {
+  const deleteProductKlass = useMutation<ProductKlassDeleteMutation, ProductKlassDeleteMutationVariables>(ProductKlassDeleteDocument, {
     onCompleted: onProductKlassDelete,
   });
-  const assignAttribute = useMutation(AssignProductAttributeDocument, {
+  const assignAttribute = useMutation<AssignProductAttributeMutation, AssignProductAttributeMutationVariables>(AssignProductAttributeDocument, {
     onCompleted: onAssignAttribute,
   });
-  const unassignAttribute = useMutation(UnassignProductAttributeDocument, {
+  const unassignAttribute = useMutation<UnassignProductAttributeMutation, UnassignProductAttributeMutationVariables>(UnassignProductAttributeDocument, {
     onCompleted: onUnassignAttribute,
   });
-  const [...reorderAttribute] = useMutation(ProductKlassAttributeReorderDocument, {
+  const [...reorderAttribute] = useMutation<ProductKlassAttributeReorderMutation, ProductKlassAttributeReorderMutationVariables>(ProductKlassAttributeReorderDocument, {
     onCompleted: onProductKlassAttributeReorder,
     // optimisticResponse: (variables) => ({
     //   __typename: 'Mutation',

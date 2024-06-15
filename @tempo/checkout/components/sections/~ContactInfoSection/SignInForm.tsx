@@ -1,8 +1,8 @@
+import type { RequestPasswordResetMutation, RequestPasswordResetMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { AccountErrorCode } from '@tempo/api/generated/graphql';
 import { RequestPasswordResetDocument } from '@tempo/api/generated/graphql';
 import { useAuth, useUser } from '@tempo/api/auth/src';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { ApiError } from '@tempo/types/errors';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { PasswordInput } from '@tempo/ui/components/PasswordInput';
@@ -40,7 +40,7 @@ export const SignInForm: FC<SignInFormProps> = ({ onSectionChange, onSignInSucce
   const { login } = useAuth();
   const { authenticating } = useUser();
   const { getFormErrorsFromApiErrors } = useGetParsedApiErrors<SignInFormData>();
-  const [requestPasswordReset] = useMutation(RequestPasswordResetDocument);
+  const [requestPasswordReset] = useMutation<RequestPasswordResetMutation, RequestPasswordResetMutationVariables>(RequestPasswordResetDocument);
 
   const schema = object({
     password: string().required(errorMessages.required),

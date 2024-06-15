@@ -7,7 +7,6 @@ import type {
   ProductOrdering,
 } from '@tempo/api/generated/graphql';
 
-// import { useTranslation } from '@tempo/next/i18n';
 import type { UrlSorting } from '@tempo/next/types/url';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import Typography from '@mui/material/Typography';

@@ -39,7 +39,7 @@ const getUserOrAppUrl = (event: GiftCardEventFragment): string => {
   return null;
 };
 
-const getEventMessage = (event: GiftCardEventFragment, t: TFunction) => {
+const getEventMessage = (event: GiftCardEventFragment) => {
   const user = getUserOrApp(event);
   const userUrl = getUserOrAppUrl(event);
 

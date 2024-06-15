@@ -412,6 +412,6 @@ export const paymentStatusMessages = {
   },
 };
 
-export function translateBoolean(value: boolean, t: TFunction): string {
+export function translateBoolean(value: boolean): string {
   return value ? (m.dashboard_yes() ?? 'Yes') : (m.no() ?? 'No');
 }

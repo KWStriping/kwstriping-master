@@ -1,8 +1,8 @@
+import type { CheckoutShippingAddressUpdateMutation, CheckoutShippingAddressUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { CountryCode } from '@tempo/api/generated/graphql';
 import { CheckoutShippingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types/addresses';
 import { AddressDisplay } from '@tempo/ui';
 import { Button } from '@tempo/ui/components/buttons/Button';
@@ -38,7 +38,7 @@ export function ShippingAddressSection({
   const { query } = useLocalization();
   const { authenticated } = useUser();
   const [{ editing }, updateState] = useSectionState('shippingAddress');
-  const [updateShippingAddress, { error }] = useMutation(CheckoutShippingAddressUpdateDocument);
+  const [updateShippingAddress, { error }] = useMutation<CheckoutShippingAddressUpdateMutation, CheckoutShippingAddressUpdateMutationVariables>(CheckoutShippingAddressUpdateDocument);
   if (!checkout) return null;
   const { shippingAddress, billingAddress } = checkout;
   const onSameAsBilling = async () => {

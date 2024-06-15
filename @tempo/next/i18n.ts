@@ -1,5 +1,5 @@
 import { Navigation, Middleware, PrefixStrategy } from '@inlang/paraglide-next';
-import type { AvailableLanguageTag } from './paraglide/runtime';
+import type { AvailableLanguageTag } from '@paraglide/runtime';
 
 export { LanguageProvider } from '@inlang/paraglide-next';
 

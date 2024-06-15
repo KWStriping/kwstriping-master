@@ -4,7 +4,6 @@ import { getCommonFormFieldErrorMessage } from './common';
 
 function getExportErrorMessage(
   err: Omit<ExportErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getCommonFormFieldErrorMessage(err, t);
 }
