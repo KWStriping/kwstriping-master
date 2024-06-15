@@ -1,9 +1,9 @@
 import type {
-  CheckoutRemovePromoCodeMutation,
-  CheckoutRemovePromoCodeMutationVariables,
+  RemovePromoCodeFromCheckoutMutation,
+  RemovePromoCodeFromCheckoutMutationVariables,
 } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import { CheckoutRemovePromoCodeDocument } from '@tempo/api/generated/graphql';
+import { RemovePromoCodeFromCheckoutDocument } from '@tempo/api/generated/graphql';
 import { IconButton } from '@tempo/ui/components/buttons/IconButton';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -27,9 +27,9 @@ export const SummaryPromoCodeRow: FC<SummaryPromoCodeRowProps> = ({
 }) => {
   const { checkout } = useCheckout();
   const [removePromoCodeFromCheckout] = useMutation<
-    CheckoutRemovePromoCodeMutation,
-    CheckoutRemovePromoCodeMutationVariables
-  >(CheckoutRemovePromoCodeDocument);
+    RemovePromoCodeFromCheckoutMutation,
+    RemovePromoCodeFromCheckoutMutationVariables
+  >(RemovePromoCodeFromCheckoutDocument);
 
   const onDelete = () => {
     if (!checkout?.id) return;
@@ -38,7 +38,7 @@ export const SummaryPromoCodeRow: FC<SummaryPromoCodeRowProps> = ({
       : { promoCodeId: promoCodeId as string };
     void removePromoCodeFromCheckout({
       id: checkout.id,
-      languageCode: 'EN_US', // TODO
+      // languageCode: 'EN_US', // TODO
       ...variables,
     });
   };
