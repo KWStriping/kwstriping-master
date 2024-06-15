@@ -1,5 +1,5 @@
 import type { OrderFragment, OrderLineFragment } from '@tempo/api/generated/graphql';
-import type { CreateOrderParams } from '@mollie/api-client';
+import type { OrderCreateParams } from '@mollie/api-client';
 import createMollieClient, { OrderLineType } from '@mollie/api-client';
 
 export const getMollieClient = async () => {
@@ -18,9 +18,7 @@ export const parseAmountToString = (amount: number, negative = false) => {
 };
 
 const getProductKlass = (line: OrderLineFragment): OrderLineType | undefined => {
-  if (!line.variant) {
-    return undefined;
-  }
+  if (!line.product) return undefined;
   const { isDigital, kind } = line.product.productKlass;
   if (isDigital || kind === 'GIFT_CARD') {
     return OrderLineType.digital;
@@ -33,29 +31,29 @@ const getProductKlass = (line: OrderLineFragment): OrderLineType | undefined => 
 
 export const getDiscountLines = (
   discounts: OrderFragment['discounts']
-): CreateOrderParams['lines'] =>
+): OrderCreateParams['lines'] =>
   discounts
     ? discounts.map((discount) => ({
-      name: discount.name || 'Discount',
-      quantity: 1,
-      vatRate: '0.00',
-      vatAmount: {
-        currency: discount.amount.currency,
-        value: '0.00',
-      },
-      unitPrice: {
-        currency: discount.amount.currency,
-        value: parseAmountToString(discount.amount.amount, true),
-      },
-      totalAmount: {
-        currency: discount.amount.currency,
-        value: parseAmountToString(discount.amount.amount, true),
-      },
-      type: OrderLineType.discount,
-    }))
+        name: discount.name || 'Discount',
+        quantity: 1,
+        vatRate: '0.00',
+        vatAmount: {
+          currency: discount.amount.currency,
+          value: '0.00',
+        },
+        unitPrice: {
+          currency: discount.amount.currency,
+          value: parseAmountToString(discount.amount.amount, true),
+        },
+        totalAmount: {
+          currency: discount.amount.currency,
+          value: parseAmountToString(discount.amount.amount, true),
+        },
+        type: OrderLineType.discount,
+      }))
     : [];
 
-export const getShippingLines = (data: OrderFragment): CreateOrderParams['lines'] => [
+export const getShippingLines = (data: OrderFragment): OrderCreateParams['lines'] => [
   {
     name: data?.shippingMethodName || 'Shipping',
     quantity: 1,

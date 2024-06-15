@@ -24,7 +24,7 @@ export const getSummaryLineProps = (line: OrderLineFragment | CheckoutLineFragme
 
 export const getSummaryLineAttributesText = (line: CheckoutLineFragment | OrderLineFragment) =>
   compact(
-    line.variant?.attributes.reduce(
+    line.product?.attributes.reduce(
       (result: Array<string | undefined | null>, { values }) => [
         ...result,
         ...values.map(({ name }) => name),
