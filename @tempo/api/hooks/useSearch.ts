@@ -1,3 +1,5 @@
+'use client';
+
 import type { TypedDocumentNode } from '@urql/core';
 import debounce from 'lodash-es/debounce';
 import { useCallback, useMemo, useState } from 'react';
