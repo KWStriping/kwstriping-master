@@ -8,6 +8,9 @@ import Layout from '@kwstriping/app/client/Layout';
 // TODO
 // https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata
 
+// Revalidate at most every hour.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Page',
 };

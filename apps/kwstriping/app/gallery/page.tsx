@@ -7,6 +7,9 @@ import { gql } from '@tempo/api';
 import GalleryPage from './gallery';
 import Layout from '@kwstriping/app/client/Layout';
 
+// Revalidate at most every hour.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Gallery',
 };

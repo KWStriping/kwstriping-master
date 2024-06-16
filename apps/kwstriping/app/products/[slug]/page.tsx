@@ -6,12 +6,12 @@ import AbstractProductPage from './abstractproduct';
 import ConcreteProductPage from './concreteproduct';
 import Layout from '@kwstriping/app/client/Layout';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
-if (!API_URL) throw new Error('API_URL is not set.');
-
 interface Params {
   slug: string;
 }
+
+// Revalidate at most every hour.
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params: { slug },
