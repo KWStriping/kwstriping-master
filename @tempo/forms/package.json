@@ -35,27 +35,14 @@
     "typescript": "5.4.5"
   },
   "peerDependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
     "@heroicons/react": "^2.0.18",
     "@js-temporal/polyfill": "^0.4.4",
     "@marsidev/react-turnstile": "0.6.1",
-    "@mdx-js/loader": "3.0.1",
-    "@mdx-js/react": "3.0.1",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
     "@mui/material-nextjs": "^5.15.11",
     "@mui/styles": "^5.15.10",
     "@mui/system": "^5.15.15",
-    "@stripe/react-stripe-js": "2.7.1",
-    "@stripe/stripe-js": "3.4.0",
-    "@urql/core": "5.0.3",
-    "@urql/devtools": "^2.0.3",
-    "@urql/exchange-auth": "^2.1.6",
-    "@urql/exchange-execute": "^2.2.2",
-    "@urql/exchange-graphcache": "7.1.0",
-    "@urql/next": "^1.1.1",
     "clsx": "^2.0.0",
     "graphql": "16.8.1",
     "next": "14.2.4",
@@ -65,7 +52,6 @@
     "react-dom": "18.3.1",
     "react-hook-form": "^7.43.1",
     "react-toastify": "10.0.5",
-    "sharp": "^0.33.1",
-    "urql": "^4.1.0"
+    "sharp": "^0.33.1"
   }
 }

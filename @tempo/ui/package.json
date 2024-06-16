@@ -74,7 +74,7 @@
     "@stripe/react-stripe-js": "2.7.1",
     "@stripe/stripe-js": "3.4.0",
     "@tempo/api": "workspace:*",
-    "@urql/core": "5.0.3",
+    "@urql/core": "5.0.4",
     "@urql/devtools": "^2.0.3",
     "@urql/exchange-auth": "^2.1.6",
     "@urql/exchange-execute": "^2.2.2",

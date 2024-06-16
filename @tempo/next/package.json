@@ -32,7 +32,7 @@
   "peerDependencies": {
     "@inlang/paraglide-js": "^1.9.0",
     "@inlang/paraglide-next": "^0.2.3",
-    "@sentry/nextjs": "8.2.1",
+    "@sentry/nextjs": "8.9.2",
     "next": "14.2.4",
     "react": "18.3.1",
     "react-dom": "18.3.1",

@@ -33,14 +33,6 @@
     "@mui/material-nextjs": "^5.15.11",
     "@mui/styles": "^5.15.10",
     "@mui/system": "^5.15.15",
-    "@stripe/react-stripe-js": "2.7.1",
-    "@stripe/stripe-js": "3.4.0",
-    "@urql/core": "5.0.3",
-    "@urql/devtools": "^2.0.3",
-    "@urql/exchange-auth": "^2.1.6",
-    "@urql/exchange-execute": "^2.2.2",
-    "@urql/exchange-graphcache": "7.1.0",
-    "@urql/next": "^1.1.1",
     "clsx": "^2.0.0",
     "graphql": "16.8.1",
     "next": "14.2.4",
@@ -49,7 +41,6 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-toastify": "10.0.5",
-    "sharp": "^0.33.1",
-    "urql": "^4.1.0"
+    "sharp": "^0.33.1"
   }
 }

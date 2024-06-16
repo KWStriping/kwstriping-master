@@ -25,7 +25,7 @@
     "typescript": "5.4.5"
   },
   "peerDependencies": {
-    "@urql/core": "5.0.3",
+    "@urql/core": "5.0.4",
     "@urql/devtools": "^2.0.3",
     "@urql/exchange-auth": "^2.1.6",
     "@urql/exchange-execute": "^2.2.2",
