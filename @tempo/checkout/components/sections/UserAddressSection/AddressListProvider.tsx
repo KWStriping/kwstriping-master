@@ -1,13 +1,4 @@
-import type {
-  UserAddressUpdateMutation,
-  UserAddressUpdateMutationVariables,
-  AddressFragment,
-  UserAddressDeleteMutation,
-  UserAddressDeleteMutationVariables,
-  UserAddressCreateMutation,
-  UserAddressCreateMutationVariables,
-  AddressUpdateInput,
-} from '@tempo/api/generated/graphql';
+import type { AddressFragment, AddressUpdateInput } from '@tempo/api/generated/graphql';
 import {
   UserAddressCreateDocument,
   UserAddressDeleteDocument,
@@ -82,18 +73,9 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
 
   const addresses = user?.addresses || [];
 
-  const [userAddressUpdate, { fetching: updating }] = useMutation<
-    UserAddressUpdateMutation,
-    UserAddressUpdateMutationVariables
-  >(UserAddressUpdateDocument);
-  const [userAddressDelete, { fetching: deleting }] = useMutation<
-    UserAddressDeleteMutation,
-    UserAddressDeleteMutationVariables
-  >(UserAddressDeleteDocument);
-  const [userAddressCreate, { fetching: creating }] = useMutation<
-    UserAddressCreateMutation,
-    UserAddressCreateMutationVariables
-  >(UserAddressCreateDocument);
+  const [userAddressUpdate, { loading: updating }] = useMutation(UserAddressUpdateDocument);
+  const [userAddressDelete, { loading: deleting }] = useMutation(UserAddressDeleteDocument);
+  const [userAddressCreate, { loading: creating }] = useMutation(UserAddressCreateDocument);
 
   const [addressList, setAddressList] = useState(addresses);
 

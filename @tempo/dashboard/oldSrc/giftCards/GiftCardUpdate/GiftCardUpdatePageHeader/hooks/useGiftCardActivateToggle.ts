@@ -24,7 +24,7 @@ const useGiftCardActivateToggle = ({
 }: useGiftCardActivateToggleProps) => {
   const notify = useNotifier();
 
-  const [activateGiftCard, activateGiftCardOpts] = useMutation<GiftCardActivateMutation, GiftCardActivateMutationVariables>(GiftCardActivateDocument, {
+  const [activateGiftCard, activateGiftCardOpts] = useMutation(GiftCardActivateDocument, {
     onCompleted: (data) => {
       const errors = data?.activateGiftCard?.errors;
 
@@ -49,7 +49,7 @@ const useGiftCardActivateToggle = ({
     refetchQueries: [GIFT_CARD_DETAILS_QUERY],
   });
 
-  const [deactivateGiftCard, deactivateGiftCardOpts] = useMutation<GiftCardDeactivateMutation, GiftCardDeactivateMutationVariables>(GiftCardDeactivateDocument, {
+  const [deactivateGiftCard, deactivateGiftCardOpts] = useMutation(GiftCardDeactivateDocument, {
     onCompleted: (data) => {
       const errors = data?.deactivateGiftCard?.errors;
 

@@ -43,7 +43,7 @@ export interface TooltipProps {
 
 export const Tooltip: FC<TooltipProps> = ({
   variant,
-  placement: initialPlacement = 'bottom-start',
+  placement: initialPlacement = 'bottom-start' as Placement,
   arrow: hasArrow = true,
   onOpen,
   onClose,

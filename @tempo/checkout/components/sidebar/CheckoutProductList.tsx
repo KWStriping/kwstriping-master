@@ -25,10 +25,7 @@ export function CheckoutProductList({
   displayPrices = true,
 }: CheckoutProductListProps) {
   const { query, formatPrice } = useLocalization();
-  const [removeProductFromCheckout] = useMutation<
-    CheckoutLineDeleteMutation,
-    CheckoutLineDeleteMutationVariables
-  >(CheckoutLineDeleteDocument);
+  const [removeProductFromCheckout] = useMutation(CheckoutLineDeleteDocument);
   const { displayProductImages } = useShopSettings();
   return (
     <ul className="flex-auto p-0">

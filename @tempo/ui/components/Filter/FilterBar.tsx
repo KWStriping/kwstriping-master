@@ -11,14 +11,14 @@ import { useFilterData } from './context';
 import type { FilterMenuLabels } from './FilterMenu';
 import { FilterMenu } from './FilterMenu';
 
-import type { FilterData, Filter, FilterLabels } from './types';
+import type { FilterData, FilterInterface, FilterLabels } from './types';
 import * as utils from './utils';
 import { FilterRow } from '.';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export interface FilterBarProps {
-  initial?: Filter[];
+  initial?: FilterInterface[];
   labels: Record<'header' | 'addButton', string> & FilterMenuLabels & FilterLabels;
   onChange: (filterData: FilterData[]) => void;
   onClose: () => void;

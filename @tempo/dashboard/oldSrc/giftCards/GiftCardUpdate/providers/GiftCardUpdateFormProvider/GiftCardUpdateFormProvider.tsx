@@ -59,8 +59,8 @@ const getGiftCardTagsAddRemoveData = (initTags: string[], changedTags: string[])
 
 const GiftCardUpdateFormProvider: FC<GiftCardUpdateFormProviderProps> = ({ children }) => {
   const notify = useNotifier();
-  const [updateMetadata] = useMutation<UpdateMetadataMutation, UpdateMetadataMutationVariables>(UpdateMetadataDocument, {});
-  const [updatePrivateMetadata] = useMutation<UpdatePrivateMetadataMutation, UpdatePrivateMetadataMutationVariables>(UpdatePrivateMetadataDocument, {});
+  const [updateMetadata] = useMutation(UpdateMetadataDocument, {});
+  const [updatePrivateMetadata] = useMutation(UpdatePrivateMetadataDocument, {});
 
   const { loading: loadingGiftCard, giftCard } = useGiftCardDetails();
 
@@ -79,7 +79,7 @@ const GiftCardUpdateFormProvider: FC<GiftCardUpdateFormProviderProps> = ({ child
     };
   };
 
-  const [updateGiftCard, updateGiftCardOpts] = useMutation<GiftCardUpdateMutation, GiftCardUpdateMutationVariables>(GiftCardUpdateDocument, {
+  const [updateGiftCard, updateGiftCardOpts] = useMutation(GiftCardUpdateDocument, {
     onCompleted: (data) => {
       const errors = data?.updateGiftCard?.errors;
       const hasExpiryError = errors.some((error) => error.field === 'expiryDate');

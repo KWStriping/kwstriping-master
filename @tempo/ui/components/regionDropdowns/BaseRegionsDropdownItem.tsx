@@ -1,4 +1,4 @@
-import { Menu } from '@headlessui/react';
+import { MenuItem } from '@headlessui/react';
 import CheckIcon from '@mui/icons-material/Check';
 import clsx from 'clsx';
 
@@ -14,7 +14,7 @@ export function BaseRegionsDropdownItem({
   onClick,
 }: BaseRegionsDropdownItemProps) {
   return (
-    <Menu.Item>
+    <MenuItem>
       {({ active }) => (
         <button
           type="button"
@@ -33,7 +33,7 @@ export function BaseRegionsDropdownItem({
           </div>
         </button>
       )}
-    </Menu.Item>
+    </MenuItem>
   );
 }
 

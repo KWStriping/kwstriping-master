@@ -1,6 +1,6 @@
 import type { OrderFragment, LanguageCode } from '@tempo/api/generated/graphql';
 import { CheckoutDocument, CreateOrderDocument } from '@tempo/api/generated/graphql';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 import type { RequestContext } from '@tempo/api/types';
 
 import type { ErrorCode } from './types';
@@ -26,12 +26,13 @@ export const createOrder = async (
 > => {
   // Start by checking if total amount is correct
   const client = getClient();
-  const checkout = await client
-    .query(CheckoutDocument, {
+  const checkout = await client.query({
+    query: CheckoutDocument,
+    variables: {
       id: checkoutId,
       languageCode,
-    })
-    .toPromise();
+    },
+  });
   console.log('checkout', checkout);
   if (checkout.error) {
     throw checkout.error;
@@ -50,17 +51,18 @@ export const createOrder = async (
     };
   }
 
-  const { data, error } = await client
-    .mutation(CreateOrderDocument, {
+  const { data, errors } = await client.mutate({
+    mutation: CreateOrderDocument,
+    variables: {
       id: checkoutId,
-    })
-    .toPromise();
+    },
+  });
 
   // if (error) throw error;
 
   if (!data?.createOrderFromCheckout?.result) {
     return {
-      errors: error?.graphQLErrors.map((e) => {
+      errors: errors?.map((e) => {
         console.error(e.extensions.code, ':', e.message);
         return e.extensions.code as any; // TODO
       }) || ['COULD_NOT_CREATE_ORDER_FROM_CHECKOUT'],

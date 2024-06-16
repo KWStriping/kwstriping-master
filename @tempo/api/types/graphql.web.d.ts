@@ -1,5 +1,5 @@
 import { GraphQLError as BaseGraphQLError } from '@0no-co/graphql.web';
-// import {CombinedError as BaseCombinedError} from '@urql/core';
+// import {ApolloError as BaseApolloError} from '@apollo/client';
 
 declare module '@0no-co/graphql.web' {
   interface Extensions {
@@ -11,7 +11,7 @@ declare module '@0no-co/graphql.web' {
 }
 
 // declare module '@urql/core' {
-//   class CombinedError extends BaseCombinedError {
+//   class ApolloError extends BaseApolloError {
 //     graphQLErrors: GraphQLError$1[];
 //   }
 // }

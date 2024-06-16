@@ -1,55 +1,61 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { OperationResult } from '@urql/core';
 import type { NextApiRequest } from 'next';
 import type {
-  UseMutationResponse as BaseUseMutationResponse,
-  AnyVariables,
-  CombinedError as BaseCombinedError,
-} from '@urql/next';
-export type { IntrospectionData } from '../client/types';
+  ApolloError as BaseApolloError,
+  MutationFunctionOptions,
+  MutationTuple,
+  OperationVariables,
+  SingleExecutionResult,
+} from '@apollo/client';
+import type { GraphQLErrors } from '@apollo/client/errors';
+
 export type Data = Record<string, unknown>;
-export type { OperationResult };
 
 export interface ErrorExtensions {
   [key: string]: unknown;
   code: string;
 }
 
-export interface GraphQLError extends Omit<BaseCombinedError['graphQLErrors'][0], 'extensions'> {
+export interface GraphQLError extends Omit<BaseApolloError['graphQLErrors'][0], 'extensions'> {
   extensions: ErrorExtensions;
 }
 
-export interface CombinedError extends BaseCombinedError {
+export interface ApolloError extends BaseApolloError {
   graphQLErrors: GraphQLError[];
 }
 
-export type MutationFunction<
+export type MutationResponse<
   TData extends Data,
-  TVariables extends AnyVariables = AnyVariables,
-> = BaseUseMutationResponse<TData, TVariables>[1];
+  TVariables extends OperationVariables,
+> = ReturnType<MutationTuple<TData, TVariables>[0]>;
+
+export type MutationFunction<TData extends Data, TVariables extends OperationVariables> = (
+  variables: TVariables,
+  options?: Omit<MutationFunctionOptions<TData, TVariables>, 'variables'>
+) => MutationResponse<TData, TVariables>;
 
 export type BaseMutationState<
-  TData,
-  TVariables extends AnyVariables = AnyVariables,
-> = BaseUseMutationResponse<TData, TVariables>[0];
+  TData extends Data,
+  TVariables extends OperationVariables,
+> = MutationTuple<TData, TVariables>[1];
 
 export interface AdditionalMutationState {
   called: boolean;
   status: ConfirmButtonTransitionState;
-  errors?: Maybe<CombinedError['graphQLErrors']>;
+  errors?: Maybe<GraphQLErrors>;
 }
 
 export type MutationState<
-  TData,
-  TVariables extends AnyVariables = AnyVariables,
+  TData extends Data,
+  TVariables extends OperationVariables,
 > = BaseMutationState<TData, TVariables> & AdditionalMutationState;
 
-export type UseMutationResponse<
-  TData extends Data,
-  TVariables extends AnyVariables = AnyVariables,
-> = [MutationFunction<TData, TVariables>, MutationState<TData, TVariables>];
+export type UseMutationResponse<TData extends Data, TVariables extends OperationVariables> = [
+  MutationFunction<TData, TVariables>,
+  MutationState<TData, TVariables>,
+];
 
-export interface MutationHookOptions<TData, TVariables extends AnyVariables = AnyVariables> {
+export interface MutationHookOptions<TData> {
   disableErrorHandling?: boolean;
   displayLoader?: boolean;
   onCompleted?: (data: TData) => void;
@@ -57,11 +63,11 @@ export interface MutationHookOptions<TData, TVariables extends AnyVariables = An
 }
 
 export interface PartialMutationProviderOutput<
-  TData extends Record<string, any> = Record<string, any>,
-  TVariables extends AnyVariables = AnyVariables,
+  TData extends Data,
+  TVariables extends OperationVariables,
 > {
-  opts: OperationResult<TData> & AdditionalMutationState;
-  mutate: (variables: TVariables) => Promise<OperationResult<TData>>;
+  opts: MutationState<TData, TVariables> & AdditionalMutationState;
+  mutate: (variables: TVariables) => SingleExecutionResult<TData, TVariables>;
 }
 
 export type RequestContext = {

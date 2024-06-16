@@ -17,7 +17,7 @@ import { ListViews } from '@tempo/dashboard/oldSrc/types';
 import useSortHandler from '@tempo/dashboard/oldSrc/utils/handlers/sortHandler';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { getSortParams } from '@tempo/dashboard/oldSrc/utils/sort';
-import type { ApolloError } from '@urql/core';
+import type { ApolloError } from '@apollo/client';
 import { useRouter } from 'next/navigation';
 import { useMemo, createContext, useContext } from 'react';
 import type { FC, ReactNode } from 'react';
@@ -91,7 +91,7 @@ export const GiftCardsListProvider: FC<GiftCardsListProviderProps> = ({ children
     }
   };
 
-  const [{ data, fetching: loading }] = useQuery<GiftCardListQuery, GiftCardListQueryVariables>(GiftCardListDocument, {
+  const { data, loading } = useQuery(GiftCardListDocument, {
     displayLoader: true,
     variables: queryVariables,
     handleError: handleGiftCardListError,

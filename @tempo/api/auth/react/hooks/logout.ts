@@ -5,14 +5,14 @@ import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { signOut } from '@tempo/api/auth/react';
-import type { LogoutMutation, LogoutMutationVariables } from '@tempo/api/generated/graphql';
+import type { LogoutMutation } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { LogoutDocument } from '@tempo/api/generated/graphql';
 import type { MutationState } from '@tempo/api/types';
 
 interface UseLogoutResult {
   logout: () => Promise<void>;
-  backendState: MutationState<LogoutMutation>;
+  backendState: MutationState<LogoutMutation, any>;
 }
 
 export const useLogout = (): UseLogoutResult => {
@@ -20,10 +20,7 @@ export const useLogout = (): UseLogoutResult => {
   const { resetCheckoutId } = useCheckout();
   const router = useRouter();
   const paths = usePaths();
-  const [logoutBackend, logoutBackendResult] = useMutation<
-    LogoutMutation,
-    LogoutMutationVariables
-  >(LogoutDocument);
+  const [logoutBackend, logoutBackendResult] = useMutation(LogoutDocument);
   const logout = useCallback(async () => {
     console.log('Signing out...');
     await logoutBackend({});

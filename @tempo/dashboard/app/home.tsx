@@ -5,10 +5,10 @@ import { useUser } from '@tempo/api/auth/react/hooks';
 import { useAuthorizedQuery } from '@tempo/api/hooks/useQuery';
 import { getUserName } from '@tempo/utils/user';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import HomePage from '@tempo/dashboard/components/home/HomePage';
-import useAppChannel from '@tempo/dashboard/components/layout/Layout/AppChannelContext';
 import { OrderStatusFilter, StockAvailability } from '@tempo/api/generated/constants';
 import { gql } from '@tempo/api';
+import HomePage from '@tempo/dashboard/components/home/HomePage';
+import useAppChannel from '@tempo/dashboard/components/layout/Layout/AppChannelContext';
 
 import { getDatePeriod } from '@tempo/dashboard/oldSrc/misc';
 import { orderListUrl } from '@tempo/dashboard/oldSrc/orders/urls';
@@ -80,7 +80,7 @@ export const homeQuery = gql(`
 // export const getServerSideProps: GetServerSideProps = async (ctx) => {
 //   const [client, ssrExchange] = getClientAndSsrExchange(ctx);
 //   if (!ctx) throw new Error('No ctx');
-//   await client.query(homeQuery, {}).toPromise();
+//   await client.query(homeQuery, {}).;
 //   return {
 //     props: generateStaticRenderingProps(ssrExchange),
 //   };
@@ -90,7 +90,7 @@ const Home = () => {
   console.log('>>>>>>> Home');
   const { user } = useUser();
   const { channel } = useAppChannel();
-  const [{ data }] = useAuthorizedQuery(homeQuery, {
+  const { data } = useAuthorizedQuery(homeQuery, {
     pause: !channel,
     variables: { channel: channel?.slug as string, datePeriod: getDatePeriod(1) },
   });

@@ -19,7 +19,7 @@ interface UseTaxClassFetchMoreHookResult {
  * @returns fetchMore - props for paginated components, e.g. dropdowns
  */
 export function useTaxClassFetchMore(): UseTaxClassFetchMoreHookResult {
-  const [{ data, fetching: loading }, fetchMore] = useQuery<TaxClassAssignQuery, TaxClassAssignQueryVariables>(TaxClassAssignDocument, {
+  const { data, loading , fetchMore: fetchMore } = useQuery(TaxClassAssignDocument, {
     variables: {
       first: 20,
     },

@@ -3,6 +3,7 @@ import './global.css';
 import CssProvider from '@tempo/ui/providers/CssProvider';
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { ApolloWrapper } from '@tempo/api/apollo/wrapper';
 import theme from '@kwstriping/app/theme';
 
 // If loading a variable font, you don't need to specify the font weight
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang={'en'}>
       <CssProvider theme={theme}>
         <body id="__next" className={openSans.className}>
-          {children}
+          <ApolloWrapper>{children}</ApolloWrapper>
         </body>
       </CssProvider>
     </html>

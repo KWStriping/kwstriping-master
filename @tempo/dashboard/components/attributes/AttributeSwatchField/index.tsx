@@ -25,7 +25,7 @@ const AttributeSwatchField: FC<AttributeSwatchFieldProps<ValueEditDialogFormData
   const { data } = props;
   const notify = useNotifier();
   const [processing, setProcessing] = useState(false);
-  const [uploadFile] = useMutation<FileUploadMutation, FileUploadMutationVariables>(FileUploadDocument, {});
+  const [uploadFile] = useMutation(FileUploadDocument, {});
   const [type, setType] = useState<SwatchType>(data?.fileUrl ? 'image' : 'picker');
 
   const handleColorChange = (hex: string) =>

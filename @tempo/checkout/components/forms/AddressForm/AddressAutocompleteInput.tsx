@@ -250,7 +250,7 @@ const InnerAddressAutocompleteInput: FC<AddressAutocompleteInputProps> = ({
             }
           }
         }}
-        onChange={(event, value) => {
+        onChange={(event, value: string | null) => {
           console.log('Autocomplete.onChange', value);
           if (!value) return;
           const place = storedPlaces[value];

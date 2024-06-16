@@ -25,6 +25,8 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "*",
+    "@apollo/experimental-nextjs-app-support": "*",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -54,12 +56,6 @@
     "@tempo/next": "workspace:*",
     "@tempo/ui": "workspace:*",
     "@tempo/utils": "workspace:*",
-    "@urql/core": "5.0.4",
-    "@urql/devtools": "^2.0.3",
-    "@urql/exchange-auth": "^2.1.6",
-    "@urql/exchange-execute": "^2.2.2",
-    "@urql/exchange-graphcache": "7.1.0",
-    "@urql/next": "^1.1.1",
     "clsx": "^2.0.0",
     "content-type": "^1.0.5",
     "eslint-config-next": "^14.2.3",
@@ -79,7 +75,6 @@
     "sharp": "^0.33.1",
     "swc-plugin-graphql-codegen-client-preset-optimizer-test": "^0.1.4",
     "url-join": "5.0.0",
-    "urql": "^4.1.0",
     "yup": "1.4.0"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import { joinDateTime } from '@tempo/utils/datetime';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { DiscountValueType, VoucherType } from '@tempo/api/generated/constants';
 import type {

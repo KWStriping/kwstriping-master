@@ -33,13 +33,20 @@
     "typecheck": "turbo run typecheck"
   },
   "resolutions": {
+    "@apollo/client": "3.10.5",
+    "@apollo/client-react-streaming": "0.11.2",
+    "@apollo/experimental-nextjs-app-support": "0.11.2",
     "@opentelemetry/api": "1.8.0",
     "@opentelemetry/instrumentation": "0.51.1",
+    "@types/react": "18.3.3",
     "graphql": "16.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "dependencies": {
+    "@apollo/client": "3.10.5",
+    "@apollo/client-react-streaming": "0.11.2",
+    "@apollo/experimental-nextjs-app-support": "0.11.2",
     "graphql": "16.8.1",
     "lodash-es": "^4.17.21",
     "next": "14.2.4",
@@ -55,8 +62,6 @@
     "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript": "^4.0.7",
     "@graphql-codegen/typescript-resolvers": "^4.1.0",
-    "@graphql-codegen/typescript-urql": "^4.0.0",
-    "@graphql-codegen/urql-introspection": "^3.0.0",
     "@inlang/paraglide-js": "^1.9.1",
     "@next/eslint-plugin-next": "^14.2.4",
     "@parcel/watcher": "^2.4.1",

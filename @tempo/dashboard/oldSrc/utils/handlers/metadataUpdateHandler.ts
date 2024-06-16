@@ -10,7 +10,7 @@ import type {
 } from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import { arrayDiff } from '@tempo/dashboard/oldSrc/utils/arrays';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import { assert } from 'tsafe';
 
 import { filterMetadataArray } from './filterMetadataArray';

@@ -21,7 +21,7 @@ const selectRules = (data: AddressValidationRulesQuery) =>
   data ? data?.addressValidationRules : { countryAreaChoices: [], allowedFields: [] };
 
 const useValidationRules = (countryCode?: CountryCode) => {
-  const [{ data, fetching: loading }] = useQuery<AddressValidationRulesQuery, AddressValidationRulesQueryVariables>(AddressValidationRulesDocument, {
+  const { data, loading } = useQuery(AddressValidationRulesDocument, {
     variables: { countryCode: countryCode as CountryCode },
     pause: !countryCode,
   });

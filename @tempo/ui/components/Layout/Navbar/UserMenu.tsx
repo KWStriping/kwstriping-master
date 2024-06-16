@@ -12,7 +12,7 @@ import styles from './index.module.css';
 import NavIconButton from './NavIconButton';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
-interface UserMenuProps extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
+interface UserMenuProps extends Partial<Pick<HTMLAttributes<HTMLDivElement>, 'className'>> {
   user: Maybe<Pick<UserDetailsFragment, 'avatar' | 'firstName' | 'isStaff'>>;
 }
 

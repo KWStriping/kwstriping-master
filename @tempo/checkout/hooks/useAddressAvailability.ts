@@ -11,7 +11,7 @@ interface UseAddressAvailabilityProps {
 export const useAddressAvailability = (
   { pause }: UseAddressAvailabilityProps = { pause: false }
 ) => {
-  const [{ data }] = useQuery<ChannelBySlugQuery, ChannelBySlugQueryVariables>(ChannelBySlugDocument, {
+  const { data } = useQuery(ChannelBySlugDocument, {
     variables: { slug: 'default' },
     pause,
   });

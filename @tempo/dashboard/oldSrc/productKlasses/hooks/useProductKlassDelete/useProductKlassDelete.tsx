@@ -41,7 +41,7 @@ function useProductKlassDelete({
   const {
     data: productsAssignedToSelectedTypesData,
     loading: loadingProductsAssignedToSelectedTypes,
-  } = useQuery<ProductCountQuery, ProductCountQueryVariables>(ProductCountDocument, {
+  } = useQuery(ProductCountDocument, {
     variables: productsAssignedToSelectedTypesQueryVars,
     pause: shouldSkipProductListQuery,
   });

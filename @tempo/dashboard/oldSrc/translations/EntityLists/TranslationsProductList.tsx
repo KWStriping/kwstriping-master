@@ -10,7 +10,7 @@ import { sumCompleted } from './utils';
 import type { TranslationsEntityListProps } from './types';
 
 const TranslationsProductList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery<ProductTranslationsQuery, ProductTranslationsQueryVariables>(ProductTranslationsDocument, {
+  const { data, loading } = useQuery(ProductTranslationsDocument, {
     displayLoader: true,
     variables,
   });

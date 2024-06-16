@@ -4,8 +4,6 @@ import dotenvExpand from 'dotenv-expand';
 
 dotenvExpand.expand(dotenv.config());
 
-const GENERATE_INTROSPECTION_SCHEMA = false;
-
 const API_URL = process.env.API_URL;
 
 if (!API_URL) throw new Error('API_URL is undefined.');
@@ -81,13 +79,6 @@ const constantsConfig = {
 
 const apiCodegenConfig = {
   generates: {
-    ...(GENERATE_INTROSPECTION_SCHEMA
-      ? {
-          '@tempo/api/generated/introspection.json': {
-            plugins: ['urql-introspection'],
-          },
-        }
-      : {}),
     '@tempo/api/generated/': {
       ...clientPreset,
     },
@@ -100,9 +91,6 @@ const apiCodegenConfig = {
 
 const dashboardCodegenConfig = {
   generates: {
-    '@tempo/dashboard/generated/introspection.json': {
-      plugins: ['urql-introspection'],
-    },
     // "generated/fragments.ts": {
     //   plugins: ["fragment-matcher"],
     //   config: {
@@ -118,7 +106,6 @@ const dashboardCodegenConfig = {
     //     { add: { content: PREPENDED_CONTENT } },
     //     "typescript",
     //     "typescript-operations",
-    //     "typescript-urql",
     //   ],
     //   config: {
     //     nonOptionalTypename: true,

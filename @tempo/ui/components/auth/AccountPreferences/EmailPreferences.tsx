@@ -15,10 +15,7 @@ interface EmailChangeFormData {
 }
 
 export function EmailPreferences() {
-  const [requestEmailChange] = useMutation<
-    RequestEmailChangeMutation,
-    RequestEmailChangeMutationVariables
-  >(RequestEmailChangeDocument);
+  const [requestEmailChange] = useMutation(RequestEmailChangeDocument);
   const [successMessage, setSuccessMessage] = useState<string>();
   const {
     register,

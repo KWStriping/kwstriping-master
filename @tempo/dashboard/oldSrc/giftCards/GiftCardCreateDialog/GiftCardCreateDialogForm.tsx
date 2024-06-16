@@ -61,7 +61,7 @@ const GiftCardCreateDialogForm: FC<GiftCardCreateDialogFormProps> = ({
   apiErrors,
   initialCustomer,
 }) => {
-  const { data: settingsData, loading: loadingSettings } = useQuery<GiftCardSettingsQuery, GiftCardSettingsQueryVariables>(GiftCardSettingsDocument, {});
+  const { data: settingsData, loading: loadingSettings } = useQuery(GiftCardSettingsDocument, {});
 
   const [selectedCustomer, setSelectedCustomer] = useState<GiftCardCreateFormCustomer>(
     initialCustomer || defaultInitialCustomer

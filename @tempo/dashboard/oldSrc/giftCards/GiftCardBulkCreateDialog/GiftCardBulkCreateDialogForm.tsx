@@ -50,7 +50,7 @@ const GiftCardBulkCreateDialogForm: FC<GiftCardBulkCreateDialogFormProps> = ({
   onClose,
   formErrors = {},
 }) => {
-  const { data: settingsData, loading: loadingSettings } = useQuery<GiftCardSettingsQuery, GiftCardSettingsQueryVariables>(GiftCardSettingsDocument, {});
+  const { data: settingsData, loading: loadingSettings } = useQuery(GiftCardSettingsDocument, {});
 
   const getInitialExpirySettingsData = (): Partial<GiftCardBulkCreateFormData> => {
     if (loadingSettings) {

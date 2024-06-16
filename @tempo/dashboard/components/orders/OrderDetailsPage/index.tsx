@@ -51,7 +51,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
   const router = useRouter();
   const { enableMetadata } = useShopSettings();
   const { autoApproveFulfillment, fulfillmentAllowUnpaid } = useShopSettings();
-  const [{ data: warehousesData }] = useQuery<WarehouseListQuery, WarehouseListQueryVariables>(WarehouseListDocument, {
+  const { data: warehousesData } = useQuery(WarehouseListDocument, {
     displayLoader: true,
     variables: {
       first: 30,
@@ -63,7 +63,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
     [warehousesData]
   );
 
-  const [{ data: customerAddresses, fetching: customerAddressesLoading }] = useQuery(
+  const { data: customerAddresses, fetching: customerAddressesLoading } = useQuery(
     CustomerAddressesDocument,
     {
       variables: {
@@ -72,7 +72,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
       pause: !order?.user?.id,
     }
   );
-  const [updateOrder, updateOrderMutationState] = useMutation<OrderUpdateMutation, OrderUpdateMutationVariables>(OrderUpdateDocument);
+  const [updateOrder, updateOrderMutationState] = useMutation(OrderUpdateDocument);
 
   const handleCustomerChangeAddresses = async (
     data: Partial<OrderCustomerAddressesEditDialogOutput>
@@ -125,7 +125,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
     return disabled;
   };
 
-  const [cancelOrder, cancelOrderMutationState] = useMutation<OrderCancelMutation, OrderCancelMutationVariables>(OrderCancelDocument);
+  const [cancelOrder, cancelOrderMutationState] = useMutation(OrderCancelDocument);
 
   const selectCardMenuItems = filteredConditionalItems([
     {

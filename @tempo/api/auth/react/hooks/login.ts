@@ -1,29 +1,27 @@
 'use client';
 
-import type { CombinedError } from '@urql/core';
+import type { ApolloError } from '@apollo/client';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { toast } from 'react-toastify';
 import { assert } from 'tsafe/assert';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { LoginMutation, LoginMutationVariables } from '@tempo/api/generated/graphql';
+import type { LoginMutationVariables } from '@tempo/api/generated/graphql';
 import { LoginDocument } from '@tempo/api/generated/graphql';
 import { signIn } from '@tempo/api/auth/react';
 
 const USE_SERVER_SIDE_AUTH = false;
 
 export const useLogin = (): [
-  (variables: LoginMutationVariables) => Promise<LoginMutation | undefined>, // TODO
-  { loading: boolean; error: CombinedError | undefined },
+  (variables: LoginMutationVariables) => Promise<any>, // TODO
+  { loading: boolean; error: ApolloError | undefined },
 ] => {
   const searchParams = useSearchParams();
   const next = searchParams.get('next') || '/';
 
   assert(!Array.isArray(next));
 
-  const [mutate, { data, fetching, error }] = useMutation<LoginMutation, LoginMutationVariables>(
-    LoginDocument
-  );
+  const [mutate, { data, loading: fetching, error }] = useMutation(LoginDocument);
   const [_loading, setLoading] = useState(false);
   const loading = _loading || fetching;
 
@@ -41,10 +39,10 @@ export const useLogin = (): [
         });
       } else {
         console.log('Logging in with client-side auth...');
-        const { data, error } = await mutate(variables, { dropAuth: true });
+        const { data, errors } = await mutate(variables); // TODO, { dropAuth: true });
         if (data?.obtainToken) {
-          if (error?.graphQLErrors.length) {
-            toast(error.graphQLErrors[0]?.message);
+          if (errors?.length) {
+            toast(errors[0]?.message);
           } else if (!data) {
             throw new Error('no login result');
           } else {

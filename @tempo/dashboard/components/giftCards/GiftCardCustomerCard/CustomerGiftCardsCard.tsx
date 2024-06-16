@@ -30,7 +30,7 @@ const CustomerGiftCardsCard: FC = () => {
   const customer = customerDetails?.customer?.user;
   const id = customer?.id;
 
-  const [{ data, fetching: loading }] = useQuery<CustomerGiftCardListQuery, CustomerGiftCardListQueryVariables>(CustomerGiftCardListDocument, {
+  const { data, loading } = useQuery(CustomerGiftCardListDocument, {
     variables: {
       first: 5,
       filter: {

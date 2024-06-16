@@ -3,7 +3,6 @@ import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql'
 import type { AddressFormData } from '@tempo/next/types/addresses';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import type { UseErrors } from '@tempo/ui/hooks/useErrors';
-import { getById } from '@tempo/utils';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { Suspense, useState } from 'react';
@@ -36,7 +35,7 @@ export const UserAddressSection: FC<UserAddressSectionProps> = ({
 
   const displayAddressList = !displayAddressEdit && !displayAddressCreate;
 
-  const editedAddress = addresses.find(getById(editedAddressId as string)) as AddressFragment;
+  // const editedAddress = addresses.find(getById(editedAddressId as string)) as AddressFragment;
 
   return (
     <Suspense>

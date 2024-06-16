@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 import { gql } from '@tempo/api';
 import GalleryPage from './gallery';
 import Layout from '@kwstriping/app/client/Layout';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
-if (!API_URL) throw new Error('API_URL is not set.');
 
 export const metadata: Metadata = {
   title: 'Gallery',
@@ -45,7 +42,7 @@ const galleryMediaQuery = gql(`
 `);
 
 export default async function Page() {
-  const result = await getClient().query(galleryMediaQuery, { first: 100 }).toPromise();
+  const result = await getClient().query({ query: galleryMediaQuery, variables: { first: 100 } });
   console.log(result);
   if (!result.data) throw new Error('Failed to load gallery media');
 

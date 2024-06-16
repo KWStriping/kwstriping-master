@@ -29,7 +29,7 @@ export const Pill: ForwardRefExoticComponent<PillProps & RefAttributes<HTMLDivEl
     ({ active, className, color = 'info', outlined, onClick, size, ...rest }, ref) => {
       return (
         <Chip
-          color={color}
+          // color={color}
           classes={{
             root: clsx(
               className,

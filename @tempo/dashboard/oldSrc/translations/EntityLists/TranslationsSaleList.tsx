@@ -10,7 +10,7 @@ import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePagina
 import { languageEntityUrl, TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
 
 const TranslationsSaleList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery<SaleTranslationsQuery, SaleTranslationsQueryVariables>(SaleTranslationsDocument, {
+  const { data, loading } = useQuery(SaleTranslationsDocument, {
     displayLoader: true,
     variables,
   });

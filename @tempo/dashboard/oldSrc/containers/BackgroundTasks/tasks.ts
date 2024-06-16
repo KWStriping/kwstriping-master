@@ -6,7 +6,6 @@ import type {
   CheckOrderInvoicesStatusQuery,
 } from '@tempo/api/generated/graphql';
 import type { MutableRefObject } from 'react';
-import type { OperationResult } from '@tempo/api';;
 
 import messages from './messages';
 import type { InvoiceGenerateParams, QueuedTask, TaskData } from './types';

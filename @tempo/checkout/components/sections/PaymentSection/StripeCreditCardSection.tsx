@@ -33,14 +33,8 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
   const router = useRouter();
   const paths = usePaths();
   const { resetCheckoutId: resetCheckoutToken } = useCheckout();
-  const [createCheckoutPaymentMutation] = useMutation<
-    CreateCheckoutPaymentMutation,
-    CreateCheckoutPaymentMutationVariables
-  >(CreateCheckoutPaymentDocument);
-  const [completeCheckoutMutation] = useMutation<
-    CompleteCheckoutMutation,
-    CompleteCheckoutMutationVariables
-  >(CompleteCheckoutDocument);
+  const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);
+  const [completeCheckoutMutation] = useMutation(CompleteCheckoutDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const totalPrice = checkout.totalPrice?.gross;
   const payLabel = `Pay ${formatPrice(totalPrice)}`;
@@ -93,7 +87,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
     }
 
     // Send Stripe payment data to the Tempo
-    const { error: paymentCreateErrors } = await createCheckoutPaymentMutation({
+    const { errors: paymentCreateErrors } = await createCheckoutPaymentMutation({
       checkoutId: checkout.id,
       paymentInput: {
         gateway: 'api.ments.stripe',
@@ -109,7 +103,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
     }
 
     // Try to complete the checkout
-    const { data: completeData, error: completeErrors } = await completeCheckoutMutation({
+    const { data: completeData, errors: completeErrors } = await completeCheckoutMutation({
       checkoutId: checkout.id,
     });
     if (completeErrors) {
@@ -142,7 +136,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
       }
 
       // Try to complete checkout
-      const { data: confirmedCompleteData, error: confirmedCompleteErrors } =
+      const { data: confirmedCompleteData, errors: confirmedCompleteErrors } =
         await completeCheckoutMutation({
           checkoutId: checkout.id,
         });

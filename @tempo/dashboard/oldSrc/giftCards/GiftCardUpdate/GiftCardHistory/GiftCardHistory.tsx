@@ -23,7 +23,7 @@ const GiftCardHistory: FC = () => {
   const notify = useNotifier();
   const { id, events } = useGiftCardHistoryEvents();
 
-  const [addTimelineNote, { loading }] = useMutation<GiftCardAddNoteMutation, GiftCardAddNoteMutationVariables>(GiftCardAddNoteDocument, {
+  const [addTimelineNote, { loading }] = useMutation(GiftCardAddNoteDocument, {
     refetchQueries: [GIFT_CARD_DETAILS_QUERY],
     onCompleted: ({ addNoteToGiftCard }) => {
       const { errors } = addNoteToGiftCard;

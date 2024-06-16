@@ -1,8 +1,4 @@
-import type {
-  CreateOrderMutation,
-  CreateOrderMutationVariables,
-  CheckoutFragment,
-} from '@tempo/api/generated/graphql';
+import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import Spinner from '@tempo/ui/components/Spinner';
 import Typography from '@mui/material/Typography';
 import { Turnstile } from '@tempo/ui/components/Turnstile';
@@ -41,10 +37,7 @@ function Checkout({ checkout, loading }: CheckoutProps) {
   const [submitting, setSubmitting] = useState(false);
 
   const [processPayment, { loading: paying, error: payError }] = usePay();
-  const [createOrderFromCheckout] = useMutation<
-    CreateOrderMutation,
-    CreateOrderMutationVariables
-  >(CreateOrderDocument);
+  const [createOrderFromCheckout] = useMutation(CreateOrderDocument);
 
   useEffect(() => {
     if (checkout) {
@@ -78,8 +71,8 @@ function Checkout({ checkout, loading }: CheckoutProps) {
     const result = await createOrderFromCheckout({
       id: checkout.id,
     });
-    if (result.error) {
-      toast(result.error.message, { type: 'error' });
+    if (result.errors?.length) {
+      toast(result.errors[0]?.message, { type: 'error' });
     } else if (!result.data?.createOrderFromCheckout?.result) {
       toast('Error creating order', { type: 'error' });
     } else {

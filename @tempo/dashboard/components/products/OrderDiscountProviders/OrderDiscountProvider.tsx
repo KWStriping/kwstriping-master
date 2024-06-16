@@ -37,7 +37,7 @@ export const OrderDiscountProvider: FC<OrderDiscountProviderProps> = ({ children
 
   const orderDiscount = getManualOrderDiscount(order);
 
-  const [addDiscountToOrder, addDiscountToOrderOpts] = useMutation<OrderDiscountAddMutation, OrderDiscountAddMutationVariables>(OrderDiscountAddDocument, {
+  const [addDiscountToOrder, addDiscountToOrderOpts] = useMutation(OrderDiscountAddDocument, {
     onCompleted: ({ addDiscountToOrder: { errors } }) => handleDiscountDataSubmission(errors),
   });
 

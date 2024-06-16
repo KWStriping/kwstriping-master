@@ -183,7 +183,7 @@ export const ShopSettingsProvider: FC<ShopSettingsProviderProps> = ({
   settings: settingsFromProps = {},
   children,
 }) => {
-  const [{ data }] = useQuery<ShopInfoQuery, ShopInfoQueryVariables>(ShopInfoDocument, {});
+  const { data } = useQuery(ShopInfoDocument, {});
   const [settings, setSettings] = useState<ShopSettings>({
     ...DEFAULTS,
     ...settingsFromProps,

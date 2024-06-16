@@ -16,9 +16,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <MuiButton
         ref={ref}
         className={clsx(styles.button, className)}
-        variant={variant}
-        color={color}
-        size={size}
+        variant={variant as any} // TODO
+        color={color as any} // TODO
+        size={size as any} // TODO
         disableRipple
         {...props}
       >

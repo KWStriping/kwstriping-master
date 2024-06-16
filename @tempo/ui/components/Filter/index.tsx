@@ -20,7 +20,7 @@ export type FilterProps = FilterOptions & FilterDetailedOptions;
 
 export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) => {
   console.log('Filter', { nameProp, label, options });
-  const name = utils.getFilterName(nameProp, options);
+  const name = utils.getFilterName(nameProp, options as FilterDetailedOptions);
   if (!name) throw new Error('Filter name is required');
   const filters = useFilterData();
   const { register, set, unregister } = useFilterActions();
@@ -30,7 +30,7 @@ export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) =
   useEffect(() => {
     console.log('registering', name);
     console.log('>>>>>>', register);
-    register(name, label, options);
+    register(name, label, options as any);
     registered.current = true;
     return () => unregister(name);
   }, []);
@@ -44,7 +44,7 @@ export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) =
     ) {
       set(name, {
         options: {
-          ...options,
+          ...(options as FilterDetailedOptions),
           choices: options.choices,
         },
       });

@@ -5,11 +5,8 @@ import type { JWT } from 'next-auth/jwt';
 import { assert } from 'tsafe/assert';
 import { ACCESS_TOKEN_TTL } from '../constants';
 import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
-import type {
-  RefreshTokenMutation,
-  RefreshTokenMutationVariables,
-} from '@tempo/api/generated/graphql';
-import { getClient } from '@tempo/api/server';
+
+import { getClient } from '@tempo/api/client';
 
 // https://next-auth.js.org/configuration/callbacks
 const signIn = async ({
@@ -27,7 +24,7 @@ const signIn = async ({
   }
   // const client = getClient();
   // TODO
-  // const { data } = await client.mutate<AuthorizeMutation, AuthorizeMutationVariables>({
+  // const { data } = await client.mutate({
   //   mutation: AuthorizeDocument,
   //   // TODO: Add login details
   //   variables: {
@@ -174,13 +171,14 @@ const refreshAccessToken = debounce(
         'csrfToken and refreshToken are required'
       );
       const client = getClient();
-      const result = await client
-        .mutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, {
+      const result = await client.mutate({
+        mutation: RefreshTokenDocument,
+        variables: {
           refreshToken: token.refreshToken,
           csrfToken: token.csrfToken,
           // pluginId: undefined, // TODO
-        })
-        .toPromise();
+        },
+      });
       assert(!!result.data?.refreshToken);
       assert(
         !result.data?.refreshToken?.errors?.length,

@@ -68,14 +68,14 @@ export const OrderUnconfirmedDetails: FC<OrderUnconfirmedDetailsProps> = ({
     ...DEFAULT_INITIAL_SEARCH_DATA,
     channel: order.channel.slug,
   });
-  const [warehouses] = useQuery<WarehouseListQuery, WarehouseListQueryVariables>(WarehouseListDocument, {
+  const [warehouses] = useQuery(WarehouseListDocument, {
     displayLoader: true,
     variables: {
       first: 30,
     },
   });
 
-  const [confirmOrder] = useMutation<OrderConfirmMutation, OrderConfirmMutationVariables>(OrderConfirmDocument, {
+  const [confirmOrder] = useMutation(OrderConfirmDocument, {
     onCompleted: ({ confirmOrder: { errors } }) => {
       const isError = !!errors?.length;
       notify(isError ? getOrderErrorMessage(errors[0], t) : 'Confirmed Order', {
@@ -107,7 +107,7 @@ export const OrderUnconfirmedDetails: FC<OrderUnconfirmedDetailsProps> = ({
     return result;
   };
 
-  const [{ data: customerAddresses, fetching: customerAddressesLoading }] = useQuery(
+  const { data: customerAddresses, fetching: customerAddressesLoading } = useQuery(
     CustomerAddressesDocument,
     {
       variables: {

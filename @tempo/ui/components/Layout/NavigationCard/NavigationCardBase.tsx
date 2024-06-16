@@ -5,13 +5,15 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import styles from './NavigationCardBase.module.css';
 
+type Classes = Record<'root' | 'content', string>;
+
 export interface NavigationCardBaseProps extends Omit<CardProps, 'classes'> {
-  classes?: Record<'root' | 'content', string>;
+  classes?: Classes;
 }
 
 export const NavigationCardBase: FC<NavigationCardBaseProps> = ({
   className,
-  classes: propClasses = {},
+  classes: propClasses = {} as Classes,
   children,
   ...rest
 }) => {

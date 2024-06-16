@@ -7,7 +7,7 @@ import {
 import { useQuery } from '@tempo/api/hooks';
 
 export const useOrder = (id: string) => {
-  const [{ data, fetching: loading }] = useQuery<OrderQuery, OrderQueryVariables>(OrderDocument, {
+  const { data, loading } = useQuery(OrderDocument, {
     variables: { id },
   });
 

@@ -1,5 +1,5 @@
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import type { AttributePageFormData } from '@tempo/dashboard/components/attributes/AttributePage';
 import type {
   AttributeInput,

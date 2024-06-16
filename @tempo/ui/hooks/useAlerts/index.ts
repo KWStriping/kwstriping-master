@@ -3,6 +3,7 @@ import type { ErrorCode } from '@tempo/next/types/errors';
 import { camelCase } from 'lodash-es';
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
+import type { GraphQLErrors } from '@apollo/client/errors';
 import type { Alert, AlertType, AlertErrorData, CheckoutScope, CustomError } from './types';
 import { useGetParsedApiErrors } from '@tempo/ui/hooks/useErrors';
 import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
@@ -11,7 +12,7 @@ import { errorMessages } from '@tempo/ui/hooks/useErrorMessages/messages';
 export type { CheckoutScope };
 
 function useAlerts(scope: CheckoutScope): {
-  showErrors: (errors: ApiErrors<any>) => void;
+  showErrors: (errors: Maybe<GraphQLErrors>) => void;
   showCustomErrors: (errors: CustomError[]) => void;
 };
 

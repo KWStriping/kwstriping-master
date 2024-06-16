@@ -12,10 +12,7 @@
 //   const { checkout, loading } = useCheckout();
 //   const { user, authenticated } = useUser();
 
-//   const [customerAttach, { fetching }] = useMutation<
-//     AttachCustomerToCheckoutMutation,
-//     AttachCustomerToCheckoutMutationVariables
-//   >(AttachCustomerToCheckoutDocument);
+//   const [customerAttach, { fetching }] = useMutation(AttachCustomerToCheckoutDocument);
 
 //   useEffect(() => {
 //     void handleSubmit({});

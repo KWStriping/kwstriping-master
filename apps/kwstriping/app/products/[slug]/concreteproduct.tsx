@@ -1,13 +1,6 @@
 'use client';
 
-import type {
-  ConcreteProductDetailsFragment,
-  CheckoutError,
-  CreateCheckoutMutation,
-  CreateCheckoutMutationVariables,
-  CheckoutAddProductLineMutation,
-  CheckoutAddProductLineMutationVariables,
-} from '@tempo/api/generated/graphql';
+import type { ConcreteProductDetailsFragment, CheckoutError } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
@@ -17,7 +10,7 @@ import { VariantSelector } from '@tempo/ui/components/product/VariantSelector';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks';
-// import { useMutation } from '@urql/next';
+// import { useMutation } from '@apollo/client';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -61,15 +54,10 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
   const { displayProductImages } = useShopSettings();
   const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();
 
-  const [createCheckout] = useMutation<CreateCheckoutMutation, CreateCheckoutMutationVariables>(
-    createCheckoutMutation
-  );
+  const [createCheckout] = useMutation(createCheckoutMutation);
   const { user } = useUser();
 
-  const [addProductToCheckout] = useMutation<
-    CheckoutAddProductLineMutation,
-    CheckoutAddProductLineMutationVariables
-  >(CheckoutAddProductLineDocument);
+  const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
 
   const [oneClickCheckoutEnabled, setOneClickCheckoutEnabled] = useState(false);
 

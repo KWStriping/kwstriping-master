@@ -16,10 +16,7 @@ interface PasswordChangeFormData {
 }
 
 export function PasswordPreferences() {
-  const [changePasswordMutation] = useMutation<
-    PasswordChangeMutation,
-    PasswordChangeMutationVariables
-  >(PasswordChangeDocument);
+  const [changePasswordMutation] = useMutation(PasswordChangeDocument);
   const [successMessage, setSuccessMessage] = useState<string>('');
 
   const {

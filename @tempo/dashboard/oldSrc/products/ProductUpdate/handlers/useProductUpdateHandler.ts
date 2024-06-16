@@ -13,7 +13,7 @@ import type {
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import { useState } from 'react';
 import {
   ValueDeleteDocument,
@@ -80,41 +80,20 @@ export function useProductUpdateHandler(
   const [called, setCalled] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [updateMetadata] = useMutation<UpdateMetadataMutation, UpdateMetadataMutationVariables>(
+  const [updateMetadata] = useMutation(
     UpdateMetadataDocument
   );
-  const [updatePrivateMetadata] = useMutation<
-    UpdatePrivateMetadataMutation,
-    UpdatePrivateMetadataMutationVariables
-  >(UpdatePrivateMetadataDocument);
-  const [updateStocks] = useMutation<
-    VariantDatagridStockUpdateMutation,
-    VariantDatagridStockUpdateMutationVariables
-  >(VariantDatagridStockUpdateDocument);
-  const [updateVariant] = useMutation<
-    VariantDatagridUpdateMutation,
-    VariantDatagridUpdateMutationVariables
-  >(VariantDatagridUpdateDocument);
-  const [createVariants] = useMutation<
-    ProductBulkCreateMutation,
-    ProductBulkCreateMutationVariables
-  >(ProductBulkCreateDocument);
-  const [deleteVariants] = useMutation<
-    ProductBulkDeleteMutation,
-    ProductBulkDeleteMutationVariables
-  >(ProductBulkDeleteDocument);
-  const [uploadFile] = useMutation<FileUploadMutation, FileUploadMutationVariables>(
+  const [updatePrivateMetadata] = useMutation(UpdatePrivateMetadataDocument);
+  const [updateStocks] = useMutation(VariantDatagridStockUpdateDocument);
+  const [updateVariant] = useMutation(VariantDatagridUpdateDocument);
+  const [createVariants] = useMutation(ProductBulkCreateDocument);
+  const [deleteVariants] = useMutation(ProductBulkDeleteDocument);
+  const [uploadFile] = useMutation(
     FileUploadDocument
   );
 
-  const [updateProduct, updateProductOpts] = useMutation<
-    ProductUpdateMutation,
-    ProductUpdateMutationVariables
-  >(ProductUpdateDocument);
-  const [updateChannels, updateChannelsOpts] = useMutation<
-    ProductChannelListingUpdateMutation,
-    ProductChannelListingUpdateMutationVariables
-  >(ProductChannelListingUpdateDocument, {
+  const [updateProduct, updateProductOpts] = useMutation(ProductUpdateDocument);
+  const [updateChannels, updateChannelsOpts] = useMutation(ProductChannelListingUpdateDocument, {
     onCompleted: (data) => {
       if (data?.updateProductChannelListing?.errors?.length) {
         data?.updateProductChannelListing?.errors?.forEach((error) =>
@@ -126,11 +105,8 @@ export function useProductUpdateHandler(
     },
   });
 
-  const [updateVariantChannels] = useMutation<
-    VariantDatagridChannelListingUpdateMutation,
-    VariantDatagridChannelListingUpdateMutationVariables
-  >(VariantDatagridChannelListingUpdateDocument);
-  const [deleteValue] = useMutation<ValueDeleteMutation, ValueDeleteMutationVariables>(
+  const [updateVariantChannels] = useMutation(VariantDatagridChannelListingUpdateDocument);
+  const [deleteValue] = useMutation(
     ValueDeleteDocument
   );
 

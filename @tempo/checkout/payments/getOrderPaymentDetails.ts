@@ -1,16 +1,17 @@
-import type { OrderPaymentDetailsQuery, OrderPaymentDetailsQueryVariables } from '@tempo/api/generated/graphql';
+import type { OrderPaymentDetailsQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderPaymentDetailsDocument } from '@tempo/api/generated/graphql';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 import type { Errors } from './types';
 
 export const getOrderPaymentDetails = async (id: OrderPaymentDetailsQueryVariables['id']) => {
-  const { data, error } = await getClient()
-    .query(OrderPaymentDetailsDocument, { id })
-    .toPromise();
+  const { data, errors } = await getClient().query({
+    query: OrderPaymentDetailsDocument,
+    variables: { id },
+  });
 
-  if (error) {
-    throw error;
+  if (errors) {
+    throw errors;
   }
 
   if (!data?.order) {

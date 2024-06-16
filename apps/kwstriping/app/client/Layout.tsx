@@ -27,7 +27,7 @@ const mainMenuQuery = gql(`
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
   const { query } = useLocalization();
-  const [{ data }] = useQuery<MainMenuQuery, MainMenuQueryVariables>(mainMenuQuery, {
+  const { data } = useQuery(mainMenuQuery, {
     variables: { ...query },
   });
   const navbarItems = useMemo(

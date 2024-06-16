@@ -1,6 +1,5 @@
 'use client';
 
-import type { CheckoutAddProductLineMutation, CheckoutAddProductLineMutationVariables } from '@tempo/api/generated/graphql';
 import type { ProductDetailsFragment } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -21,8 +20,6 @@ import Spinner from '@tempo/ui/components/Spinner';
 import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
-const DISPLAY_PRICES = false;
-const ENABLE_CART = false; // TODO
 
 export type OptionalQuery = {
   variant?: string;
@@ -44,7 +41,7 @@ function ProductPage({ product, price, displayPrice, details }: ProductPageProps
 
   const { user } = useUser();
 
-  const [addProductToCheckout] = useMutation<CheckoutAddProductLineMutation, CheckoutAddProductLineMutationVariables>(CheckoutAddProductLineDocument);
+  const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
 
   const [redirecting, setRedirecting] = useState(false);
 

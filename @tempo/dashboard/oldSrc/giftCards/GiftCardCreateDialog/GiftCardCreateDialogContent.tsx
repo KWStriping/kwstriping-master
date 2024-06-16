@@ -32,7 +32,7 @@ const GiftCardCreateDialogContent: FC<GiftCardCreateDialogContentProps> = ({
 }) => {
   const notify = useNotifier();
 
-  const [{ fetching: loadingChannelCurrencies }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
+  const { loadingChannelCurrencies } = useQuery(ChannelCurrenciesDocument, {});
 
   const [cardCode, setCardCode] = useState(null);
 
@@ -64,7 +64,7 @@ const GiftCardCreateDialogContent: FC<GiftCardCreateDialogContentProps> = ({
     };
   };
 
-  const [createGiftCard, createGiftCardOpts] = useMutation<GiftCardCreateMutation, GiftCardCreateMutationVariables>(GiftCardCreateDocument, {
+  const [createGiftCard, createGiftCardOpts] = useMutation(GiftCardCreateDocument, {
     onCompleted: (data) => {
       const errors = data?.createGiftCard?.errors;
 

@@ -53,16 +53,16 @@ function useProductKlassOperations({
   onUnassignAttribute,
   productKlass,
 }: ProductKlassOperationsProps) {
-  const deleteProductKlass = useMutation<ProductKlassDeleteMutation, ProductKlassDeleteMutationVariables>(ProductKlassDeleteDocument, {
+  const deleteProductKlass = useMutation(ProductKlassDeleteDocument, {
     onCompleted: onProductKlassDelete,
   });
-  const assignAttribute = useMutation<AssignProductAttributeMutation, AssignProductAttributeMutationVariables>(AssignProductAttributeDocument, {
+  const assignAttribute = useMutation(AssignProductAttributeDocument, {
     onCompleted: onAssignAttribute,
   });
-  const unassignAttribute = useMutation<UnassignProductAttributeMutation, UnassignProductAttributeMutationVariables>(UnassignProductAttributeDocument, {
+  const unassignAttribute = useMutation(UnassignProductAttributeDocument, {
     onCompleted: onUnassignAttribute,
   });
-  const [...reorderAttribute] = useMutation<ProductKlassAttributeReorderMutation, ProductKlassAttributeReorderMutationVariables>(ProductKlassAttributeReorderDocument, {
+  const [...reorderAttribute] = useMutation(ProductKlassAttributeReorderDocument, {
     onCompleted: onProductKlassAttributeReorder,
     // optimisticResponse: (variables) => ({
     //   __typename: 'Mutation',

@@ -24,6 +24,8 @@ export interface SelectProps<TData extends string = string>
   options: Option<TData>[];
   classNames?: ClassNames<'container'>;
   placeholder?: string;
+  value: TData;
+  defaultValue: TData;
 }
 
 const SelectComponent = <TData extends string = string>(

@@ -39,7 +39,7 @@ const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
 
   const onIssueSuccessDialogClose = () => setOpenIssueSuccessDialog(false);
 
-  const [{ fetching: loadingChannelCurrencies }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
+  const { loadingChannelCurrencies } = useQuery(ChannelCurrenciesDocument, {});
 
   const currentDate = useCurrentDate();
 
@@ -66,7 +66,7 @@ const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
     };
   };
 
-  const [bulkCreateGiftCard, bulkCreateGiftCardOpts] = useMutation<GiftCardBulkCreateMutation, GiftCardBulkCreateMutationVariables>(GiftCardBulkCreateDocument, {
+  const [bulkCreateGiftCard, bulkCreateGiftCardOpts] = useMutation(GiftCardBulkCreateDocument, {
     onCompleted: (data) => {
       const errors = data?.createGiftCards?.errors;
       const cardsAmount = data?.createGiftCards?.giftCards?.length || 0;

@@ -82,7 +82,7 @@ export const Autocomplete: FC<AutocompleteProps> = ({
         });
       }
     },
-    itemToString: (choice) => choice?.label ?? '',
+    itemToString: (choice: Choice | null) => choice?.label ?? '',
     onIsOpenChange: ({ selectedItem, inputValue, isOpen }) => {
       if (!isOpen && selectedItem && selectedItem?.label !== inputValue) {
         setInputValue(selectedItem.label);

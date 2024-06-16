@@ -13,7 +13,7 @@ const TranslationsShippingMethodList: FC<TranslationsEntityListProps> = ({
   params,
   variables,
 }) => {
-  const [{ data, fetching: loading }] = useQuery<ShippingMethodTranslationsQuery, ShippingMethodTranslationsQueryVariables>(ShippingMethodTranslationsDocument, {
+  const { data, loading } = useQuery(ShippingMethodTranslationsDocument, {
     displayLoader: true,
     variables,
   });

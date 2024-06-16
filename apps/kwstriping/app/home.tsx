@@ -20,8 +20,7 @@ import Layout from '@kwstriping/app/client/Layout';
 //     .query(HomepageBlocksDocument, {
 //       slug: HOMEPAGE_MENU,
 //       ...contextToRegionQuery(context),
-//     })
-//     .toPromise();
+//     });
 //   return {
 //     props: generateStaticRenderingProps(ssrCache),
 //     revalidate: 60 * 60,

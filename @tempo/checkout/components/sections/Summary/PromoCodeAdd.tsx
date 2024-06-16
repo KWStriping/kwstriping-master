@@ -32,10 +32,7 @@ export const PromoCodeAdd: FC = ({ className }: { className?: string }) => {
   });
   const resolver = useValidationResolver(schema);
 
-  const [addPromoCodeToCheckout] = useMutation<
-    CheckoutAddPromoCodeMutation,
-    CheckoutAddPromoCodeMutationVariables
-  >(CheckoutAddPromoCodeDocument);
+  const [addPromoCodeToCheckout] = useMutation(CheckoutAddPromoCodeDocument);
 
   const formProps = useForm<FormData>({
     resolver,

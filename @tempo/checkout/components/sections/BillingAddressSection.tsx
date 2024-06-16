@@ -1,7 +1,3 @@
-import type {
-  CheckoutBillingAddressUpdateMutation,
-  CheckoutBillingAddressUpdateMutationVariables,
-} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutBillingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -23,10 +19,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
   const { authenticated } = useUser();
   const { countries } = useShopSettings();
   const [{ editing }, updateState] = useSectionState('billingAddress');
-  const [updateBillingAddress] = useMutation<
-    CheckoutBillingAddressUpdateMutation,
-    CheckoutBillingAddressUpdateMutationVariables
-  >(CheckoutBillingAddressUpdateDocument);
+  const [updateBillingAddress] = useMutation(CheckoutBillingAddressUpdateDocument);
   const { query } = useLocalization();
 
   const { billingAddress } = checkout ?? {};
@@ -35,7 +28,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
     console.log('BillingAddressSection.handleBillingAddressUpdate');
     assert(!!checkout);
     const { state, countryArea, ...address } = formData;
-    const { data, error } = await updateBillingAddress({
+    const { data, errors } = await updateBillingAddress({
       address: {
         ...address,
         countryArea: state || countryArea,
@@ -44,7 +37,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
       // languageCode: query.languageCode,
     });
     console.log('>>>> data', data);
-    if (!error && !data?.updateCheckoutBillingAddress?.errors?.length)
+    if (!errors && !data?.updateCheckoutBillingAddress?.errors?.length)
       updateState({ validating: true });
     return data?.updateCheckoutBillingAddress?.errors?.filter(notNullable) || [];
   };

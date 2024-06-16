@@ -30,10 +30,7 @@ export function ContactInfoSection({
     }
   }, [checkout, editing, updateState]);
 
-  const [updateCheckoutContactInfo] = useMutation<
-    CheckoutContactInfoUpdateMutation,
-    CheckoutContactInfoUpdateMutationVariables
-  >(CheckoutContactInfoUpdateDocument);
+  const [updateCheckoutContactInfo] = useMutation(CheckoutContactInfoUpdateDocument);
 
   const saveCheckoutContactInfo = async (formData: PointOfContact) => {
     assert(!!checkout);

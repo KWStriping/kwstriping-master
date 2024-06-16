@@ -17,7 +17,7 @@ type LayoutProps = Pick<CoreLayoutProps, 'children' | 'transparentBg'>;
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
   const { query } = useLocalization();
-  const [{ data }] = useQuery<MainMenuQuery, MainMenuQueryVariables>(MainMenuDocument, {
+  const { data } = useQuery(MainMenuDocument, {
     variables: { ...query },
   });
   const navbarItems = useMemo(

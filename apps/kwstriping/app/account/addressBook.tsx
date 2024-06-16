@@ -10,9 +10,9 @@ interface AddressBookPageProps {
 }
 function AddressBookPage({ data }: AddressBookPageProps) {
   // const { authenticated } = useUser();
-  // const [{ fetching: loading, error, data }, refetch] = useQuery<CurrentUserAddressesQuery, CurrentUserAddressesQueryVariables>(CurrentUserAddressesDocument, {
+  // const { loading, error, data , fetchMore: refetch } = useQuery(CurrentUserAddressesDocument, {
   //   pause: !authenticated,
-  //   requestPolicy: 'network-only',
+  //   fetchPolicy: 'network-only',
   // });
 
   const addresses = data?.me?.addresses || [];

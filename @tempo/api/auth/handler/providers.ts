@@ -8,7 +8,7 @@ import InstagramProvider from 'next-auth/providers/instagram';
 import { assert } from 'tsafe/assert';
 import { LoginDocument } from '@tempo/api/generated/graphql';
 import { gql } from '@tempo/api';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 const USE_CLIENT_SIDE_AUTH = true;
 
@@ -140,13 +140,14 @@ if (useMockProviders) {
             if (credentialsAreValid) {
               const client = getClient();
               assert(!!client);
-              const { data, error } = await client
-                .mutation(LoginDocument, {
+              const { data, errors } = await client.mutate({
+                mutation: LoginDocument,
+                variables: {
                   email: credentials.email as string,
                   password: credentials.password as string,
-                })
-                .toPromise();
-              console.log('🔑 error', error);
+                },
+              });
+              console.log('🔑 error', errors);
               if (data?.obtainToken?.result.accessToken && data?.obtainToken?.result.csrfToken) {
                 const { user, accessToken, csrfToken } = data?.obtainToken.result ?? {};
                 assert(!!user?.email);

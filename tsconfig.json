@@ -4,7 +4,7 @@
     "apps/**/*",
     "@tempo/**/*",
     "./scripts/*",
-    "./*.ts",
+    "./*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,4 +1,3 @@
-import type { OperationResult } from '@tempo/api';;
 import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage/form';
 import type {
   AttributeErrorFragment,

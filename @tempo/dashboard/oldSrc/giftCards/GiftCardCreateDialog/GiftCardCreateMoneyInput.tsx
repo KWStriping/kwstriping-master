@@ -29,7 +29,7 @@ const GiftCardCreateMoneyInput: FC<GiftCardCreateMoneyInputProps> = ({
   change,
   set,
 }) => {
-  const [{ data: channelCurrenciesData }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
+  const { data: channelCurrenciesData } = useQuery(ChannelCurrenciesDocument, {});
 
   const { channelCurrencies } = channelCurrenciesData?.shop;
 

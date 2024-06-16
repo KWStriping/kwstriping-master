@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import useLogout from './logout';
-import type { UserQuery, UserQueryVariables } from '@tempo/api/generated/graphql';
+import type { UserQuery } from '@tempo/api/generated/graphql';
 import { UserDocument } from '@tempo/api/generated/graphql';
 import { useSession } from '@tempo/api/auth/react/hooks/session';
 import { useQuery } from '@tempo/api/hooks/useQuery';
@@ -23,12 +23,14 @@ export function useUser<Required extends boolean = false>(
   const { required = false } = options || {};
   const { data: session, status } = useSession({ required });
   const { logout } = useLogout();
-  const [{ data, fetching, error }, fetch] = useQuery<UserQuery, UserQueryVariables>(
-    UserDocument,
-    {
-      pause: status !== 'authenticated' || !session?.accessToken,
-    }
-  );
+  const {
+    data,
+    loading: fetching,
+    error,
+    fetchMore: fetch,
+  } = useQuery(UserDocument, {
+    pause: status !== 'authenticated' || !session?.accessToken,
+  });
   const user = data?.me as Context<Required>['user'];
 
   // TODO: reenable?

@@ -1,4 +1,3 @@
-import type { FooterMenuQuery, FooterMenuQueryVariables } from '@tempo/api/generated/graphql';
 import { FooterMenuDocument } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import Box from '@mui/material/Box';
@@ -29,13 +28,10 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
   const { enableLocaleSwitcher, name: shopName } = useShopSettings();
   const { query } = useLocalization();
 
-  const [{ data, error }] = useQuery<FooterMenuQuery, FooterMenuQueryVariables>(
-    FooterMenuDocument,
-    { variables: { ...query } }
-  );
+  const { data, error } = useQuery(FooterMenuDocument, { variables: { ...query } });
 
   if (error) {
-    console.error('Footer component error', error.message);
+    console.error('Footer component error', error);
   }
 
   const menu = data?.menu?.items || [];

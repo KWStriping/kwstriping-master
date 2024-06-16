@@ -1,5 +1,5 @@
 import type { OrderingDirection, ProductOrdering } from '@tempo/api/generated/graphql';
-import { Menu, Transition } from '@headlessui/react';
+import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import clsx from 'clsx';
@@ -17,15 +17,16 @@ export function SortingDropdown({ optionToggle, chosen }: SortingDropdownProps) 
   const options = getSortingOptions(chosen);
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    // as="div" className="relative inline-block text-left"
+    <Menu>
       <div>
-        <Menu.Button
+        <MenuButton
           className="inline-flex w-full items-center justify-left px-2 py-0.5 text-base font-medium hover:bg-opacity-30 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
           data-testid="sortBy"
         >
           Sort by
           <ExpandMoreIcon className="ml-2 -mr-1 h-5 w-5 " aria-hidden="true" />
-        </Menu.Button>
+        </MenuButton>
       </div>
       <Transition
         as={Fragment}
@@ -36,12 +37,12 @@ export function SortingDropdown({ optionToggle, chosen }: SortingDropdownProps) 
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items
+        <MenuItems
           className="focus:outline-none absolute left-0 w-56 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-10"
           data-testid="sortingDropdown"
         >
           {options?.map((option) => (
-            <Menu.Item key={option.label}>
+            <MenuItem key={option.label}>
               {({ active }) => (
                 <button
                   type="button"
@@ -58,9 +59,9 @@ export function SortingDropdown({ optionToggle, chosen }: SortingDropdownProps) 
                   )}
                 </button>
               )}
-            </Menu.Item>
+            </MenuItem>
           ))}
-        </Menu.Items>
+        </MenuItems>
       </Transition>
     </Menu>
   );

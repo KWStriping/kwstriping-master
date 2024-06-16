@@ -21,7 +21,7 @@ export interface GiftCardDetailsConsumerProps {
 export const GiftCardDetailsContext = createContext<GiftCardDetailsConsumerProps>(null);
 
 const GiftCardDetailsProvider: FC<GiftCardDetailsProviderProps> = ({ children, id }) => {
-  const [{ data, fetching: loading }] = useQuery<GiftCardDetailsQuery, GiftCardDetailsQueryVariables>(GiftCardDetailsDocument, {
+  const { data, loading } = useQuery(GiftCardDetailsDocument, {
     displayLoader: true,
     variables: { id },
   });

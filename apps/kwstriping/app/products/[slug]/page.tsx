@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
-// import { getClient } from '@tempo/api/server';
-import { createClient } from '@urql/core';
-import { registerUrql } from '@urql/next/rsc';
 import React from 'react';
-import { cacheExchange, fetchExchange } from '@tempo/api/exchanges';
 import { gql } from '@tempo/api';
+import { getClient } from '@tempo/api/client';
 import AbstractProductPage from './abstractproduct';
 import ConcreteProductPage from './concreteproduct';
 import Layout from '@kwstriping/app/client/Layout';
@@ -12,17 +9,19 @@ import Layout from '@kwstriping/app/client/Layout';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');
 
-const makeClient = () => {
-  return createClient({
-    url: API_URL,
-    exchanges: [cacheExchange(), fetchExchange],
+interface Params {
+  slug: string;
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const result = await getClient().query({
+    query: productBySlugQueryDocument,
+    variables: { slug },
   });
-};
-
-export const { getClient } = registerUrql(makeClient);
-
-export async function generateMetadata({ slug }: { slug: string }): Promise<Metadata> {
-  const result = await getClient().query(productBySlugQueryDocument, { slug }).toPromise();
   const product = result?.data?.product;
   if (!product) return {};
   const productName = product.seoTitle || product.name;
@@ -55,8 +54,11 @@ const productBySlugQueryDocument = gql(`
   }
 `);
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const result = await getClient().query(productBySlugQueryDocument, { slug }).toPromise();
+export default async function Page({ params: { slug } }: { params: Params }) {
+  const result = await getClient().query({
+    query: productBySlugQueryDocument,
+    variables: { slug },
+  });
   const product = result?.data?.product;
   if (!product) return { notFound: true };
   return (

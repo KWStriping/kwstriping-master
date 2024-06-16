@@ -75,7 +75,7 @@ function useMultipleValueAutocomplete({
     inputValue,
     setInputValue,
     selectItem,
-  } = useCombobox({
+  } = useCombobox<Choice>({
     // circularNavigation: false, // TODO
     defaultHighlightedIndex: 0,
     items: filteredChoices,
@@ -105,6 +105,8 @@ function useMultipleValueAutocomplete({
             isOpen: true,
           };
         }
+        default:
+          console.error('Unsupported operation');
       }
       return changes;
     },

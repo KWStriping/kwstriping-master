@@ -53,7 +53,7 @@ const GiftCardExportDialog: FC<
 
   const loading = loadingGiftCardList || loadingGiftCardCount;
 
-  const [exportGiftCards, exportGiftCardsOpts] = useMutation<ExportGiftCardsMutation, ExportGiftCardsMutationVariables>(ExportGiftCardsDocument, {
+  const [exportGiftCards, exportGiftCardsOpts] = useMutation(ExportGiftCardsDocument, {
     onCompleted: (data) => {
       const errors = data?.exportGiftCards?.errors;
 

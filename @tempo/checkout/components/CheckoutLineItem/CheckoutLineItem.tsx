@@ -1,9 +1,4 @@
-import type {
-  CheckoutLineDeleteMutation,
-  CheckoutLineDeleteMutationVariables,
-  CheckoutLineFragment,
-  ErrorDetailsFragment,
-} from '@tempo/api/generated/graphql';
+import type { CheckoutLineFragment, ErrorDetailsFragment } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import {
   CheckoutLineUpdateDocument,
@@ -29,13 +24,10 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
   const paths = usePaths();
   const { query, formatPrice } = useLocalization();
   const { checkoutId } = useCheckout();
-  const [checkoutLineUpdateMutation, { fetching: loadingLineUpdate }] = useMutation(
+  const [updateCheckoutLines, { loading: loadingLineUpdate }] = useMutation(
     CheckoutLineUpdateDocument
   );
-  const [removeProductFromCheckout] = useMutation<
-    CheckoutLineDeleteMutation,
-    CheckoutLineDeleteMutationVariables
-  >(CheckoutLineDeleteDocument);
+  const [removeProductFromCheckout] = useMutation(CheckoutLineDeleteDocument);
 
   const [quantity, setQuantity] = useState<number>();
   const [errors, setErrors] = useState<ErrorDetailsFragment[] | null>(null);
@@ -54,7 +46,7 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
     if (!checkoutId) return;
     changeLineState(event);
     if (!event?.currentTarget?.validity?.valid || event?.currentTarget?.value === '') return;
-    const { error } = await checkoutLineUpdateMutation({
+    const { errors } = await updateCheckoutLines({
       id: checkoutId,
       lines: [
         {

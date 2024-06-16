@@ -1,8 +1,4 @@
-import type {
-  CheckoutAddPromoCodeMutation,
-  CheckoutAddPromoCodeMutationVariables,
-  CheckoutFragment,
-} from '@tempo/api/generated/graphql';
+import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutAddPromoCodeDocument } from '@tempo/api/generated/graphql';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
@@ -22,10 +18,7 @@ const ENABLE_PROMO_CODE = false;
 
 export function CartSummary({ checkout }: CartSummaryProps) {
   const [editPromoCode] = useState(false);
-  const [addPromoCodeToCheckoutMutation] = useMutation<
-    CheckoutAddPromoCodeMutation,
-    CheckoutAddPromoCodeMutationVariables
-  >(CheckoutAddPromoCodeDocument);
+  const [addPromoCodeToCheckoutMutation] = useMutation(CheckoutAddPromoCodeDocument);
   const {
     register: registerForm,
     handleSubmit: handleSubmitForm,

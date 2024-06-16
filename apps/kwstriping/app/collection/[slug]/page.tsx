@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 import React from 'react';
 
@@ -55,17 +55,18 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const client = getClient();
-  const result = await client.query(CollectionBySlugDocument, { slug }).toPromise();
+  const result = await client.query({ query: CollectionBySlugDocument, variables: { slug } });
 
   const collection = result?.data?.collection;
   if (!collection) return { notFound: true };
   const collectionId = collection.id;
-  const attributesResponse = await client
-    .query(FilteringAttributesDocument, {
+  const attributesResponse = await client.query({
+    query: FilteringAttributesDocument,
+    variables: {
       ...contextToRegionQuery(context),
       filter: { inCollection: collectionId ? [collectionId] : [] },
-    })
-    .toPromise();
+    },
+  });
 
   let attributes: AttributeFilterFragment[] =
     mapEdgesToItems(attributesResponse.data?.attributes) ?? [];

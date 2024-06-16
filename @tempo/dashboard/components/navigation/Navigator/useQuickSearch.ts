@@ -66,7 +66,7 @@ function useQuickSearch(open: boolean, input: RefObject<HTMLInputElement>): UseQ
     },
     pause: !query,
   });
-  const [createOrder] = useMutation<OrderDraftCreateMutation, OrderDraftCreateMutationVariables>(
+  const [createOrder] = useMutation(
     OrderDraftCreateDocument,
     {
       onCompleted: (result) => {

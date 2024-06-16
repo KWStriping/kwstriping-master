@@ -1,4 +1,4 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["**/*.ts", "**/*.tsx", "../_trash/_auth.ts"]
+  "include": ["**/*.ts", "**/*.tsx", "../_trash/_auth.ts", "../_trash/typePolicies.ts"]
 }

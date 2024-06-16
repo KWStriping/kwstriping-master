@@ -32,7 +32,7 @@ export const mapVariantToIcon: Record<IndicatorCombinations, FC<{ className?: st
 };
 
 export const Indicator = forwardRef<HTMLSpanElement, IndicatorProps>(
-  ({ icon, size = 'regular', className }, ref) => {
+  ({ icon, size = 'regular' as IndicatorSize, className }, ref) => {
     const styles = useStyles({ icon, size });
 
     const Icon = mapVariantToIcon[`${icon}-${size}` as IndicatorCombinations];

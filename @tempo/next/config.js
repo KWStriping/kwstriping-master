@@ -53,7 +53,7 @@ export const generate = ({
     },
     experimental: {
       // https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
-      typedRoutes: true,
+      typedRoutes: false,
       // https://nextjs.org/docs/messages/import-esm-externals
       esmExternals: 'loose',
       externalDir: true,
@@ -154,13 +154,10 @@ export const generate = ({
       config.resolve.alias = {
         ...(config.resolve.alias || {}),
         // Prevent multiple instances of React or libraries that themselves import React.
-        react: path.resolve('node_modules', 'react'),
-        'react-dom': path.resolve('node_modules', 'react-dom'),
-        '@urql/next': path.resolve('node_modules', '@urql/next'),
-        // react: path.resolve(workspaceRoot, 'node_modules', 'react'),
-        // 'react-dom': path.resolve(workspaceRoot, 'node_modules', 'react-dom'),
-        // '@emotion': path.resolve('node_modules', '@emotion'),
-        // '@mui': path.resolve('node_modules', '@mui'),
+        // react: path.resolve('node_modules', 'react'),
+        // 'react-dom': path.resolve('node_modules', 'react-dom'),
+        react: path.resolve(workspaceRoot, 'node_modules', 'react'),
+        'react-dom': path.resolve(workspaceRoot, 'node_modules', 'react-dom'),
       };
       if (isServer) {
         // https://github.com/baselime/node-opentelemetry/issues/2

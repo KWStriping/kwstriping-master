@@ -4,7 +4,6 @@ import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import type { OperationResult } from '@tempo/api';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';

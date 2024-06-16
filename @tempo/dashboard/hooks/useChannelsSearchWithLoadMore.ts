@@ -14,7 +14,7 @@ const INITIAL_INDEX = 0;
 export const useChannelsSearchWithLoadMore = (
   itemsPerPage: number = DEFAULT_ITEMS_PER_PAGE
 ): ChannelsWithLoadMoreProps => {
-  const [{ data, fetching: loading }] = useQuery<BaseChannelsQuery, BaseChannelsQueryVariables>(BaseChannelsDocument, {});
+  const { data, loading } = useQuery(BaseChannelsDocument, {});
 
   const {
     query,

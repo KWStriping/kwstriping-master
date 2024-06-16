@@ -5,9 +5,9 @@ import type { UseFetchOptionalProps, UseFetchResult } from './types';
 
 export const urlJoinTrailingSlash = (...parts: string[]): string => join(...parts, '/');
 
-type AnyVariables = Record<string, any>;
+type OperationVariables = Record<string, any>;
 
-export const useFetch = <TData, TArgs extends AnyVariables = AnyVariables, TError = any>(
+export const useFetch = <TData, TArgs extends OperationVariables, TError = any>(
   endpoint: string | URL,
   options: RequestInit & UseFetchOptionalProps<TArgs, TData> = {}
 ): UseFetchResult<TError, TData, TArgs> => {

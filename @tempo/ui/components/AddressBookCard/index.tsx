@@ -18,14 +18,8 @@ export interface AddressBookCardProps {
 }
 
 export function AddressBookCard({ address, onRefreshBook }: AddressBookCardProps) {
-  const [setAddressDefaultMutation] = useMutation<
-    SetAddressDefaultMutation,
-    SetAddressDefaultMutationVariables
-  >(SetAddressDefaultDocument);
-  const [deleteAddressMutation] = useMutation<
-    AddressDeleteMutation,
-    AddressDeleteMutationVariables
-  >(AddressDeleteDocument);
+  const [setAddressDefaultMutation] = useMutation(SetAddressDefaultDocument);
+  const [deleteAddressMutation] = useMutation(AddressDeleteDocument);
 
   let cardHeader = '';
   if (address?.isDefaultShippingAddress && address?.isDefaultBillingAddress) {

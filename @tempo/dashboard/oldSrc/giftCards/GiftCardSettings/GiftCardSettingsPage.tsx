@@ -25,7 +25,7 @@ import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 const GiftCardSettingsPage: FC = () => {
   const router = useRouter();
 
-  const { data, loading } = useQuery<GiftCardSettingsQuery, GiftCardSettingsQueryVariables>(GiftCardSettingsDocument, {});
+  const { data, loading } = useQuery(GiftCardSettingsDocument, {});
 
   const settingsData = data?.giftCardSettings;
 

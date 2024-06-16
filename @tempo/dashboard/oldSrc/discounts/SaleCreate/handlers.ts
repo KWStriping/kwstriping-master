@@ -1,6 +1,6 @@
 import { extractMutationErrors, getMutationErrors } from '@tempo/api/utils';
 import { joinDateTime } from '@tempo/utils/datetime';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import { DiscountValueType } from '@tempo/api/generated/constants';
 import type {
   SaleChannelListingUpdateMutation,

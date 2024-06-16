@@ -50,12 +50,17 @@ export function ProductCollection({
       }),
   };
 
-  const [{ data, fetching: loading, error }, fetchMore] = useQuery<
-    ProductCollectionQuery,
-    ProductCollectionQueryVariables
-  >(ProductCollectionDocument, {
-    variables,
-  });
+  const {
+    data,
+    loading,
+    error,
+    fetchMore: fetchMore,
+  } = useQuery<ProductCollectionQuery, ProductCollectionQueryVariables>(
+    ProductCollectionDocument,
+    {
+      variables,
+    }
+  );
 
   useEffect(() => {
     if (setCounter) setCounter(data?.products?.totalCount || 0);

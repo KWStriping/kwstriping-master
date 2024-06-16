@@ -9,7 +9,7 @@ export const usePaymentMethods = (channelId: Maybe<string>) => {
   // TODO
   const { paymentProviders: availableProviders, paymentMethods: availableMethods } =
     useShopSettings();
-  const [{ data, fetching }] = useFetch<ChannelActivePaymentProvidersByChannel>(
+  const [{ data, fetching }] = useFetch<ChannelActivePaymentProvidersByChannel, any, any>(
     urlJoinTrailingSlash(API_URL, 'payments/active-providers', channelId as string),
     {
       args: { channelId },

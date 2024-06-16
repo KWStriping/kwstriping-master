@@ -33,17 +33,10 @@
     "@marsidev/react-turnstile": "0.6.1",
     "@stripe/react-stripe-js": "2.7.1",
     "@stripe/stripe-js": "3.4.0",
-    "@urql/core": "5.0.4",
-    "@urql/devtools": "^2.0.3",
-    "@urql/exchange-auth": "^2.1.6",
-    "@urql/exchange-execute": "^2.2.2",
-    "@urql/exchange-graphcache": "7.1.0",
-    "@urql/next": "^1.1.1",
     "clsx": "^2.0.0",
     "next-usequerystate": "^1.7.2",
     "react-hook-form": "^7.43.1",
     "react-toastify": "10.0.5",
-    "sharp": "^0.33.1",
-    "urql": "^4.1.0"
+    "sharp": "^0.33.1"
   }
 }

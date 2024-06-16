@@ -44,7 +44,7 @@ const OrderUnfulfilledProductsCard: FC<OrderUnfulfilledProductsCardProps> = ({
   const router = useRouter();
   const notify = useNotifier();
 
-  const [fulfillOrder, fulfillOrderOpts] = useMutation<FulfillOrderMutation, FulfillOrderMutationVariables>(FulfillOrderDocument, {
+  const [fulfillOrder, fulfillOrderOpts] = useMutation(FulfillOrderDocument, {
     onCompleted: (data) => {
       if (data?.fulfillOrder?.errors?.length === 0) {
         void router.replace(orderUrl(order.id));

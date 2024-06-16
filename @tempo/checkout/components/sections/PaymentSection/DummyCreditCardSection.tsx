@@ -37,14 +37,8 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
   const paths = usePaths();
   const router = useRouter();
   const { formatPrice } = useLocalization();
-  const [createCheckoutPaymentMutation] = useMutation<
-    CreateCheckoutPaymentMutation,
-    CreateCheckoutPaymentMutationVariables
-  >(CreateCheckoutPaymentDocument);
-  const [completeCheckoutMutation] = useMutation<
-    CompleteCheckoutMutation,
-    CompleteCheckoutMutationVariables
-  >(CompleteCheckoutDocument);
+  const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);
+  const [completeCheckoutMutation] = useMutation(CompleteCheckoutDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const totalPrice = checkout?.totalPrice?.gross;
   const payLabel =
@@ -74,7 +68,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
     setIsPaymentProcessing(true);
     if (!checkout) return;
     // Create Tempo payment
-    const { error: paymentCreateErrors } = await createCheckoutPaymentMutation({
+    const { errors: paymentCreateErrors } = await createCheckoutPaymentMutation({
       checkoutId: checkout.id,
       paymentInput: {
         gateway: DUMMY_CREDIT_CARD_GATEWAY,
@@ -90,7 +84,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
     }
 
     // Try to complete the checkout
-    const { data: completeData, error: completeErrors } = await completeCheckoutMutation({
+    const { data: completeData, errors: completeErrors } = await completeCheckoutMutation({
       checkoutId: checkout?.id,
     });
     if (completeErrors) {

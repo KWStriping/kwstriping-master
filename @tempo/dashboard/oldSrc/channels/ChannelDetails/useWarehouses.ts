@@ -16,7 +16,7 @@ export const useWarehouses = () => {
       PermissionCode.ManageProducts,
     ]);
 
-  const [{ data: warehousesCountData, fetching: warehousesCountLoading }] = useQuery(
+  const { data: warehousesCountData, fetching: warehousesCountLoading } = useQuery(
     WarehousesCountDocument,
     {
       pause: !canLoadWarehouses,

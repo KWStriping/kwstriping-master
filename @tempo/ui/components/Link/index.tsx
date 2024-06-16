@@ -18,9 +18,8 @@ import { isExternalURL } from '@tempo/ui/utils/urls';
 type Href = string | UrlObject;
 
 interface LinkProps
-  extends Pick<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    'rel' | 'target' | 'className' | 'children'
+  extends Partial<
+    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'rel' | 'target' | 'className' | 'children'>
   > {
   href?: Href;
   color?: 'primary' | 'secondary' | 'inherit';

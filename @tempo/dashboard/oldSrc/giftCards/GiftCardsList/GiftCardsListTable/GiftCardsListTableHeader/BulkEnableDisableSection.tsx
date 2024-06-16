@@ -37,7 +37,7 @@ const BulkEnableDisableSection: FC = () => {
     .filter(getByIds(ids))
     .every(({ isActive }) => !isActive);
 
-  const [activateGiftCards, activateGiftCardsOpts] = useMutation<GiftCardBulkActivateMutation, GiftCardBulkActivateMutationVariables>(GiftCardBulkActivateDocument, {
+  const [activateGiftCards, activateGiftCardsOpts] = useMutation(GiftCardBulkActivateDocument, {
     onCompleted: (data) => {
       const { errors, count } = data?.activateGiftCards;
 

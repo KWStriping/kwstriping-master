@@ -23,7 +23,7 @@ const useGiftCardBulkDelete = ({
 
   const { listElements, selectedItemsCount, reset: resetSelectedItems } = useGiftCardList();
 
-  const [bulkDeleteGiftCard, bulkDeleteGiftCardOpts] = useMutation<BulkDeleteGiftCardMutation, BulkDeleteGiftCardMutationVariables>(BulkDeleteGiftCardDocument, {
+  const [bulkDeleteGiftCard, bulkDeleteGiftCardOpts] = useMutation(BulkDeleteGiftCardDocument, {
     onCompleted: (data) => {
       const errors = data?.deleteGiftCards?.errors;
 

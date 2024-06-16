@@ -1,9 +1,4 @@
-import type {
-  CurrentUserAddressesQuery,
-  CurrentUserAddressesQueryVariables,
-  AddressFragment,
-  ErrorInterface,
-} from '@tempo/api/generated/graphql';
+import type { AddressFragment, ErrorInterface } from '@tempo/api/generated/graphql';
 import { CurrentUserAddressesDocument } from '@tempo/api/generated/graphql';
 import { CountryCode } from '@tempo/api/generated/constants';
 import type { AddressFormData } from '@tempo/next/types/addresses';
@@ -18,10 +13,7 @@ interface SavedAddressSelectionListProps {
 }
 
 export function SavedAddressSelectionList({ updateAddress }: SavedAddressSelectionListProps) {
-  const [{ fetching: loading, error, data }] = useQuery<
-    CurrentUserAddressesQuery,
-    CurrentUserAddressesQueryVariables
-  >(CurrentUserAddressesDocument, {});
+  const { loading, error, data } = useQuery(CurrentUserAddressesDocument, { variables: {} });
   const [selectedSavedAddress, setSelectedSavedAddress] = useState<AddressFragment | null>();
 
   if (loading) {

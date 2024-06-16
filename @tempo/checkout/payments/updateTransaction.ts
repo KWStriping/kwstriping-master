@@ -1,18 +1,13 @@
-import type {
-  TransactionUpdateMutation,
-  TransactionUpdateMutationVariables,
-} from '@tempo/api/generated/graphql';
+import type { TransactionUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import { TransactionUpdateDocument } from '@tempo/api/generated/graphql';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 export const updateTransaction = async (args: TransactionUpdateMutationVariables) => {
   // @todo handle errors
-  const { data, error } = await getClient()
-    .mutation<
-      TransactionUpdateMutation,
-      TransactionUpdateMutationVariables
-    >(TransactionUpdateDocument, args)
-    .toPromise();
+  const { data, errors } = await getClient().mutate({
+    mutation: TransactionUpdateDocument,
+    variables: args,
+  });
 
-  return !!data?.updateTransaction?.result?.id && error?.graphQLErrors.length === 0;
+  return !!data?.updateTransaction?.result?.id && errors?.length === 0;
 };

@@ -37,7 +37,7 @@ const GiftCardUpdateBalanceDialog: FC<DialogProps> = ({ open, onClose }) => {
     balanceAmount: amount,
   };
 
-  const [updateGiftCardBalance, updateGiftCardBalanceOpts] = useMutation<GiftCardUpdateMutation, GiftCardUpdateMutationVariables>(GiftCardUpdateDocument, {
+  const [updateGiftCardBalance, updateGiftCardBalanceOpts] = useMutation(GiftCardUpdateDocument, {
     onCompleted: (data) => {
       const errors = data?.updateGiftCard?.errors;
 

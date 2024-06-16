@@ -24,7 +24,7 @@ const useGiftCardSingleDelete = ({
 }): UseGiftCardSingleDeleteProps => {
   const notify = useNotifier();
 
-  const [deleteGiftCard, deleteGiftCardOpts] = useMutation<DeleteGiftCardMutation, DeleteGiftCardMutationVariables>(DeleteGiftCardDocument, {
+  const [deleteGiftCard, deleteGiftCardOpts] = useMutation(DeleteGiftCardDocument, {
     onCompleted: (data) => {
       const errors = data?.deleteGiftCard?.errors;
 

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import type { OrderQuery, OrderQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderDocument } from '@tempo/api/generated/graphql';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 import OrderPage from './order';
 import Layout from '@kwstriping/app/client/Layout';
 
@@ -11,9 +10,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { id } }: { params: { id: string } }) {
   const client = getClient();
-  const response = await client
-    .query<OrderQuery, OrderQueryVariables>(OrderDocument, { id })
-    .toPromise();
+  const response = await client.query({ query: OrderDocument, variables: { id } });
   const order = response.data?.order;
   if (!order) return { notFound: true };
   return (

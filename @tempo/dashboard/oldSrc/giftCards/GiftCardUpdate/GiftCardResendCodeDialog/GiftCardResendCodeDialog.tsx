@@ -41,7 +41,7 @@ const GiftCardResendCodeDialog: FC<DialogProps> = ({ open, onClose }) => {
 
   const [consentSelected, setConsentSelected] = useState(false);
 
-  const [{ data: channelsData, fetching: loadingChannels }] = useQuery<ChannelsQuery, ChannelsQueryVariables>(ChannelsDocument, {});
+  const { data: channelsData, loadingChannels } = useQuery(ChannelsDocument, {});
 
   const channels = channelsData?.channels;
 
@@ -72,7 +72,7 @@ const GiftCardResendCodeDialog: FC<DialogProps> = ({ open, onClose }) => {
 
   const { data, change, submit, reset } = useForm(initialFormData, handleSubmit);
 
-  const [resendGiftCardCode, resendGiftCardCodeOpts] = useMutation<GiftCardResendMutation, GiftCardResendMutationVariables>(GiftCardResendDocument, {
+  const [resendGiftCardCode, resendGiftCardCodeOpts] = useMutation(GiftCardResendDocument, {
     onCompleted: (data) => {
       const errors = data?.resendGiftCard?.errors;
 

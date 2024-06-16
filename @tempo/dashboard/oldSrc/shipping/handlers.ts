@@ -180,7 +180,7 @@ export function useShippingRateCreator(
   );
   const [updateShippingMethodChannelListing, updateShippingMethodChannelListingOpts] =
     useMutation(ShippingMethodChannelListingUpdateDocument, {});
-  const [deleteShippingRate] = useMutation<DeleteShippingRateMutation, DeleteShippingRateMutationVariables>(DeleteShippingRateDocument, {});
+  const [deleteShippingRate] = useMutation(DeleteShippingRateDocument, {});
 
   // TODO
   const getVariables = true

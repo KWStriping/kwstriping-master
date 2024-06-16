@@ -1,17 +1,11 @@
 import type { Metadata } from 'next';
-import type {
-  AttributeFilterFragment,
-  CategoryBySlugQuery,
-  CategoryBySlugQueryVariables,
-  FilteringAttributesQuery,
-  FilteringAttributesQueryVariables,
-} from '@tempo/api/generated/graphql';
+import type { AttributeFilterFragment } from '@tempo/api/generated/graphql';
 import {
   CategoryBySlugDocument,
   FilteringAttributesDocument,
 } from '@tempo/api/generated/graphql';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 
 import CatalogPage from './catalog';
 
@@ -58,23 +52,22 @@ export default async function Page({
   params: { slug: string; locale: string };
 }) {
   const client = getClient();
-  const response = await client
-    .query<CategoryBySlugQuery, CategoryBySlugQueryVariables>(CategoryBySlugDocument, {
+  const response = await client.query({
+    query: CategoryBySlugDocument,
+    variables: {
       slug,
-    })
-    .toPromise();
-  const attributesResponse = await client
-    .query<FilteringAttributesQuery, FilteringAttributesQueryVariables>(
-      FilteringAttributesDocument,
-      {
-        // ...contextToRegionQuery(context),
-        filter: {
-          inCategory: response.data?.category?.id ? [response.data.category.id] : [],
-        },
-        channel: 'default', // TODO
-      }
-    )
-    .toPromise();
+    },
+  });
+  const attributesResponse = await client.query({
+    query: FilteringAttributesDocument,
+    variables: {
+      // ...contextToRegionQuery(context),
+      filter: {
+        inCategory: response.data?.category?.id ? [response.data.category.id] : [],
+      },
+      channel: 'default', // TODO
+    },
+  });
   const attributes: AttributeFilterFragment[] =
     mapEdgesToItems(attributesResponse.data?.attributes)?.filter(
       (attribute) => attribute.values?.edges.length

@@ -1,7 +1,12 @@
 import { sortBy, uniqBy } from 'lodash-es';
 import { assert } from 'tsafe';
 
-import type { FilterData, FilterDetailedOptions, Filter, OnFilterChangeOpts } from './types';
+import type {
+  FilterData,
+  FilterDetailedOptions,
+  FilterInterface,
+  OnFilterChangeOpts,
+} from './types';
 import { FilterType } from './types';
 
 export function getFilterName(name: string, options: FilterDetailedOptions): string {
@@ -59,7 +64,7 @@ export function register(
   filterData: FilterData[],
   name: string,
   label: string,
-  initial: Filter[],
+  initial: FilterInterface[],
   options: FilterDetailedOptions
 ): FilterData[] {
   const existingFilter = initial.find((f) => f.name === name);

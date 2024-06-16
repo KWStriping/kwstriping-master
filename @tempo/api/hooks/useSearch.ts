@@ -1,10 +1,9 @@
 'use client';
 
-import type { TypedDocumentNode } from '@urql/core';
+import type { TypedDocumentNode, UseSuspenseQueryResult } from '@apollo/client';
 import debounce from 'lodash-es/debounce';
 import { useCallback, useMemo, useState } from 'react';
-import type { UseQueryState } from '@urql/next';
-import type { UseAuthorizedQueryHookOptions, UseQueryHookOptions } from './useQuery';
+import type { UseAuthorizedQueryHookOptions, UseQueryOptions } from './useQuery';
 import { useAuthorizedQuery } from './useQuery';
 
 export interface SearchVariables {
@@ -21,7 +20,7 @@ export const DEFAULT_INITIAL_SEARCH_DATA: SearchVariables = {
 
 export interface UseSearchResult<TData, TVariables extends SearchVariables> {
   loadMore: () => void;
-  result: UseQueryState<TData, TVariables>;
+  result: UseSuspenseQueryResult<TData, TVariables>;
   search: (query: string) => void;
   query: string;
 }
@@ -29,7 +28,7 @@ export type UseSearchOptions<TVariables extends SearchVariables> = Partial<{
   pause: boolean;
   variables: TVariables;
 }> &
-  Partial<UseQueryHookOptions<TVariables>>;
+  Partial<UseQueryOptions<any, TVariables>>;
 
 export type UseSearchHook<TData, TVariables extends SearchVariables> = (
   opts: UseSearchOptions<TVariables>
@@ -54,7 +53,7 @@ export function useSearch<TData, TVariables extends SearchVariables>(
       query,
     },
   } as unknown as UseAuthorizedQueryHookOptions<TVariables, TData>;
-  const [result] = useAuthorizedQuery<TData, TVariables>(document, queryHookOptions);
+  const result = useAuthorizedQuery<TData, TVariables>(document, queryHookOptions);
 
   return {
     query,

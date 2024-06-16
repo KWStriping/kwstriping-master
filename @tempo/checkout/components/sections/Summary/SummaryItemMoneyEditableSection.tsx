@@ -33,14 +33,8 @@ export interface SummaryLineFormData {
 }
 
 export const SummaryItemMoneyEditableSection: FC<LineItemQuantitySelectorProps> = ({ line }) => {
-  const [updateLine, { fetching: updating }] = useMutation<
-    CheckoutLineUpdateMutation,
-    CheckoutLineUpdateMutationVariables
-  >(CheckoutLineUpdateDocument);
-  const [deleteLine] = useMutation<
-    CheckoutLineDeleteMutation,
-    CheckoutLineDeleteMutationVariables
-  >(CheckoutLineDeleteDocument);
+  const [updateLine, { loading: updating }] = useMutation(CheckoutLineUpdateDocument);
+  const [deleteLine] = useMutation(CheckoutLineDeleteDocument);
   const { setApiErrors } = useErrors<SummaryLineFormData>();
   const { errorMessages } = useErrorMessages();
 

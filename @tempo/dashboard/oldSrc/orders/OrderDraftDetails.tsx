@@ -96,7 +96,7 @@ export const OrderDraftDetails: FC<OrderDraftDetailsProps> = ({
   const order = data?.order;
   const router = useRouter();
 
-  const [{ data: channelUsabilityData }] = useQuery<ChannelUsabilityDataQuery, ChannelUsabilityDataQueryVariables>(ChannelUsabilityDataDocument, {
+  const { data: channelUsabilityData } = useQuery(ChannelUsabilityDataDocument, {
     variables: {
       channel: order.channel.slug,
     },
@@ -124,7 +124,7 @@ export const OrderDraftDetails: FC<OrderDraftDetailsProps> = ({
     variables: DEFAULT_INITIAL_SEARCH_DATA,
   });
 
-  const [{ data: customerAddresses, fetching: customerAddressesLoading }] = useQuery(
+  const { data: customerAddresses, fetching: customerAddressesLoading } = useQuery(
     CustomerAddressesDocument,
     {
       variables: {

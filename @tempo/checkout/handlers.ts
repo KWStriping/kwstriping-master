@@ -1,14 +1,19 @@
 import type { FileUploadMutation } from '@tempo/api/generated/graphql';
-import type { OperationResult } from '@tempo/api';
 import { merge, reduce } from 'lodash-es';
+import type { MutationState } from '../api';
 import type {
   CustomizationSettingsFiles,
   CustomizationSettingsValues,
 } from '@tempo/checkout/types/api';
 
-type UploadFileFunction = (variables?: {
-  file: any;
-}) => Promise<OperationResult<FileUploadMutation>>;
+type UploadFileFunction = (variables?: { file: any }) => Promise<
+  MutationState<
+    FileUploadMutation,
+    {
+      file: any;
+    }
+  >
+>;
 
 type FileSetting = {
   [x: string]: File;

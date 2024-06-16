@@ -10,7 +10,7 @@ import { getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
 function useOnSetDefaultVariant(productId: string, variant: Node) {
   const notify = useNotifier();
 
-  const [setDefaultProduct] = useMutation<ProductSetDefaultMutation, ProductSetDefaultMutationVariables>(ProductSetDefaultDocument, {
+  const [setDefaultProduct] = useMutation(ProductSetDefaultDocument, {
     onCompleted: (data) => {
       const errors = data?.setDefaultProduct?.errors;
       if (errors?.length) {

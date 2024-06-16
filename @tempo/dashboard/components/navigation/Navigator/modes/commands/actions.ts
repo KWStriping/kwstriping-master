@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import type { MutationFunction } from '@tempo/api';;
+import type { MutationFunction } from '@tempo/api';
 import { score } from 'fuzzaldrin';
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchActionInput, QuickSearchMode } from '../../types';

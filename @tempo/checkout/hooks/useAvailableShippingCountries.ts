@@ -13,7 +13,7 @@ interface UseAvailableShippingCountries {
 export const useAvailableShippingCountries = (): UseAvailableShippingCountries => {
   const { checkout } = useCheckout();
   assert(!!checkout);
-  const [{ data }] = useQuery<ChannelQuery, ChannelQueryVariables>(ChannelDocument, {
+  const { data } = useQuery(ChannelDocument, {
     variables: { id: checkout.channel.id },
     pause: !checkout?.channel.id,
   });

@@ -1,6 +1,6 @@
 import type { ShippingMethodFragment } from '@tempo/api/generated/graphql';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { RadioGroup } from '@headlessui/react';
+import { Radio, Label, Description } from '@headlessui/react';
 import clsx from 'clsx';
 
 export interface ShippingMethodOptionProps {
@@ -11,7 +11,7 @@ export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
   const { formatPrice } = useLocalization();
   if (!method) return null;
   return (
-    <RadioGroup.Option
+    <Radio
       key={method.id}
       value={method}
       className={({ checked, active }) =>
@@ -26,21 +26,14 @@ export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
         <>
           <div className="flex-1 flex">
             <div className="flex flex-col">
-              <RadioGroup.Label as="span" className="block text-base font-medium text-gray-900">
-                {method.name}
-              </RadioGroup.Label>
-              <RadioGroup.Description
-                as="span"
-                className="mt-1 flex items-center text-sm text-gray-500"
-              >
+              {/* as="span" className="block text-base font-medium text-gray-900" */}
+              <Label>{method.name}</Label>
+              {/* as="span" className="mt-1 flex items-center text-sm text-gray-500" */}
+              <Description>
                 {method.minimumDeliveryDays || 2}-{method.maximumDeliveryDays || 14} business days
-              </RadioGroup.Description>
-              <RadioGroup.Description
-                as="span"
-                className="mt-6 text-sm font-medium text-gray-900"
-              >
-                {formatPrice(method?.price)}
-              </RadioGroup.Description>
+              </Description>
+              {/* as="span" className="mt-6 text-sm font-medium text-gray-900" */}
+              <Description>{formatPrice(method?.price)}</Description>
             </div>
           </div>
           <div
@@ -53,6 +46,6 @@ export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
           />
         </>
       )}
-    </RadioGroup.Option>
+    </Radio>
   );
 }

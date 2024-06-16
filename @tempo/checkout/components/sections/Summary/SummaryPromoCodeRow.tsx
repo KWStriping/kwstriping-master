@@ -26,10 +26,7 @@ export const SummaryPromoCodeRow: FC<SummaryPromoCodeRowProps> = ({
   ...rest
 }) => {
   const { checkout } = useCheckout();
-  const [removePromoCodeFromCheckout] = useMutation<
-    RemovePromoCodeFromCheckoutMutation,
-    RemovePromoCodeFromCheckoutMutationVariables
-  >(RemovePromoCodeFromCheckoutDocument);
+  const [removePromoCodeFromCheckout] = useMutation(RemovePromoCodeFromCheckoutDocument);
 
   const onDelete = () => {
     if (!checkout?.id) return;

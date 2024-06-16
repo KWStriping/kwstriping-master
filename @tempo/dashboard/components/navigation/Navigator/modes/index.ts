@@ -1,4 +1,4 @@
-import type { MutationFunction } from '@tempo/api';;
+import type { MutationFunction } from '@tempo/api';
 import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction, QuickSearchMode } from '../types';
