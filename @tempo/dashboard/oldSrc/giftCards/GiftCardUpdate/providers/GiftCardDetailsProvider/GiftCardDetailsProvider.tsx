@@ -1,3 +1,4 @@
+import type { GiftCardDetailsQuery, GiftCardDetailsQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { GiftCardDetailsDocument } from '@tempo/api/generated/graphql';
 import type { GiftCardDetailsQuery } from '@tempo/api/generated/graphql';
@@ -20,7 +21,7 @@ export interface GiftCardDetailsConsumerProps {
 export const GiftCardDetailsContext = createContext<GiftCardDetailsConsumerProps>(null);
 
 const GiftCardDetailsProvider: FC<GiftCardDetailsProviderProps> = ({ children, id }) => {
-  const [{ data, fetching: loading }] = useQuery(GiftCardDetailsDocument, {
+  const [{ data, fetching: loading }] = useQuery<GiftCardDetailsQuery, GiftCardDetailsQueryVariables>(GiftCardDetailsDocument, {
     displayLoader: true,
     variables: { id },
   });

@@ -1,16 +1,12 @@
 import * as m from '@paraglide/messages';
 import type { AddressFragment, AddressType } from '@tempo/api/generated/graphql';
-import { AddressSectionSkeleton } from '@tempo/checkout/components/sections/ShippingAddressSection/AddressSectionSkeleton';
-// import { useTranslation } from '@tempo/next/i18n';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import type { UseErrors } from '@tempo/ui/hooks/useErrors';
-import { getById, getAddressFormDataFromAddress } from '@tempo/utils';
+import { getById } from '@tempo/utils';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { Suspense, useState } from 'react';
-import { AddressCreateForm } from './AddressCreateForm';
-import { AddressEditForm } from './AddressEditForm';
 import { UserAddressList } from './UserAddressList';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { AddressListProvider } from '@tempo/checkout/components/sections/UserAddressSection/AddressListProvider';
@@ -43,7 +39,7 @@ export const UserAddressSection: FC<UserAddressSectionProps> = ({
   const editedAddress = addresses.find(getById(editedAddressId as string)) as AddressFragment;
 
   return (
-    <Suspense fallback={<AddressSectionSkeleton />}>
+    <Suspense>
       <AddressListProvider
         checkoutAddress={
           type === 'SHIPPING' ? checkout?.shippingAddress : checkout?.billingAddress
@@ -52,7 +48,7 @@ export const UserAddressSection: FC<UserAddressSectionProps> = ({
         defaultAddress={defaultAddress}
         checkAddressAvailability={type === 'SHIPPING'}
       >
-        {displayAddressCreate && (
+        {/* {displayAddressCreate && (
           <AddressCreateForm title={title} onClose={() => setDisplayAddressCreate(false)} />
         )}
 
@@ -62,7 +58,7 @@ export const UserAddressSection: FC<UserAddressSectionProps> = ({
             onClose={() => setEditedAddressId(null)}
             defaultValues={getAddressFormDataFromAddress(editedAddress)}
           />
-        )}
+        )} */}
 
         {displayAddressList && (
           <div className="flex flex-col">

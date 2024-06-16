@@ -1,11 +1,11 @@
 import type { OrderPaymentDetailsQuery, OrderPaymentDetailsQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderPaymentDetailsDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 import type { Errors } from './types';
 
 export const getOrderPaymentDetails = async (id: OrderPaymentDetailsQueryVariables['id']) => {
-  const { data, error } = await getServerSideClient()
+  const { data, error } = await getClient()
     .query(OrderPaymentDetailsDocument, { id })
     .toPromise();
 

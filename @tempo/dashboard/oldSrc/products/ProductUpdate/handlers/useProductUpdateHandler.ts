@@ -1,21 +1,20 @@
-
+import type {
+  UpdateMetadataMutation,
+  UpdateMetadataMutationVariables,
+  AttributeErrorFragment,
+  BulkProductErrorFragment,
+  MetadataErrorFragment,
+  ProductChannelListingErrorFragment,
+  ProductErrorFragment,
+  ProductErrorWithAttributesFragment,
+  ProductFragment,
+  UploadErrorFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { OperationResult } from '@urql/core';
 import { useState } from 'react';
-import type { ProductListError } from './errors';
-import { getProductListErrors } from './errors';
-import { getProductChannelsUpdateVariables, getProductUpdateVariables } from './utils';
-import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
-import { getVariantChannelsInputs } from '@tempo/dashboard/components/products/Products/getVariantChannelsInputs';
-import {
-  getStockInputs,
-  getStocks,
-  getVariantChannels,
-  getVariantInput,
-  getVariantInputs,
-} from '@tempo/dashboard/components/products/Products/utils';
 import {
   ValueDeleteDocument,
   FileUploadDocument,
@@ -29,16 +28,18 @@ import {
   VariantDatagridStockUpdateDocument,
   VariantDatagridUpdateDocument,
 } from '@tempo/api/generated/graphql';
-import type {
-  AttributeErrorFragment,
-  BulkProductErrorFragment,
-  MetadataErrorFragment,
-  ProductChannelListingErrorFragment,
-  ProductErrorFragment,
-  ProductErrorWithAttributesFragment,
-  ProductFragment,
-  UploadErrorFragment,
-} from '@tempo/api/generated/graphql';
+import type { ProductListError } from './errors';
+import { getProductListErrors } from './errors';
+import { getProductChannelsUpdateVariables, getProductUpdateVariables } from './utils';
+import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
+import { getVariantChannelsInputs } from '@tempo/dashboard/components/products/Products/getVariantChannelsInputs';
+import {
+  getStockInputs,
+  getStocks,
+  getVariantChannels,
+  getVariantInput,
+  getVariantInputs,
+} from '@tempo/dashboard/components/products/Products/utils';
 
 import {
   mergeValueDeleteErrors,
@@ -79,16 +80,41 @@ export function useProductUpdateHandler(
   const [called, setCalled] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [updateMetadata] = useMutation(UpdateMetadataDocument);
-  const [updatePrivateMetadata] = useMutation(UpdatePrivateMetadataDocument);
-  const [updateStocks] = useMutation(VariantDatagridStockUpdateDocument);
-  const [updateVariant] = useMutation(VariantDatagridUpdateDocument);
-  const [createVariants] = useMutation(ProductBulkCreateDocument);
-  const [deleteVariants] = useMutation(ProductBulkDeleteDocument);
-  const [uploadFile] = useMutation(FileUploadDocument);
+  const [updateMetadata] = useMutation<UpdateMetadataMutation, UpdateMetadataMutationVariables>(
+    UpdateMetadataDocument
+  );
+  const [updatePrivateMetadata] = useMutation<
+    UpdatePrivateMetadataMutation,
+    UpdatePrivateMetadataMutationVariables
+  >(UpdatePrivateMetadataDocument);
+  const [updateStocks] = useMutation<
+    VariantDatagridStockUpdateMutation,
+    VariantDatagridStockUpdateMutationVariables
+  >(VariantDatagridStockUpdateDocument);
+  const [updateVariant] = useMutation<
+    VariantDatagridUpdateMutation,
+    VariantDatagridUpdateMutationVariables
+  >(VariantDatagridUpdateDocument);
+  const [createVariants] = useMutation<
+    ProductBulkCreateMutation,
+    ProductBulkCreateMutationVariables
+  >(ProductBulkCreateDocument);
+  const [deleteVariants] = useMutation<
+    ProductBulkDeleteMutation,
+    ProductBulkDeleteMutationVariables
+  >(ProductBulkDeleteDocument);
+  const [uploadFile] = useMutation<FileUploadMutation, FileUploadMutationVariables>(
+    FileUploadDocument
+  );
 
-  const [updateProduct, updateProductOpts] = useMutation(ProductUpdateDocument);
-  const [updateChannels, updateChannelsOpts] = useMutation(ProductChannelListingUpdateDocument, {
+  const [updateProduct, updateProductOpts] = useMutation<
+    ProductUpdateMutation,
+    ProductUpdateMutationVariables
+  >(ProductUpdateDocument);
+  const [updateChannels, updateChannelsOpts] = useMutation<
+    ProductChannelListingUpdateMutation,
+    ProductChannelListingUpdateMutationVariables
+  >(ProductChannelListingUpdateDocument, {
     onCompleted: (data) => {
       if (data?.updateProductChannelListing?.errors?.length) {
         data?.updateProductChannelListing?.errors?.forEach((error) =>
@@ -100,8 +126,13 @@ export function useProductUpdateHandler(
     },
   });
 
-  const [updateVariantChannels] = useMutation(VariantDatagridChannelListingUpdateDocument);
-  const [deleteValue] = useMutation(ValueDeleteDocument);
+  const [updateVariantChannels] = useMutation<
+    VariantDatagridChannelListingUpdateMutation,
+    VariantDatagridChannelListingUpdateMutationVariables
+  >(VariantDatagridChannelListingUpdateDocument);
+  const [deleteValue] = useMutation<ValueDeleteMutation, ValueDeleteMutationVariables>(
+    ValueDeleteDocument
+  );
 
   const sendMutations = async (
     data: ProductUpdateSubmitData
@@ -168,7 +199,7 @@ export function useProductUpdateHandler(
       );
     }
 
-    const variantMutationResults = await gather<OperationResult>(mutations);
+    const variantMutationResults = await Promise.all(mutations);
 
     const variantErrors = getProductListErrors(
       productChannelsUpdateResult,
@@ -196,7 +227,7 @@ export function useProductUpdateHandler(
     setLoading(false);
 
     if (errors?.length === 0) {
-      notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+      notify(m.dashboard_savedChanges() ?? 'Saved changes', {
         type: 'success',
       });
     }

@@ -1,6 +1,5 @@
 import type { MediaErrorFragment } from '@tempo/api/generated/graphql';
 import { MediaErrorCode } from '@tempo/api/generated/constants';
-import type { TFunction } from '@tempo/next/i18n';
 
 import { getCommonFormFieldErrorMessage } from './common';
 
@@ -25,7 +24,6 @@ const messages = {
 
 function getMediaErrorMessage(
   err: Omit<MediaErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

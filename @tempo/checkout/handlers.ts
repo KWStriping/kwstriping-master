@@ -20,9 +20,9 @@ const uploadSettingFile = async (setting: FileSetting, uploadFile: UploadFileFun
   const uploadFileResult = await uploadFile({
     file: setting[settingIdx],
   });
-  if (uploadFileResult.data?.fileUpload) {
+  if (uploadFileResult.data?.uploadFile) {
     return {
-      [settingIdx]: uploadFileResult.data?.fileUpload?.uploadedFile?.url,
+      [settingIdx]: uploadFileResult.data?.uploadFile?.result?.url,
     };
   }
   return {
@@ -66,7 +66,7 @@ export const uploadSettingsFiles = async ({
     dataFiles,
     async (settings, subSettings, idx) => {
       const uploadedSettings = await settings;
-      const uploadedSubSettings = await gather(
+      const uploadedSubSettings = await Promise.all(
         mapSettingsObjectToArray(subSettings).map((setting) =>
           uploadSettingFile(setting, uploadFile)
         )

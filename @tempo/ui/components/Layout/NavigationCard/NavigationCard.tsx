@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode } from 'react';
+import styles from './NavigationCard.module.css';
 import type { NavigationCardBaseProps } from './NavigationCardBase';
 import { NavigationCardBase } from './NavigationCardBase';
-// import useStyles from './styles';
 
 export interface NavigationCardProps extends NavigationCardBaseProps {
   title: string;
@@ -16,9 +16,6 @@ export const NavigationCard: FC<NavigationCardProps> = ({
   description,
   ...rest
 }) => {
-  // const styles = useStyles();
-  const styles = {};
-
   return (
     <NavigationCardBase {...rest}>
       <div className={styles.content ?? ''}>

@@ -1,14 +1,14 @@
+import type {
+  OrderDraftCreateMutation,
+  OrderDraftCreateMutationVariables,
+} from '@tempo/api/generated/graphql';
 import { useSearch, useMutation } from '@tempo/api/hooks';
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 import {
   OrderDraftCreateDocument,
   SearchCatalogDocument,
   SearchCustomersDocument,
 } from '@tempo/api/generated/graphql';
-import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
-import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
-import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -19,6 +19,10 @@ import { getGqlOrderId, isQueryValidOrderNumber } from './modes/orders';
 import { getMode } from './modes/utils';
 import useCheckIfOrderExists from './queries/useCheckIfOrderExists';
 import type { QuickSearchAction, QuickSearchMode } from './types';
+import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
+import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export const searchCustomers = gql(`
   query SearchCustomers($after: String, $first: Int!, $query: String!) {
@@ -62,14 +66,17 @@ function useQuickSearch(open: boolean, input: RefObject<HTMLInputElement>): UseQ
     },
     pause: !query,
   });
-  const [createOrder] = useMutation(OrderDraftCreateDocument, {
-    onCompleted: (result) => {
-      if (!result.createDraftOrder?.order?.id) return;
-      if (result.createDraftOrder?.errors?.length === 0) {
-        void router.push(orderUrl(result.createDraftOrder.order.id));
-      }
-    },
-  });
+  const [createOrder] = useMutation<OrderDraftCreateMutation, OrderDraftCreateMutationVariables>(
+    OrderDraftCreateDocument,
+    {
+      onCompleted: (result) => {
+        if (!result.createDraftOrder?.order?.id) return;
+        if (result.createDraftOrder?.errors?.length === 0) {
+          void router.push(orderUrl(result.createDraftOrder.order.id));
+        }
+      },
+    }
+  );
 
   useModalDialogOpen(open, {
     onClose: () => {
@@ -132,7 +139,6 @@ function useQuickSearch(open: boolean, input: RefObject<HTMLInputElement>): UseQ
     getModeActions(
       mode,
       query,
-      t,
       {
         catalog,
         customers: mapEdgesToItems(customers?.data?.search) || [],

@@ -101,7 +101,6 @@ const ShippingMethodProductsAddDialog: FC<ShippingMethodProductsAddDialogProps> 
     onClose,
     onSubmit,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const [query, onQueryChange, resetQuery] = useSearchQuery(onFetch);
   const [selectedProducts, setSelectedProducts] = useState<

@@ -1,10 +1,11 @@
 import type { MoneyProps } from '@tempo/ui/components/Money';
 import { Money } from '@tempo/ui/components/Money';
 import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
 export interface SummaryMoneyRowProps extends MoneyProps {
   label: string;
+  children?: ReactNode;
 }
 
 export const SummaryMoneyRow: FC<SummaryMoneyRowProps> = ({ label, children, ...moneyProps }) => {
@@ -14,7 +15,7 @@ export const SummaryMoneyRow: FC<SummaryMoneyRowProps> = ({ label, children, ...
         <Typography color="secondary">{label}</Typography>
         {children}
       </div>
-      <Money {...moneyProps} color="secondary" />
+      <Money {...moneyProps} />
     </div>
   );
 };

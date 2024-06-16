@@ -81,7 +81,6 @@ const TableLine: FC<TableLineProps> = ({
   updateOrderLineDiscountStatus,
 }) => {
   const popperAnchorRef = useRef<HTMLTableRowElement | null>(null);
-  // const styles = useStyles();
   const styles = {};
   const { id, thumbnail, productName, productSku, quantity } = line;
 
@@ -92,8 +91,7 @@ const TableLine: FC<TableLineProps> = ({
 
   const getUnitPriceLabel = () => {
     const money = <Money money={undiscountedPrice} />;
-    // const styles = useStyles();
-    const styles = {};
+      const styles = {};
 
     if (orderLineDiscount) {
       return (

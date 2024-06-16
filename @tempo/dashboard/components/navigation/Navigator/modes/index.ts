@@ -1,7 +1,6 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { MutationFunction } from '@tempo/api';;
 import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
-import type { NextRouter } from 'next/router';
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { QuickSearchAction, QuickSearchMode } from '../types';
 import getCatalogModeActions from './catalog';
 import getCommandModeActions from './commands';
@@ -14,27 +13,26 @@ import type { ActionQueries } from './types';
 function getModeActions(
   mode: QuickSearchMode,
   query: string,
-  t: TFunction,
   queries: ActionQueries,
   cbs: {
     createOrder: MutationFunction<OrderDraftCreateMutation, {}>;
-    router: NextRouter;
+    router: AppRouterInstance;
     setMode: (mode: QuickSearchMode) => void;
   }
 ): QuickSearchAction[] {
   switch (mode) {
     case 'catalog':
-      return getCatalogModeActions(query, t, cbs.router, queries.catalog);
+      return getCatalogModeActions(query, cbs.router, queries.catalog);
     case 'commands':
-      return getCommandModeActions(query, t, cbs.router, cbs.createOrder, cbs.setMode);
+      return getCommandModeActions(query, cbs.router, cbs.createOrder, cbs.setMode);
     case 'customers':
-      return getCustomersModeActions(t, cbs.router, queries.customers);
+      return getCustomersModeActions(cbs.router, queries.customers);
     case 'help':
-      return getHelpModeActions(query, t, cbs.setMode);
+      return getHelpModeActions(query, cbs.setMode);
     case 'orders':
-      return getOrdersModeActions(query, t, cbs.router, queries.order);
+      return getOrdersModeActions(query, cbs.router, queries.order);
     default:
-      return getDefaultModeActions(query, t, cbs.router, cbs.createOrder, cbs.setMode);
+      return getDefaultModeActions(query, cbs.router, cbs.createOrder, cbs.setMode);
   }
 }
 

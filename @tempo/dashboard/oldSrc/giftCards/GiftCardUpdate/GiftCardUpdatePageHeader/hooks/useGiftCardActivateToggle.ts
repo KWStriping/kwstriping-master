@@ -1,4 +1,5 @@
 
+import type { GiftCardActivateMutation, GiftCardActivateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -23,7 +24,7 @@ const useGiftCardActivateToggle = ({
 }: useGiftCardActivateToggleProps) => {
   const notify = useNotifier();
 
-  const [activateGiftCard, activateGiftCardOpts] = useMutation(GiftCardActivateDocument, {
+  const [activateGiftCard, activateGiftCardOpts] = useMutation<GiftCardActivateMutation, GiftCardActivateMutationVariables>(GiftCardActivateDocument, {
     onCompleted: (data) => {
       const errors = data?.activateGiftCard?.errors;
 
@@ -48,7 +49,7 @@ const useGiftCardActivateToggle = ({
     refetchQueries: [GIFT_CARD_DETAILS_QUERY],
   });
 
-  const [deactivateGiftCard, deactivateGiftCardOpts] = useMutation(GiftCardDeactivateDocument, {
+  const [deactivateGiftCard, deactivateGiftCardOpts] = useMutation<GiftCardDeactivateMutation, GiftCardDeactivateMutationVariables>(GiftCardDeactivateDocument, {
     onCompleted: (data) => {
       const errors = data?.deactivateGiftCard?.errors;
 

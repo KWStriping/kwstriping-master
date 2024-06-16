@@ -70,7 +70,6 @@ const MoneySection: FC<MoneySectionProps> = ({
   moneyData,
   sectionType = MoneySectionType.Only,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   if (!value) return null;

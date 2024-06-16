@@ -47,7 +47,6 @@ const useStyles = makeStyles(
 
 const MediaInfo: FC<MediaInfoProps> = (props) => {
   const { data, disabled, errors, onChange, onFileChange, processing } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const { defaultValue, editorRef, isReadyForMount, handleChange } = useRichTextContext();

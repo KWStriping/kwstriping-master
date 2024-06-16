@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { GridCell } from '@glideapps/glide-data-grid';
 import { sentenceCase } from 'change-case';
-import type { TFunction } from '@tempo/next/i18n';
 import type { MutableRefObject } from 'react';
 import {
   booleanCell,
@@ -297,7 +296,6 @@ export function getColumnData(
   channels: ChannelData[],
   warehouses: WarehouseFragment[],
   variantAttributes: ProductFragment['productKlass']['variantAttributes'],
-  t: TFunction
 ): AvailableColumn {
   const common = {
     id: name,

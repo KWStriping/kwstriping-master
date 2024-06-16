@@ -1,5 +1,5 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import type { CSSProperties } from 'react';
+import { makeStyles } from '@tempo/ui/theme/styles';
 
 export const useStyles = makeStyles(
   (theme) => {

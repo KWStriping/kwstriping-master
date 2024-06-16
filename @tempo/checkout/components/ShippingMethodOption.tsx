@@ -1,16 +1,15 @@
-import type { FulfillmentMethodFragment } from '@tempo/api/generated/graphql';
+import type { ShippingMethodFragment } from '@tempo/api/generated/graphql';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { translate } from '@tempo/ui/utils/translations';
 import { RadioGroup } from '@headlessui/react';
 import clsx from 'clsx';
 
 export interface ShippingMethodOptionProps {
-  method: Maybe<FulfillmentMethodFragment>;
+  method: Maybe<ShippingMethodFragment>;
 }
 
 export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
   const { formatPrice } = useLocalization();
-
+  if (!method) return null;
   return (
     <RadioGroup.Option
       key={method.id}
@@ -28,7 +27,7 @@ export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
           <div className="flex-1 flex">
             <div className="flex flex-col">
               <RadioGroup.Label as="span" className="block text-base font-medium text-gray-900">
-                {translate(method, 'name')}
+                {method.name}
               </RadioGroup.Label>
               <RadioGroup.Description
                 as="span"
@@ -40,7 +39,7 @@ export function ShippingMethodOption({ method }: ShippingMethodOptionProps) {
                 as="span"
                 className="mt-6 text-sm font-medium text-gray-900"
               >
-                {formatPrice(method.price)}
+                {formatPrice(method?.price)}
               </RadioGroup.Description>
             </div>
           </div>

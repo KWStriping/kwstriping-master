@@ -1,3 +1,4 @@
+import type { UpdateMetadataMutation, UpdateMetadataMutationVariables } from '@tempo/api/generated/graphql';
 import useNotifier, { useDefaultNotifierSuccessErrorData } from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { MutationResultWithOpts } from '@tempo/api/hooks/useMutation';
@@ -58,8 +59,8 @@ const getGiftCardTagsAddRemoveData = (initTags: string[], changedTags: string[])
 
 const GiftCardUpdateFormProvider: FC<GiftCardUpdateFormProviderProps> = ({ children }) => {
   const notify = useNotifier();
-  const [updateMetadata] = useMutation(UpdateMetadataDocument, {});
-  const [updatePrivateMetadata] = useMutation(UpdatePrivateMetadataDocument, {});
+  const [updateMetadata] = useMutation<UpdateMetadataMutation, UpdateMetadataMutationVariables>(UpdateMetadataDocument, {});
+  const [updatePrivateMetadata] = useMutation<UpdatePrivateMetadataMutation, UpdatePrivateMetadataMutationVariables>(UpdatePrivateMetadataDocument, {});
 
   const { loading: loadingGiftCard, giftCard } = useGiftCardDetails();
 
@@ -78,7 +79,7 @@ const GiftCardUpdateFormProvider: FC<GiftCardUpdateFormProviderProps> = ({ child
     };
   };
 
-  const [updateGiftCard, updateGiftCardOpts] = useMutation(GiftCardUpdateDocument, {
+  const [updateGiftCard, updateGiftCardOpts] = useMutation<GiftCardUpdateMutation, GiftCardUpdateMutationVariables>(GiftCardUpdateDocument, {
     onCompleted: (data) => {
       const errors = data?.updateGiftCard?.errors;
       const hasExpiryError = errors.some((error) => error.field === 'expiryDate');

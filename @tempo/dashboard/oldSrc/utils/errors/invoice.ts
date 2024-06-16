@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { InvoiceErrorFragment } from '@tempo/api/generated/graphql';
 import { InvoiceErrorCode } from '@tempo/api/generated/constants';
 
@@ -37,7 +36,7 @@ const messages = {
   },
 };
 
-function getInvoiceErrorMessage(err: InvoiceErrorFragment, t: TFunction): string {
+function getInvoiceErrorMessage(err: InvoiceErrorFragment): string {
   if (err) {
     switch (err.code) {
       case InvoiceErrorCode.EmailNotSet:

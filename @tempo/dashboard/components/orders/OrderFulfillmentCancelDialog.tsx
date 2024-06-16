@@ -47,7 +47,6 @@ export interface OrderFulfillmentCancelDialogProps {
 
 const OrderFulfillmentCancelDialog: FC<OrderFulfillmentCancelDialogProps> = (props) => {
   const { confirmButtonState, errors, open, warehouses, onConfirm, onClose } = props;
-  // const styles = useStyles();
   const styles = {};
   const [displayValue, setDisplayValue] = useState('');
 
@@ -73,8 +72,7 @@ const OrderFulfillmentCancelDialog: FC<OrderFulfillmentCancelDialogProps> = (pro
             setDisplayValue,
             choices
           );
-          // const styles = useStyles();
-          const styles = {};
+                  const styles = {};
           return (
             <>
               <DialogTitle>

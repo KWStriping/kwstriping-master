@@ -75,7 +75,6 @@ const ProductMediaPage: FC<ProductMediaPageProps> = (props) => {
     onRowClick,
     onSubmit,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const router = useRouter();
 

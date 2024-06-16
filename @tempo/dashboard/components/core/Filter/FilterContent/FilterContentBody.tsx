@@ -56,7 +56,6 @@ const FilterContentBody = <K extends string = string>({
   initialAutocompleteDisplayValues,
 }: FilterContentBodyProps<K>) => {
   const commonClasses = useCommonStyles({});
-  // const styles = useStyles();
   const styles = {};
   if (!filter) {
     return <Skeleton />;

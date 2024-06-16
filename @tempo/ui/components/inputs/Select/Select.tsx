@@ -1,4 +1,4 @@
-import type { ClassNames } from '@tempo/types';
+import type { ClassNames } from '@tempo/next/types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import clsx from 'clsx';
 import type { ChangeEvent, ForwardedRef, ReactNode, SelectHTMLAttributes } from 'react';
@@ -23,6 +23,7 @@ export interface SelectProps<TData extends string = string>
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   options: Option<TData>[];
   classNames?: ClassNames<'container'>;
+  placeholder?: string;
 }
 
 const SelectComponent = <TData extends string = string>(

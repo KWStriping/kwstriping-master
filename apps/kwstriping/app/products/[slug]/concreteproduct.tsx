@@ -1,11 +1,12 @@
 'use client';
 
-import * as m from '@paraglide/messages';
 import type {
   ConcreteProductDetailsFragment,
   CheckoutError,
   CreateCheckoutMutation,
   CreateCheckoutMutationVariables,
+  CheckoutAddProductLineMutation,
+  CheckoutAddProductLineMutationVariables,
 } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -21,16 +22,17 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
-import { usePaths } from '@kwstriping/hooks/usePaths';
 import { gql } from '@tempo/api';
 import ProductPage from './product';
+import { usePaths } from '@kwstriping/hooks/usePaths';
+import * as m from '@paraglide/messages';
 
 const DISPLAY_CATEGORY = false; // TODO
 const DISPLAY_PRICES = false;
 const ENABLE_CART = false; // TODO
 
 const createCheckoutMutation = gql(`
-  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String!) {
+  mutation CreateCheckout($email: String, $lines: [CheckoutLineInput!]!, $channel: String) {
     createCheckout(data: { channel: $channel, email: $email, lines: $lines }) {
       result {
         id
@@ -64,7 +66,10 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
   );
   const { user } = useUser();
 
-  const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
+  const [addProductToCheckout] = useMutation<
+    CheckoutAddProductLineMutation,
+    CheckoutAddProductLineMutationVariables
+  >(CheckoutAddProductLineDocument);
 
   const [oneClickCheckoutEnabled, setOneClickCheckoutEnabled] = useState(false);
 

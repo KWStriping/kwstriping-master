@@ -111,7 +111,6 @@ const ItemsCard: FC<OrderReturnRefundLinesCardProps> = ({
   fulfilmentId,
   order,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const handleChangeQuantity = (id: string) => (event: ChangeEvent<HTMLInputElement>) =>
@@ -178,8 +177,7 @@ const ItemsCard: FC<OrderReturnRefundLinesCardProps> = ({
                   productName,
                   variant,
                 } = line;
-                // const styles = useStyles();
-                const styles = {};
+                              const styles = {};
                 const isValueError = false;
                 const { isRefunded, currentQuantity } = getQuantityDataFromItems(
                   itemsQuantities,

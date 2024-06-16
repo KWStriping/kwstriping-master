@@ -1,4 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select';
@@ -7,14 +6,15 @@ import Typography from '@mui/material/Typography';
 import { difference, uniqBy } from 'lodash-es';
 import { useRef, useEffect } from 'react';
 import type { FC } from 'react';
+import styles from './index.module.css';
 
 import { useFilterActions, useFilterData } from './context';
 import { FilterContent } from './FilterContent';
-// import useStyles from './styles';
 
 import type { FilterDetailedOptions, FilterLabels, FilterOptions } from './types';
 import { FilterType } from './types';
 import * as utils from './utils';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export type FilterProps = FilterOptions & FilterDetailedOptions;
 
@@ -60,8 +60,6 @@ export interface FilterRowProps {
   labels: FilterLabels;
 }
 export const FilterRow: FC<FilterRowProps> = ({ first, name, labels }) => {
-  // const styles = useStyles();
-  const styles = {};
   const filters = useFilterData();
   const { toggle, toggleRange, swap } = useFilterActions();
 

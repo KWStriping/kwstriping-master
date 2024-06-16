@@ -7,10 +7,10 @@ import clsx from 'clsx';
 import type { MutableRefObject, RefCallback, FC } from 'react';
 import { useCallback, useState } from 'react';
 import { createReactEditorJS } from 'react-editor-js';
+import styles from './RichTextEditor.module.css';
 
 import { tools } from './consts';
 import { useHasRendered } from './hooks';
-// import useStyles from './styles';
 
 export type { EditorCore };
 
@@ -43,8 +43,6 @@ const RichTextEditor: FC<RichTextEditorProps> = ({
 }) => {
   const id = useId(defaultId);
   const [isFocused, setIsFocused] = useState(false);
-  // const styles = useStyles();
-  const styles = {};
   const handleInitialize = useCallback((editor: EditorCore) => {
     if (onInitialize) {
       onInitialize(editor);

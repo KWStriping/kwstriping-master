@@ -1,3 +1,4 @@
+import type { MenuItemTranslationsQuery, MenuItemTranslationsQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import type { FC } from 'react';
@@ -9,7 +10,7 @@ import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePagina
 import { languageEntityUrl, TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
 
 const TranslationsMenuItemList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery(MenuItemTranslationsDocument, {
+  const [{ data, fetching: loading }] = useQuery<MenuItemTranslationsQuery, MenuItemTranslationsQueryVariables>(MenuItemTranslationsDocument, {
     displayLoader: true,
     variables,
   });

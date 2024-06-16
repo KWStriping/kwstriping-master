@@ -199,7 +199,7 @@ export const mergeFileUploadErrors = (
   uploadFilesResult: Array<OperationResult<FileUploadMutation>>
 ): UploadErrorFragment[] =>
   uploadFilesResult.reduce((errors, uploadFileResult) => {
-    const uploadErrors = uploadFileResult?.data?.fileUpload?.errors;
+    const uploadErrors = uploadFileResult?.data?.uploadFile?.errors;
     if (uploadErrors) {
       return [...errors, ...uploadErrors];
     }
@@ -295,8 +295,8 @@ export const getAttributesOfUploadedFiles = (
     const attribute = fileValuesToUpload[index];
 
     return {
-      file: uploadFileResult.data?.fileUpload?.uploadedFile?.url,
-      contentType: uploadFileResult.data?.fileUpload?.uploadedFile?.contentType,
+      file: uploadFileResult.data?.uploadFile?.uploadedFile?.url,
+      contentType: uploadFileResult.data?.uploadFile?.uploadedFile?.contentType,
       id: attribute.id,
       values: [],
     };

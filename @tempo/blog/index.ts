@@ -18,8 +18,8 @@ export const getAllPostSlugs = async () => {
   const globPattern = `${getPostsDir()}/**/*.mdx`;
   return globSync(globPattern).map((filename) => {
     return filename
-      .split('/')
-      .slice(-1)[0]
+      .split('/')!
+      .slice(-1)[0]!
       .replace(/ /g, '-')
       .replace(/\.mdx?$/, '')
       .trim();

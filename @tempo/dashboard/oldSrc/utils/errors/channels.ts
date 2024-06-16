@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { ChannelErrorCode } from '@tempo/api/generated/constants';
 import type { ChannelErrorFragment } from '@tempo/api/generated/graphql';
 
@@ -21,7 +20,6 @@ const messages = {
 
 function getChannelsErrorMessage(
   err: Omit<ChannelErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const searchWarehouses = gql(`
   query SearchWarehouses($after: String, $first: Int!, $query: String!) {

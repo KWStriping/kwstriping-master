@@ -6,7 +6,7 @@ import type {
 import MuiIconButton from '@mui/material/IconButton';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import clsx from 'clsx';
-import type { ElementType, FC } from 'react';
+import type { ElementType } from 'react';
 import { forwardRef } from 'react';
 
 import styles from './index.module.css';
@@ -20,7 +20,7 @@ export interface IconButtonInnerProps {
   variant?: 'primary' | 'secondary' | 'ghost';
 }
 
-export interface IconButtonTypeMap<P = {}, D extends ElementType = 'button'> {
+export interface IconButtonTypeMap<P = any, D extends ElementType = 'button'> {
   props: Omit<MuiIconButtonTypeMap<P, D>['props'], 'variant'> &
     IconButtonInnerProps & { href?: string } & OverrideProps<MuiIconButtonTypeMap<P, D>, 'a'>;
   defaultComponent: D;
@@ -33,7 +33,7 @@ export type IconButtonProps<T extends ElementType = 'button'> = MuiIconButtonPro
 > &
   IconButtonInnerProps & { href?: string };
 
-const _IconButton: FC<IconButtonProps> = forwardRef(
+const _IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
     { className, error, hoverOutline = true, variant = 'primary', state = 'default', ...props },
     ref

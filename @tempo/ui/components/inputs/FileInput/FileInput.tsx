@@ -1,13 +1,11 @@
-import { Trans } from '@tempo/next/i18n';
-import { DeleteIcon } from '@tempo/ui/icons/24x24/DeleteIcon';
-import { PlusIcon } from '@tempo/ui/icons/24x24/PlusIcon';
+import DeleteIcon from '@mui/icons-material/Delete';
+import PlusIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import Image from 'next/image';
 import type { FC, ChangeEvent, DragEvent, FocusEventHandler } from 'react';
 import { useState, useEffect, useRef } from 'react';
 import styles from './FileInput.module.css';
-import { messages } from './messages';
 import { IconButton } from '@tempo/ui/components/buttons/IconButton';
 import { Button } from '@tempo/ui/components/buttons/Button';
 
@@ -86,13 +84,13 @@ const FileInput: FC<FileInputProps> = ({ name, label, alt, value, onChange, onBl
         <div className={styles.uploadField ?? ''}>
           <>
             <Typography variant="body2" className={styles.uploadLabel ?? ''}>
-              <Trans {...messages.dragImage} />
+              {/* <Trans {...messages.dragImage} /> */}
             </Typography>
             <Typography
               variant="caption"
               className={clsx(styles.uploadLabel, styles.uploadSizeLabel)}
             >
-              <Trans {...messages.maxFileSize} />
+              {/* <Trans {...messages.maxFileSize} /> */}
             </Typography>
             <Button
               color="secondary"
@@ -101,7 +99,7 @@ const FileInput: FC<FileInputProps> = ({ name, label, alt, value, onChange, onBl
               endIcon={<PlusIcon />}
               onClick={handleFileUploadButtonClick}
             >
-              <Trans {...messages.uploadFile} />
+              {/* <Trans {...messages.uploadFile} /> */}
             </Button>
           </>
         </div>

@@ -1,3 +1,4 @@
+import type { GiftCardSettingsQuery, GiftCardSettingsQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import DialogContent from '@mui/material/DialogContent';
@@ -49,7 +50,7 @@ const GiftCardBulkCreateDialogForm: FC<GiftCardBulkCreateDialogFormProps> = ({
   onClose,
   formErrors = {},
 }) => {
-  const { data: settingsData, loading: loadingSettings } = useQuery(GiftCardSettingsDocument, {});
+  const { data: settingsData, loading: loadingSettings } = useQuery<GiftCardSettingsQuery, GiftCardSettingsQueryVariables>(GiftCardSettingsDocument, {});
 
   const getInitialExpirySettingsData = (): Partial<GiftCardBulkCreateFormData> => {
     if (loadingSettings) {

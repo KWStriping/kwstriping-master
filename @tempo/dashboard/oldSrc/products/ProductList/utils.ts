@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { isInEnum } from '@tempo/utils/enums';
 import { ProductKlassKind } from '@tempo/api/generated/constants';
 
@@ -16,7 +15,6 @@ export const getAvailableProductKinds = (): ProductKindChoice[] =>
 
 export const getProductKindOpts = (
   availableProducts: ProductKindChoice[],
-  t: TFunction
 ): ProductKindChoice[] =>
   availableProducts.map((kind) => {
     switch (kind.value) {

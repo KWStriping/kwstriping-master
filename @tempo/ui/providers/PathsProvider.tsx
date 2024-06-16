@@ -1,8 +1,7 @@
-import type { UrlObject } from 'url';
 import type { ReactNode, Context } from 'react';
 import { createContext, useContext } from 'react';
 
-type Path = string | UrlObject;
+type Path = string;
 
 export interface Paths<TRoute extends Path = Path> {
   productBySlug: (slug: string) => TRoute;

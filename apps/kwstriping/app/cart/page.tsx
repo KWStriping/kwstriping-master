@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Layout from '@kwstriping/app/client/Layout';
 import CartPage from './cart';
+import Layout from '@kwstriping/app/client/Layout';
 
 export const metadata: Metadata = {
   title: 'Cart',

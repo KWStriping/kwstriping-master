@@ -1,4 +1,4 @@
-import type { ClassNames } from '@tempo/types';
+import type { ClassNames } from '@tempo/next/types';
 import CheckIcon from '@mui/icons-material/Check';
 import clsx from 'clsx';
 import type { Ref, ReactNode, InputHTMLAttributes } from 'react';

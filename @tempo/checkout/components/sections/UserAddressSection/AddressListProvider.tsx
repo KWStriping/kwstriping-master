@@ -1,15 +1,22 @@
-import type { AddressFragment } from '@tempo/api/generated/graphql';
+import type {
+  UserAddressUpdateMutation,
+  UserAddressUpdateMutationVariables,
+  AddressFragment,
+  UserAddressDeleteMutation,
+  UserAddressDeleteMutationVariables,
+  UserAddressCreateMutation,
+  UserAddressCreateMutationVariables,
+  AddressUpdateInput,
+} from '@tempo/api/generated/graphql';
 import {
   UserAddressCreateDocument,
   UserAddressDeleteDocument,
   UserAddressUpdateDocument,
 } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-import type { AddressFormData } from '@tempo/types/addresses';
+import type { AddressFormData } from '@tempo/next/types/addresses';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
-import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import { extractMutationErrors } from '@tempo/api/utils';
 import {
   getById,
   getByUnmatchingId,
@@ -39,18 +46,13 @@ interface AddressListProviderProps {
   children: ReactNode;
 }
 
-type SubmitReturnWithErrors = Promise<{
-  hasErrors: boolean;
-  errors: ApiErrors<AddressFormData>;
-}>;
-
 interface ContextConsumerProps {
   addressList: AddressFragment[];
   selectedAddressId: string | undefined;
   setSelectedAddressId: (id: string) => void;
-  updateAddress: (formData: AddressFormData) => SubmitReturnWithErrors;
-  addAddress: (formData: AddressFormData) => SubmitReturnWithErrors;
-  deleteAddress: (id: string) => SubmitReturnWithErrors;
+  updateAddress: (formData: AddressFormData) => void;
+  addAddress: (formData: AddressFormData) => void;
+  deleteAddress: (id: string) => void;
   updating: boolean;
   deleting: boolean;
   creating: boolean;
@@ -80,9 +82,18 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
 
   const addresses = user?.addresses || [];
 
-  const [userAddressUpdate, { fetching: updating }] = useMutation(UserAddressUpdateDocument);
-  const [userAddressDelete, { fetching: deleting }] = useMutation(UserAddressDeleteDocument);
-  const [userAddressCreate, { fetching: creating }] = useMutation(UserAddressCreateDocument);
+  const [userAddressUpdate, { fetching: updating }] = useMutation<
+    UserAddressUpdateMutation,
+    UserAddressUpdateMutationVariables
+  >(UserAddressUpdateDocument);
+  const [userAddressDelete, { fetching: deleting }] = useMutation<
+    UserAddressDeleteMutation,
+    UserAddressDeleteMutationVariables
+  >(UserAddressDeleteDocument);
+  const [userAddressCreate, { fetching: creating }] = useMutation<
+    UserAddressCreateMutation,
+    UserAddressCreateMutationVariables
+  >(UserAddressCreateDocument);
 
   const [addressList, setAddressList] = useState(addresses);
 
@@ -106,19 +117,13 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
 
   const updateAddress = useCallback(
     async (formData: AddressFormData) => {
+      if (!formData.id) return;
       const result = await userAddressUpdate({
         address: getAddressInputData({
           ...formData,
-        }),
+        }) as AddressUpdateInput, // TODO
         id: formData.id,
       });
-
-      const [hasErrors, errors] = extractMutationErrors(result);
-
-      if (hasErrors) {
-        showErrors(errors, 'userAddressUpdate');
-        return { hasErrors, errors };
-      }
 
       const updatedAddress = result?.data?.updateAddress?.address as AddressFragment;
 
@@ -141,16 +146,7 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
 
   const deleteAddress = useCallback(
     async (id: string) => {
-      const result = await userAddressDelete({
-        id,
-      });
-
-      const [hasErrors, errors] = extractMutationErrors(result);
-
-      if (hasErrors) {
-        showErrors(errors, 'userAddressDelete');
-      }
-
+      await userAddressDelete({ id });
       setAddressList(addressList.filter(getByUnmatchingId(id)));
 
       if (selectedAddressId === id && addressList[0]) {
@@ -158,8 +154,6 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
         setSelectedAddressId(newAddress.id);
         handleCheckoutAddressUpdate(newAddress);
       }
-
-      return { hasErrors, errors };
     },
     [addressList, handleCheckoutAddressUpdate, showErrors, userAddressDelete, selectedAddressId]
   );
@@ -169,25 +163,17 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
       const result = await userAddressCreate({
         address: getAddressInputData({
           ...formData,
-        }),
+        }) as AddressUpdateInput, // TODO
       });
 
-      const [hasErrors, errors] = extractMutationErrors(result);
+      const address = result?.data?.addAddress?.address as AddressFragment;
 
-      if (hasErrors) {
-        showErrors(errors, 'userAddressCreate');
-      } else {
-        const address = result?.data?.addAddress?.address as AddressFragment;
+      setAddressList([...addressList, address]);
 
-        setAddressList([...addressList, address]);
-
-        if (isAvailable(address)) {
-          setSelectedAddressId(address.id);
-          handleCheckoutAddressUpdate(address);
-        }
+      if (isAvailable(address)) {
+        setSelectedAddressId(address.id);
+        handleCheckoutAddressUpdate(address);
       }
-
-      return { hasErrors, errors };
     },
     [addressList, handleCheckoutAddressUpdate, showErrors, isAvailable, userAddressCreate]
   );
@@ -249,7 +235,7 @@ export const AddressListProvider: FC<AddressListProviderProps> = ({
     addressList.length,
   ]);
 
-  const providerValues: ContextConsumerProps = useMemo(() => {
+  const providerValues = useMemo(() => {
     return {
       addressList,
       setSelectedAddressId: handleAddressSelect,

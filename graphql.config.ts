@@ -4,9 +4,11 @@ import dotenvExpand from 'dotenv-expand';
 
 dotenvExpand.expand(dotenv.config());
 
+const GENERATE_INTROSPECTION_SCHEMA = false;
+
 const API_URL = process.env.API_URL;
 
-if (!API_URL) throw new Error("API_URL is undefined.");
+if (!API_URL) throw new Error('API_URL is undefined.');
 
 // const LOCAL_SCHEMA = './tempo/api/generated/schema.graphql';
 // const INTROSPECTION_SCHEMA = './@tempo/api/generated/graphql.schema.json';
@@ -42,24 +44,10 @@ const SCALAR_TYPES = {
   _Any: 'any',
 };
 
-const introspectionCodegenConfig = {
-  generates: {
-    '@tempo/api/generated/graphql.schema.json': {
-      plugins: ['introspection'],
-      config: { minify: true },
-    },
-  },
-  overwrite: true,
-};
-
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
-  plugins: [
-    'typescript',
-    'typescript-operations',
-    'typescript-urql',
-  ],
+  plugins: [],
   config: {
     dedupeFragments: true,
     enumsAsTypes: true,
@@ -93,27 +81,18 @@ const constantsConfig = {
 
 const apiCodegenConfig = {
   generates: {
-    '@tempo/api/generated/introspection.json': {
-      plugins: ['urql-introspection'],
-    },
+    ...(GENERATE_INTROSPECTION_SCHEMA
+      ? {
+          '@tempo/api/generated/introspection.json': {
+            plugins: ['urql-introspection'],
+          },
+        }
+      : {}),
     '@tempo/api/generated/': {
       ...clientPreset,
     },
     '@tempo/api/generated/constants.ts': {
       ...constantsConfig,
-    },
-    '@tempo/api/generated/resolvers.ts': {
-      plugins: [
-        {
-          add: {
-            content: '/// <reference path="./graphql.ts" />',
-          },
-        },
-        'typescript-resolvers',
-      ],
-      config: {
-        useTypeImports: true,
-      },
     },
   },
   overwrite: true,
@@ -180,11 +159,12 @@ const config = {
       extensions: {
         codegen: {
           generates: {
-            ...introspectionCodegenConfig.generates,
             ...apiCodegenConfig.generates,
-            // ...dashboardCodegenConfig.generates,
           },
           overwrite: true,
+          hooks: {
+            afterOneFileWrite: ['eslint --fix'],
+          },
         },
       },
     },
@@ -199,12 +179,11 @@ const config = {
       ],
       extensions: {
         codegen: {
-          ...dashboardCodegenConfig
+          ...dashboardCodegenConfig,
         },
       },
     },
   },
 } satisfies IGraphQLConfig;
-
 
 export default config;

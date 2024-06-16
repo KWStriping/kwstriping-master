@@ -1,3 +1,4 @@
+import type { FulfillOrderMutation, FulfillOrderMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { renderCollection } from '@tempo/ui/utils';
@@ -43,7 +44,7 @@ const OrderUnfulfilledProductsCard: FC<OrderUnfulfilledProductsCardProps> = ({
   const router = useRouter();
   const notify = useNotifier();
 
-  const [fulfillOrder, fulfillOrderOpts] = useMutation(FulfillOrderDocument, {
+  const [fulfillOrder, fulfillOrderOpts] = useMutation<FulfillOrderMutation, FulfillOrderMutationVariables>(FulfillOrderDocument, {
     onCompleted: (data) => {
       if (data?.fulfillOrder?.errors?.length === 0) {
         void router.replace(orderUrl(order.id));
@@ -52,7 +53,7 @@ const OrderUnfulfilledProductsCard: FC<OrderUnfulfilledProductsCardProps> = ({
         });
       } else {
         if (!data?.fulfillOrder?.errors?.every((err) => err.code === 'INSUFFICIENT_STOCK')) {
-          handleNestedMutationErrors({ data, t, notify });
+          handleNestedMutationErrors({ data, notify });
         }
       }
     },

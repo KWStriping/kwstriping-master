@@ -1,7 +1,10 @@
+import type {
+  CheckoutLineDeleteMutation,
+  CheckoutLineDeleteMutationVariables,
+  CheckoutLineFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import type { CheckoutLineFragment } from '@tempo/api/generated/graphql';
 import { CheckoutLineDeleteDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
@@ -22,7 +25,10 @@ export function CheckoutProductList({
   displayPrices = true,
 }: CheckoutProductListProps) {
   const { query, formatPrice } = useLocalization();
-  const [removeProductFromCheckout] = useMutation(CheckoutLineDeleteDocument);
+  const [removeProductFromCheckout] = useMutation<
+    CheckoutLineDeleteMutation,
+    CheckoutLineDeleteMutationVariables
+  >(CheckoutLineDeleteDocument);
   const { displayProductImages } = useShopSettings();
   return (
     <ul className="flex-auto p-0">
@@ -48,7 +54,7 @@ export function CheckoutProductList({
                   {translate(line.product, 'name')}
                 </Typography>
                 {/* <Typography className="text-gray-500 text-sm mt-1">
-                  {translate(line.variant, 'name')}
+                  {translate(line.product, 'name')}
                 </Typography> */}
                 {displayPrices && (
                   <p className="text-gray-900">{formatPrice(line.totalPrice.gross)}</p>

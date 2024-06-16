@@ -1,4 +1,4 @@
-import type { ClassNames } from '@tempo/types';
+import type { ClassNames } from '@tempo/next/types';
 import { Switch as HeadlessSwitch } from '@headlessui/react';
 import clsx from 'clsx';
 import type { FC } from 'react';

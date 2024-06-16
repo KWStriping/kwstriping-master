@@ -1,3 +1,4 @@
+import type { BulkDeleteGiftCardMutation, BulkDeleteGiftCardMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -22,7 +23,7 @@ const useGiftCardBulkDelete = ({
 
   const { listElements, selectedItemsCount, reset: resetSelectedItems } = useGiftCardList();
 
-  const [bulkDeleteGiftCard, bulkDeleteGiftCardOpts] = useMutation(BulkDeleteGiftCardDocument, {
+  const [bulkDeleteGiftCard, bulkDeleteGiftCardOpts] = useMutation<BulkDeleteGiftCardMutation, BulkDeleteGiftCardMutationVariables>(BulkDeleteGiftCardDocument, {
     onCompleted: (data) => {
       const errors = data?.deleteGiftCards?.errors;
 

@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 
 export const messages = {
@@ -20,7 +19,7 @@ export const messages = {
   },
 };
 
-export const getTitle = (fulfillmentStatus: FulfillmentStatus, t: TFunction) => {
+export const getTitle = (fulfillmentStatus: FulfillmentStatus) => {
   switch (fulfillmentStatus) {
     case FulfillmentStatus.Returned:
       return (m.dashboard_ulfillmentReturned() ?? 'Fulfillment returned');

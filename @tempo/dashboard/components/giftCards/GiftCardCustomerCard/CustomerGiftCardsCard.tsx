@@ -1,3 +1,4 @@
+import type { CustomerGiftCardListQuery, CustomerGiftCardListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { Trans, useTranslation } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
@@ -29,7 +30,7 @@ const CustomerGiftCardsCard: FC = () => {
   const customer = customerDetails?.customer?.user;
   const id = customer?.id;
 
-  const [{ data, fetching: loading }] = useQuery(CustomerGiftCardListDocument, {
+  const [{ data, fetching: loading }] = useQuery<CustomerGiftCardListQuery, CustomerGiftCardListQueryVariables>(CustomerGiftCardListDocument, {
     variables: {
       first: 5,
       filter: {

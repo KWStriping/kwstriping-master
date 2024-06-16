@@ -1,3 +1,4 @@
+import type { ProductTranslationsQuery, ProductTranslationsQueryVariables } from '@tempo/api/generated/graphql';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks';
 import type { FC } from 'react';
@@ -9,7 +10,7 @@ import { sumCompleted } from './utils';
 import type { TranslationsEntityListProps } from './types';
 
 const TranslationsProductList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery(ProductTranslationsDocument, {
+  const [{ data, fetching: loading }] = useQuery<ProductTranslationsQuery, ProductTranslationsQueryVariables>(ProductTranslationsDocument, {
     displayLoader: true,
     variables,
   });

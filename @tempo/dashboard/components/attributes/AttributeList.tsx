@@ -71,7 +71,6 @@ const AttributeList: FC<AttributeListProps> = ({
   toolbar,
   onSort,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <ResponsiveTable>

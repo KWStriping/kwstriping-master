@@ -184,7 +184,7 @@ export const OrderDetailsMessages: FC<OrderDetailsMessagesProps> = ({ children, 
       closeModal();
     } else {
       if (!errs.every((err) => err.code === OrderErrorCode.InsufficientStock)) {
-        handleNestedMutationErrors({ data, t, notify });
+        handleNestedMutationErrors({ data, notify });
       }
     }
   };

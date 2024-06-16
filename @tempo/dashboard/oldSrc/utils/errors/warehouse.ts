@@ -1,6 +1,5 @@
 import type { WarehouseErrorFragment } from '@tempo/api/generated/graphql';
 import { WarehouseErrorCode } from '@tempo/api/generated/constants';
-import type { TFunction } from '@tempo/next/i18n';
 
 import { getCommonFormFieldErrorMessage } from './common';
 
@@ -14,14 +13,12 @@ const messages = {
 
 function getWarehouseErrorMessage(
   err: Omit<WarehouseErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   return getCommonFormFieldErrorMessage(err, t);
 }
 
 export function getWarehouseSlugErrorMessage(
   err: Omit<WarehouseErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

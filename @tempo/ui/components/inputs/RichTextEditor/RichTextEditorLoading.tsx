@@ -1,4 +1,4 @@
-import type { RichTextEditorProps } from './RichTextEditor';
+import type { EditorCore, RichTextEditorProps } from './RichTextEditor';
 import RichTextEditor from './RichTextEditor';
 
 export interface RichTextEditorLoadingProps
@@ -14,10 +14,12 @@ export const RichTextEditorLoading = (props: RichTextEditorLoadingProps) => (
     {...props}
     disabled={true}
     readOnly={true}
-    error={null}
+    error={false}
     helperText={props.helperText ?? ''}
     defaultValue={{ blocks: [] }}
-    editorRef={{ current: null }}
+    editorRef={{ current: null as unknown as EditorCore }} // TODO
+    label={''}
+    name={''}
   />
 );
 

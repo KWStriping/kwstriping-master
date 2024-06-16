@@ -1,3 +1,4 @@
+import type { GiftCardUpdateMutation, GiftCardUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -36,7 +37,7 @@ const GiftCardUpdateBalanceDialog: FC<DialogProps> = ({ open, onClose }) => {
     balanceAmount: amount,
   };
 
-  const [updateGiftCardBalance, updateGiftCardBalanceOpts] = useMutation(GiftCardUpdateDocument, {
+  const [updateGiftCardBalance, updateGiftCardBalanceOpts] = useMutation<GiftCardUpdateMutation, GiftCardUpdateMutationVariables>(GiftCardUpdateDocument, {
     onCompleted: (data) => {
       const errors = data?.updateGiftCard?.errors;
 

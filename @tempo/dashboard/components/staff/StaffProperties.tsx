@@ -123,7 +123,6 @@ const StaffProperties: FC<StaffPropertiesProps> = (props) => {
     onImageDelete,
     onImageUpload,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const imgInputAnchor = createRef<HTMLInputElement>();
 

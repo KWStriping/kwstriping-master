@@ -1,7 +1,10 @@
+import type {
+  CheckoutBillingAddressUpdateMutation,
+  CheckoutBillingAddressUpdateMutationVariables,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutBillingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { useShopSettings } from '@tempo/ui/providers';
@@ -10,17 +13,20 @@ import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 
 import { assert } from 'tsafe/assert';
-import { useSectionState } from '@tempo/checkout/hooks/state';
 import { AddressForm } from '../forms/AddressForm';
 import { SavedAddressSelectionList } from '../SavedAddressSelectionList';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection from './CheckoutSection';
+import { useSectionState } from '@tempo/checkout/hooks/state';
 
 export function BillingAddressSection({ checkout, className }: CommonCheckoutSectionProps) {
   const { authenticated } = useUser();
   const { countries } = useShopSettings();
   const [{ editing }, updateState] = useSectionState('billingAddress');
-  const [updateBillingAddress] = useMutation(CheckoutBillingAddressUpdateDocument);
+  const [updateBillingAddress] = useMutation<
+    CheckoutBillingAddressUpdateMutation,
+    CheckoutBillingAddressUpdateMutationVariables
+  >(CheckoutBillingAddressUpdateDocument);
   const { query } = useLocalization();
 
   const { billingAddress } = checkout ?? {};

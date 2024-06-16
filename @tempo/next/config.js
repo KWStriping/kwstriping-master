@@ -181,6 +181,9 @@ export const withSentryConfig = (nextConfig = {}) => {
       // https://webpack.js.org/configuration/devtool/
       // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map
       hideSourceMaps: process.env.NODE_ENV !== 'development',
+
+      disableServerWebpackPlugin: true, // process.env.NODE_ENV === 'development',
+      disableClientWebpackPlugin: true, // process.env.NODE_ENV === 'development',
     },
   };
   // https://github.com/getsentry/sentry-webpack-plugin#options.

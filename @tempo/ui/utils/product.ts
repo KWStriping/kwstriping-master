@@ -1,4 +1,7 @@
-import type { ProductDetailsFragment, AttributeDetailsFragment } from '@tempo/api/generated/graphql';
+import type {
+  ProductDetailsFragment,
+  AttributeDetailsFragment,
+} from '@tempo/api/generated/graphql';
 
 /**
  * When a variant is selected, the variant attributes are shown together with
@@ -15,20 +18,4 @@ export const getProductAttributes = (
 ): AttributeDetailsFragment[] => {
   if (selectedVariant) return product.attributes.concat(selectedVariant.attributes);
   return product.attributes;
-};
-
-export const getSelectedProductID = (product: ProductDetailsFragment, router?: NextRouter) => {
-  // Check if variant is already in the url
-  const urlVariant =
-    typeof window !== 'undefined' && router ? router.query.variant?.toString() : undefined;
-  if (!!urlVariant && product.variants?.find((p) => p?.id === urlVariant)) {
-    // case, where url contain valid variant id
-    return urlVariant;
-  }
-  if (product?.variants?.length === 1) {
-    // case, where product has only one variant to choose from, so we pre-select it
-    return product.variants[0]!.id; // eslint-disable-line @typescript-eslint/no-non-null-assertion
-  }
-  // there are multiple variants and user has not chosen any
-  return null;
 };

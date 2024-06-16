@@ -1,3 +1,5 @@
+import type { OrderConfirmMutation, OrderConfirmMutationVariables } from '@tempo/api/generated/graphql';
+import type { WarehouseListQuery, WarehouseListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks/useQuery';
@@ -66,14 +68,14 @@ export const OrderUnconfirmedDetails: FC<OrderUnconfirmedDetailsProps> = ({
     ...DEFAULT_INITIAL_SEARCH_DATA,
     channel: order.channel.slug,
   });
-  const [warehouses] = useQuery(WarehouseListDocument, {
+  const [warehouses] = useQuery<WarehouseListQuery, WarehouseListQueryVariables>(WarehouseListDocument, {
     displayLoader: true,
     variables: {
       first: 30,
     },
   });
 
-  const [confirmOrder] = useMutation(OrderConfirmDocument, {
+  const [confirmOrder] = useMutation<OrderConfirmMutation, OrderConfirmMutationVariables>(OrderConfirmDocument, {
     onCompleted: ({ confirmOrder: { errors } }) => {
       const isError = !!errors?.length;
       notify(isError ? getOrderErrorMessage(errors[0], t) : 'Confirmed Order', {

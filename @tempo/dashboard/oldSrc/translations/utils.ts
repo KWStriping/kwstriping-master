@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { fieldNames } from '@tempo/dashboard/components/translations/TranslationsAttributesPage';
 import { translationsAttributesPageFieldsMessages as messages } from '@tempo/dashboard/components/translations/TranslationsAttributesPage/messages';
@@ -40,7 +39,6 @@ export const getParsedTranslationInputData = ({
 
 export const getTranslationFields = (
   fields: AttributeTranslationDetailsFragment['attribute']['choices'],
-  t: TFunction
 ) =>
   mapEdgesToItems(fields).map(({ id, name, translation }, valueIndex) => {
     const displayName = (m.dashboard_valueNumber({
@@ -56,7 +54,7 @@ export const getTranslationFields = (
     };
   }) || [];
 
-export const mapValuesToTranslationFields = (values: ValueTranslatableFragment[], t: TFunction) =>
+export const mapValuesToTranslationFields = (values: ValueTranslatableFragment[]) =>
   values.map<TranslationField>((attrVal) => ({
     id: attrVal.value.id,
     displayName: (m.dashboard_gqPGF({

@@ -27,7 +27,6 @@ interface FilterContentHeaderProps {
 }
 
 const FilterContentHeader: FC<FilterContentHeaderProps> = ({ onClear }) => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <div className={styles.container ?? ''}>

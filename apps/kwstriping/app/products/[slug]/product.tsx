@@ -1,5 +1,6 @@
 'use client';
 
+import type { CheckoutAddProductLineMutation, CheckoutAddProductLineMutationVariables } from '@tempo/api/generated/graphql';
 import type { ProductDetailsFragment } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
@@ -43,7 +44,7 @@ function ProductPage({ product, price, displayPrice, details }: ProductPageProps
 
   const { user } = useUser();
 
-  const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
+  const [addProductToCheckout] = useMutation<CheckoutAddProductLineMutation, CheckoutAddProductLineMutationVariables>(CheckoutAddProductLineDocument);
 
   const [redirecting, setRedirecting] = useState(false);
 

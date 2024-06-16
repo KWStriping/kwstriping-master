@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const updatePlugin = gql(`
   mutation PluginUpdate($channelId: ID, $id: ID!, $input: PluginUpdateInput!) {

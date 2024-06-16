@@ -6,8 +6,8 @@ import type {
   UseQueryResponse,
 } from '@urql/next';
 import { useQuery as useBaseQuery } from '@urql/next';
-import { PermissionCode } from '@tempo/api/generated/constants';
 import type { UserPermissionFragment } from '@tempo/api/generated/graphql';
+import { PermissionCode } from '@tempo/api/generated/constants';
 import { useUserPermissions } from '@tempo/api/auth/react/hooks/permissions';
 
 export type PrefixedPermissionCode = `PERMISSION_${PermissionCode}`;

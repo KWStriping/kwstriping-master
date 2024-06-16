@@ -2,9 +2,8 @@ import { Open_Sans } from 'next/font/google';
 import './global.css';
 import CssProvider from '@tempo/ui/providers/CssProvider';
 import type { ReactNode } from 'react';
-import theme from '@kwstriping/app/theme';
-
 import type { Metadata } from 'next';
+import theme from '@kwstriping/app/theme';
 
 // If loading a variable font, you don't need to specify the font weight
 const openSans = Open_Sans({

@@ -1,10 +1,10 @@
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { LOCALES } from '@tempo/utils/regions';
 import { useRouter } from 'next/navigation';
 
 import type { HorizontalAlignment } from './BaseRegionsDropdown';
 import { BaseRegionsDropdown } from './BaseRegionsDropdown';
 import { BaseRegionsDropdownItem } from './BaseRegionsDropdownItem';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 interface DropdownOption {
   label: string;
@@ -29,15 +29,15 @@ export function LocaleDropdown({ horizontalAlignment }: LocaleDropdownProps) {
   const onLocaleChange = (localeSlug: string) => {
     if (localeSlug === locale) return;
 
-    // Update current URL to use the chosen locale
-    void router.push({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        channel: currentChannel.slug,
-        locale: localeSlug,
-      },
-    });
+    // TODO: update locale
+    // void router.push({
+    //   pathname: router.pathname,
+    //   query: {
+    //     ...router.query,
+    //     channel: currentChannel.slug,
+    //     locale: localeSlug,
+    //   },
+    // });
   };
 
   return (

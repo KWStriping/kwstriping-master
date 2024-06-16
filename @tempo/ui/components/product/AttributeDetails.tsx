@@ -1,8 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { ProductDetailsFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { getProductAttributes } from '@tempo/ui/utils/product';
-import { translate } from '@tempo/ui/utils/translations';
 
 export interface AttributeDetailsProps {
   product: Maybe<ProductDetailsFragment>;
@@ -21,10 +19,11 @@ export function AttributeDetails({ product, selectedVariant }: AttributeDetailsP
           {attributes.map((attribute) => (
             <tr key={attribute.id}>
               <th scope="row" className={'text-left border border-solid p-2 px-3'}>
-                {translate(attribute.attribute, 'name')}
+                {attribute.name}
+                {/* {translate(attribute, 'name')} */}
               </th>
               <td className={'border border-solid p-2'}>
-                {attribute.values.map((value, index) => {
+                {/* {attribute.values.map((value, index) => {
                   if (!value) return null;
                   return (
                     <div key={value.id} className={'text-center'}>
@@ -32,7 +31,7 @@ export function AttributeDetails({ product, selectedVariant }: AttributeDetailsP
                       {attribute.values.length !== index + 1 && <div>{' | '}</div>}
                     </div>
                   );
-                })}
+                })} */}
               </td>
             </tr>
           ))}

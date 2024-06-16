@@ -1,10 +1,14 @@
+import type {
+  CheckoutLineDeleteMutation,
+  CheckoutLineDeleteMutationVariables,
+  CheckoutLineFragment,
+  ErrorDetailsFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import type { CheckoutLineFragment, ErrorDetailsFragment } from '@tempo/api/generated/graphql';
 import {
   CheckoutLineUpdateDocument,
   CheckoutLineDeleteDocument,
 } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
@@ -28,7 +32,10 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
   const [checkoutLineUpdateMutation, { fetching: loadingLineUpdate }] = useMutation(
     CheckoutLineUpdateDocument
   );
-  const [removeProductFromCheckout] = useMutation(CheckoutLineDeleteDocument);
+  const [removeProductFromCheckout] = useMutation<
+    CheckoutLineDeleteMutation,
+    CheckoutLineDeleteMutationVariables
+  >(CheckoutLineDeleteDocument);
 
   const [quantity, setQuantity] = useState<number>();
   const [errors, setErrors] = useState<ErrorDetailsFragment[] | null>(null);
@@ -44,25 +51,27 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
   };
 
   const onQuantityUpdate = async (event: SyntheticEvent<HTMLInputElement>) => {
+    if (!checkoutId) return;
     changeLineState(event);
     if (!event?.currentTarget?.validity?.valid || event?.currentTarget?.value === '') return;
-    const result = await checkoutLineUpdateMutation({
+    const { error } = await checkoutLineUpdateMutation({
       id: checkoutId,
       lines: [
         {
+          lineId: line?.id,
           quantity: parseFloat(event.currentTarget.value),
-          productId: line?.product.id || '',
+          // productId: line?.product.id || '',
         },
       ],
-      languageCode: query.languageCode,
+      // languageCode: query.languageCode,
     });
-    const mutationErrors = result.data?.updateCheckoutLines?.errors;
-    if (mutationErrors && mutationErrors?.length) {
-      setErrors(mutationErrors);
-    }
+    // const mutationErrors = result.data?.updateCheckoutLines?.errors;
+    // if (mutationErrors && mutationErrors?.length) {
+    //   setErrors(mutationErrors);
+    // }
   };
 
-  if (!line) return null;
+  if (!line || !checkoutId) return null;
 
   return (
     <>
@@ -104,7 +113,7 @@ export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
                   removeProductFromCheckout({
                     checkoutId,
                     lineId: line?.id,
-                    languageCode: query.languageCode,
+                    // languageCode: query.languageCode,
                   })
                 }
                 className="text-md font-medium text-indigo-600 hover:text-indigo-500 sm:ml-0 sm:mt-3"

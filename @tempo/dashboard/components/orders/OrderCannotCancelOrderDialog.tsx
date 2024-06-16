@@ -21,7 +21,6 @@ const useStyles = makeStyles(
 );
 
 const OrderCannotCancelOrderDialog: FC<DialogProps> = ({ open, onClose }) => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <Dialog onClose={onClose} open={open} maxWidth="sm">

@@ -161,7 +161,6 @@ const AssignMembersDialog: FC<AssignMembersDialogProps> = ({
     RelayToFlat<NonNullable<SearchStaffMembersQuery['search']>>
   >([]);
 
-  // const styles = useStyles();
   const styles = {};
 
   const anchor = useRef<HTMLDivElement>();

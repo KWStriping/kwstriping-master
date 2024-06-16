@@ -1,14 +1,17 @@
+import type {
+  RemovePromoCodeFromCheckoutMutation,
+  RemovePromoCodeFromCheckoutMutationVariables,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import { CheckoutRemovePromoCodeDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
+import { RemovePromoCodeFromCheckoutDocument } from '@tempo/api/generated/graphql';
 import { IconButton } from '@tempo/ui/components/buttons/IconButton';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import ClearIcon from '@mui/icons-material/Clear';
 import type { FC } from 'react';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { summaryLabels } from './messages';
 import { SummaryMoneyRow } from './SummaryMoneyRow';
 import type { SummaryMoneyRowProps } from './SummaryMoneyRow';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 interface SummaryPromoCodeRowProps extends SummaryMoneyRowProps {
   promoCode?: string;
@@ -23,7 +26,10 @@ export const SummaryPromoCodeRow: FC<SummaryPromoCodeRowProps> = ({
   ...rest
 }) => {
   const { checkout } = useCheckout();
-  const [removePromoCodeFromCheckout] = useMutation(CheckoutRemovePromoCodeDocument);
+  const [removePromoCodeFromCheckout] = useMutation<
+    RemovePromoCodeFromCheckoutMutation,
+    RemovePromoCodeFromCheckoutMutationVariables
+  >(RemovePromoCodeFromCheckoutDocument);
 
   const onDelete = () => {
     if (!checkout?.id) return;
@@ -32,7 +38,7 @@ export const SummaryPromoCodeRow: FC<SummaryPromoCodeRowProps> = ({
       : { promoCodeId: promoCodeId as string };
     void removePromoCodeFromCheckout({
       id: checkout.id,
-      languageCode: 'EN_US', // TODO
+      // languageCode: 'EN_US', // TODO
       ...variables,
     });
   };

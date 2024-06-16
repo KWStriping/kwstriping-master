@@ -1,7 +1,3 @@
-import type { Choice } from '@tempo/ui/components/Filter';
-import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools';
-import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grow from '@mui/material/Grow';
@@ -15,8 +11,11 @@ import type { UseComboboxGetItemPropsOptions } from 'downshift';
 import { useCombobox } from 'downshift';
 import { useRef, useEffect } from 'react';
 import type { CSSProperties, FC, ReactNode } from 'react';
-
-// import useStyles from './styles';
+import styles from './index.module.css';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
+import type { SyntheticChangeEvent } from '@tempo/ui/utils';
+import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools';
+import type { Choice } from '@tempo/ui/components/Filter';
 
 export interface AutocompleteProps extends Omit<StandardTextFieldProps, 'children'> {
   children: (data: {
@@ -47,8 +46,6 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   onScrollToBottom,
   ...rest
 }) => {
-  // const styles = useStyles();
-  const styles = {};
   const anchor = useRef<HTMLDivElement | null>(null);
   const input = useRef<HTMLInputElement>();
 
@@ -107,7 +104,8 @@ export const Autocomplete: FC<AutocompleteProps> = ({
   }, [position?.y, dropdownRef]);
 
   const labelProps = getLabelProps();
-  const { ref: downshiftRef, ...inputProps } = getInputProps({
+  const inputProps = getInputProps({
+    refKey: 'ref',
     onFocus: () => {
       if (!isOpen) {
         input.current?.select();
@@ -153,10 +151,10 @@ export const Autocomplete: FC<AutocompleteProps> = ({
             </>
           ),
         }}
-        inputProps={{ ref: mergeRefs(downshiftRef, input) }}
+        // inputProps={{ ref: mergeRefs(downshiftRef, input) }} // TODO
       />
       <Popper
-        className={clsx('mt-1', styles.popper ?? '', menuProps.className)}
+        className={clsx('mt-1', styles.popper ?? '')} // , menuProps.className
         open={isOpen}
         anchorEl={input.current}
         transition

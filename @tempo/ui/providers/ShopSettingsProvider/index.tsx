@@ -1,6 +1,11 @@
 'use client';
 
-import type { CountryCode, ShopSettingsFragment } from '@tempo/api/generated/graphql';
+import type {
+  CountryCode,
+  ShopInfoQuery,
+  ShopInfoQueryVariables,
+  ShopSettingsFragment,
+} from '@tempo/api/generated/graphql';
 import { ShopInfoDocument } from '@tempo/api/generated/graphql';
 import { gql } from '@tempo/api';
 import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
@@ -123,6 +128,7 @@ const DEFAULTS: ShopSettings = {
     name: '', // TODO
   },
   defaultLocale: DEFAULT_LOCALE,
+  defaultWeightUnit: 'LB',
   demoMode: DEMO_MODE,
   domain: '',
   displayProductImages: true,
@@ -147,8 +153,8 @@ const DEFAULTS: ShopSettings = {
   logo: {
     __typename: 'Image',
     url: '/logo-black.svg',
-    height: '48',
-    width: '192',
+    height: 48,
+    width: 192,
     alt: 'Logo',
   },
   name: STOREFRONT_NAME,
@@ -163,6 +169,7 @@ const DEFAULTS: ShopSettings = {
   shopPhone: STOREFRONT_PHONE,
   shopEmail: STOREFRONT_EMAIL,
   allowedStates: [],
+  trackInventoryByDefault: true,
 };
 
 const ShopSettingsContext = createContext<ShopSettings>(DEFAULTS);
@@ -176,7 +183,7 @@ export const ShopSettingsProvider: FC<ShopSettingsProviderProps> = ({
   settings: settingsFromProps = {},
   children,
 }) => {
-  const [{ data }] = useQuery(ShopInfoDocument, {});
+  const [{ data }] = useQuery<ShopInfoQuery, ShopInfoQueryVariables>(ShopInfoDocument, {});
   const [settings, setSettings] = useState<ShopSettings>({
     ...DEFAULTS,
     ...settingsFromProps,

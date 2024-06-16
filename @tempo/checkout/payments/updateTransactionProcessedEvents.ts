@@ -3,12 +3,12 @@ import type {
   TransactionUpdateProcessedEventsMutationVariables,
 } from '@tempo/api/generated/graphql';
 import { TransactionUpdateProcessedEventsDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 export const updateTransactionProcessedEvents = async (
   args: TransactionUpdateProcessedEventsMutationVariables
 ) => {
-  const { data, error } = await getServerSideClient()
+  const { data, error } = await getClient()
     .mutation<
       TransactionUpdateProcessedEventsMutation,
       TransactionUpdateProcessedEventsMutationVariables

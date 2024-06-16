@@ -1,6 +1,6 @@
 import type { OrderQuery, OrderQueryVariables, OrderFragment } from '@tempo/api/generated/graphql';
 import { OrderDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 import type { Errors } from './types';
 
 export const getOrder = async (
@@ -13,7 +13,7 @@ export const getOrder = async (
       errors: Errors;
     }
 > => {
-  const { data, error } = await getServerSideClient().query(OrderDocument, { id }).toPromise();
+  const { data, error } = await getClient().query(OrderDocument, { id }).toPromise();
 
   if (error) {
     throw error;

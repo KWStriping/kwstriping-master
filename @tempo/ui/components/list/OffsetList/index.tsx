@@ -1,11 +1,6 @@
-import type {
-  BaseListBodyProps,
-  BaseListFooterProps,
-  BaseListHeaderProps,
-  BaseListItemCellProps,
-  BaseListItemProps,
-  BaseListProps,
-} from '@tempo/ui/components/list/BaseList';
+import { useTheme } from '@mui/material/styles';
+import type { FC } from 'react';
+import { useStyles } from './styles';
 import {
   BaseList,
   BaseListBody,
@@ -14,9 +9,14 @@ import {
   BaseListItem,
   BaseListItemCell,
 } from '@tempo/ui/components/list/BaseList';
-import { useTheme } from '@mui/material/styles';
-import type { FC } from 'react';
-import { useStyles } from './styles';
+import type {
+  BaseListBodyProps,
+  BaseListFooterProps,
+  BaseListHeaderProps,
+  BaseListItemCellProps,
+  BaseListItemProps,
+  BaseListProps,
+} from '@tempo/ui/components/list/BaseList';
 
 export const OffsetList: FC<BaseListProps> = BaseList;
 export const OffsetListHeader: FC<BaseListHeaderProps> = BaseListHeader;

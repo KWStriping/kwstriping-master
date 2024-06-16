@@ -30,7 +30,7 @@ function CartPage() {
             <>
               <h1 className="text-3xl font-bold my-8">Your cart is empty</h1>
               <p className="text-sm text-center">
-                <Link href={`/products`}>
+                <Link href={{ pathname: '/products' }}>
                   <Button>{'Go to catalog'}</Button>
                 </Link>
               </p>

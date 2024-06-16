@@ -15,7 +15,6 @@ import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account
 import getShopErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shop';
 import getWarehouseErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/warehouse';
 import TextField from '@mui/material/TextField';
-import type { TFunction } from '@tempo/next/i18n';
 import type { FC } from 'react';
 
 import { useAddressValidation } from '../AddressEdit/useAddressValidation';
@@ -32,7 +31,6 @@ export interface CompanyAddressFormProps {
 
 function getErrorMessage(
   err: AccountErrorFragment | ShopErrorFragment | WarehouseErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.__typename) {
     case 'AccountError':

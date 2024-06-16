@@ -7,7 +7,7 @@ import { moneyCellRenderer } from './MoneyCell';
 import { numberCellRenderer } from './NumberCell';
 
 function useCells() {
-  const { locale } = useRouter();
+  const { locale } = useLocale();
   const value = useMemo(
     () => [moneyCellRenderer(locale), numberCellRenderer(locale), dropdownCellRenderer],
     [locale]

@@ -1,3 +1,4 @@
+import type { ProductChannelListingUpdateMutation, ProductChannelListingUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductPage/form';
 import { ProductChannelListingUpdateDocument } from '@tempo/api/generated/graphql';
@@ -44,8 +45,8 @@ const createVariantUpdateListingInput = (data: Product) =>
   }));
 
 export const useSubmitChannels = () => {
-  const [updateChannelListing] = useMutation(ProductChannelListingUpdateDocument);
-  const [updateChannels, updateChannelsOpts] = useMutation(ProductChannelListingUpdateDocument);
+  const [updateChannelListing] = useMutation<ProductChannelListingUpdateMutation, ProductChannelListingUpdateMutationVariables>(ProductChannelListingUpdateDocument);
+  const [updateChannels, updateChannelsOpts] = useMutation<ProductChannelListingUpdateMutation, ProductChannelListingUpdateMutationVariables>(ProductChannelListingUpdateDocument);
 
   const handleSubmitChannels = async (data: Product, variant: Variant) => {
     const channelsHaveChanged = isFormDataChanged(data, variant);

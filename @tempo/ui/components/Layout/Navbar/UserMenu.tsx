@@ -1,8 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { UserDetailsFragment } from '@tempo/api/generated/graphql';
 import { useLogout } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,6 +10,7 @@ import Link from 'next/link';
 import type { HTMLAttributes } from 'react';
 import styles from './index.module.css';
 import NavIconButton from './NavIconButton';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 interface UserMenuProps extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
   user: Maybe<Pick<UserDetailsFragment, 'avatar' | 'firstName' | 'isStaff'>>;

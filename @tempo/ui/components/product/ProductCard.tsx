@@ -1,11 +1,11 @@
 import type { ProductCardFragment } from '@tempo/api/generated/graphql';
-import { useShopSettings } from '@tempo/ui/providers';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { translate } from '@tempo/ui/utils/translations';
 import PhotoIcon from '@mui/icons-material/Photo';
 import Skeleton from '@mui/material/Skeleton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { translate } from '@tempo/ui/utils/translations';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useShopSettings } from '@tempo/ui/providers';
 
 export interface ProductCardProps {
   product: Maybe<ProductCardFragment>;
@@ -13,9 +13,7 @@ export interface ProductCardProps {
 
 const getCardSecondaryDescription = (product: Maybe<ProductCardFragment>) => {
   if (!product) return '';
-  const artistAttribute = product.attributes.find(
-    (attribute) => attribute.attribute.slug === 'artist'
-  );
+  const artistAttribute = product.attributes.find((attribute) => attribute.slug === 'artist');
   const mainValue = artistAttribute?.values[0];
   if (mainValue?.name) return mainValue.name;
   if (product.category) return translate(product.category, 'name');

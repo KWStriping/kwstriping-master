@@ -39,7 +39,6 @@ const ModalTitle: FC<ModalTitleProps> = ({ title, onClose, withBorder = false })
       )}
     </>
   );
-  // const styles = useStyles();
   const styles = {};
 };
 

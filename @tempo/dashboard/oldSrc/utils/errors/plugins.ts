@@ -1,6 +1,5 @@
 import type { PluginErrorFragment } from '@tempo/api/generated/graphql';
 import { PluginErrorCode } from '@tempo/api/generated/constants';
-import type { TFunction } from '@tempo/next/i18n';
 
 import { getCommonFormFieldErrorMessage } from './common';
 
@@ -15,7 +14,7 @@ const messages = {
   },
 };
 
-function getPluginErrorMessage(err: PluginErrorFragment, t: TFunction): string {
+function getPluginErrorMessage(err: PluginErrorFragment): string {
   if (err) {
     switch (err.code) {
       case PluginErrorCode.PluginMisconfigured:

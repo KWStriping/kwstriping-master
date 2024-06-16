@@ -15,7 +15,7 @@ import ContextProvider from './context';
 type LayoutProps = Pick<CoreLayoutProps, 'children' | 'transparentBg'>;
 
 const mainMenuQuery = gql(`
-  query MainMenu($channel: String!) {
+  query MainMenu($channel: String) {
     menu(slug: "navbar", channel: $channel) {
       id
       items {

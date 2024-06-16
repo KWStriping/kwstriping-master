@@ -1,3 +1,4 @@
+import type { CheckIfOrderExistsQuery, CheckIfOrderExistsQueryVariables } from '@tempo/api/generated/graphql';
 import type { UseQueryResult } from '@tempo/api/hooks';
 import { useQuery } from '@tempo/api/hooks';
 import { useState } from 'react';
@@ -13,7 +14,7 @@ type CheckIfOrderExistsQueryHookResult = UseQueryResult<
 function useCheckIfOrderExists(): [CheckIfOrderExistsQueryHookResult, (query: string) => void] {
   const [id, setId] = useState('');
   const setIdDebounced = useDebounce(setId);
-  const [result] = useQuery(CheckIfOrderExistsDocument, {
+  const [result] = useQuery<CheckIfOrderExistsQuery, CheckIfOrderExistsQueryVariables>(CheckIfOrderExistsDocument, {
     pause: id === '',
     variables: {
       id,

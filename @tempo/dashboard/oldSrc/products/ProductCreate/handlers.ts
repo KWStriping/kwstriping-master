@@ -136,7 +136,7 @@ export function createHandler(
     }
 
     if (!hasVariants) {
-      const result = await gather([
+      const result = await Promise.all([
         updateChannels(getChannelsVariables(productId, formData.channelListings)),
         createProduct(getSimpleProductVariables(formData, productId)),
       ]);

@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 
 export const errorMessages = {
   imageUploadErrorTitle: {
@@ -413,6 +412,6 @@ export const paymentStatusMessages = {
   },
 };
 
-export function translateBoolean(value: boolean, t: TFunction): string {
+export function translateBoolean(value: boolean): string {
   return value ? (m.dashboard_yes() ?? 'Yes') : (m.no() ?? 'No');
 }

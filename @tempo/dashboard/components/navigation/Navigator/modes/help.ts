@@ -1,11 +1,9 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 
 import type { QuickSearchAction, QuickSearchMode } from '../types';
 
 function getHelpModeActions(
   query: string,
-  t: TFunction,
   setMode: (mode: QuickSearchMode) => void
 ): QuickSearchAction[] {
   if (query !== '') {

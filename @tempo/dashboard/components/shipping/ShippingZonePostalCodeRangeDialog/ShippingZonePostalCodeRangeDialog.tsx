@@ -32,7 +32,6 @@ const ShippingZonePostalCodeRangeDialog: FC<ShippingZonePostalCodeRangeDialogPro
   onClose,
   onSubmit,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const initial: MinMax = {

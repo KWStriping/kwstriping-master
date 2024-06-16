@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { GiftCardErrorFragment } from '@tempo/api/generated/graphql';
 import { GiftCardErrorCode } from '@tempo/api/generated/constants';
 import commonErrorMessages, {
@@ -23,7 +22,6 @@ const giftCardErrorMessages = {
 
 export function getGiftCardErrorMessage(
   error: Omit<GiftCardErrorFragment, '__typename' | 'message'> | undefined,
-  t: TFunction
 ): string {
   if (error) {
     switch (error.code) {

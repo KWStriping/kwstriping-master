@@ -2,7 +2,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import clsx from 'clsx';
 import type { FC } from 'react';
-// import useStyles from './styles';
 
 export type PaginationRowNumberSelectLabels = Record<'noOfRows', string>;
 export interface PaginationRowNumberSelectProps {

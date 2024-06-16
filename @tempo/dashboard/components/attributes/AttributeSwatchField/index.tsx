@@ -1,3 +1,4 @@
+import type { FileUploadMutation, FileUploadMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -24,7 +25,7 @@ const AttributeSwatchField: FC<AttributeSwatchFieldProps<ValueEditDialogFormData
   const { data } = props;
   const notify = useNotifier();
   const [processing, setProcessing] = useState(false);
-  const [uploadFile] = useMutation(FileUploadDocument, {});
+  const [uploadFile] = useMutation<FileUploadMutation, FileUploadMutationVariables>(FileUploadDocument, {});
   const [type, setType] = useState<SwatchType>(data?.fileUrl ? 'image' : 'picker');
 
   const handleColorChange = (hex: string) =>

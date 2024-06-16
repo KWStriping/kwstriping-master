@@ -1,0 +1,37 @@
+/* .dark {
+  & $tooltip {
+    color: (props) => theme.vars.palette.primary[200];
+    background-color: getBackgroundColor(true, theme);
+    border-color: getBorder-color(true, theme);
+  }
+} */
+/* .tooltip {
+  background-color: getBackgroundColor(false, theme);
+  padding: theme.spacing(1.5);
+  border-radius: theme.spacing(1);
+  border: `1px solid ${theme.vars.palette.primary[300]}`;
+  border-width: 1px;
+  font-weight: 500;
+  border-color: getBorder-color(false, theme);
+
+  color: (props) => {
+    switch (props.variant) {
+      case 'success':
+        return theme.vars.palette.success.dark;
+      case 'warning':
+        return theme.vars.palette.warning.dark;
+      case 'error':
+        return theme.vars.palette.error.dark;
+      default:
+        return theme.vars.palette.primary[100];
+    }
+  }
+}
+.header {
+  font-size: theme.typography.caption.font-size;
+  letter-spacing: '0.1em';
+  font-weight: 500;
+  text-transform: 'uppercase';
+  margin-bottom: theme.spacing(0.5);
+  color: light.primary[300];
+} */

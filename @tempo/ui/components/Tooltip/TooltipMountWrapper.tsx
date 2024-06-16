@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import styles from './TooltipMountWrapper.module.css';
 
 // import { useMountWrapperStyles } from './styles';
 
@@ -13,7 +14,6 @@ export const TooltipMountWrapper = forwardRef<HTMLButtonElement, { children: Rea
   ({ children, ...props }, ref) => {
     // const styles = useMountWrapperStyles();
 
-    const styles = {};
     return (
       <button className={styles.wrapper ?? ''} {...props} ref={ref}>
         {children}

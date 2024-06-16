@@ -1,3 +1,4 @@
+import type { ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { useEffect } from 'react';
 import type { FC } from 'react';
@@ -28,7 +29,7 @@ const GiftCardCreateMoneyInput: FC<GiftCardCreateMoneyInputProps> = ({
   change,
   set,
 }) => {
-  const [{ data: channelCurrenciesData }] = useQuery(ChannelCurrenciesDocument, {});
+  const [{ data: channelCurrenciesData }] = useQuery<ChannelCurrenciesQuery, ChannelCurrenciesQueryVariables>(ChannelCurrenciesDocument, {});
 
   const { channelCurrencies } = channelCurrenciesData?.shop;
 

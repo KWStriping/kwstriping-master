@@ -1,5 +1,4 @@
 import type { SetPasswordData } from '@tempo/api/auth';
-import type { TFunction } from '@tempo/next/i18n';
 import { AccountErrorCode } from '@tempo/api/generated/constants';
 
 import { getCommonFormFieldErrorMessage } from './common';
@@ -52,7 +51,7 @@ interface ErrorFragment {
   field: string | null;
 }
 
-function getAccountErrorMessage(err: ErrorFragment, t: TFunction): string {
+function getAccountErrorMessage(err: ErrorFragment): string {
   if (err) {
     switch (err.code) {
       case AccountErrorCode.InvalidPassword:

@@ -40,7 +40,6 @@ export interface CustomerInfoProps {
 
 const CustomerInfo: FC<CustomerInfoProps> = (props) => {
   const { data, disabled, errors, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const formErrors = getFormErrors(['firstName', 'lastName', 'email'], errors);

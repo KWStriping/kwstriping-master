@@ -1,7 +1,6 @@
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
 import { ShippingErrorCode } from '@tempo/api/generated/constants';
 import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
-import type { TFunction } from '@tempo/next/i18n';
 
 const messages = {
   invalid: {
@@ -23,7 +22,6 @@ const messages = {
 
 export function getShippingPriceRateErrorMessage(
   err: ShippingErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.code) {
     case ShippingErrorCode.MaxLessThanMin:
@@ -35,7 +33,6 @@ export function getShippingPriceRateErrorMessage(
 
 export function getShippingWeightRateErrorMessage(
   err: ShippingErrorFragment,
-  t: TFunction
 ): string {
   switch (err?.code) {
     case ShippingErrorCode.MaxLessThanMin:

@@ -11,7 +11,7 @@ export const getOrderIdFromNotification = async (
 };
 
 export const getOrderId = async (
-  additionalData: Types.notification.AdditionalData,
+  additionalData: any, // Types.notification.AdditionalData,
   apiKey: string
 ) => {
   const paymentLinkId = additionalData.paymentLinkId;
@@ -28,7 +28,7 @@ export const getOrderId = async (
   const checkout = new CheckoutAPI(client);
 
   try {
-    const { metadata } = await checkout.getPaymentLinks(paymentLinkId);
+    const { metadata } = await checkout.PaymentLinksApi.getPaymentLink(paymentLinkId);
 
     return metadata?.orderId;
   } catch (e) {
@@ -40,10 +40,8 @@ export const getOrderId = async (
   }
 };
 
-export const getOrderIdFromAdditionalData = (
-  additionalData: Types.notification.AdditionalData & {
-    ['metadata?.orderId']?: string | null | undefined;
-  }
-) => {
+export const getOrderIdFromAdditionalData = (additionalData: {
+  ['metadata?.orderId']?: string | null | undefined;
+}) => {
   return 'metadata?.orderId' in additionalData ? additionalData['metadata?.orderId'] : null;
 };

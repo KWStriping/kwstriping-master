@@ -1,20 +1,18 @@
+import MenuItem from '@mui/material/MenuItem';
+import type { FC } from 'react';
+import type { FilterData } from '../types';
+import styles from './AutocompleteFilterField.module.css';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import { Autocomplete } from '@tempo/ui/components/inputs/Autocomplete';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import MenuItem from '@mui/material/MenuItem';
-import type { FC } from 'react';
 
 // import useStyles from '../styles';
-import type { FilterData } from '../types';
 
 export interface FilterContentProps {
   filter: FilterData;
 }
 
 export const AutocompleteFilterField: FC<FilterContentProps> = ({ filter }) => {
-  // const styles = useStyles();
-
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name, options } = filter;

@@ -85,7 +85,7 @@ jobs:
           SHA: ${{ github.sha }}
           PORT_API: ${{ vars.PORT_API }}
           PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
-          PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+          PORT_FRONT: ${{ vars.PORT_FRONT }}
           AUTH_DISCORD_ID: ${{ secrets.AUTH_DISCORD_ID }}
           AUTH_DISCORD_KEY: ${{ secrets.AUTH_DISCORD_KEY }}
           AUTH_DISCORD_SECRET: ${{ secrets.AUTH_DISCORD_SECRET }}
@@ -192,7 +192,7 @@ jobs:
           build-args: |
             ORG=${{ vars.ORG }}
             APP=${{ vars.APP }}
-            PORT=${{ vars.PORT_STOREFRONT }}
+            PORT=${{ vars.PORT_FRONT }}
             API_URL=${{ vars.API_URL }}
           push: true
           cache-from: type=gha,scope=${{ vars.APP }}

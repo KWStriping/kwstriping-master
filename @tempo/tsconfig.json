@@ -1,0 +1,4 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx", "../_trash/_auth.ts"]
+}

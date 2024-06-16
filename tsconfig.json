@@ -3,10 +3,15 @@
   "include": [
     "apps/**/*",
     "@tempo/**/*",
-    "scripts/*"
+    "./scripts/*",
+    "./*.ts",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*.test.ts",
+    "**/fixtures/**/*",
+    "**/_*/**/*",
+    "_*"
   ],
   "compilerOptions": {
     "allowJs": true,
@@ -52,29 +57,33 @@
     "strict": true,
     "target": "ESNext",
     "noPropertyAccessFromIndexSignature": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@tempo/api/types"
+    ],
     "paths": {
-      "@tempo/api": [
+      "@tempo/api/*": [
         "@tempo/api/*"
       ],
-      "@tempo/blog": [
+      "@tempo/blog/*": [
         "@tempo/blog/*"
       ],
-      "@tempo/checkout": [
+      "@tempo/checkout/*": [
         "@tempo/checkout/*"
       ],
-      "@tempo/data": [
+      "@tempo/data/*": [
         "@tempo/data/*"
       ],
-      "@tempo/forms": [
+      "@tempo/forms/*": [
         "@tempo/forms/*"
       ],
-      "@tempo/next": [
+      "@tempo/next/*": [
         "@tempo/next/*"
       ],
-      "@tempo/ui": [
+      "@tempo/ui/*": [
         "@tempo/ui/*"
       ],
-      "@tempo/utils": [
+      "@tempo/utils/*": [
         "@tempo/utils/*"
       ],
       "@paraglide/*": [

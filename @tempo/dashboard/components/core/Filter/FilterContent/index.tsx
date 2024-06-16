@@ -1,11 +1,9 @@
 import { Accordion, AccordionSummary } from '@tempo/ui/components/Accordion';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import type { Ref, FC } from 'react';
+import type { Ref } from 'react';
 import { forwardRef, useState } from 'react';
 import type { FilterAutocompleteDisplayValues } from '../FilterAutocompleteField';
 
@@ -17,6 +15,8 @@ import FilterContentBody from './FilterContentBody';
 import FilterContentBodyNameField from './FilterContentBodyNameField';
 import FilterContentHeader from './FilterContentHeader';
 import FilterErrorsList from './FilterErrorsList';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
 
 const useExpanderStyles = makeStyles(
   (theme) => ({
@@ -75,7 +75,7 @@ export interface FilterContentProps<K extends string = string> {
   ref?: Ref<HTMLDivElement>;
 }
 
-export const FilterContent: FC<FilterContentProps> = forwardRef(
+export const FilterContent = forwardRef<HTMLDivElement, FilterContentProps>(
   (
     {
       currencySymbol,

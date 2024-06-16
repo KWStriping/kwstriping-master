@@ -58,7 +58,6 @@ export interface OrderInvoiceListProps {
 
 const OrderInvoiceList: FC<OrderInvoiceListProps> = (props) => {
   const { invoices, onInvoiceGenerate, onInvoiceClick, onInvoiceSend } = props;
-  // const styles = useStyles();
   const styles = {};
   const generatedInvoices = invoices?.filter((invoice) => invoice.status === 'SUCCESS');
 

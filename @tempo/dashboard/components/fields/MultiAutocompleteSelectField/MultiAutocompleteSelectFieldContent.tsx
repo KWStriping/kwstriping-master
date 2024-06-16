@@ -1,9 +1,4 @@
-import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
 import ChevronDown from '@dashboard/assets/images/ChevronDown.svg';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
@@ -15,6 +10,9 @@ import type { GetItemPropsOptions } from 'downshift';
 import { useEffect, useState, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 const menuItemHeight = 46;
 const maxMenuItems = 5;
@@ -35,8 +33,8 @@ export interface MultiAutocompleteSelectFieldContentProps extends Partial<FetchM
   choices: MultiAutocompleteChoiceType[];
   displayCustomValue: boolean;
   displayValues: MultiAutocompleteChoiceType[];
-  getItemProps: (options: GetItemPropsOptions<string>) => unknown;
-  highlightedIndex: number;
+  getItemProps: (options: GetItemPropsOptions<string>) => any;
+  highlightedIndex?: Maybe<number>;
   inputValue: string;
 }
 
@@ -134,9 +132,9 @@ const MultiAutocompleteSelectFieldContent: FC<MultiAutocompleteSelectFieldConten
                 data-test-id="multi-autocomplete-select-option-custom"
               >
                 <AddIcon className={styles.addIcon ?? ''} color="primary" />
-                <Trans t={t} i18nKey={'U2WgwW'} value={inputValue}>
+                {/* <Trans t={t} i18nKey={'U2WgwW'} value={inputValue}>
                   {'Add new value: {value}'}
-                </Trans>
+                </Trans> */}
               </MenuItem>
             )}
             {(!!choices?.length || !!displayValues?.length) && displayCustomValue && (
@@ -150,7 +148,7 @@ const MultiAutocompleteSelectFieldContent: FC<MultiAutocompleteSelectFieldConten
                 disabled={value.disabled}
                 component="div"
                 {...getItemProps({
-                  item: value.value,
+                  item: value.value as string,
                 })}
                 data-test-id="multi-autocomplete-select-option"
               >
@@ -181,7 +179,7 @@ const MultiAutocompleteSelectFieldContent: FC<MultiAutocompleteSelectFieldConten
                   component="div"
                   {...getItemProps({
                     index: choiceIndex,
-                    item: suggestion.value,
+                    item: suggestion.value as string,
                   })}
                   data-test-id="multi-autocomplete-select-option"
                 >
@@ -208,7 +206,7 @@ const MultiAutocompleteSelectFieldContent: FC<MultiAutocompleteSelectFieldConten
           component="div"
           data-test-id="multi-autocomplete-select-no-options"
         >
-          {m.dashboard_X_PAb() ?? 'No results found'}
+          {'No results found'}
         </MenuItem>
       )}
       {(hasMore || loading) && (

@@ -1,9 +1,9 @@
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
+import type { ProductMediaItemFragment } from '@tempo/api/generated/graphql';
 import CloseIcon from '@mui/icons-material/Close';
 import Image from 'next/image';
 
 interface ImageExpandProps {
-  image?: Maybe<ProductMediaFragment>;
+  image?: Maybe<ProductMediaItemFragment>;
   onRemoveExpand: () => void;
 }
 export function ImageExpand({ image, onRemoveExpand }: ImageExpandProps) {

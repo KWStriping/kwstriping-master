@@ -1,22 +1,22 @@
 import * as m from '@paraglide/messages';
 import { ProductCollectionDocument } from '@tempo/api/generated/graphql';
 import type {
+  ProductCollectionQuery,
   ProductCollectionQueryVariables,
   ProductFilter,
   ProductOrdering,
 } from '@tempo/api/generated/graphql';
 
-// import { useTranslation } from '@tempo/next/i18n';
 import type { UrlSorting } from '@tempo/next/types/url';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
-import { Spinner } from '@tempo/ui/components/Spinner';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import clsx from 'clsx';
 import { ProductCard } from '../product/ProductCard';
 import { Pagination } from '../Pagination';
+import { Spinner } from '@tempo/ui/components/Spinner';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 
 export interface ProductCollectionProps {
   filter?: ProductFilter;
@@ -50,7 +50,10 @@ export function ProductCollection({
       }),
   };
 
-  const [{ data, fetching: loading, error }, fetchMore] = useQuery(ProductCollectionDocument, {
+  const [{ data, fetching: loading, error }, fetchMore] = useQuery<
+    ProductCollectionQuery,
+    ProductCollectionQueryVariables
+  >(ProductCollectionDocument, {
     variables,
   });
 

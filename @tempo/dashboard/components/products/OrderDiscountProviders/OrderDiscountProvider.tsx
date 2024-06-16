@@ -1,3 +1,4 @@
+import type { OrderDiscountAddMutation, OrderDiscountAddMutationVariables } from '@tempo/api/generated/graphql';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier, { useDefaultNotifierSuccessErrorData } from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -36,7 +37,7 @@ export const OrderDiscountProvider: FC<OrderDiscountProviderProps> = ({ children
 
   const orderDiscount = getManualOrderDiscount(order);
 
-  const [addDiscountToOrder, addDiscountToOrderOpts] = useMutation(OrderDiscountAddDocument, {
+  const [addDiscountToOrder, addDiscountToOrderOpts] = useMutation<OrderDiscountAddMutation, OrderDiscountAddMutationVariables>(OrderDiscountAddDocument, {
     onCompleted: ({ addDiscountToOrder: { errors } }) => handleDiscountDataSubmission(errors),
   });
 

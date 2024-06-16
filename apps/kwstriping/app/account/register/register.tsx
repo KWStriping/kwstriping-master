@@ -1,8 +1,8 @@
-import * as m from '@paraglide/messages';
 import { useRegister } from '@tempo/api/auth/react/hooks/register';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import * as m from '@paraglide/messages';
 import { usePaths } from '@kwstriping/hooks/usePaths';
 
 export interface RegisterFormData {

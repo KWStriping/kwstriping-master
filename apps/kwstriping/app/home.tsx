@@ -38,6 +38,7 @@ function Home() {
   const catalogCta = 'Request service';
   const productSlug = 'striping-service';
   const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/contact`;
+  console.log('Home');
   return (
     <Layout transparentBg>
       <main

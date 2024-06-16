@@ -1,18 +1,17 @@
-import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import type { Choice } from '@tempo/ui/components/Filter';
 import { MultipleValueAutocomplete } from '@tempo/ui/components/inputs/MultipleValueAutocomplete';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import CloseIcon from '@mui/icons-material/Close';
 import { Card, CardActions, CardContent } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import type { Ref, FC } from 'react';
+import type { Ref } from 'react';
 import { forwardRef } from 'react';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export interface ColumnPickerContentProps extends FetchMoreProps {
   choices: Choice[];
@@ -25,7 +24,7 @@ export interface ColumnPickerContentProps extends FetchMoreProps {
   ref?: Ref<HTMLDivElement>;
 }
 
-const ColumnPickerContent: FC<ColumnPickerContentProps> = forwardRef((props, ref) => {
+const ColumnPickerContent = forwardRef<HTMLDivElement, ColumnPickerContentProps>((props, ref) => {
   const {
     choices,
     initialValues,
@@ -46,18 +45,18 @@ const ColumnPickerContent: FC<ColumnPickerContentProps> = forwardRef((props, ref
             <CloseIcon />
           </IconButton>
         }
-        title={m.dashboard_title() ?? 'Customize list'}
+        title={'Customize list'}
       />
       <CardContent className={styles.content ?? ''}>
         <Typography color="textSecondary" variant="caption" className={styles.subHeader ?? ''}>
-          {m.dashboard_columnSubheader() ?? 'Column settings'}
+          {'Column settings'}
         </Typography>
         <MultipleValueAutocomplete
           className={styles.choicesContainer ?? ''}
           choices={choices}
           enableReinitialize
           fullWidth
-          label={m.dashboard_columnLabel() ?? 'Selected columns'}
+          label={'Selected columns'}
           loading={loading}
           name="columns"
           initialValue={initialValues}
@@ -79,10 +78,10 @@ const ColumnPickerContent: FC<ColumnPickerContentProps> = forwardRef((props, ref
       </CardContent>
       <CardActions className={styles.actions ?? ''}>
         <Button color="primary" onClick={onSave}>
-          {m.dashboard_save() ?? 'Save'}
+          {'Save'}
         </Button>
         <Button color="secondary" onClick={onReset}>
-          {m.dashboard_reset() ?? 'Reset'}
+          {'Reset'}
         </Button>
       </CardActions>
     </Card>

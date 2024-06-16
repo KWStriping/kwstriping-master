@@ -1,4 +1,3 @@
-import { Button } from '@tempo/ui/components/buttons/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import type { ButtonGroupProps, ButtonProps } from '@mui/material';
 import { ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList } from '@mui/material';
@@ -7,11 +6,12 @@ import Popper from '@mui/material/Popper';
 import { useState, useRef } from 'react';
 import type { MouseEvent, FC } from 'react';
 import styles from './index.module.css';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface Option {
   label: string;
   disabled?: boolean;
-  onSelect(e: MouseEvent<HTMLLIElement, MouseEvent>): void;
+  onSelect(e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>): void;
 }
 
 export interface ButtonWithSelectProps
@@ -32,8 +32,8 @@ export const ButtonWithSelect: FC<ButtonWithSelectProps> = ({
   const anchorRef = useRef<HTMLDivElement | null>(null);
 
   const handleMenuItemClick = (
-    event: MouseEvent<HTMLLIElement, MouseEvent>,
-    onClick: (event: MouseEvent<HTMLLIElement, MouseEvent>) => void
+    event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>,
+    onClick: (event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => void
   ) => {
     onClick(event);
     setOpen(false);
@@ -43,7 +43,7 @@ export const ButtonWithSelect: FC<ButtonWithSelectProps> = ({
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: MouseEvent | TouchEvent) => {
+  const handleClose = (event: globalThis.MouseEvent | TouchEvent) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return;
     }

@@ -174,7 +174,7 @@ export const handleAssignMedia = async <T extends Pick<ProductFragment, 'id' | '
     media
   );
 
-  const assignResults = await gather(
+  const assignResults = await Promise.all(
     added.map((mediaItemId) =>
       assignMedia({
         mediaItemId,
@@ -182,7 +182,7 @@ export const handleAssignMedia = async <T extends Pick<ProductFragment, 'id' | '
       })
     )
   );
-  const unassignResults = await gather(
+  const unassignResults = await Promise.all(
     removed.map((mediaItemId) =>
       unassignMedia({
         mediaItemId,

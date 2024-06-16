@@ -6,7 +6,7 @@ export function MuiAutocomplete<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >({ options, ...props }: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>) {
   const [open, setOpen] = useState(false);
   const readOnly = !options.length || options.length === 1;

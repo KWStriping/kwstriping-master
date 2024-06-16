@@ -26,7 +26,7 @@ export function createUpdateHandler(
   return async (formData: VoucherDetailsPageFormData) => {
     const { id } = voucher;
 
-    const errors = await gather([
+    const errors = await Promise.all([
       updateVoucher({
         id,
         input: {

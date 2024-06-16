@@ -28,7 +28,7 @@ export function createUpdateHandler(
 ) {
   return async (formData: SaleDetailsPageFormData) => {
     const { id } = sale;
-    const errors = await gather([
+    const errors = await Promise.all([
       updateSale({
         id,
         input: {

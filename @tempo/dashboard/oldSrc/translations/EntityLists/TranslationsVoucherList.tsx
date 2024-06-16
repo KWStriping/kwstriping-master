@@ -1,3 +1,4 @@
+import type { VoucherTranslationsQuery, VoucherTranslationsQueryVariables } from '@tempo/api/generated/graphql';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks';
 import type { FC } from 'react';
@@ -9,7 +10,7 @@ import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePagina
 import { languageEntityUrl, TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
 
 const TranslationsVoucherList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
-  const [{ data, fetching: loading }] = useQuery(VoucherTranslationsDocument, {
+  const [{ data, fetching: loading }] = useQuery<VoucherTranslationsQuery, VoucherTranslationsQueryVariables>(VoucherTranslationsDocument, {
     displayLoader: true,
     variables,
   });

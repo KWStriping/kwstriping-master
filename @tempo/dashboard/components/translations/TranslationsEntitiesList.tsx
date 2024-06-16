@@ -45,7 +45,6 @@ const useStyles = makeStyles(
 
 const TranslationsEntitiesList: FC<TranslationsEntitiesListProps> = (props) => {
   const { disabled, entities, getRowHref } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

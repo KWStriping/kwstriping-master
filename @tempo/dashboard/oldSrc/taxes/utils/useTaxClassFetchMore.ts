@@ -1,3 +1,4 @@
+import type { TaxClassAssignQuery, TaxClassAssignQueryVariables } from '@tempo/api/generated/graphql';
 import { useQuery } from '@tempo/api/hooks';
 import { TaxClassAssignDocument } from '@tempo/api/generated/graphql';
 import type { TaxClassBaseFragment } from '@tempo/api/generated/graphql';
@@ -18,7 +19,7 @@ interface UseTaxClassFetchMoreHookResult {
  * @returns fetchMore - props for paginated components, e.g. dropdowns
  */
 export function useTaxClassFetchMore(): UseTaxClassFetchMoreHookResult {
-  const [{ data, fetching: loading }, fetchMore] = useQuery(TaxClassAssignDocument, {
+  const [{ data, fetching: loading }, fetchMore] = useQuery<TaxClassAssignQuery, TaxClassAssignQueryVariables>(TaxClassAssignDocument, {
     variables: {
       first: 20,
     },

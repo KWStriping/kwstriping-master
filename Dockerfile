@@ -73,15 +73,14 @@ RUN pnpm install --ignore-scripts
 # Copy all files necessary for building
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
+COPY --from=files ${ROOT_DIR}/tsconfig.base.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
 # TODO
 COPY scripts ${ROOT_DIR}/scripts
-COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
-COPY apps/${APP}/paraglide ${ROOT_DIR}/apps/${APP}/paraglide
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
-RUN ls && ls scripts
-RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
+RUN ls && NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
+RUN ls && echo "" && ls /root/apps/kwstriping/.next && exit 1
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #

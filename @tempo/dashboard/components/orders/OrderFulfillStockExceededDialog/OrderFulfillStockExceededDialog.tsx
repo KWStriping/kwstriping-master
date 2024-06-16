@@ -40,7 +40,7 @@ const OrderFulfillStockExceededDialog: FC<OrderFulfillStockExceededDialogProps> 
     const line = 'orderLine' in el ? el.orderLine : el;
     const lineFormWarehouse = formsetData?.find((item) => item.id === el.id)?.value?.[0]
       ?.warehouse;
-    const stock = line.variant?.stocks.find(
+    const stock = line.product?.stocks.find(
       (stock) => stock.warehouse.id === lineFormWarehouse?.id
     );
 

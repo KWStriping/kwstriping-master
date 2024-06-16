@@ -1,18 +1,16 @@
-import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
 
 // import useStyles from '../styles';
 import type { EventTarget, FilterData } from '../types';
+import styles from './TextFilterField.module.css';
+import { useFilterActions } from '@tempo/ui/components/Filter/context';
 
 export interface FilterContentProps {
   filter: FilterData;
 }
 
 export const TextFilterField: FC<FilterContentProps> = ({ filter }) => {
-  // const styles = useStyles();
-
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name } = filter;

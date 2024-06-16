@@ -1,7 +1,6 @@
-import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
+import * as m from '@paraglide/messages';
 import type { HomepageBlockFragment, ProductFilter } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import Link from 'next/link';
 import { RichText } from '@tempo/ui/components/inputs/RichText';
 import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';

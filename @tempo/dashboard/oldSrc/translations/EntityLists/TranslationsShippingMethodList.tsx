@@ -1,3 +1,4 @@
+import type { ShippingMethodTranslationsQuery, ShippingMethodTranslationsQueryVariables } from '@tempo/api/generated/graphql';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks';
 import type { FC } from 'react';
@@ -12,7 +13,7 @@ const TranslationsShippingMethodList: FC<TranslationsEntityListProps> = ({
   params,
   variables,
 }) => {
-  const [{ data, fetching: loading }] = useQuery(ShippingMethodTranslationsDocument, {
+  const [{ data, fetching: loading }] = useQuery<ShippingMethodTranslationsQuery, ShippingMethodTranslationsQueryVariables>(ShippingMethodTranslationsDocument, {
     displayLoader: true,
     variables,
   });
