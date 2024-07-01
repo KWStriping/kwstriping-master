@@ -1,4 +1,4 @@
-import { createFilterStructure } from '@dashboard/components/collections/CollectionListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/collections/CollectionListPage';
 import { CollectionListUrlFilters } from '@tempo/collections/urls';
 import { CollectionPublished } from '@tempo/graphql';
 import { getFilterQueryParams } from '@tempo/utils/filters';

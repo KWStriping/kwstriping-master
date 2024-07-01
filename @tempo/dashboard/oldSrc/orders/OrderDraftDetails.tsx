@@ -4,7 +4,7 @@ import { useSearch } from '@tempo/api/hooks';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import type { PartialMutationProviderOutput } from '@tempo/api/types';
 import { extractMutationErrors } from '@tempo/api/utils';
-import type { OrderUrlDialog, OrderUrlQueryParams } from '@dashboard/oldSrc/urls';
+import type { OrderUrlDialog, OrderUrlQueryParams } from '@tempo/dashboard/oldSrc/urls';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 import { WindowTitle } from '@tempo/dashboard/components/core/WindowTitle';

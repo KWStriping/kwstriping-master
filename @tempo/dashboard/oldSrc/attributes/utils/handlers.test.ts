@@ -2,7 +2,7 @@ import {
   createAttributeMultiChangeHandler,
   prepareAttributesInput,
 } from '@tempo/attributes/utils/handlers';
-import { AttributeInput, AttributeInputData } from '@dashboard/components/Attributes';
+import { AttributeInput, AttributeInputData } from '@tempo/dashboard/components/Attributes';
 import { AttributeInputType, ValueDetailsFragment } from '@tempo/graphql';
 import { FormsetData } from '@tempo/hooks/useFormset';
 

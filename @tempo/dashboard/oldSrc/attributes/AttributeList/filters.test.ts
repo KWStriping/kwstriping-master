@@ -1,4 +1,4 @@
-import { createFilterStructure } from '@dashboard/components/attributes/AttributeListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/attributes/AttributeListPage';
 import { AttributeListUrlFilters } from '@tempo/attributes/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

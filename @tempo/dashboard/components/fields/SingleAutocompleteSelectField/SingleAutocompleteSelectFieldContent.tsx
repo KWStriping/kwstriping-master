@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import { useTranslation, Trans } from '@tempo/next/i18n';
-import ChevronDown from '@dashboard/assets/images/ChevronDown.svg';
+import ChevronDown from '@tempo/dashboard/assets/images/ChevronDown.svg';
 import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
 import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import Add from '@mui/icons-material/Add';

@@ -2,7 +2,7 @@ import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useQuery } from '@tempo/api/hooks/useQuery';
-import type { IMessage } from '@dashboard/components/messages';
+import type { IMessage } from '@tempo/dashboard/components/messages';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useState } from 'react';

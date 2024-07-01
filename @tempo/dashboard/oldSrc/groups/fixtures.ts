@@ -1,4 +1,4 @@
-import * as avatarImg from '@dashboard/assets/images/avatars/avatar1.png';
+import * as avatarImg from '@tempo/dashboard/assets/images/avatars/avatar1.png';
 import { PermissionCode, GroupErrorCode } from '@tempo/api/generated/constants';
 import type {
   GroupDetailsFragment,

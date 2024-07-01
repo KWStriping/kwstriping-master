@@ -20,7 +20,7 @@
       "pattern": "apps/*/"
     },
     {
-      "pattern": "@tempo/*/"
+      "pattern": "packages/*/"
     }
   ],
   "explorer.autoReveal": "focusNoScroll",
@@ -31,7 +31,7 @@
   "files.autoSaveDelay": 5000,
   "files.eol": "\n",
   "files.exclude": {
-    "**/.git": true,
+    "**/.git": false,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
@@ -43,7 +43,7 @@
     "**/.next": true,
     "**/.rollup.cache": true,
     "**/.turbo": true,
-    "**/.venv": true,
+    "**/.venv": false,
     "**/*.pyc": true,
     "**/*.tmp.*": true,
     "**/tsconfig.tsbuildinfo": true,

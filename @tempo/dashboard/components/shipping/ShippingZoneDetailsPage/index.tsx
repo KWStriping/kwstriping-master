@@ -12,7 +12,7 @@ import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import Form from '@tempo/dashboard/components/forms/Form';
-import type { ShippingZoneUpdateFormData } from '@dashboard/components/ShippingZoneDetailsPage/types';
+import type { ShippingZoneUpdateFormData } from '@tempo/dashboard/components/ShippingZoneDetailsPage/types';
 import type {
   ChannelFragment,
   ShippingErrorFragment,

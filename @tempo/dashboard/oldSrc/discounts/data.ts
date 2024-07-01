@@ -1,4 +1,4 @@
-import type { VoucherDetailsPageFormData } from '@dashboard/components/VoucherDetailsPage';
+import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/VoucherDetailsPage';
 import type { VoucherChannelListingAddInput } from '@tempo/api/generated/graphql';
 import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 

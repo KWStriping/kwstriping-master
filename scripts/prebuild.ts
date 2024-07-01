@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
-import compile from './compile';
 
 dotenvExpand.expand(dotenv.config());
 
@@ -23,5 +22,4 @@ async function checkApiUrl() {
   }
 }
 
-compile();
 checkApiUrl();

@@ -1,5 +1,5 @@
 import { ProductFragment } from '@tempo/graphql';
-import { ProductUpdateSubmitData } from '@dashboard/components/products/ProductUpdatePage/types';
+import { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
 
 import { inferProductChannelsAfterUpdate } from './utils';
 

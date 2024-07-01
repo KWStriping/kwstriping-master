@@ -8,7 +8,7 @@ import {
 } from '@tempo/graphql';
 import { FormsetData } from '@tempo/hooks/useFormset';
 
-import { LineItemData } from '@dashboard/components/orders/OrderReturnPage/form';
+import { LineItemData } from '@tempo/dashboard/components/orders/OrderReturnPage/form';
 import {
   getAllFulfillmentLinesPriceSum,
   getPreviouslyRefundedPrice,

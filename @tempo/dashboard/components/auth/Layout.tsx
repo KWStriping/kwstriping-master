@@ -1,5 +1,5 @@
 import Logo from '@tempo/ui/components/Layout/Logo';
-import BackgroundArt from '@dashboard/assets/images/login-background.svg';
+import BackgroundArt from '@tempo/dashboard/assets/images/login-background.svg';
 import type { FC, ReactNode } from 'react';
 import styles from './Layout.module.css';
 

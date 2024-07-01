@@ -2,7 +2,7 @@ import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { extractMutationErrors, getMutationState } from '@tempo/api/utils';
-import type { OrderUrlQueryParams } from '@dashboard/oldSrc/urls';
+import type { OrderUrlQueryParams } from '@tempo/dashboard/oldSrc/urls';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FC } from 'react';

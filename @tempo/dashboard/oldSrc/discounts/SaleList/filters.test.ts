@@ -1,4 +1,4 @@
-import { createFilterStructure } from '@dashboard/components/discounts/SaleListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/discounts/SaleListPage';
 import { SaleListUrlFilters } from '@tempo/discounts/urls';
 import { date } from '@tempo/fixtures';
 import { DiscountStatus, DiscountValueType } from '@tempo/graphql';

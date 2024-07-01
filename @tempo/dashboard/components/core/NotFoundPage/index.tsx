@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import NotFoundImage from '@dashboard/assets/images/not-found-404.svg';
+import NotFoundImage from '@tempo/dashboard/assets/images/not-found-404.svg';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';

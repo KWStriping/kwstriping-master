@@ -1,5 +1,5 @@
 import { StaffMemberStatus } from '@tempo/graphql';
-import { createFilterStructure } from '@dashboard/components/staff/StaffListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/staff/StaffListPage';
 import { StaffListUrlFilters } from '@tempo/staff/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

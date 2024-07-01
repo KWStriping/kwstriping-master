@@ -1,4 +1,4 @@
-import placeholderImage from '@dashboard/assets/images/placeholder60x60.png';
+import placeholderImage from '@tempo/dashboard/assets/images/placeholder60x60.png';
 import type {
   SaleDetailsFragment,
   SaleFragment,

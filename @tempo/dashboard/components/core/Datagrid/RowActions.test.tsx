@@ -1,4 +1,4 @@
-import { EditIcon, ThemeProvider } from "@dashboard/components/macaw-ui/src";
+import { EditIcon, ThemeProvider } from "@tempo/dashboard/components/macaw-ui/src";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";

@@ -134,7 +134,7 @@ const dashboardCodegenConfig = {
     // "generated/typePolicies.ts": {
     //   plugins: ["typescript-apollo-client-helpers"],
     // },
-    // "@tempo/dashboard/generated/api.ts": {
+    // "packages/dashboard/generated/api.ts": {
     //   plugins: [
     //     { add: { content: PREPENDED_CONTENT } },
     //     "typescript",

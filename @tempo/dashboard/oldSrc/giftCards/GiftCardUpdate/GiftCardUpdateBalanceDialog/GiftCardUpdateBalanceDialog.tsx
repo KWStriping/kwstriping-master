@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { IMessage } from '@dashboard/components/messages';
+import type { IMessage } from '@tempo/dashboard/components/messages';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';

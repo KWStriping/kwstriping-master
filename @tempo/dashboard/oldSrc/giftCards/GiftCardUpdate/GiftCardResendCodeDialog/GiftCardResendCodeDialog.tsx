@@ -2,7 +2,7 @@ import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useQuery } from '@tempo/api/hooks/useQuery';
-import type { IMessage } from '@dashboard/components/messages';
+import type { IMessage } from '@tempo/dashboard/components/messages';
 import { getBySlug } from '@tempo/utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';

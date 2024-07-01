@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
-import type { IMessage } from '@dashboard/components/messages';
+import type { IMessage } from '@tempo/dashboard/components/messages';
 import { Temporal } from '@js-temporal/polyfill';
 
 import type { GiftCardCreateCommonFormData } from '../GiftCardBulkCreateDialog/types';

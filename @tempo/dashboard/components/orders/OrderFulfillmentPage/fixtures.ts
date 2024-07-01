@@ -1,4 +1,4 @@
-import * as placeholderImage from '@dashboard/assets/images/sample-product.jpg';
+import * as placeholderImage from '@tempo/dashboard/assets/images/sample-product.jpg';
 import type { OrderFulfillDataQuery } from '@tempo/api/generated/graphql';
 import { warehouseList } from '@tempo/dashboard/oldSrc/warehouses/fixtures';
 

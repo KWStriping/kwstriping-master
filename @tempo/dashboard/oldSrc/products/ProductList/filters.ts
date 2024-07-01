@@ -5,7 +5,7 @@ import type {
   FilterElement,
   FilterElementKeyValue,
   FilterElementRegular,
-} from '@dashboard/components/Filter';
+} from '@tempo/dashboard/components/Filter';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { ProductListFilterOpts } from '@tempo/dashboard/components/products/ProductListPage';
 import { ProductFilterKeys } from '@tempo/dashboard/components/products/ProductListPage';

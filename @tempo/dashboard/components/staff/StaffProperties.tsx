@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import PhotoIcon from '@dashboard/assets/images/photo-icon.svg';
+import PhotoIcon from '@tempo/dashboard/assets/images/photo-icon.svg';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type {
   StaffErrorFragment,

@@ -11,7 +11,7 @@ jest.mock("react-intl", () => ({
   : jest.fn((x) => x),
 }));
 
-jest.mock("@dashboard/components/macaw-ui/src", () => ({
+jest.mock("@tempo/dashboard/components/macaw-ui/src", () => ({
   useStyles: jest.fn(() => () => ({})),
   makeStyles: jest.fn(() => () => ({})),
   DialogHeader: jest.fn(() => () => <></>),
