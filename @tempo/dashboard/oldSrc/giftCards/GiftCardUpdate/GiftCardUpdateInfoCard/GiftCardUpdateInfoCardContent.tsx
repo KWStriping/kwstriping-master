@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
-import { appUrl } from '@dashboard/oldSrc/apps/urls';
+import { appUrl } from '@tempo/dashboard/oldSrc/apps/urls';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import useGiftCardDetails from '../providers/GiftCardDetailsProvider/hooks/useGiftCardDetails';

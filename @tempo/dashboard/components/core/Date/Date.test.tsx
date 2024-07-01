@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@dashboard/components/macaw-ui/src";
+import { ThemeProvider } from "@tempo/dashboard/components/macaw-ui/src";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 

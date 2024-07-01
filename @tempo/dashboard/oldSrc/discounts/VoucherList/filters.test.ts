@@ -1,4 +1,4 @@
-import { createFilterStructure } from '@dashboard/components/discounts/VoucherListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/discounts/VoucherListPage';
 import { VoucherListUrlFilters } from '@tempo/discounts/urls';
 import { date } from '@tempo/fixtures';
 import { DiscountStatus, VoucherDiscountType } from '@tempo/graphql';

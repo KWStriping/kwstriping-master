@@ -1,4 +1,4 @@
-import type { GroupDetailsPageFormData } from '@dashboard/components/GroupDetailsPage';
+import type { GroupDetailsPageFormData } from '@tempo/dashboard/components/GroupDetailsPage';
 import type {
   PermissionFragment,
   GroupDetailsFragment,

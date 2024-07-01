@@ -76,12 +76,6 @@
       ],
       "@tempo/utils": [
         "@tempo/utils/*"
-      ],
-      "@paraglide/*": [
-        "apps/kwstriping/paraglide/*"
-      ],
-      "@kwstriping/*": [
-        "apps/kwstriping/*"
       ]
     }
   }

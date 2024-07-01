@@ -1,4 +1,4 @@
-import placeholderImage from '@dashboard/assets/images/placeholder255x255.png';
+import placeholderImage from '@tempo/dashboard/assets/images/placeholder255x255.png';
 import { channelsList } from '@tempo/channels/fixtures';
 import { collections } from '@tempo/collections/fixtures';
 import { fetchMoreProps, limits } from '@tempo/fixtures';
@@ -17,7 +17,7 @@ const product = productFixture(placeholderImage);
 
 const onSubmit = jest.fn();
 const useNavigator = jest.spyOn(_useNavigator, 'default');
-jest.mock('@dashboard/components/RichTextEditor/RichTextEditor');
+jest.mock('@tempo/dashboard/components/RichTextEditor/RichTextEditor');
 jest.mock('@tempo/utils/richText/useRichText');
 /**
  * Mocking glide library. We do want to test only if page renders, grid itself has dedicated tests.

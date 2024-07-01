@@ -3,7 +3,7 @@ import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { extractMutationErrors, getMutationState } from '@tempo/api/utils';
-import type { ShippingZoneRateCommonFormData } from '@dashboard/components/ShippingZoneRatesPage/types';
+import type { ShippingZoneRateCommonFormData } from '@tempo/dashboard/components/ShippingZoneRatesPage/types';
 import differenceBy from 'lodash-es/differenceBy';
 import { useRouter } from 'next/navigation';
 import { assert } from 'tsafe/assert';

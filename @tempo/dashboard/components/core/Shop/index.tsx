@@ -1,9 +1,9 @@
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useQuery } from '@tempo/api/hooks';
-import appleTouchIcon from '@dashboard/assets/favicons/apple-touch-icon.png';
-import favicon16 from '@dashboard/assets/favicons/favicon-16x16.png';
-import favicon32 from '@dashboard/assets/favicons/favicon-32x32.png';
-import safariPinnedTab from '@dashboard/assets/favicons/safari-pinned-tab.svg';
+import appleTouchIcon from '@tempo/dashboard/assets/favicons/apple-touch-icon.png';
+import favicon16 from '@tempo/dashboard/assets/favicons/favicon-16x16.png';
+import favicon32 from '@tempo/dashboard/assets/favicons/favicon-32x32.png';
+import safariPinnedTab from '@tempo/dashboard/assets/favicons/safari-pinned-tab.svg';
 import { ShopInfoDocument } from '@tempo/api/generated/graphql';
 import type { ShopInfoQuery } from '@tempo/api/generated/graphql';
 import Head from 'next/head';

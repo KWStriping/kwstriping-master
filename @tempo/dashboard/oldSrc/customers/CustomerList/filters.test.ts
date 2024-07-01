@@ -1,4 +1,4 @@
-import { createFilterStructure } from '@dashboard/components/customers/CustomerListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/customers/CustomerListPage';
 import { CustomerListUrlFilters } from '@tempo/customers/urls';
 import { date } from '@tempo/fixtures';
 import { PermissionCode } from '@tempo/graphql';

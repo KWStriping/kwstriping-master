@@ -1,5 +1,5 @@
 {
-  "name": "@tempo/dashboard",
+  "name": "dashboard",
   "private": true,
   "type": "module",
   "scripts": {

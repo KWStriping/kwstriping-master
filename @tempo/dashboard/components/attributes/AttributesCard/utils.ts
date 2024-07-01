@@ -3,7 +3,7 @@ import type { AttributeInput } from '@tempo/dashboard/components/attributes/Attr
 import type { FileChoiceType } from '@tempo/dashboard/components/fields/FileUploadField';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import type { SortableChipsFieldValueType } from '@dashboard/components/SortableChipsField';
+import type { SortableChipsFieldValueType } from '@tempo/dashboard/components/SortableChipsField';
 import type {
   ValueFragment,
   PageErrorWithAttributesFragment,

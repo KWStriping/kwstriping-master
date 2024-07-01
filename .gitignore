@@ -5,7 +5,6 @@
 .env
 
 # Volumes
-_volumes/
 _*/
 
 # Caches

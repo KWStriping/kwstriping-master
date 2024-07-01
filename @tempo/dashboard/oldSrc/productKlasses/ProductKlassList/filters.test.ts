@@ -1,5 +1,5 @@
 import { ProductKlassConfigurable, ProductKlass } from '@tempo/graphql';
-import { createFilterStructure } from '@dashboard/components/productKlasses/ProductKlassListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/productKlasses/ProductKlassListPage';
 import { ProductKlassListUrlFilters } from '@tempo/productKlasses/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
 import Pill from '@tempo/ui/components/pill/Pill';
-import type { PillColor } from '@dashboard/components/core/Pill';
+import type { PillColor } from '@tempo/dashboard/components/core/Pill';
 import type { CollectionFragment } from '@tempo/api/generated/graphql';
-import type { MessageDescriptor } from '@dashboard/types/messages';
+import type { MessageDescriptor } from '@tempo/dashboard/types/messages';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import styles from './index.module.css';

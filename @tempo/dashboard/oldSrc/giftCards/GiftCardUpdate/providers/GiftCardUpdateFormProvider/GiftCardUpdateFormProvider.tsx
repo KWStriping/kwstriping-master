@@ -1,8 +1,8 @@
 import useNotifier, { useDefaultNotifierSuccessErrorData } from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { MutationResultWithOpts } from '@tempo/api/hooks/useMutation';
-import type { GiftCardCreateFormData } from '@dashboard/oldSrc/GiftCardCreateDialog/GiftCardCreateDialogForm';
-import { initialData as emptyFormData } from '@dashboard/oldSrc/GiftCardCreateDialog/GiftCardCreateDialogForm';
+import type { GiftCardCreateFormData } from '@tempo/dashboard/oldSrc/GiftCardCreateDialog/GiftCardCreateDialogForm';
+import { initialData as emptyFormData } from '@tempo/dashboard/oldSrc/GiftCardCreateDialog/GiftCardCreateDialogForm';
 import difference from 'lodash-es/difference';
 import { createContext } from 'react';
 import type { FC, ReactNode } from 'react';

@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
 import { useUser } from '@tempo/api/auth/react/hooks';
 // import { useTranslation } from '@tempo/next/i18n';
-import type { PermissionData } from '@dashboard/components/groups/GroupDetailsPage/GroupDetailsPage';
+import type { PermissionData } from '@tempo/dashboard/components/groups/GroupDetailsPage/GroupDetailsPage';
 import {
   Card,
   CardContent,

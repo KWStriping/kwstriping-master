@@ -1,4 +1,4 @@
-import type { MediaData } from '@dashboard/components/MediaItemDetailsPage/form';
+import type { MediaData } from '@tempo/dashboard/components/MediaItemDetailsPage/form';
 import { MediaErrorCode } from '@tempo/api/generated/constants';
 import type { MediaErrorFragment } from '@tempo/api/generated/graphql';
 

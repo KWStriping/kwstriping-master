@@ -1,4 +1,4 @@
-import type { CollectionListFilterOpts } from '@dashboard/components/CollectionListPage';
+import type { CollectionListFilterOpts } from '@tempo/dashboard/components/CollectionListPage';
 import * as richTextEditorFixtures from '@tempo/ui/components/inputs/RichTextEditor/fixtures.json';
 import type { CollectionDetailsQuery, CollectionListQuery } from '@tempo/api/generated/graphql';
 import { CollectionPublished } from '@tempo/api/generated/graphql';

@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type { ShippingZoneUpdateFormData } from '@dashboard/components/ShippingZoneDetailsPage/types';
+import type { ShippingZoneUpdateFormData } from '@tempo/dashboard/components/ShippingZoneDetailsPage/types';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import Card from '@mui/material/Card';

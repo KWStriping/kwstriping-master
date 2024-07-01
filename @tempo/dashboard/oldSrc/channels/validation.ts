@@ -1,4 +1,4 @@
-import type { FormData } from '@dashboard/components/ChannelForm';
+import type { FormData } from '@tempo/dashboard/components/ChannelForm';
 import type { ChannelErrorFragment } from '@tempo/api/generated/graphql';
 import { ChannelErrorCode } from '@tempo/api/generated/constants';
 

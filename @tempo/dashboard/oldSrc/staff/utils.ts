@@ -1,4 +1,4 @@
-import type { StaffDetailsFormData } from '@dashboard/components/StaffDetailsPage';
+import type { StaffDetailsFormData } from '@tempo/dashboard/components/StaffDetailsPage';
 import type { StaffMemberDetailsFragment, UserFragment } from '@tempo/api/generated/graphql';
 import difference from 'lodash-es/difference';
 

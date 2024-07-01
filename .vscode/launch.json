@@ -6,13 +6,13 @@
       "type": "node-terminal",
       "request": "launch",
       "command": "pnpm dev",
-      "cwd": "${workspaceFolder}/apps/kwstriping"
+      "cwd": "${workspaceFolder}/apps/${APP}"
     },
     {
       "name": "Next.js: debug client-side",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:3005"
+      "url": "http://localhost:${PORT}"
     },
     {
       "name": "Next.js: debug full stack",

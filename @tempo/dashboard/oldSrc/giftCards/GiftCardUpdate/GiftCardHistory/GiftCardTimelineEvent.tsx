@@ -4,7 +4,7 @@ import Link from '@tempo/ui/components/Link';
 import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 import { GiftCardEventsEnum } from '@tempo/api/generated/constants';
 import type { GiftCardEventFragment } from '@tempo/api/generated/graphql';
-import { appPath } from '@dashboard/oldSrc/apps/urls';
+import { appPath } from '@tempo/dashboard/oldSrc/apps/urls';
 import { customerPath } from '@tempo/dashboard/oldSrc/customers/urls';
 import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import { staffMemberDetailsUrl } from '@tempo/dashboard/oldSrc/staff/urls';

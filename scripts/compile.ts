@@ -7,14 +7,13 @@ import baseTsConfig from '../tsconfig.base.json';
 
 dotenvExpand.expand(dotenv.config());
 const APP = process.env.APP;
-const ROOT_DIR = process.env.ROOT_DIR;
 
 function generateTsConfig() {
   const outputFile = 'tsconfig.json';
   const tsConfig = baseTsConfig;
   if (APP) {
     const newPaths = {
-      '@paraglide/*': [`apps/${APP}/paraglide/*`],
+      "@paraglide/*": [`apps/${APP}/paraglide/*`],
     };
     newPaths[`@${APP}/*`] = [`apps/${APP}/*`];
     tsConfig.compilerOptions.paths = {
@@ -30,34 +29,8 @@ function generateMessages() {
     console.error('APP is not defined.');
     return;
   }
-  const appDir = `apps/${APP}`;
-  const messagesDir = `${appDir}/messages`;
-  const inlangDir = `${messagesDir}/${APP}.inlang`;
-  const inlangSettingsFile = `${inlangDir}/settings.json`;
-  if (!fs.existsSync(messagesDir)) fs.mkdirSync(messagesDir);
-  if (!fs.existsSync(inlangDir)) fs.mkdirSync(inlangDir);
-  if (!fs.existsSync(inlangSettingsFile)) {
-    const inlangSettings = {
-      $schema: 'https://inlang.com/schema/project-settings',
-      sourceLanguageTag: 'en',
-      languageTags: ['en'],
-      modules: [
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-valid-js-identifier@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@latest/dist/index.js',
-      ],
-      'plugin.inlang.messageFormat': {
-        pathPattern: `${ROOT_DIR}/apps/${APP}/paraglide/generated/{languageTag}.json`,
-      },
-    };
-    fs.writeFileSync(`${inlangDir}/settings.json`, JSON.stringify(inlangSettings, null, 2));
-  }
-
-  const files = [`${messagesDir}/en.json`, `@tempo/next/messages/common.json`];
-  const output = `${appDir}/paraglide/generated/en.json`;
+  const files = [`apps/${APP}/messages/en.json`, `@tempo/next/messages/common.json`];
+  const output = `apps/${APP}/paraglide/generated/en.json`;
 
   const merged = files
     .map((file) => {
@@ -73,12 +46,12 @@ function generateMessages() {
   // stderr is sent to stderr of parent process
   // you can set options.stdio if you want it to go elsewhere
   const stdout = execSync(
-    `paraglide-js compile --project ${inlangDir} --outdir apps/${APP}/paraglide`
+    `paraglide-js compile --project apps/${APP}/paraglide/${APP}.inlang --outdir apps/${APP}/paraglide`
   );
   console.log(stdout.toString());
 }
 
-export default function main() {
+function main() {
   generateTsConfig();
   generateMessages();
 }

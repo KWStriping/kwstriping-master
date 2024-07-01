@@ -1,4 +1,4 @@
-import type { PageData } from '@dashboard/components/PageDetailsPage/form';
+import type { PageData } from '@tempo/dashboard/components/PageDetailsPage/form';
 import type { PageErrorWithAttributesFragment } from '@tempo/api/generated/graphql';
 import { PageErrorCode } from '@tempo/api/generated/constants';
 

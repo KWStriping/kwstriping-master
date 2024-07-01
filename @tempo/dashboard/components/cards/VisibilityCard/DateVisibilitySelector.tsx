@@ -1,4 +1,4 @@
-import closeIcon from '@dashboard/assets/images/close-thin.svg';
+import closeIcon from '@tempo/dashboard/assets/images/close-thin.svg';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import Typography from '@mui/material/Typography';
 import type { ReactNode } from 'react';

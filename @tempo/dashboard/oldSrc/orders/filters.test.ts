@@ -3,7 +3,7 @@ import { OrderStatusFilter, ChargeStatus } from '@tempo/graphql';
 import {
   createFilterStructure,
   OrderFilterGiftCard,
-} from '@dashboard/components/orders/OrderListPage';
+} from '@tempo/dashboard/components/orders/OrderListPage';
 import { OrderListUrlFilters } from '@tempo/orders/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

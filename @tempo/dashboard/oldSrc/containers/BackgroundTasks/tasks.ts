@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
-import type { IMessageContext } from '@dashboard/components/messages';
+import type { IMessageContext } from '@tempo/dashboard/components/messages';
 import { JobStatus } from '@tempo/api/generated/constants';
 import type {
   CheckExportFileStatusQuery,

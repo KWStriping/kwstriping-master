@@ -1,5 +1,5 @@
 import { AttributeInputType, StockAvailability } from '@tempo/graphql';
-import { createFilterStructure } from '@dashboard/components/products/ProductListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/products/ProductListPage';
 import { ProductListUrlFilters } from '@tempo/products/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

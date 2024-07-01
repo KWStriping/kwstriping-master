@@ -3,7 +3,7 @@ import * as m from '@paraglide/messages';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { IMessage } from '@dashboard/components/messages';
+import type { IMessage } from '@tempo/dashboard/components/messages';
 import { getByIds } from '@tempo/dashboard/components/orders/OrderReturnPage/utils';
 import {
   GiftCardBulkActivateDocument,

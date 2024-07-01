@@ -1,4 +1,4 @@
-import avatarImage from '@dashboard/assets/images/avatars/avatar1.png';
+import avatarImage from '@tempo/dashboard/assets/images/avatars/avatar1.png';
 import type { StaffListQuery, StaffMemberDetailsFragment } from '@tempo/api/generated/graphql';
 import { permissions } from '@tempo/dashboard/oldSrc/fixtures';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';

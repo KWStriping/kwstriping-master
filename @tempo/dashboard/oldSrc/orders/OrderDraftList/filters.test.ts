@@ -1,5 +1,5 @@
 import { date } from '@tempo/fixtures';
-import { createFilterStructure } from '@dashboard/components/orders/OrderDraftListPage';
+import { createFilterStructure } from '@tempo/dashboard/components/orders/OrderDraftListPage';
 import { OrderDraftListUrlFilters } from '@tempo/orders/urls';
 import { getFilterQueryParams } from '@tempo/utils/filters';
 import { stringifyQs } from '@tempo/utils/urls';

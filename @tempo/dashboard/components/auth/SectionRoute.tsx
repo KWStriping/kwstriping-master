@@ -1,5 +1,5 @@
 import { useUser } from '@tempo/api/auth/react/hooks';
-import NotFound from '@dashboard/components/NotFound';
+import NotFound from '@tempo/dashboard/components/NotFound';
 import type { PermissionCode } from '@tempo/api/generated/graphql';
 import type { FC } from 'react';
 
