@@ -1,4 +1,3 @@
-import type SupportedColorScheme from '@mui/material/SupportedColorScheme';
 import type { Components, Theme, Palette } from '@mui/material/styles';
 // import { buttonOverrides } from "./buttons";
 // import { controlOverrides } from "./controls";
@@ -6,7 +5,7 @@ import type { Components, Theme, Palette } from '@mui/material/styles';
 // import { tableOverrides } from "./tables";
 
 export const overrides = (
-  _colorSchemes: Record<SupportedColorScheme, Palette>,
+  _colorSchemes: Record<'light' | 'dark', Palette>,
   _fontFamily: string
 ): Components<Omit<Theme, 'components'>> => ({
   // ...inputOverrides(colors, mode),

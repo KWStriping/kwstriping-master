@@ -129,7 +129,6 @@ const OrderDiscountCommonModal: FC<OrderDiscountCommonModalProps> = ({
   removeStatus,
 }) => {
   const { currency, amount: maxAmount } = maxPrice;
-  // const styles = useStyles();
   const styles = {};
 
   const getInitialDiscountValue = (calculationMode: DiscountValueType) => {

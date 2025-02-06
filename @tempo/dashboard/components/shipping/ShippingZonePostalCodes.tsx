@@ -70,7 +70,6 @@ const ShippingZonePostalCodes: FC<ShippingZonePostalCodesProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(initialExpanded);
   const [inclusionType, setInclusionType] = useState(null);
-  // const styles = useStyles();
   const styles = {};
   const getInclusionType = () => {
     if (inclusionType) {

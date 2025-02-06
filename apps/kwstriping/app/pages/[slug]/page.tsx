@@ -1,34 +1,24 @@
 import type { Metadata } from 'next';
-import Layout from '@kwstriping/app/client/Layout';
 import { PageDocument } from '@tempo/api/generated/graphql';
-import { createClient } from '@urql/core';
-import { registerUrql } from '@urql/next/rsc';
 import React from 'react';
-import { cacheExchange, fetchExchange } from '@tempo/api/exchanges';
+import { getClient } from '@tempo/api/client';
 import FlatPage from './flatpage';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
-if (!API_URL) throw new Error('API_URL is not set.');
+import Layout from '@kwstriping/app/client/Layout';
 
 // TODO
 // https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata
 
-const makeClient = () => {
-  return createClient({
-    url: API_URL,
-    exchanges: [cacheExchange(), fetchExchange],
-  });
-};
-
-export const { getClient } = registerUrql(makeClient);
+// Revalidate at most every hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Page',
 };
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const result = await getClient().query(PageDocument, { slug }).toPromise();
+  const result = await getClient().query({ query: PageDocument, variables: { slug } });
   const page = result?.data?.page;
+  if (!page) return { notFound: true };
   return (
     <Layout>
       <FlatPage page={page} />

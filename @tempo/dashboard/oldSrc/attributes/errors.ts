@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { AttributeErrorCode } from '@tempo/api/generated/constants';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
 import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';
@@ -14,7 +13,7 @@ const messages = {
   },
 };
 
-export function getAttributeSlugErrorMessage(err: AttributeErrorFragment, t: TFunction): string {
+export function getAttributeSlugErrorMessage(err: AttributeErrorFragment): string {
   switch (err?.code) {
     case AttributeErrorCode.Unique:
       return t('dashboard_attributeSlugUnique', messages.attributeSlugUnique.defaultMessage);
@@ -23,7 +22,7 @@ export function getAttributeSlugErrorMessage(err: AttributeErrorFragment, t: TFu
   }
 }
 
-export function getValueErrorMessage(err: AttributeErrorFragment, t: TFunction): string {
+export function getValueErrorMessage(err: AttributeErrorFragment): string {
   switch (err?.code) {
     case AttributeErrorCode.AlreadyExists:
       return t(

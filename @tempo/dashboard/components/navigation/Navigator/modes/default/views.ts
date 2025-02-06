@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
 import { score } from 'fuzzaldrin';
-import type { TFunction } from '@tempo/next/i18n';
 import type { QuickSearchActionInput } from '../../types';
 import { languageListUrl } from '@tempo/dashboard/oldSrc/translations/urls';
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 interface View {
   label: string;
@@ -10,8 +10,7 @@ interface View {
 }
 function searchInViews(
   search: string,
-  t: TFunction,
-  router: NextRouter
+  router: AppRouterInstance
 ): QuickSearchActionInput[] {
   const views: View[] = [
     {

@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import { CheckoutBillingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { useShopSettings } from '@tempo/ui/providers';
@@ -10,11 +9,11 @@ import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 
 import { assert } from 'tsafe/assert';
-import { useSectionState } from '@tempo/checkout/hooks/state';
 import { AddressForm } from '../forms/AddressForm';
 import { SavedAddressSelectionList } from '../SavedAddressSelectionList';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection from './CheckoutSection';
+import { useSectionState } from '@tempo/checkout/hooks/state';
 
 export function BillingAddressSection({ checkout, className }: CommonCheckoutSectionProps) {
   const { authenticated } = useUser();
@@ -29,7 +28,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
     console.log('BillingAddressSection.handleBillingAddressUpdate');
     assert(!!checkout);
     const { state, countryArea, ...address } = formData;
-    const { data, error } = await updateBillingAddress({
+    const { data, errors } = await updateBillingAddress({
       address: {
         ...address,
         countryArea: state || countryArea,
@@ -38,7 +37,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
       // languageCode: query.languageCode,
     });
     console.log('>>>> data', data);
-    if (!error && !data?.updateCheckoutBillingAddress?.errors?.length)
+    if (!errors && !data?.updateCheckoutBillingAddress?.errors?.length)
       updateState({ validating: true });
     return data?.updateCheckoutBillingAddress?.errors?.filter(notNullable) || [];
   };

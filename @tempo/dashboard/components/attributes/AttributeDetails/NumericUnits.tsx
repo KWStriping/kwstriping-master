@@ -55,7 +55,6 @@ export const NumericUnits: FC<NumericUnitsProps> = ({
   setError,
   clearErrors,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   const [unitData, setUnitData] = useState<UnitData>({
     unit: data?.unit ?? null,

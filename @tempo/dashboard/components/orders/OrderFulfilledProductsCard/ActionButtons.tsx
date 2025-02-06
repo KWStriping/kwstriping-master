@@ -4,7 +4,6 @@ import { FulfillmentStatus } from '@tempo/api/generated/constants';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
-// import useStyles from './styles';
 
 interface ActionButtonsProps {
   status: FulfillmentStatus;

@@ -1,3 +1,4 @@
+import type { DeleteGiftCardMutation, DeleteGiftCardMutationVariables } from '@tempo/api/generated/graphql';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { MutationResultWithOpts } from '@tempo/api/hooks/useMutation';

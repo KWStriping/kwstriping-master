@@ -15,7 +15,7 @@ import ContextProvider from './context';
 type LayoutProps = Pick<CoreLayoutProps, 'children' | 'transparentBg'>;
 
 const mainMenuQuery = gql(`
-  query MainMenu($channel: String!) {
+  query MainMenu($channel: String) {
     menu(slug: "navbar", channel: $channel) {
       id
       items {
@@ -27,7 +27,7 @@ const mainMenuQuery = gql(`
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
   const { query } = useLocalization();
-  const [{ data }] = useQuery<MainMenuQuery, MainMenuQueryVariables>(mainMenuQuery, {
+  const { data } = useQuery(mainMenuQuery, {
     variables: { ...query },
   });
   const navbarItems = useMemo(

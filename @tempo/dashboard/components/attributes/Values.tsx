@@ -93,7 +93,6 @@ const Values: FC<ValuesProps> = ({
   onPreviousPage,
   inputType,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   const isSwatch = inputType === AttributeInputType.Swatch;
   const numberOfColumns = isSwatch ? 5 : 4;

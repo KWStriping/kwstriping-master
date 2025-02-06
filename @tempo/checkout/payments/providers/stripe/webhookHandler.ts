@@ -37,11 +37,13 @@ export const getLatestChargeFromPaymentIntent = (paymentIntent: Stripe.PaymentIn
   // https://stripe.com/docs/api/payment_intents/object#payment_intent_object-charges
   // This list only contains the latest charge
   // even if there were previously multiple unsuccessful charges.
-  return paymentIntent?.charges?.data[0];
+  return paymentIntent?.latest_charge;
+  // return paymentIntent?.charges?.data[0];
 };
 
 export const getPaymentMethodFromPaymentIntent = (paymentIntent: Stripe.PaymentIntent | null) => {
-  return getLatestChargeFromPaymentIntent(paymentIntent)?.payment_method_details?.type;
+  return paymentIntent?.payment_method;
+  // return getLatestChargeFromPaymentIntent(paymentIntent)?.payment_method_details?.type;
 };
 
 export const checkoutSessionToTransactionCreateMutationVariables = async (
@@ -55,6 +57,7 @@ export const checkoutSessionToTransactionCreateMutationVariables = async (
   const paymentIntent = await getPaymentIntentFromCheckoutSession(checkoutSession);
   const method = getPaymentMethodFromPaymentIntent(paymentIntent);
   const charge = getLatestChargeFromPaymentIntent(paymentIntent);
+  if (typeof charge === 'string') throw new Error('Not implemented');
 
   if (
     // Occurs when a payment intent using a delayed payment method fails.
@@ -73,6 +76,7 @@ export const checkoutSessionToTransactionCreateMutationVariables = async (
       transactionEvent: {
         status: 'FAILURE',
         name: eventType,
+        reference: checkoutSession.id,
       },
     };
   }
@@ -111,6 +115,7 @@ export const checkoutSessionToTransactionCreateMutationVariables = async (
       transactionEvent: {
         status: 'SUCCESS',
         name: eventType,
+        reference: checkoutSession.id,
       },
     };
   }

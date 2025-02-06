@@ -71,7 +71,6 @@ export const OrderDraftList: FC<OrderDraftListProps> = (props) => {
     toggleAll,
     toolbar,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const orderDraftList = orders

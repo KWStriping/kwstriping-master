@@ -1,3 +1,4 @@
+import type { GiftCardSettingsQuery, GiftCardSettingsQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import DialogContent from '@mui/material/DialogContent';

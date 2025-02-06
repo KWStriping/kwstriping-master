@@ -1,8 +1,6 @@
 import * as m from '@paraglide/messages';
-import type { Money as MoneyType } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
-import type { ClassNames } from '@tempo/types';
-import type { GrossMoney } from '@tempo/types/misc';
+import type { MoneyFragment } from '@tempo/api/generated/graphql';
+import type { ClassNames } from '@tempo/next/types';
 import { Money } from '@tempo/ui/components/Money';
 import { getFormattedMoney } from '@tempo/ui/utils/money';
 import Typography from '@mui/material/Typography';
@@ -12,8 +10,8 @@ import { summaryLabels, summaryMessages } from './messages';
 
 interface SummaryItemMoneyInfoProps {
   classNames?: ClassNames<'container'>;
-  unitPrice: GrossMoney;
-  undiscountedUnitPrice: MoneyType;
+  unitPrice: Maybe<MoneyFragment>;
+  undiscountedUnitPrice: Maybe<MoneyFragment>;
   quantity: number;
 }
 
@@ -24,9 +22,9 @@ export const SummaryItemMoneyInfo: FC<SummaryItemMoneyInfoProps> = ({
   classNames = {},
 }) => {
   const multiplePieces = quantity > 1;
-  const piecePrice = unitPrice.gross;
-  const onSale = undiscountedUnitPrice.amount !== unitPrice.gross.amount;
-
+  if (!undiscountedUnitPrice || !unitPrice) return null;
+  const piecePrice = unitPrice;
+  const onSale = undiscountedUnitPrice.amount !== unitPrice.amount;
   return (
     <>
       <div className={clsx('flex flex-row', classNames.container)}>

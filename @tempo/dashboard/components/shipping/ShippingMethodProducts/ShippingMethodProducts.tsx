@@ -68,7 +68,6 @@ const ShippingMethodProducts: FC<ShippingMethodProductsProps> = (props) => {
     toggleAll,
     toolbar,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (
@@ -121,8 +120,7 @@ const ShippingMethodProducts: FC<ShippingMethodProductsProps> = (props) => {
           ) : (
             renderCollection(products, (product) => {
               const isSelected = product ? isChecked(product.id) : false;
-              // const styles = useStyles();
-              const styles = {};
+                          const styles = {};
               return (
                 <TableRow key={product ? product.id : 'skeleton'}>
                   <TableCell padding="checkbox">

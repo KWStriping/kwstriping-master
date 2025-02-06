@@ -41,7 +41,7 @@ export interface UseFormResult<TData>
   handleChange: FormChange;
   toggleValue: FormChange;
   errors: FormErrors<TData>;
-  setError: (name: keyof TData, error: string | ReactNode) => void;
+  setError: (name: keyof TData, errors: string | ReactNode) => void;
   clearErrors: (name?: keyof TData | Array<keyof TData>) => void;
   setIsSubmitDisabled: (value: boolean) => void;
 }

@@ -2,6 +2,10 @@ import type { FC } from 'react';
 import type { ChipProps } from './Chip';
 import Chip from './Chip';
 
-export const RemovableChip: FC<ChipProps> = (props: ChipProps) => {
+type RemovableChipProps = ChipProps & {
+  onRemove: () => void;
+};
+
+export const RemovableChip: FC<RemovableChipProps> = (props: RemovableChipProps) => {
   return <Chip {...props} />;
 };

@@ -58,7 +58,6 @@ interface TableLineProps {
 
 const TableLine: FC<TableLineProps> = ({ line: lineData, isOrderLine = false }) => {
   const { quantity, quantityToFulfill } = lineData as OrderLineFragment;
-  // const styles = useStyles();
   const styles = {};
 
   if (!lineData) {

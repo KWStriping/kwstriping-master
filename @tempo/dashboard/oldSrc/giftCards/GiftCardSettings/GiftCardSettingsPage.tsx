@@ -1,3 +1,4 @@
+import type { GiftCardSettingsQuery, GiftCardSettingsQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { useMutation } from '@tempo/api/hooks';

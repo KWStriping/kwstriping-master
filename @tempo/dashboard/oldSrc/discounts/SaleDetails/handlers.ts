@@ -1,5 +1,5 @@
 import { joinDateTime } from '@tempo/utils/datetime';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import type {
   ChannelSaleFormData,
   SaleDetailsPageFormData,
@@ -28,7 +28,7 @@ export function createUpdateHandler(
 ) {
   return async (formData: SaleDetailsPageFormData) => {
     const { id } = sale;
-    const errors = await gather([
+    const errors = await Promise.all([
       updateSale({
         id,
         input: {

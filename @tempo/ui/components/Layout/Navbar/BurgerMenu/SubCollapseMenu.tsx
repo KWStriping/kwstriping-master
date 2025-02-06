@@ -1,8 +1,5 @@
 'use client';
 
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { getLinkPath } from '@tempo/ui/utils/menus';
-import { translate } from '@tempo/ui/utils/translations';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -11,6 +8,9 @@ import { useState } from 'react';
 import { NavigationAnchor } from '../../NavigationAnchor';
 import styles from './BurgerMenu.module.css';
 import type { CollapseMenuProps } from './CollapseMenu';
+import { translate } from '@tempo/ui/utils/translations';
+import { getLinkPath } from '@tempo/ui/utils/menus';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 function SubCollapseMenu({ menuItem }: CollapseMenuProps) {
   const paths = usePaths();

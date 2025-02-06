@@ -1,10 +1,10 @@
+import type { UseComboboxGetItemPropsOptions } from 'downshift';
+import { useCombobox, useMultipleSelection } from 'downshift';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import type { Choice } from '@tempo/ui/components/Filter';
 import { useTextWidth } from '@tempo/ui/components/tools/useTextWidth';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
 import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
-import type { UseComboboxGetItemPropsOptions } from 'downshift';
-import { useCombobox, useMultipleSelection } from 'downshift';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 export interface UseMultipleValueAutocomplete {
   choices: Choice[];
@@ -68,15 +68,15 @@ function useMultipleValueAutocomplete({
     getLabelProps,
     getMenuProps,
     getInputProps,
-    getComboboxProps,
+    // getComboboxProps,
     highlightedIndex,
     getItemProps: baseGetItemProps,
     openMenu,
     inputValue,
     setInputValue,
     selectItem,
-  } = useCombobox({
-    circularNavigation: false,
+  } = useCombobox<Choice>({
+    // circularNavigation: false, // TODO
     defaultHighlightedIndex: 0,
     items: filteredChoices,
     onInputValueChange: ({ inputValue }) => {
@@ -105,6 +105,8 @@ function useMultipleValueAutocomplete({
             isOpen: true,
           };
         }
+        default:
+          console.error('Unsupported operation');
       }
       return changes;
     },
@@ -128,7 +130,7 @@ function useMultipleValueAutocomplete({
   );
 
   const labelProps = getLabelProps();
-  const { ref: comboboxDownshiftRef, ...comboboxProps } = getComboboxProps();
+  // const { ref: comboboxDownshiftRef, ...comboboxProps } = getComboboxProps();
   const { ref: downshiftRef, ...inputProps } = getInputProps({
     ...getDropdownProps(),
     onFocus: () => {
@@ -142,7 +144,7 @@ function useMultipleValueAutocomplete({
 
   return {
     anchor,
-    comboboxProps,
+    // comboboxProps,
     filteredChoices,
     getItemProps,
     getSelectedItemProps,
@@ -155,7 +157,7 @@ function useMultipleValueAutocomplete({
     isOpen,
     labelProps,
     menuProps,
-    ref: mergeRefs(comboboxDownshiftRef, anchor),
+    // ref: mergeRefs(comboboxDownshiftRef, anchor),
     removeSelectedItem,
     selectedItems,
   };

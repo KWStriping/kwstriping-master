@@ -32,7 +32,6 @@ describe('Filtering URL params', () => {
   const intl = createIntl(config);
 
   const filters = createFilterStructure(
-    t,
     {
       joined: {
         active: false,

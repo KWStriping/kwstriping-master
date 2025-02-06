@@ -239,7 +239,6 @@ const ProductExportDialogInfo: FC<ProductExportDialogInfoProps> = ({
   onSelectAllChannels,
   onSelectAllWarehouses,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   const [query, onQueryChange] = useSearchQuery(onFetch);
   const getFieldLabel = useProductExportFieldMessages();

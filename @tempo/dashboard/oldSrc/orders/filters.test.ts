@@ -36,7 +36,7 @@ describe('Filtering query params', () => {
 describe('Filtering URL params', () => {
   const intl = createIntl(config);
 
-  const filters = createFilterStructure(t, {
+  const filters = createFilterStructure({
     preorder: {
       active: false,
       value: false,

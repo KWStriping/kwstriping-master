@@ -3,38 +3,48 @@
 import * as m from '@paraglide/messages';
 import { useNotifier } from '@tempo/ui/hooks/useNotifier';
 
-import type { AnyVariables, DocumentInput } from '@urql/core';
-import { useEffect } from 'react';
-import { toast } from 'react-toastify';
-import { useMutation as _useMutation } from '@urql/next';
 import type {
-  UseMutationResponse,
-  MutationHookOptions,
-  CombinedError,
-  OperationResult,
-  GraphQLError,
-} from '@tempo/api/types';
-import { getMutationStatus, getMutationErrors, getAllErrorMessages } from '@tempo/api/utils';
+  ApolloError,
+  MutationFunctionOptions,
+  OperationVariables,
+  TypedDocumentNode,
+} from '@apollo/client';
+import { useCallback, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useMutation as _useMutation } from '@apollo/client';
+import type { UseMutationResponse, MutationHookOptions } from '@tempo/api/types';
+import { getMutationState, getMutationErrors, getAllErrorMessages } from '@tempo/api/utils';
 
 export function useMutation<
   TData extends Record<string, unknown>,
-  TVariables extends AnyVariables,
+  TVariables extends OperationVariables,
 >(
-  mutation: DocumentInput<TData, TVariables>,
+  mutation: TypedDocumentNode<TData, TVariables>,
   {
     onCompleted,
     onError,
     disableErrorHandling,
     displayLoader, // TODO
-  }: MutationHookOptions<TData, TVariables> = {}
+  }: MutationHookOptions<TData> = {}
 ): UseMutationResponse<TData, TVariables> {
   const notify = useNotifier();
-  const [mutationState, mutate] = _useMutation(mutation);
-  const { data, error, fetching } = mutationState;
+  const [_mutate, mutationState] = _useMutation(mutation);
+
+  const mutate = useCallback(
+    async (
+      variables: TVariables,
+      options?: Omit<MutationFunctionOptions<TData, TVariables>, 'variables'>
+    ) => {
+      return _mutate({ variables, ...options });
+    },
+    [_mutate]
+  );
+
+  const { data, error, loading: fetching } = mutationState;
   const extendedMutationState = {
     ...mutationState,
     called: Boolean(fetching || data || error),
-    errors: error?.graphQLErrors as Maybe<GraphQLError[]>,
+    errors: error?.graphQLErrors,
   };
   useEffect(() => {
     if (error) {
@@ -53,7 +63,7 @@ export function useMutation<
       }
     } else {
       if (!data) return;
-      if (!disableErrorHandling) handleNestedMutationErrors({ result: mutationState, t });
+      if (!disableErrorHandling && error) handleNestedMutationErrors(error);
       if (onCompleted) onCompleted(data);
     }
   }, [data, error]);
@@ -62,17 +72,15 @@ export function useMutation<
     mutate,
     {
       ...extendedMutationState,
-      status: getMutationStatus(extendedMutationState),
+      status: getMutationState(extendedMutationState),
     },
   ];
 }
 
-export function handleNestedMutationErrors<TData, TVars extends AnyVariables = AnyVariables>({
-  result,
-}: {
-  result: Pick<OperationResult<TData, TVars>, 'data' | 'error'>;
-}) {
-  const mutationErrors = getMutationErrors(result);
+export function handleNestedMutationErrors<TData, TVars extends OperationVariables>(
+  error: ApolloError
+) {
+  const mutationErrors = getMutationErrors(error);
   if (mutationErrors?.length) {
     mutationErrors.forEach((error) => {
       toast(error.message, {
@@ -87,7 +95,7 @@ export enum GqlErrors {
   ReadOnlyException = 'ReadOnlyException',
 }
 
-export function hasError(err: CombinedError, ...errorCodes: string[]): boolean {
+export function hasError(err: ApolloError, ...errorCodes: string[]): boolean {
   return !!err.graphQLErrors?.some((gqlError) => {
     const errorCode = gqlError.message; // TODO !!! message to code
     return errorCodes.includes(errorCode);

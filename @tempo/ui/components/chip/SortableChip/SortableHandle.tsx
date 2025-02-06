@@ -1,6 +1,6 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import DragIcon from '@mui/icons-material/DragIndicator';
 import clsx from 'clsx';
+import { makeStyles } from '@tempo/ui/theme/styles';
 
 const useStyles = makeStyles(
   {

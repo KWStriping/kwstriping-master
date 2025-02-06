@@ -2,7 +2,7 @@ import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
+import type { ProductMediaItemFragment } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
@@ -59,7 +59,7 @@ const useStyles = makeStyles(
 );
 
 interface ProductMediaProps {
-  media?: Maybe<ProductMediaFragment[]>;
+  media?: Maybe<ProductMediaItemFragment[]>;
   placeholderImage?: string;
   disabled: boolean;
   onImageAdd();

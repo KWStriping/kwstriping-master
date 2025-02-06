@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { DiscountErrorCode } from '@tempo/api/generated/constants';
 import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
 
@@ -14,7 +13,6 @@ const messages = {
 
 function getDiscountErrorMessage(
   err: Omit<DiscountErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

@@ -34,7 +34,6 @@ const useStyles = makeStyles(
 
 const PageInfo: FC<PageInfoProps> = (props) => {
   const { data, disabled, errors, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const { defaultValue, editorRef, isReadyForMount, handleChange } = useRichTextContext();

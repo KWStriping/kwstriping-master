@@ -80,7 +80,10 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
 
   const [inputValue, setInputValue] = useState('');
 
-  const handleSelect = (item: string, downshiftOpts?: ControllerStateAndHelpers<string>) => {
+  const handleSelect = (
+    item: string | null,
+    downshiftOpts?: ControllerStateAndHelpers<string>
+  ) => {
     if (downshiftOpts) {
       downshiftOpts.reset({
         inputValue: downshiftOpts.inputValue,
@@ -89,7 +92,7 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
     }
     onChange({
       target: { name, value: item },
-    } as unknown);
+    } as unknown as any);
   };
 
   return (
@@ -97,7 +100,7 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
       <DebounceAutocomplete
         debounceFn={(value) => {
           setInputValue(value);
-          fetchChoices(value);
+          fetchChoices?.(value);
         }}
       >
         {(debounceFn) => (
@@ -133,8 +136,8 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
                 );
 
               const handleFocus = () => {
-                if (fetchOnFocus) {
-                  fetchChoices(inputValue);
+                if (fetchOnFocus && inputValue) {
+                  fetchChoices?.(inputValue);
                 }
                 if (input.current) input.current.select();
               };
@@ -143,6 +146,12 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
                 if (disabled) return;
                 toggleMenu();
               };
+
+              const { onChange, ...inputProps } = getInputProps({
+                placeholder,
+                'data-test-id': testId,
+                onClick: handleToggleMenu,
+              });
 
               return (
                 <div className={styles.container ?? ''} {...rest}>
@@ -165,11 +174,8 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
                       ref: anchor,
                     }}
                     inputProps={{
-                      ...getInputProps({
-                        placeholder,
-                        'data-test-id': testId,
-                        onClick: handleToggleMenu,
-                      }),
+                      // onChange, // TODO
+                      ...inputProps,
                       ...getMenuProps(),
                     }}
                     error={error}
@@ -186,29 +192,31 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
                       anchorEl={anchor.current}
                       open={isOpen}
                       style={{
-                        width: anchor.current.clientWidth,
+                        width: anchor.current?.clientWidth,
                         zIndex: 1301,
                       }}
                       placement={popperPlacement}
                     >
                       <MultiAutocompleteSelectFieldContent
-                        add={
-                          !!add && {
-                            ...add,
-                            onClick: () => {
-                              add.onClick();
-                              closeMenu();
-                            },
-                          }
-                        }
-                        choices={choices?.filter((choice) => !value.includes(choice.value))}
-                        displayCustomValue={displayCustomValue}
+                        {...(add
+                          ? {
+                              ...add,
+                              onClick: () => {
+                                add.onClick();
+                                closeMenu();
+                              },
+                            }
+                          : {})}
+                        choices={choices?.filter(
+                          (choice) => !value.includes(choice.value as string)
+                        )}
+                        displayCustomValue={!!displayCustomValue}
                         displayValues={displayValues}
                         getItemProps={getItemProps}
                         hasMore={hasMore}
                         highlightedIndex={highlightedIndex}
                         loading={loading}
-                        inputValue={inputValue}
+                        inputValue={inputValue ?? ''}
                         onFetchMore={onFetchMore}
                       />
                     </Popper>
@@ -223,7 +231,7 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
         {displayValues.map((value) => (
           <div
             className={styles.chip ?? ''}
-            key={value.value}
+            key={value.value as string}
             id={`selected-option-${value.label}`}
           >
             <div className={!value.disabled ? styles.chipInner : styles.disabledChipInner}>
@@ -235,7 +243,7 @@ const MultiAutocompleteSelectFieldComponent: FC<MultiAutocompleteSelectFieldProp
                 data-test-id={testId ? `${testId}-remove` : 'remove'}
                 className={styles.chipClose ?? ''}
                 disabled={value.disabled}
-                onClick={() => handleSelect(value.value)}
+                onClick={() => handleSelect(value.value as string)}
               >
                 <CloseIcon fontSize="small" />
               </IconButton>

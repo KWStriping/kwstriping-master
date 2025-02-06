@@ -62,9 +62,8 @@ fragment OrderLine on OrderLine {
       ...Money
     }
   }
-  # TODO
-  # thumbnail {
-  #   alt
-  #   url
-  # }
+  thumbnail(size: 64) {
+    alt
+    url
+  }
 }

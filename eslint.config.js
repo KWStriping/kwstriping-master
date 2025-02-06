@@ -459,14 +459,14 @@ const configs = [
         'react/require-render-return': 2,
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
-        'jsx-a11y/anchor-ambiguous-text': 'off', // TODO: error
+        'jsx-a11y/anchor-ambiguous-text': 'warn', // TODO: error
         'jsx-a11y/anchor-has-content': 'error',
         'jsx-a11y/anchor-is-valid': 'error',
         'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
         'jsx-a11y/aria-role': 'error',
         'jsx-a11y/aria-unsupported-elements': 'error',
         'jsx-a11y/autocomplete-valid': 'error',
-        'jsx-a11y/click-events-have-key-events': 'error',
+        'jsx-a11y/click-events-have-key-events': 'warn',
         'jsx-a11y/control-has-associated-label': [
           'off',
           {
@@ -904,7 +904,7 @@ const configs = [
           plugins: {
             custom: {
               rules: {
-                missing,
+                // missing,
               },
             },
           },

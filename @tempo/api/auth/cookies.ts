@@ -1,4 +1,4 @@
-import type { CookiesOptions } from 'next-auth';
+import type { NextAuthConfig } from 'next-auth';
 
 const DOMAIN = process.env.DOMAIN ?? process.env.NEXT_PUBLIC_DOMAIN;
 const PROTOCOL = process.env.NEXT_PUBLIC_PROTOCOL ?? 'https';
@@ -10,7 +10,7 @@ export const SESSION_TOKEN_COOKIE_NAME = `${
   USE_SECURE_COOKIES ? '__Secure-' : ''
 }next-auth.session-token`;
 
-const cookies: Partial<CookiesOptions> = {
+const cookies: NextAuthConfig['cookies'] = {
   sessionToken: {
     name: SESSION_TOKEN_COOKIE_NAME,
     options: {

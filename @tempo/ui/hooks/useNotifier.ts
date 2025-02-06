@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import { toast } from 'react-toastify';
 import type { ToastOptions, ToastContent } from 'react-toastify';
 
@@ -12,7 +11,7 @@ export function useNotifier() {
     const timeout = options.type === 'error' ? false : options.autohide;
     toast(content, {
       type: options.type ?? 'info',
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: 'bottom-right',
       ...(timeout ? { autoClose: timeout } : {}),
     });
   };
@@ -78,10 +77,10 @@ export const useDefaultNotifierSuccessErrorData = (errors: unknown[]) => {
   return !errors?.length
     ? {
         type: 'success',
-        text: (m.dashboard_savedChanges() ?? 'Saved changes'),
+        text: 'Saved changes',
       }
     : {
         type: 'error',
-        text: (m.dashboard_unknownError() ?? 'Unknown error'),
+        text: 'Unknown error',
       };
 };

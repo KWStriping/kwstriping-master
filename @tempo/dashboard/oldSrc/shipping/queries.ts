@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const shippingZones = gql(`
   query ShippingZones($first: Int, $after: String, $last: Int, $before: String) {

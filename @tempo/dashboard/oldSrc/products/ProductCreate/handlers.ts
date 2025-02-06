@@ -1,4 +1,3 @@
-import type { OperationResult } from '@tempo/api';;
 import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage/form';
 import type {
   AttributeErrorFragment,
@@ -136,7 +135,7 @@ export function createHandler(
     }
 
     if (!hasVariants) {
-      const result = await gather([
+      const result = await Promise.all([
         updateChannels(getChannelsVariables(productId, formData.channelListings)),
         createProduct(getSimpleProductVariables(formData, productId)),
       ]);

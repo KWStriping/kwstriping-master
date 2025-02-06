@@ -1,7 +1,11 @@
-import type { TransactionActionPayloadFragment, TransactionItemFragment } from '@tempo/api/generated/graphql';
+import type {
+  Currency,
+  TransactionActionPayloadFragment,
+  TransactionItemFragment,
+} from '@tempo/api/generated/graphql';
+import { testingVars } from '../consts';
 import { encryptSetting } from '@tempo/checkout/configuration/encryption';
 import type { PaymentProviderSettingsValues } from '@tempo/checkout/types';
-import { testingVars } from '../consts';
 
 export const mollieCompletedOrderId = 'ord_kr6ltl';
 
@@ -45,7 +49,7 @@ export const appPrivateMetafields = {
 export const prepareTempoTransaction = (
   type: 'voided' | 'charged' | 'authorized' | 'refunded',
   amount: number,
-  currency: string,
+  currency: Currency,
   additionalData?: Partial<TransactionItemFragment>
 ): TransactionItemFragment => {
   const common: Pick<
@@ -53,12 +57,25 @@ export const prepareTempoTransaction = (
     'amountVoided' | 'amountCharged' | 'amountAuthorized' | 'amountRefunded'
   > = {
     amountRefunded: {
+      __typename: 'Money',
       amount: 0,
       currency,
     },
-    amountAuthorized: { amount: 0, currency },
-    amountCharged: { amount: 0, currency },
-    amountVoided: { amount: 0, currency },
+    amountAuthorized: {
+      __typename: 'Money',
+      amount: 0,
+      currency,
+    },
+    amountCharged: {
+      __typename: 'Money',
+      amount: 0,
+      currency,
+    },
+    amountVoided: {
+      __typename: 'Money',
+      amount: 0,
+      currency,
+    },
   };
 
   const amounts = { ...common };
@@ -97,48 +114,60 @@ export const transactionActionRequest: Record<
   },
   adyenRefund: {
     transaction: {
+      __typename: 'TransactionItem',
       id: 'VHJhbnNhY3Rpb25JdGVtOjE3OA==',
       reference: 'LD65H2FVNXSKGK82',
       type: 'adyen-mc',
       amountAuthorized: {
+        __typename: 'Money',
         amount: 0,
         currency: 'USD',
       },
       amountCharged: {
+        __typename: 'Money',
         amount: 42.92,
       },
       amountVoided: {
+        __typename: 'Money',
         amount: 0,
       },
       amountRefunded: {
+        __typename: 'Money',
         amount: 0,
       },
     },
     action: {
+      __typename: 'TransactionAction',
       actionType: 'REFUND',
       amount: String(4.31),
     },
   },
   mollieRefund: {
     transaction: {
+      __typename: 'TransactionItem',
       id: 'VHJhbnNhY3Rpb25JdGVtOjE3Mg==',
       reference: 'ord_kr6ltl',
       type: 'mollie-creditcard',
       amountAuthorized: {
+        __typename: 'Money',
         amount: 0,
         currency: 'USD',
       },
       amountCharged: {
+        __typename: 'Money',
         amount: 21.67,
       },
       amountVoided: {
+        __typename: 'Money',
         amount: 0,
       },
       amountRefunded: {
+        __typename: 'Money',
         amount: 0,
       },
     },
     action: {
+      __typename: 'TransactionAction',
       actionType: 'REFUND',
       amount: String(38.61),
     },

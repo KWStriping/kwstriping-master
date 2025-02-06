@@ -6,7 +6,6 @@ import { useColorScheme, useTheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import type { ElementType } from 'react';
 
-// import useStyles from './styles';
 
 type BaseButtonProps<M = unknown> = M extends Object
   ? ButtonBaseTypeMap<M & { component: ElementType }>['props']
@@ -34,7 +33,6 @@ export const PaginationActions = <BProps,>({
   onPreviousPage = () => {},
   ...other
 }: PaginationActionsProps<BProps>) => {
-  // const styles = useStyles();
   const styles = {};
 
   const { direction } = useTheme();

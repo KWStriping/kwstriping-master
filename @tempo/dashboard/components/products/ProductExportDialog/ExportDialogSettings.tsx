@@ -51,7 +51,6 @@ const ExportDialogSettings: FC<ExportDialogSettingsProps> = ({
   exportScopeLabels,
   allowScopeSelection = true,
 }) => {
-  // const styles = useStyles();
   const styles = {};
 
   const formErrors = getFormErrors(formFields, errors);

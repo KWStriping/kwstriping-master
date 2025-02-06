@@ -53,7 +53,6 @@ interface CategoryProductListProps extends ListProps, ListActions {
 
 export const CategoryProductList: FC<CategoryProductListProps> = (props) => {
   const { disabled, isChecked, products, selected, toggle, toggleAll, toolbar } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const numberOfColumns = 2;

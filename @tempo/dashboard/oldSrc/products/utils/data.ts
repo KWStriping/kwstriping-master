@@ -6,7 +6,7 @@ import { ProductAttributeScope } from '@tempo/api/generated/constants';
 import type {
   ProductDetailsVariantFragment,
   ProductFragment,
-  ProductMediaFragment,
+  ProductMediaItemFragment,
   ProductKlassQuery,
   ProductCreateDataQuery,
   ProductFragment,
@@ -230,7 +230,7 @@ export const getPreorderEndDateFormData = (endDate?: string) =>
 export const getPreorderEndHourFormData = (endDate?: string) =>
   endDate ? Temporal.PlainTime.from(endDate).toString() : '';
 
-export const getSelectedMedia = <T extends Pick<ProductMediaFragment, 'id' | 'sortOrder'>>(
+export const getSelectedMedia = <T extends Pick<ProductMediaItemFragment, 'id' | 'sortOrder'>>(
   media: T[] = [],
   selectedMediaIds: string[]
 ) =>

@@ -1,6 +1,6 @@
 import type { UseSearchOptions } from '@tempo/api/hooks/useSearch';
 import { useSearch } from '@tempo/api/hooks/useSearch';
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 import type { SearchAvailableInGridAttributesQueryVariables } from '@tempo/api/generated/graphql';
 import { SearchAvailableInGridAttributesDocument } from '@tempo/api/generated/graphql';
 

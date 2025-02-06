@@ -20,8 +20,6 @@ import Spinner from '@tempo/ui/components/Spinner';
 import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
-const DISPLAY_PRICES = false;
-const ENABLE_CART = false; // TODO
 
 export type OptionalQuery = {
   variant?: string;

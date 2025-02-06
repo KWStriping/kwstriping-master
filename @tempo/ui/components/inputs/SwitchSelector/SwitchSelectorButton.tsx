@@ -44,7 +44,7 @@ export const SwitchSelectorButton: FC<SwitchSelectorButtonProps> = ({
   children,
   activeTab,
 }) => {
-  // const styles = useSwitchSelectorButtonStyles();
+  const styles = useSwitchSelectorButtonStyles();
 
   return (
     <Button

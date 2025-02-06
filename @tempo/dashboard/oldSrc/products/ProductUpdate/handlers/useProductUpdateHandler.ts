@@ -1,21 +1,20 @@
-
+import type {
+  UpdateMetadataMutation,
+  UpdateMetadataMutationVariables,
+  AttributeErrorFragment,
+  BulkProductErrorFragment,
+  MetadataErrorFragment,
+  ProductChannelListingErrorFragment,
+  ProductErrorFragment,
+  ProductErrorWithAttributesFragment,
+  ProductFragment,
+  UploadErrorFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import { useState } from 'react';
-import type { ProductListError } from './errors';
-import { getProductListErrors } from './errors';
-import { getProductChannelsUpdateVariables, getProductUpdateVariables } from './utils';
-import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
-import { getVariantChannelsInputs } from '@tempo/dashboard/components/products/Products/getVariantChannelsInputs';
-import {
-  getStockInputs,
-  getStocks,
-  getVariantChannels,
-  getVariantInput,
-  getVariantInputs,
-} from '@tempo/dashboard/components/products/Products/utils';
 import {
   ValueDeleteDocument,
   FileUploadDocument,
@@ -29,16 +28,18 @@ import {
   VariantDatagridStockUpdateDocument,
   VariantDatagridUpdateDocument,
 } from '@tempo/api/generated/graphql';
-import type {
-  AttributeErrorFragment,
-  BulkProductErrorFragment,
-  MetadataErrorFragment,
-  ProductChannelListingErrorFragment,
-  ProductErrorFragment,
-  ProductErrorWithAttributesFragment,
-  ProductFragment,
-  UploadErrorFragment,
-} from '@tempo/api/generated/graphql';
+import type { ProductListError } from './errors';
+import { getProductListErrors } from './errors';
+import { getProductChannelsUpdateVariables, getProductUpdateVariables } from './utils';
+import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
+import { getVariantChannelsInputs } from '@tempo/dashboard/components/products/Products/getVariantChannelsInputs';
+import {
+  getStockInputs,
+  getStocks,
+  getVariantChannels,
+  getVariantInput,
+  getVariantInputs,
+} from '@tempo/dashboard/components/products/Products/utils';
 
 import {
   mergeValueDeleteErrors,
@@ -79,13 +80,17 @@ export function useProductUpdateHandler(
   const [called, setCalled] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [updateMetadata] = useMutation(UpdateMetadataDocument);
+  const [updateMetadata] = useMutation(
+    UpdateMetadataDocument
+  );
   const [updatePrivateMetadata] = useMutation(UpdatePrivateMetadataDocument);
   const [updateStocks] = useMutation(VariantDatagridStockUpdateDocument);
   const [updateVariant] = useMutation(VariantDatagridUpdateDocument);
   const [createVariants] = useMutation(ProductBulkCreateDocument);
   const [deleteVariants] = useMutation(ProductBulkDeleteDocument);
-  const [uploadFile] = useMutation(FileUploadDocument);
+  const [uploadFile] = useMutation(
+    FileUploadDocument
+  );
 
   const [updateProduct, updateProductOpts] = useMutation(ProductUpdateDocument);
   const [updateChannels, updateChannelsOpts] = useMutation(ProductChannelListingUpdateDocument, {
@@ -101,7 +106,9 @@ export function useProductUpdateHandler(
   });
 
   const [updateVariantChannels] = useMutation(VariantDatagridChannelListingUpdateDocument);
-  const [deleteValue] = useMutation(ValueDeleteDocument);
+  const [deleteValue] = useMutation(
+    ValueDeleteDocument
+  );
 
   const sendMutations = async (
     data: ProductUpdateSubmitData
@@ -168,7 +175,7 @@ export function useProductUpdateHandler(
       );
     }
 
-    const variantMutationResults = await gather<OperationResult>(mutations);
+    const variantMutationResults = await Promise.all(mutations);
 
     const variantErrors = getProductListErrors(
       productChannelsUpdateResult,
@@ -196,7 +203,7 @@ export function useProductUpdateHandler(
     setLoading(false);
 
     if (errors?.length === 0) {
-      notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+      notify(m.dashboard_savedChanges() ?? 'Saved changes', {
         type: 'success',
       });
     }

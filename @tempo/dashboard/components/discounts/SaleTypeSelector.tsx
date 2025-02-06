@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -29,7 +28,7 @@ const useStyles = makeStyles(
   }
 );
 
-function createChoices(t: TFunction): RadioGroupFieldChoice[] {
+function createChoices(): RadioGroupFieldChoice[] {
   return [
     {
       label: t(
@@ -52,7 +51,6 @@ function createChoices(t: TFunction): RadioGroupFieldChoice[] {
 
 const SaleTypeSelector: FC<SaleTypeProps> = (props) => {
   const { data, disabled, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const choices = createChoices(t);

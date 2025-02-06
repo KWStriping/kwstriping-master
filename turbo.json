@@ -6,6 +6,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
+    "build:debug": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": ["build"]
@@ -19,6 +23,7 @@
     },
     "clean": {
       "cache": false
-    }
+    },
+    "typecheck": {}
   }
 }

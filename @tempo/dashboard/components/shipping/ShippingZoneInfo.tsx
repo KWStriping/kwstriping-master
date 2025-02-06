@@ -54,7 +54,6 @@ const useStyles = makeStyles(
 const MAX_DESCRIPTION_LENGTH = 300;
 
 const ShippingZoneInfo: FC<ShippingZoneInfoProps> = ({ data, disabled, errors, onChange }) => {
-  // const styles = useStyles();
   const styles = {};
   const formErrors = getFormErrors(['name'], errors);
 

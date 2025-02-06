@@ -65,7 +65,6 @@ interface OrderDraftDetailsProductsProps {
 
 const OrderDraftDetailsProducts: FC<OrderDraftDetailsProductsProps> = (props) => {
   const { order, errors, onOrderLineChange, onOrderLineRemove } = props;
-  // const styles = useStyles();
   const styles = {};
   const lines = order?.lines ?? [];
 

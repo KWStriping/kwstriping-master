@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
+import type { ProductMediaItemFragment } from '@tempo/api/generated/graphql';
 import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -13,7 +13,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 
 interface ProductMediaSelectDialogProps {
-  media?: Maybe<ProductMediaFragment[]>;
+  media?: Maybe<ProductMediaItemFragment[]>;
   selectedMedia?: string[];
   open: boolean;
   onClose: () => void;

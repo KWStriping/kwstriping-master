@@ -87,7 +87,7 @@ jobs:
         LOCAL_STORAGE_NAMESPACE: ${{ vars.LOCAL_STORAGE_NAMESPACE }}
         PORT_API: ${{ vars.PORT_API }}
         PORT_DASHBOARD: ${{ vars.PORT_DASHBOARD }}
-        PORT_STOREFRONT: ${{ vars.PORT_STOREFRONT }}
+        PORT_FRONT: ${{ vars.PORT_FRONT }}
         POSTGRES_DB: ${{ vars.POSTGRES_DB }}
         POSTGRES_USER: ${{ vars.POSTGRES_USER }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -178,7 +178,7 @@ jobs:
         build-args: |
           ORG=${{ vars.ORG }}
           APP=${{ vars.APP }}
-          PORT=${{ vars.PORT_STOREFRONT }}
+          PORT=${{ vars.PORT_FRONT }}
           API_URL=${{ vars.API_URL }}
         push: true
         cache-from: type=gha,scope=${{ vars.APP }}

@@ -1,5 +1,3 @@
-import * as m from '@paraglide/messages';
-import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import Grow from '@mui/material/Grow';
 import type { IconButtonProps } from '@mui/material/IconButton';
@@ -9,6 +7,7 @@ import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
 
 export interface NavigatorButtonProps extends IconButtonProps {
   isMac: boolean;
@@ -56,7 +55,7 @@ const NavigatorButton: FC<NavigatorButtonProps> = ({ className, isMac, ...props 
             }}
           >
             <Paper className={styles.paper ?? ''} elevation={8}>
-              {m.EEW() + ND ?? 'Navigator'}
+              {'Navigator'}
               <div className={styles.keyTile ?? ''}>
                 <span className={styles.keyTileLabel ?? ''}>{isMac ? '⌘' : 'Ctrl'}</span>
               </div>

@@ -1,3 +1,4 @@
+import type { ProductKlassDeleteMutation, ProductKlassDeleteMutationVariables } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks';
 import type {
   AssignProductAttributeMutation,

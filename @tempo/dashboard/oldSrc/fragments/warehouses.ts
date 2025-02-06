@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const warehouseFragment = gql(`
   fragment Warehouse on Warehouse {

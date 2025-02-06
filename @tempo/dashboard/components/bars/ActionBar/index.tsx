@@ -9,7 +9,6 @@ import type { FC, ReactNode } from 'react';
 export * from './context';
 
 import { useActionBar } from './context';
-// import useStyles from './styles';
 
 export interface ActionBarProps {
   disabled: boolean;
@@ -25,7 +24,6 @@ export const ActionBar: FC<ActionBarProps> = ({
   className,
   ...rest
 }) => {
-  // const styles = useStyles();
   const styles = {};
   const ssr = true;
 

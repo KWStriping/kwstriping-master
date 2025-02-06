@@ -1,5 +1,5 @@
 import { useSearch } from '@tempo/api/hooks';
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 import { SearchGroupsDocument } from '@tempo/api/generated/graphql';
 
 export const searchGroups = gql(`

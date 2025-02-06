@@ -1,5 +1,6 @@
-import type { GraphQLError } from '@tempo/api/types';
 import { findValueInEnum } from '@tempo/utils/enums';
+// import type { ApolloError } from '@tempo/api/types';
+import type { ApolloError } from '@tempo/api/types';
 
 export const JWTError = {
   Invalid: 'InvalidTokenError',
@@ -14,7 +15,7 @@ export const AuthError = {
 
 export type AuthError = (typeof AuthError)[keyof typeof AuthError];
 
-export function isJwtError(error: GraphQLError): boolean {
+export function isJwtError(error: ApolloError['graphQLErrors'][0]): boolean {
   let _isJwtError: boolean;
   if (!error.extensions.code) return false;
   try {
@@ -26,6 +27,6 @@ export function isJwtError(error: GraphQLError): boolean {
   return _isJwtError;
 }
 
-export function isTokenExpired(error: GraphQLError): boolean {
+export function isTokenExpired(error: ApolloError['graphQLErrors'][0]): boolean {
   return error.extensions.code === JWTError.Expired;
 }

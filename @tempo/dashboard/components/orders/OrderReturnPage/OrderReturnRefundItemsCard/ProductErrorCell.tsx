@@ -57,7 +57,6 @@ interface ProductErrorCellProps {
 }
 
 const ProductErrorCell: FC<ProductErrorCellProps> = ({ hasVariant }) => {
-  // const styles = useStyles();
   const styles = {};
   const popperAnchorRef = useRef<HTMLButtonElement | null>(null);
 

@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const customerGiftCardListQuery = gql(`
   query CustomerGiftCardList($first: Int, $filter: GiftCardFilter) {

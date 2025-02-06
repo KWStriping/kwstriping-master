@@ -1,7 +1,6 @@
 query Page($slug: String!) {
   page(slug: $slug) {
-    id
-    title
+    ...Page
     translation {
       id
       title
@@ -9,8 +8,6 @@ query Page($slug: String!) {
     }
     seoTitle
     seoDescription
-    slug
     createdAt
-    content
   }
 }

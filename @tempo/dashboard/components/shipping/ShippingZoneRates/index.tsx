@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
-// import { useTranslation } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 
 import IconButton from '@tempo/ui/components/buttons/IconButton';

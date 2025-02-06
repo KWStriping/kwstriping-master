@@ -1,3 +1,4 @@
+import type { FulfillOrderMutation, FulfillOrderMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { renderCollection } from '@tempo/ui/utils';
@@ -52,7 +53,7 @@ const OrderUnfulfilledProductsCard: FC<OrderUnfulfilledProductsCardProps> = ({
         });
       } else {
         if (!data?.fulfillOrder?.errors?.every((err) => err.code === 'INSUFFICIENT_STOCK')) {
-          handleNestedMutationErrors({ data, t, notify });
+          handleNestedMutationErrors({ data, notify });
         }
       }
     },

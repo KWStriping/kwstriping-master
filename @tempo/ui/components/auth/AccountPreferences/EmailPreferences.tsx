@@ -1,6 +1,9 @@
+import type {
+  RequestEmailChangeMutation,
+  RequestEmailChangeMutationVariables,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { RequestEmailChangeDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

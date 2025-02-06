@@ -1,3 +1,5 @@
+import type { OrderConfirmMutation, OrderConfirmMutationVariables } from '@tempo/api/generated/graphql';
+import type { WarehouseListQuery, WarehouseListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks/useQuery';
@@ -105,7 +107,7 @@ export const OrderUnconfirmedDetails: FC<OrderUnconfirmedDetailsProps> = ({
     return result;
   };
 
-  const [{ data: customerAddresses, fetching: customerAddressesLoading }] = useQuery(
+  const { data: customerAddresses, fetching: customerAddressesLoading } = useQuery(
     CustomerAddressesDocument,
     {
       variables: {

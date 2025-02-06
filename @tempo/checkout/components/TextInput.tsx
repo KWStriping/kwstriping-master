@@ -1,4 +1,4 @@
-import type { Error } from '@tempo/types/errors';
+import type { Error } from '@tempo/next/types/errors';
 import type { ControlFormData } from '@tempo/ui/hooks/useGetInputProps';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
@@ -9,7 +9,7 @@ import { useWatch } from 'react-hook-form';
 
 export type TextInputProps<
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 > = Omit<TextFieldProps, 'error' | 'ref'> &
   Omit<AllHTMLAttributes<HTMLInputElement>, 'onBlur' | 'onChange' | 'name' | 'ref'> &
   Omit<UseFormRegisterReturn, 'ref'> & {
@@ -23,7 +23,7 @@ export type TextInputProps<
 
 const TextInputComponent = <
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 >(
   props: TextInputProps<TControl, TFormData>,
   ref: ForwardedRef<HTMLInputElement>
@@ -42,7 +42,7 @@ const TextInputComponent = <
 
 export const TextInput = forwardRef(TextInputComponent) as <
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 >(
   props: TextInputProps<TControl, TFormData> & {
     ref?: ForwardedRef<HTMLInputElement>;

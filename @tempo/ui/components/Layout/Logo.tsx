@@ -1,6 +1,6 @@
-import { useShopSettings } from '@tempo/ui';
 import Image from 'next/image';
 import type { FC } from 'react';
+import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 
 interface LogoProps {
   className?: string;
@@ -8,17 +8,18 @@ interface LogoProps {
 
 export const Logo: FC<LogoProps> = ({ className }) => {
   const { logo, name } = useShopSettings();
-  const height = logo.height ? parseInt(logo.height) : undefined;
-  const width = logo.width ? parseInt(logo.width) : undefined;
-  console.log('logo', { logo, height, width });
+  const height = logo?.height ?? undefined;
+  const width = logo?.width ?? undefined;
   return (
     <div className={className ?? 'w-full h-full'}>
-      <Image
-        src={logo.url}
-        alt={logo.alt ?? `${name} logo`}
-        {...(width && height ? { width, height } : { fill: true })}
-        style={{ objectPosition: 'center' }}
-      />
+      {!!logo && (
+        <Image
+          src={logo.url}
+          alt={logo.alt ?? `${name} logo`}
+          {...(width && height ? { width, height } : { fill: true })}
+          style={{ objectPosition: 'center' }}
+        />
+      )}
     </div>
   );
 };

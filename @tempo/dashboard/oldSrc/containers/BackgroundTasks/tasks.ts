@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { IMessageContext } from '@dashboard/components/messages';
 import { JobStatus } from '@tempo/api/generated/constants';
 import type {
@@ -7,7 +6,6 @@ import type {
   CheckOrderInvoicesStatusQuery,
 } from '@tempo/api/generated/graphql';
 import type { MutableRefObject } from 'react';
-import type { OperationResult } from '@tempo/api';;
 
 import messages from './messages';
 import type { InvoiceGenerateParams, QueuedTask, TaskData } from './types';
@@ -72,7 +70,6 @@ export function queueInvoiceGenerate(
   tasks: MutableRefObject<QueuedTask[]>,
   fetch: () => Promise<OperationResult<CheckOrderInvoicesStatusQuery>>,
   notify: IMessageContext,
-  t: TFunction
 ) {
   if (!generateInvoice) {
     throw new Error('generateInvoice is required when creating custom task');
@@ -124,7 +121,6 @@ export function queueExport(
   tasks: MutableRefObject<QueuedTask[]>,
   fetch: () => Promise<ApolloOperationResult<CheckExportFileStatusQuery>>,
   notify: IMessageContext,
-  t: TFunction
 ) {
   tasks.current = [
     ...tasks.current,

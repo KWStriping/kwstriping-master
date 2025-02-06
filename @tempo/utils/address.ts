@@ -19,7 +19,7 @@ export const emptyFormData: AddressFormData = {
   countryArea: '',
   postalCode: '',
   phone: '',
-  country: '' as CountryCode,
+  countryCode: '' as CountryCode,
 };
 
 export const getAddressInputData = ({
@@ -31,9 +31,9 @@ export const getAddressInputData = ({
     countryCode?: CountryCode;
     country: Country;
   }
->): AddressUpdateInput => ({
+>): Partial<AddressUpdateInput> => ({
   ...omit(rest, ['id', '__typename']),
-  country: countryCode || (country?.code as CountryCode),
+  countryCode: countryCode || (country?.code as CountryCode),
 });
 
 export const getAddressFormDataFromAddress = (

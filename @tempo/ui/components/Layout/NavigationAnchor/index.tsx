@@ -4,11 +4,11 @@ import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql'
 import clsx from 'clsx';
 import Link from 'next/link';
 
+import styles from './index.module.css';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { getLinkPath } from '@tempo/ui/utils/menus';
 import { translate } from '@tempo/ui/utils/translations';
 import { usePathname } from '@tempo/ui/navigation';
-import styles from './index.module.css';
 
 interface NavigationAnchorProps {
   menuItem: Omit<MenuItemWithChildrenFragment, '__typename'>;

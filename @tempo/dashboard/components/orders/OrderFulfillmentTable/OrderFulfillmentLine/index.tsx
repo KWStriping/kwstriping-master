@@ -90,10 +90,10 @@ export const OrderFulfillmentLine: FC<OrderFulfillmentLineProps> = ({
       >
         {line.productName}
         <Typography color="textSecondary" variant="caption">
-          {getAttributesCaption(line.variant?.attributes)}
+          {getAttributesCaption(line.product?.attributes)}
         </Typography>
       </TableCellAvatar>
-      <TableCell className={styles.colSku ?? ''}>{line.variant?.sku}</TableCell>
+      <TableCell className={styles.colSku ?? ''}>{line.product?.sku}</TableCell>
       {isPreorder ? (
         <TableCell className={styles.colQuantity ?? ''} />
       ) : (
@@ -106,7 +106,7 @@ export const OrderFulfillmentLine: FC<OrderFulfillmentLineProps> = ({
             inputProps={{
               className: clsx(
                 styles.quantityInnerInput ?? '',
-                !line.variant?.trackInventory && styles.quantityInnerInputNoRemaining
+                !line.product?.trackInventory && styles.quantityInnerInputNoRemaining
               ),
               min: 0,
               style: { textAlign: 'right' },

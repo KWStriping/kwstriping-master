@@ -1,5 +1,14 @@
-import type { CheckoutFragment } from '@tempo/api/generated/graphql';
-import { CheckoutPaymentCreateDocument } from '@tempo/api/generated/graphql';
+import type {
+  CreateCheckoutPaymentMutation,
+  CreateCheckoutPaymentMutationVariables,
+  CompleteCheckoutMutation,
+  CompleteCheckoutMutationVariables,
+  CheckoutFragment,
+} from '@tempo/api/generated/graphql';
+import {
+  CreateCheckoutPaymentDocument,
+  CompleteCheckoutDocument,
+} from '@tempo/api/generated/graphql';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -8,14 +17,13 @@ import { loadStripe } from '@stripe/stripe-js/pure';
 import { useRouter } from 'next/navigation';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-
 import { CompleteCheckoutButton } from '../../CompleteCheckoutButton';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 export const STRIPE_GATEWAY = 'api.payments.stripe';
 
 interface StripeCardFormInterface {
-  checkout: Maybe<CheckoutFragment>;
+  checkout: CheckoutFragment;
 }
 
 function StripeCardForm({ checkout }: StripeCardFormInterface) {
@@ -25,8 +33,8 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
   const router = useRouter();
   const paths = usePaths();
   const { resetCheckoutId: resetCheckoutToken } = useCheckout();
-  const [createCheckoutPaymentMutation] = useMutation(CheckoutPaymentCreateDocument);
-  const [completeCheckoutMutation] = useMutation(CheckoutCompleteDocument);
+  const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);
+  const [completeCheckoutMutation] = useMutation(CompleteCheckoutDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const totalPrice = checkout.totalPrice?.gross;
   const payLabel = `Pay ${formatPrice(totalPrice)}`;
@@ -59,13 +67,13 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
       card: cardElement,
       billing_details: checkout.billingAddress
         ? {
-            email: checkout.email || '',
+            email: checkout.customerEmail || '',
             phone: checkout.billingAddress.phone || '',
             name: `${checkout.billingAddress.firstName} ${checkout.billingAddress.lastName}`,
             address: {
               line1: checkout.billingAddress.streetAddress1,
               city: checkout.billingAddress.city,
-              countryCode: checkout.billingAddress.country.code,
+              country: checkout.billingAddress.country.code,
               postal_code: checkout.billingAddress.postalCode,
             },
           }
@@ -79,7 +87,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
     }
 
     // Send Stripe payment data to the Tempo
-    const { error: paymentCreateErrors } = await createCheckoutPaymentMutation({
+    const { errors: paymentCreateErrors } = await createCheckoutPaymentMutation({
       checkoutId: checkout.id,
       paymentInput: {
         gateway: 'api.ments.stripe',
@@ -95,7 +103,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
     }
 
     // Try to complete the checkout
-    const { data: completeData, error: completeErrors } = await completeCheckoutMutation({
+    const { data: completeData, errors: completeErrors } = await completeCheckoutMutation({
       checkoutId: checkout.id,
     });
     if (completeErrors) {
@@ -128,7 +136,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
       }
 
       // Try to complete checkout
-      const { data: confirmedCompleteData, error: confirmedCompleteErrors } =
+      const { data: confirmedCompleteData, errors: confirmedCompleteErrors } =
         await completeCheckoutMutation({
           checkoutId: checkout.id,
         });
@@ -157,7 +165,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
       <CardElement />
       <CompleteCheckoutButton
         isProcessing={isPaymentProcessing}
-        isDisabled={!stripe || !elements || isPaymentProcessing}
+        disabled={!stripe || !elements || isPaymentProcessing}
       >
         {payLabel}
       </CompleteCheckoutButton>
@@ -166,7 +174,7 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
 }
 
 interface StripeCreditCardSectionInterface {
-  checkout: Maybe<CheckoutFragment>;
+  checkout: CheckoutFragment;
 }
 
 export function StripeCreditCardSection({ checkout }: StripeCreditCardSectionInterface) {

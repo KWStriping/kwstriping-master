@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const fragmentOrderEvent = gql(`
   fragment OrderEvent on OrderEvent {
@@ -243,9 +243,11 @@ export const fragmentOrderDetails = gql(`
       __typename
       ... on ShippingMethod {
         id
+        name
       }
       ... on Warehouse {
         id
+        name
         clickAndCollectOption
       }
     }

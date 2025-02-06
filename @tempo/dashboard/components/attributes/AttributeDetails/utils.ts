@@ -1,11 +1,10 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import { isValidElement } from 'react';
 import type { ReactNode } from 'react';
-import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
 import { MeasurementUnit } from '@tempo/api/generated/constants';
 
 import * as M from './messages';
+import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
 
 export type UnitSystem = 'imperial' | 'metric';
 export type UnitType = 'volume' | 'weight' | 'area' | 'distance';
@@ -42,10 +41,7 @@ const UNIT_MESSAGES_MAPPING = {
   [MeasurementUnit.SqKm]: M.units.squareKilometer,
 };
 
-export const getMeasurementUnitMessage = (
-  unit: MeasurementUnit,
-  t: TFunction
-): ReactNode => {
+export const getMeasurementUnitMessage = (unit: MeasurementUnit): ReactNode => {
   const message = UNIT_MESSAGES_MAPPING[unit];
   return typeof message === 'string' || isValidElement(message) ? message : m[message];
 };
@@ -94,11 +90,7 @@ export const unitMapping = {
     ],
     distance: [MeasurementUnit.Ft, MeasurementUnit.Yd, MeasurementUnit.Inch],
     weight: [MeasurementUnit.Lb, MeasurementUnit.Oz],
-    area: [
-      MeasurementUnit.SqFt,
-      MeasurementUnit.SqYd,
-      MeasurementUnit.SqInch,
-    ],
+    area: [MeasurementUnit.SqFt, MeasurementUnit.SqYd, MeasurementUnit.SqInch],
   },
   metric: {
     volume: [
@@ -109,20 +101,13 @@ export const unitMapping = {
     ],
     distance: [MeasurementUnit.Cm, MeasurementUnit.M, MeasurementUnit.Km],
     weight: [MeasurementUnit.G, MeasurementUnit.Kg, MeasurementUnit.Tonne],
-    area: [
-      MeasurementUnit.SqCm,
-      MeasurementUnit.SqM,
-      MeasurementUnit.SqKm,
-    ],
+    area: [MeasurementUnit.SqCm, MeasurementUnit.SqM, MeasurementUnit.SqKm],
   },
 };
 
-const extractTypeChoices = (
-  typeEnums: {
-    [key in UnitType]: MeasurementUnit[];
-  },
-  t: TFunction
-) =>
+const extractTypeChoices = (typeEnums: {
+  [key in UnitType]: MeasurementUnit[];
+}) =>
   Object.entries(typeEnums).reduce(
     (acc, [type, units]) => ({
       ...acc,
@@ -134,9 +119,7 @@ const extractTypeChoices = (
     {}
   );
 
-export const getUnitChoices = (
-  t: TFunction
-): {
+export const getUnitChoices = (): {
   [key in UnitSystem]: {
     [key in UnitType]: Array<Choice<MeasurementUnit>>;
   };

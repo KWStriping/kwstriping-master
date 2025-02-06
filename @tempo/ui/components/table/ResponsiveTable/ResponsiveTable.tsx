@@ -2,7 +2,7 @@ import type { Breakpoint } from '@mui/material/styles';
 import type { TableProps } from '@mui/material/Table';
 import Table from '@mui/material/Table';
 import type { HTMLAttributes, ReactNode, FC } from 'react';
-// import useStyles from './styles';
+import styles from './index.module.css';
 
 export interface ResponsiveTableProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode | ReactNode[];
@@ -20,8 +20,6 @@ export const ResponsiveTable: FC<ResponsiveTableProps> = ({
   ...props
 }) => {
   // const styles = useStyles({ flexBreakpoint });
-
-  const styles = {};
 
   return (
     <div className={styles.root ?? ''} {...props}>

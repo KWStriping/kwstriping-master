@@ -39,7 +39,7 @@ export interface FilterData extends FilterOptions, FilterState {
   options: FilterDetailedOptions;
 }
 
-export interface Filter extends FilterValues {
+export interface FilterInterface extends FilterValues {
   name: string;
 }
 

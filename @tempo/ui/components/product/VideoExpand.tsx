@@ -1,9 +1,9 @@
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
+import type { ProductMediaItemFragment } from '@tempo/api/generated/graphql';
 import CloseIcon from '@mui/icons-material/Close';
 import { getYouTubeIDFromURL } from '@tempo/ui/utils/media';
 
 interface VideoExpandProps {
-  video?: Maybe<ProductMediaFragment>;
+  video?: Maybe<ProductMediaItemFragment>;
   onRemoveExpand: () => void;
 }
 

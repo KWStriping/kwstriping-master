@@ -1,4 +1,4 @@
-import type { AddressFragment, CheckoutError } from '@tempo/api/generated/graphql';
+import type { AddressFragment, ErrorInterface } from '@tempo/api/generated/graphql';
 import { CurrentUserAddressesDocument } from '@tempo/api/generated/graphql';
 import { CountryCode } from '@tempo/api/generated/constants';
 import type { AddressFormData } from '@tempo/next/types/addresses';
@@ -8,12 +8,12 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 interface SavedAddressSelectionListProps {
-  updateAddress: (address: AddressFormData) => Promise<CheckoutError[]>;
+  updateAddress: (address: AddressFormData) => Promise<ErrorInterface[]>;
   disabled?: boolean;
 }
 
 export function SavedAddressSelectionList({ updateAddress }: SavedAddressSelectionListProps) {
-  const [{ fetching: loading, error, data }] = useQuery(CurrentUserAddressesDocument, {});
+  const { loading, error, data } = useQuery(CurrentUserAddressesDocument, { variables: {} });
   const [selectedSavedAddress, setSelectedSavedAddress] = useState<AddressFragment | null>();
 
   if (loading) {

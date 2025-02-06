@@ -1,5 +1,4 @@
 import type { UrlObject } from 'url';
-import { isExternalURL } from '@tempo/ui/utils/urls';
 import type { TypographyProps } from '@mui/material/Typography';
 import Typography from '@mui/material/Typography';
 
@@ -14,13 +13,13 @@ import type {
   Ref,
 } from 'react';
 import styles from './index.module.css';
+import { isExternalURL } from '@tempo/ui/utils/urls';
 
 type Href = string | UrlObject;
 
 interface LinkProps
-  extends Pick<
-    AnchorHTMLAttributes<HTMLAnchorElement>,
-    'rel' | 'target' | 'className' | 'children'
+  extends Partial<
+    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'rel' | 'target' | 'className' | 'children'>
   > {
   href?: Href;
   color?: 'primary' | 'secondary' | 'inherit';

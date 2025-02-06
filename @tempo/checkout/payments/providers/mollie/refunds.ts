@@ -1,6 +1,7 @@
 import type { TransactionActionPayloadFragment } from '@tempo/api/generated/graphql';
 import { unpackPromise } from '@tempo/utils/promises';
 import { PaymentStatus } from '@mollie/api-client';
+import { TransactionActionType } from '@tempo/api/generated/constants';
 import {
   getMollieEventName,
   getMollieClient,
@@ -46,11 +47,13 @@ export async function handleMollieRefund(
     id: transaction.id,
     transaction: {
       availableActions: transactionActions,
+      status: refundError ? 'FAILURE' : 'PENDING',
+      type: TransactionActionType.Refund,
     },
     transactionEvent: {
       status: refundError ? 'FAILURE' : 'PENDING',
       name: getMollieEventName('refund requested'),
-      reference: refundError?.message ?? mollieRefund?.id,
+      reference: refundError?.message ?? mollieRefund?.id ?? '', // TODO
     },
   });
 

@@ -37,9 +37,9 @@ const OrderFulfillStockExceededDialogLine: FC<OrderFulfillStockExceededDialogLin
     <TableRow key={line?.id}>
       <TableCellAvatar className={styles.colName ?? ''} thumbnail={line?.thumbnail?.url}>
         {line?.productName}
-        {line.variant && 'attributes' in line.variant && (
+        {line.product && 'attributes' in line.product && (
           <Typography color="textSecondary" variant="caption">
-            {getAttributesCaption(line.variant?.attributes)}
+            {getAttributesCaption(line.product?.attributes)}
           </Typography>
         )}
       </TableCellAvatar>

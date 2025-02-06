@@ -35,7 +35,6 @@ const useStyles = makeStyles(
 
 const AttributeOrganization: FC<AttributeOrganizationProps> = (props) => {
   const { canChangeType, data, disabled, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

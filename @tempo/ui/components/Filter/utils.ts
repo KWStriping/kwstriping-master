@@ -1,7 +1,12 @@
 import { sortBy, uniqBy } from 'lodash-es';
 import { assert } from 'tsafe';
 
-import type { FilterData, FilterDetailedOptions, Filter, OnFilterChangeOpts } from './types';
+import type {
+  FilterData,
+  FilterDetailedOptions,
+  FilterInterface,
+  OnFilterChangeOpts,
+} from './types';
 import { FilterType } from './types';
 
 export function getFilterName(name: string, options: FilterDetailedOptions): string {
@@ -48,8 +53,8 @@ function getDefaultValue(filter: FilterData) {
       options.multiple || options.type === FilterType.Range
         ? null
         : options.type === FilterType.Choice
-        ? options.default ?? options.choices![0]!.value
-        : '',
+          ? options.default ?? options.choices![0]!.value
+          : '',
     values:
       filter.range && options.type === FilterType.Range ? ['', ''] : options.multiple ? [] : null,
   };
@@ -59,7 +64,7 @@ export function register(
   filterData: FilterData[],
   name: string,
   label: string,
-  initial: Filter[],
+  initial: FilterInterface[],
   options: FilterDetailedOptions
 ): FilterData[] {
   const existingFilter = initial.find((f) => f.name === name);
@@ -149,11 +154,11 @@ export function toggle(filterData: FilterData[], name: string): FilterData[] {
           ...value,
         }
       : filter.active && filter.sortIndex > sortIndex
-      ? {
-          ...filter,
-          sortIndex: filter.sortIndex - 1,
-        }
-      : filter
+        ? {
+            ...filter,
+            sortIndex: filter.sortIndex - 1,
+          }
+        : filter
   );
 }
 
@@ -187,11 +192,11 @@ export function swap(
           active: false,
         }
       : filter.name === nextFilter.name
-      ? {
-          ...filter,
-          active: true,
-          sortIndex: previousFilter.sortIndex,
-        }
-      : filter
+        ? {
+            ...filter,
+            active: true,
+            sortIndex: previousFilter.sortIndex,
+          }
+        : filter
   );
 }

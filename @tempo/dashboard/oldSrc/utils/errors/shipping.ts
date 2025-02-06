@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
 import { ShippingErrorCode } from '@tempo/api/generated/constants';
 
@@ -19,7 +18,6 @@ const messages = {
 
 function getShippingErrorMessage(
   err: Omit<ShippingErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

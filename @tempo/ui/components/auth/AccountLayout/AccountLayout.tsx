@@ -1,10 +1,10 @@
 import { useUser } from '@tempo/api/auth/react/hooks';
+import { useRouter, usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
 import { Layout } from '@tempo/ui/components/Layout';
 import { NavigationPanel } from '@tempo/ui/components/Layout/NavigationPanel';
 import { Spinner } from '@tempo/ui/components/Spinner';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { useRouter } from 'next/navigation';
-import type { ReactNode } from 'react';
 
 export interface AccountLayoutProps {
   children: ReactNode;
@@ -12,8 +12,9 @@ export interface AccountLayoutProps {
 
 export function AccountLayout({ children }: AccountLayoutProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const paths = usePaths();
-  const { authenticated, authenticating } = useUser();
+  const { authenticated, loading: authenticating } = useUser();
   if (authenticating) {
     return (
       <Layout logo={null} navbarItems={[]}>
@@ -23,7 +24,7 @@ export function AccountLayout({ children }: AccountLayoutProps) {
   }
 
   if (!authenticated && typeof window !== 'undefined') {
-    void router.push(paths.login({ next: router.asPath }));
+    void router.push(paths.login({ next: pathname }));
     return null;
   }
 

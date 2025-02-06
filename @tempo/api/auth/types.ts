@@ -8,7 +8,6 @@ import type {
   ExternalAuthenticationUrlMutation,
   LoginMutation,
   RefreshTokenMutation,
-  RegisterMutation,
   RequestPasswordResetMutation,
   SetPasswordMutation,
   VerifyTokenMutation,
@@ -19,7 +18,6 @@ import type {
   RequestEmailChangeMutation,
   SetAccountDefaultAddressMutation,
 } from '@tempo/api/generated/graphql';
-import type { OperationResult } from '@urql/core';
 
 import 'next-auth';
 import 'next-auth/jwt';
@@ -42,7 +40,7 @@ declare module 'next-auth' {
    * The shape of the user object returned in the OAuth providers' `profile` callback,
    * or the second parameter of the `session` callback, when using a database.
    */
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  // eslint-disable-next-line ts/no-empty-interface
   interface User extends SessionUserFields, MaybeTokens {}
 
   /**
@@ -69,10 +67,9 @@ declare module 'next-auth' {
   }
 
   /** The OAuth profile returned from a provider */
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  // eslint-disable-next-line ts/no-empty-interface
   interface Profile {}
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   type AdapterUser = MaybeTokens;
 }
 
@@ -113,30 +110,17 @@ export type ConfirmAccountOpts = AccountConfirmMutationVariables;
 
 // Methods results
 // Auth
-export type ChangePasswordResult = OperationResult<PasswordChangeMutation>;
 export type ChangePasswordData = PasswordChangeMutation['changePassword'];
-export type LoginResult = OperationResult<LoginMutation>;
 export type LoginData = LoginMutation['obtainToken'];
-export type RefreshTokenResult = OperationResult<RefreshTokenMutation>;
 export type RefreshTokenData = RefreshTokenMutation['refreshToken'];
-export type RegisterResult = OperationResult<RegisterMutation>;
-export type RequestPasswordResetResult = OperationResult<RequestPasswordResetMutation>;
 export type RequestPasswordResetData = RequestPasswordResetMutation['requestPasswordReset'];
-export type SetPasswordResult = OperationResult<SetPasswordMutation>;
 export type SetPasswordData = SetPasswordMutation['setPassword'];
-export type VerifyTokenResult = OperationResult<VerifyTokenMutation>;
 export type VerifyTokenData = VerifyTokenMutation['verifyToken'];
-export type GetExternalAuthUrlResult = OperationResult<ExternalAuthenticationUrlMutation>;
 export type GetExternalAuthUrlData =
   ExternalAuthenticationUrlMutation['externalAuthenticationUrl'];
 // User
-export type ConfirmEmailChangeResult = OperationResult<ConfirmEmailChangeMutation>;
 export type ConfirmEmailChangeData = ConfirmEmailChangeMutation['confirmEmailChange'];
-export type CreateAccountAddressResult = OperationResult<CreateAccountAddressMutation>;
 export type CreateAccountAddressData = CreateAccountAddressMutation['addAddress'];
-export type RequestEmailChangeResult = OperationResult<RequestEmailChangeMutation>;
 export type RequestEmailChangeData = RequestEmailChangeMutation['requestEmailChange'];
-export type SetAccountDefaultAddressResult = OperationResult<SetAccountDefaultAddressMutation>;
 export type SetAccountDefaultAddressData = SetAccountDefaultAddressMutation['setDefaultAddress'];
-export type ConfirmAccountResult = OperationResult<AccountConfirmMutation>;
 export type ConfirmAccountData = AccountConfirmMutation['confirmAccount'];

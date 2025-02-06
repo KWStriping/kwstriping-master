@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 
 const commonErrorMessages = {
   graphqlError: {
@@ -32,7 +31,6 @@ export interface CommonError<ErrorCode> {
 
 export function getCommonFormFieldErrorMessage<ErrorCode>(
   error: CommonError<ErrorCode> | undefined,
-  t: TFunction
 ): string {
   if (error) {
     switch (error.code) {

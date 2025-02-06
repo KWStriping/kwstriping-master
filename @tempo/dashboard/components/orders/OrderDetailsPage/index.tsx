@@ -1,3 +1,5 @@
+import type { OrderUpdateMutation, OrderUpdateMutationVariables } from '@tempo/api/generated/graphql';
+import type { WarehouseListQuery, WarehouseListQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { useShopSettings } from '@tempo/ui';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
@@ -49,7 +51,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
   const router = useRouter();
   const { enableMetadata } = useShopSettings();
   const { autoApproveFulfillment, fulfillmentAllowUnpaid } = useShopSettings();
-  const [{ data: warehousesData }] = useQuery(WarehouseListDocument, {
+  const { data: warehousesData } = useQuery(WarehouseListDocument, {
     displayLoader: true,
     variables: {
       first: 30,
@@ -61,7 +63,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = ({ id, order, loading: disab
     [warehousesData]
   );
 
-  const [{ data: customerAddresses, fetching: customerAddressesLoading }] = useQuery(
+  const { data: customerAddresses, fetching: customerAddressesLoading } = useQuery(
     CustomerAddressesDocument,
     {
       variables: {

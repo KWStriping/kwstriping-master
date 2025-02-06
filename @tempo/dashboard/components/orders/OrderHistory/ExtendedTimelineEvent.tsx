@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { OrderEventType } from '@tempo/api/generated/constants';
-// import { useTranslation } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Typography from '@mui/material/Typography';
 import camelCase from 'lodash-es/camelCase';
@@ -120,7 +119,6 @@ interface ExtendedTimelineEventProps {
 
 const ExtendedTimelineEvent: FC<ExtendedTimelineEventProps> = ({ event, orderCurrency }) => {
   const { id, date, type, lines, amount, transactionReference, shippingCostsIncluded } = event;
-  // const styles = useStyles();
   const styles = {};
 
   const eventTypeInCamelCase = camelCase(type);

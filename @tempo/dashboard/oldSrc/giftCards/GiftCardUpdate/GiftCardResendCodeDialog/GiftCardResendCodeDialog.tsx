@@ -1,3 +1,5 @@
+import type { GiftCardResendMutation, GiftCardResendMutationVariables } from '@tempo/api/generated/graphql';
+import type { ChannelsQuery, ChannelsQueryVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -39,7 +41,7 @@ const GiftCardResendCodeDialog: FC<DialogProps> = ({ open, onClose }) => {
 
   const [consentSelected, setConsentSelected] = useState(false);
 
-  const [{ data: channelsData, fetching: loadingChannels }] = useQuery(ChannelsDocument, {});
+  const { data: channelsData, loadingChannels } = useQuery(ChannelsDocument, {});
 
   const channels = channelsData?.channels;
 

@@ -1,4 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select';
@@ -7,20 +6,21 @@ import Typography from '@mui/material/Typography';
 import { difference, uniqBy } from 'lodash-es';
 import { useRef, useEffect } from 'react';
 import type { FC } from 'react';
+import styles from './index.module.css';
 
 import { useFilterActions, useFilterData } from './context';
 import { FilterContent } from './FilterContent';
-// import useStyles from './styles';
 
 import type { FilterDetailedOptions, FilterLabels, FilterOptions } from './types';
 import { FilterType } from './types';
 import * as utils from './utils';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export type FilterProps = FilterOptions & FilterDetailedOptions;
 
 export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) => {
   console.log('Filter', { nameProp, label, options });
-  const name = utils.getFilterName(nameProp, options);
+  const name = utils.getFilterName(nameProp, options as FilterDetailedOptions);
   if (!name) throw new Error('Filter name is required');
   const filters = useFilterData();
   const { register, set, unregister } = useFilterActions();
@@ -30,7 +30,7 @@ export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) =
   useEffect(() => {
     console.log('registering', name);
     console.log('>>>>>>', register);
-    register(name, label, options);
+    register(name, label, options as any);
     registered.current = true;
     return () => unregister(name);
   }, []);
@@ -44,7 +44,7 @@ export const Filter: FC<FilterProps> = ({ name: nameProp, label, ...options }) =
     ) {
       set(name, {
         options: {
-          ...options,
+          ...(options as FilterDetailedOptions),
           choices: options.choices,
         },
       });
@@ -60,8 +60,6 @@ export interface FilterRowProps {
   labels: FilterLabels;
 }
 export const FilterRow: FC<FilterRowProps> = ({ first, name, labels }) => {
-  // const styles = useStyles();
-  const styles = {};
   const filters = useFilterData();
   const { toggle, toggleRange, swap } = useFilterActions();
 

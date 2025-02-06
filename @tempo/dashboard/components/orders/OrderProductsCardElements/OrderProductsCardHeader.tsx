@@ -54,7 +54,6 @@ const useStyles = makeStyles(
 );
 
 const TableHeader = () => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <>

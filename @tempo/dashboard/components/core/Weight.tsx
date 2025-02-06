@@ -1,4 +1,3 @@
-import { Trans } from '@tempo/next/i18n';
 import type { FC } from 'react';
 
 export interface Weight {

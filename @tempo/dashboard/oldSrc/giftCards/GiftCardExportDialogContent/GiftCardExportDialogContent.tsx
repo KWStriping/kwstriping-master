@@ -1,3 +1,4 @@
+import type { ExportGiftCardsMutation, ExportGiftCardsMutationVariables } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier from '@tempo/ui/hooks/useNotifier';

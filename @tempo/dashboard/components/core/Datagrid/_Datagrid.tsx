@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
 import '@glideapps/glide-data-grid/dist/index.css';
 
-// import { useTranslation } from '@tempo/next/i18n';
 import { useTheme } from '@tempo/ui/theme';
 import { useColorScheme } from '@tempo/ui/theme/styles';
 import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';

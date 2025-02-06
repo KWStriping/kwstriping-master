@@ -12,12 +12,12 @@ export const useShippingZones = (channelId?: string) => {
   const canLoadShippingZones =
     userPermissions && hasPermissions(userPermissions, [PermissionCode.ManageShipping]);
 
-  const [{ data: shippingZonesCountData, fetching: shippingZonesCountLoading }] = useQuery(
+  const { data: shippingZonesCountData, fetching: shippingZonesCountLoading } = useQuery(
     ShippingZonesCountDocument,
     { pause: !canLoadShippingZones }
   );
 
-  const [{ data: channelShippingZonesData, fetching: channelsShippingZonesLoading }] = useQuery(
+  const { data: channelShippingZonesData, fetching: channelsShippingZonesLoading } = useQuery(
     ChannelShippingZonesDocument,
     {
       variables: {

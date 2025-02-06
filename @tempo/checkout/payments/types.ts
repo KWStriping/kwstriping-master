@@ -1,4 +1,4 @@
-import type { CreateOrderFromCheckoutErrorCode, OrderFragment } from '@tempo/api/generated/graphql';
+import type { OrderErrorCode, OrderFragment } from '@tempo/api/generated/graphql';
 import type { PayRequestResponse } from '@tempo/checkout/types/api';
 import type { OrderPaymentMetafield } from '@tempo/checkout/types/common';
 import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
@@ -13,7 +13,7 @@ type InternalErrorCodes =
   | 'ALREADY_PAID'
   | 'EXPIRED';
 
-export type ErrorCode = InternalErrorCodes | CreateOrderFromCheckoutErrorCode;
+export type ErrorCode = InternalErrorCodes | OrderErrorCode;
 
 export type Errors = ErrorCode[];
 

@@ -50,7 +50,8 @@ const GiftCardCreateExpirySelect: FC<GiftCardCreateExpirySelectProps> = ({
 }) => {
   const translatedOptions = options.map(({ label, value }) => ({
     value,
-    label: (m[label)] ?? }));
+    label: m[label] ?? '',
+  }));
 
   const currentDate = useCurrentDate();
 
@@ -58,7 +59,7 @@ const GiftCardCreateExpirySelect: FC<GiftCardCreateExpirySelectProps> = ({
     <>
       <ControlledCheckbox
         name={'expirySelected'}
-        label={(m.dashboard_expirySelectedLabel() ?? messages.expirySelectedLabel.defaultMessage)}
+        label={m.dashboard_expirySelectedLabel() ?? messages.expirySelectedLabel.defaultMessage}
         checked={expirySelected}
         onChange={change}
       />
@@ -80,7 +81,7 @@ const GiftCardCreateExpirySelect: FC<GiftCardCreateExpirySelectProps> = ({
               onChange={change}
               name={'expiryDate'}
               className={styles.dateField ?? ''}
-              label={(m.dashboard_expiryDateLabel() ?? messages.expiryDateLabel.defaultMessage)}
+              label={m.dashboard_expiryDateLabel() ?? messages.expiryDateLabel.defaultMessage}
               value={expiryDate}
               InputLabelProps={{
                 shrink: true,
@@ -102,7 +103,7 @@ const GiftCardCreateExpirySelect: FC<GiftCardCreateExpirySelectProps> = ({
               />
               <div>
                 <Typography variant="caption">
-                  {(m.dashboard_expiryOnLabel() ?? messages.expiryOnLabel.defaultMessage)}
+                  {m.dashboard_expiryOnLabel() ?? messages.expiryOnLabel.defaultMessage}
                 </Typography>
                 <Typography>
                   {getExpiryPeriodTerminationDate(

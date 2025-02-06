@@ -17,7 +17,7 @@ interface CustomerDetailsConsumerProps {
 export const CustomerDetailsContext = createContext<CustomerDetailsConsumerProps>(null);
 
 export const CustomerDetailsProvider: FC<CustomerDetailsProviderProps> = ({ children, id }) => {
-  const [{ data, fetching: loading }] = useAuthorizedQuery(CustomerDetailsDocument, {
+  const [{ data, loading }] = useAuthorizedQuery(CustomerDetailsDocument, {
     displayLoader: true,
     variables: {
       id,

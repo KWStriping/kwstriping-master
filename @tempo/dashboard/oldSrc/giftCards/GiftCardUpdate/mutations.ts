@@ -1,4 +1,4 @@
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 
 export const updateGiftCard = gql(`
   mutation GiftCardUpdate($id: ID!, $input: GiftCardUpdateInput!) {

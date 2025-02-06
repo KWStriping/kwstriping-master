@@ -27,7 +27,6 @@ const FilterContentBodyNameField: FC<FilterContentBodyNameFieldProps> = ({
   filter,
   onFilterPropertyChange,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <div className={styles.container ?? ''}>

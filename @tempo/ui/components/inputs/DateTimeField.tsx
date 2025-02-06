@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import { joinDateTime } from '@tempo/utils/datetime';
 
 import { Temporal } from '@js-temporal/polyfill';
@@ -49,7 +48,7 @@ export const DateTimeField: FC<DateTimeFieldProps> = ({
           disabled={!!disabled}
           error={!!error}
           helperText={helperText}
-          label={m.date() ?? 'Date'}
+          label={'Date'}
           name={`${name}:date`}
           onChange={(event) => {
             // console.log('event.target.value', event.target.value);
@@ -75,7 +74,7 @@ export const DateTimeField: FC<DateTimeFieldProps> = ({
           disabled={!!disabled}
           error={!!error}
           // helperText={helperText}
-          label={m.time() ?? 'Time'}
+          label={'Time'}
           name={`${name}:time`}
           onChange={(event) => {
             const newTimeString = event.target.value;

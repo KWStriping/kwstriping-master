@@ -50,6 +50,7 @@ export const getUpdatedTransactionData = (
     status: eventCode.toString(),
     availableActions: mapAvailableActions(operations),
     ...getTransactionAmountFromAdyen(notification, transaction),
+    type: '', // TODO
   };
 
   return {
@@ -76,10 +77,10 @@ export const getNewTransactionData = (
     transactionEvent,
     transaction: {
       status: eventCode.toString(),
-      type: `${ADYEN_PAYMENT_PREFIX}-${paymentMethod || '(unknown-payment-method)'}`,
       reference: pspReference,
       availableActions: mapAvailableActions(operations),
       ...getTransactionAmountFromAdyen(notification, null),
+      type: `${ADYEN_PAYMENT_PREFIX}-${paymentMethod || '(unknown-payment-method)'}`,
     },
   };
 };

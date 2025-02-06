@@ -8,7 +8,7 @@ async function findTransactionInOrder(reference: string | null | undefined, orde
   try {
     const orderTransactions = await getOrderTransactions({ id: orderId });
 
-    if (orderTransactions.length) {
+    if (orderTransactions?.length) {
       return orderTransactions.find((transaction) => transaction.reference === reference);
     }
   } catch (e) {

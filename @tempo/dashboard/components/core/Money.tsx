@@ -12,7 +12,7 @@ export interface MoneyProps {
 }
 
 export const Money: FC<MoneyProps> = ({ money }) => {
-  const { locale } = useRouter();
+  const { locale } = useLocale();
   if (!money?.currency ?? !money?.amount) return <Skeleton />;
 
   const currencyFractionDigits = new Intl.NumberFormat(locale, {

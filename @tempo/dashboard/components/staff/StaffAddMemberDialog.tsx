@@ -66,7 +66,6 @@ interface StaffAddMemberDialogProps extends SearchPageProps {
 
 const StaffAddMemberDialog: FC<StaffAddMemberDialogProps> = (props) => {
   const { confirmButtonState, errors, onClose, onConfirm, open } = props;
-  // const styles = useStyles();
   const styles = {};
   const dialogErrors = useModalDialogErrors(errors, open);
   const formErrors = getFormErrors(['firstName', 'lastName', 'email'], dialogErrors);

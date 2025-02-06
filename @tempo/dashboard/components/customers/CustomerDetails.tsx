@@ -52,7 +52,6 @@ const CustomerDetails: FC<CustomerDetailsProps> = ({
   onChange,
 }) => {
   const { locale } = useLocale();
-  // const styles = useStyles();
   const styles = {};
   const formErrors = getFormErrors(['note'], errors);
 

@@ -1,22 +1,16 @@
-import { Button } from '@tempo/ui/components/buttons/Button';
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import {
-  CloseIcon,
-  CompleteIcon,
-  ExpandIcon,
-  InfoIcon,
-  NotAllowedIcon,
-  WarningIcon,
-} from '@tempo/ui/icons';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { SVGProps, FC } from 'react';
 import { useState } from 'react';
-
-// import useStyles from './styles';
+import CloseIcon from '@mui/icons-material/Close';
+import ExpandIcon from '@mui/icons-material/Expand';
+import styles from './Notification.module.css';
 
 import type { NotificationProps, NotificationType } from './types';
+import { CompleteIcon, InfoIcon, NotAllowedIcon, WarningIcon } from '@tempo/ui/icons';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   type: NotificationType;
@@ -44,8 +38,6 @@ export const Notification: FC<NotificationProps> = ({
   apiMessage,
   ...rest
 }) => {
-  // const styles = useStyles();
-  const styles = {};
   const [showApiMessage, setShowApiMessage] = useState(false);
 
   return (
@@ -128,6 +120,7 @@ export const Notification: FC<NotificationProps> = ({
             )}
           </div>,
           <IconButton
+            key="something" // TODO
             aria-label="Close"
             onClick={onClose}
             hoverOutline={false}

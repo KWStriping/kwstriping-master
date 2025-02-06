@@ -1,5 +1,5 @@
 import makeSearch from '@tempo/api/hooks/useSearch';
-import { gql } from '@tempo/api/gql';
+import { gql } from '@tempo/api';
 import type {
   SearchAvailableProductAttributesQuery,
   SearchAvailableProductAttributesQueryVariables,

@@ -4,7 +4,6 @@ import type { AttributeFilterFragment, CategoryBySlugQuery } from '@tempo/api/ge
 
 import { PageHero } from '@tempo/ui/components/PageHero';
 import { FilteredProductList } from '@tempo/ui/components/products/FilteredProductList';
-import { CategoryPageSeo } from '@tempo/ui/components/seo/CategoryPageSeo';
 import { translate } from '@tempo/ui/utils/translations';
 
 interface CatalogPageProps {
@@ -22,7 +21,6 @@ function CategoryPage({ category, attributeFiltersData }: CatalogPageProps) {
   console.log('>>> CategoryPage', { category, attributeFiltersData });
   return (
     <>
-      <CategoryPageSeo category={category} />
       <div className={'bg-white/90'}>
         <header className="pt-4 w-full px-8">
           <PageHero

@@ -1,10 +1,9 @@
 import type { Side } from '@floating-ui/react-dom-interactions';
 import { useColorScheme } from '@mui/material/styles';
 import clsx from 'clsx';
+import type { RefAttributes, ForwardRefExoticComponent } from 'react';
 import { forwardRef } from 'react';
-import type { FC } from 'react';
-
-// import { useArrowStyles } from './styles';
+import styles from './Arrow.module.css';
 import type { TooltipProps } from './Tooltip';
 
 interface ArrowProps {
@@ -12,12 +11,12 @@ interface ArrowProps {
   y: number | undefined;
   side: Side;
   variant: TooltipProps['variant'];
+  // ref: ForwardedRef<HTMLDivElement>;
 }
 
-export const Arrow: FC<ArrowProps> = forwardRef<HTMLDivElement, ArrowProps>(
-  ({ x, y, side, variant }, ref) => {
+export const Arrow: ForwardRefExoticComponent<ArrowProps & RefAttributes<HTMLDivElement>> =
+  forwardRef<HTMLDivElement, ArrowProps>(({ x, y, side, variant }, ref) => {
     const { mode } = useColorScheme();
-    const styles = {}; // TODO
     // const styles = useArrowStyles({ variant, side });
 
     return (
@@ -46,6 +45,5 @@ export const Arrow: FC<ArrowProps> = forwardRef<HTMLDivElement, ArrowProps>(
         </svg>
       </div>
     );
-  }
-);
+  });
 Arrow.displayName = 'Arrow';

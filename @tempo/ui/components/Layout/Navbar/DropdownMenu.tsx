@@ -1,12 +1,12 @@
 'use client';
 
 import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { getLinkPath } from '@tempo/ui/utils/menus';
 import Link from 'next/link';
 
 import { NavigationAnchor } from '../NavigationAnchor';
 import styles from './index.module.css';
+import { getLinkPath } from '@tempo/ui/utils/menus';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 interface DropdownProps {
   menuItem: Omit<MenuItemWithChildrenFragment, '__typename'>;

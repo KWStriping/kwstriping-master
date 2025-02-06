@@ -1,6 +1,6 @@
+import type { IndicatorProps, IndicatorSize } from './Indicator';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import type { Theme } from '@tempo/ui/theme/types';
-import type { IndicatorProps, IndicatorSize } from './Indicator';
 
 export const getIconColor =
   (theme: Theme, type: 'light' | 'main' | 'dark') => (props: Pick<IndicatorProps, 'icon'>) => {

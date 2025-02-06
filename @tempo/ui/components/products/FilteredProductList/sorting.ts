@@ -1,13 +1,13 @@
-import type { OrderingDirection, ProductOrderField } from '@tempo/api/generated/graphql';
+import type { OrderingDirection, ProductOrdering } from '@tempo/api/generated/graphql';
 
 export interface UrlSorting {
-  field: ProductOrderField;
+  field: ProductOrdering;
   direction: OrderingDirection;
 }
 
 export interface SortingOption {
   label: string;
-  field?: ProductOrderField;
+  field?: ProductOrdering;
   direction?: OrderingDirection;
   chosen: boolean;
 }
@@ -43,7 +43,7 @@ export const parseQuerySort = (query: Maybe<string>): Maybe<UrlSorting> => {
   const [field, direction] = query.split('_');
   if (!field || !direction) return null;
   const sorting: UrlSorting = {
-    field: field as ProductOrderField,
+    field: field as ProductOrdering,
     direction: direction as OrderingDirection,
   };
 

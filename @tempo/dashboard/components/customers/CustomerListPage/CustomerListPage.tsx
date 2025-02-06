@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import { useUserPermissions } from '@tempo/api/auth/react/hooks/permissions';
-// import { useTranslation } from '@tempo/next/i18n';
 import ButtonWithSelect from '@tempo/ui/components/buttons/ButtonWithSelect';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';

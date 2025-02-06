@@ -1,3 +1,4 @@
+import type { OrderDiscountAddMutation, OrderDiscountAddMutationVariables } from '@tempo/api/generated/graphql';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier, { useDefaultNotifierSuccessErrorData } from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';

@@ -32,7 +32,6 @@ export interface CustomerCreateDetailsProps {
 
 const CustomerCreateDetails: FC<CustomerCreateDetailsProps> = (props) => {
   const { data, disabled, errors, onChange } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const formErrors = getFormErrors(['customerFirstName', 'customerLastName', 'email'], errors);

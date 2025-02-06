@@ -74,7 +74,6 @@ const ShippingZoneAddWarehouseDialog: FC<ShippingZoneAddWarehouseDialogProps> = 
   const { errors: validationErrors, submit: handleSubmit } = useAddressValidation(onSubmit);
   const errors = useModalDialogErrors([...apiErrors, ...validationErrors], open);
   useModalDialogOpen(open, {});
-  // const styles = useStyles();
   const styles = {};
   const countryChoices = mapCountriesToChoices(countries);
 

@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { notNullable } from '@tempo/ui/utils/money';
 import InfoIcon from '@mui/icons-material/Info';

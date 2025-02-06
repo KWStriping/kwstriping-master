@@ -17,6 +17,7 @@ interface CountryAutocompleteFieldProps {
   name?: string;
   label: string;
   inputRef?: RefObject<HTMLInputElement> | RefCallback<HTMLInputElement>;
+  disabled?: boolean;
 }
 
 export const CountryAutocompleteField: FC<CountryAutocompleteFieldProps> = ({
@@ -37,7 +38,7 @@ export const CountryAutocompleteField: FC<CountryAutocompleteFieldProps> = ({
     <Autocomplete
       id={id}
       fullWidth
-      value={allowedCountries.find((c) => c.code === value) ?? defaultCountryCode}
+      value={allowedCountries.find((c) => c.code === value)}
       blurOnSelect={true}
       open={open}
       onChange={(event, newValue) => {
@@ -47,7 +48,7 @@ export const CountryAutocompleteField: FC<CountryAutocompleteFieldProps> = ({
       onBlur={() => setOpen(false)}
       disableClearable={true}
       options={allowedCountries}
-      getOptionLabel={(option) => option?.name ?? ''}
+      getOptionLabel={(option: CountryOption) => option?.name ?? ''}
       isOptionEqualToValue={(option, value) =>
         typeof value === 'string' ? option.code === value : option.code === value?.code
       }

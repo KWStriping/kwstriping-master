@@ -6,16 +6,12 @@ import type {
 } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import GraphqlIcon from '@tempo/ui/icons/GraphQLIcon.svg';
-import { useShopSettings } from '@tempo/ui/providers';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
 import BrightnessLowIcon from '@mui/icons-material/BrightnessLow';
 import { useColorScheme } from '@mui/material/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { BurgerMenu } from './BurgerMenu';
@@ -23,6 +19,10 @@ import styles from './index.module.css';
 import { Menu } from './Menu';
 import NavIconButton from './NavIconButton';
 import UserMenu from './UserMenu';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useShopSettings } from '@tempo/ui/providers';
+import GraphqlIcon from '@tempo/ui/icons/GraphQLIcon.svg';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 interface NavbarProps {
   height?: string;
@@ -42,14 +42,15 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
   const { checkout } = useCheckout();
   const { mode, setMode } = useColorScheme();
 
-  useEffect(() => {
-    // Close side menu after changing the page
-    router.events.on('routeChangeStart', () => {
-      if (isBurgerOpen) {
-        setBurgerOpen(false);
-      }
-    });
-  });
+  // TODO
+  // useEffect(() => {
+  //   // Close side menu after changing the page
+  //   router.events.on('routeChangeStart', () => {
+  //     if (isBurgerOpen) {
+  //       setBurgerOpen(false);
+  //     }
+  //   });
+  // });
 
   const counter =
     checkout?.lines?.reduce(

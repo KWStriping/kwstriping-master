@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Layout from '@kwstriping/app/client/Layout';
 import PrivacyPage from './privacy';
+import Layout from '@kwstriping/app/client/Layout';
 
 export const metadata: Metadata = {
   title: 'Privacy',

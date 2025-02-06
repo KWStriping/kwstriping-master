@@ -1,5 +1,3 @@
-import { Avatar } from '@tempo/ui/components/Avatar';
-import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
 import Hidden from '@mui/material/Hidden';
@@ -12,6 +10,8 @@ import type { FC, ReactNode } from 'react';
 
 import { UserChipMenuContext } from './context';
 import styles from './UserChipMenu.module.css';
+import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
+import { Avatar } from '@tempo/ui/components/Avatar';
 
 export interface UserChipProps {
   avatar: Maybe<string>;

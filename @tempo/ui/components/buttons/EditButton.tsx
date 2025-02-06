@@ -1,6 +1,5 @@
-import * as m from '@paraglide/messages';
-import { Button } from '@tempo/ui/components/buttons/Button';
 import type { FC, ReactNode } from 'react';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface EditButtonProps {
   onClick: () => void;
@@ -12,7 +11,7 @@ interface EditButtonProps {
 const EditButton: FC<EditButtonProps> = ({ onClick, label, disabled = false }) => {
   return (
     <Button onClick={onClick} disabled={disabled}>
-      {label || (m.edit() ?? 'Edit')}
+      {label || 'Edit'}
     </Button>
   );
 };

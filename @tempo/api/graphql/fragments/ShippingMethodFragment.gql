@@ -1,5 +1,9 @@
 fragment ShippingMethod on ShippingMethod {
+  id
   name
   minimumDeliveryDays
   maximumDeliveryDays
+  price {
+    ...Money
+  }
 }

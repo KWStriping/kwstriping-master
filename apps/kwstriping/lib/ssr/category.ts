@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from 'querystring';
 
 import { CategoryPathsDocument } from '@tempo/api/generated/graphql';
 
-import { getClient } from '@tempo/api/server';
+import { getClient } from '@tempo/api/client';
 import type { Path } from '@tempo/utils/regions';
 import { CHANNELS, LOCALES } from '@tempo/utils/regions';
 
@@ -21,15 +21,13 @@ export const categoryPaths = async () => {
   const client = getClient();
 
   while (hasNextPage) {
-    const response = await client
-      .query(
-        CategoryPathsDocument,
-        {
-          after: endCursor,
-        },
-        { requestPolicy: 'network-only' }
-      )
-      .toPromise();
+    const response = await client.query({
+      query: CategoryPathsDocument,
+      variables: {
+        after: endCursor,
+      },
+      fetchPolicy: 'network-only',
+    });
 
     const edges = response.data?.categories?.edges;
     if (!edges) {

@@ -57,7 +57,7 @@ server {
 
     resolver 127.0.0.11 valid=30s;
     set $backend_server http://host.docker.internal:${PORT_API};
-    set $storefront_server http://host.docker.internal:${PORT_STOREFRONT};
+    set $storefront_server http://host.docker.internal:${PORT_FRONT};
     set $dashboard_server http://host.docker.internal:${PORT_DASHBOARD};
 
     location = /health {

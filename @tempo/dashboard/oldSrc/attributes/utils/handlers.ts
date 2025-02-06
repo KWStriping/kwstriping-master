@@ -16,7 +16,7 @@ import type {
 import type { FormsetAtomicData, FormsetChange, FormsetData } from '@tempo/dashboard/hooks/useFormset';
 import type { FetchMoreProps, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import { move, toggle } from '@tempo/dashboard/oldSrc/utils/lists';
-import type { OperationResult } from '@urql/core';
+import type { OperationResult } from '@apollo/client';
 import isEqual from 'lodash-es/isEqual';
 
 import { getFileValuesToUploadFromAttributes, isFileValueUnused } from './data';

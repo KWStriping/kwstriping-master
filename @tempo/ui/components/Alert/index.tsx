@@ -1,5 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { CompleteIcon, NotAllowedIcon } from '@tempo/ui/icons';
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
 import WarningIcon from '@mui/icons-material/Warning';
@@ -10,6 +8,8 @@ import { useState } from 'react';
 import type { AlertBaseProps, AlertVariant } from './AlertBase';
 import { AlertBase } from './AlertBase';
 import styles from './index.module.css';
+import { CompleteIcon, NotAllowedIcon } from '@tempo/ui/icons';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export * from './AlertBase';
 
@@ -20,16 +20,16 @@ export interface AlertProps extends AlertBaseProps {
 interface IconProps extends SVGProps<SVGSVGElement> {
   variant: AlertVariant;
 }
-const Icon: FC<IconProps> = ({ variant, ...props }) => {
+const Icon: FC<IconProps> = ({ variant }) => {
   switch (variant) {
     case 'error':
-      return <NotAllowedIcon {...props} />;
+      return <NotAllowedIcon />;
     case 'warning':
-      return <WarningIcon {...props} />;
+      return <WarningIcon />;
     case 'success':
-      return <CompleteIcon {...props} />;
+      return <CompleteIcon />;
     default:
-      return <InfoIcon {...props} />;
+      return <InfoIcon />;
   }
 };
 

@@ -84,7 +84,6 @@ const SaleList: FC<SaleListProps> = (props) => {
     toolbar,
     filterDependency,
   } = props;
-  // const styles = useStyles();
   const styles = {};
   const numberOfColumns = sales?.length === 0 ? 4 : 5;
 

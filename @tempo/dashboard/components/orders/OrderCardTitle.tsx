@@ -75,7 +75,6 @@ const OrderCardTitle: FC<OrderCardTitleProps> = ({
   toolbar,
   className,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   const fulfillmentName =
     orderNumber && fulfillmentOrder ? `#${orderNumber}-${fulfillmentOrder}` : '';

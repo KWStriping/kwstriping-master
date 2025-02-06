@@ -19,8 +19,9 @@ export const verifyAdyenSession = async (session: string) => {
   });
 
   const checkout = new CheckoutAPI(client);
+  const paymentLinks = checkout.PaymentLinksApi;
 
-  const { status, url } = await checkout.getPaymentLinks(session);
+  const { status, url } = await paymentLinks.getPaymentLink(session);
 
   return { status, url };
 };

@@ -5,7 +5,7 @@ interface PageHeaderProps {
   children: ReactNode;
 }
 
-const PageHeader: FC<PageHeaderProps> = ({ children }) => {
+export const PageHeader: FC<PageHeaderProps> = ({ children }) => {
   return (
     <Typography
       variant={'h1'}

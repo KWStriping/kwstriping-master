@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import type { DateTimeI } from '@tempo/types/datetime';
+import type { DateTimeI } from '@tempo/next/types/datetime';
 import { joinDateTime, splitDateTime } from '@tempo/utils/datetime';
 import ErrorNoticeBar from '@tempo/dashboard/components/bars/ErrorNoticeBar';
 import TextField from '@mui/material/TextField';

@@ -1,4 +1,4 @@
-import type { ValidationError } from '@tempo/types/errors';
+import type { ValidationError } from '@tempo/next/types/errors';
 import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
 import type { AddressFormData } from '@tempo/checkout/components/forms/AddressForm';
 

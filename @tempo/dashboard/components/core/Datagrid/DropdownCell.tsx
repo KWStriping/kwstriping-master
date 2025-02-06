@@ -51,7 +51,6 @@ const DropdownCellEdit: ReturnType<ProvideEditorCallback<DropdownCell>> = ({
   onFinishedEditing,
 }) => {
   const [data, setData] = useState<DropdownChoice[]>([]);
-  // const styles = useStyles();
   const styles = {};
   const getChoices = useCallback(
     async (text: string) => {

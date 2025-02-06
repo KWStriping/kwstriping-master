@@ -1,6 +1,10 @@
 import * as m from '@paraglide/messages';
 import { PasswordChangeDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
+
+import type {
+  PasswordChangeMutation,
+  PasswordChangeMutationVariables,
+} from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

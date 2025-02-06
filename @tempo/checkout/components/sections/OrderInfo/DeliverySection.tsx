@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import type { OrderFragment, ShippingMethodFragment } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import Typography from '@mui/material/Typography';
 import { Section } from './Section';
 

@@ -1,4 +1,4 @@
-query HomepageBlocks($slug: String!, $channel: String!) {
+query HomepageBlocks($slug: String!, $channel: String) {
   menu(channel: $channel, slug: $slug) {
     id
     name

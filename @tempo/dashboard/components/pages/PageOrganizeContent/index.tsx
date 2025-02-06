@@ -50,7 +50,6 @@ const PageOrganizeContent: FC<PageOrganizeContentProps> = (props) => {
     fetchPageKlasses,
     fetchMorePageKlasses,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   const formErrors = getFormErrors(['pageKlasses'], errors);

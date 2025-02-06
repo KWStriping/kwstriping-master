@@ -83,7 +83,6 @@ const messages = {
 };
 
 const OrderRefundAmountValues: FC<OrderRefundAmountValuesProps> = (props) => {
-  // const styles = useStyles();
   const styles = {};
 
   const orderedKeys: Array<keyof OrderRefundAmountValuesProps> = [

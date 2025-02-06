@@ -2,11 +2,10 @@ import type {
   AbstractProductDetailsFragment,
   ProductDetailsFragment,
 } from '@tempo/api/generated/graphql';
-import { RadioGroup } from '@headlessui/react';
+import { RadioGroup, Radio, Label } from '@headlessui/react';
 import clsx from 'clsx';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { translate } from '@tempo/ui/utils/translations';
 import Typography from '@mui/material/Typography';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useShopSettings } from '@tempo/ui/providers';
 
 export interface VariantSelectorProps {
@@ -45,7 +44,7 @@ export function VariantSelector({
       <RadioGroup value={selectedVariant?.slug ?? null} onChange={onChange}>
         <div className="space-y-4">
           {variants.map((variant) => (
-            <RadioGroup.Option
+            <Radio
               key={variant.slug}
               value={variant.slug}
               className={({ checked }) =>
@@ -60,22 +59,24 @@ export function VariantSelector({
                     !checked && 'hover:border-main border-main-2'
                   )}
                 >
-                  <RadioGroup.Label as="div" className="w-full justify-between p-4">
+                  {/* as="div" className="w-full justify-between p-4" */}
+                  <Label>
                     <div className="flex flex-row gap-2 w-full">
                       <Typography
                         className={'grow font-semibold text-md'}
                         data-testid={`variantOf${variant.name}`}
                       >
-                        {translate(variant, 'name')}
+                        {/* TODO translate */}
+                        {variant.name}
                       </Typography>
                       <div>
                         {shouldDisplayPrice && formatPrice(variant.pricing?.price?.gross)}
                       </div>
                     </div>
-                  </RadioGroup.Label>
+                  </Label>
                 </div>
               )}
-            </RadioGroup.Option>
+            </Radio>
           ))}
         </div>
       </RadioGroup>

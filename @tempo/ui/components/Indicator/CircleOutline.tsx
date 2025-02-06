@@ -1,4 +1,3 @@
-
 import type { IndicatorProps } from './Indicator';
 
 interface CircleOutlineProps {

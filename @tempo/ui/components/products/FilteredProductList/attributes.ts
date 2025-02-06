@@ -17,7 +17,7 @@ export const getPillsData = (
     const choiceAttribute = attributeFiltersData.find((attr) => attr.slug === filter.slug);
     const attrName = choiceAttribute ? choiceAttribute.name : filter.slug;
     const newPills = filter.values.map((value) => {
-      const attrChoice = choiceAttribute?.choices?.edges.find(
+      const attrChoice = choiceAttribute?.values?.edges.find(
         (choice) => choice.node.slug === value
       );
       const choiceName = attrChoice?.node.name || value;

@@ -30,7 +30,6 @@ export const ListItemLink: FC<ListItemLinkProps> = ({
   if (!href) {
     return <ListItem {...props}>{children}</ListItem>;
   }
-  // const styles = useStyles();
   const styles = {};
 
   return (

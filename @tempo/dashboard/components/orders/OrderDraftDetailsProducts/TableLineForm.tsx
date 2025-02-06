@@ -26,7 +26,6 @@ interface TableLineFormProps {
 
 const TableLineForm: FC<TableLineFormProps> = ({ line, onOrderLineChange }) => {
   const { id, quantity } = line;
-  // const styles = useStyles();
   const styles = {};
   const handleSubmit = (id: string, data: OrderLineInput) => {
     const quantity = data?.quantity >= 1 ? Math.floor(data?.quantity) : 1;

@@ -20,8 +20,7 @@ import Layout from '@kwstriping/app/client/Layout';
 //     .query(HomepageBlocksDocument, {
 //       slug: HOMEPAGE_MENU,
 //       ...contextToRegionQuery(context),
-//     })
-//     .toPromise();
+//     });
 //   return {
 //     props: generateStaticRenderingProps(ssrCache),
 //     revalidate: 60 * 60,
@@ -37,7 +36,8 @@ function Home() {
   const learnMoreCta = 'Learn more';
   const catalogCta = 'Request service';
   const productSlug = 'striping-service';
-  const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/contact`;
+  const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/request`;
+  console.log('Home');
   return (
     <Layout transparentBg>
       <main

@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 import type { FileChoiceType } from '@tempo/dashboard/components/fields/FileUploadField';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
@@ -129,7 +128,6 @@ export function getMultiDisplayValue(
 
 export function getErrorMessage(
   err: ProductErrorWithAttributesFragment | PageErrorWithAttributesFragment,
-  t: TFunction
 ): string {
   switch (err?.__typename) {
     case 'ProductError':

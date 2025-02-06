@@ -29,7 +29,6 @@ const useStyles = makeStyles(
 
 const TranslationFieldsSave: FC<TranslationFieldsSaveProps> = (props) => {
   const { saveButtonState, onDiscard, onSave } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

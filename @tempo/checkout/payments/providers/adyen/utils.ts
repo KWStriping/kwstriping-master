@@ -1,27 +1,27 @@
-import { CheckoutAPI, Client, Types } from '@adyen/api-library';
+import { CheckoutAPI, Client, Types, PaymentAPI } from '@adyen/api-library';
 import type {
   OrderFragment,
-  TransactionActionEnum,
   TransactionEventFragment,
   TransactionItemFragment,
   TransactionStatus,
   TransactionUpdateInput,
 } from '@tempo/api/generated/graphql';
+import type { TransactionActionType } from '@tempo/api/generated/constants';
 import currency from 'currency.js';
 import invariant from 'ts-invariant';
+import { failedEvents } from './consts';
 import {
   getTransactionAmountGetterAsMoney,
   getIntegerAmountFromTempo,
   getTempoAmountFromInteger,
 } from '@tempo/checkout/payments/utils';
-import { failedEvents } from './consts';
 
 const OperationsEnum = Types.notification.NotificationRequestItem.OperationsEnum;
 const EventCodeEnum = Types.notification.NotificationRequestItem.EventCodeEnum;
 
 export const mapAvailableActions = (
   operations: Types.notification.NotificationRequestItem.OperationsEnum[] | undefined
-): TransactionActionEnum[] => {
+): TransactionActionType[] => {
   if (!operations) return [];
 
   return operations.map((operation) => {
@@ -57,10 +57,12 @@ export const getAdyenClient = async () => {
   });
 
   const checkout = new CheckoutAPI(client);
+  const payments = new PaymentAPI(client);
 
   return {
     client,
     checkout,
+    payments,
     config: { ...restAdyenSettings, clientKey, apiKey, merchantAccount },
   };
 };
@@ -272,7 +274,7 @@ export const getTransactionAmountFromAdyen = (
       };
 
     case EventCodeEnum.CancelOrRefund: {
-      const additionalData = notification?.additionalData as Types.notification.AdditionalData & {
+      const additionalData = notification?.additionalData as {
         ['modification.action']: 'refund' | 'cancel';
       };
       const isCanceled = additionalData?.['modification.action'] !== 'refund';

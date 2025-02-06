@@ -1,16 +1,13 @@
 import type { TabsProps } from '@mui/material/Tabs';
 import Tabs from '@mui/material/Tabs';
 import type { FC } from 'react';
-// import useStyles from './styles';
+import styles from './PageTabs.module.css';
 
 export const PageTabs: FC<
   Omit<TabsProps, 'onChange'> & {
     onChange: (value: string) => void;
   }
 > = (props) => {
-  // const styles = useStyles();
-  const styles = {};
-
   return (
     <Tabs
       {...props}

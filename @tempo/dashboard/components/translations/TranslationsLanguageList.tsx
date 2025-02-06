@@ -31,7 +31,6 @@ const useStyles = makeStyles(
 
 const TranslationsLanguageList: FC<TranslationsLanguageListProps> = (props) => {
   const { languages } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

@@ -1,7 +1,4 @@
 import type { Address } from '@tempo/api/generated/graphql';
-import type { CreatePaymentData } from '@tempo/checkout/payments/types';
-import { formatRedirectUrl } from '@tempo/checkout/payments/utils';
-
 import {
   getDiscountLines,
   getShippingLines,
@@ -9,6 +6,8 @@ import {
   parseAmountToString,
   getMollieClient,
 } from './utils';
+import type { CreatePaymentData } from '@tempo/checkout/payments/types';
+import { formatRedirectUrl } from '@tempo/checkout/payments/utils';
 
 export const createMolliePayment = async ({ order, redirectUrl, appUrl }: CreatePaymentData) => {
   const discountLines = getDiscountLines(order.discounts);
@@ -29,11 +28,11 @@ export const createMolliePayment = async ({ order, redirectUrl, appUrl }: Create
       city: billingAddress.city,
       country: billingAddress.country.code,
       email: order.userEmail as string,
-      givenName: billingAddress.firstName,
-      familyName: billingAddress.lastName,
+      givenName: billingAddress.firstName ?? '',
+      familyName: billingAddress.lastName ?? '',
       postalCode: billingAddress.postalCode,
       streetAndNumber: billingAddress.streetAddress1,
-      organizationName: order.billingAddress?.companyName,
+      organizationName: order.billingAddress?.companyName ?? '',
     },
     amount: {
       value: parseAmountToString(order.total.gross.amount),
@@ -44,11 +43,11 @@ export const createMolliePayment = async ({ order, redirectUrl, appUrl }: Create
           city: order.shippingAddress.city,
           country: order.shippingAddress.country.code,
           email: order.userEmail as string,
-          givenName: order.shippingAddress.firstName,
-          familyName: order.shippingAddress.lastName,
+          givenName: order.shippingAddress.firstName ?? '',
+          familyName: order.shippingAddress.lastName ?? '',
           postalCode: order.shippingAddress.postalCode,
           streetAndNumber: order.shippingAddress.streetAddress1,
-          organizationName: order.shippingAddress.companyName,
+          organizationName: order.shippingAddress.companyName ?? '',
         }
       : undefined,
   });

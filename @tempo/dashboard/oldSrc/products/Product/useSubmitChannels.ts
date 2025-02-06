@@ -1,3 +1,4 @@
+import type { ProductChannelListingUpdateMutation, ProductChannelListingUpdateMutationVariables } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductPage/form';
 import { ProductChannelListingUpdateDocument } from '@tempo/api/generated/graphql';

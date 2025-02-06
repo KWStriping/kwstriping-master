@@ -58,7 +58,7 @@ export function useBackgroundTasks() {
           tasks,
           () =>
             apolloClient.query({
-              requestPolicy: 'network-only',
+              fetchPolicy: 'network-only',
               query: checkOrderInvoicesStatus,
               variables: {
                 id: data?.generateInvoice?.orderId,
@@ -74,7 +74,7 @@ export function useBackgroundTasks() {
           tasks,
           () =>
             apolloClient.query({
-              requestPolicy: 'network-only',
+              fetchPolicy: 'network-only',
               query: checkExportFileStatus,
               variables: {
                 id: data?.id,

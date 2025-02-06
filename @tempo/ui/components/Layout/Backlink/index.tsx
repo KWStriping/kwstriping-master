@@ -1,5 +1,3 @@
-import type { LayoutButtonProps } from '@tempo/ui/components/buttons/LayoutButton';
-import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Portal from '@mui/material/Portal';
 import Skeleton from '@mui/material/Skeleton';
@@ -8,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import type { ElementType, MouseEvent, ReactNode } from 'react';
 import { useBacklink } from './context';
 import styles from './index.module.css';
+import { LayoutButton } from '@tempo/ui/components/buttons/LayoutButton';
+import type { LayoutButtonProps } from '@tempo/ui/components/buttons/LayoutButton';
 
 export * from './context';
 

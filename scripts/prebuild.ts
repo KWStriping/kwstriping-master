@@ -1,8 +1,12 @@
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
-import compile from './compile';
 
-dotenvExpand.expand(dotenv.config());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenvExpand.expand(dotenv.config({ path: resolve(__dirname, '../.env') }));
 
 async function checkApiUrl() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
@@ -23,5 +27,4 @@ async function checkApiUrl() {
   }
 }
 
-compile();
 checkApiUrl();

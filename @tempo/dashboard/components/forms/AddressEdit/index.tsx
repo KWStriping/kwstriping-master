@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { TFunction } from '@tempo/next/i18n';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
@@ -24,7 +23,7 @@ interface AddressEditProps {
   onCountryChange: (event: ChangeEvent<unknown>) => void;
 }
 
-function getErrorMessage(err: AccountErrorFragment | OrderErrorFragment, t: TFunction): string {
+function getErrorMessage(err: AccountErrorFragment | OrderErrorFragment): string {
   if (err?.__typename === 'AccountError') {
     return getAccountErrorMessage(err, t);
   }

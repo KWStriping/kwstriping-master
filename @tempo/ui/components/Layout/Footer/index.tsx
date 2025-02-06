@@ -1,8 +1,4 @@
 import { FooterMenuDocument } from '@tempo/api/generated/graphql';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-import { getLinkPath } from '@tempo/ui/utils/menus';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import Box from '@mui/material/Box';
 import clsx from 'clsx';
@@ -13,6 +9,10 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { ChannelDropdown } from '../../regionDropdowns/ChannelDropdown';
 import { LocaleDropdown } from '../../regionDropdowns/LocaleDropdown';
 import styles from './index.module.css';
+import { getLinkPath } from '@tempo/ui/utils/menus';
+import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
   logo?: ReactNode;
@@ -28,10 +28,10 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
   const { enableLocaleSwitcher, name: shopName } = useShopSettings();
   const { query } = useLocalization();
 
-  const [{ data, error }] = useQuery(FooterMenuDocument, { variables: { ...query } });
+  const { data, error } = useQuery(FooterMenuDocument, { variables: { ...query } });
 
   if (error) {
-    console.error('Footer component error', error.message);
+    console.error('Footer component error', error);
   }
 
   const menu = data?.menu?.items || [];

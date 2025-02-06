@@ -4,8 +4,7 @@ import invariant from 'ts-invariant';
 export async function getStripeClient() {
   const { secretKey } = await getStripeSecrets();
   return new Stripe(secretKey, {
-    // Stripe API Version; required value
-    apiVersion: '2022-08-01',
+    apiVersion: '2024-04-10', // required value
     typescript: true,
     httpClient: Stripe.createFetchHttpClient(),
   });

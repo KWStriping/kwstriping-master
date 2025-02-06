@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
-import type { AddressFragment, CheckoutError } from '@tempo/api/generated/graphql';
+import type { AddressFragment, ErrorInterface } from '@tempo/api/generated/graphql';
 import { CountryCode } from '@tempo/api/generated/constants';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData, OmissibleAddressData } from '@tempo/next/types/addresses';
 import Button from '@tempo/ui/components/buttons/Button';
 import latLngData from '@tempo/data/stateLatLngs.json';
@@ -25,8 +24,8 @@ export interface AddressFormProps {
   excludedFields?: (keyof OmissibleAddressData)[];
   omitHumanContactData?: boolean;
   initialData?: Maybe<Partial<AddressFragment>>;
-  onChange?: (address: AddressFormData) => Promise<CheckoutError[]>;
-  onSubmit?: (address: AddressFormData) => Promise<CheckoutError[]>;
+  onChange?: (address: AddressFormData) => Promise<ErrorInterface[]>;
+  onSubmit?: (address: AddressFormData) => Promise<ErrorInterface[]>;
   allowedCountries: { code: CountryCode; name: string }[];
   allowedStates?: StateCode[];
   onPlaceChange?: (place: google.maps.places.PlaceResult | null) => void;
@@ -92,7 +91,7 @@ export function AddressForm({
   });
 
   // TODO
-  const addressSchema = Yup.object().shape({
+  const addressSchema = Yup.object({
     firstName: Yup.string().optional(),
     lastName: Yup.string().optional(),
     companyName: Yup.string().optional(),
@@ -103,6 +102,7 @@ export function AddressForm({
       selectedCountryCode == CountryCode.Us ? Yup.string().required() : Yup.string().optional(),
     postalCode: Yup.string().required(),
     countryCode: Yup.mixed<CountryCode>().oneOf(Object.values(CountryCode)).required(),
+    phone: Yup.string().optional(),
   });
 
   const {
@@ -117,7 +117,7 @@ export function AddressForm({
   } = useForm<AddressFormData>({
     mode: 'all',
     criteriaMode: 'all',
-    resolver: yupResolver(addressSchema),
+    resolver: yupResolver(addressSchema) as any, // TODO
     defaultValues,
   });
 
@@ -165,7 +165,7 @@ export function AddressForm({
 
   const saveAddressFormData = handleSubmitAddress(async (formData: AddressFormData) => {
     setSaving(true);
-    const errors = await onSubmit(formData);
+    const errors = await onSubmit?.(formData);
     setSaving(false);
     // Assign errors to the form fields
     if (errors?.length) {
@@ -181,7 +181,7 @@ export function AddressForm({
   // TODO: this is to fix a bug... onFormChange should be triggered without this...
   useEffect(() => {
     console.log('>>> selectedState change', selectedState);
-    onFormChange();
+    onFormChange({} as any);
   }, [selectedState]);
 
   return (
@@ -296,7 +296,7 @@ export function AddressForm({
               rules={{ required: true }}
               render={({ field }) => (
                 <TextField
-                  label={m.checkout_streetAddress_() ?? 'Address'}
+                  label={'Address'}
                   id="streetAddress1"
                   fullWidth
                   spellCheck={false}
@@ -318,7 +318,7 @@ export function AddressForm({
               rules={{ required: false }}
               render={({ field }) => (
                 <TextField
-                  label={m.checkout_streetAddress_() ?? 'Address (line 2)'}
+                  label={'Address (line 2)'}
                   id="streetAddress2"
                   fullWidth
                   spellCheck={false}
@@ -362,7 +362,7 @@ export function AddressForm({
                   const { ref, ...rest } = field;
                   return (
                     <StateAutocompleteField
-                      label={m.checkout_stateField() ?? 'State'}
+                      label={'State'}
                       allowedStates={allowedStates}
                       error={fieldState.error?.message}
                       inputRef={ref}
@@ -433,7 +433,7 @@ export function AddressForm({
                 const { ref, ...rest } = field;
                 return (
                   <CountryAutocompleteField
-                    label={m.checkout_countryField() ?? 'Country'}
+                    label={'Country'}
                     id="countryCode"
                     allowedCountries={allowedCountries}
                     inputRef={ref}

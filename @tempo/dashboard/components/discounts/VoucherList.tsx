@@ -101,7 +101,6 @@ const VoucherList: FC<VoucherListProps> = (props) => {
     toolbar,
     filterDependency,
   } = props;
-  // const styles = useStyles();
   const styles = {};
 
   return (

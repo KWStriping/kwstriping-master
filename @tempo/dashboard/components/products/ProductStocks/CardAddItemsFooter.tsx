@@ -38,7 +38,6 @@ const CardAddItemsFooter: FC<CardAddItemsFooterProps> = ({
   ref,
   children,
 }) => {
-  // const styles = useStyles();
   const styles = {};
   return (
     <div className={styles.container ?? ''} ref={ref}>

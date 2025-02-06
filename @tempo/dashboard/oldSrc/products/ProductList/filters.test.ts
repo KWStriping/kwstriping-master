@@ -179,7 +179,7 @@ describe('Map attribute params to filter opts', () => {
 describe('Filtering URL params', () => {
   const intl = createIntl(config);
 
-  const filters = createFilterStructure(t, productListFilterOpts);
+  const filters = createFilterStructure(productListFilterOpts);
 
   it('should be empty if no active filters', () => {
     const filterQueryParams = getFilterQueryParams(filters, getFilterQueryParam);

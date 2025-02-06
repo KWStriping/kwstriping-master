@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import type { AddressFormData } from '@tempo/types';
+import type { AddressFormData } from '@tempo/next/types';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
@@ -55,7 +55,6 @@ const CustomerAddressDialog: FC<CustomerAddressDialogProps> = ({
   onConfirm,
 }) => {
   const [countryDisplayName, setCountryName] = useStateFromProps(address?.country.name || '');
-  // const styles = useStyles();
   const styles = {};
   const { errors: validationErrors, submit: handleSubmit } = useAddressValidation(onConfirm);
   const dialogErrors = useModalDialogErrors([...errors, ...validationErrors], open);

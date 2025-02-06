@@ -1,5 +1,4 @@
 import type { CheckoutLineFragment, OrderLineFragment } from '@tempo/api/generated/graphql';
-import compact from 'lodash-es/compact';
 
 export const isCheckoutLine = (
   line: CheckoutLineFragment | OrderLineFragment
@@ -12,23 +11,21 @@ export const getThumbnailFromLine = (line: CheckoutLineFragment) =>
 export const getSummaryLineProps = (line: OrderLineFragment | CheckoutLineFragment) =>
   isCheckoutLine(line)
     ? {
-      productName: line.product.name,
-      productName: line.product.name,
-      productImage: getThumbnailFromLine(line),
-    }
+        productName: line.product.name,
+        productImage: getThumbnailFromLine(line),
+      }
     : {
-      productName: line.productName,
-      productName: line.productName,
-      productImage: line.thumbnail,
-    };
+        productName: line.productName,
+        productImage: line.thumbnail,
+      };
 
-export const getSummaryLineAttributesText = (line: CheckoutLineFragment | OrderLineFragment) =>
-  compact(
-    line.variant?.attributes.reduce(
-      (result: Array<string | undefined | null>, { values }) => [
-        ...result,
-        ...values.map(({ name }) => name),
-      ],
-      []
-    )
-  ).join(', ') || '';
+// export const getSummaryLineAttributesText = (line: CheckoutLineFragment | OrderLineFragment) =>
+//   compact(
+//     line.product?.attributes?.reduce(
+//       (result: Array<string | undefined | null>, { values }) => [
+//         ...result,
+//         ...values.map(({ name }) => name),
+//       ],
+//       []
+//     )
+//   ).join(', ') || '';

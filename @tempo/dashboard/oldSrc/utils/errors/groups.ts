@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import { getCommonFormFieldErrorMessage } from './common';
 import type { GroupErrorFragment } from '@tempo/api/generated/graphql';
 import { GroupErrorCode } from '@tempo/api/generated/constants';
@@ -26,7 +25,7 @@ const messages = {
   },
 };
 
-function getGroupErrorMessage(err: GroupErrorFragment, t: TFunction): string {
+function getGroupErrorMessage(err: GroupErrorFragment): string {
   if (err) {
     switch (err.code) {
       case GroupErrorCode.AssignNonStaffMember:

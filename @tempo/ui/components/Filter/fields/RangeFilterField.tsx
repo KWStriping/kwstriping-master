@@ -1,4 +1,3 @@
-import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -7,6 +6,8 @@ import type { ChangeEvent, FC } from 'react';
 
 // import useStyles from '../styles';
 import type { EventTarget, FilterData, FilterLabels } from '../types';
+import styles from './RangeFilterField.module.css';
+import { useFilterActions } from '@tempo/ui/components/Filter/context';
 
 export interface FilterContentProps {
   filter: FilterData;
@@ -14,9 +15,6 @@ export interface FilterContentProps {
 }
 
 export const RangeFilterField: FC<FilterContentProps> = ({ filter, labels }) => {
-  // const styles = useStyles();
-
-  const styles = {};
   const { onChange } = useFilterActions();
 
   const { name } = filter;

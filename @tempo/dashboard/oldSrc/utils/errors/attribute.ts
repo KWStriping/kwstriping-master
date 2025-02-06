@@ -1,4 +1,3 @@
-import type { TFunction } from '@tempo/next/i18n';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
 import { AttributeErrorCode } from '@tempo/api/generated/constants';
 
@@ -21,7 +20,6 @@ const messages = {
 
 function getAttributeErrorMessage(
   err: Omit<AttributeErrorFragment, '__typename'> | undefined,
-  t: TFunction
 ): string {
   if (err) {
     switch (err.code) {

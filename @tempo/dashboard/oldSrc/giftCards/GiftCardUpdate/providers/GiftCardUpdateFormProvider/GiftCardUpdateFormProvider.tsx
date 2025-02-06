@@ -1,3 +1,4 @@
+import type { UpdateMetadataMutation, UpdateMetadataMutationVariables } from '@tempo/api/generated/graphql';
 import useNotifier, { useDefaultNotifierSuccessErrorData } from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { MutationResultWithOpts } from '@tempo/api/hooks/useMutation';
