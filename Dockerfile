@@ -63,7 +63,7 @@ ARG ROOT_DIR
 RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # https://github.com/vercel/turbo/issues/4105
-COPY --from=files ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
+COPY --from=files ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ${ROOT_DIR}/tsconfig.base.json ./
 
 COPY --from=files ${ROOT_DIR}/out/json/ .
 COPY --from=files ${ROOT_DIR}/out/pnpm-lock.yaml ./pnpm-lock.yaml
@@ -74,14 +74,15 @@ RUN pnpm install --ignore-scripts
 COPY --from=files ${ROOT_DIR}/out/full/ .
 COPY --from=files ${ROOT_DIR}/turbo.json .
 COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+
 # TODO
 COPY scripts ${ROOT_DIR}/scripts
 COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
 COPY apps/${APP}/paraglide ${ROOT_DIR}/apps/${APP}/paraglide
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
-RUN ls && ls scripts
-RUN NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
+# RUN ls && ls scripts && exit 1
+RUN DOCKER=1 NEXT_PUBLIC_API_URL=${API_URL} READ_DOTENV=1 pnpm build --filter=${APP} && rm .env
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #
