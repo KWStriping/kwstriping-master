@@ -1,6 +1,6 @@
 const excludedPaths = ['/cart', '/checkout', '/account/*'];
 
-module.exports = {
+export default {
   siteUrl: process.env.BASE_URL,
   generateRobotsTxt: true,
   exclude: excludedPaths + ['/sitemap.xml'],
