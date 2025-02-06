@@ -154,10 +154,10 @@ export const generate = ({
       config.resolve.alias = {
         ...(config.resolve.alias || {}),
         // Prevent multiple instances of React or libraries that themselves import React.
-        // react: path.resolve('node_modules', 'react'),
-        // 'react-dom': path.resolve('node_modules', 'react-dom'),
-        react: path.resolve(workspaceRoot, 'node_modules', 'react'),
-        'react-dom': path.resolve(workspaceRoot, 'node_modules', 'react-dom'),
+        react: path.resolve('node_modules', 'react'),
+        'react-dom': path.resolve('node_modules', 'react-dom'),
+        // react: path.resolve(workspaceRoot, 'node_modules', 'react'),
+        // 'react-dom': path.resolve(workspaceRoot, 'node_modules', 'react-dom'),
       };
       if (isServer) {
         // https://github.com/baselime/node-opentelemetry/issues/2

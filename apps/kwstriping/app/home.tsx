@@ -36,7 +36,7 @@ function Home() {
   const learnMoreCta = 'Learn more';
   const catalogCta = 'Request service';
   const productSlug = 'striping-service';
-  const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/contact`;
+  const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/request`;
   console.log('Home');
   return (
     <Layout transparentBg>
