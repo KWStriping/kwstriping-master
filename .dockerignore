@@ -11,6 +11,7 @@
 !/pnpm-workspace.yaml
 !/pyproject.toml
 !/tsconfig.json
+!/tsconfig.*.json
 !/turbo.json
 !/.env
 !/.gitignore

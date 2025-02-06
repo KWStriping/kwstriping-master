@@ -10,7 +10,7 @@
   "scripts": {
     "compile": "tsx scripts/compile.ts",
     "postinstall": "pnpm compile",
-    "prebuild": "tsx scripts/prebuild.ts; run-p codegen compile",
+    "prebuild": "if [[ -z \"$DOCKER\" ]]; then tsx scripts/prebuild.ts; run-p codegen compile; fi",
     "build": "pnpm prebuild && turbo run build --log-prefix=none",
     "clean": "rm -rf .turbo; turbo run clean",
     "clean:deep": "pnpm clean; pnpm clean:deps",
