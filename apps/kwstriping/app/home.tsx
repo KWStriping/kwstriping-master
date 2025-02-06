@@ -35,7 +35,7 @@ function Home() {
   const shopDescription =
     'We offer reliable, precise field-painting services throughout the state of Utah.';
   const learnMoreCta = 'Learn more';
-  const catalogCta = 'Request service';
+  const catalogCta = user?.isStaff ? 'Request service' : 'Contact us';
   const productSlug = 'striping-service';
   const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/contact`;
   return (
@@ -65,6 +65,9 @@ function Home() {
             <Typography className={'text-black-outline'}>{' or '}</Typography>
             <Link href={catalogHref}>
               <Button className="p-6 py-3">{catalogCta}</Button>
+            </Link>
+            <Link href={'/request'}>
+              <Button className="p-6 py-3">{'Request service'}</Button>
             </Link>
           </div>
         </div>
