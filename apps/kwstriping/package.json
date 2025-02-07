@@ -5,8 +5,9 @@
   "scripts": {
     "//postbuild": "next-sitemap",
     "_dev": "npx kill-port $PORT_STOREFRONT; next dev --port $PORT_STOREFRONT --hostname $DOMAIN",
-    "build": "dotenv -e ../../.env -- next build",
+    "build": "dotenv -- next build && pnpm postbuild",
     "build:analyze": "ANALYZE=true pnpm build",
+    "postbuild": "test -d .next/standalone || ls .next/standalone",
     "clean": "rm -rf .next .turbo",
     "cypress": "cypress open",
     "dev": "npx dotenv-run-script ../../.env -- _dev",
