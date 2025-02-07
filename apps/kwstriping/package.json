@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "//postbuild": "next-sitemap",
     "_build": "dotenv -e ../../.env -- next build",
     "_dev": "npx kill-port $PORT_STOREFRONT; dotenv -e ../../.env -- NODE_OPTIONS='--inspect' next dev --port $PORT_STOREFRONT --hostname $DOMAIN",
     "build": "npx dotenv-run-script ../../.env -- _build",
-    "postbuild": "next-sitemap",
     "build:analyze": "ANALYZE=true pnpm build",
     "clean": "rm -rf .next .turbo",
     "cypress": "cypress open",
