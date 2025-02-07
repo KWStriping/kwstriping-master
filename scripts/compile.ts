@@ -79,6 +79,11 @@ function generateMessages() {
 }
 
 export default function main() {
+  if (APP && ROOT_DIR) {
+    if (!fs.existsSync(`${ROOT_DIR}/apps/${APP}/.env`)) {
+      fs.symlinkSync(`${ROOT_DIR}/.env`, `${ROOT_DIR}/apps/${APP}/.env`, 'file');
+    }
+  }
   generateTsConfig();
   generateMessages();
 }
