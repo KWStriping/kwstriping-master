@@ -52,10 +52,11 @@ export const generate = ({
       ignoreDuringBuilds: !!process.env.NEXTJS_IGNORE_ESLINT,
     },
     experimental: {
+      // Removed to support turbo
       // https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
-      typedRoutes: true,
-      // https://nextjs.org/docs/messages/import-esm-externals
-      esmExternals: 'loose',
+      // typedRoutes: true,
+      // // https://nextjs.org/docs/messages/import-esm-externals
+      // esmExternals: 'loose',
       externalDir: true,
       outputFileTracingRoot: workspaceRoot,
       swcPlugins: ENABLE_CLIENT_PRESET_OPTIMIZER
