@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "//postbuild": "next-sitemap",
-    "_build": "dotenv -e ../../.env -- next build",
-    "_dev": "npx kill-port $PORT_STOREFRONT; dotenv -e ../../.env -- NODE_OPTIONS='--inspect' next dev --port $PORT_STOREFRONT --hostname $DOMAIN",
-    "build": "npx dotenv-run-script ../../.env -- _build",
+    "_dev": "npx kill-port $PORT_STOREFRONT; next dev --turbo --port $PORT_STOREFRONT --hostname $DOMAIN",
+    "build": "dotenv -- next build && pnpm postbuild",
     "build:analyze": "ANALYZE=true pnpm build",
+    "postbuild": "test -d .next/standalone || ls .next/standalone",
     "clean": "rm -rf .next .turbo",
     "cypress": "cypress open",
     "dev": "npx dotenv-run-script ../../.env -- _dev",
@@ -15,7 +15,7 @@
     "generate:paths": "pathpida --ignorePath .gitignore",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "if [ ! $DOCKERIZED = true ]; then npx husky; fi",
+    "prepare": "if [ ! $DOCKER = true ]; then npx husky; fi",
     "start": "next start",
     "test": "jest",
     "test:record": "POLLY_MODE=record jest --runInBand --verbose",
@@ -119,11 +119,11 @@
     "web-vitals": "4.0.0",
     "wonka": "^6.2.3"
   },
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@10.2.1",
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=7.0.0",
-    "pnpm": ">=9.1.2"
+    "pnpm": ">=10.2.1"
   },
   "postcss": {
     "plugins": {

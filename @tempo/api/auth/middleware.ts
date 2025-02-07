@@ -16,6 +16,7 @@ export default auth((req) => {
       new URL(`/auth/login?next=${encodeURIComponent(from)}`, req.url)
     );
   }
+  console.debug('Leave middleware ...');
   return NextResponse.next();
 });
 

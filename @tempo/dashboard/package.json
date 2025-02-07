@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "_dev": "npx kill-port $PORT_DASHBOARD; dotenv -e ../../.env -- next dev --port $PORT_DASHBOARD --hostname $DOMAIN",
+    "_dev": "npx kill-port $PORT_DASHBOARD; dotenv -e ../../.env -- next dev --turbo --port $PORT_DASHBOARD --hostname $DOMAIN",
     "build": "NEXTJS_IGNORE_TYPECHECK=1 NEXTJS_IGNORE_ESLINT=1 next build",
     "build:analyze": "ANALYZE=true pnpm build",
     "check-types": "tsc --noEmit",

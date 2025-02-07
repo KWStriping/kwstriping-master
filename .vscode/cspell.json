@@ -5,6 +5,7 @@
     "**/.git/**",
     "**/fixtures.ts",
     "**/*.graphql",
+    ".env",
     "pnpm-lock.yaml",
     "yarn.lock"
   ],
