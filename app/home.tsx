@@ -1,16 +1,16 @@
 'use client';
 
 // import { HomepageBlocksDocument } from '@tempo/api/generated/graphql';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import React from 'react';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider'; // HOMEPAGE_MENU
 
 // import { contextToRegionQuery } from '@tempo/utils/regions';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import Link from 'next/link';
 import { NAVBAR_HEIGHT } from '@tempo/ui/components/Layout';
 import { useUser } from '@tempo/api/auth/react/hooks';
-import React from 'react';
 import usePaths from '@kwstriping/hooks/usePaths';
 import Layout from '@kwstriping/app/client/Layout';
 

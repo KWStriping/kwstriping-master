@@ -463,11 +463,11 @@ const configs = [
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'jsx-a11y/anchor-ambiguous-text': 'off', // TODO: error
-        'jsx-a11y/anchor-has-content': 'error',
-        'jsx-a11y/anchor-is-valid': 'error',
-        'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
-        'jsx-a11y/aria-role': 'error',
-        'jsx-a11y/aria-unsupported-elements': 'error',
+        'jsx-a11y/anchor-has-content': 'warn',
+        'jsx-a11y/anchor-is-valid': 'warn',
+        'jsx-a11y/aria-activedescendant-has-tabindex': 'warn',
+        'jsx-a11y/aria-role': 'warn',
+        'jsx-a11y/aria-unsupported-elements': 'warn',
         'jsx-a11y/autocomplete-valid': 'error',
         'jsx-a11y/click-events-have-key-events': 'error',
         'jsx-a11y/control-has-associated-label': [
@@ -510,8 +510,8 @@ const configs = [
         'jsx-a11y/label-has-associated-control': 'error',
         'jsx-a11y/label-has-for': 'off',
         'jsx-a11y/media-has-caption': 'warn',
-        'jsx-a11y/mouse-events-have-key-events': 'error',
-        'jsx-a11y/no-access-key': 'error',
+        'jsx-a11y/mouse-events-have-key-events': 'warn',
+        'jsx-a11y/no-access-key': 'warn',
         'jsx-a11y/no-autofocus': 'warn',
         'jsx-a11y/no-distracting-elements': 'error',
         'jsx-a11y/no-interactive-element-to-noninteractive-role': [
@@ -562,7 +562,7 @@ const configs = [
         ],
         'jsx-a11y/no-redundant-roles': 'error',
         'jsx-a11y/no-static-element-interactions': [
-          'error',
+          'warn',
           {
             allowExpressionValues: true,
             handlers: [

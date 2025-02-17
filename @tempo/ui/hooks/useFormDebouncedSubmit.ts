@@ -18,7 +18,6 @@ export const useFormDebouncedSubmit = <TFormData extends FormDataBase>({
   const previousFormData = useRef<TFormData | undefined>(defaultFormData);
 
   // because eslint is unable to read deps inside of debounce
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(
     debounce(() => {
       const formData = getValues();

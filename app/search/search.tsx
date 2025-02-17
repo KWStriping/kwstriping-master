@@ -1,9 +1,9 @@
 'use client';
 
-import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
 import { useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
+import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
 import Layout from '@kwstriping/app/client/Layout';
 import * as m from '@paraglide/messages';
 

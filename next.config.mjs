@@ -2,6 +2,7 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import _withBundleAnalyzer from '@next/bundle-analyzer';
 import { withSentryConfig as withSentry } from '@sentry/nextjs';
@@ -10,8 +11,14 @@ import { paraglide } from '@inlang/paraglide-next/plugin';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const workspaceRoot = path.resolve(__dirname);
-const paraglideDir = path.resolve(workspaceRoot, `paraglide`);
 const messagesDir = path.resolve(workspaceRoot, `messages`);
+const paraglideDir = path.resolve(workspaceRoot, `paraglide`);
+if (process.env.DOCKER) {
+  console.log('Running in Docker.');
+  if (!fs.existsSync(paraglideDir)) {
+    throw new Error(`${paraglideDir} does not exist.`);
+  }
+}
 
 console.debug('Workspace root:', workspaceRoot);
 

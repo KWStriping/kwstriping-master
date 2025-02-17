@@ -1,20 +1,19 @@
 'use client';
 
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import ProductPage from './product';
 import type { AbstractProductDetailsFragment } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import Link from '@tempo/ui/components/Link';
 import { ProductGallery } from '@tempo/ui/components/product/ProductGallery';
 import { VariantSelector } from '@tempo/ui/components/product/VariantSelector';
-import { ProductPageSeo } from '@tempo/ui/components/seo/ProductPageSeo';
 import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
-import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
-import ProductPage from './product';
 import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
@@ -55,7 +54,6 @@ function AbstractProductDetails({ product }: ProductPageProps) {
   console.log('>>>> product', product);
   return (
     <>
-      <ProductPageSeo product={product} />
       <main
         className={clsx('overflow-auto md:overflow-hidden sm:w-[50%] p-8 bg-white/90 shadow')}
       >

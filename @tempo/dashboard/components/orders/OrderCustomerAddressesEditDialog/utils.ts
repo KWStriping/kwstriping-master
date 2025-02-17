@@ -23,7 +23,7 @@ interface AddressEditCommonProps {
 }
 
 export const stringifyAddress = (address: Partial<AddressFragment>): string => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line ts/no-unused-vars
   const { id, ...addressWithoutId } = address;
   return Object.values(flatten(addressWithoutId)).join(' ');
 };

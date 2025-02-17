@@ -67,6 +67,7 @@ export const SummaryItemMoneyEditableSection: FC<LineItemQuantitySelectorProps> 
     },
   });
 
+  // eslint-disable-next-line ts/no-empty-object-type
   const handleLineDelete = useSubmit<{}, typeof deleteLines>({
     scope: 'deleteCheckoutLines',
     onSubmit: deleteLines,

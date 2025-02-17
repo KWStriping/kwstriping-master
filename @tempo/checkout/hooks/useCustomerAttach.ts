@@ -11,6 +11,7 @@ export const useCustomerAttach = () => {
 
   const [customerAttach, { fetching }] = useMutation(CheckoutCustomerAttachDocument);
 
+  // eslint-disable-next-line ts/no-empty-object-type
   const handleSubmit = useSubmit<{}, typeof customerAttach>({
     scope: 'attachCustomerToCheckout',
     shouldAbort: () => checkout?.user?.id === user?.id || fetching || loading,

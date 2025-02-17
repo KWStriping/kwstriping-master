@@ -1,10 +1,10 @@
 'use client';
 
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-import Spinner from '@tempo/ui/components/Spinner';
 import Divider from '@mui/material/Divider';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Spinner from '@tempo/ui/components/Spinner';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { usePaths } from '@kwstriping/hooks/usePaths';
 import Checkout from '@kwstriping/components/Checkout';
 

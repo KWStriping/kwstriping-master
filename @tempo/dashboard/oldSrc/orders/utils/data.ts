@@ -265,7 +265,7 @@ export function mergeRepeatedOrderLines(
 }
 
 export function addressToAddressInput<T>(address: T & AddressFragment): AddressUpdateInput {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line ts/no-unused-vars
   const { id, __typename, ...rest } = address;
   return {
     ...rest,

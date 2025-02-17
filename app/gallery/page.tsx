@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import React, { Suspense } from 'react';
 
+import GalleryPage from './gallery';
 import { getClient } from '@tempo/api/server';
 
 import { gql } from '@tempo/api';
-import GalleryPage from './gallery';
 import Layout from '@kwstriping/app/client/Layout';
 
 console.log('react cache');

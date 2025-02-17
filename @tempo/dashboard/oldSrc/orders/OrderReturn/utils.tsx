@@ -95,7 +95,7 @@ class ReturnFormDataParser {
     );
   };
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
+  // eslint-disable-next-line ts/member-ordering
   private static isLineRefundable = function <
     T extends OrderReturnLineInput | OrderReturnFulfillmentLineInput,
   >({ replace }: T) {

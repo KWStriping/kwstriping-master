@@ -110,7 +110,7 @@ export const Products: FC<ProductsProps> = ({
       menuItems={(index) => [
         {
           label: 'Edit Variant',
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          // eslint-disable-next-line ts/no-non-null-assertion
           onSelect: () => variants[index] && onRowClick(variants[index]!.id),
           Icon: <EditIcon />,
         },

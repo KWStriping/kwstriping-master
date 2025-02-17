@@ -5,6 +5,6 @@ export const metadata: Metadata = {
   title: 'Terms',
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page() {
   return <TermsPage />;
 }
