@@ -1,9 +1,9 @@
-import TablePagination from '@tempo/dashboard/components/tables/TablePagination';
-import usePaginator from '@tempo/dashboard/hooks/usePaginator';
 import TableFooter from '@mui/material/TableFooter';
 import type { FC } from 'react';
 
 import { useGiftCardList } from '../providers/GiftCardListProvider';
+import usePaginator from '@tempo/dashboard/hooks/usePaginator';
+import TablePagination from '@tempo/dashboard/components/tables/TablePagination';
 
 const GiftCardsListTableFooter: FC = () => {
   const {

@@ -1,8 +1,8 @@
+import { ProductErrorCode } from '@tempo/api/generated/constants';
+import type { ProductErrorWithAttributesFragment } from '@tempo/api/generated/graphql';
 import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage';
 import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage/form';
 import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductPage/form';
-import { ProductErrorCode } from '@tempo/api/generated/constants';
-import type { ProductErrorWithAttributesFragment } from '@tempo/api/generated/graphql';
 
 export const validatePrice = (price: string) => price === '' || parseInt(price, 10) < 0;
 
@@ -32,4 +32,5 @@ export const validateProductCreateData = (data: ProductCreateData) => {
 
 export const validateVariantData = (
   data: ProductCreateData | ProductUpdateSubmitData
-): ProductErrorWithAttributesFragment[] => (!data?.name ? [createEmptyRequiredError('name')] : []);
+): ProductErrorWithAttributesFragment[] =>
+  !data?.name ? [createEmptyRequiredError('name')] : [];

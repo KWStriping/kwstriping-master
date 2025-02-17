@@ -1,7 +1,6 @@
 import { OrderStatus as MollieOrderStatus } from '@mollie/api-client';
-import type { ReuseExistingVendorSessionFn } from '@tempo/checkout/payments/types';
-
 import { getMollieClient } from './utils';
+import type { ReuseExistingVendorSessionFn } from '@tempo/checkout/payments/types';
 
 export const verifyMollieSession = async (session: string) => {
   const {

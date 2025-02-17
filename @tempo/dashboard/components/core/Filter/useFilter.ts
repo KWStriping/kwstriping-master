@@ -11,7 +11,7 @@ export type FilterDispatchFunction<K extends string = string> = <T extends Field
 export type UseFilter<K extends string> = [
   Array<FilterElement<K>>,
   FilterDispatchFunction<K>,
-  () => void
+  () => void,
 ];
 
 function getParsedInitialFilter<T extends string>(initialFilter: IFilter<T>): IFilter<T> {

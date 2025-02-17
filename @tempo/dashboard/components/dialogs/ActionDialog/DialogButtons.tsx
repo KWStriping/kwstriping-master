@@ -44,8 +44,8 @@ const DialogButtons: FC<DialogButtonsProps> = (props) => {
         >
           {confirmButtonLabel ||
             (variant === 'delete'
-              ? m.dashboard_delete() ?? 'Delete'
-              : m.dashboard_onfirm() ?? 'Confirm')}
+              ? (m.dashboard_delete() ?? 'Delete')
+              : (m.dashboard_onfirm() ?? 'Confirm'))}
         </ConfirmButton>
       )}
     </DialogActions>

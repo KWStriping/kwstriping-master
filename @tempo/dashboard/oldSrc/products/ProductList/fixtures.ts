@@ -1,6 +1,6 @@
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import type { ProductListFilterOpts } from '@tempo/dashboard/components/products/ProductListPage';
 import { StockAvailability } from '@tempo/api/generated/graphql';
+import type { ProductListFilterOpts } from '@tempo/dashboard/components/products/ProductListPage';
 import { attributes } from '@tempo/dashboard/oldSrc/attributes/fixtures';
 import { categories } from '@tempo/dashboard/oldSrc/categories/fixtures';
 import { collections } from '@tempo/dashboard/oldSrc/collections/fixtures';

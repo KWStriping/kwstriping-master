@@ -1,9 +1,9 @@
-import { shippingZones } from '../shipping/fixtures';
 import type {
   WarehouseDetailsFragment,
   WarehouseWithShippingFragment,
 } from '@tempo/api/generated/graphql';
 import { WarehouseClickAndCollectOption } from '@tempo/api/generated/constants';
+import { shippingZones } from '../shipping/fixtures';
 import { address } from '@tempo/dashboard/oldSrc/fixtures';
 
 export const warehouseList: WarehouseWithShippingFragment[] = [

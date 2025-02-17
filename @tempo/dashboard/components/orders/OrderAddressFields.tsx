@@ -6,13 +6,13 @@ import type {
   OrderDetailsQuery,
   OrderErrorFragment,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { FC } from 'react';
 
 import type { OrderCustomerAddressesEditDialogProps } from './OrderCustomerAddressesEditDialog';
 import OrderCustomerAddressesEditDialog from './OrderCustomerAddressesEditDialog';
 import type { OrderCustomerAddressesEditDialogOutput } from './OrderCustomerAddressesEditDialog/types';
 import { AddressEditDialogVariant } from './OrderCustomerAddressesEditDialog/types';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 
 interface OrderAddressFieldsProps {
   action: string;

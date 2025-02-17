@@ -1,14 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
-import { getByName } from '@tempo/dashboard/components/core/Filter/utils';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type {
-  FilterPageProps,
-  PageListProps,
-  SearchPageProps,
-  TabPageProps,
-} from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
@@ -17,6 +8,15 @@ import type { CollectionListProps } from '../CollectionList';
 import CollectionList from '../CollectionList';
 import type { CollectionFilterKeys, CollectionListFilterOpts } from './filters';
 import { useFilterStructure } from './filters';
+import type {
+  FilterPageProps,
+  PageListProps,
+  SearchPageProps,
+  TabPageProps,
+} from '@tempo/dashboard/oldSrc/types';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import { getByName } from '@tempo/dashboard/components/core/Filter/utils';
+import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 export interface CollectionListPageProps
   extends PageListProps,
     SearchPageProps,

@@ -1,7 +1,6 @@
 import type { LanguageCode } from '@tempo/api/generated/graphql';
-import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-
 import { useRouter } from 'next/navigation';
+import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 
 export const useLocale = () => {
   const { defaultLocale } = useShopSettings();

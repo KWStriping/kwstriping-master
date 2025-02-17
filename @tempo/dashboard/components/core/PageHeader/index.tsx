@@ -1,10 +1,10 @@
-import ExtendedPageHeader from '@tempo/dashboard/components/core/PageHeader/ExtendedPageHeader';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 import styles from './index.module.css';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import ExtendedPageHeader from '@tempo/dashboard/components/core/PageHeader/ExtendedPageHeader';
 
 interface PageHeaderProps {
   title: ReactNode;

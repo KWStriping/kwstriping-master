@@ -4,14 +4,14 @@ import { makeStyles } from '@tempo/ui/theme/styles';
 import Typography from '@mui/material/Typography';
 import { useRef } from 'react';
 import type { FC } from 'react';
+import { DiscountValueType } from '@tempo/api/generated/constants';
+import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
 import OrderDiscountCommonModal from '../OrderDiscountCommonModal';
 import { ORDER_DISCOUNT } from '../OrderDiscountCommonModal/types';
 import { messages } from './messages';
 import Money from '@tempo/dashboard/components/core/Money';
 import type { OrderDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
 import type { OrderDiscountData } from '@tempo/dashboard/components/products/OrderDiscountProviders/types';
-import { DiscountValueType } from '@tempo/api/generated/constants';
-import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
 

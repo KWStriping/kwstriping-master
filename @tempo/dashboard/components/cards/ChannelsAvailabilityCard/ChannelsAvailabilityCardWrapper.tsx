@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
 import type { PermissionCode } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode } from 'react';
+import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ChannelsAvailabilityWrapperProps {
   selectedChannelsCount: number;

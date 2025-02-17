@@ -5,8 +5,8 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { ThemeProvider } from '@tempo/ui/theme/ThemeProvider';
 
 declare module '@mui/styles/defaultTheme' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type DefaultTheme = Theme;
 }
 
 export const Decorator = (storyFn: any) => (

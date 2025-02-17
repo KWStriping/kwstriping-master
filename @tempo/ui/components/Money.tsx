@@ -1,7 +1,7 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import { makeStyles } from '@tempo/ui/theme/styles';
 
 const useStyles = makeStyles(
   {

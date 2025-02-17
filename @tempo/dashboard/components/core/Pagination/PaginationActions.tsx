@@ -8,7 +8,7 @@ import type { ElementType } from 'react';
 
 // import useStyles from './styles';
 
-type BaseButtonProps<M = unknown> = M extends Object
+type BaseButtonProps<M = unknown> = M extends object
   ? ButtonBaseTypeMap<M & { component: ElementType }>['props']
   : ButtonBaseTypeMap<{ href?: string }>['props'];
 

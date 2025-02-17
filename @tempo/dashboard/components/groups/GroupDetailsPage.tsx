@@ -5,6 +5,12 @@ import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import type {
+  PermissionCode,
+  GroupDetailsFragment,
+  GroupErrorFragment,
+  UserPermissionFragment,
+} from '@tempo/api/generated/graphql';
 import GroupInfo from './GroupInfo';
 import GroupMemberList from './GroupMemberList';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
@@ -12,12 +18,6 @@ import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import Form from '@tempo/dashboard/components/forms/Form';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import AccountPermissions from '@tempo/dashboard/components/groups/AccountPermissions';
-import type {
-  PermissionCode,
-  GroupDetailsFragment,
-  GroupErrorFragment,
-  UserPermissionFragment,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { MembersListUrlOrdering } from '@tempo/dashboard/oldSrc/groups/urls';
 import { extractPermissionCodes, isGroupFullAccess } from '@tempo/dashboard/oldSrc/groups/utils';

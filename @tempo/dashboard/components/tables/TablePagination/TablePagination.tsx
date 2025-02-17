@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
 import type { PaginationProps as MacawPaginationProps } from '@tempo/ui/components/Pagination';
 import { Pagination } from '@tempo/ui/components/Pagination';
-import type { ListSettings } from '@tempo/dashboard/oldSrc/types';
 import TableCell from '@mui/material/TableCell';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import type { ElementType, FC } from 'react';
+import type { ListSettings } from '@tempo/dashboard/oldSrc/types';
 
 export type ListSettingsUpdate = <T extends keyof ListSettings>(
   key: T,

@@ -1,4 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from '@mui/material/MenuItem';
 import type { SelectChangeEvent, SelectProps } from '@mui/material/Select';
@@ -15,6 +14,7 @@ import { FilterContent } from './FilterContent';
 import type { FilterDetailedOptions, FilterLabels, FilterOptions } from './types';
 import { FilterType } from './types';
 import * as utils from './utils';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export type FilterProps = FilterOptions & FilterDetailedOptions;
 

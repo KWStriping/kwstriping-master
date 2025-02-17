@@ -1,4 +1,3 @@
-
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -7,7 +6,6 @@ import type { ShippingZoneRateCommonFormData } from '@dashboard/components/Shipp
 import differenceBy from 'lodash-es/differenceBy';
 import { useRouter } from 'next/navigation';
 import { assert } from 'tsafe/assert';
-import { shippingRateEditUrl } from './urls';
 import type { ShippingMethod } from '@tempo/api/generated/constants';
 import { PostalCodeRuleInclusionType } from '@tempo/api/generated/constants';
 import {
@@ -23,6 +21,7 @@ import type {
   ShippingPostalCodeRulesCreationInputRange,
   UpdateShippingRateMutationVariables,
 } from '@tempo/api/generated/graphql';
+import { shippingRateEditUrl } from './urls';
 import type { ChannelShippingData } from '@tempo/dashboard/oldSrc/channels/utils';
 import { getParsedDataForJsonStringField } from '@tempo/dashboard/oldSrc/utils/richText/misc';
 
@@ -215,13 +214,13 @@ export function useShippingRateCreator(
         id: rateId,
       });
 
-      notify((m.dashboard_somethingWentWrong() ?? 'Something went wrong'), {
+      notify(m.dashboard_somethingWentWrong() ?? 'Something went wrong', {
         type: 'error',
       });
 
       return errors;
     } else {
-      notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+      notify(m.dashboard_savedChanges() ?? 'Saved changes', {
         type: 'success',
       });
       assert(!!shippingZoneId);

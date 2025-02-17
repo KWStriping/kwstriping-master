@@ -1,19 +1,19 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type {
   OrderSettingsFragment,
   ShopOrderSettingsFragment,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
 import OrderSettingsForm, { useOrderSettingsForm } from './form';
 import type { OrderSettingsFormData } from './types';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 export interface OrderSettingsPageProps {
   orderSettings: OrderSettingsFragment;

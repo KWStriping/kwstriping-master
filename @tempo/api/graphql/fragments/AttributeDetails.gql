@@ -7,4 +7,12 @@ fragment AttributeDetails on Attribute {
   unit
   storefrontSearchPosition
   valueRequired
+  # values {
+  #   edges {
+  #     cursor
+  #     node {
+  #       ...ValueDetails
+  #     }
+  #   }
+  # }
 }

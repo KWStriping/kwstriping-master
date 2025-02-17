@@ -1,9 +1,9 @@
 import * as m from '@paraglide/messages';
-import { useTranslation, Trans } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Link from '@tempo/ui/components/Link';
 import type { FC } from 'react';
-import { giftCardsListHeaderMenuItemsMessages as messages } from '../messages';
 import { ProductKlassKind } from '@tempo/api/generated/constants';
+import { giftCardsListHeaderMenuItemsMessages as messages } from '../messages';
 import { productKlassAddUrl } from '@tempo/dashboard/oldSrc/productKlasses/urls';
 
 interface GiftCardsListHeaderAlertContentProps {

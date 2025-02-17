@@ -1,7 +1,3 @@
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import type { ProductStockInput } from '@tempo/dashboard/components/products/ProductStocks';
-import type { ProductUpdateFormData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
 import { ProductAttributeScope } from '@tempo/api/generated/constants';
 import type {
   ProductDetailsVariantFragment,
@@ -14,6 +10,12 @@ import type {
   StockInput,
   ProductAttributeFragment,
 } from '@tempo/api/generated/graphql';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
+import { Temporal } from '@js-temporal/polyfill';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import type { ProductStockInput } from '@tempo/dashboard/components/products/ProductStocks';
+import type { ProductUpdateFormData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
 import type { FormsetAtomicData } from '@tempo/dashboard/hooks/useFormset';
 import {
   getDefaultValues,
@@ -21,9 +23,7 @@ import {
   mergeChoicesWithValues,
 } from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
-import { Temporal } from '@js-temporal/polyfill';
 
 export interface Collection {
   id: string;

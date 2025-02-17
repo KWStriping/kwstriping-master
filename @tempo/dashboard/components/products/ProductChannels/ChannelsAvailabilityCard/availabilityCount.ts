@@ -1,7 +1,4 @@
-import type {
-  ProductCreateDataQuery,
-  ProductFragment,
-} from '@tempo/api/generated/graphql';
+import type { ProductCreateDataQuery, ProductFragment } from '@tempo/api/generated/graphql';
 
 export const getAvailabilityCountForVariant = (item: ProductFragment) => {
   const variantChannelListingsChannelsIds = item.channelListings.map(({ channel: { id } }) => id);
@@ -20,9 +17,7 @@ export const getAvailabilityCountForVariant = (item: ProductFragment) => {
   };
 };
 
-export const getAvailabilityCountForProduct = (
-  item: ProductCreateDataQuery['product']
-) => {
+export const getAvailabilityCountForProduct = (item: ProductCreateDataQuery['product']) => {
   const publishedInChannelsListings = item.channelListings.filter(
     ({ isPublished }) => isPublished
   );

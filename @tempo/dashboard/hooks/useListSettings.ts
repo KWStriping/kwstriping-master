@@ -1,9 +1,9 @@
 import merge from 'lodash-es/merge';
-import useLocalStorage from '@tempo/dashboard/hooks/useLocalStorage';
 
 import type { AppListViewSettings } from '../oldSrc/config';
 import { defaultListSettings } from '../oldSrc/config';
 import type { ListSettings, ListViews } from '../oldSrc/types';
+import useLocalStorage from '@tempo/dashboard/hooks/useLocalStorage';
 
 export const listSettingsStorageKey = 'listConfig';
 export interface UseListSettings<TColumns extends string = string> {

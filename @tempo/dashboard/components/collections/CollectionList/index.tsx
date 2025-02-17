@@ -8,6 +8,7 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { ReactNode, FC } from 'react';
+import type { CollectionListQuery } from '@tempo/api/generated/graphql';
 import { ChannelsAvailabilityDropdown } from '@tempo/dashboard/components/channels/ChannelsAvailabilityDropdown';
 import {
   getChannelAvailabilityColor,
@@ -19,9 +20,11 @@ import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader'
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import TooltipTableCellHeader from '@tempo/dashboard/components/tables/TooltipTableCellHeader';
-import type { CollectionListQuery } from '@tempo/api/generated/graphql';
 import { canBeSorted } from '@tempo/dashboard/oldSrc/collections/sort';
-import { CollectionListUrlOrdering, collectionUrl } from '@tempo/dashboard/oldSrc/collections/urls';
+import {
+  CollectionListUrlOrdering,
+  collectionUrl,
+} from '@tempo/dashboard/oldSrc/collections/urls';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import type {
   ChannelProps,

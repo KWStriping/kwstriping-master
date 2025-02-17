@@ -16,9 +16,8 @@ export const useSetBillingSameAsShipping = ({
   const { checkout } = useCheckout();
   const { billingAddress, shippingAddress } = checkout ?? {};
 
-  const [passDefaultFormDataAddress, setPassDefaultFormDataAddress] = useState<boolean>(
-    !!billingAddress
-  );
+  const [passDefaultFormDataAddress, setPassDefaultFormDataAddress] =
+    useState<boolean>(!!billingAddress);
 
   const hasBillingSameAsShipping = isMatchingAddress(shippingAddress, billingAddress);
 

@@ -1,16 +1,16 @@
 import { joinDateTime } from '@tempo/utils/datetime';
 import type { OperationResult } from '@urql/core';
 import type {
-  ChannelSaleFormData,
-  SaleDetailsPageFormData,
-} from '@tempo/dashboard/components/discounts/SaleDetailsPage';
-import type {
   SaleDetailsFragment,
   SaleType,
   SaleUpdateMutation,
   SaleUpdateMutationVariables,
 } from '@tempo/api/generated/graphql';
 import { DiscountValueType } from '@tempo/api/generated/constants';
+import type {
+  ChannelSaleFormData,
+  SaleDetailsPageFormData,
+} from '@tempo/dashboard/components/discounts/SaleDetailsPage';
 import { getSaleChannelsVariables } from '@tempo/dashboard/oldSrc/discounts/handlers';
 
 function discountValueType(type: SaleType): DiscountValueType {

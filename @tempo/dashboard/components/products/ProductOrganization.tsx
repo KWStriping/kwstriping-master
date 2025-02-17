@@ -1,6 +1,16 @@
 import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
 import { makeStyles } from '@tempo/ui/theme/styles';
+import { ProductErrorCode } from '@tempo/api/generated/constants';
+import type {
+  ProductChannelListingErrorFragment,
+  ProductErrorFragment,
+} from '@tempo/api/generated/graphql';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
@@ -8,21 +18,11 @@ import MultiAutocompleteSelectField from '@tempo/dashboard/components/fields/Mul
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import { ProductErrorCode } from '@tempo/api/generated/constants';
-import type {
-  ProductChannelListingErrorFragment,
-  ProductErrorFragment,
-} from '@tempo/api/generated/graphql';
 import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { productKlassUrl } from '@tempo/dashboard/oldSrc/productKlasses/urls';
 import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
 
 interface ProductKlass {
   hasVariants: boolean;
@@ -149,8 +149,8 @@ const ProductOrganization: FC<ProductOrganizationProps> = (props) => {
               {maybe(
                 () =>
                   productKlass.hasVariants
-                    ? m.dashboard_yes() ?? 'Yes'
-                    : m.dashboard_no() ?? 'No',
+                    ? (m.dashboard_yes() ?? 'Yes')
+                    : (m.dashboard_no() ?? 'No'),
                 '...'
               )}
             </Typography>

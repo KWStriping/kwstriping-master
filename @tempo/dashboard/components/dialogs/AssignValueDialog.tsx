@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import { AttributeEntityType } from '@tempo/api/generated/constants';
 import type { SearchPagesQuery } from '@tempo/api/generated/graphql';
-import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import type { FC } from 'react';
 
 import AssignContainerDialog from './AssignContainerDialog';
 import type { AssignProductDialogProps } from './AssignProductDialog';
 import AssignProductDialog from './AssignProductDialog';
 import AssignVariantDialog from './AssignVariantDialog';
+import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 
 type AssignValueDialogProps = AssignProductDialogProps & {
   entityType: AttributeEntityType;

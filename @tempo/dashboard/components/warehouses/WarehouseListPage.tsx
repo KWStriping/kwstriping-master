@@ -1,14 +1,18 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
-import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
-import SearchBar from '@tempo/dashboard/components/bars/SearchBar';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-
 import type {
   RefreshLimitsQuery,
   WarehouseWithShippingFragment,
 } from '@tempo/api/generated/graphql';
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import type { FC } from 'react';
+import WarehouseList from './WarehouseList';
+import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
+import SearchBar from '@tempo/dashboard/components/bars/SearchBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+
 import type {
   PageListProps,
   SearchPageProps,
@@ -18,11 +22,6 @@ import type {
 import { hasLimits, isLimitReached } from '@tempo/dashboard/oldSrc/utils/limits';
 import type { WarehouseListUrlOrdering } from '@tempo/dashboard/oldSrc/warehouses/urls';
 import { warehouseAddUrl } from '@tempo/dashboard/oldSrc/warehouses/urls';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import type { FC } from 'react';
-
-import WarehouseList from './WarehouseList';
 
 export interface WarehouseListPageProps
   extends PageListProps,

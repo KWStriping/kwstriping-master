@@ -19,13 +19,13 @@ export const MoneyRange: FC<MoneyRangeProps> = ({ from, to }) => {
           ? formatMoney(from, locale)
           : formatMoneyRange(from, to, locale)
         : from && !to
-          ? m.dashboard_W_uJO({
+          ? (m.dashboard_W_uJO({
               money: formatMoney(from, locale),
-            }) ?? 'from {{money}}'
+            }) ?? 'from {{money}}')
           : !from && to
-            ? m.dashboard_ptDxW({
+            ? (m.dashboard_ptDxW({
                 money: formatMoney(to, locale),
-              }) ?? 'to {{money}}'
+              }) ?? 'to {{money}}')
             : '-'}
     </>
   );

@@ -1,15 +1,9 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Money from '@tempo/dashboard/components/core/Money';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import { gql } from '@tempo/api';
 import type { TopProductFragment } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { renderCollection } from '@tempo/ui/utils';
-import { productVariantEditUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
@@ -18,6 +12,12 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import { productVariantEditUrl } from '@tempo/dashboard/oldSrc/products/urls';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Money from '@tempo/dashboard/components/core/Money';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

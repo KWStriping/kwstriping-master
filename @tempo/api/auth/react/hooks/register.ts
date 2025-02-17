@@ -1,18 +1,18 @@
+import { useCallback } from 'react';
 import type { RegisterMutation, RegisterMutationVariables } from '@tempo/api/generated/graphql';
 import { RegisterDocument } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import { useCallback } from 'react';
-import type { OperationResult } from '@urql/core';
+import type { MutationState } from '@tempo/api/types';
 
 export const useRegister = (): [
-  (options: RegisterMutationVariables) => Promise<OperationResult<RegisterMutation> | undefined>,
-  { fetching: boolean },
+  (variables: RegisterMutationVariables) => Promise<any>,
+  MutationState<RegisterMutation, RegisterMutationVariables>,
 ] => {
-  const [mutate, { fetching, error }] = useMutation(RegisterDocument);
+  const [mutate, mutationState] = useMutation(RegisterDocument);
   const register = useCallback(
-    (options: RegisterMutationVariables) => {
+    async (variables: RegisterMutationVariables) => {
       // setTokens({ accessToken: null, csrfToken: null });
-      return mutate({ ...options }).then((result) => {
+      return mutate({ ...variables }).then((result) => {
         // const data = result.data?.registerAccount;
         // TODO: autologin
         // if (tokens?.accessToken && tokens?.csrfToken) {
@@ -26,5 +26,5 @@ export const useRegister = (): [
     },
     [mutate]
   );
-  return [register, { fetching }];
+  return [register, mutationState];
 };

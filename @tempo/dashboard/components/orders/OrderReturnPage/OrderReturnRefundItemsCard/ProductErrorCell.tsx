@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import ErrorExclamationCircleIcon from '@tempo/dashboard/oldSrc/icons/ErrorExclamationCircle';
 import Popper from '@mui/material/Popper';
 import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
+import ErrorExclamationCircleIcon from '@tempo/dashboard/oldSrc/icons/ErrorExclamationCircle';
 
 const useStyles = makeStyles(
   (theme) => ({

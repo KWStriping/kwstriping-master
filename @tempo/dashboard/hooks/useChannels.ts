@@ -1,9 +1,9 @@
+import type { Dispatch, SetStateAction } from 'react';
 import type { WithFormId } from '@tempo/dashboard/components/forms/Form/ExitFormDialogProvider';
 import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import useListActions from '@tempo/dashboard/hooks/useListActions';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
-import type { Dispatch, SetStateAction } from 'react';
 
 interface Modal {
   openModal: (action: ChannelsAction) => void;

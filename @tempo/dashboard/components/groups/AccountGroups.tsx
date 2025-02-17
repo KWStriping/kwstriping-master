@@ -1,9 +1,9 @@
 import * as m from '@paraglide/messages';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { SearchGroupsQuery, StaffErrorFragment } from '@tempo/api/generated/graphql';
 import type { MultiAutocompleteChoiceType } from '../fields/MultiAutocompleteSelectField';
 import MultiAutocompleteSelectField from '../fields/MultiAutocompleteSelectField';
-import type { SearchGroupsQuery, StaffErrorFragment } from '@tempo/api/generated/graphql';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { FetchMoreProps, RelayToFlat, SearchPageProps } from '@tempo/dashboard/oldSrc/types';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';

@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import Money from '@tempo/dashboard/components/core/Money';
-import type { IMoney } from '@tempo/dashboard/components/core/Money';
 import Skeleton from '@mui/material/Skeleton';
 import clsx from 'clsx';
 import reduce from 'lodash-es/reduce';
 import type { FC } from 'react';
+import type { IMoney } from '@tempo/dashboard/components/core/Money';
+import Money from '@tempo/dashboard/components/core/Money';
 
 const useStyles = makeStyles(
   (theme) => ({

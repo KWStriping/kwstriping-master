@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
+import { OrderStatusFilter, ChargeStatus } from '@tempo/api/generated/constants';
 import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import { OrderStatusFilter, ChargeStatus } from '@tempo/api/generated/constants';
 import { paymentStatusMessages } from '@tempo/dashboard/oldSrc/intl';
 import type { FilterOpts, KeyValue, MinMax } from '@tempo/dashboard/oldSrc/types';
 import {
@@ -93,11 +93,11 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createBooleanField(
         OrderFilterKeys.clickAndCollect,
-        (m.dashboard_lickAndCollect() ?? 'Click&Collect'),
+        m.dashboard_lickAndCollect() ?? 'Click&Collect',
         opts.clickAndCollect.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.clickAndCollect.active,
@@ -105,11 +105,11 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createBooleanField(
         OrderFilterKeys.preorder,
-        (m.dashboard_reorder() ?? 'Preorder'),
+        m.dashboard_reorder() ?? 'Preorder',
         opts.preorder.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.preorder.active,
@@ -117,7 +117,7 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createTextField(
         OrderFilterKeys.customer,
-        (m.dashboard_customer() ?? 'Customer'),
+        m.dashboard_customer() ?? 'Customer',
         opts.customer.value
       ),
       active: opts.customer.active,
@@ -125,7 +125,7 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createDateField(
         OrderFilterKeys.created,
-        (m.dashboard_placed() ?? 'Created'),
+        m.dashboard_placed() ?? 'Created',
         opts.created.value
       ),
       active: opts.created.active,
@@ -133,16 +133,16 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createOptionsField(
         OrderFilterKeys.giftCard,
-        (m.dashboard_giftCard() ?? 'Gift Card'),
+        m.dashboard_giftCard() ?? 'Gift Card',
         opts.giftCard.value,
         true,
         [
           {
-            label: (m.dashboard_giftCardOrdered() ?? 'Gift Card ordered'),
+            label: m.dashboard_giftCardOrdered() ?? 'Gift Card ordered',
             value: OrderFilterGiftCard.bought,
           },
           {
-            label: (m.dashboard_giftCardPaid() ?? 'Paid with Gift Card'),
+            label: m.dashboard_giftCardPaid() ?? 'Paid with Gift Card',
             value: OrderFilterGiftCard.paid,
           },
         ]
@@ -152,36 +152,36 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createOptionsField(
         OrderFilterKeys.status,
-        (m.dashboard_status() ?? 'Status'),
+        m.dashboard_status() ?? 'Status',
         opts.status.value,
         true,
         [
           {
-            label: (m.dashboard_cancelled() ?? 'Cancelled'),
+            label: m.dashboard_cancelled() ?? 'Cancelled',
             value: OrderStatusFilter.Canceled,
           },
           {
-            label: (m.dashboard_fulfilled() ?? 'Fulfilled'),
+            label: m.dashboard_fulfilled() ?? 'Fulfilled',
             value: OrderStatusFilter.Fulfilled,
           },
           {
-            label: (m.dashboard_partiallyFulfilled() ?? 'Partially fulfilled'),
+            label: m.dashboard_partiallyFulfilled() ?? 'Partially fulfilled',
             value: OrderStatusFilter.PartiallyFulfilled,
           },
           {
-            label: (m.dashboard_unfulfilled() ?? 'Unfulfilled'),
+            label: m.dashboard_unfulfilled() ?? 'Unfulfilled',
             value: OrderStatusFilter.Unfulfilled,
           },
           {
-            label: (m.dashboard_eadyToCapture() ?? 'Ready to capture'),
+            label: m.dashboard_eadyToCapture() ?? 'Ready to capture',
             value: OrderStatusFilter.ReadyToCapture,
           },
           {
-            label: (m.dashboard_eadyToFulfill() ?? 'Ready to fulfill'),
+            label: m.dashboard_eadyToFulfill() ?? 'Ready to fulfill',
             value: OrderStatusFilter.ReadyToFulfill,
           },
           {
-            label: (m.dashboard_unconfirmed() ?? 'Unconfirmed'),
+            label: m.dashboard_unconfirmed() ?? 'Unconfirmed',
             value: OrderStatusFilter.Unconfirmed,
           },
         ]
@@ -191,36 +191,36 @@ export function useFilterStructure(opts: OrderListFilterOpts): IFilter<OrderFilt
     {
       ...createOptionsField(
         OrderFilterKeys.paymentStatus,
-        (m.dashboard_paymentStatus() ?? 'Payment status'),
+        m.dashboard_paymentStatus() ?? 'Payment status',
         opts.paymentStatus.value,
         true,
         [
           {
-            label: (m.dashboard_paid() ?? 'Fully paid'),
+            label: m.dashboard_paid() ?? 'Fully paid',
             value: ChargeStatus.FullyCharged,
           },
           {
-            label: (m.dashboard_partiallyPaid() ?? 'Partially paid'),
+            label: m.dashboard_partiallyPaid() ?? 'Partially paid',
             value: ChargeStatus.PartiallyCharged,
           },
           {
-            label: (m.dashboard_unpaid() ?? 'Unpaid'),
+            label: m.dashboard_unpaid() ?? 'Unpaid',
             value: ChargeStatus.NotCharged,
           },
           {
-            label: (m.dashboard_refunded() ?? 'Fully refunded'),
+            label: m.dashboard_refunded() ?? 'Fully refunded',
             value: ChargeStatus.FullyRefunded,
           },
           {
-            label: (m.dashboard_partiallyRefunded() ?? 'Partially refunded'),
+            label: m.dashboard_partiallyRefunded() ?? 'Partially refunded',
             value: ChargeStatus.PartiallyRefunded,
           },
           {
-            label: (m.dashboard_cancelled() ?? 'Cancelled'),
+            label: m.dashboard_cancelled() ?? 'Cancelled',
             value: ChargeStatus.Cancelled,
           },
           {
-            label: (m.dashboard_ending() ?? 'Pending'),
+            label: m.dashboard_ending() ?? 'Pending',
             value: ChargeStatus.Pending,
           },
           {

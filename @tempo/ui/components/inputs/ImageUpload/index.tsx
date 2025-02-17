@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
-import type { DropzoneProps } from '@tempo/ui/components/inputs/Dropzone';
-import Dropzone from '@tempo/ui/components/inputs/Dropzone';
-import { ImageIcon } from '@tempo/ui/icons';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { ReactNode, FC } from 'react';
 import styles from './index.module.css';
+import { ImageIcon } from '@tempo/ui/icons';
+import Dropzone from '@tempo/ui/components/inputs/Dropzone';
+import type { DropzoneProps } from '@tempo/ui/components/inputs/Dropzone';
 
 interface ImageUploadProps {
   children?: (props: { isDragActive: boolean }) => ReactNode;

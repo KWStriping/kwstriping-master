@@ -1,7 +1,7 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import type { LanguageFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { OutputData } from '@editorjs/editorjs';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 
 export enum TranslationInputFieldName {
   description = 'description',

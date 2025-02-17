@@ -6,8 +6,6 @@ import CardHeader from '@mui/material/CardHeader';
 import { forwardRef, useRef, useState, useEffect } from 'react';
 import type { ForwardedRef, FC, ReactNode } from 'react';
 
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { Button } from '@tempo/ui/components/buttons/Button';
 import { useFilterData } from './context';
 import type { FilterMenuLabels } from './FilterMenu';
 import { FilterMenu } from './FilterMenu';
@@ -15,6 +13,8 @@ import { FilterMenu } from './FilterMenu';
 import type { FilterData, Filter, FilterLabels } from './types';
 import * as utils from './utils';
 import { FilterRow } from '.';
+import { Button } from '@tempo/ui/components/buttons/Button';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export interface FilterBarProps {
   initial?: Filter[];

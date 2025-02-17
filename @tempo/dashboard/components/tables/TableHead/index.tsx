@@ -1,6 +1,5 @@
 import { Trans } from '@tempo/next/i18n';
 import type { Node } from '@tempo/ui/types';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import TableCell from '@mui/material/TableCell';
 import MuiTableHead from '@mui/material/TableHead';
 import type { TableHeadProps as MuiTableHeadProps } from '@mui/material/TableHead';
@@ -11,6 +10,7 @@ import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 
 import styles from './index.module.css';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 export interface TableHeadProps extends MuiTableHeadProps {
   colSpan: number;

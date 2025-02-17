@@ -1,16 +1,22 @@
 import type { OrderFragment } from '@tempo/api/generated/graphql';
-import type { PaymentProviderID } from '@tempo/checkout/types/payments';
 import type { Errors } from './types';
+import type { PaymentProviderID } from '@tempo/checkout/types/payments';
 
 export class MissingUrlError extends Error {
-  constructor(public provider: PaymentProviderID, public order?: OrderFragment) {
+  constructor(
+    public provider: PaymentProviderID,
+    public order?: OrderFragment
+  ) {
     super(`Missing url! Provider: ${provider} | Order ID: ${order?.id ?? '(missing)'}`);
     Object.setPrototypeOf(this, MissingUrlError.prototype);
   }
 }
 
 export class KnownPaymentError extends Error {
-  constructor(public provider: PaymentProviderID, public errors: Errors) {
+  constructor(
+    public provider: PaymentProviderID,
+    public errors: Errors
+  ) {
     super(`Error! Provider: ${provider} | Errors: ${errors.join(', ')}`);
     Object.setPrototypeOf(this, KnownPaymentError.prototype);
   }

@@ -1,12 +1,8 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import Form from '@tempo/dashboard/components/forms/Form';
 import type { MenuDetailsFragment, MenuErrorFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
@@ -18,6 +14,10 @@ import type { TreeOperation } from '../MenuItems';
 import MenuItems from '../MenuItems';
 import MenuProperties from '../MenuProperties';
 import { computeRelativeTree } from './tree';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import Form from '@tempo/dashboard/components/forms/Form';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 export interface MenuDetailsFormData {
   name: string;

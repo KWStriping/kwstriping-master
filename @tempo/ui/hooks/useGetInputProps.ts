@@ -7,13 +7,12 @@ import type {
   UseFormRegisterReturn,
 } from 'react-hook-form';
 
-export type ControlFormData<FormControl> = FormControl extends Control<infer FormData>
-  ? FormData
-  : never;
+export type ControlFormData<FormControl> =
+  FormControl extends Control<infer FormData> ? FormData : never;
 
 export type FormInputProps<
   TControl extends Control,
-  TData extends ControlFormData<TControl>
+  TData extends ControlFormData<TControl>,
 > = UseFormRegisterReturn & {
   name: FieldPath<TData>;
   error: Error<TData> | undefined;
@@ -23,22 +22,22 @@ export type FormInputProps<
 export type GetInputProps = <
   TControl extends Control,
   TData extends ControlFormData<TControl>,
-  TName extends FieldPath<TData> = FieldPath<TData>
+  TName extends FieldPath<TData> = FieldPath<TData>,
 >(
   name: TName,
   options?: RegisterOptions<TData, TName>
 ) => FormInputProps<TControl, TData>;
 
-type UseGetInputProps<
-  TControl extends Control,
-  TData extends ControlFormData<TControl>
-> = Pick<UseFormReturn<TData>, 'formState' | 'register' | 'getFieldState'> & {
+type UseGetInputProps<TControl extends Control, TData extends ControlFormData<TControl>> = Pick<
+  UseFormReturn<TData>,
+  'formState' | 'register' | 'getFieldState'
+> & {
   control: TControl;
 };
 
 export const useGetInputProps = <
   TControl extends Control,
-  TData extends ControlFormData<TControl>
+  TData extends ControlFormData<TControl>,
 >(
   { register, control, getFieldState, formState }: UseGetInputProps<TControl, TData>,
   defaultOptions?: RegisterOptions<TData>

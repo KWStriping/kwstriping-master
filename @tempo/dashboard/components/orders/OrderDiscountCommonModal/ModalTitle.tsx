@@ -1,9 +1,9 @@
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import CloseIcon from '@mui/icons-material/Close';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 const useStyles = makeStyles(
   (theme) => ({

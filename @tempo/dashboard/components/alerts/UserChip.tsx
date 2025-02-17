@@ -2,12 +2,12 @@ import * as m from '@paraglide/messages';
 import { UserChipMenu, UserChipMenuItem } from '@tempo/ui/components/UserChipMenu';
 import { getUserInitials, getUserName } from '@tempo/utils/user';
 import type { UserFragment } from '@tempo/api/generated/graphql';
-import { staffMemberDetailsUrl } from '@tempo/dashboard/oldSrc/staff/urls';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Skeleton from '@mui/material/Skeleton';
 import Switch from '@mui/material/Switch';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { staffMemberDetailsUrl } from '@tempo/dashboard/oldSrc/staff/urls';
 
 export interface UserChipProps {
   isDarkThemeEnabled: boolean;

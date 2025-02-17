@@ -1,9 +1,6 @@
 import type { UseSearchResult } from '@tempo/api/hooks/useSearch';
 import { useSearch } from '@tempo/api/hooks/useSearch';
-import type {
-  SearchValuesQuery,
-  SearchValuesQueryVariables,
-} from '@tempo/api/generated/graphql';
+import type { SearchValuesQuery, SearchValuesQueryVariables } from '@tempo/api/generated/graphql';
 import { SearchValuesDocument } from '@tempo/api/generated/graphql';
 import { useEffect, useState } from 'react';
 
@@ -13,17 +10,12 @@ interface ValueSearchHandlerState {
 }
 
 export interface UseValueSearchHandler
-  extends Omit<
-    UseSearchResult<SearchValuesQuery, SearchValuesQueryVariables>,
-    'search'
-  > {
+  extends Omit<UseSearchResult<SearchValuesQuery, SearchValuesQueryVariables>, 'search'> {
   reset: () => void;
   search: (query: string, id: string | null) => void;
 }
 
-function useValueSearchHandler(
-  variables: SearchValuesQueryVariables
-): UseValueSearchHandler {
+function useValueSearchHandler(variables: SearchValuesQueryVariables): UseValueSearchHandler {
   const [state, setState] = useState<ValueSearchHandlerState>({
     id: null,
     query: variables.query,

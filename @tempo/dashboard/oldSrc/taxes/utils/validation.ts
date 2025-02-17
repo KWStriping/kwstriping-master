@@ -1,7 +1,6 @@
+import type { TaxClassesPageFormData } from '../types';
 import type { CommonError } from '@tempo/dashboard/oldSrc/utils/errors/common';
 import { CommonErrorCode } from '@tempo/dashboard/oldSrc/utils/errors/common';
-
-import type { TaxClassesPageFormData } from '../types';
 
 export const createEmptyRequiredError = (field: string): CommonError<CommonErrorCode> => ({
   code: CommonErrorCode.Required,

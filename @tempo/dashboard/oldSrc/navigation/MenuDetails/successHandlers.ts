@@ -18,7 +18,7 @@ export function handleItemCreate(
 ) {
   if (data?.createMenuItem?.errors?.length === 0) {
     closeModal();
-    notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+    notify(m.dashboard_savedChanges() ?? 'Saved changes', {
       type: 'success',
     });
   }
@@ -32,7 +32,7 @@ export function handleItemUpdate(
   t: TFunction
 ) {
   if (data?.updateMenuItem?.errors?.length === 0) {
-    notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+    notify(m.dashboard_savedChanges() ?? 'Saved changes', {
       type: 'success',
     });
     void router.push(
@@ -51,7 +51,7 @@ export function handleDelete(
   t: TFunction
 ) {
   if (data?.deleteMenu?.errors?.length === 0) {
-    notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+    notify(m.dashboard_savedChanges() ?? 'Saved changes', {
       type: 'success',
     });
     void router.replace('/navigation');
@@ -69,7 +69,7 @@ export function handleUpdate(
     data?.moveMenuItem?.errors?.length === 0 &&
     data?.updateMenu?.errors?.length === 0
   ) {
-    notify((m.dashboard_savedChanges() ?? 'Saved changes'), {
+    notify(m.dashboard_savedChanges() ?? 'Saved changes', {
       type: 'success',
     });
     refetch();

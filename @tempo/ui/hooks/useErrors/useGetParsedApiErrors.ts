@@ -11,7 +11,7 @@ type GetErrorsFromApiErrors<TFormData extends FieldValues> = {
 };
 
 export const useGetParsedApiErrors = <
-  TFormData extends FieldValues
+  TFormData extends FieldValues,
 >(): GetErrorsFromApiErrors<TFormData> => {
   const { getMessageByErrorCode } = useErrorMessages();
 

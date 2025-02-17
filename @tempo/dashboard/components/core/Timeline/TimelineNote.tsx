@@ -1,4 +1,3 @@
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 import PersonIcon from '@mui/icons-material/Person';
 import { Avatar, Card } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
@@ -7,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import CRC from 'crc-32';
 import type { FC } from 'react';
 import { Fragment } from 'react';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 
 const palette = [
   colors.amber,

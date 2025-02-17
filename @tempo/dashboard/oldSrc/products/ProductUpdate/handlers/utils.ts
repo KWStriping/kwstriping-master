@@ -1,18 +1,18 @@
-import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
-import { getColumnChannelAvailability } from '@tempo/dashboard/components/products/Products/columnData';
 import type {
   FileUploadMutation,
   ProductChannelListingAddInput,
   ProductChannelListingUpdateMutationVariables,
   ProductFragment,
 } from '@tempo/api/generated/graphql';
+import pick from 'lodash-es/pick';
+import uniq from 'lodash-es/uniq';
+import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductUpdatePage/types';
+import { getColumnChannelAvailability } from '@tempo/dashboard/components/products/Products/columnData';
 import { getAttributesAfterFileAttributesUpdate } from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import { prepareAttributesInput } from '@tempo/dashboard/oldSrc/attributes/utils/handlers';
 import { VALUES_PAGINATE_BY } from '@tempo/dashboard/oldSrc/config';
 import { getAttributeInputFromProduct } from '@tempo/dashboard/oldSrc/products/utils/data';
 import { getParsedDataForJsonStringField } from '@tempo/dashboard/oldSrc/utils/richText/misc';
-import pick from 'lodash-es/pick';
-import uniq from 'lodash-es/uniq';
 
 export function getProductUpdateVariables(
   product: ProductFragment,

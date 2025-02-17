@@ -1,15 +1,15 @@
 import * as m from '@paraglide/messages';
 import { List, ListHeader, ListItem, ListItemCell } from '@tempo/ui/components/list/List';
-import ListItemLink from '@tempo/dashboard/components/core/ListItemLink';
 import type { TaxConfigurationFragment } from '@tempo/api/generated/graphql';
-import { taxConfigurationListUrl } from '@tempo/dashboard/oldSrc/taxes/urls';
-import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { Fragment } from 'react';
+import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
+import { taxConfigurationListUrl } from '@tempo/dashboard/oldSrc/taxes/urls';
+import ListItemLink from '@tempo/dashboard/components/core/ListItemLink';
 
 interface TaxChannelsMenuProps {
   configurations: TaxConfigurationFragment[] | undefined;

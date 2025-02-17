@@ -2,7 +2,10 @@ import type { UseQueryHookOptions } from '@tempo/api/hooks';
 import { useQuery } from '@tempo/api/hooks';
 import { gql } from '@tempo/api/gql';
 import { RefreshLimitsDocument } from '@tempo/api/generated/graphql';
-import type { RefreshLimitsQuery, RefreshLimitsQueryVariables } from '@tempo/api/generated/graphql';
+import type {
+  RefreshLimitsQuery,
+  RefreshLimitsQueryVariables,
+} from '@tempo/api/generated/graphql';
 
 export const shopCountries = gql(`
   query ShopCountries($filter: CountryFilter) {

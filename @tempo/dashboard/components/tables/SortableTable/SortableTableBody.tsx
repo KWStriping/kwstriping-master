@@ -1,9 +1,9 @@
-import type { SortableContainerProps } from '@tempo/dashboard/components/core/SortableContainer';
-import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
 import TableBody from '@mui/material/TableBody';
 import type { TableBodyProps } from '@mui/material/TableBody';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
+import type { SortableContainerProps } from '@tempo/dashboard/components/core/SortableContainer';
 
 const SortableTableBody: FC<Omit<TableBodyProps & SortableContainerProps, 'ref'>> = ({
   children,

@@ -23,9 +23,7 @@ export const isMemberActive = (staffMember: StaffMemberDetailsFragment | UserFra
   return false;
 };
 
-export const getMemberGroups = (
-  staffMember: StaffMemberDetailsFragment | UserFragment
-) => {
+export const getMemberGroups = (staffMember: StaffMemberDetailsFragment | UserFragment) => {
   if (staffMember && 'groups' in staffMember) {
     return staffMember.groups;
   }

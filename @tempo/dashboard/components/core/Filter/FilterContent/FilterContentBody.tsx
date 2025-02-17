@@ -1,10 +1,4 @@
 import { makeStyles } from '@tempo/ui/theme/styles';
-import { FilterDateTimeField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterDateTimeField';
-import { FilterNumericField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterNumericField';
-import { FilterSingleSelectField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterSingleSelectField';
-import { useCommonStyles } from '@tempo/dashboard/components/core/Filter/FilterContent/utils';
-import FilterOptionField from '@tempo/dashboard/components/core/Filter/FilterOptionField';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import Skeleton from '@mui/material/Skeleton';
@@ -18,6 +12,12 @@ import { FilterKeyValueField } from '../FilterKeyValueField';
 import type { FilterReducerAction } from '../reducer';
 import type { FilterElement } from '../types';
 import { FieldType, isFilterDateType, isFilterNumericType, isFilterType } from '../types';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import FilterOptionField from '@tempo/dashboard/components/core/Filter/FilterOptionField';
+import { useCommonStyles } from '@tempo/dashboard/components/core/Filter/FilterContent/utils';
+import { FilterSingleSelectField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterSingleSelectField';
+import { FilterNumericField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterNumericField';
+import { FilterDateTimeField } from '@tempo/dashboard/components/core/Filter/FilterContent/FilterDateTimeField';
 
 const useStyles = makeStyles(
   (theme) => ({

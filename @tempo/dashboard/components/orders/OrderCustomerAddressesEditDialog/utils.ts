@@ -1,9 +1,5 @@
 import { getById } from '@tempo/utils';
 import type { Dispatch, SetStateAction } from 'react';
-import type { OrderCustomerAddressesEditData, OrderCustomerAddressesEditHandlers } from './form';
-import type { OrderCustomerAddressEditProps } from './OrderCustomerAddressEdit';
-import type { OrderCustomerSearchAddressState } from './types';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type {
   AccountErrorFragment,
   AddressFragment,
@@ -12,6 +8,10 @@ import type {
   OrderErrorFragment,
 } from '@tempo/api/generated/graphql';
 import { AddressType } from '@tempo/api/generated/constants';
+import type { OrderCustomerAddressesEditData, OrderCustomerAddressesEditHandlers } from './form';
+import type { OrderCustomerAddressEditProps } from './OrderCustomerAddressEdit';
+import type { OrderCustomerSearchAddressState } from './types';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { flatten } from '@tempo/dashboard/oldSrc/misc';
 

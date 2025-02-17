@@ -1,6 +1,5 @@
 import { joinDateTime } from '@tempo/utils/datetime';
 import type { OperationResult } from '@urql/core';
-import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { DiscountValueType, VoucherType } from '@tempo/api/generated/constants';
 import type {
   VoucherChannelListingUpdateMutation,
@@ -9,6 +8,7 @@ import type {
   VoucherUpdateMutation,
   VoucherUpdateMutationVariables,
 } from '@tempo/api/generated/graphql';
+import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 import { getChannelsVariables } from '@tempo/dashboard/oldSrc/discounts/handlers';
 import { DiscountType, RequirementsPicker } from '@tempo/dashboard/oldSrc/discounts/types';

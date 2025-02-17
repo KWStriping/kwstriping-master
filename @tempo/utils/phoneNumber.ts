@@ -1,17 +1,20 @@
-import { CountryCode } from "@tempo/api";
+import type { CountryCode } from '@tempo/api';
 
-import {
-  parsePhoneNumberWithError,
+import type {
   CountryCode as PhoneNumberLibCountryCode,
   PhoneNumber,
-} from "libphonenumber-js/max";
+} from 'libphonenumber-js/max';
+import { parsePhoneNumberWithError } from 'libphonenumber-js/max';
 
 const getPhoneNumberInstance = (
   phone: string,
   countryCode: CountryCode | undefined
 ): PhoneNumber | null => {
   try {
-    const phoneNumber = parsePhoneNumberWithError(phone, countryCode as PhoneNumberLibCountryCode);
+    const phoneNumber = parsePhoneNumberWithError(
+      phone,
+      countryCode as PhoneNumberLibCountryCode
+    );
     return phoneNumber;
   } catch (error) {
     return null;

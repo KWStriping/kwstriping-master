@@ -1,5 +1,5 @@
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { useState } from 'react';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 function useMetadataChangeTrigger() {
   const [isMetadataModified, setMetadataModified] = useState(false);

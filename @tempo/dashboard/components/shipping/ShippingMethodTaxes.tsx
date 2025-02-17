@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { TaxClassBaseFragment } from '@tempo/api/generated/graphql';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import type { FC, ChangeEvent } from 'react';
 
 import type { ShippingZoneRateUpdateFormData } from '../ShippingZoneRatesPage/types';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface ShippingMethodTaxesProps {
   value: string;

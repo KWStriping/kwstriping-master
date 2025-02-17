@@ -1,4 +1,4 @@
-import type {UserConfig} from '@commitlint/types';
+import type { UserConfig } from '@commitlint/types';
 import rules from '@commitlint/config-conventional';
 
 // https://commitlint.js.org/reference/configuration.html

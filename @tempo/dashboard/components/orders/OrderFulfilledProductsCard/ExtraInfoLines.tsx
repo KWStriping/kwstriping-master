@@ -1,8 +1,7 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
@@ -10,6 +9,7 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 
 import { extraInfoMessages } from './messages';
+import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 
 const NUMBER_OF_COLUMNS = 5;
 

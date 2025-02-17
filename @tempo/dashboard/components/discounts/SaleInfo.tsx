@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
 
 import type { SaleDetailsPageFormData } from './SaleDetailsPage';
+import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface SaleInfoProps {
   data: SaleDetailsPageFormData;

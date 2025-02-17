@@ -1,5 +1,7 @@
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type { TaxClassFragment } from '@tempo/api/generated/graphql';
+import type { FC, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type { FormChange, SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useForm from '@tempo/dashboard/hooks/useForm';
 import useFormset from '@tempo/dashboard/hooks/useFormset';
@@ -9,8 +11,6 @@ import { getTaxClassInitialFormData } from '@tempo/dashboard/oldSrc/taxes/utils/
 import { validateTaxClassFormData } from '@tempo/dashboard/oldSrc/taxes/utils/validation';
 import type { TaxClassError } from '@tempo/dashboard/oldSrc/utils/errors/taxes';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
-import type { FC, ReactNode } from 'react';
-import { useEffect, useState } from 'react';
 
 interface TaxClassesFormHandlers {
   handleRateChange: (id: string, value: string) => void;

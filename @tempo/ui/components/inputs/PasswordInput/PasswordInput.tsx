@@ -25,8 +25,8 @@ const PasswordInputComponent = <
           // variant="bare"
           aria-label={
             passwordVisible
-              ? m.auth_passwordVisibility_hide() ?? 'Hide'
-              : m.auth_passwordVisibility_show() ?? 'Show'
+              ? (m.auth_passwordVisibility_hide() ?? 'Hide')
+              : (m.auth_passwordVisibility_show() ?? 'Show')
           }
           onClick={() => setPasswordVisible(!passwordVisible)}
         >

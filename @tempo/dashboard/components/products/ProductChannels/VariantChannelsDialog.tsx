@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
+import type { ProductChannelListing } from '../types';
 import ChannelsAvailabilityDialog from '@tempo/dashboard/components/dialogs/ChannelsAvailabilityDialog';
 import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
 import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
@@ -8,8 +9,6 @@ import type {
   IChannelPriceAndPreorderArgs,
 } from '@tempo/dashboard/oldSrc/channels/utils';
 import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
-
-import type { ProductChannelListing } from '../types';
 
 interface VariantChannelsDialogProps {
   channelListings: ProductChannelListing;

@@ -1,14 +1,13 @@
 import { getBySlug } from '@tempo/utils';
+import InputAdornment from '@mui/material/InputAdornment';
+import type { FC } from 'react';
+import type { AttributeRowProps } from './types';
 import BasicAttributeRow from '@tempo/dashboard/components/attributes/AttributesCard/BasicAttributeRow';
 import {
   getErrorMessage,
   getSingleDisplayValue,
 } from '@tempo/dashboard/components/attributes/AttributesCard/utils';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import InputAdornment from '@mui/material/InputAdornment';
-import type { FC } from 'react';
-
-import type { AttributeRowProps } from './types';
 
 type SwatchRowProps = Pick<
   AttributeRowProps,

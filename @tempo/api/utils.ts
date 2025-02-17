@@ -1,28 +1,32 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { AnyVariables } from '@urql/core';
-import type { CombinedError, OperationResult } from '@urql/next';
+import type { OperationVariables, ApolloError, SingleExecutionResult } from '@apollo/client';
+import type { GraphQLFormattedError } from 'graphql';
 import type {
-  MutationState,
   Data,
   AdditionalMutationState,
   PartialMutationProviderOutput,
   MutationFunction,
+  MutationState,
 } from './types';
 
 export function hasErrors(errorList: any[] | null): boolean {
   return !(errorList === undefined || errorList === null || errorList.length === 0);
 }
 
-export function getMutationState(
-  called: boolean,
-  loading: boolean,
-  ...errorList: unknown[][]
-): ConfirmButtonTransitionState {
+type GraphQLErrors = ReadonlyArray<GraphQLFormattedError>;
+
+export function getMutationState({
+  called,
+  loading,
+  errors,
+}: {
+  called: boolean;
+  loading: boolean;
+  errors?: GraphQLErrors;
+}): ConfirmButtonTransitionState {
   if (loading) return 'loading';
   if (called) {
-    return errorList.map(hasErrors).reduce((acc, curr) => acc || curr, false)
-      ? 'error'
-      : 'success';
+    return errors?.length ? 'error' : 'success';
   }
   return 'default';
 }
@@ -31,43 +35,22 @@ export interface TempoMutationResult {
   errors?: unknown[];
 }
 
-type InferPromiseResult<T> = T extends Promise<infer V> ? V : never;
-
-export const extractMutationErrors = async <
-  TData extends InferPromiseResult<TPromise>,
-  TPromise extends Promise<OperationResult<TData>>,
-  TErrors extends ReturnType<typeof getMutationErrors>,
->(
-  submitPromise: TPromise
-): Promise<TErrors> => {
-  const result = await submitPromise;
-
-  const e = getMutationErrors(result);
-
-  return e as TErrors;
-};
-
-export const getAllErrorMessages = (error: CombinedError) => [
+export const getAllErrorMessages = (error: ApolloError) => [
   ...(error.graphQLErrors?.map((err) => err.message) || []),
   ...getNetworkErrors(error),
 ];
 
-export const hasMutationErrors = (result: OperationResult): boolean => {
+export const hasMutationErrors = (result: MutationState<any, any>): boolean => {
   if (!result?.data) return false;
   return Object.values(result.data).some((value: any) => !!value?.errors?.length);
 };
 
-export function getMutationErrors<TData>(
-  mutationState: Pick<OperationResult<TData>, 'data' | 'error'>
-): CombinedError[] {
-  if (!mutationState?.data) return [] as CombinedError[];
-  return Object.values(mutationState.data).reduce(
-    (acc: CombinedError[], mut: any) => [...acc, ...(mut?.errors || [])],
-    []
-  );
+export function getMutationErrors(error: ApolloError): ReadonlyArray<GraphQLFormattedError> {
+  if (!error) return [];
+  return error.graphQLErrors;
 }
 
-export const getNetworkErrors = (error: CombinedError): string[] => {
+export const getNetworkErrors = (error: ApolloError): string[] => {
   const networkErrors = error.networkError;
 
   if (networkErrors) {
@@ -87,22 +70,15 @@ export const getNetworkErrors = (error: CombinedError): string[] => {
   return [];
 };
 
-export function getMutationStatus<TData extends Record<string, TempoMutationResult | unknown>>(
-  mutationState: Omit<MutationState<TData>, 'status'>
-): ConfirmButtonTransitionState {
-  const errors = getMutationErrors(mutationState);
-  return getMutationState(mutationState.called, mutationState.fetching, errors);
-}
-
 export function getMutationProviderData<
-  TData extends Data = Data,
-  TVariables extends AnyVariables = AnyVariables,
+  TData extends Data,
+  TVariables extends OperationVariables,
 >(
   mutateFn: MutationFunction<TData, TVariables>,
-  opts: OperationResult<TData> & AdditionalMutationState
+  opts: MutationState<TData, any> & AdditionalMutationState
 ): PartialMutationProviderOutput<TData, TVariables> {
   return {
-    mutate: (variables) => mutateFn({ ...variables }),
+    mutate: (variables) => mutateFn({ ...variables }) as SingleExecutionResult<TData, TVariables>, // TODO
     opts,
   };
 }

@@ -1,5 +1,11 @@
 import * as m from '@paraglide/messages';
 import { DateTimeField } from '@tempo/ui/components/inputs/DateTimeField';
+import RichTextEditor from '@tempo/ui/components/inputs/RichTextEditor';
+import { AttributeInputType } from '@tempo/api/generated/constants';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import type { FC } from 'react';
+import styles from './index.module.css';
 import { getMeasurementUnitMessage } from '@tempo/dashboard/components/attributes/AttributeDetails/utils';
 import BasicAttributeRow from '@tempo/dashboard/components/attributes/AttributesCard/BasicAttributeRow';
 import ExtendedAttributeRow from '@tempo/dashboard/components/attributes/AttributesCard/ExtendedAttributeRow';
@@ -15,16 +21,10 @@ import {
   getErrorMessage,
 } from '@tempo/dashboard/components/attributes/AttributesCard/utils';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import RichTextEditor from '@tempo/ui/components/inputs/RichTextEditor';
 import FileUploadField from '@tempo/dashboard/components/fields/FileUploadField';
 import MultiAutocompleteSelectField from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import SortableChipsField from '@tempo/dashboard/components/fields/SortableChipsField';
-import { AttributeInputType } from '@tempo/api/generated/constants';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
-import type { FC } from 'react';
-import styles from './index.module.css';
 
 const AttributeRow: FC<AttributeRowProps> = ({
   attribute,

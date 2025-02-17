@@ -22,8 +22,8 @@ export const UserAddressList: FC<UserAddressListProps> = ({ onEditChange, type }
     <SelectBoxGroup
       label={
         isShippingAddressList
-          ? m.shippingAddresses() ?? 'Shipping addresses'
-          : m.billingAddresses() ?? 'Billing addresses'
+          ? (m.shippingAddresses() ?? 'Shipping addresses')
+          : (m.billingAddresses() ?? 'Billing addresses')
       }
     >
       {addressList.map(({ id, ...rest }: AddressFragment) => (

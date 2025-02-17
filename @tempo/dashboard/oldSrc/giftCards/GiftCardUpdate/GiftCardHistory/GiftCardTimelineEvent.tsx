@@ -1,16 +1,16 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
 import Link from '@tempo/ui/components/Link';
-import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 import { GiftCardEventsEnum } from '@tempo/api/generated/constants';
 import type { GiftCardEventFragment } from '@tempo/api/generated/graphql';
 import { appPath } from '@dashboard/oldSrc/apps/urls';
+import type { FC } from 'react';
+import { giftCardHistoryTimelineMessages as timelineMessages } from './messages';
 import { customerPath } from '@tempo/dashboard/oldSrc/customers/urls';
 import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import { staffMemberDetailsUrl } from '@tempo/dashboard/oldSrc/staff/urls';
-import type { FC } from 'react';
 
-import { giftCardHistoryTimelineMessages as timelineMessages } from './messages';
+import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 
 const getUserOrApp = (event: GiftCardEventFragment): string | null => {
   if (event.user) {
@@ -47,15 +47,15 @@ const getEventMessage = (event: GiftCardEventFragment, t: TFunction) => {
   switch (event.type) {
     case GiftCardEventsEnum.Activated:
       return user
-        ? m.dashboard_activated({
+        ? (m.dashboard_activated({
             activatedBy: <Link href={userUrl}>{user}</Link>,
-          }) ?? timelineMessages.activated.defaultMessage
+          }) ?? timelineMessages.activated.defaultMessage)
         : t('dashboard_activatedAnonymous', timelineMessages.activatedAnonymous.defaultMessage);
     case GiftCardEventsEnum.BalanceReset:
       return user
-        ? m.dashboard_alanceReset({
+        ? (m.dashboard_alanceReset({
             resetBy: <Link href={userUrl}>{user}</Link>,
-          }) ?? timelineMessages.balanceReset.defaultMessage
+          }) ?? timelineMessages.balanceReset.defaultMessage)
         : t(
             'dashboard_alanceResetAnonymous',
             timelineMessages.balanceResetAnonymous.defaultMessage
@@ -68,27 +68,27 @@ const getEventMessage = (event: GiftCardEventFragment, t: TFunction) => {
       );
     case GiftCardEventsEnum.Deactivated:
       return user
-        ? m.dashboard_deactivated({
+        ? (m.dashboard_deactivated({
             deactivatedBy: <Link href={userUrl}>{user}</Link>,
-          }) ?? timelineMessages.deactivated.defaultMessage
+          }) ?? timelineMessages.deactivated.defaultMessage)
         : t(
             'dashboard_deactivatedAnonymous',
             timelineMessages.deactivatedAnonymous.defaultMessage
           );
     case GiftCardEventsEnum.ExpiryDateUpdated:
       return user
-        ? m.dashboard_expiryDateUpdate({
+        ? (m.dashboard_expiryDateUpdate({
             expiryUpdatedBy: <Link href={userUrl}>{user}</Link>,
-          }) ?? timelineMessages.expiryDateUpdate.defaultMessage
+          }) ?? timelineMessages.expiryDateUpdate.defaultMessage)
         : t(
             'dashboard_expiryDateUpdateAnonymous',
             timelineMessages.expiryDateUpdateAnonymous.defaultMessage
           );
     case GiftCardEventsEnum.Issued:
       return user
-        ? m.dashboard_issued({
+        ? (m.dashboard_issued({
             issuedBy: <Link href={userUrl}>{user}</Link>,
-          }) ?? timelineMessages.issued.defaultMessage
+          }) ?? timelineMessages.issued.defaultMessage)
         : t('dashboard_issuedAnonymous', timelineMessages.issuedAnonymous.defaultMessage);
     case GiftCardEventsEnum.Resent:
       return t('dashboard_esent', timelineMessages.resent.defaultMessage);
@@ -100,7 +100,7 @@ const getEventMessage = (event: GiftCardEventFragment, t: TFunction) => {
       return t('dashboard_agsUpdated', timelineMessages.tagsUpdated.defaultMessage);
     case GiftCardEventsEnum.UsedInOrder:
       return user
-        ? m.dashboard_sedInOrder({
+        ? (m.dashboard_sedInOrder({
             orderLink: <Link href={orderUrl(event.orderId)}>#{event.orderNumber}</Link>,
             buyer: (content) =>
               !!user && (
@@ -108,7 +108,7 @@ const getEventMessage = (event: GiftCardEventFragment, t: TFunction) => {
                   href={event.user ? customerPath(event.user.id) : appPath(event.app.id)}
                 >{`${content} ${user}`}</Link>
               ),
-          }) ?? timelineMessages.usedInOrder.defaultMessage
+          }) ?? timelineMessages.usedInOrder.defaultMessage)
         : t(
             'dashboard_sedInOrderAnonymous',
             timelineMessages.usedInOrderAnonymous.defaultMessage,

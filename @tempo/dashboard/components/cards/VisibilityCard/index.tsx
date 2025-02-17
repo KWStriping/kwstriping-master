@@ -1,13 +1,4 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import RadioSwitchField from '@tempo/dashboard/components/fields/RadioSwitchField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
-import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
-import type { UserError } from '@tempo/dashboard/oldSrc/types';
-import { getFieldError } from '@tempo/dashboard/oldSrc/utils/errors';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
@@ -17,6 +8,15 @@ import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 import DateVisibilitySelector from './DateVisibilitySelector';
 import styles from './index.module.css';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import RadioSwitchField from '@tempo/dashboard/components/fields/RadioSwitchField';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
+import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
+import type { UserError } from '@tempo/dashboard/oldSrc/types';
+import { getFieldError } from '@tempo/dashboard/oldSrc/utils/errors';
 
 interface Message {
   visibleLabel: string;

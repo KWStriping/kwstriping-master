@@ -3,8 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { FC } from 'react';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { ProductErrorFragment } from '@tempo/api/generated/graphql';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
 

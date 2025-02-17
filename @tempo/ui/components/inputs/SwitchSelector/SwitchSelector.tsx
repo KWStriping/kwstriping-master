@@ -1,5 +1,5 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import type { FC, ReactNode } from 'react';
+import { makeStyles } from '@tempo/ui/theme/styles';
 
 const useStyles = makeStyles((theme) => ({
   switchSelector: {

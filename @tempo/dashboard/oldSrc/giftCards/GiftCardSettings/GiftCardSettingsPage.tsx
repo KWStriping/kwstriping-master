@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
+import { GiftCardSettingsUpdateDocument } from '@tempo/api/generated/graphql';
+import { TimePeriodType, GiftCardSettingsExpiryType } from '@tempo/api/generated/constants';
 import { giftCardsListPath } from '../urls';
 import GiftCardExpirySettingsCard from './GiftCardExpirySettingsCard';
 import { giftCardExpirySettingsCard as expirySettingsMessages } from './GiftCardExpirySettingsCard/messages';
@@ -15,8 +17,6 @@ import type { GiftCardSettingsFormData } from './types';
 import { getGiftCardSettingsInputData } from './utils';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
-import { GiftCardSettingsUpdateDocument } from '@tempo/api/generated/graphql';
-import { TimePeriodType, GiftCardSettingsExpiryType } from '@tempo/api/generated/constants';
 import Form from '@tempo/dashboard/components/forms/Form';
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';

@@ -3,15 +3,8 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import type { ShippingZoneQuery } from '@tempo/api/generated/graphql';
 import { renderCollection } from '@tempo/ui/utils';
-import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
@@ -21,6 +14,13 @@ import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

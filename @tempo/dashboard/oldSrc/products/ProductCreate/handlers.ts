@@ -1,5 +1,4 @@
-import type { OperationResult } from '@tempo/api';;
-import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage/form';
+import type { OperationResult } from '@tempo/api';
 import type {
   AttributeErrorFragment,
   FileUploadMutation,
@@ -17,6 +16,7 @@ import type {
   ProductChannelListingUpdateMutationVariables,
   UploadErrorFragment,
 } from '@tempo/api/generated/graphql';
+import type { ProductCreateData } from '@tempo/dashboard/components/products/ProductCreatePage/form';
 import {
   getAttributesAfterFileAttributesUpdate,
   mergeFileUploadErrors,
@@ -50,11 +50,11 @@ const getSimpleProductVariables = (formData: ProductCreateData, productId: strin
     })),
     preorder: formData.isPreorder
       ? {
-        globalThreshold: formData.globalThreshold
-          ? parseInt(formData.globalThreshold, 10)
-          : null,
-        endDate: formData.preorderEndDateTime || null,
-      }
+          globalThreshold: formData.globalThreshold
+            ? parseInt(formData.globalThreshold, 10)
+            : null,
+          endDate: formData.preorderEndDateTime || null,
+        }
       : null,
     trackInventory: formData.trackInventory,
   },

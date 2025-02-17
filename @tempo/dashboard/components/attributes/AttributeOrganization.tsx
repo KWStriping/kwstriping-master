@@ -5,8 +5,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { FC, ChangeEvent } from 'react';
 
-import type { AttributePageFormData } from './AttributePage';
 import { AttributeType } from '@tempo/api/generated/constants';
+import type { AttributePageFormData } from './AttributePage';
 import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
@@ -75,8 +75,8 @@ const AttributeOrganization: FC<AttributeOrganizationProps> = (props) => {
             </Typography>
             <Typography>
               {data?.type === AttributeType.ProductKlass
-                ? m.dashboard_productAttribute() ?? 'Product Attribute'
-                : m.dashboard_contentAttribute() ?? 'Content Attribute'}
+                ? (m.dashboard_productAttribute() ?? 'Product Attribute')
+                : (m.dashboard_contentAttribute() ?? 'Content Attribute')}
             </Typography>
           </>
         )}

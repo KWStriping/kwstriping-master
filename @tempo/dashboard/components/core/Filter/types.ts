@@ -1,8 +1,8 @@
 import type { PermissionCode } from '@tempo/api/generated/graphql';
-import type { FetchMoreProps, KeyValue, SearchPageProps } from '@tempo/dashboard/oldSrc/types';
 
 import type { MultiAutocompleteChoiceType } from '../../fields/MultiAutocompleteSelectField';
 import type { FilterDispatchFunction } from './useFilter';
+import type { FetchMoreProps, KeyValue, SearchPageProps } from '@tempo/dashboard/oldSrc/types';
 
 export enum FieldType {
   autocomplete = 'autocomplete',
@@ -70,7 +70,7 @@ export type FilterElementKeyValue<K extends string = string> = FilterElementComm
 
 export type FilterElementGeneric<
   K extends string,
-  T extends FieldType
+  T extends FieldType,
 > = T extends FieldType.keyValue
   ? FilterElementKeyValue<K> & { type: T }
   : FilterElementRegular<K> & { type: T };
@@ -92,7 +92,7 @@ export const isFilterType = <T extends FieldType, K extends string = string>(
 
 export interface FilterFieldBaseProps<
   K extends string = string,
-  T extends FieldType | unknown = unknown
+  T extends FieldType | unknown = unknown,
 > {
   filter: T extends FieldType ? FilterElementGeneric<K, T> : FilterElement<K>;
   onFilterPropertyChange: FilterDispatchFunction<K>;
@@ -104,12 +104,12 @@ export type FilterErrorMessages<T extends string> = Record<T, MessageDescriptor>
 
 export type IFilter<
   K extends string = string,
-  T extends FieldType | unknown = unknown
+  T extends FieldType | unknown = unknown,
 > = T extends unknown
   ? Array<FilterElement<K>>
   : T extends FieldType.keyValue
-  ? Array<FilterElementKeyValue<K>>
-  : Array<FilterElementRegular<K>>;
+    ? Array<FilterElementKeyValue<K>>
+    : Array<FilterElementRegular<K>>;
 
 export enum FilterType {
   Multiple = 'MULTIPLE',

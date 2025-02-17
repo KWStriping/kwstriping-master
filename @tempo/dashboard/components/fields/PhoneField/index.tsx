@@ -1,7 +1,7 @@
-import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
 import styles from './index.module.css';
+import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
 
 interface PhoneFieldProps {
   name: string;

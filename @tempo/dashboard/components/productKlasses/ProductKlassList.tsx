@@ -1,18 +1,7 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import type { ProductKlassFragment } from '@tempo/api/generated/graphql';
 import { renderCollection } from '@tempo/ui/utils';
-import {
-  ProductKlassListUrlOrdering,
-  productKlassUrl,
-} from '@tempo/dashboard/oldSrc/productKlasses/urls';
-import type { ListActions, ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
-import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,6 +9,17 @@ import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
+import type { ListActions, ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
+import {
+  ProductKlassListUrlOrdering,
+  productKlassUrl,
+} from '@tempo/dashboard/oldSrc/productKlasses/urls';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -142,7 +142,7 @@ const ProductKlassList: FC<ProductKlassListProps> = (props) => {
                       <span data-test-id="name">{productKlass.name}</span>
                       <Typography variant="caption">
                         {productKlass.hasVariants
-                          ? m.dashboard___t_n() ?? 'Configurable'
+                          ? (m.dashboard___t_n() ?? 'Configurable')
                           : t('dashboard_Nb+dT', '')}
                       </Typography>
                     </>

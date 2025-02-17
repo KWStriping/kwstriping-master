@@ -1,10 +1,12 @@
 import type { ProductCreateDataQuery } from '@tempo/api/generated/graphql';
+import type { VariantChannelListing } from './types';
 import type { UseFormsetOutput } from '@tempo/dashboard/hooks/useFormset';
 import type { ChannelPriceAndPreorderData } from '@tempo/dashboard/oldSrc/channels/utils';
 import { getChannelsInput } from '@tempo/dashboard/oldSrc/products/utils/handlers';
-import { validateCostPrice, validatePrice } from '@tempo/dashboard/oldSrc/products/utils/validation';
-
-import type { VariantChannelListing } from './types';
+import {
+  validateCostPrice,
+  validatePrice,
+} from '@tempo/dashboard/oldSrc/products/utils/validation';
 
 type FormChannels = UseFormsetOutput<ChannelPriceAndPreorderData>;
 
@@ -14,9 +16,7 @@ export const validateChannels = (channels: FormChannels['data']) =>
       validatePrice(channelData.value.price) || validateCostPrice(channelData.value.costPrice)
   );
 
-export const createChannelsWithPreorderInfo = (
-  product: ProductCreateDataQuery['product']
-) =>
+export const createChannelsWithPreorderInfo = (product: ProductCreateDataQuery['product']) =>
   product
     ? product.channelListings?.map((listing) => ({
         ...listing.channel,

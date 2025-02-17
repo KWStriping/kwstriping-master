@@ -1,8 +1,17 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
+import { ProductAttributeType, ProductKlassKind } from '@tempo/api/generated/constants';
+import type {
+  ProductKlassDetailsQuery,
+  TaxClassBaseFragment,
+  WeightUnit,
+} from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Metadata from '@tempo/dashboard/components/core/Metadata';
 import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
@@ -14,12 +23,6 @@ import ProductKlassShipping from '@tempo/dashboard/components/productKlasses/Pro
 import ProductKlassTaxes from '@tempo/dashboard/components/productKlasses/ProductKlassTaxes';
 import ProductKlassVariantAttributes from '@tempo/dashboard/components/productKlasses/ProductKlassVariantAttributes';
 import ControlledSwitch from '@tempo/dashboard/components/widgets/ControlledSwitch';
-import { ProductAttributeType, ProductKlassKind } from '@tempo/api/generated/constants';
-import type {
-  ProductKlassDetailsQuery,
-  TaxClassBaseFragment,
-  WeightUnit,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import { handleTaxClassChange } from '@tempo/dashboard/oldSrc/productKlasses/handlers';
@@ -31,9 +34,6 @@ import type {
 } from '@tempo/dashboard/oldSrc/types';
 import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
 
 interface ChoiceType {
   label: string;

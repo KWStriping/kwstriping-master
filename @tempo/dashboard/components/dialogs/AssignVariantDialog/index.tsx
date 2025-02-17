@@ -2,15 +2,8 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import Money from '@tempo/dashboard/components/core/Money';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type { SearchProductsQuery } from '@tempo/api/generated/graphql';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
 import { renderCollection } from '@tempo/ui/utils';
-import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
-import type { DialogProps, FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import {
   CircularProgress,
   Dialog,
@@ -35,6 +28,13 @@ import {
   hasAllVariantsSelected,
   isVariantSelected,
 } from './utils';
+import type { DialogProps, FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Money from '@tempo/dashboard/components/core/Money';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 export interface AssignVariantDialogFormData {
   products: RelayToFlat<NonNullable<SearchProductsQuery['search']>>;

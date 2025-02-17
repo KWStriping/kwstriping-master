@@ -1,19 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import { renderCollection } from '@tempo/ui/utils';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type { OrderErrorFragment, SearchOrderVariantQuery } from '@tempo/api/generated/graphql';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
-import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
 import {
   CircularProgress,
   Dialog,
@@ -35,6 +26,15 @@ import OrderPriceLabel from '../OrderPriceLabel/OrderPriceLabel';
 
 import { messages } from './messages';
 import { hasAllVariantsSelected, isVariantSelected, onProductAdd, onVariantAdd } from './utils';
+import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
+import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 export interface OrderProductAddDialogProps extends FetchMoreProps {
   confirmButtonState: ConfirmButtonTransitionState;

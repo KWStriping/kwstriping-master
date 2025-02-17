@@ -4,18 +4,17 @@ import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import { useCheckout, useFetch } from '@tempo/checkout/hooks';
 import { useAlerts } from '@tempo/ui/hooks';
 import { memo, useEffect, useRef, useLayoutEffect, useCallback } from 'react';
+import type {
+  AdyenCheckoutInstanceOnAdditionalDetails,
+  AdyenCheckoutInstanceOnSubmit,
+} from './createAdyenCheckout';
+import { createAdyenCheckoutInstance, handlePaymentResult } from './createAdyenCheckout';
 import { CHECKOUT_API_URL } from '@tempo/checkout/constants';
 import {
   createDropInAdyenPayment,
   createDropInAdyenSession,
   handleDropInAdyenPaymentDetails,
 } from '@tempo/checkout/fetch/requests';
-
-import type {
-  AdyenCheckoutInstanceOnAdditionalDetails,
-  AdyenCheckoutInstanceOnSubmit,
-} from './createAdyenCheckout';
-import { createAdyenCheckoutInstance, handlePaymentResult } from './createAdyenCheckout';
 
 type AdyenCheckoutInstance = Awaited<ReturnType<typeof AdyenCheckout>>;
 

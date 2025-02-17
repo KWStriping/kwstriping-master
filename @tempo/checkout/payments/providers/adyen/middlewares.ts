@@ -2,10 +2,10 @@ import type { Types } from '@adyen/api-library';
 import { unpackPromise } from '@tempo/utils/promises';
 import type { Middleware } from 'retes';
 import { Response } from 'retes/response';
-import type { PrivateSettingsValues } from '@tempo/checkout/types/api';
-import { adyenProviderSettingIDs } from '@tempo/checkout/types/payments';
 import { verifyBasicAuth } from './utils';
 import { validateHmac } from './validator';
+import type { PrivateSettingsValues } from '@tempo/checkout/types/api';
+import { adyenProviderSettingIDs } from '@tempo/checkout/types/payments';
 
 export type AdyenRequestContext = Required<
   PrivateSettingsValues<'unencrypted'>[keyof PrivateSettingsValues<'unencrypted'>]['adyen']

@@ -1,18 +1,11 @@
-import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
+import * as m from '@paraglide/messages';
 // import { useTranslation } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Money from '@tempo/dashboard/components/core/Money';
-import MoneyRange from '@tempo/dashboard/components/core/MoneyRange';
-import WeightRange from '@tempo/dashboard/components/core/WeightRange';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { ShippingZoneDetailsFragment } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import type { ChannelProps } from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Card from '@mui/material/Card';
@@ -24,6 +17,13 @@ import TableRow from '@mui/material/TableRow';
 import { useRouter } from 'next/navigation';
 import type { ReactNode, FC } from 'react';
 import styles from './index.module.css';
+import type { ChannelProps } from '@tempo/dashboard/oldSrc/types';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import WeightRange from '@tempo/dashboard/components/core/WeightRange';
+import MoneyRange from '@tempo/dashboard/components/core/MoneyRange';
+import Money from '@tempo/dashboard/components/core/Money';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ShippingZoneRatesProps extends ChannelProps {
   disabled: boolean;

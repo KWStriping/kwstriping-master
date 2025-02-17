@@ -5,6 +5,7 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { ProductKlassFragment } from '@tempo/api/generated/graphql';
 import ProductKlassList from '../ProductKlassList';
 import type { ProductKlassFilterKeys, ProductKlassListFilterOpts } from './filters';
 import { useFilterStructure } from './filters';
@@ -16,7 +17,6 @@ import type {
   TabPageProps,
 } from '@tempo/dashboard/oldSrc/types';
 import type { ProductKlassListUrlOrdering } from '@tempo/dashboard/oldSrc/productKlasses/urls';
-import type { ProductKlassFragment } from '@tempo/api/generated/graphql';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 

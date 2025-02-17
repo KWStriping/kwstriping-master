@@ -1,20 +1,20 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import RichTextEditor, {
   RichTextEditorLoading,
 } from '@tempo/ui/components/inputs/RichTextEditor';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { PageErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
-import { useRichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { FC, ChangeEvent } from 'react';
 
 import type { PageData } from '../PageDetailsPage/form';
+import { useRichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
+import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface PageInfoProps {
   data: PageData;

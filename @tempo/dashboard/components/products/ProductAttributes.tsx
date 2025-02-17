@@ -3,16 +3,16 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
 import Skeleton from '@mui/material/Skeleton';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type {
   ProductErrorWithAttributesFragment,
   ProductFragment,
 } from '@tempo/api/generated/graphql';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { FormsetAtomicData, FormsetChange } from '@tempo/dashboard/hooks/useFormset';
 import { getProductAttributeErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors/product';
 

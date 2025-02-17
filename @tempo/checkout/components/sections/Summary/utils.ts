@@ -12,15 +12,15 @@ export const getThumbnailFromLine = (line: CheckoutLineFragment) =>
 export const getSummaryLineProps = (line: OrderLineFragment | CheckoutLineFragment) =>
   isCheckoutLine(line)
     ? {
-      productName: line.product.name,
-      productName: line.product.name,
-      productImage: getThumbnailFromLine(line),
-    }
+        productName: line.product.name,
+        productName: line.product.name,
+        productImage: getThumbnailFromLine(line),
+      }
     : {
-      productName: line.productName,
-      productName: line.productName,
-      productImage: line.thumbnail,
-    };
+        productName: line.productName,
+        productName: line.productName,
+        productImage: line.thumbnail,
+      };
 
 export const getSummaryLineAttributesText = (line: CheckoutLineFragment | OrderLineFragment) =>
   compact(

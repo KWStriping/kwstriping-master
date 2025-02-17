@@ -1,4 +1,6 @@
 import * as m from '@paraglide/messages';
+import { useEffect } from 'react';
+import type { FC } from 'react';
 import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
 import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import useAppChannel from '@tempo/dashboard/components/layout/Layout/AppChannelContext';
@@ -7,8 +9,6 @@ import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import GiftCardCustomerSelectField from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog/GiftCardCustomerSelectField';
 import type { GiftCardCreateFormCustomer } from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog/types';
 import { mapSlugNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-import { useEffect } from 'react';
-import type { FC } from 'react';
 
 interface GiftCardSendToCustomerProps {
   selectedChannelSlug: string;

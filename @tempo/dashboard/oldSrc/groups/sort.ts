@@ -1,7 +1,7 @@
 import { getUserName } from '@tempo/utils/user';
 
-import { MembersListUrlOrdering } from './urls';
 import type { StaffMemberFragment } from '@tempo/api/generated/graphql';
+import { MembersListUrlOrdering } from './urls';
 
 export const sortMembers =
   (sort: string, asc: boolean) => (a: StaffMemberFragment, b: StaffMemberFragment) => {

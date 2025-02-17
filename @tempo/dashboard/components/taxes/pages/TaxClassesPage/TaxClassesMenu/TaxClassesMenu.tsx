@@ -2,11 +2,7 @@ import * as m from '@paraglide/messages';
 import { List, ListHeader, ListItem, ListItemCell } from '@tempo/ui/components/list/List';
 import Button from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ListItemLink from '@tempo/dashboard/components/core/ListItemLink';
 import type { TaxClassFragment } from '@tempo/api/generated/graphql';
-import { taxClassesListUrl } from '@tempo/dashboard/oldSrc/taxes/urls';
-import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -15,6 +11,10 @@ import Skeleton from '@mui/material/Skeleton';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { Fragment } from 'react';
+import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
+import { taxClassesListUrl } from '@tempo/dashboard/oldSrc/taxes/urls';
+import ListItemLink from '@tempo/dashboard/components/core/ListItemLink';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface TaxClassesMenuProps {
   taxClasses: TaxClassFragment[] | undefined;

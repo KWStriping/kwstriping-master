@@ -1,5 +1,4 @@
 import { isJwtError } from '@tempo/api/auth/errors';
-import { authExchange as _authExchange } from '@urql/exchange-auth';
 import type { Session } from '@tempo/api/auth/types';
 import { auth } from '@tempo/api/auth';
 

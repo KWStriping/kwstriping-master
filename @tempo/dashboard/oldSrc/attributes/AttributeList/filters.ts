@@ -1,7 +1,7 @@
+import type { AttributeFilter } from '@tempo/api/generated/graphql';
 import type { AttributeListFilterOpts } from '@tempo/dashboard/components/attributes/AttributeListPage';
 import { AttributeFilterKeys } from '@tempo/dashboard/components/attributes/AttributeListPage';
 import type { FilterElement } from '@tempo/dashboard/components/core/Filter';
-import type { AttributeFilter } from '@tempo/api/generated/graphql';
 import type {
   AttributeListUrlFilters,
   AttributeListUrlQueryParams,

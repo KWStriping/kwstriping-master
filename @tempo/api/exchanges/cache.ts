@@ -1,18 +1,9 @@
-import type { Value, Country, LanguageDisplay, UserPermission } from '@tempo/api/generated/graphql';
-import type { Exchange } from '@urql/core';
-import { cacheExchange as baseCacheExchange } from '@urql/exchange-graphcache';
-import type {
-  KeyingConfig,
-  ResolverConfig,
-  CacheExchangeOpts,
-  Cache,
-} from '@urql/exchange-graphcache';
-import type { IntrospectionData } from '@tempo/api/types';
+import type { Country, LanguageDisplay, UserPermission } from '@tempo/api/generated/graphql';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 if (!API_URL) throw new Error('NEXT_PUBLIC_API_URL is not defined');
 
-const keys: KeyingConfig = {
+const keys = {
   // https://formidable.com/open-source/urql/docs/graphcache/normalized-caching/#custom-keys-and-non-keyable-entities
   // TODO: check if any of these actually want the id field so they can be normalized
   /* eslint-disable ts/naming-convention */
@@ -37,19 +28,19 @@ const keys: KeyingConfig = {
   /* eslint-enable ts/naming-convention */
 };
 
-const resolvers: ResolverConfig = {
-  Value: {
-    slug(parent: Value, _: unknown, cache: Cache) {
-      const givenSlug = cache.resolve(parent, 'slug');
-      return givenSlug ?? cache.resolve(parent, 'name');
-    },
-  },
-};
+// const resolvers: ResolverConfig = {
+//   Value: {
+//     slug(parent: Value, _: unknown, cache: Cache) {
+//       const givenSlug = cache.resolve(parent, 'slug');
+//       return givenSlug ?? cache.resolve(parent, 'name');
+//     },
+//   },
+// };
 
-export const cacheExchange = (schema?: Maybe<IntrospectionData>): Exchange =>
-  baseCacheExchange<CacheExchangeOpts>({
-    keys,
-    resolvers,
-    // updates,
-    ...(schema ? { schema } : {}),
-  });
+// export const cacheExchange = (schema?: Maybe<IntrospectionData>): Exchange =>
+//   baseCacheExchange<CacheExchangeOpts>({
+//     keys,
+//     resolvers,
+//     // updates,
+//     ...(schema ? { schema } : {}),
+//   });

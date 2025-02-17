@@ -1,6 +1,5 @@
-import type { RecursiveMenuItem } from '@tempo/dashboard/oldSrc/navigation/types';
-
 import type { TreeOperation } from '../MenuItems';
+import type { RecursiveMenuItem } from '@tempo/dashboard/oldSrc/navigation/types';
 
 export function findNode(tree: RecursiveMenuItem[], id: string): number[] {
   const foundNodeIndex = tree.findIndex((node) => node.id === id);
@@ -10,10 +9,7 @@ export function findNode(tree: RecursiveMenuItem[], id: string): number[] {
   if (foundNodeIndex !== -1) {
     return [foundNodeIndex];
   }
-  const nodeMap = tree.map((node, nodeIndex) => [
-    nodeIndex,
-    ...findNode(node.children, id),
-  ]);
+  const nodeMap = tree.map((node, nodeIndex) => [nodeIndex, ...findNode(node.children, id)]);
   return nodeMap.find((path) => path[path.length - 1] !== null) || [null];
 }
 

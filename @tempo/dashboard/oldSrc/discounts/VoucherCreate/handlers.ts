@@ -2,7 +2,6 @@ import { extractMutationErrors, getMutationErrors } from '@tempo/api/utils';
 import { joinDateTime } from '@tempo/utils/datetime';
 import type { OperationResult } from '@urql/core';
 import { assert } from 'tsafe/assert';
-import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { DiscountValueType, VoucherType } from '@tempo/api/generated/constants';
 import type {
   VoucherChannelListingUpdateMutation,
@@ -10,6 +9,7 @@ import type {
   VoucherCreateMutation,
   VoucherCreateMutationVariables,
 } from '@tempo/api/generated/graphql';
+import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { getChannelsVariables } from '@tempo/dashboard/oldSrc/discounts/handlers';
 import { DiscountType, RequirementsPicker } from '@tempo/dashboard/oldSrc/discounts/types';
 
@@ -41,9 +41,7 @@ export function createHandler(
             : parseFloat(formData.minCheckoutItemsQuantity),
         startDate: joinDateTime(formData.startDate, formData.startTime),
         type:
-          formData.discountType === DiscountType.Shipping
-            ? VoucherType.Shipping
-            : formData.type,
+          formData.discountType === DiscountType.Shipping ? VoucherType.Shipping : formData.type,
         usageLimit: formData.hasUsageLimit ? formData.usageLimit : null,
       },
     });

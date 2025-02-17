@@ -7,11 +7,11 @@ import { useMutation } from '@tempo/api/hooks/useMutation';
 import { assert } from 'tsafe/assert';
 import Button from '@tempo/ui/components/buttons/Button';
 import { useEffect } from 'react';
-import { useSectionState } from '@tempo/checkout/hooks/state';
 import type { PointOfContact } from '../forms/ContactInfoForm';
 import ContactInfoForm from '../forms/ContactInfoForm';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection, { INCLUDE_SAVE_BUTTON } from './CheckoutSection';
+import { useSectionState } from '@tempo/checkout/hooks/state';
 
 export function ContactInfoSection({
   checkout,

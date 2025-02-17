@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
-import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { SearchPageKlassesQuery } from '@tempo/api/generated/graphql';
+import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { SearchWithFetchMoreProps } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/GiftCardListSearchAndFilters/types';
 import type { PageListUrlFilters, PageListUrlSort } from '@tempo/dashboard/oldSrc/pages/urls';
 import { PageListUrlFiltersWithMultipleValues } from '@tempo/dashboard/oldSrc/pages/urls';
@@ -58,7 +58,7 @@ export function useFilterStructure(opts: PageListFilterOpts): IFilter<PageListFi
     {
       ...createAutocompleteField(
         PageListFilterKeys.pageKlasses,
-        (m.dashboard_pageKlasses() ?? 'Page Types'),
+        m.dashboard_pageKlasses() ?? 'Page Types',
         opts.pageKlasses.value,
         opts.pageKlasses.displayValues,
         true,

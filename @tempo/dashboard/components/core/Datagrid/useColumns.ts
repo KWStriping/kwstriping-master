@@ -1,9 +1,9 @@
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
-import { addAtIndex, removeAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
 import type { GridColumn } from '@glideapps/glide-data-grid';
 import { useCallback, useMemo, useState } from 'react';
 
 import type { AvailableColumn } from './types';
+import { addAtIndex, removeAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 
 function useColumns(availableColumns: readonly AvailableColumn[]) {
   const [query, setQuery] = useState('');

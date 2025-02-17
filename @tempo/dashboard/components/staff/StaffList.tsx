@@ -11,11 +11,11 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { ReactNode, FC } from 'react';
+import type { StaffListQuery } from '@tempo/api/generated/graphql';
 import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
 import type { ListProps, RelayToFlat, SortPage } from '@tempo/dashboard/oldSrc/types';
 import { StaffListUrlOrdering, staffMemberDetailsUrl } from '@tempo/dashboard/oldSrc/staff/urls';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import type { StaffListQuery } from '@tempo/api/generated/graphql';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
@@ -145,8 +145,8 @@ const StaffList: FC<StaffListProps> = (props) => {
                   {maybe<ReactNode>(
                     () =>
                       staffMember.isActive
-                        ? m.dashboard_staffMemberStatus_active() ?? 'Active'
-                        : m.dashboard_staffMemberStatus_inactive() ?? 'Inactive',
+                        ? (m.dashboard_staffMemberStatus_active() ?? 'Active')
+                        : (m.dashboard_staffMemberStatus_inactive() ?? 'Inactive'),
                     <Skeleton />
                   )}
                 </Typography>

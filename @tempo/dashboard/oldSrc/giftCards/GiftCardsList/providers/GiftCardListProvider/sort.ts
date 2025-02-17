@@ -1,5 +1,5 @@
-import { GiftCardUrlOrdering } from '../../types';
 import { GiftCardOrdering } from '@tempo/api/generated/constants';
+import { GiftCardUrlOrdering } from '../../types';
 import { createGetSortQueryVariables } from '@tempo/dashboard/oldSrc/utils/sort';
 
 export const getSortQueryField = (sort: GiftCardUrlOrdering): GiftCardOrdering => {

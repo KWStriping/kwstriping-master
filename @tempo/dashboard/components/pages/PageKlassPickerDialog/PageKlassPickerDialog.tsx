@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+import type { FC } from 'react';
 import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
-import type { FC } from 'react';
 
 export interface PageKlassPickerDialogProps {
   confirmButtonState: ConfirmButtonTransitionState;

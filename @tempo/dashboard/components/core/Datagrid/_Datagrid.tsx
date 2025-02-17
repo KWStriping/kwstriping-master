@@ -4,9 +4,6 @@ import '@glideapps/glide-data-grid/dist/index.css';
 // import { useTranslation } from '@tempo/next/i18n';
 import { useTheme } from '@tempo/ui/theme';
 import { useColorScheme } from '@tempo/ui/theme/styles';
-import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
-import ColumnPicker from '@tempo/dashboard/components/core/ColumnPicker';
-import { usePreventHistoryBack } from '@tempo/dashboard/hooks/usePreventHistoryBack';
 import DataEditor from '@glideapps/glide-data-grid';
 import type {
   DataEditorRef,
@@ -35,6 +32,9 @@ import useColumns from './useColumns';
 import type { DatagridChange, OnDatagridChange } from './useDatagridChange';
 import useDatagridChange from './useDatagridChange';
 import { useFullScreenMode } from './useFullScreenMode';
+import { usePreventHistoryBack } from '@tempo/dashboard/hooks/usePreventHistoryBack';
+import ColumnPicker from '@tempo/dashboard/components/core/ColumnPicker';
+import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
 
 export interface GetCellContentOpts {
   changes: MutableRefObject<DatagridChange[]>;
@@ -190,13 +190,13 @@ export const Datagrid: FC<DatagridProps> = ({
 
   const rowsTotal = rows - removed.length + added.length;
   const hasColumnGroups = columns.some((col) => col?.group);
-  const headerTitle = isAnimationOpenFinished ? fullScreenTitle ?? title : title;
+  const headerTitle = isAnimationOpenFinished ? (fullScreenTitle ?? title) : title;
   return (
     <FullScreenContainer open={isOpen} className={fullScreenClasses.fullScreenContainer}>
       <Card className={styles.root ?? ''}>
         <Header title={headerTitle}>
           <Header.ButtonFullScreen isOpen={isOpen} onToggle={toggle}>
-            {isOpen ? m.dashboard_close() ?? 'Close' : m.dashboard_open() ?? 'Open'}
+            {isOpen ? (m.dashboard_close() ?? 'Close') : (m.dashboard_open() ?? 'Open')}
           </Header.ButtonFullScreen>
           <Header.ButtonAddRow onAddRow={onRowAdded}>{addButtonLabel}</Header.ButtonAddRow>
         </Header>

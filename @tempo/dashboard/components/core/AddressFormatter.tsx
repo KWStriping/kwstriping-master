@@ -1,7 +1,7 @@
-import type { AddressType } from '@tempo/dashboard/oldSrc/customers/types';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { AddressType } from '@tempo/dashboard/oldSrc/customers/types';
 
 interface AddressFormatterProps {
   address?: Maybe<AddressType>;

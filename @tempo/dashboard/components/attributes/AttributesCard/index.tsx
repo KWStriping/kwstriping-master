@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type {
   AttributeEntityType,
   AttributeInputType,
@@ -11,10 +10,6 @@ import type {
   ProductErrorWithAttributesFragment,
   ProductAttributeScope,
 } from '@tempo/api/generated/graphql';
-import type { FormsetAtomicData } from '@tempo/dashboard/hooks/useFormset';
-import type { AttributeReference } from '@tempo/dashboard/oldSrc/attributes/utils/data';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
-import type { RichTextGetters } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -27,6 +22,11 @@ import AttributeRow from './AttributeRow';
 import styles from './index.module.css';
 
 import type { AttributeRowHandlers } from './types';
+import type { RichTextGetters } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import type { AttributeReference } from '@tempo/dashboard/oldSrc/attributes/utils/data';
+import type { FormsetAtomicData } from '@tempo/dashboard/hooks/useFormset';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface AttributeInputData {
   inputType: AttributeInputType;

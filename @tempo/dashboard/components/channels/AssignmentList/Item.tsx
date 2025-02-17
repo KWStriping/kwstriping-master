@@ -1,4 +1,3 @@
-import DeletableItem from '@tempo/dashboard/components/core/DeletableItem';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import Divider from '@mui/material/Divider';
@@ -8,6 +7,7 @@ import type { FC, ReactNode } from 'react';
 import SortableHandle from './SortableHandle';
 import { useStyles } from './styles';
 import type { AssignItem } from './types';
+import DeletableItem from '@tempo/dashboard/components/core/DeletableItem';
 
 interface ItemProps {
   item: AssignItem;

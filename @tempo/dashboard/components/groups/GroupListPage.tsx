@@ -4,9 +4,9 @@ import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { GroupFragment } from '@tempo/api/generated/graphql';
 import GroupList from './GroupList';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { GroupFragment } from '@tempo/api/generated/graphql';
 
 import type { GroupListUrlOrdering } from '@tempo/dashboard/oldSrc/groups/urls';
 import { groupAddUrl } from '@tempo/dashboard/oldSrc/groups/urls';

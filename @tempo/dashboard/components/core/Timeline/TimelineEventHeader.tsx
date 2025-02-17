@@ -1,9 +1,9 @@
 import Link from '@tempo/ui/components/Link';
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import type { FC, ReactNode } from 'react';
 import { Fragment } from 'react';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 
 export interface TitleElement {
   text: string;

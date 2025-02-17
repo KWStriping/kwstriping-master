@@ -3,10 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent } from 'react';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
 

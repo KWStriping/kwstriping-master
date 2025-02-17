@@ -3,14 +3,7 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Pill from '@tempo/ui/components/pill/Pill';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
-import Money from '@tempo/dashboard/components/core/Money';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { CustomerDetailsQuery } from '@tempo/api/generated/graphql';
-import { transformPaymentStatus } from '@tempo/dashboard/oldSrc/misc';
-import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
-import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
@@ -18,6 +11,13 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
+import { transformPaymentStatus } from '@tempo/dashboard/oldSrc/misc';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Money from '@tempo/dashboard/components/core/Money';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   {

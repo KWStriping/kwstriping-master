@@ -1,12 +1,7 @@
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type { AccountErrorFragment, CustomerDetailsQuery } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
 import { Temporal, Intl } from '@js-temporal/polyfill';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -14,6 +9,11 @@ import Skeleton from '@mui/material/Skeleton';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { ChangeEvent, ReactNode, FC } from 'react';
+import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

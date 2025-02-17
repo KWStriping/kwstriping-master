@@ -1,14 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import { PostalCodeRuleInclusionType } from '@tempo/api/generated/constants';
 import type { ShippingMethodFragment } from '@tempo/api/generated/graphql';
-import ArrowDropdown from '@tempo/dashboard/oldSrc/icons/ArrowDropdown';
 import { renderCollection } from '@tempo/ui/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
@@ -22,6 +18,10 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import { useState } from 'react';
 import type { FC, ChangeEvent } from 'react';
+import ArrowDropdown from '@tempo/dashboard/oldSrc/icons/ArrowDropdown';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ShippingZonePostalCodesProps {
   disabled: boolean;

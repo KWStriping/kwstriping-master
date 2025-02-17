@@ -1,8 +1,7 @@
+import { useRouter } from 'next/navigation';
+import { getSortUrlVariables } from '../sort';
 import { DEFAULT_INITIAL_PAGINATION_DATA } from '@tempo/dashboard/oldSrc/config';
 import type { Sort } from '@tempo/dashboard/oldSrc/types';
-import { useRouter } from 'next/navigation';
-
-import { getSortUrlVariables } from '../sort';
 
 type CreateUrl<T extends string> = (params: Sort<T>) => string;
 

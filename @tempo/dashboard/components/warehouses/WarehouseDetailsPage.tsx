@@ -8,27 +8,26 @@ import { findValueInEnum } from '@tempo/utils/enums';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import { createCountryHandler } from '@tempo/dashboard/components/forms/AddressEdit/createCountryHandler';
-import CompanyAddressInput from '@tempo/dashboard/components/forms/CompanyAddressInput';
-import Form from '@tempo/dashboard/components/forms/Form';
 import { CountryCode, WarehouseClickAndCollectOption } from '@tempo/api/generated/constants';
 import type {
   CountryWithCodeFragment,
   WarehouseDetailsFragment,
   WarehouseErrorFragment,
 } from '@tempo/api/generated/graphql';
+import WarehouseInfo from './WarehouseInfo';
+import WarehouseSettings from './WarehouseSettings';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import { createCountryHandler } from '@tempo/dashboard/components/forms/AddressEdit/createCountryHandler';
+import CompanyAddressInput from '@tempo/dashboard/components/forms/CompanyAddressInput';
+import Form from '@tempo/dashboard/components/forms/Form';
 import useAddressValidation from '@tempo/dashboard/hooks/useAddressValidation';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import type { AddressTypeInput } from '@tempo/dashboard/oldSrc/customers/types';
 import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
 import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
-
-import WarehouseInfo from './WarehouseInfo';
-import WarehouseSettings from './WarehouseSettings';
 
 export interface WarehouseDetailsPageFormData extends AddressTypeInput {
   name: string;

@@ -78,10 +78,10 @@ export const useDefaultNotifierSuccessErrorData = (errors: unknown[]) => {
   return !errors?.length
     ? {
         type: 'success',
-        text: (m.dashboard_savedChanges() ?? 'Saved changes'),
+        text: m.dashboard_savedChanges() ?? 'Saved changes',
       }
     : {
         type: 'error',
-        text: (m.dashboard_unknownError() ?? 'Unknown error'),
+        text: m.dashboard_unknownError() ?? 'Unknown error',
       };
 };

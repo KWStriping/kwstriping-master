@@ -1,3 +1,3 @@
 export * from './useErrors';
-export * from './types';
+export type * from './types';
 export * from './useGetParsedApiErrors';

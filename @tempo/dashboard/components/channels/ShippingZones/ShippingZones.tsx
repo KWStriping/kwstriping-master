@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { ChannelShippingZones } from '@tempo/dashboard/oldSrc/channels/pages/ChannelDetailsPage/types';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import AssignmentList from '../AssignmentList';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import type { ChannelShippingZones } from '@tempo/dashboard/oldSrc/channels/pages/ChannelDetailsPage/types';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ShippingZonesProps {
   addShippingZone: (id: string) => void;

@@ -1,7 +1,5 @@
 import { Accordion, AccordionSummary } from '@tempo/ui/components/Accordion';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -17,6 +15,8 @@ import FilterContentBody from './FilterContentBody';
 import FilterContentBodyNameField from './FilterContentBodyNameField';
 import FilterContentHeader from './FilterContentHeader';
 import FilterErrorsList from './FilterErrorsList';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
 
 const useExpanderStyles = makeStyles(
   (theme) => ({

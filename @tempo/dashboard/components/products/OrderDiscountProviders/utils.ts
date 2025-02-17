@@ -1,9 +1,9 @@
-import type { OrderDiscountCommonInput } from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/types';
 import { OrderDiscountType } from '@tempo/api/generated/constants';
 import type { OrderDetailsQuery } from '@tempo/api/generated/graphql';
 import { useState } from 'react';
 
 import type { OrderLineDiscountData } from './types';
+import type { OrderDiscountCommonInput } from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/types';
 
 export const useDiscountDialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);

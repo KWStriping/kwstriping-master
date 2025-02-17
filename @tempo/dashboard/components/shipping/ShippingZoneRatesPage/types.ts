@@ -1,6 +1,6 @@
 import type { OutputData } from '@editorjs/editorjs';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 import type { ShippingMethod } from '@tempo/api/generated/constants';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 import type { ChannelShippingData } from '@tempo/dashboard/oldSrc/channels/utils';
 
 export interface ShippingZoneRateCommonFormData {

@@ -3,6 +3,7 @@ import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import compact from 'lodash-es/compact';
 import uniq from 'lodash-es/uniq';
 import type { FC } from 'react';
+import { getMultiChoices } from './utils';
 import MultiAutocompleteSelectField from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { SingleAutocompleteSelectFieldProps } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
@@ -11,8 +12,6 @@ import type { GiftCardBulkCreateFormError } from '@tempo/dashboard/oldSrc/giftCa
 import { getGiftCardErrorMessage } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/messages';
 import useGiftCardTagsSearch from '@tempo/dashboard/oldSrc/searches/useGiftCardTagsSearch';
 import { mapMultiValueNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-
-import { getMultiChoices } from './utils';
 
 interface GiftCardTagInputProps extends Pick<SingleAutocompleteSelectFieldProps, 'name'> {
   toggleChange: FormChange;
@@ -41,7 +40,7 @@ const GiftCardTagInput: FC<GiftCardTagInputProps> = ({
 
   const label = optional
     ? `${m.dashboard_placeholder() ?? 'Tag'} *${m.optionalField() ?? 'Optional'}`
-    : m.dashboard_placeholder() ?? 'Tag';
+    : (m.dashboard_placeholder() ?? 'Tag');
 
   return (
     <MultiAutocompleteSelectField

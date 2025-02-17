@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
 
+import type { PageFragment } from '@tempo/api/generated/graphql';
 import PageList from '../PageList';
 import PageListSearchAndFilters from './PageListSearchAndFilters';
 import type { ListActions, PageListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
@@ -12,7 +13,6 @@ import type {
   PageListUrlQueryParams,
   PageListUrlOrdering,
 } from '@tempo/dashboard/oldSrc/pages/urls';
-import type { PageFragment } from '@tempo/api/generated/graphql';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 export interface PageListActionDialogOpts {

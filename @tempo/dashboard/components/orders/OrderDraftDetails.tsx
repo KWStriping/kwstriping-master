@@ -1,8 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { OrderDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
-import { OrderDiscountContext } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
 import type {
   ChannelUsabilityDataQuery,
   OrderDetailsFragment,
@@ -15,6 +12,9 @@ import type { FC } from 'react';
 
 import OrderDraftDetailsProducts from './OrderDraftDetailsProducts';
 import OrderDraftDetailsSummary from './OrderDraftDetailsSummary';
+import { OrderDiscountContext } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
+import type { OrderDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface OrderDraftDetailsProps {
   order: Maybe<OrderDetailsFragment>;

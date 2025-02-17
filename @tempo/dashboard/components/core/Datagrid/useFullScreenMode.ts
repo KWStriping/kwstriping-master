@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { usePreventHistoryBack } from '@tempo/dashboard/hooks/usePreventHistoryBack';
 
 import { useDelayedState } from './useDelayedState';
 import { usePressEscKey } from './usePressEscKey';
+import { usePreventHistoryBack } from '@tempo/dashboard/hooks/usePreventHistoryBack';
 
 export const useFullScreenMode = () => {
   const { enable, disable } = usePreventHistoryBack(document.body, {

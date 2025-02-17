@@ -1,8 +1,3 @@
-import { OrderRefundAmountCalculationMode } from '@tempo/dashboard/components/orders/OrderRefundPage/form';
-import type {
-  FormsetQuantityData,
-  OrderReturnFormData,
-} from '@tempo/dashboard/components/orders/OrderReturnPage/form';
 import type {
   OrderDetailsFragment,
   OrderReturnFulfillmentLineInput,
@@ -10,6 +5,11 @@ import type {
   OrderReturnProductsInput,
 } from '@tempo/api/generated/graphql';
 import { getById } from '@tempo/utils';
+import { OrderRefundAmountCalculationMode } from '@tempo/dashboard/components/orders/OrderRefundPage/form';
+import type {
+  FormsetQuantityData,
+  OrderReturnFormData,
+} from '@tempo/dashboard/components/orders/OrderReturnPage/form';
 
 class ReturnFormDataParser {
   private order: OrderDetailsFragment;

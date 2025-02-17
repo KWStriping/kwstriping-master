@@ -1,8 +1,7 @@
+import urlJoin from 'url-join';
+import { encodeURIComponentOptional } from './utils/utils';
 import type { Dialog } from '@tempo/dashboard/oldSrc/types';
 import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
-import urlJoin from 'url-join';
-
-import { encodeURIComponentOptional } from './utils/utils';
 
 export type TaxTab = 'channels' | 'countries' | 'tax-classes';
 

@@ -2,15 +2,8 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { AvailableAttributeFragment } from '@tempo/api/generated/graphql';
-import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
 import { renderCollection } from '@tempo/ui/utils';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import {
   CircularProgress,
   Dialog,
@@ -30,6 +23,13 @@ import type { FC } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { assert } from 'tsafe/assert';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 export interface AssignAttributeDialogProps extends FetchMoreProps {
   confirmButtonState: ConfirmButtonTransitionState;

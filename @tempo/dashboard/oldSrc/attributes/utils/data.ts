@@ -1,10 +1,5 @@
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import type { OperationResult } from '@urql/core';
-import type { AttributePageFormData } from '@tempo/dashboard/components/attributes/AttributePage';
-import type {
-  AttributeInput,
-  AttributeInputData,
-} from '@tempo/dashboard/components/attributes/AttributesCard';
 import { AttributeEntityType, AttributeInputType } from '@tempo/api/generated/constants';
 import type {
   AttributeErrorFragment,
@@ -22,6 +17,11 @@ import type {
   UploadErrorFragment,
   ProductAttributeFragment,
 } from '@tempo/api/generated/graphql';
+import type { AttributePageFormData } from '@tempo/dashboard/components/attributes/AttributePage';
+import type {
+  AttributeInput,
+  AttributeInputData,
+} from '@tempo/dashboard/components/attributes/AttributesCard';
 import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import { mapNodeToChoice, mapPagesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';

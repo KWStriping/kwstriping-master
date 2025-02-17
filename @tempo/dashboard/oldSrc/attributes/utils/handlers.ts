@@ -1,7 +1,3 @@
-import type {
-  AttributeInput,
-  AttributeInputData,
-} from '@tempo/dashboard/components/attributes/AttributesCard';
 import { AttributeEntityType, AttributeInputType } from '@tempo/api/generated/constants';
 import type {
   ValueDeleteMutation,
@@ -13,13 +9,21 @@ import type {
   ProductFragment,
   ProductDetailsQuery,
 } from '@tempo/api/generated/graphql';
-import type { FormsetAtomicData, FormsetChange, FormsetData } from '@tempo/dashboard/hooks/useFormset';
-import type { FetchMoreProps, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
-import { move, toggle } from '@tempo/dashboard/oldSrc/utils/lists';
 import type { OperationResult } from '@urql/core';
 import isEqual from 'lodash-es/isEqual';
-
 import { getFileValuesToUploadFromAttributes, isFileValueUnused } from './data';
+import type {
+  FormsetAtomicData,
+  FormsetChange,
+  FormsetData,
+} from '@tempo/dashboard/hooks/useFormset';
+import type { FetchMoreProps, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
+import { move, toggle } from '@tempo/dashboard/oldSrc/utils/lists';
+
+import type {
+  AttributeInput,
+  AttributeInputData,
+} from '@tempo/dashboard/components/attributes/AttributesCard';
 
 export function createAttributeChangeHandler(
   changeAttributeData: FormsetChange<string[]>,

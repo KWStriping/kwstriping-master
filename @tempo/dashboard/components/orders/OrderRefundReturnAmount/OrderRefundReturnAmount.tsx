@@ -1,8 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type {
   OrderDetailsFragment,
   OrderErrorFragment,
@@ -19,6 +16,9 @@ import styles from './index.module.css';
 import type { OrderRefundAmountValuesProps } from './OrderRefundReturnAmountValues';
 import OrderRefundAmountValues from './OrderRefundReturnAmountValues';
 import RefundAmountInput from './RefundAmountInput';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 const messages = {
   refundButton: {

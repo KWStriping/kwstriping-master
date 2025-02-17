@@ -1,8 +1,8 @@
-import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 import urlJoin from 'url-join';
 
 import type { GiftCardListUrlQueryParams } from './GiftCardsList/types';
 import type { GiftCardUpdatePageUrlQueryParams } from './GiftCardUpdate/types';
+import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 
 export const giftCardsSectionUrlName = '/gift-cards';
 

@@ -1,19 +1,7 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
-import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
-import CannotDefineChannelsAvailabilityCard from '@tempo/dashboard/components/channels/CannotDefineChannelsAvailabilityCard/CannotDefineChannelsAvailabilityCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
-import ProductPrice from '@tempo/dashboard/components/products/ProductPrice';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type {
   ProductChannelListingErrorFragment,
@@ -28,6 +16,25 @@ import type {
   SearchWarehousesQuery,
   TaxClassBaseFragment,
 } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import ProductDetailsForm from '../ProductDetailsForm';
+import ProductOrganization from '../ProductOrganization';
+import ProductShipping from '../ProductShipping/ProductShipping';
+import ProductStocks from '../ProductStocks';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
+import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
+import CannotDefineChannelsAvailabilityCard from '@tempo/dashboard/components/channels/CannotDefineChannelsAvailabilityCard/CannotDefineChannelsAvailabilityCard';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
+import ProductPrice from '@tempo/dashboard/components/products/ProductPrice';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import {
   getReferenceAttributeEntityTypeFromAttribute,
@@ -38,13 +45,6 @@ import type { ProductCreateUrlQueryParams } from '@tempo/dashboard/oldSrc/produc
 import { getChoices } from '@tempo/dashboard/oldSrc/products/utils/data';
 
 import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import ProductDetailsForm from '../ProductDetailsForm';
-import ProductOrganization from '../ProductOrganization';
-import ProductShipping from '../ProductShipping/ProductShipping';
-import ProductStocks from '../ProductStocks';
 import ProductTaxes from '../ProductTaxes';
 import type { ProductCreateData, ProductCreateFormData, ProductCreateHandlers } from './form';
 import ProductCreateForm from './form';

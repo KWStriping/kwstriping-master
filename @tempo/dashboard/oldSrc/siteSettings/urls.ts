@@ -1,6 +1,5 @@
-import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
-
 import type { Dialog } from '../types';
+import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 
 const siteSettingsSection = '/site-settings';
 

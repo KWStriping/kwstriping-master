@@ -1014,7 +1014,7 @@ export const productKlassSearch: ProductKlassQuery['productKlass'] = {
 
 export const productKlasses: Array<
   RelayToFlat<NonNullable<SearchProductKlassesQuery['search']>>[0] &
-  ProductKlassListQuery['productKlasses']['edges'][0]['node']
+    ProductKlassListQuery['productKlasses']['edges'][0]['node']
 > = [
   {
     __typename: 'ProductKlass' as const,

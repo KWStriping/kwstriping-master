@@ -14,10 +14,13 @@ export function getFormErrors<TField extends string, TError extends UserError>(
   fields: TField[],
   errors: TError[] = []
 ): FormErrors<TField, TError> {
-  return fields.reduce((errs, field) => {
-    errs[field] = getFieldError(errors, field);
-    return errs;
-  }, {} as unknown as Record<TField, TError>);
+  return fields.reduce(
+    (errs, field) => {
+      errs[field] = getFieldError(errors, field);
+      return errs;
+    },
+    {} as unknown as Record<TField, TError>
+  );
 }
 
 export interface ChannelError {
@@ -33,13 +36,13 @@ export function getFormChannelErrors<TField extends string, TError extends Chann
   fields: TField[],
   errors: TError[] = []
 ) {
-  return fields.reduce((errs, field) => {
-    errs[field] = [
-      ...(errs[field] ? errs[field] : []),
-      ...getFieldChannelError(errors, field),
-    ];
-    return errs;
-  }, {} as Record<TField, TError[]>);
+  return fields.reduce(
+    (errs, field) => {
+      errs[field] = [...(errs[field] ? errs[field] : []), ...getFieldChannelError(errors, field)];
+      return errs;
+    },
+    {} as Record<TField, TError[]>
+  );
 }
 
 export function getFormChannelError<TError extends ChannelError>(

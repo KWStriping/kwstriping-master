@@ -1,13 +1,9 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { renderCollection } from '@tempo/ui/utils';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 import type { OrderErrorFragment, OrderRefundDataQuery } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import Container from '@mui/material/Container';
 import { Fragment } from 'react';
 import type { FC } from 'react';
@@ -22,6 +18,10 @@ import {
 import OrderRefundUnfulfilledProducts from '../OrderRefundUnfulfilledProducts';
 import type { OrderRefundSubmitData } from './form';
 import OrderRefundForm, { OrderRefundType } from './form';
+import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 export const refundFulfilledStatuses = [
   FulfillmentStatus.Fulfilled,
@@ -65,9 +65,9 @@ const OrderRefundPage: FC<OrderRefundPageProps> = (props) => {
           <Container>
             <Backlink href={orderUrl(order?.id)}>
               {order?.number
-                ? m.dashboard_VIlBs({
+                ? (m.dashboard_VIlBs({
                     orderNumber: order.number,
-                  }) ?? 'Order #{{orderNumber}}'
+                  }) ?? 'Order #{{orderNumber}}')
                 : t(
                     'dashboard_u4K7e',
                     'Order'

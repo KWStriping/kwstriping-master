@@ -1,3 +1,14 @@
+import type {
+  MetadataErrorFragment,
+  ProductChannelListingUpdateInput,
+  ProductFragment,
+  SearchPagesQuery,
+  SearchProductsQuery,
+  SearchWarehousesQuery,
+} from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import type { SetStateAction, Dispatch, ReactNode } from 'react';
+import type { ProductChannelsListingDialogSubmit } from './ProductChannelsListingsDialog';
 import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 import type { ChannelOpts } from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard/types';
 import type {
@@ -8,27 +19,19 @@ import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type {
-  MetadataErrorFragment,
-  ProductChannelListingUpdateInput,
-  ProductFragment,
-  SearchPagesQuery,
-  SearchProductsQuery,
-  SearchWarehousesQuery,
-} from '@tempo/api/generated/graphql';
-import type {
   CommonUseFormResultWithHandlers,
   FormChange,
   FormErrors,
   SubmitPromise,
 } from '@tempo/dashboard/hooks/useForm';
-import type { FormsetAtomicData, FormsetChange, FormsetData } from '@tempo/dashboard/hooks/useFormset';
+import type {
+  FormsetAtomicData,
+  FormsetChange,
+  FormsetData,
+} from '@tempo/dashboard/hooks/useFormset';
 import type { RichTextProps } from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import type { UseProductUpdateHandlerError } from '@tempo/dashboard/oldSrc/products/ProductUpdate/handlers/useProductUpdateHandler';
 import type { FetchMoreProps, RelayToFlat, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
-import type { OutputData } from '@editorjs/editorjs';
-import type { SetStateAction, Dispatch, ReactNode } from 'react';
-
-import type { ProductChannelsListingDialogSubmit } from './ProductChannelsListingsDialog';
 
 export interface ProductUpdateFormData extends MetadataFormData {
   category: string | null;

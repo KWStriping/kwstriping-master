@@ -4,13 +4,12 @@ import { OrderEventType } from '@tempo/api/generated/constants';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { OrderEventFragment } from '@tempo/api/generated/graphql';
+import Label from '../Label';
+import MoneySection, { MoneySectionType } from './MoneySection';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 import type { TitleElement } from '@tempo/dashboard/components/core/Timeline/TimelineEventHeader';
-import type { OrderEventFragment } from '@tempo/api/generated/graphql';
-
-import Label from '../Label';
-import MoneySection, { MoneySectionType } from './MoneySection';
 
 const useStyles = makeStyles(
   () => ({

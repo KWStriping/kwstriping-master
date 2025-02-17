@@ -75,9 +75,9 @@ const messages = {
 function getProductErrorMessage(
   err:
     | Omit<
-      ProductErrorFragment | CollectionErrorFragment | ProductChannelListingErrorFragment,
-      '__typename'
-    >
+        ProductErrorFragment | CollectionErrorFragment | ProductChannelListingErrorFragment,
+        '__typename'
+      >
     | undefined,
   t: TFunction
 ): string {

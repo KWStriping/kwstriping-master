@@ -7,7 +7,7 @@ import type {
   CheckOrderInvoicesStatusQuery,
 } from '@tempo/api/generated/graphql';
 import type { MutableRefObject } from 'react';
-import type { OperationResult } from '@tempo/api';;
+import type { OperationResult } from '@tempo/api';
 
 import messages from './messages';
 import type { InvoiceGenerateParams, QueuedTask, TaskData } from './types';
@@ -92,27 +92,27 @@ export function queueInvoiceGenerate(
       onCompleted: (data) =>
         data?.status === TaskStatus.Success
           ? notify(
-            t(
-              'dashboard_invoiceGenerateFinishedText',
-              messages.invoiceGenerateFinishedText.defaultMessage
-            ),
-            {
-              type: 'success',
+              t(
+                'dashboard_invoiceGenerateFinishedText',
+                messages.invoiceGenerateFinishedText.defaultMessage
+              ),
+              {
+                type: 'success',
+
+                title: t(
+                  'dashboard_invoiceGenerateFinishedTitle',
+                  messages.invoiceGenerateFinishedTitle.defaultMessage
+                ),
+              }
+            )
+          : notify(m.dashboard_somethingWentWrong() ?? 'Something went wrong', {
+              type: 'error',
 
               title: t(
-                'dashboard_invoiceGenerateFinishedTitle',
-                messages.invoiceGenerateFinishedTitle.defaultMessage
+                'dashboard_invoiceGenerationFailedTitle',
+                messages.invoiceGenerationFailedTitle.defaultMessage
               ),
-            }
-          )
-          : notify((m.dashboard_somethingWentWrong() ?? 'Something went wrong'), {
-            type: 'error',
-
-            title: t(
-              'dashboard_invoiceGenerationFailedTitle',
-              messages.invoiceGenerationFailedTitle.defaultMessage
-            ),
-          }),
+            }),
       onError: handleError,
       status: TaskStatus.Pending,
     },
@@ -139,19 +139,19 @@ export function queueExport(
       onCompleted: (data) =>
         data?.status === TaskStatus.Success
           ? notify(
-            (m.dashboard_exportFinishedText({
-              type: 'success',
-              title: t(
-                'dashboard_exportFinishedTitle',
-                messages.exportFinishedTitle.defaultMessage
-              ),
-            }) ?? messages.exportFinishedText.defaultMessage)
-          )
-          : notify((m.dashboard_somethingWentWrong() ?? 'Something went wrong'), {
-            type: 'error',
+              m.dashboard_exportFinishedText({
+                type: 'success',
+                title: t(
+                  'dashboard_exportFinishedTitle',
+                  messages.exportFinishedTitle.defaultMessage
+                ),
+              }) ?? messages.exportFinishedText.defaultMessage
+            )
+          : notify(m.dashboard_somethingWentWrong() ?? 'Something went wrong', {
+              type: 'error',
 
-            title: t('dashboard_exportFailedTitle', messages.exportFailedTitle.defaultMessage),
-          }),
+              title: t('dashboard_exportFailedTitle', messages.exportFailedTitle.defaultMessage),
+            }),
       onError: handleError,
       status: TaskStatus.Pending,
     },

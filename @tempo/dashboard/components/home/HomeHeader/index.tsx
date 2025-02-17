@@ -20,7 +20,7 @@ const HomeOrdersCard: FC<HomeOrdersCardProps> = (props) => {
           data-test-id="welcome-header"
         >
           {userName ? (
-            m.dashboard_y_ZBp({ userName }) ?? 'Hello there, {{userName}}'
+            (m.dashboard_y_ZBp({ userName }) ?? 'Hello there, {{userName}}')
           ) : (
             <Skeleton style={{ width: '10em' }} />
           )}

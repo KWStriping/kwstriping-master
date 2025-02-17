@@ -3,7 +3,7 @@ export const unknownToError = (maybeError: unknown) => {
     return maybeError;
   }
 
-  if (typeof maybeError === "string") {
+  if (typeof maybeError === 'string') {
     return new Error(maybeError);
   }
 

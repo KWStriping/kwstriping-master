@@ -4,11 +4,11 @@ import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import Grid from '@tempo/ui/components/Grid';
-import Form from '@tempo/dashboard/components/forms/Form';
-import type { DialogProps, MinMax } from '@tempo/dashboard/oldSrc/types';
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { DialogProps, MinMax } from '@tempo/dashboard/oldSrc/types';
+import Form from '@tempo/dashboard/components/forms/Form';
 
 export interface ShippingZonePostalCodeRangeDialogProps extends DialogProps {
   confirmButtonState: ConfirmButtonTransitionState;

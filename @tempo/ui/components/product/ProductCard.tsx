@@ -1,11 +1,11 @@
 import type { ProductCardFragment } from '@tempo/api/generated/graphql';
-import { useShopSettings } from '@tempo/ui/providers';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { translate } from '@tempo/ui/utils/translations';
 import PhotoIcon from '@mui/icons-material/Photo';
 import Skeleton from '@mui/material/Skeleton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { translate } from '@tempo/ui/utils/translations';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useShopSettings } from '@tempo/ui/providers';
 
 export interface ProductCardProps {
   product: Maybe<ProductCardFragment>;

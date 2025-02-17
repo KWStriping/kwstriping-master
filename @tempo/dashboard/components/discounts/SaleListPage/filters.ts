@@ -1,9 +1,12 @@
 import * as m from '@paraglide/messages';
+import { DiscountStatus, DiscountValueType } from '@tempo/api/generated/constants';
 import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import { DiscountStatus, DiscountValueType } from '@tempo/api/generated/constants';
 import type { FilterOpts, MinMax } from '@tempo/dashboard/oldSrc/types';
-import { createDateField, createOptionsField } from '@tempo/dashboard/oldSrc/utils/filters/fields';
+import {
+  createDateField,
+  createOptionsField,
+} from '@tempo/dashboard/oldSrc/utils/filters/fields';
 
 export enum SaleFilterKeys {
   saleType = 'saleType',
@@ -24,7 +27,7 @@ export function useFilterStructure(opts: SaleListFilterOpts): IFilter<SaleFilter
     {
       ...createOptionsField(
         SaleFilterKeys.channel,
-        (m.dashboard_channel() ?? 'Channel'),
+        m.dashboard_channel() ?? 'Channel',
         [opts.channel.value],
         false,
         opts.channel.choices
@@ -34,7 +37,7 @@ export function useFilterStructure(opts: SaleListFilterOpts): IFilter<SaleFilter
     {
       ...createDateField(
         SaleFilterKeys.started,
-        (m.dashboard_started() ?? 'Started'),
+        m.dashboard_started() ?? 'Started',
         opts.started.value
       ),
       active: opts.started.active,
@@ -42,20 +45,20 @@ export function useFilterStructure(opts: SaleListFilterOpts): IFilter<SaleFilter
     {
       ...createOptionsField(
         SaleFilterKeys.status,
-        (m.dashboard_status() ?? 'Status'),
+        m.dashboard_status() ?? 'Status',
         opts.status.value,
         true,
         [
           {
-            label: (m.dashboard_active() ?? 'Active'),
+            label: m.dashboard_active() ?? 'Active',
             value: DiscountStatus.Active,
           },
           {
-            label: (m.dashboard_expired() ?? 'Expired'),
+            label: m.dashboard_expired() ?? 'Expired',
             value: DiscountStatus.Expired,
           },
           {
-            label: (m.dashboard_cheduled() ?? 'Scheduled'),
+            label: m.dashboard_cheduled() ?? 'Scheduled',
             value: DiscountStatus.Scheduled,
           },
         ]
@@ -65,16 +68,16 @@ export function useFilterStructure(opts: SaleListFilterOpts): IFilter<SaleFilter
     {
       ...createOptionsField(
         SaleFilterKeys.saleType,
-        (m.dashboard_type() ?? 'Discount Type'),
+        m.dashboard_type() ?? 'Discount Type',
         [opts.saleType.value],
         false,
         [
           {
-            label: (m.dashboard_ixed() ?? 'Fixed amount'),
+            label: m.dashboard_ixed() ?? 'Fixed amount',
             value: DiscountValueType.Fixed,
           },
           {
-            label: (m.dashboard_ercentage() ?? 'Percentage'),
+            label: m.dashboard_ercentage() ?? 'Percentage',
             value: DiscountValueType.Percentage,
           },
         ]

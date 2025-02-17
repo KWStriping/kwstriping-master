@@ -1,8 +1,8 @@
-import type { RecursiveMenuItem } from '@tempo/dashboard/oldSrc/navigation/types';
 import { getPatch } from 'fast-array-diff';
 import type { TreeItem } from 'react-complex-tree';
 
 import type { MenuItemType } from '../MenuItemDialog';
+import type { RecursiveMenuItem } from '@tempo/dashboard/oldSrc/navigation/types';
 
 export type TreeOperationType = 'move' | 'remove';
 

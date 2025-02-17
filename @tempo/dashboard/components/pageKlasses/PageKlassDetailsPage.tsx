@@ -3,25 +3,24 @@ import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/
 import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { makeStyles } from '@tempo/ui/theme/styles';
+import { AttributeType } from '@tempo/api/generated/constants';
+import type { PageErrorFragment, PageKlassDetailsFragment } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import PageKlassAttributes from './PageKlassAttributes';
+import PageKlassDetails from './PageKlassDetails';
 import Metadata from '@tempo/dashboard/components/core/Metadata';
 import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import Form from '@tempo/dashboard/components/forms/Form';
-import { AttributeType } from '@tempo/api/generated/constants';
-import type { PageErrorFragment, PageKlassDetailsFragment } from '@tempo/api/generated/graphql';
 import type { ListActions, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-
-import PageKlassAttributes from './PageKlassAttributes';
-import PageKlassDetails from './PageKlassDetails';
 
 export interface PageKlassForm extends MetadataFormData {
   name: string;

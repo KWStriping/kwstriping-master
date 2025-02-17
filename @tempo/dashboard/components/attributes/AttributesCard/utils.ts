@@ -1,21 +1,19 @@
 import type { TFunction } from '@tempo/next/i18n';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { FileChoiceType } from '@tempo/dashboard/components/fields/FileUploadField';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { SortableChipsFieldValueType } from '@dashboard/components/SortableChipsField';
 import type {
   ValueFragment,
   PageErrorWithAttributesFragment,
   ProductErrorWithAttributesFragment,
 } from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { FileChoiceType } from '@tempo/dashboard/components/fields/FileUploadField';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import { getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
 import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
-import type { OutputData } from '@editorjs/editorjs';
 
-export function getSingleChoices(
-  values: ValueFragment[]
-): SingleAutocompleteChoiceType[] {
+export function getSingleChoices(values: ValueFragment[]): SingleAutocompleteChoiceType[] {
   return values.map((value) => ({
     label: value.name,
     value: value.slug,

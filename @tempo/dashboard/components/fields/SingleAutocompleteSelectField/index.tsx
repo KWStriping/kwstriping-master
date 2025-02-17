@@ -1,7 +1,5 @@
 import Debounce from '@tempo/ui/components/Debounce';
 import type { DebounceProps } from '@tempo/ui/components/Debounce';
-import type { ExtendedFormHelperTextProps } from '@tempo/dashboard/components/channels/ChannelForm/types';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import type { OutlinedInputProps, PopperPlacementType } from '@mui/material';
 import type { InputProps } from '@mui/material/Input';
@@ -19,6 +17,8 @@ import type {
   SingleAutocompleteChoiceType,
 } from './SingleAutocompleteSelectFieldContent';
 import SingleAutocompleteSelectFieldContent from './SingleAutocompleteSelectFieldContent';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import type { ExtendedFormHelperTextProps } from '@tempo/dashboard/components/channels/ChannelForm/types';
 export type { SingleAutocompleteChoiceType };
 
 export interface SingleAutocompleteSelectFieldProps extends Partial<FetchMoreProps> {

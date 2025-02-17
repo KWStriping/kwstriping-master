@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import EditIcon from '@mui/icons-material/Edit';
-import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
 
 export interface CustomerAddressChoiceCardProps {
   address: Maybe<AddressFragment>;

@@ -1,9 +1,9 @@
-import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
-import type { Choices } from '@tempo/dashboard/components/fields/SingleSelectField';
-import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 import TextField from '@mui/material/TextField';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
+import type { Choices } from '@tempo/dashboard/components/fields/SingleSelectField';
+import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 
 interface CommonFieldProps {
   name: string;

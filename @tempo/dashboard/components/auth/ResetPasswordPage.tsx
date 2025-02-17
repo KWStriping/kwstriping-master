@@ -5,9 +5,9 @@ import ArrowRightIcon from '@mui/icons-material/ArrowForward';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { RequestPasswordResetMutation } from '@tempo/api/generated/graphql';
 import Form from '@tempo/dashboard/components/forms/Form';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import type { RequestPasswordResetMutation } from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import { getAppMountPath } from '@tempo/dashboard/oldSrc/config';
 

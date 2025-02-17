@@ -1,8 +1,8 @@
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import styles from './index.module.css';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 
 type PartialChannel = Pick<ChannelFragment, 'id' | 'name'>;
 

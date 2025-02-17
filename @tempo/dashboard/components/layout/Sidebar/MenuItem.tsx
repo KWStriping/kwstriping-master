@@ -51,10 +51,9 @@ export const MenuItem: FC<MenuItemProps> = ({ activeId, menuItem, shrunk, onClic
         className={clsx(
           styles.menuItem ?? '',
           !!activeId &&
-            [
-              menuItem.id,
-              ...(menuItem.children?.map((subMenu) => subMenu.id) || []),
-            ].includes(activeId) &&
+            [menuItem.id, ...(menuItem.children?.map((subMenu) => subMenu.id) || [])].includes(
+              activeId
+            ) &&
             styles.menuItemActive
         )}
         ref={anchor}

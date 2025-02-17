@@ -1,6 +1,7 @@
 import { useQuery } from '@tempo/api/hooks';
 import { useEffect } from 'react';
 import type { FC } from 'react';
+import { ChannelCurrenciesDocument } from '@tempo/api/generated/graphql';
 import type {
   GiftCardBulkCreateFormErrors,
   GiftCardCreateCommonFormData,
@@ -8,7 +9,6 @@ import type {
 import { getGiftCardErrorMessage } from '../GiftCardUpdate/messages';
 import { createGiftCardMessages as messages } from './messages';
 import TextWithSelectField from '@tempo/dashboard/components/fields/TextWithSelectField';
-import { ChannelCurrenciesDocument } from '@tempo/api/generated/graphql';
 import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 import useLocalStorage from '@tempo/dashboard/hooks/useLocalStorage';
 import { mapSingleValueNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';

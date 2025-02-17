@@ -1,16 +1,16 @@
 import type { UrlObject } from 'url';
-import type { IFilter } from '@tempo/dashboard/components/core/Filter';
-import type { ActiveTab, Pagination, Search, Sort } from '@tempo/dashboard/oldSrc/types';
 import { useRouter } from 'next/navigation';
 import type { GetFilterQueryParam } from '../filters';
 import { getFilterQueryParams } from '../filters';
+import type { ActiveTab, Pagination, Search, Sort } from '@tempo/dashboard/oldSrc/types';
+import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 
 type RequiredParams = ActiveTab & Search & Sort & Pagination;
 type CreateUrl = (params: RequiredParams) => string | UrlObject;
 type CreateFilterHandlers<TFilterKeys extends string> = [
   (filter: IFilter<TFilterKeys>) => void,
   () => void,
-  (query: string) => void
+  (query: string) => void,
 ];
 
 function useFilterHandlers<TFilterKeys extends string, TFilters extends {}>(opts: {

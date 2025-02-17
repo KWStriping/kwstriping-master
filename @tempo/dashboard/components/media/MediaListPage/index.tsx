@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
 
+import type { MediaFragment } from '@tempo/api/generated/graphql';
 import MediaList from '../MediaList';
 import MediaListSearchAndFilters from './MediaListSearchAndFilters';
 import type { ListActions, PageListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
@@ -12,7 +13,6 @@ import type {
   MediaListUrlQueryParams,
   MediaListUrlOrdering,
 } from '@tempo/dashboard/oldSrc/media/urls';
-import type { MediaFragment } from '@tempo/api/generated/graphql';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 export interface MediaListActionDialogOpts {

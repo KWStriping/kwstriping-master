@@ -140,8 +140,8 @@ export const SignInForm: FC<SignInFormProps> = ({ onSectionChange, onSignInSucce
             }}
           >
             {passwordResetSent
-              ? m.auth_passwordReset_resend() ?? 'Resend?'
-              : m.auth_passwordReset_forgotPassword() ?? 'Forgot password?'}
+              ? (m.auth_passwordReset_resend() ?? 'Resend?')
+              : (m.auth_passwordReset_forgotPassword() ?? 'Forgot password?')}
           </Button>
           <Button
             disabled={authenticating}
@@ -149,8 +149,8 @@ export const SignInForm: FC<SignInFormProps> = ({ onSectionChange, onSignInSucce
             onClick={handleSubmit(handleSignIn)}
           >
             {authenticating
-              ? m.auth_signIn_processing() ?? 'Processing...'
-              : m.auth_signIn_signIn() ?? 'Sign in'}
+              ? (m.auth_signIn_processing() ?? 'Processing...')
+              : (m.auth_signIn_signIn() ?? 'Sign in')}
           </Button>
         </div>
       </form>

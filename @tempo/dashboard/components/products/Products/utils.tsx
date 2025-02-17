@@ -3,6 +3,22 @@ import type { GridCell } from '@glideapps/glide-data-grid';
 import { sentenceCase } from 'change-case';
 import type { TFunction } from '@tempo/next/i18n';
 import type { MutableRefObject } from 'react';
+import type {
+  ProductDetailsVariantFragment,
+  ProductFragment,
+  VariantDatagridChannelListingUpdateMutationVariables,
+  VariantDatagridStockUpdateMutationVariables,
+  VariantDatagridUpdateMutationVariables,
+  WarehouseFragment,
+} from '@tempo/api/generated/graphql';
+import {
+  getColumnAttribute,
+  getColumnChannel,
+  getColumnChannelAvailability,
+  getColumnStock,
+} from './columnData';
+import { getVariantChannelsInputs } from './getVariantChannelsInputs';
+import messages from './messages';
 import {
   booleanCell,
   dropdownCell,
@@ -18,27 +34,9 @@ import type {
   DatagridChangeOpts,
 } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
 import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
-import type {
-  ProductDetailsVariantFragment,
-  ProductFragment,
-  VariantDatagridChannelListingUpdateMutationVariables,
-  VariantDatagridStockUpdateMutationVariables,
-  VariantDatagridUpdateMutationVariables,
-  WarehouseFragment,
-} from '@tempo/api/generated/graphql';
 import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
 import type { ProductListError } from '@tempo/dashboard/oldSrc/products/ProductUpdate/handlers/errors';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-
-import {
-  getColumnAttribute,
-  getColumnChannel,
-  getColumnChannelAvailability,
-  getColumnStock,
-} from './columnData';
-import { getVariantChannelsInputs } from './getVariantChannelsInputs';
-
-import messages from './messages';
 
 export function getVariantInput(data: DatagridChangeOpts, index: number) {
   const attributes = data?.updates

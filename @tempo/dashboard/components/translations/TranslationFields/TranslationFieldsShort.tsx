@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Form from '@tempo/dashboard/components/forms/Form';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import TranslationFieldsSave from './TranslationFieldsSave';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import Form from '@tempo/dashboard/components/forms/Form';
 
 interface TranslationFieldsShortProps {
   disabled: boolean;

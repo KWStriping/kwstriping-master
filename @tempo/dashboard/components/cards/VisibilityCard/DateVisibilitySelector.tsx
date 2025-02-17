@@ -1,10 +1,10 @@
 import closeIcon from '@dashboard/assets/images/close-thin.svg';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import Typography from '@mui/material/Typography';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 
 import styles from './index.module.css';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 
 const CLOSE_ICON_SIZE = 14;
 

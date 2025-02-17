@@ -1,8 +1,8 @@
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductPage/form';
 import { ProductChannelListingUpdateDocument } from '@tempo/api/generated/graphql';
 import type { ProductFragment } from '@tempo/api/generated/graphql';
 import { extractMutationErrors } from '@tempo/api/utils';
+import type { ProductUpdateSubmitData } from '@tempo/dashboard/components/products/ProductPage/form';
 
 type Product = ProductUpdateSubmitData;
 type Variant = ProductFragment;

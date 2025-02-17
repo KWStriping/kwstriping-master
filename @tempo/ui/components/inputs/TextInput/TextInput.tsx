@@ -57,7 +57,11 @@ export const TextInput = forwardRef(
         </Label>
       )}
       {error && (
-        <Typography fontSize="sm" color="error" className={styles['text-input-error-caption'] ?? ''}>
+        <Typography
+          fontSize="sm"
+          color="error"
+          className={styles['text-input-error-caption'] ?? ''}
+        >
           {error}
         </Typography>
       )}

@@ -1,10 +1,4 @@
-import makeSearch from '@tempo/api/hooks/useSearch';
 import { gql } from '@tempo/api/gql';
-import type {
-  SearchAvailableProductAttributesQuery,
-  SearchAvailableProductAttributesQueryVariables,
-} from '@tempo/api/generated/graphql';
-import { SearchAvailableProductAttributesDocument } from '@tempo/api/generated/graphql';
 
 export const searchProductAttributes = gql(`
   query SearchAvailableProductAttributes(

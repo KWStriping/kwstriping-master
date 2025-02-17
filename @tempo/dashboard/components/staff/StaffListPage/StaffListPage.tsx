@@ -4,13 +4,13 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { RefreshLimitsQuery, StaffListQuery } from '@tempo/api/generated/graphql';
 import StaffList from '../StaffList';
 import type { StaffFilterKeys, StaffListFilterOpts } from './filters';
 import { useFilterStructure } from './filters';
 import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { RefreshLimitsQuery, StaffListQuery } from '@tempo/api/generated/graphql';
 import type { StaffListUrlOrdering } from '@tempo/dashboard/oldSrc/staff/urls';
 import type {
   FilterPageProps,

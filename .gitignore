@@ -1,4 +1,5 @@
 # Generated files
+next-env.d.ts
 /tsconfig.json
 
 # Local env files
@@ -58,8 +59,11 @@ cypress/videos
 
 # Sentry
 .sentryclirc
+next.config.original.js
+next.config.wizardcopy.js
 
 # workbox
-**/public/workbox-*.js
-**/public/sw.js
+**/public/workbox-*.js*
+**/public/sw.js*
 **/public/worker-*.js
+**/public/fallback-*.js

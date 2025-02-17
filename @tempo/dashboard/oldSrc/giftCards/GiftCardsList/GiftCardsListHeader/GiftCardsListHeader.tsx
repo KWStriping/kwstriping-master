@@ -1,9 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
-import CardMenu from '@tempo/dashboard/components/core/CardMenu';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 import { giftCardSettingsUrl } from '../../urls';
@@ -11,6 +7,10 @@ import { giftCardsListHeaderMenuItemsMessages as messages } from '../messages';
 
 import { useGiftCardListDialogs } from '../providers/GiftCardListDialogsProvider';
 import GiftCardsListHeaderAlert from './GiftCardsListHeaderAlert';
+import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import CardMenu from '@tempo/dashboard/components/core/CardMenu';
+import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
 
 const GiftCardsListHeader: FC = () => {
   const router = useRouter();

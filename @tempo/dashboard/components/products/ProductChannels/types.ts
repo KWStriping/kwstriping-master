@@ -1,7 +1,4 @@
-import type {
-  ProductCreateDataQuery,
-  ProductFragment,
-} from '@tempo/api/generated/graphql';
+import type { ProductCreateDataQuery, ProductFragment } from '@tempo/api/generated/graphql';
 
 export type Product = ProductCreateDataQuery['product'];
 export type Variant = ProductFragment;

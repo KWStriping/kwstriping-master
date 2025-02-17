@@ -5,9 +5,9 @@ import type {
   ProductMediaReorderMutationVariables,
   ProductReorderMutationFn,
 } from '@tempo/api/generated/graphql';
+import { arrayMove } from '@dnd-kit/sortable';
 import type { ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import { move } from '@tempo/dashboard/oldSrc/utils/lists';
-import { arrayMove } from '@dnd-kit/sortable';
 
 export function createImageUploadHandler(
   id: string,

@@ -5,6 +5,7 @@ import { makeStyles } from '@tempo/ui/theme/styles';
 import Typography from '@mui/material/Typography';
 import camelCase from 'lodash-es/camelCase';
 import type { FC } from 'react';
+import type { OrderEventFragment } from '@tempo/api/generated/graphql';
 import ExtendedDiscountTimelineEvent from './ExtendedDiscountTimelineEvent';
 import Label from './Label';
 import {
@@ -15,7 +16,6 @@ import {
 } from './utils';
 import Money from '@tempo/dashboard/components/core/Money';
 import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
-import type { OrderEventFragment } from '@tempo/api/generated/graphql';
 
 const useStyles = makeStyles(
   (theme) => ({

@@ -1,9 +1,8 @@
 import { getById } from '@tempo/utils';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import type { Node } from '@tempo/dashboard/oldSrc/types';
-
 import type { FormsetQuantityData, FormsetReplacementData, LineItemOptions } from './form';
+import type { Node } from '@tempo/dashboard/oldSrc/types';
 
 const fulfiledStatuses = [FulfillmentStatus.Fulfilled, FulfillmentStatus.Refunded];
 

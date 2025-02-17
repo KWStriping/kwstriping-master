@@ -1,10 +1,8 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Link from '@tempo/ui/components/Link';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 // import Link from '@tempo/ui/components/Link';
-import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Card from '@mui/material/Card';
@@ -16,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
 
 interface HomeNotificationTableProps {
   ordersToCapture: Maybe<number>;

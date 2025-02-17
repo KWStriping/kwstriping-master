@@ -1,5 +1,5 @@
-import type { GiftCardExpiryType } from '../GiftCardCreateDialog/types';
 import type { GiftCardErrorFragment, TimePeriodType } from '@tempo/api/generated/constants';
+import type { GiftCardExpiryType } from '../GiftCardCreateDialog/types';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export type GiftCardErrorKey =

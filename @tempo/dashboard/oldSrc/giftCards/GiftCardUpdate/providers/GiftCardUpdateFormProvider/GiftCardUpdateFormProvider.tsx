@@ -6,14 +6,14 @@ import { initialData as emptyFormData } from '@dashboard/oldSrc/GiftCardCreateDi
 import difference from 'lodash-es/difference';
 import { createContext } from 'react';
 import type { FC, ReactNode } from 'react';
-import useGiftCardDetails from '../GiftCardDetailsProvider/hooks/useGiftCardDetails';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 import {
   GiftCardUpdateDocument,
   UpdateMetadataDocument,
   UpdatePrivateMetadataDocument,
 } from '@tempo/api/generated/graphql';
 import type { GiftCardErrorFragment, GiftCardUpdateMutation } from '@tempo/api/generated/graphql';
+import useGiftCardDetails from '../GiftCardDetailsProvider/hooks/useGiftCardDetails';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 
 import type { FormChange, UseFormResult } from '@tempo/dashboard/hooks/useForm';
 import useForm from '@tempo/dashboard/hooks/useForm';

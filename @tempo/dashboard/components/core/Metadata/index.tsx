@@ -1,14 +1,14 @@
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import type { MetadataInput } from '@tempo/api/generated/graphql';
-import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
-import { removeAtIndex, updateAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
 import type { FC } from 'react';
 
 import type { MetadataCardProps } from './MetadataCard';
 import MetadataCard from './MetadataCard';
 import { EventDataAction, EventDataField } from './types';
 import { getDataKey, parseEventData } from './utils';
+import { removeAtIndex, updateAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
+import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 export * from './types';
 

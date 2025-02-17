@@ -1,9 +1,9 @@
 import IconButton from '@tempo/ui/components/buttons/IconButton';
-import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
-import CardMenu from '@tempo/dashboard/components/core/CardMenu';
 import MoreHorizontalIcon from '@mui/icons-material/MoreHoriz';
 import { assert } from 'tsafe/assert';
 import styles from './index.module.css';
+import CardMenu from '@tempo/dashboard/components/core/CardMenu';
+import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
 
 interface RowActionsProps {
   menuItems: CardMenuItem[];

@@ -1,7 +1,7 @@
+import urlJoin from 'url-join';
 import type { TranslationsEntitiesListFilterTab } from '@tempo/dashboard/components/translations/TranslationsEntitiesListPage';
 import type { Pagination } from '@tempo/dashboard/oldSrc/types';
 import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
-import urlJoin from 'url-join';
 
 export enum TranslatableEntities {
   categories = 'categories',

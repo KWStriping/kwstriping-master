@@ -1,7 +1,7 @@
-import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { UserPermissionFragment } from '@tempo/api/generated/graphql';
 import type { ReactNode } from 'react';
+import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 
 export interface UserError {
   field: Maybe<string>;

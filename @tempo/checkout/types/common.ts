@@ -6,10 +6,7 @@ export type CheckoutSectionKey = (typeof CHECKOUT_SECTIONS)[number];
 
 export type SettingsType = 'public' | 'private';
 export const allPublicMetafieldID = ['customizationsCheckoutUrl'] as const;
-export const allPublicSettingID = [
-  'customizations',
-  'channelActivePaymentProviders',
-] as const;
+export const allPublicSettingID = ['customizations', 'channelActivePaymentProviders'] as const;
 export const allPrivateSettingID = ['paymentProviders'] as const;
 export const allPublicTransactionMetafieldID = ['processedEvents'] as const;
 export const allSettingID = [...allPublicSettingID, ...allPrivateSettingID] as const;
@@ -39,8 +36,8 @@ export type ProductCustomizationSettingID = 'lowStockThreshold';
 export type CustomizationSettingID<P extends CustomizationID> = P extends 'branding'
   ? BrandingCustomizationSettingID
   : P extends 'productSettings'
-  ? ProductCustomizationSettingID
-  : never;
+    ? ProductCustomizationSettingID
+    : never;
 
 export interface CustomizationSettings<P extends CustomizationID> {
   id: CustomizationSettingID<P>;

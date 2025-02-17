@@ -1,5 +1,5 @@
-import { makeStyles } from '@tempo/ui/theme/styles';
 import merge from 'lodash-es/merge';
+import { makeStyles } from '@tempo/ui/theme/styles';
 
 export type ListGridTemplate = string[] | Record<string, string[]>;
 

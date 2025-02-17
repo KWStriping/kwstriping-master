@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
 import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import type { Choices } from '@tempo/dashboard/components/fields/SingleSelectField';
 import { SingleSelectField } from '@tempo/dashboard/components/fields/SingleSelectField';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import { buttonMessages } from '@tempo/dashboard/oldSrc/intl';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
 
 const messages = {
   deleteChannel: {
@@ -73,7 +73,7 @@ const ChannelDeleteDialog: FC<ChannelDeleteDialogProps> = ({
       onConfirm={() => (canBeDeleted ? onConfirm(choice) : onBack())}
       title={m.dashboard_deleteChannel() ?? 'Delete Channel'}
       confirmButtonLabel={
-        m[canBeDeleted ? buttonMessages.delete : buttonMessages.ok.id] ?? canBeDeleted
+        (m[canBeDeleted ? buttonMessages.delete : buttonMessages.ok.id] ?? canBeDeleted)
           ? buttonMessages.delete
           : buttonMessages.ok.defaultMessage
       }

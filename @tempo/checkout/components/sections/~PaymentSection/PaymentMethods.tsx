@@ -3,10 +3,10 @@ import { SelectBox } from '@tempo/ui/components/inputs/SelectBox';
 import { SelectBoxGroup } from '@tempo/ui/components/inputs/SelectBoxGroup';
 import Typography from '@mui/material/Typography';
 import type { ChangeEvent } from 'react';
-import { usePaymentMethodsForm } from '@tempo/checkout/components/sections/~PaymentSection/usePaymentMethodsForm';
-import type { PaymentMethodID } from '@tempo/checkout/types/payments';
 import { AdyenDropIn } from './AdyenDropIn/AdyenDropIn';
 import { paymentSectionLabels, paymentMethodsMessages } from './messages';
+import { usePaymentMethodsForm } from '@tempo/checkout/components/sections/~PaymentSection/usePaymentMethodsForm';
+import type { PaymentMethodID } from '@tempo/checkout/types/payments';
 
 export const PaymentMethods = () => {
   const {

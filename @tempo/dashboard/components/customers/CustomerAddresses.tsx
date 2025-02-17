@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { CustomerDetailsFragment } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
 
 const useStyles = makeStyles(
   (theme) => ({

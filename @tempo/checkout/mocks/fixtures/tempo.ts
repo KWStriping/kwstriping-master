@@ -1,7 +1,10 @@
-import type { TransactionActionPayloadFragment, TransactionItemFragment } from '@tempo/api/generated/graphql';
+import type {
+  TransactionActionPayloadFragment,
+  TransactionItemFragment,
+} from '@tempo/api/generated/graphql';
+import { testingVars } from '../consts';
 import { encryptSetting } from '@tempo/checkout/configuration/encryption';
 import type { PaymentProviderSettingsValues } from '@tempo/checkout/types';
-import { testingVars } from '../consts';
 
 export const mollieCompletedOrderId = 'ord_kr6ltl';
 

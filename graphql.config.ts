@@ -6,15 +6,14 @@ dotenvExpand.expand(dotenv.config());
 
 const API_URL = process.env.API_URL;
 
-if (!API_URL) throw new Error("API_URL is undefined.");
+if (!API_URL) throw new Error('API_URL is undefined.');
 
 // const LOCAL_SCHEMA = './tempo/api/generated/schema.graphql';
 // const INTROSPECTION_SCHEMA = './@tempo/api/generated/graphql.schema.json';
 
 // https://the-guild.dev/graphql/codegen/docs/config-reference/documents-field
 const documents = [
-  'dashboard/oldSrc/fragments/*.{ts,tsx}',
-  'apps/**/*.{ts,tsx}',
+  'app/**/*.{ts,tsx}',
   '@tempo/**/*.{ts,tsx,gql}',
   // '!**/dashboard/**',
   '!**/generated/**',
@@ -55,11 +54,11 @@ const introspectionCodegenConfig = {
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
-  plugins: [
-    'typescript',
-    'typescript-operations',
-    'typescript-urql',
-  ],
+  // plugins: [
+  //   'typescript',
+  //   'typescript-operations',
+  //   'typescript-urql',
+  // ],
   config: {
     dedupeFragments: true,
     enumsAsTypes: true,
@@ -199,12 +198,11 @@ const config = {
       ],
       extensions: {
         codegen: {
-          ...dashboardCodegenConfig
+          ...dashboardCodegenConfig,
         },
       },
     },
   },
 } satisfies IGraphQLConfig;
-
 
 export default config;

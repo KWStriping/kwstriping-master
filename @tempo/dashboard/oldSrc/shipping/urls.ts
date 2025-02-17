@@ -1,9 +1,9 @@
 import { assert } from 'tsafe/assert';
 import urlJoin from 'url-join';
 
+import type { ShippingMethod } from '@tempo/api/generated/constants';
 import type { BulkAction, Dialog, Pagination, SingleAction } from '../types';
 import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
-import type { ShippingMethod } from '@tempo/api/generated/constants';
 
 export const shippingSection = '/shipping/';
 

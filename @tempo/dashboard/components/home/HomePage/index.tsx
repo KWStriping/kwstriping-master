@@ -1,5 +1,15 @@
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
+import { PermissionCode } from '@tempo/api/generated/constants';
+import type {
+  ActivityFragment,
+  MoneyFragment,
+  TopProductFragment,
+} from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import Skeleton from '@mui/material/Skeleton';
+import type { FC } from 'react';
+import styles from './index.module.css';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Money from '@tempo/dashboard/components/core/Money';
 import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
 
@@ -8,19 +18,8 @@ import HomeAnalyticsCard from '@tempo/dashboard/components/home/HomeAnalyticsCar
 import HomeHeader from '@tempo/dashboard/components/home/HomeHeader';
 import HomeNotificationTable from '@tempo/dashboard/components/home/HomeNotificationTable';
 import HomeProductListCard from '@tempo/dashboard/components/home/HomeProductListCard';
-import { PermissionCode } from '@tempo/api/generated/constants';
-import type {
-  ActivityFragment,
-  MoneyFragment,
-  TopProductFragment,
-} from '@tempo/api/generated/graphql';
 import Orders from '@tempo/dashboard/oldSrc/icons/Orders';
 import Sales from '@tempo/dashboard/oldSrc/icons/Sales';
-import Container from '@mui/material/Container';
-import Skeleton from '@mui/material/Skeleton';
-import type { FC } from 'react';
-
-import styles from './index.module.css';
 
 export interface HomePageProps {
   activities?: Maybe<ActivityFragment[]>;

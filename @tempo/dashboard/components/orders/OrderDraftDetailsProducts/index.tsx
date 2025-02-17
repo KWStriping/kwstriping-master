@@ -9,9 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
+import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
 import TableLine from './TableLine';
 import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
-import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import { OrderLineDiscountConsumer } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
 import type { OrderLineDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';

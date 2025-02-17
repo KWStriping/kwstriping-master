@@ -1,12 +1,11 @@
 import * as m from '@paraglide/messages';
+import type { OrderErrorFragment } from '@tempo/api/generated/graphql';
+import type { ChangeEvent, FC } from 'react';
+import type { OrderRefundFormData } from '../OrderRefundPage/form';
 import type { IMoney } from '@tempo/dashboard/components/core/Money';
 import PriceField from '@tempo/dashboard/components/fields/PriceField';
-import type { OrderErrorFragment } from '@tempo/api/generated/graphql';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
-import type { ChangeEvent, FC } from 'react';
-
-import type { OrderRefundFormData } from '../OrderRefundPage/form';
 
 interface RefundAmountInputProps {
   data: OrderRefundFormData;

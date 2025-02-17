@@ -1,10 +1,9 @@
 import { PaymentRequest as AdyenPaymentRequest } from '@adyen/api-library/lib/src/typings/checkout/paymentRequest';
 import type { OrderFragment } from '@tempo/api/generated/graphql';
+import { getAdyenClient, getLineItems } from './utils';
 import type { PostDropInAdyenPaymentsBody } from '@tempo/checkout/adyen-drop-in';
 import type { CreatePaymentData } from '@tempo/checkout/payments/types';
 import { formatRedirectUrl, getIntegerAmountFromTempo } from '@tempo/checkout/payments/utils';
-
-import { getAdyenClient, getLineItems } from './utils';
 
 export const orderToAdyenRequest = ({
   order,
@@ -32,31 +31,31 @@ export const orderToAdyenRequest = ({
     shopperEmail: order.userEmail as string,
     shopperName: order.billingAddress
       ? {
-        firstName: order.billingAddress.firstName,
-        lastName: order.billingAddress.lastName,
-      }
+          firstName: order.billingAddress.firstName,
+          lastName: order.billingAddress.lastName,
+        }
       : undefined,
     shopperLocale: 'EN',
     telephoneNumber: order.shippingAddress?.phone || order.billingAddress?.phone || undefined,
     billingAddress: order.billingAddress
       ? {
-        city: order.billingAddress.city,
-        country: order.billingAddress.country.code,
-        street: order.billingAddress.streetAddress1,
-        houseNumberOrName: order.billingAddress.streetAddress2,
-        postalCode: order.billingAddress.postalCode,
-        stateOrProvince: order.billingAddress.countryArea,
-      }
+          city: order.billingAddress.city,
+          country: order.billingAddress.country.code,
+          street: order.billingAddress.streetAddress1,
+          houseNumberOrName: order.billingAddress.streetAddress2,
+          postalCode: order.billingAddress.postalCode,
+          stateOrProvince: order.billingAddress.countryArea,
+        }
       : undefined,
     shippingAddress: order.shippingAddress
       ? {
-        city: order.shippingAddress.city,
-        country: order.shippingAddress.country.code,
-        street: order.shippingAddress.streetAddress1,
-        houseNumberOrName: order.shippingAddress.streetAddress2,
-        postalCode: order.shippingAddress.postalCode,
-        stateOrProvince: order.shippingAddress.countryArea,
-      }
+          city: order.shippingAddress.city,
+          country: order.shippingAddress.country.code,
+          street: order.shippingAddress.streetAddress1,
+          houseNumberOrName: order.shippingAddress.streetAddress2,
+          postalCode: order.shippingAddress.postalCode,
+          stateOrProvince: order.shippingAddress.countryArea,
+        }
       : undefined,
   };
 };

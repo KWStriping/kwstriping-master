@@ -3,13 +3,7 @@ import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/
 import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import Form from '@tempo/dashboard/components/forms/Form';
 import type { PageErrorFragment } from '@tempo/api/generated/graphql';
-import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
@@ -17,6 +11,12 @@ import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
 import PageKlassDetails from './PageKlassDetails';
+import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
+import Form from '@tempo/dashboard/components/forms/Form';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 
 export interface PageKlassForm extends MetadataFormData {
   name: string;

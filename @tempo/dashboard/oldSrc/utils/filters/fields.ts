@@ -1,7 +1,12 @@
 import type { FilterElementGeneric } from '@tempo/dashboard/components/core/Filter';
 import { FieldType } from '@tempo/dashboard/components/core/Filter';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type { FetchMoreProps, KeyValue, MinMax, SearchPageProps } from '@tempo/dashboard/oldSrc/types';
+import type {
+  FetchMoreProps,
+  KeyValue,
+  MinMax,
+  SearchPageProps,
+} from '@tempo/dashboard/oldSrc/types';
 
 export function createPriceField<K extends string = string>(
   name: K,

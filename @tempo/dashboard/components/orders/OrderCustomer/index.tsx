@@ -2,22 +2,13 @@ import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { EditIconButton } from '@tempo/ui/components/buttons/EditIconButton';
 import Link from '@tempo/ui/components/Link';
-import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import Form from '@tempo/dashboard/components/forms/Form';
 import { OrderErrorCode, PermissionCode } from '@tempo/api/generated/constants';
 import type {
   OrderDetailsFragment,
   OrderErrorFragment,
   SearchCustomersQuery,
 } from '@tempo/api/generated/graphql';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
-import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 
-import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
@@ -28,6 +19,15 @@ import type { ChangeEvent, FC } from 'react';
 import { AddressTextError } from './AddressTextError';
 import { PickupAnnotation } from './PickupAnnotation';
 import { useStyles } from './styles';
+import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
+import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import Form from '@tempo/dashboard/components/forms/Form';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
 
 export interface CustomerEditData {
   user?: string;

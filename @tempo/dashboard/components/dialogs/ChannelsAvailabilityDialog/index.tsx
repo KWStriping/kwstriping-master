@@ -1,11 +1,10 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+import type { ChannelFragment } from '@tempo/api/generated/graphql';
+import { NoChannels } from './NoChannels';
+import { useChannelsSearch } from './utils';
 import ChannelsAvailabilityDialogChannelsList from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogChannelsList';
 import ChannelsAvailabilityDialogWrapper from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogWrapper';
 import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
-import type { ChannelFragment } from '@tempo/api/generated/graphql';
-
-import { NoChannels } from './NoChannels';
-import { useChannelsSearch } from './utils';
 
 type PartialChannel = Pick<ChannelFragment, 'id' | 'name'>;
 

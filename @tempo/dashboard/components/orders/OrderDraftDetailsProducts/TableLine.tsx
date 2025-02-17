@@ -1,10 +1,6 @@
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import Link from '@tempo/ui/components/Link';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import Money from '@tempo/dashboard/components/core/Money';
-import type { OrderLineDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
-import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
 import type {
   OrderErrorFragment,
   OrderLineFragment,
@@ -23,6 +19,10 @@ import { ORDER_LINE_DISCOUNT } from '../OrderDiscountCommonModal/types';
 import TableLineAlert from './TableLineAlert';
 import TableLineForm from './TableLineForm';
 import useLineAlerts from './useLineAlerts';
+import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import type { OrderLineDiscountContextConsumerProps } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
+import Money from '@tempo/dashboard/components/core/Money';
 
 const useStyles = makeStyles(
   (theme) => ({

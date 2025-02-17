@@ -1,23 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
-import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type {
   CollectionChannelListingErrorFragment,
   CollectionDetailsQuery,
   CollectionErrorFragment,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import type { ChannelCollectionData } from '@tempo/dashboard/oldSrc/channels/utils';
 
-import type { ChannelProps, ListActions, PageListProps } from '@tempo/dashboard/oldSrc/types';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC, MouseEvent } from 'react';
@@ -26,6 +17,15 @@ import { CollectionImage } from '../CollectionImage';
 import CollectionProducts from '../CollectionProducts';
 import type { CollectionUpdateData } from './form';
 import CollectionUpdateForm from './form';
+import type { ChannelProps, ListActions, PageListProps } from '@tempo/dashboard/oldSrc/types';
+import type { ChannelCollectionData } from '@tempo/dashboard/oldSrc/channels/utils';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
+import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
 
 export interface CollectionDetailsPageProps extends PageListProps, ListActions, ChannelProps {
   onAdd: () => void;

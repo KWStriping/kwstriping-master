@@ -4,19 +4,9 @@ import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { splitDateTime } from '@tempo/utils/datetime';
-import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CountryList from '@tempo/dashboard/components/core/CountryList';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import { Tab, TabContainer } from '@tempo/dashboard/components/core/Tab';
-import Form from '@tempo/dashboard/components/forms/Form';
 import { VoucherType, DiscountValueType, PermissionCode } from '@tempo/api/generated/constants';
 import {} from '@tempo/api/generated/graphql';
 import type { DiscountErrorFragment, VoucherDetailsFragment } from '@tempo/api/generated/graphql';
-import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 import {
   createChannelsChangeHandler,
   createDiscountTypeChangeHandler,
@@ -42,6 +32,16 @@ import VoucherRequirements from './VoucherRequirements';
 import VoucherSummary from './VoucherSummary';
 import VoucherTypes from './VoucherTypes';
 import VoucherValue from './VoucherValue';
+import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
+import Form from '@tempo/dashboard/components/forms/Form';
+import { Tab, TabContainer } from '@tempo/dashboard/components/core/Tab';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import CountryList from '@tempo/dashboard/components/core/CountryList';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
 
 export enum VoucherDetailsPageTab {
   categories = 'categories',

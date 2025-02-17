@@ -43,7 +43,10 @@ function getAppErrorMessage(err: AppErrorFragment, t: TFunction): string {
   if (err) {
     switch (err.code) {
       case AppErrorCode.InvalidManifestFormat:
-        return t('dashboard_invalidManifestFormat', messages.invalidManifestFormat.defaultMessage);
+        return t(
+          'dashboard_invalidManifestFormat',
+          messages.invalidManifestFormat.defaultMessage
+        );
       case AppErrorCode.OutOfScopeApp:
         return t('dashboard_utOfScopeApp', messages.outOfScopeApp.defaultMessage);
       case AppErrorCode.OutOfScopePermission:

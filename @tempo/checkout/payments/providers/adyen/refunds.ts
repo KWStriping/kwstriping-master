@@ -1,10 +1,10 @@
 import type { TransactionActionPayloadFragment } from '@tempo/api/generated/graphql';
 import { unpackPromise } from '@tempo/utils/promises';
 import invariant from 'ts-invariant';
+import { getAdyenClient } from './utils';
 import { updateTransaction } from '@tempo/checkout/payments/updateTransaction';
 import { getActionsAfterRefund, getIntegerAmountFromTempo } from '@tempo/checkout/payments/utils';
 import type { TransactionReversal } from '@tempo/checkout/types/refunds';
-import { getAdyenClient } from './utils';
 
 export async function handleAdyenRefund(
   refund: TransactionReversal,

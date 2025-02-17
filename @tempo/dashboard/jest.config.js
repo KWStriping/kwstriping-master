@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 const { pathsToModuleNameMapper } = require('ts-jest');
 const requireJSON = require('json-easy-strip');
 const { compilerOptions } = requireJSON('./tsconfig.json');

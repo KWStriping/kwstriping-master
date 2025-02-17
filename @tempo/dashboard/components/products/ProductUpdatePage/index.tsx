@@ -6,22 +6,6 @@ import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
 import type { FC } from 'react';
-import ProductDetailsForm from '../ProductDetailsForm';
-import ProductMedia from '../ProductMedia';
-import ProductOrganization from '../ProductOrganization';
-import ProductTaxes from '../ProductTaxes';
-import Products from '../Products';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
-import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
-import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
-import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
-import ProductExternalMediaDialog from '@tempo/dashboard/components/products/ProductExternalMediaDialog';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type {
   ChannelFragment,
@@ -39,6 +23,25 @@ import type {
   TaxClassBaseFragment,
   WarehouseFragment,
 } from '@tempo/api/generated/graphql';
+import ProductDetailsForm from '../ProductDetailsForm';
+import ProductMedia from '../ProductMedia';
+import ProductOrganization from '../ProductOrganization';
+import ProductTaxes from '../ProductTaxes';
+import Products from '../Products';
+import ProductUpdateForm from './form';
+import ProductChannelsListingsDialog from './ProductChannelsListingsDialog';
+import type { ProductUpdateData, ProductUpdateHandlers, ProductUpdateSubmitData } from './types';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
+import ChannelsAvailabilityCard from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
+import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
+import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
+import ProductExternalMediaDialog from '@tempo/dashboard/components/products/ProductExternalMediaDialog';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import {
@@ -51,10 +54,6 @@ import type { UseProductUpdateHandlerError } from '@tempo/dashboard/oldSrc/produ
 import { productImageUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import { getChoices } from '@tempo/dashboard/oldSrc/products/utils/data';
 import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-
-import ProductUpdateForm from './form';
-import ProductChannelsListingsDialog from './ProductChannelsListingsDialog';
-import type { ProductUpdateData, ProductUpdateHandlers, ProductUpdateSubmitData } from './types';
 
 export interface ProductUpdatePageProps {
   channels: ChannelFragment[];

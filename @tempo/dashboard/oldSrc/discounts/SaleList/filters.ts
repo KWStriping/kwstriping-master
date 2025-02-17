@@ -1,11 +1,14 @@
 import { joinDateTime } from '@tempo/utils/datetime';
 import { findValueInEnum } from '@tempo/utils/enums';
-import type { FilterElement, FilterElementRegular } from '@tempo/dashboard/components/core/Filter';
+import { DiscountStatus, DiscountValueType } from '@tempo/api/generated/constants';
+import type { SaleFilter } from '@tempo/api/generated/graphql';
+import type {
+  FilterElement,
+  FilterElementRegular,
+} from '@tempo/dashboard/components/core/Filter';
 import type { SaleListFilterOpts } from '@tempo/dashboard/components/discounts/SaleListPage';
 import { SaleFilterKeys } from '@tempo/dashboard/components/discounts/SaleListPage';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { DiscountStatus, DiscountValueType } from '@tempo/api/generated/constants';
-import type { SaleFilter } from '@tempo/api/generated/graphql';
 import type {
   SaleListUrlFilters,
   SaleListUrlQueryParams,

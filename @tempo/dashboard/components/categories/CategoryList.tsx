@@ -8,12 +8,12 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import type { CategoryFragment } from '@tempo/api/generated/graphql';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
-import type { CategoryFragment } from '@tempo/api/generated/graphql';
 import { CategoryListUrlOrdering, categoryUrl } from '@tempo/dashboard/oldSrc/categories/urls';
 import type { ListActions, ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
 import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
@@ -181,8 +181,8 @@ const CategoryList: FC<CategoryListProps> = (props) => {
             <TableRow>
               <TableCell colSpan={numberOfColumns}>
                 {isRoot
-                  ? m.dashboard_M__a_() ?? 'No categories found'
-                  : m.dashboard_rbzZt() ?? 'No subcategories found'}
+                  ? (m.dashboard_M__a_() ?? 'No categories found')
+                  : (m.dashboard_rbzZt() ?? 'No subcategories found')}
               </TableCell>
             </TableRow>
           )

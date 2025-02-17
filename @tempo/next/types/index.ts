@@ -1,6 +1,6 @@
-export * from './components';
-export * from './addresses';
-export * from './misc';
+export type * from './components';
+export type * from './addresses';
+export type * from './misc';
 
 declare global {
   type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;

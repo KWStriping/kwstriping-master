@@ -1,16 +1,16 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
-import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type { TaxConfigurationUpdateInput } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { Card, CardContent, Divider, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import type { TaxConfigurationFormData } from '../TaxChannelsPage';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
+import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface TaxSettingsCardProps {
   values: TaxConfigurationFormData;

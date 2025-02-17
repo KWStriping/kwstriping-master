@@ -2,20 +2,20 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Form from '@tempo/dashboard/components/forms/Form';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { AccountErrorFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import type { FC } from 'react';
+import Form from '@tempo/dashboard/components/forms/Form';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
 
 interface StaffPasswordResetDialogFormData {
   newPassword: string;

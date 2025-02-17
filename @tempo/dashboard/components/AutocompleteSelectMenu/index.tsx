@@ -1,8 +1,6 @@
 import * as m from '@paraglide/messages';
 import Debounce from '@tempo/ui/components/Debounce';
 import type { DebounceProps } from '@tempo/ui/components/Debounce';
-import type { IMenu } from '@tempo/dashboard/oldSrc/utils/menu';
-import { getMenuItemByPath, validateMenuOptions } from '@tempo/dashboard/oldSrc/utils/menu';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import CircularProgress from '@mui/material/CircularProgress';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,6 +11,8 @@ import type { ComponentType, ChangeEvent, FC } from 'react';
 import { useState, useEffect } from 'react';
 
 import styles from './index.module.css';
+import { getMenuItemByPath, validateMenuOptions } from '@tempo/dashboard/oldSrc/utils/menu';
+import type { IMenu } from '@tempo/dashboard/oldSrc/utils/menu';
 
 export interface AutocompleteSelectMenuProps {
   disabled: boolean;

@@ -8,6 +8,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { ChangeEvent, FC } from 'react';
+import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
 import type { VoucherDetailsPageFormData } from '../VoucherDetailsPage';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
@@ -16,7 +17,6 @@ import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledChec
 import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
 import type { ChannelInput } from '@tempo/dashboard/oldSrc/discounts/handlers';
 import { translateVoucherTypes } from '@tempo/dashboard/oldSrc/discounts/translations';
 import { DiscountType } from '@tempo/dashboard/oldSrc/discounts/types';

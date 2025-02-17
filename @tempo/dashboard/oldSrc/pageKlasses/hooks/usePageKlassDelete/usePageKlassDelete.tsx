@@ -1,15 +1,15 @@
 import { useQuery } from '@tempo/api/hooks';
 import { PageCountDocument } from '@tempo/api/generated/graphql';
 import type { PageCountQueryVariables } from '@tempo/api/generated/graphql';
-import { pageListUrl } from '@tempo/dashboard/oldSrc/pages/urls';
-import type {
-  PageKlassListUrlQueryParams,
-  PageKlassUrlQueryParams,
-} from '@tempo/dashboard/oldSrc/pageKlasses/urls';
 import { useMemo } from 'react';
 
 import * as messages from './messages';
 import type { UseTypeDeleteData, UseTypeDeleteProps } from './types';
+import type {
+  PageKlassListUrlQueryParams,
+  PageKlassUrlQueryParams,
+} from '@tempo/dashboard/oldSrc/pageKlasses/urls';
+import { pageListUrl } from '@tempo/dashboard/oldSrc/pages/urls';
 
 type UsePageKlassDeleteProps<T = PageKlassListUrlQueryParams | PageKlassUrlQueryParams> =
   UseTypeDeleteProps<T>;

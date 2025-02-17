@@ -137,15 +137,15 @@ export const createPreorderEndDateChangeHandler =
     triggerChange: () => void,
     preorderPastDateErrorMessage: string
   ): FormChange =>
-    (event) => {
-      form.change(event);
-      if (Temporal.PlainDateTime.from(event.target.value).diffNow().as('minutes') < 0) {
-        form.setError('preorderEndDateTime', preorderPastDateErrorMessage);
-      } else {
-        form.clearErrors('preorderEndDateTime');
-      }
-      triggerChange();
-    };
+  (event) => {
+    form.change(event);
+    if (Temporal.PlainDateTime.from(event.target.value).diffNow().as('minutes') < 0) {
+      form.setError('preorderEndDateTime', preorderPastDateErrorMessage);
+    } else {
+      form.clearErrors('preorderEndDateTime');
+    }
+    triggerChange();
+  };
 
 export const createMediaChangeHandler =
   (form: UseFormResult<{ media: string[] }>, triggerChange: () => void) => (ids: string[]) => {

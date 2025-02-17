@@ -1,16 +1,7 @@
 import * as m from '@paraglide/messages';
-import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
-import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
-import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
-import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
 import { MediaType } from '@tempo/api/generated/constants';
-import useBulkActions from '@tempo/dashboard/hooks/useBulkActions';
-import type { MediaListUrlQueryParams } from '@tempo/dashboard/oldSrc/media/urls';
-import { mediaListUrl } from '@tempo/dashboard/oldSrc/media/urls';
-import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-
 import {
   useFilterStructure,
   deleteFilterTab,
@@ -22,6 +13,14 @@ import {
   saveFilterTab,
 } from './filters';
 import type { MediaListActionDialogOpts } from './MediaListPage';
+import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
+import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
+import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import useBulkActions from '@tempo/dashboard/hooks/useBulkActions';
+import type { MediaListUrlQueryParams } from '@tempo/dashboard/oldSrc/media/urls';
+import { mediaListUrl } from '@tempo/dashboard/oldSrc/media/urls';
+import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 
 interface MediaListSearchAndFiltersProps {
   params: MediaListUrlQueryParams;

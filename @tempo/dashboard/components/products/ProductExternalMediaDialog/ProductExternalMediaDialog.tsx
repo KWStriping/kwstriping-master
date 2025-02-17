@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import Form from '@tempo/dashboard/components/forms/Form';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { ProductFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import Form from '@tempo/dashboard/components/forms/Form';
 
 interface ProductExternalMediaDialogProps {
   product: Maybe<ProductFragment>;

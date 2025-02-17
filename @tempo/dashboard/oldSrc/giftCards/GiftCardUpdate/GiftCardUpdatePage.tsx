@@ -1,7 +1,4 @@
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
@@ -14,6 +11,9 @@ import GiftCardUpdatePageHeader from './GiftCardUpdatePageHeader';
 import useGiftCardUpdateDialogs from './providers/GiftCardUpdateDialogsProvider/hooks/useGiftCardUpdateDialogs';
 import useGiftCardUpdate from './providers/GiftCardUpdateFormProvider/hooks/useGiftCardUpdate';
 import useGiftCardUpdateForm from './providers/GiftCardUpdateFormProvider/hooks/useGiftCardUpdateForm';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 const GiftCardUpdatePage: FC = () => {
   const { openDeleteDialog } = useGiftCardUpdateDialogs();

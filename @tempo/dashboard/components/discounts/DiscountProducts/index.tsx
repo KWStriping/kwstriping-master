@@ -2,18 +2,7 @@ import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
 import { renderCollection } from '@tempo/ui/utils';
-import { ChannelsAvailabilityDropdown } from '@tempo/dashboard/components/channels/ChannelsAvailabilityDropdown';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import type { SaleDetailsFragment, VoucherDetailsFragment } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
-import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
@@ -22,6 +11,17 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { FC, ReactNode } from 'react';
+import { ChannelsAvailabilityDropdown } from '@tempo/dashboard/components/channels/ChannelsAvailabilityDropdown';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
+import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 
 export interface SaleProductsProps extends ListProps, ListActions {
   products:

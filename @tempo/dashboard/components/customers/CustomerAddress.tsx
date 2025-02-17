@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
-import CardMenu from '@tempo/dashboard/components/core/CardMenu';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import { AddressType } from '@tempo/api/generated/constants';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 import type { FC } from 'react';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import CardMenu from '@tempo/dashboard/components/core/CardMenu';
+import AddressFormatter from '@tempo/dashboard/components/core/AddressFormatter';
 
 export interface CustomerAddressProps {
   address: Maybe<AddressFragment>;
@@ -90,11 +90,11 @@ const CustomerAddress: FC<CustomerAddressProps> = (props) => {
           address ? (
             <>
               {isDefaultBillingAddress && isDefaultShippingAddress
-                ? m.dashboard_efaultAddress() ?? 'Default Address'
+                ? (m.dashboard_efaultAddress() ?? 'Default Address')
                 : isDefaultShippingAddress
-                  ? m.dashboard_efaultShippingAddress() ?? 'Default Shipping Address'
+                  ? (m.dashboard_efaultShippingAddress() ?? 'Default Shipping Address')
                   : isDefaultBillingAddress
-                    ? m.dashboard_efaultBillingAddress() ?? 'Default Billing Address'
+                    ? (m.dashboard_efaultBillingAddress() ?? 'Default Billing Address')
                     : null}
             </>
           ) : (

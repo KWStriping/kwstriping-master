@@ -3,8 +3,6 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import type { Choice } from '@tempo/ui/components/Filter';
 import { MultipleValueAutocomplete } from '@tempo/ui/components/inputs/MultipleValueAutocomplete';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import CloseIcon from '@mui/icons-material/Close';
 import { Card, CardActions, CardContent } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
@@ -13,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import type { Ref, FC } from 'react';
 import { forwardRef } from 'react';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export interface ColumnPickerContentProps extends FetchMoreProps {
   choices: Choice[];

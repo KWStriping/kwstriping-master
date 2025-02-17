@@ -3,12 +3,7 @@ import Button from '@tempo/ui/components/buttons/Button';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { List, ListHeader, ListItem, ListItemCell } from '@tempo/ui/components/list/List';
 import { PageTab, PageTabs } from '@tempo/ui/components/PageTabs';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import Form from '@tempo/dashboard/components/forms/Form';
-import TaxCountryDialog from '@tempo/dashboard/components/taxes/TaxCountryDialog';
 import { TaxCalculationStrategy } from '@tempo/api/generated/constants';
 import type {
   CountryCode,
@@ -17,7 +12,6 @@ import type {
   TaxConfigurationPerCountryFragment,
   TaxConfigurationUpdateInput,
 } from '@tempo/api/generated/graphql';
-import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -29,6 +23,12 @@ import type { FC } from 'react';
 import TaxChannelsMenu from './TaxChannelsMenu';
 import TaxCountryExceptionListItem from './TaxCountryExceptionListItem';
 import TaxSettingsCard from './TaxSettingsCard';
+import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
+import TaxCountryDialog from '@tempo/dashboard/components/taxes/TaxCountryDialog';
+import Form from '@tempo/dashboard/components/forms/Form';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface TaxChannelsPageProps {
   taxConfigurations: TaxConfigurationFragment[] | undefined;

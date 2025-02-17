@@ -1,1 +1,1 @@
-export * from './extendedTypes';
+export type * from './extendedTypes';

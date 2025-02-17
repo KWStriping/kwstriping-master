@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
-import type { MutationFunction } from '@tempo/api';;
+import type { MutationFunction } from '@tempo/api';
 import { score } from 'fuzzaldrin';
 import type { TFunction } from '@tempo/next/i18n';
 
+import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
 import type { QuickSearchActionInput, QuickSearchMode } from '../../types';
 import { sortScores } from '../utils';
 import { groupAddUrl } from '@tempo/dashboard/oldSrc/groups/urls';
 import { customerAddUrl } from '@tempo/dashboard/oldSrc/customers/urls';
-import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
 
 const threshold = 0.05;
 const maxActions = 5;
@@ -25,56 +25,56 @@ export function searchInCommands(
 ): QuickSearchActionInput[] {
   const actions: Command[] = [
     {
-      label: (m.dashboard_createCategory() ?? 'Create Category'),
+      label: m.dashboard_createCategory() ?? 'Create Category',
       onClick: () => {
         void router.push('/categories/add');
         return false;
       },
     },
     {
-      label: (m.dashboard_createCollection() ?? 'Create Collection'),
+      label: m.dashboard_createCollection() ?? 'Create Collection',
       onClick: () => {
         void router.push('/collections/add');
         return false;
       },
     },
     {
-      label: (m.dashboard_createProduct() ?? 'Create Product'),
+      label: m.dashboard_createProduct() ?? 'Create Product',
       onClick: () => {
         void router.push('/products/add');
         return false;
       },
     },
     {
-      label: (m.dashboard_createGroup() ?? 'Create Permission Group'),
+      label: m.dashboard_createGroup() ?? 'Create Permission Group',
       onClick: () => {
         void router.push(groupAddUrl);
         return false;
       },
     },
     {
-      label: (m.dashboard_createUser() ?? 'Create Customer'),
+      label: m.dashboard_createUser() ?? 'Create Customer',
       onClick: () => {
         void router.push(customerAddUrl);
         return false;
       },
     },
     {
-      label: (m.dashboard_createVoucher() ?? 'Create Voucher'),
+      label: m.dashboard_createVoucher() ?? 'Create Voucher',
       onClick: () => {
         void router.push('/discounts/vouchers/add');
         return false;
       },
     },
     {
-      label: (m.dashboard_createOrder() ?? 'Create Order'),
+      label: m.dashboard_createOrder() ?? 'Create Order',
       onClick: () => {
         createOrder();
         return false;
       },
     },
     {
-      label: (m.dashboard_elpMode() ?? 'Display Help'),
+      label: m.dashboard_elpMode() ?? 'Display Help',
       onClick: () => {
         setMode('help');
         return true;

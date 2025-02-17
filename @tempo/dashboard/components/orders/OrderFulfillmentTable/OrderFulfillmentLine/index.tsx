@@ -1,16 +1,9 @@
 import MuiAutocomplete from '@tempo/ui/components/inputs/MuiAutocomplete';
 import Tooltip from '@tempo/ui/components/Tooltip';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type {
   OrderFulfillmentLineFragment,
   WarehouseFragment,
 } from '@tempo/api/generated/graphql';
-import {
-  getAttributesCaption,
-  getLineAllocationWithHighestQuantity,
-  getOrderLineAvailableQuantity,
-  getWarehouseStock,
-} from '@tempo/dashboard/oldSrc/orders/utils/data';
 import WarningIcon from '@mui/icons-material/Warning';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -20,6 +13,13 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { useMemo } from 'react';
 import { useStyles } from './styles';
+import {
+  getAttributesCaption,
+  getLineAllocationWithHighestQuantity,
+  getOrderLineAvailableQuantity,
+  getWarehouseStock,
+} from '@tempo/dashboard/oldSrc/orders/utils/data';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 
 interface OrderFulfillmentLineProps {
   line: Pick<

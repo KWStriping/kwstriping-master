@@ -1,8 +1,8 @@
 import type { TransactionCreateMutationVariables } from '@tempo/api/generated/graphql';
 import { OrderStatus } from '@mollie/api-client';
 
-import { getTransactionAmountGetter } from '@tempo/checkout/payments/utils';
 import { getMollieEventName, getMollieClient } from './utils';
+import { getTransactionAmountGetter } from '@tempo/checkout/payments/utils';
 
 export const MOLLIE_PAYMENT_PREFIX = 'mollie';
 

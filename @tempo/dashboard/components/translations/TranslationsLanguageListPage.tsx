@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { LanguageFragment } from '@tempo/api/generated/graphql';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
 
 import TranslationsLanguageList from './TranslationsLanguageList';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 export interface TranslationsLanguageListPageProps {
   languages: LanguageFragment[];

@@ -2,10 +2,10 @@ import * as m from '@paraglide/messages';
 import Button from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import type { KeyValue } from '@tempo/dashboard/oldSrc/types';
 import TextField from '@mui/material/TextField';
 import styles from './index.module.css';
 import type { FieldType, FilterFieldBaseProps } from './types';
+import type { KeyValue } from '@tempo/dashboard/oldSrc/types';
 
 const getUpdateArrayFn =
   <T,>(key: 'key' | 'value') =>

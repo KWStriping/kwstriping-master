@@ -3,10 +3,10 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { CategoryFragment } from '@tempo/api/generated/graphql';
 import CategoryList from './CategoryList';
 import SearchBar from '@tempo/dashboard/components/bars/SearchBar';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { CategoryFragment } from '@tempo/api/generated/graphql';
 import type { CategoryListUrlOrdering } from '@tempo/dashboard/oldSrc/categories/urls';
 import type {
   ListActions,

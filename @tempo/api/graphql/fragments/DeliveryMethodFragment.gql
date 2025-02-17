@@ -16,5 +16,6 @@ fragment FulfillmentMethod on FulfillmentMethod {
   }
   ...on Warehouse {
     id
+    name
   }
 }

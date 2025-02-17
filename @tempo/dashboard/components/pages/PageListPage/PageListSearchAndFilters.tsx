@@ -1,18 +1,7 @@
 import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
-import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
-import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
-import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
-import useBulkActions from '@tempo/dashboard/hooks/useBulkActions';
-import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
-import type { PageListUrlQueryParams } from '@tempo/dashboard/oldSrc/pages/urls';
-import { pageListUrl } from '@tempo/dashboard/oldSrc/pages/urls';
-import usePageKlassSearch from '@tempo/dashboard/oldSrc/searches/usePageKlassSearch';
-import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-
 import {
   useFilterStructure,
   deleteFilterTab,
@@ -24,6 +13,16 @@ import {
   saveFilterTab,
 } from './filters';
 import type { PageListActionDialogOpts } from './PageListPage';
+import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
+import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
+import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import useBulkActions from '@tempo/dashboard/hooks/useBulkActions';
+import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
+import type { PageListUrlQueryParams } from '@tempo/dashboard/oldSrc/pages/urls';
+import { pageListUrl } from '@tempo/dashboard/oldSrc/pages/urls';
+import usePageKlassSearch from '@tempo/dashboard/oldSrc/searches/usePageKlassSearch';
+import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 
 interface PageListSearchAndFiltersProps {
   params: PageListUrlQueryParams;

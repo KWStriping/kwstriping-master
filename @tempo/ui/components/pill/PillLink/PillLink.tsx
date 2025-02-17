@@ -1,7 +1,7 @@
-import type { UserInteraction } from '@tempo/ui/utils';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import clsx from 'clsx';
 import type { ElementType, FC, ReactNode } from 'react';
+import type { UserInteraction } from '@tempo/ui/utils';
 
 // import useStyles from './styles';
 

@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 import Debounce from '@tempo/ui/components/Debounce';
 import DialogHeader from '@tempo/ui/components/dialog/DialogHeader';
@@ -17,7 +17,6 @@ import type {
   WarehouseFragment,
 } from '@tempo/api/generated/graphql';
 import { SearchWarehousesDocument } from '@tempo/api/generated/graphql';
-import { getLineAvailableQuantityInWarehouse } from '@tempo/dashboard/oldSrc/orders/utils/data';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import SearchIcon from '@mui/icons-material/Search';
 import {
@@ -38,6 +37,7 @@ import type { ChangeEvent, FC } from 'react';
 import { useEffect, useState } from 'react';
 import { changeWarehouseDialogMessages as messages } from './messages';
 import { useStyles } from './styles';
+import { getLineAvailableQuantityInWarehouse } from '@tempo/dashboard/oldSrc/orders/utils/data';
 
 export interface OrderChangeWarehouseDialogProps {
   open: boolean;

@@ -6,7 +6,6 @@ import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 import Link from '@tempo/ui/components/Link';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { CreateOrderDocument } from '@tempo/api/generated/graphql';
@@ -21,6 +20,7 @@ import { ContactInfoSection } from './sections/ContactInfoSection';
 import { FulfillmentSection } from './sections/FulfillmentSection';
 import { PaymentSection } from './sections/PaymentSection';
 import { ShippingAddressSection } from './sections/ShippingAddressSection';
+import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 
 export interface CheckoutProps {
   checkout: Maybe<CheckoutFragment>;

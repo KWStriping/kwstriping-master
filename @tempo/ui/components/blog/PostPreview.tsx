@@ -2,8 +2,8 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import DateFormatter from './DateFormatter';
 import type { BlogPost } from '@app/blog';
+import DateFormatter from './DateFormatter';
 
 const DEFAULT_EXCERPT = 'This post has no excerpt.';
 

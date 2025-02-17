@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
+import type { FC } from 'react';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import MultiAutocompleteSelectField from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { FetchMoreProps, SearchProps } from '@tempo/dashboard/oldSrc/types';
-import type { FC } from 'react';
 
 const messages = {
   subtitle: {

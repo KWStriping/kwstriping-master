@@ -1,23 +1,13 @@
 import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useSearch } from '@tempo/api/hooks';
-import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
-import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
-import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
-import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
 import {
   GiftCardCurrenciesDocument,
   SearchCustomersDocument,
 } from '@tempo/api/generated/graphql';
-import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
-import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
-import useGiftCardTagsSearch from '@tempo/dashboard/oldSrc/searches/useGiftCardTagsSearch';
-import useProductSearch from '@tempo/dashboard/oldSrc/searches/useProductSearch';
-import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 import compact from 'lodash-es/compact';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-
 import { useGiftCardListDialogs } from '../providers/GiftCardListDialogsProvider';
 import { useGiftCardList } from '../providers/GiftCardListProvider';
 import { GiftCardListActionParamsEnum } from '../types';
@@ -35,6 +25,15 @@ import {
   giftCardListFilterErrorMessages as errorMessages,
   giftCardListSearchAndFiltersMessages as messages,
 } from './messages';
+import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
+import DeleteFilterTabDialog from '@tempo/dashboard/components/dialogs/DeleteFilterTabDialog';
+import type { SaveFilterTabDialogFormData } from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import SaveFilterTabDialog from '@tempo/dashboard/components/dialogs/SaveFilterTabDialog';
+import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
+import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
+import useGiftCardTagsSearch from '@tempo/dashboard/oldSrc/searches/useGiftCardTagsSearch';
+import useProductSearch from '@tempo/dashboard/oldSrc/searches/useProductSearch';
+import useFilterHandlers from '@tempo/dashboard/oldSrc/utils/handlers/filterHandlers';
 
 const GiftCardListSearchAndFilters: FC = () => {
   const router = useRouter();

@@ -1,12 +1,18 @@
-import type { FilterElement, FilterElementRegular } from '@tempo/dashboard/components/core/Filter';
-import type { StaffListFilterOpts } from '@tempo/dashboard/components/staff/StaffListPage';
-import { StaffFilterKeys } from '@tempo/dashboard/components/staff/StaffListPage';
 import { StaffMemberStatus } from '@tempo/api/generated/constants';
 import type { UserInput } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { findValueInEnum } from '@tempo/utils/enums';
+import type {
+  FilterElement,
+  FilterElementRegular,
+} from '@tempo/dashboard/components/core/Filter';
+import type { StaffListFilterOpts } from '@tempo/dashboard/components/staff/StaffListPage';
+import { StaffFilterKeys } from '@tempo/dashboard/components/staff/StaffListPage';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
 
-import type { StaffListUrlFilters, StaffListUrlQueryParams } from '@tempo/dashboard/oldSrc/staff/urls';
+import type {
+  StaffListUrlFilters,
+  StaffListUrlQueryParams,
+} from '@tempo/dashboard/oldSrc/staff/urls';
 import { StaffListUrlFiltersEnum } from '@tempo/dashboard/oldSrc/staff/urls';
 import {
   createFilterTabUtils,

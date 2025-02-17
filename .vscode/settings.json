@@ -10,19 +10,13 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
   "eslint.lintTask.enable": false,
   "eslint.format.enable": true,
-  "eslint.workingDirectories": [
-    {
-      "pattern": "apps/*/"
-    },
-    {
-      "pattern": "@tempo/*/"
-    }
-  ],
   "explorer.autoReveal": "focusNoScroll",
   "files.associations": {
     "*.css": "tailwindcss"
@@ -40,14 +34,14 @@
     "**/__pycache__": true,
     "**/.*_cache": true,
     "**/.cache": false,
-    "**/.next": false,
+    "**/.next": true,
     "**/.rollup.cache": true,
     "**/.turbo": true,
     "**/.venv": true,
     "**/*.pyc": true,
     "**/*.tmp.*": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/node_modules": false
+    "**/node_modules": true
   },
   "files.saveConflictResolution": "overwriteFileOnDisk",
   "html.autoClosingTags": true,
@@ -55,7 +49,9 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": false,
-  "python.analysis.extraPaths": ["./tempo"],
+  "python.analysis.extraPaths": [
+    "./tempo"
+  ],
   "python.analysis.typeCheckingMode": "basic",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.languageServer": "Pylance",
@@ -72,8 +68,12 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
-  "ruff.format.args": ["--config=${workspaceFolder}/pyproject.toml"],
-  "ruff.lint.args": ["--config=${workspaceFolder}/pyproject.toml"],
+  "ruff.format.args": [
+    "--config=${workspaceFolder}/pyproject.toml"
+  ],
+  "ruff.lint.args": [
+    "--config=${workspaceFolder}/pyproject.toml"
+  ],
   "search.exclude": {
     "**/.git": true,
     "**/.next": true,
@@ -87,9 +87,6 @@
     "**/*.tmp.*": true
   },
   "search.maxResults": 100,
-  "tailwindCSS.experimental.configFile": {
-    "@tempo/ui/tailwind.config.cjs": ["apps/**", "@tempo/**"]
-  },
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.files.exclude": [
     "**/.git/**",

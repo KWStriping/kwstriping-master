@@ -19,7 +19,6 @@ export const productExportDialogMessages = {
 };
 
 function useProductExportFieldMessages() {
-
   const messages = {
     [ProductField.Category]: t(
       'dashboard_upNHw',

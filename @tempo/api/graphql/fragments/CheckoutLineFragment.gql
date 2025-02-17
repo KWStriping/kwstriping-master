@@ -16,22 +16,22 @@ fragment CheckoutLine on CheckoutLine {
   product {
     id
     name
+    translation {
+      id
+      name
+    }
+    slug
+    thumbnail {
+      ...Image
+    }
+    media {
+      alt
+      type
+      url(size: 72)
+    }
     parent {
       id
       name
-      translation {
-        id
-        name
-      }
-      slug
-      thumbnail {
-        ...Image
-      }
-      media {
-        alt
-        type
-        url(size: 72)
-      }
     }
     attributes(variantSelection: ALL) {
       values {

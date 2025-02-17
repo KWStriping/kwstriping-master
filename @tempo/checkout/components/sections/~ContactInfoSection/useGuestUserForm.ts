@@ -1,5 +1,7 @@
-import * as m from '@paraglide/messages';
-import { CheckoutContactInfoUpdateDocument, RegisterDocument } from '@tempo/api/generated/graphql';
+import {
+  CheckoutContactInfoUpdateDocument,
+  RegisterDocument,
+} from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
 import { useCheckoutFormValidationTrigger } from '@tempo/checkout/hooks/useCheckoutFormValidationTrigger';
 import { useErrorMessages } from '@tempo/ui/hooks';

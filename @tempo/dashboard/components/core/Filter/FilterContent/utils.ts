@@ -1,9 +1,8 @@
 import type { TFunction } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import { joinDateTime } from '@tempo/utils/datetime';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { splitDateTime } from '@tempo/utils/datetime';
+import { joinDateTime, splitDateTime } from '@tempo/utils/datetime';
 import { FilterType } from '../types';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 
 export const filterTestingContext = 'filter-field-';
 

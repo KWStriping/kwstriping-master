@@ -1,9 +1,9 @@
 import { findValueInEnum } from '@tempo/utils/enums';
+import { ProductKlassConfigurable, ProductKlass } from '@tempo/api/generated/constants';
+import type { ProductKlassFilter } from '@tempo/api/generated/graphql';
 import type { FilterElement } from '@tempo/dashboard/components/core/Filter';
 import type { ProductKlassListFilterOpts } from '@tempo/dashboard/components/productKlasses/ProductKlassListPage';
 import { ProductKlassFilterKeys } from '@tempo/dashboard/components/productKlasses/ProductKlassListPage';
-import { ProductKlassConfigurable, ProductKlass } from '@tempo/api/generated/constants';
-import type { ProductKlassFilter } from '@tempo/api/generated/graphql';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 
 import type {

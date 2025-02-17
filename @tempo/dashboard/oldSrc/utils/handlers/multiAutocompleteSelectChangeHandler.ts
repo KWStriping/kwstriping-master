@@ -1,7 +1,7 @@
+import uniqBy from 'lodash-es/uniqBy';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
-import uniqBy from 'lodash-es/uniqBy';
 
 const combinedMultiAutocompleteChoices = (
   selected: MultiAutocompleteChoiceType[],

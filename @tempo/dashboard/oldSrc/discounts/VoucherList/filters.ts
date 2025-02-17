@@ -1,11 +1,14 @@
 import { joinDateTime } from '@tempo/utils/datetime';
 import { findValueInEnum } from '@tempo/utils/enums';
-import type { FilterElement, FilterElementRegular } from '@tempo/dashboard/components/core/Filter';
+import { DiscountStatus, VoucherDiscountType } from '@tempo/api/generated/constants';
+import type { VoucherFilter } from '@tempo/api/generated/graphql';
+import type {
+  FilterElement,
+  FilterElementRegular,
+} from '@tempo/dashboard/components/core/Filter';
 import type { VoucherListFilterOpts } from '@tempo/dashboard/components/discounts/VoucherListPage';
 import { VoucherFilterKeys } from '@tempo/dashboard/components/discounts/VoucherListPage';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { DiscountStatus, VoucherDiscountType } from '@tempo/api/generated/constants';
-import type { VoucherFilter } from '@tempo/api/generated/graphql';
 import type {
   VoucherListUrlFilters,
   VoucherListUrlQueryParams,

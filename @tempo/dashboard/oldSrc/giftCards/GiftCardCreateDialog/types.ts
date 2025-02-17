@@ -1,7 +1,6 @@
 import type { GiftCardErrorFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-
 import type { GiftCardCreateFormData } from './GiftCardCreateDialogForm';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export type GiftCardExpiryType = 'EXPIRY_DATE' | 'EXPIRY_PERIOD';
 

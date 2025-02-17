@@ -2,21 +2,21 @@ import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
-import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import type { CategoryDetailsQuery } from '@tempo/api/generated/graphql';
-import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
-import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
+import type { ListActions, ListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 
 const useStyles = makeStyles(
   (theme) => ({

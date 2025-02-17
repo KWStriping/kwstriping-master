@@ -6,6 +6,8 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { FC } from 'react';
 
+import type { GiftCardErrorFragment } from '@tempo/api/generated/graphql';
+import { GiftCardSettingsExpiryType, TimePeriodType } from '@tempo/api/generated/constants';
 import type { GiftCardCreateCommonFormData } from '../GiftCardBulkCreateDialog/types';
 import GiftCardCreateExpirySelect from './GiftCardCreateExpirySelect';
 import GiftCardCreateMoneyInput from './GiftCardCreateMoneyInput';
@@ -15,8 +17,6 @@ import { createGiftCardMessages as messages } from './messages';
 import type { GiftCardCreateFormCommonProps, GiftCardCreateFormCustomer } from './types';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import useForm from '@tempo/dashboard/hooks/useForm';
-import type { GiftCardErrorFragment } from '@tempo/api/generated/graphql';
-import { GiftCardSettingsExpiryType, TimePeriodType } from '@tempo/api/generated/constants';
 import Label from '@tempo/dashboard/components/orders/OrderHistory/Label';
 import GiftCardTagInput from '@tempo/dashboard/components/giftCards/GiftCardTagInput';
 import GiftCardSendToCustomer from '@tempo/dashboard/components/giftCards/GiftCardSendToCustomer';

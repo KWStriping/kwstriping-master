@@ -1,10 +1,10 @@
 import DraggableChip from '@tempo/ui/components/chip/SortableChip';
-import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
-import type { ReorderAction, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import type { ReorderAction, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
+import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
 
 export interface SortableChipsFieldValueType {
   label: string;

@@ -1,8 +1,8 @@
 import type { SettingType } from '@tempo/types/settings';
-import ColorInput from '@tempo/ui/components/inputs/ColorInput';
-import FileInput from '@tempo/ui/components/inputs/FileInput';
 import TextField from '@mui/material/TextField';
 import type { FocusEvent, FocusEventHandler, DragEvent, FC, ChangeEvent } from 'react';
+import ColorInput from '@tempo/ui/components/inputs/ColorInput';
+import FileInput from '@tempo/ui/components/inputs/FileInput';
 
 interface SettingProps {
   name: string;

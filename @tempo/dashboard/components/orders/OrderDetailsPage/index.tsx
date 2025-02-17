@@ -12,6 +12,15 @@ import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import type { FC } from 'react';
 
+import {
+  OrderCancelDocument,
+  OrderFulfillmentApproveDocument,
+  OrderUpdateDocument,
+  CustomerAddressesDocument,
+  WarehouseListDocument,
+} from '@tempo/api/generated/graphql';
+import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
+import { OrderStatus } from '@tempo/api/generated/constants';
 import OrderCustomer from '../OrderCustomer';
 import OrderCustomerNote from '../OrderCustomerNote';
 import OrderFulfilledProductsCard from '../OrderFulfilledProductsCard';
@@ -22,15 +31,6 @@ import OrderUnfulfilledProductsCard from '../OrderUnfulfilledProductsCard';
 import { useStyles } from './styles';
 import Title from './Title';
 import { filteredConditionalItems, hasAnyItemsReplaceable } from './utils';
-import {
-  OrderCancelDocument,
-  OrderFulfillmentApproveDocument,
-  OrderUpdateDocument,
-  CustomerAddressesDocument,
-  WarehouseListDocument,
-} from '@tempo/api/generated/graphql';
-import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
-import { OrderStatus } from '@tempo/api/generated/constants';
 import OrderChannelSectionCard from '@tempo/dashboard/components/orders/OrderChannelSectionCard';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import Metadata from '@tempo/dashboard/components/core/Metadata';

@@ -1,9 +1,3 @@
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { RemovableChip } from '@tempo/ui/components/chip/RemovableChip';
-import type { Choice } from '@tempo/ui/components/Filter';
-import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools/useElementScroll';
-import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import PlusIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grow from '@mui/material/Grow';
@@ -20,6 +14,15 @@ import { useEffect } from 'react';
 // import useStyles from './styles';
 
 import useMultipleValueAutocomplete from './useMultipleValueAutocomplete';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
+import type { SyntheticChangeEvent } from '@tempo/ui/utils';
+import {
+  isScrolledToBottom,
+  useElementScroll,
+} from '@tempo/ui/components/tools/useElementScroll';
+import type { Choice } from '@tempo/ui/components/Filter';
+import { RemovableChip } from '@tempo/ui/components/chip/RemovableChip';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 export interface MultipleValueAutocompleteProps
   extends Omit<StandardTextFieldProps, 'onChange' | 'children' | 'name'> {

@@ -1,14 +1,22 @@
 import * as m from '@paraglide/messages';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type {
   ChannelErrorFragment,
   CountryCode,
   StockSettingsInput,
 } from '@tempo/api/generated/graphql';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
+import { useStyles } from '../styles';
+import type { ExtendedFormHelperTextProps } from './types';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import useClipboard from '@tempo/dashboard/hooks/useClipboard';
 import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 import type {
@@ -17,15 +25,6 @@ import type {
 } from '@tempo/dashboard/oldSrc/channels/pages/ChannelDetailsPage/types';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getChannelsErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/channels';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
-
-import { useStyles } from '../styles';
-import type { ExtendedFormHelperTextProps } from './types';
 
 export interface FormData extends StockSettingsInput {
   name: string;

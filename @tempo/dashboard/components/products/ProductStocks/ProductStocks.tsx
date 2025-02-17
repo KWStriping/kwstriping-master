@@ -1,20 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import Link from '@tempo/ui/components/Link';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
-import { DateTimeTimezoneField } from '@tempo/dashboard/components/fields/DateTimeTimezoneField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { ProductErrorFragment, WarehouseFragment } from '@tempo/api/generated/graphql';
-import type { FormChange, FormErrors } from '@tempo/dashboard/hooks/useForm';
-import type { FormsetAtomicData, FormsetChange } from '@tempo/dashboard/hooks/useFormset';
-import type { ChannelData, ChannelPriceAndPreorderArgs } from '@tempo/dashboard/oldSrc/channels/utils';
-import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
-import createNonNegativeValueChangeHandler from '@tempo/dashboard/oldSrc/utils/handlers/nonNegativeValueChangeHandler';
 import PlusIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {
@@ -41,6 +31,19 @@ import type { ProductCreateData } from '../ProductCreatePage';
 import type { ProductCreateData } from '../ProductCreatePage/form';
 import type { ProductUpdateData } from '../ProductPage/form';
 import { useStyles } from './styles';
+import createNonNegativeValueChangeHandler from '@tempo/dashboard/oldSrc/utils/handlers/nonNegativeValueChangeHandler';
+import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
+import type {
+  ChannelData,
+  ChannelPriceAndPreorderArgs,
+} from '@tempo/dashboard/oldSrc/channels/utils';
+import type { FormsetAtomicData, FormsetChange } from '@tempo/dashboard/hooks/useFormset';
+import type { FormChange, FormErrors } from '@tempo/dashboard/hooks/useForm';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import { DateTimeTimezoneField } from '@tempo/dashboard/components/fields/DateTimeTimezoneField';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ProductStockFormsetData {
   quantityAllocated: number;
@@ -381,8 +384,8 @@ const ProductStocks: FC<ProductStocksProps> = ({
             }
           >
             {data?.hasPreorderEndDate
-              ? m.dashboard_ndDateCancel() ?? 'CANCEL END DATE'
-              : m.dashboard_ndDateSetup() ?? 'SETUP END DATE'}
+              ? (m.dashboard_ndDateCancel() ?? 'CANCEL END DATE')
+              : (m.dashboard_ndDateSetup() ?? 'SETUP END DATE')}
           </Button>
           <Typography variant="caption" className={styles.preorderLimitInfo ?? ''}>
             {m.dashboard_reorderProductVariantsAvailability() ??
@@ -408,10 +411,10 @@ const ProductStocks: FC<ProductStocksProps> = ({
             {!!productVariantChannelListings?.length && (
               <Typography variant="caption" className={styles.preorderItemsLeftCount ?? ''}>
                 {data?.globalThreshold
-                  ? m.dashboard_reorderTresholdUnitsLeft({
+                  ? (m.dashboard_reorderTresholdUnitsLeft({
                       unitsLeft,
-                    }) ?? '{{unitsLeft}} units left'
-                  : m.dashboard_reorderTresholdUnlimited() ?? 'Unlimited'}
+                    }) ?? '{{unitsLeft}} units left')
+                  : (m.dashboard_reorderTresholdUnlimited() ?? 'Unlimited')}
               </Typography>
             )}
           </div>

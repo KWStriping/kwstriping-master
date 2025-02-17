@@ -1,5 +1,3 @@
-import { Chip } from '@tempo/ui/components/chip/Chip';
-import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import type { SelectChangeEvent } from '@mui/material/Select';
@@ -10,6 +8,8 @@ import { useState } from 'react';
 
 // import useStyles from '../styles';
 import type { FilterData } from '../types';
+import { useFilterActions } from '@tempo/ui/components/Filter/context';
+import { Chip } from '@tempo/ui/components/chip/Chip';
 
 export interface FilterContentProps {
   filter: FilterData;

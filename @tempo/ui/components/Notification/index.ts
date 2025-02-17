@@ -1,2 +1,2 @@
 export * from './Notification';
-export * from './types';
+export type * from './types';

@@ -1,6 +1,4 @@
 import * as m from '@paraglide/messages';
-import { Button } from '@tempo/ui/components/buttons/Button';
-import type { ButtonProps } from '@tempo/ui/components/buttons/Button';
 import CheckIcon from '@mui/icons-material/Check';
 import CircularProgress from '@mui/material/CircularProgress';
 import clsx from 'clsx';
@@ -8,6 +6,8 @@ import { useRef, useState, useEffect } from 'react';
 import type { FC, ReactNode } from 'react';
 
 import styles from './index.module.css';
+import type { ButtonProps } from '@tempo/ui/components/buttons/Button';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 const DEFAULT_NOTIFICATION_SHOW_TIME = 3000;
 export type ConfirmButtonTransitionState = 'loading' | 'success' | 'error' | 'default';

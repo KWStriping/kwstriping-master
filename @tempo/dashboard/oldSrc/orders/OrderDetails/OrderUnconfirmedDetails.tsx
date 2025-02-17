@@ -6,6 +6,18 @@ import type { OrderUrlQueryParams } from '@dashboard/oldSrc/urls';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FC } from 'react';
+import { FulfillmentStatus } from '@tempo/api/generated/constants';
+import {
+  CustomerAddressesDocument,
+  OrderConfirmDocument,
+  WarehouseListDocument,
+} from '@tempo/api/generated/graphql';
+import type {
+  OrderFulfillmentApproveMutation,
+  OrderFulfillmentApproveMutationVariables,
+  OrderUpdateMutation,
+  OrderUpdateMutationVariables,
+} from '@tempo/api/generated/graphql';
 import { isAnyAddressEditModalOpen } from '../OrderDraftDetails';
 import { WindowTitle } from '@tempo/dashboard/components/core/WindowTitle';
 import OrderAddressFields from '@tempo/dashboard/components/orders/OrderAddressFields';
@@ -24,18 +36,6 @@ import OrderProductAddDialog from '@tempo/dashboard/components/orders/OrderProdu
 import OrderShippingMethodEditDialog from '@tempo/dashboard/components/orders/OrderShippingMethodEditDialog';
 import { OrderDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
 import { OrderLineDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
-import { FulfillmentStatus } from '@tempo/api/generated/constants';
-import {
-  CustomerAddressesDocument,
-  OrderConfirmDocument,
-  WarehouseListDocument,
-} from '@tempo/api/generated/graphql';
-import type {
-  OrderFulfillmentApproveMutation,
-  OrderFulfillmentApproveMutationVariables,
-  OrderUpdateMutation,
-  OrderUpdateMutationVariables,
-} from '@tempo/api/generated/graphql';
 import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
 import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';

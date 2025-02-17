@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import { FilterTabs, FilterTab } from '@tempo/dashboard/components/tables/TableFilter';
 import type { LanguageFragment } from '@tempo/api/generated/graphql';
-import type { TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
-
-import { languageListUrl } from '@tempo/dashboard/oldSrc/translations/urls';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC, ReactNode } from 'react';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import { FilterTabs, FilterTab } from '@tempo/dashboard/components/tables/TableFilter';
+import type { TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
+
+import { languageListUrl } from '@tempo/dashboard/oldSrc/translations/urls';
 
 export interface TranslationsEntitiesListPageProps {
   children: ReactNode;

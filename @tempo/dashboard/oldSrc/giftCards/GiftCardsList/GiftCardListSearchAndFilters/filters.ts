@@ -1,4 +1,8 @@
-
+import type {
+  GiftCardFilter,
+  SearchCustomersQuery,
+  SearchProductsQuery,
+} from '@tempo/api/generated/graphql';
 import type { GiftCardListUrlQueryParams } from '../types';
 import type {
   GiftCardListFilterOpts,
@@ -11,11 +15,6 @@ import {
   GiftCardStatusFilterEnum,
 } from './types';
 import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
-import type {
-  GiftCardFilter,
-  SearchCustomersQuery,
-  SearchProductsQuery,
-} from '@tempo/api/generated/graphql';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import {
   createFilterTabUtils,

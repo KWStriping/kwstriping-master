@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import { FilterTab, FilterTabs } from '@tempo/dashboard/components/tables/TableFilter';
-import type { SearchPageProps, TabPageProps } from '@tempo/dashboard/oldSrc/types';
 import type { FC } from 'react';
 import styles from './index.module.css';
 
 import SearchInput from './SearchInput';
+import type { SearchPageProps, TabPageProps } from '@tempo/dashboard/oldSrc/types';
+import { FilterTab, FilterTabs } from '@tempo/dashboard/components/tables/TableFilter';
 
 export interface SearchBarProps extends SearchPageProps, TabPageProps {
   allTabLabel: string;

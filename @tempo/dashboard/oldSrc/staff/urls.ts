@@ -1,4 +1,3 @@
-import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 import urlJoin from 'url-join';
 
 import type {
@@ -10,6 +9,7 @@ import type {
   Sort,
   TabActionDialog,
 } from '../types';
+import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 
 const staffSection = '/staff/';
 

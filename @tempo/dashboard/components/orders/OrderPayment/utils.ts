@@ -1,8 +1,8 @@
 import compact from 'lodash-es/compact';
-import type { IMoney } from '@tempo/dashboard/components/core/Money';
-import { subtractMoney } from '@tempo/dashboard/components/core/Money';
 import { GiftCardEventsEnum, ChargeStatus } from '@tempo/api/generated/constants';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
+import type { IMoney } from '@tempo/dashboard/components/core/Money';
+import { subtractMoney } from '@tempo/dashboard/components/core/Money';
 
 export const extractOrderGiftCardUsedAmount = (
   order?: OrderDetailsFragment

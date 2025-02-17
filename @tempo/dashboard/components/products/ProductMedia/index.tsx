@@ -7,14 +7,14 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import type { FC } from 'react';
 import { useState, useRef } from 'react';
+import { ProductMediaType } from '@tempo/api/generated/constants';
+import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
 import styles from './index.module.css';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { SortableContainerProps } from '@tempo/dashboard/components/core/SortableContainer';
 import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
 import MediaTile from '@tempo/dashboard/components/media/MediaTile';
 import { ProductMediaPopper } from '@tempo/dashboard/components/products/ProductMediaPopper/ProductMediaPopper';
-import { ProductMediaType } from '@tempo/api/generated/constants';
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
 import type { ReorderAction } from '@tempo/dashboard/oldSrc/types';
 import createMultiFileUploadHandler from '@tempo/dashboard/oldSrc/utils/handlers/multiFileUploadHandler';
 

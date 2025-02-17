@@ -2,19 +2,12 @@ import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { List, ListHeader, ListItem, ListItemCell } from '@tempo/ui/components/list/List';
 import { PageTab, PageTabs } from '@tempo/ui/components/PageTabs';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import { parseQuery } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/utils';
-import TaxInput from '@tempo/dashboard/components/taxes/TaxInput';
 import type {
   CountryCode,
   TaxClassRateInput,
   TaxCountryConfigurationFragment,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
 import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -29,6 +22,13 @@ import { Fragment, useMemo, useState } from 'react';
 
 import TaxCountriesForm from './form';
 import TaxCountriesMenu from './TaxCountriesMenu';
+import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import TaxInput from '@tempo/dashboard/components/taxes/TaxInput';
+import { parseQuery } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/utils';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface TaxCountriesPageProps {
   countryTaxesData: TaxCountryConfigurationFragment[] | undefined;
@@ -90,9 +90,9 @@ export const TaxCountriesPage: FC<TaxCountriesPageProps> = (props) => {
                 <CardTitle
                   title={
                     currentCountry ? (
-                      m.dashboard_taxClassRatesHeader({
+                      (m.dashboard_taxClassRatesHeader({
                         country: currentCountry?.country?.country,
-                      }) ?? '{{country}} class rates'
+                      }) ?? '{{country}} class rates')
                     ) : (
                       <Skeleton />
                     )

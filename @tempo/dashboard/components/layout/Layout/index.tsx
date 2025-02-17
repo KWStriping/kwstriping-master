@@ -12,9 +12,6 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FC, ReactNode } from 'react';
-import SidebarDrawer from '@tempo/dashboard/components/layout/SidebarDrawer';
-import Sidebar from '@tempo/dashboard/components/layout/Sidebar';
-import { useActionBar } from '@tempo/dashboard/components/bars/ActionBar';
 import UserChip from '../../alerts/UserChip';
 import Navigator from '../../navigation/Navigator';
 
@@ -23,6 +20,9 @@ import AppChannelSelect from './AppChannelSelect';
 import styles from './index.module.css';
 import useMenuStructure from './menuStructure';
 import { isMenuActive } from './utils';
+import { useActionBar } from '@tempo/dashboard/components/bars/ActionBar';
+import Sidebar from '@tempo/dashboard/components/layout/Sidebar';
+import SidebarDrawer from '@tempo/dashboard/components/layout/SidebarDrawer';
 
 interface LayoutProps {
   children: ReactNode;

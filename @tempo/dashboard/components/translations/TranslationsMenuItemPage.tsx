@@ -1,9 +1,12 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import LanguageSwitch from '@tempo/dashboard/components/widgets/LanguageSwitch';
 import { LanguageCode } from '@tempo/api/generated/constants';
 import type { MenuItemTranslationFragment } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import type { FC } from 'react';
+import TranslationFields from './TranslationFields';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import LanguageSwitch from '@tempo/dashboard/components/widgets/LanguageSwitch';
 import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 import type { TranslationsEntitiesPageProps } from '@tempo/dashboard/oldSrc/translations/types';
 import { TranslationInputFieldName } from '@tempo/dashboard/oldSrc/translations/types';
@@ -12,10 +15,6 @@ import {
   languageEntityUrl,
   TranslatableEntities,
 } from '@tempo/dashboard/oldSrc/translations/urls';
-import Container from '@mui/material/Container';
-import type { FC } from 'react';
-
-import TranslationFields from './TranslationFields';
 
 export interface TranslationsMenuItemPageProps extends TranslationsEntitiesPageProps {
   data: Maybe<MenuItemTranslationFragment>;

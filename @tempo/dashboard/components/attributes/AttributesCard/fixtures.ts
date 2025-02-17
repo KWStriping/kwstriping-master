@@ -1,6 +1,6 @@
-import type { AttributeInput } from './Attributes';
 import { AttributeEntityType, AttributeInputType } from '@tempo/api/generated/graphql';
 import { MeasurementUnit } from '@tempo/api/generated/constants';
+import type { AttributeInput } from './Attributes';
 
 const DROPDOWN_ATTRIBUTE: AttributeInput = {
   data: {

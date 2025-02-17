@@ -10,7 +10,7 @@ import type { BaseSidebarProps } from './types';
 
 export * from './ExpandButton';
 export * from './MenuItem';
-export * from './types';
+export type * from './types';
 
 export interface SidebarProps extends BaseSidebarProps {
   activeId: string | undefined;

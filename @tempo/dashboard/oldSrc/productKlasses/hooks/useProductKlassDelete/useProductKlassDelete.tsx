@@ -1,6 +1,8 @@
 import { useQuery } from '@tempo/api/hooks';
 import { ProductCountDocument } from '@tempo/api/generated/graphql';
 import type { ProductCountQueryVariables } from '@tempo/api/generated/graphql';
+import { useMemo } from 'react';
+import * as messages from './messages';
 import type {
   UseTypeDeleteData,
   UseTypeDeleteProps,
@@ -10,9 +12,6 @@ import type {
   ProductKlassListUrlQueryParams,
   ProductKlassUrlQueryParams,
 } from '@tempo/dashboard/oldSrc/productKlasses/urls';
-import { useMemo } from 'react';
-
-import * as messages from './messages';
 
 type UseProductKlassDeleteProps<T = ProductKlassListUrlQueryParams | ProductKlassUrlQueryParams> =
   UseTypeDeleteProps<T>;

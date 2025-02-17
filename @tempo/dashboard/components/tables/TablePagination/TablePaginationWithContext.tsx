@@ -1,7 +1,6 @@
-import { usePaginatorContext } from '@tempo/dashboard/hooks/usePaginator';
-
 import type { PaginationProps } from './TablePagination';
 import TablePagination from './TablePagination';
+import { usePaginatorContext } from '@tempo/dashboard/hooks/usePaginator';
 
 export type TablePaginationWithContextProps = Omit<
   PaginationProps,

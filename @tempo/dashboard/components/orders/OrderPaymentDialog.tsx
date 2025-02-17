@@ -2,11 +2,7 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Form from '@tempo/dashboard/components/forms/Form';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import type { OrderErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
 import {
   Dialog,
   DialogActions,
@@ -16,6 +12,10 @@ import {
   TextField,
 } from '@mui/material';
 import type { FC } from 'react';
+import Form from '@tempo/dashboard/components/forms/Form';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import getOrderErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/order';
 
 export interface FormData {
   amount: number;

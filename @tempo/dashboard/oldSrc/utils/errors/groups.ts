@@ -1,7 +1,7 @@
 import type { TFunction } from '@tempo/next/i18n';
-import { getCommonFormFieldErrorMessage } from './common';
 import type { GroupErrorFragment } from '@tempo/api/generated/graphql';
 import { GroupErrorCode } from '@tempo/api/generated/constants';
+import { getCommonFormFieldErrorMessage } from './common';
 
 const messages = {
   assignNonStaffMember: {

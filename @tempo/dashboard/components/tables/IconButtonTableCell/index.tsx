@@ -1,10 +1,10 @@
 import IconButton from '@tempo/ui/components/buttons/IconButton';
-import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
 import TableCell from '@mui/material/TableCell';
 import clsx from 'clsx';
 import type { FC, ReactNode } from 'react';
 
 import styles from './index.module.css';
+import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
 
 export interface IconButtonTableCellProps {
   children: ReactNode;

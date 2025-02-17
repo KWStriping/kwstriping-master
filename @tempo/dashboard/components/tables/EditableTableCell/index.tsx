@@ -1,4 +1,3 @@
-import useForm from '@tempo/dashboard/hooks/useForm';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TableCell from '@mui/material/TableCell';
@@ -9,6 +8,7 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { useState } from 'react';
 import styles from './index.module.css';
+import useForm from '@tempo/dashboard/hooks/useForm';
 
 interface EditableTableCellProps {
   className?: string;

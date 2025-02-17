@@ -3,16 +3,8 @@ import IconButton from '@tempo/ui/components/buttons/IconButton';
 import Link from '@tempo/ui/components/Link';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
-import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import type { WarehouseWithShippingFragment } from '@tempo/api/generated/graphql';
-import { maybe, stopPropagation } from '@tempo/dashboard/oldSrc/misc';
-import type { ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
-import { WarehouseListUrlOrdering, warehouseUrl } from '@tempo/dashboard/oldSrc/warehouses/urls';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Skeleton from '@mui/material/Skeleton';
@@ -22,6 +14,14 @@ import TableFooter from '@mui/material/TableFooter';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import type { ReactNode, FC } from 'react';
+import { WarehouseListUrlOrdering, warehouseUrl } from '@tempo/dashboard/oldSrc/warehouses/urls';
+import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
+import type { ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
+import { maybe, stopPropagation } from '@tempo/dashboard/oldSrc/misc';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
+import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 
 const useStyles = makeStyles(
   (theme) => ({

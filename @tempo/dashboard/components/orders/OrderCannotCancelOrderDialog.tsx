@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import type { FC } from 'react';
+import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 
 const useStyles = makeStyles(
   (theme) => ({

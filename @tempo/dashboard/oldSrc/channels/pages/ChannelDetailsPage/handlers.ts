@@ -1,9 +1,8 @@
 import { getById, getByUnmatchingId } from '@tempo/utils';
+import { getUpdatedIdsWithNewId, getUpdatedIdsWithoutNewId } from './utils';
 import type { FormData } from '@tempo/dashboard/components/channels/ChannelForm';
 import type { ReorderAction, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import { move } from '@tempo/dashboard/oldSrc/utils/lists';
-
-import { getUpdatedIdsWithNewId, getUpdatedIdsWithoutNewId } from './utils';
 
 export function createShippingZoneAddHandler(
   data: FormData,

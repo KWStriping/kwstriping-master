@@ -8,12 +8,12 @@ import { useErrors } from '@tempo/ui/hooks/useErrors';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { getAddressValidationRulesVariables, getAddressInputData } from '@tempo/utils';
 import { omit } from 'lodash-es';
-import { useSetBillingSameAsShipping } from '@tempo/checkout/components/sections/~BillingAddressSection/useSetBillingSameAsShipping';
-import { useSubmit } from '@tempo/checkout/hooks/useSubmit';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { GuestAddressSection } from '../GuestAddressSection/GuestAddressSection';
 import { UserAddressSection } from '../UserAddressSection/UserAddressSection';
 import { billingMessages } from './messages';
+import { useSetBillingSameAsShipping } from '@tempo/checkout/components/sections/~BillingAddressSection/useSetBillingSameAsShipping';
+import { useSubmit } from '@tempo/checkout/hooks/useSubmit';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 export const BillingAddressSection = () => {
   const { user: authUser } = useUser();

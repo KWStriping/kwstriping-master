@@ -6,6 +6,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { useQuery } from '@tempo/api/hooks';
+import { GiftCardSettingsDocument } from '@tempo/api/generated/graphql';
+import { TimePeriodType, GiftCardSettingsExpiryType } from '@tempo/api/generated/constants';
 import GiftCardCreateExpirySelect from '../GiftCardCreateDialog/GiftCardCreateExpirySelect';
 import GiftCardCreateMoneyInput from '../GiftCardCreateDialog/GiftCardCreateMoneyInput';
 import GiftCardCreateRequiresActivationSection from '../GiftCardCreateDialog/GiftCardCreateRequiresActivationSection';
@@ -19,8 +21,6 @@ import type {
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import DialogButtons from '@tempo/dashboard/components/dialogs/ActionDialog/DialogButtons';
 import GiftCardTagInput from '@tempo/dashboard/components/giftCards/GiftCardTagInput';
-import { GiftCardSettingsDocument } from '@tempo/api/generated/graphql';
-import { TimePeriodType, GiftCardSettingsExpiryType } from '@tempo/api/generated/constants';
 import useForm from '@tempo/dashboard/hooks/useForm';
 
 export const initialData: GiftCardBulkCreateFormData = {

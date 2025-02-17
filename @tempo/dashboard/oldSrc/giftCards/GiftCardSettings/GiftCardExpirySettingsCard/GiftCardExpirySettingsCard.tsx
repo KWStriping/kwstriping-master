@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import GiftCardSettingsExpirySelect from '@tempo/dashboard/components/giftCards/GiftCardSettingsExpirySelect';
-import type { GiftCardSettingsExpirySelectProps } from '@tempo/dashboard/components/giftCards/GiftCardSettingsExpirySelect';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import type { ChangeEvent, FC } from 'react';
 
 import type { GiftCardSettingsFormData } from '../types';
 import { giftCardExpirySettingsCard as messages } from './messages';
+import type { GiftCardSettingsExpirySelectProps } from '@tempo/dashboard/components/giftCards/GiftCardSettingsExpirySelect';
+import GiftCardSettingsExpirySelect from '@tempo/dashboard/components/giftCards/GiftCardSettingsExpirySelect';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface GiftCardExpirySettingsCardProps
   extends Pick<GiftCardSettingsExpirySelectProps, 'errors'> {

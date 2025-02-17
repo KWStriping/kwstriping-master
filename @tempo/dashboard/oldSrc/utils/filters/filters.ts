@@ -1,12 +1,12 @@
+import { findValueInEnum } from '@tempo/utils/enums';
+import isArray from 'lodash-es/isArray';
 import type {
   FilterElement,
   FilterElementKeyValue,
   FilterElementRegular,
   IFilter,
 } from '@tempo/dashboard/components/core/Filter';
-import { findValueInEnum } from '@tempo/utils/enums';
 import type { ActiveTab } from '@tempo/dashboard/oldSrc/types';
-import isArray from 'lodash-es/isArray';
 
 function createFilterUtils<TQueryParams extends {}, TFilters extends {}>(filters: {}) {
   function getActiveFilters(params: TQueryParams): TFilters {
@@ -98,7 +98,7 @@ export function getSingleValueQueryParam<TKey extends string, TUrlKey extends st
 export function getSingleEnumValueQueryParam<
   TKey extends string,
   TUrlKey extends string,
-  TEnum extends Record<string, unknown>
+  TEnum extends Record<string, unknown>,
 >(param: FilterElementRegular<TKey>, key: TUrlKey, haystack: TEnum) {
   const { active, value } = param;
 
@@ -116,7 +116,7 @@ export function getSingleEnumValueQueryParam<
 export function getMultipleEnumValueQueryParam<
   TKey extends string,
   TUrlKey extends string,
-  TEnum extends Record<string, unknown>
+  TEnum extends Record<string, unknown>,
 >(param: FilterElementRegular<TKey>, key: TUrlKey, haystack: TEnum) {
   const { active, value } = param;
 

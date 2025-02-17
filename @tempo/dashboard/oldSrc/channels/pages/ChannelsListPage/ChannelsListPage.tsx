@@ -4,14 +4,7 @@ import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import Link from '@tempo/ui/components/Link';
 import { renderCollection } from '@tempo/ui/utils';
-import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import type { ChannelDetailsFragment, RefreshLimitsQuery } from '@tempo/api/generated/graphql';
-import { channelAddUrl, channelUrl } from '@tempo/dashboard/oldSrc/channels/urls';
-import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
-import { hasLimits, isLimitReached } from '@tempo/dashboard/oldSrc/utils/limits';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
@@ -21,6 +14,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import { hasLimits, isLimitReached } from '@tempo/dashboard/oldSrc/utils/limits';
+import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
+import { channelAddUrl, channelUrl } from '@tempo/dashboard/oldSrc/channels/urls';
+import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
 
 export interface ChannelsListPageProps {
   channelsList: ChannelDetailsFragment[] | undefined;

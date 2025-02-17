@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
 import type { SearchCollectionsQuery } from '@tempo/api/generated/graphql';
-import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import type { FC } from 'react';
 
 import type { AssignContainerDialogProps } from '../AssignContainerDialog';
 import AssignContainerDialog from '../AssignContainerDialog';
+import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 
 interface AssignCollectionDialogProps
   extends Omit<AssignContainerDialogProps, 'containers' | 'labels'> {

@@ -1,14 +1,5 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PriceField from '@tempo/dashboard/components/fields/PriceField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import type { ShippingChannelsErrorFragment } from '@tempo/api/generated/graphql';
-import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
-import type { ChannelShippingData } from '@tempo/dashboard/oldSrc/channels/utils';
-import { getFormChannelError, getFormChannelErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
 import Card from '@mui/material/Card';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -16,6 +7,15 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import PriceField from '@tempo/dashboard/components/fields/PriceField';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
+import type { ChannelShippingData } from '@tempo/dashboard/oldSrc/channels/utils';
+import { getFormChannelError, getFormChannelErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
 
 interface Value {
   maxValue: string;

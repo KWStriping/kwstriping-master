@@ -1,15 +1,15 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { AccountErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
 
 import type { CustomerCreatePageFormData } from '../CustomerCreatePage';
+import getAccountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/account';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

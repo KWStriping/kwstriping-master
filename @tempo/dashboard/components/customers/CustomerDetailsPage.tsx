@@ -4,6 +4,16 @@ import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { getUserName } from '@tempo/utils/user';
+import { PermissionCode } from '@tempo/api/generated/constants';
+import type { AccountErrorFragment, CustomerDetailsQuery } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import CustomerAddresses from './CustomerAddresses';
+import CustomerDetails from './CustomerDetails';
+import CustomerInfo from './CustomerInfo';
+import CustomerOrders from './CustomerOrders';
+import CustomerStats from './CustomerStats';
 import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
 import Metadata from '@tempo/dashboard/components/core/Metadata';
 import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
@@ -12,22 +22,12 @@ import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissi
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import Form from '@tempo/dashboard/components/forms/Form';
 import CustomerGiftCardsCard from '@tempo/dashboard/components/giftCards/GiftCardCustomerCard/CustomerGiftCardsCard';
-import { PermissionCode } from '@tempo/api/generated/constants';
-import type { AccountErrorFragment, CustomerDetailsQuery } from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import { customerAddressesUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 import { orderListUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
 
-import CustomerAddresses from './CustomerAddresses';
-import CustomerDetails from './CustomerDetails';
-import CustomerInfo from './CustomerInfo';
-import CustomerOrders from './CustomerOrders';
-import CustomerStats from './CustomerStats';
 
 export interface CustomerDetailsPageFormData extends MetadataFormData {
   firstName: string;

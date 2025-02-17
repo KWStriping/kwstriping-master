@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import Link from '@tempo/ui/components/Link';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { CategoryDetailsQuery } from '@tempo/api/generated/graphql';
-import { productListUrl } from '@tempo/dashboard/oldSrc/products/urls';
-import type { ListActions, PageListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import type { FC } from 'react';
 
 import CategoryProductList from '../CategoryProductList';
+import type { ListActions, PageListProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import { productListUrl } from '@tempo/dashboard/oldSrc/products/urls';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface CategoryProductsProps extends PageListProps, ListActions {
   products: RelayToFlat<CategoryDetailsQuery['category']['products']>;

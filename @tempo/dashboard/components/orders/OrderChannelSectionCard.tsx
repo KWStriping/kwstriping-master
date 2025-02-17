@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
-import { channelUrl } from '@tempo/dashboard/oldSrc/channels/urls';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import { channelUrl } from '@tempo/dashboard/oldSrc/channels/urls';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface OrderChannelSectionCardProps {
   channel?: Pick<ChannelFragment, 'id' | 'name'>;

@@ -2,13 +2,8 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
-import Form from '@tempo/dashboard/components/forms/Form';
 import { AttributeInputType } from '@tempo/api/generated/constants';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import { getValueErrorMessage } from '@tempo/dashboard/oldSrc/attributes/errors';
-import type { ValueEditDialogFormData } from '@tempo/dashboard/oldSrc/attributes/utils/data';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -17,6 +12,11 @@ import TextField from '@mui/material/TextField';
 import type { FC } from 'react';
 
 import AttributeSwatchField from './AttributeSwatchField';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import type { ValueEditDialogFormData } from '@tempo/dashboard/oldSrc/attributes/utils/data';
+import { getValueErrorMessage } from '@tempo/dashboard/oldSrc/attributes/errors';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import Form from '@tempo/dashboard/components/forms/Form';
 
 export interface ValueEditDialogProps {
   value: ValueEditDialogFormData | null;

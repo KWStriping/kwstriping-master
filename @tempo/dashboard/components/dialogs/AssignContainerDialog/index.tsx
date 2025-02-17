@@ -1,11 +1,6 @@
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
-import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
-import type { DialogProps, FetchMoreProps, Node } from '@tempo/dashboard/oldSrc/types';
 import {
   CircularProgress,
   Dialog,
@@ -20,6 +15,11 @@ import TableRow from '@mui/material/TableRow';
 import { useState } from 'react';
 import type { FC } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
+import type { DialogProps, FetchMoreProps, Node } from '@tempo/dashboard/oldSrc/types';
 
 export interface AssignContainerDialogFormData {
   containers: string[];

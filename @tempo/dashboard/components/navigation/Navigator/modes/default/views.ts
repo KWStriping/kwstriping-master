@@ -15,91 +15,91 @@ function searchInViews(
 ): QuickSearchActionInput[] {
   const views: View[] = [
     {
-      label: (m.dashboard_apps() ?? 'Apps'),
+      label: m.dashboard_apps() ?? 'Apps',
       url: '/apps',
     },
     {
-      label: (m.dashboard_attributes() ?? 'Attributes'),
+      label: m.dashboard_attributes() ?? 'Attributes',
       url: '/attributes',
     },
     {
-      label: (m.dashboard_categories() ?? 'Categories'),
+      label: m.dashboard_categories() ?? 'Categories',
       url: '/categories',
     },
     {
-      label: (m.dashboard_collections() ?? 'Collections'),
+      label: m.dashboard_collections() ?? 'Collections',
       url: '/collections',
     },
     {
-      label: (m.dashboard_customers() ?? 'Customers'),
+      label: m.dashboard_customers() ?? 'Customers',
       url: '/customers',
     },
     {
-      label: (m.dashboard_orderDrafts() ?? 'Draft Orders'),
+      label: m.dashboard_orderDrafts() ?? 'Draft Orders',
       url: '/orders/drafts',
     },
     {
-      label: (m.dashboard_home() ?? 'Home'),
+      label: m.dashboard_home() ?? 'Home',
       url: '/',
     },
     {
-      label: (m.dashboard_navigation() ?? 'Navigation'),
+      label: m.dashboard_navigation() ?? 'Navigation',
       url: '/navigation',
     },
     {
-      label: (m.dashboard_orders() ?? 'Orders'),
+      label: m.dashboard_orders() ?? 'Orders',
       url: '/orders',
     },
     {
-      label: (m.dashboard_pages() ?? 'Pages'),
+      label: m.dashboard_pages() ?? 'Pages',
       url: '/pages',
     },
     {
-      label: (m.dashboard_groups() ?? 'Permission Groups'),
+      label: m.dashboard_groups() ?? 'Permission Groups',
       url: '/permission-groups',
     },
     {
-      label: (m.dashboard_plugins() ?? 'Plugins'),
+      label: m.dashboard_plugins() ?? 'Plugins',
       url: '/plugins',
     },
     {
-      label: (m.dashboard_productKlasses() ?? 'Product Types'),
+      label: m.dashboard_productKlasses() ?? 'Product Types',
       url: '/product-types',
     },
     {
-      label: (m.dashboard_products() ?? 'Products'),
+      label: m.dashboard_products() ?? 'Products',
       url: '/products',
     },
     {
-      label: (m.dashboard_sales() ?? 'Sales'),
+      label: m.dashboard_sales() ?? 'Sales',
       url: '/discounts/sales',
     },
     {
-      label: (m.dashboard_shipping() ?? 'Shipping methods'),
+      label: m.dashboard_shipping() ?? 'Shipping methods',
       url: '/shipping',
     },
     {
-      label: (m.dashboard_siteSettings() ?? 'Site Settings'),
+      label: m.dashboard_siteSettings() ?? 'Site Settings',
       url: '/site-settings',
     },
     {
-      label: (m.dashboard_staff() ?? 'Staff Members'),
+      label: m.dashboard_staff() ?? 'Staff Members',
       url: '/staff',
     },
     {
-      label: (m.dashboard_taxes() ?? 'Taxes'),
+      label: m.dashboard_taxes() ?? 'Taxes',
       url: '/taxes/channels',
     },
     {
-      label: (m.dashboard_translations() ?? 'Translations'),
+      label: m.dashboard_translations() ?? 'Translations',
       url: languageListUrl,
     },
     {
-      label: (m.dashboard_vouchers() ?? 'Vouchers'),
+      label: m.dashboard_vouchers() ?? 'Vouchers',
       url: '/discounts/vouchers',
     },
     {
-      label: (m.dashboard_warehouses() ?? 'Warehouses'),
+      label: m.dashboard_warehouses() ?? 'Warehouses',
       url: '/warehouses',
     },
   ];

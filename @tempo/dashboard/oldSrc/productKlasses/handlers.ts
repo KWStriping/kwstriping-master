@@ -1,6 +1,6 @@
 import type { ProductKlassKind, TaxClassBaseFragment } from '@tempo/api/generated/graphql';
-import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { ChangeEvent } from 'react';
+import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export const makeProductKlassKindChangeHandler =
   (onChange: FormChange, onKindChange: (kind: ProductKlassKind) => void) =>

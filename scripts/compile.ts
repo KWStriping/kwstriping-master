@@ -14,9 +14,9 @@ function generateTsConfig() {
   const tsConfig = baseTsConfig;
   if (APP) {
     const newPaths = {
-      '@paraglide/*': [`apps/${APP}/paraglide/*`],
+      '@paraglide/*': [`paraglide/*`],
     };
-    newPaths[`@${APP}/*`] = [`apps/${APP}/*`];
+    newPaths[`@${APP}/*`] = [`*`];
     tsConfig.compilerOptions.paths = {
       ...tsConfig.compilerOptions.paths,
       ...newPaths,
@@ -30,7 +30,7 @@ function generateMessages() {
     console.error('APP is not defined.');
     return;
   }
-  const appDir = `apps/${APP}`;
+  const appDir = ROOT_DIR;
   const messagesDir = `${appDir}/messages`;
   const inlangDir = `${messagesDir}/${APP}.inlang`;
   const inlangSettingsFile = `${inlangDir}/settings.json`;
@@ -50,7 +50,7 @@ function generateMessages() {
         'https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@latest/dist/index.js',
       ],
       'plugin.inlang.messageFormat': {
-        pathPattern: `${ROOT_DIR}/apps/${APP}/paraglide/generated/{languageTag}.json`,
+        pathPattern: `${ROOT_DIR}/paraglide/generated/{languageTag}.json`,
       },
     };
     fs.writeFileSync(`${inlangDir}/settings.json`, JSON.stringify(inlangSettings, null, 2));
@@ -72,16 +72,14 @@ function generateMessages() {
 
   // stderr is sent to stderr of parent process
   // you can set options.stdio if you want it to go elsewhere
-  const stdout = execSync(
-    `paraglide-js compile --project ${inlangDir} --outdir apps/${APP}/paraglide`
-  );
+  const stdout = execSync(`paraglide-js compile --project ${inlangDir} --outdir paraglide`);
   console.log(stdout.toString());
 }
 
 export default function main() {
   if (APP && ROOT_DIR) {
-    if (!fs.existsSync(`${ROOT_DIR}/apps/${APP}/.env`)) {
-      fs.symlinkSync(`${ROOT_DIR}/.env`, `${ROOT_DIR}/apps/${APP}/.env`, 'file');
+    if (!fs.existsSync(`${ROOT_DIR}/.env`)) {
+      fs.symlinkSync(`${ROOT_DIR}/.env`, `${ROOT_DIR}/.env`, 'file');
     }
   }
   generateTsConfig();

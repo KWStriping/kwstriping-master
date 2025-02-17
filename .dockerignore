@@ -2,8 +2,14 @@
 *
 
 # Allow these files & directories
-!/apps
 !/@tempo
+!/app
+!/components
+!/hooks
+!/lib
+!/messages
+!/paraglide
+!/public
 !/scripts
 !/tempo
 !/package.json

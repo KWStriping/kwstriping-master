@@ -33,9 +33,7 @@ export function hexToRgb(color) {
   return colors
     ? `rgb${colors.length === 4 ? 'a' : ''}(${colors
         .map((n, index) => {
-          return index < 3
-            ? parseInt(n, 16)
-            : Math.round((parseInt(n, 16) / 255) * 1000) / 1000;
+          return index < 3 ? parseInt(n, 16) : Math.round((parseInt(n, 16) / 255) * 1000) / 1000;
         })
         .join(', ')})`
     : '';
@@ -66,15 +64,7 @@ export function decomposeColor(color) {
   const marker = color.indexOf('(');
   const type = color.substring(0, marker);
 
-  if (
-    [
-      'rgb',
-      'rgba',
-      'hsl',
-      'hsla',
-      'color',
-    ].indexOf(type) === -1
-  ) {
+  if (['rgb', 'rgba', 'hsl', 'hsla', 'color'].indexOf(type) === -1) {
     throw new Error(
       'Unsupported `%s` color.\n' +
         'The following formats are supported: #nnn, #nnnnnn, rgb(), rgba(), hsl(), hsla(), color().',
@@ -92,13 +82,7 @@ export function decomposeColor(color) {
       values[3] = values[3].slice(1);
     }
     if (
-      [
-        'srgb',
-        'display-p3',
-        'a98-rgb',
-        'prophoto-rgb',
-        'rec-2020',
-      ].indexOf(colorSpace) === -1
+      ['srgb', 'display-p3', 'a98-rgb', 'prophoto-rgb', 'rec-2020'].indexOf(colorSpace) === -1
     ) {
       throw new Error(
         'Unsupported `%s` color space.\n' +
@@ -352,9 +336,7 @@ export function private_safeLighten(color, coefficient, warning) {
  * @returns {string} A CSS color string. Hex input values are returned as rgb
  */
 export function emphasize(color, coefficient = 0.15) {
-  return getLuminance(color) > 0.5
-    ? darken(color, coefficient)
-    : lighten(color, coefficient);
+  return getLuminance(color) > 0.5 ? darken(color, coefficient) : lighten(color, coefficient);
 }
 export function private_safeEmphasize(color, coefficient, warning) {
   try {

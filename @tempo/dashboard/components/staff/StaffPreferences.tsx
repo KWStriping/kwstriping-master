@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import { Locale, localeNames } from '@tempo/dashboard/components/core/Locale';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { capitalize } from '@tempo/dashboard/oldSrc/misc';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
 
 interface StaffPreferencesProps {
   locale: Locale;

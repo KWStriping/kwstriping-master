@@ -1,12 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { DialogHeader } from '@tempo/ui/components/dialog/DialogHeader';
 import { getById } from '@tempo/utils';
 import { transformAddressToAddressInput } from '@tempo/utils/address';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { AddressType } from '@tempo/api/generated/constants';
 import type {
   AddressFragment,
@@ -15,12 +13,6 @@ import type {
   Node,
   OrderErrorFragment,
 } from '@tempo/api/generated/graphql';
-import useAddressValidation from '@tempo/dashboard/hooks/useAddressValidation';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import type { AddressTypeInput } from '@tempo/dashboard/oldSrc/customers/types';
-import { buttonMessages } from '@tempo/dashboard/oldSrc/intl';
-import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
 import { Dialog, DialogActions, DialogContent, Divider, FormControlLabel } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
@@ -38,6 +30,14 @@ import type {
 } from './types';
 import { AddressEditDialogVariant } from './types';
 import { getAddressEditProps, hasPreSubmitErrors, validateDefaultAddress } from './utils';
+import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
+import { buttonMessages } from '@tempo/dashboard/oldSrc/intl';
+import type { AddressTypeInput } from '@tempo/dashboard/oldSrc/customers/types';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import useAddressValidation from '@tempo/dashboard/hooks/useAddressValidation';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 export interface OrderCustomerAddressesEditDialogProps {
   open: boolean;
@@ -314,7 +314,7 @@ const OrderCustomerAddressesEditDialog: FC<OrderCustomerAddressesEditDialogProps
                               {customerAddresses?.length ? (
                                 <Trans {...dialogMessages.customerChangeBillingDescription} />
                               ) : (
-                                m.dashboard_oAddressBillingDescription() ?? 'Add a new address:'
+                                (m.dashboard_oAddressBillingDescription() ?? 'Add a new address:')
                               )}
                             </Typography>
                             <FormSpacer />

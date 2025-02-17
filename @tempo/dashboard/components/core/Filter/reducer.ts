@@ -1,6 +1,5 @@
-import { update } from '@tempo/dashboard/oldSrc/utils/lists';
-
 import type { FieldType, IFilter, IFilterElementMutableDataGeneric } from './types';
+import { update } from '@tempo/dashboard/oldSrc/utils/lists';
 
 export type FilterReducerActionType = 'clear' | 'merge' | 'reset' | 'set-property';
 export interface FilterReducerAction<K extends string, T extends FieldType> {

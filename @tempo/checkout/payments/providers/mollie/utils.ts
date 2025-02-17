@@ -36,23 +36,23 @@ export const getDiscountLines = (
 ): CreateOrderParams['lines'] =>
   discounts
     ? discounts.map((discount) => ({
-      name: discount.name || 'Discount',
-      quantity: 1,
-      vatRate: '0.00',
-      vatAmount: {
-        currency: discount.amount.currency,
-        value: '0.00',
-      },
-      unitPrice: {
-        currency: discount.amount.currency,
-        value: parseAmountToString(discount.amount.amount, true),
-      },
-      totalAmount: {
-        currency: discount.amount.currency,
-        value: parseAmountToString(discount.amount.amount, true),
-      },
-      type: OrderLineType.discount,
-    }))
+        name: discount.name || 'Discount',
+        quantity: 1,
+        vatRate: '0.00',
+        vatAmount: {
+          currency: discount.amount.currency,
+          value: '0.00',
+        },
+        unitPrice: {
+          currency: discount.amount.currency,
+          value: parseAmountToString(discount.amount.amount, true),
+        },
+        totalAmount: {
+          currency: discount.amount.currency,
+          value: parseAmountToString(discount.amount.amount, true),
+        },
+        type: OrderLineType.discount,
+      }))
     : [];
 
 export const getShippingLines = (data: OrderFragment): CreateOrderParams['lines'] => [

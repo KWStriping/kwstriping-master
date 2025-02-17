@@ -1,12 +1,12 @@
 import { makeStyles } from '@tempo/ui/theme/styles';
-import Money from '@tempo/dashboard/components/core/Money';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
-import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
 import type { OrderDetailsFragment, OrderLineFragment } from '@tempo/api/generated/graphql';
 import Skeleton from '@mui/material/Skeleton';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import Money from '@tempo/dashboard/components/core/Money';
 
 const useStyles = makeStyles(
   (theme) => ({

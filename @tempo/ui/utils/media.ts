@@ -1,4 +1,7 @@
-import type { ProductDetailsFragment, ProductDetailsFragment } from '@tempo/api/generated/graphql';
+import type {
+  ProductDetailsFragment,
+  ProductDetailsFragment,
+} from '@tempo/api/generated/graphql';
 import { notNullable } from '@tempo/ui/utils/money';
 
 /**

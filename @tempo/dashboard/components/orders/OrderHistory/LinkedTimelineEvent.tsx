@@ -2,11 +2,11 @@ import * as m from '@paraglide/messages';
 import { OrderEventType } from '@tempo/api/generated/constants';
 // import { useTranslation } from '@tempo/next/i18n';
 import type { FC } from 'react';
+import type { OrderEventFragment } from '@tempo/api/generated/graphql';
+import { getEmployeeNameLink } from './utils';
 import { TimelineEvent } from '@tempo/dashboard/components/core/Timeline';
 import type { TitleElement } from '@tempo/dashboard/components/core/Timeline/TimelineEventHeader';
-import type { OrderEventFragment } from '@tempo/api/generated/graphql';
 import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
-import { getEmployeeNameLink } from './utils';
 
 export const replacementCreatedMessages = {
   description: {

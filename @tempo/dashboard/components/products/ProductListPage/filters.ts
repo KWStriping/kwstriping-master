@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
+import { AttributeInputType, StockAvailability } from '@tempo/api/generated/constants';
 import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { AttributeInputType, StockAvailability } from '@tempo/api/generated/constants';
-import { commonMessages, sectionNames } from '@tempo/dashboard/oldSrc/intl';
+import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
 import { ProductListUrlFiltersAsDictWithMultipleValues } from '@tempo/dashboard/oldSrc/products/urls';
 import type {
   AutocompleteFilterOpts,
@@ -130,7 +130,7 @@ export function useFilterStructure(opts: ProductListFilterOpts): IFilter<string>
     {
       ...createOptionsField(
         ProductFilterKeys.channel,
-        (m.dashboard_channel() ?? 'Channel'),
+        m.dashboard_channel() ?? 'Channel',
         [opts.channel.value],
         false,
         opts.channel.choices
@@ -186,7 +186,7 @@ export function useFilterStructure(opts: ProductListFilterOpts): IFilter<string>
     {
       ...createAutocompleteField(
         ProductFilterKeys.categories,
-        (m.dashboard_categories() ?? 'Categories'),
+        m.dashboard_categories() ?? 'Categories',
         opts.categories.value,
         opts.categories.displayValues,
         true,
@@ -243,8 +243,8 @@ export function useFilterStructure(opts: ProductListFilterOpts): IFilter<string>
         attr.name,
         Array.isArray(attr.value) ? undefined : (attr.value as unknown) === 'true',
         {
-          positive: (m.dashboard_yes() ?? 'Yes'),
-          negative: (m.dashboard_no() ?? 'No'),
+          positive: m.dashboard_yes() ?? 'Yes',
+          negative: m.dashboard_no() ?? 'No',
         }
       ),
       active: attr.active,

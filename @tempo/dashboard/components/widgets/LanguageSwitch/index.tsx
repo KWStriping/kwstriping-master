@@ -1,4 +1,4 @@
-import { useTranslation, Trans } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { LanguageCode, LanguageFragment } from '@tempo/api/generated/graphql';
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 import { Card, ClickAwayListener, Grow, MenuItem, MenuList as Menu } from '@mui/material';

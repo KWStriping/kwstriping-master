@@ -1,8 +1,8 @@
 import type { UrlObject } from 'url';
-import { DEFAULT_INITIAL_PAGINATION_DATA } from '@tempo/dashboard/oldSrc/config';
-import type { Pagination } from '@tempo/dashboard/oldSrc/types';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { DEFAULT_INITIAL_PAGINATION_DATA } from '@tempo/dashboard/oldSrc/config';
+import type { Pagination } from '@tempo/dashboard/oldSrc/types';
 
 export function usePaginationReset<T extends Pagination>(
   urlFunc: (params: T) => string | UrlObject,
