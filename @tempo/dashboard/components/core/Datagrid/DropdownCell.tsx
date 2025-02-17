@@ -1,7 +1,4 @@
 import { makeStyles } from '@tempo/ui/theme/styles';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import type { SingleAutocompleteSelectFieldProps } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
 import type {
   CustomCell,
   CustomCellRenderer,
@@ -10,6 +7,9 @@ import type {
 import { getMiddleCenterBias } from '@glideapps/glide-data-grid';
 import pick from 'lodash-es/pick';
 import { useCallback, useState } from 'react';
+import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
+import type { SingleAutocompleteSelectFieldProps } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 
 export type DropdownChoice = Choice<string, string>;
 export type DropdownCellContentProps = Pick<

@@ -1,10 +1,9 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
 import type { CheckIfOrderExistsQuery } from '@tempo/api/generated/graphql';
+import type { QuickSearchAction } from '../types';
 import { transformOrderStatus } from '@tempo/dashboard/oldSrc/misc';
 import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
-
-import type { QuickSearchAction } from '../types';
 
 export function isQueryValidOrderNumber(query: string): boolean {
   return query === parseInt(query, 10).toString();
@@ -26,9 +25,10 @@ function getOrdersModeActions(
     return [
       {
         extraInfo: transformOrderStatus(order.status, t).localized,
-        label: (m.dashboard_oToOrder({
-          orderNumber: query,
-        }) ?? 'Go to order #{{orderNumber}}'),
+        label:
+          m.dashboard_oToOrder({
+            orderNumber: query,
+          }) ?? 'Go to order #{{orderNumber}}',
         onClick: () => {
           void router.push(orderUrl(gqlId));
           return false;

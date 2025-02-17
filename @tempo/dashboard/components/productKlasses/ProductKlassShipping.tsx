@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface ProductKlassShippingProps {
   data: {

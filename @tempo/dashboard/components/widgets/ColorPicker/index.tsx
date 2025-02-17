@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import type { UseFormResult } from '@tempo/dashboard/hooks/useForm';
 import TextField from '@mui/material/TextField';
 import Hue from '@uiw/react-color-hue';
 import Saturation from '@uiw/react-color-saturation';
@@ -8,6 +7,7 @@ import type { RGB } from 'color-convert/conversions';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
+import type { UseFormResult } from '@tempo/dashboard/hooks/useForm';
 
 export type ColorPickerProps<T = any> = Pick<
   UseFormResult<T>,

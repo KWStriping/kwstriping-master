@@ -18,7 +18,7 @@ name: ${APP}
 services:
   front:
     container_name: ${APP}
-    command: node apps/${APP}/server.mjs
+    command: node server.mjs
     image: "ghcr.io/kwstriping/${APP}:${SHA}"
     depends_on:
       - tempo
@@ -36,15 +36,7 @@ services:
   tempo:
     # TODO: select tempo version
     image: "ghcr.io/sokaisolutions/tempo:latest"
-    command:
-      [
-        "gunicorn",
-        "--workers",
-        "4",
-        "--worker-class",
-        "core.asgi.UvicornWorker",
-        "core.asgi:application"
-      ]
+    command: [ "gunicorn", "--workers", "4", "--worker-class", "core.asgi.UvicornWorker", "core.asgi:application" ]
     env_file:
       - .env
     environment:
@@ -184,29 +176,7 @@ services:
     image: docker.elastic.co/apm/apm-server:7.16.2
     user: apm-server
     restart: always
-    command:
-      [
-        "--strict.perms=false",
-        "-e",
-        "-E",
-        "apm-server.host=0.0.0.0:8200",
-        "-E",
-        "apm-server.kibana.enabled=true",
-        "-E",
-        "apm-server.kibana.host=kibana:5601",
-        "-E",
-        "apm-server.kibana.username=elastic",
-        "-E",
-        "apm-server.kibana.password=changeme",
-        "-E",
-        "output.elasticsearch.hosts=['elasticsearch:9200']",
-        "-E",
-        "output.elasticsearch.enabled=true",
-        "-E",
-        "output.elasticsearch.username=elastic",
-        "-E",
-        "output.elasticsearch.password=changeme"
-      ]
+    command: [ "--strict.perms=false", "-e", "-E", "apm-server.host=0.0.0.0:8200", "-E", "apm-server.kibana.enabled=true", "-E", "apm-server.kibana.host=kibana:5601", "-E", "apm-server.kibana.username=elastic", "-E", "apm-server.kibana.password=changeme", "-E", "output.elasticsearch.hosts=['elasticsearch:9200']", "-E", "output.elasticsearch.enabled=true", "-E", "output.elasticsearch.username=elastic", "-E", "output.elasticsearch.password=changeme" ]
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -240,3 +210,15 @@ volumes:
 # networks:
 #   backend:
 #     driver: bridge
+
+# services:
+#   storefront:
+#     container_name: kwstriping
+#     build:
+#       context: ..
+#       dockerfile: apps/Dockerfile
+#       args:
+#         - APP=kwstriping
+#     ports:
+#       - 3000:3000
+#     command: sh -c 'pnpm turbo run start --filter=storefront...'

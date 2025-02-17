@@ -2,10 +2,6 @@ import * as m from '@paraglide/messages';
 import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql';
 import { useUser, useLogout } from '@tempo/api/auth/react/hooks';
 // import { useTranslation } from '@tempo/next/i18n';
-import { ChannelDropdown } from '@tempo/ui/components/regionDropdowns/ChannelDropdown';
-import { LocaleDropdown } from '@tempo/ui/components/regionDropdowns/LocaleDropdown';
-import { useShopSettings } from '@tempo/ui/providers';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -13,6 +9,10 @@ import { useRouter } from 'next/navigation';
 import NavIconButton from '../NavIconButton';
 import styles from './BurgerMenu.module.css';
 import { CollapseMenu } from './CollapseMenu';
+import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useShopSettings } from '@tempo/ui/providers';
+import { LocaleDropdown } from '@tempo/ui/components/regionDropdowns/LocaleDropdown';
+import { ChannelDropdown } from '@tempo/ui/components/regionDropdowns/ChannelDropdown';
 
 export interface BurgerMenuProps {
   items: Maybe<Omit<MenuItemWithChildrenFragment, '__typename'>[]>;

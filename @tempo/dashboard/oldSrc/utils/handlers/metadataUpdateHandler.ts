@@ -1,5 +1,3 @@
-import * as m from '@paraglide/messages';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
 import type {
   MetadataErrorFragment,
   MetadataInput,
@@ -8,13 +6,14 @@ import type {
   UpdatePrivateMetadataMutation,
   UpdatePrivateMetadataMutationVariables,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import { arrayDiff } from '@tempo/dashboard/oldSrc/utils/arrays';
 import type { OperationResult } from '@urql/core';
 import { assert } from 'tsafe';
 
 import { filterMetadataArray } from './filterMetadataArray';
 import { areMetadataArraysEqual } from './metadataUpdateHelpers';
+import { arrayDiff } from '@tempo/dashboard/oldSrc/utils/arrays';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 
 interface ObjectWithMetadata {
   id: string;

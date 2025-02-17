@@ -1,10 +1,10 @@
+import { useFetch, urlJoinTrailingSlash } from '@tempo/ui/hooks/useFetch';
+import { useShopSettings } from '@tempo/ui/providers';
 import {
   getParsedPaymentMethods,
   getParsedPaymentProviders,
 } from '@tempo/checkout/components/sections/~PaymentSection/utils';
 import type { ChannelActivePaymentProvidersByChannel } from '@tempo/checkout/types/payments-api';
-import { useFetch, urlJoinTrailingSlash } from '@tempo/ui/hooks/useFetch';
-import { useShopSettings } from '@tempo/ui/providers';
 
 const API_URL = 'http://localhost:3000/api/'; // TODO
 

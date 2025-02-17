@@ -4,13 +4,13 @@ import type {
   OrderSettingsFragment,
   ShopOrderSettingsFragment,
 } from '@tempo/api/generated/graphql';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
+import OrderSettings from '../OrderSettings';
 import useForm from '@tempo/dashboard/hooks/useForm';
 import type { CommonUseFormResult, SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useHandleFormSubmit from '@tempo/dashboard/hooks/useHandleFormSubmit';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
 import OrderFulfillmentSettings from '@tempo/dashboard/components/orders/OrderFulfillmentSettings';
-import OrderSettings from '../OrderSettings';
 
 export interface OrderSettingsFormData {
   autoConfirmAllNewOrders: boolean;

@@ -1,7 +1,7 @@
+import type { CustomerFilter } from '@tempo/api/generated/graphql';
 import type { FilterElement } from '@tempo/dashboard/components/core/Filter';
 import type { CustomerListFilterOpts } from '@tempo/dashboard/components/customers/CustomerListPage';
 import { CustomerFilterKeys } from '@tempo/dashboard/components/customers/CustomerListPage';
-import type { CustomerFilter } from '@tempo/api/generated/graphql';
 import type {
   CustomerListUrlFilters,
   CustomerListUrlQueryParams,

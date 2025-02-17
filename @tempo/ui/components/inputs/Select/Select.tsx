@@ -56,7 +56,7 @@ const SelectComponent = <TData extends string = string>(
         onChange={handleChange}
         {...rest}
         value={value}
-        defaultValue={defaultValue ?? showPlaceholder ? placeholderValue : defaultValue}
+        defaultValue={(defaultValue ?? showPlaceholder) ? placeholderValue : defaultValue}
         ref={ref}
         className={clsx(styles.select)}
       >

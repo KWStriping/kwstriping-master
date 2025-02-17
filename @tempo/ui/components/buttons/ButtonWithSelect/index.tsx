@@ -1,4 +1,3 @@
-import { Button } from '@tempo/ui/components/buttons/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import type { ButtonGroupProps, ButtonProps } from '@mui/material';
 import { ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList } from '@mui/material';
@@ -7,6 +6,7 @@ import Popper from '@mui/material/Popper';
 import { useState, useRef } from 'react';
 import type { MouseEvent, FC } from 'react';
 import styles from './index.module.css';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface Option {
   label: string;

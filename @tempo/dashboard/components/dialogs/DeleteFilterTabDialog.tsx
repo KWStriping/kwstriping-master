@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import DialogContentText from '@mui/material/DialogContentText';
 import type { FC } from 'react';

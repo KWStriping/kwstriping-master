@@ -4,25 +4,25 @@ import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import AddressEdit from '@tempo/dashboard/components/forms/AddressEdit';
-import { createCountryHandler } from '@tempo/dashboard/components/forms/AddressEdit/createCountryHandler';
-import Form from '@tempo/dashboard/components/forms/Form';
 import type {
   AccountErrorFragment,
   AddressFragment,
   AddressUpdateInput,
   CountryWithCodeFragment,
 } from '@tempo/api/generated/graphql';
-import useAddressValidation from '@tempo/dashboard/hooks/useAddressValidation';
-import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
-import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
-import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import type { FC } from 'react';
+import AddressEdit from '@tempo/dashboard/components/forms/AddressEdit';
+import { createCountryHandler } from '@tempo/dashboard/components/forms/AddressEdit/createCountryHandler';
+import Form from '@tempo/dashboard/components/forms/Form';
+import useAddressValidation from '@tempo/dashboard/hooks/useAddressValidation';
+import useModalDialogErrors from '@tempo/dashboard/hooks/useModalDialogErrors';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
+import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
 
 export interface CustomerAddressDialogProps {
   address: Maybe<AddressFragment>;

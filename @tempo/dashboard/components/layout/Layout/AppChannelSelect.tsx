@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
+import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
 import type { ChannelProps } from '@tempo/dashboard/oldSrc/types';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
 

@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
-import { Button } from '@tempo/ui/components/buttons/Button';
 import type { FC, ReactNode } from 'react';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface EditButtonProps {
   onClick: () => void;

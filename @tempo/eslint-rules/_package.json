@@ -18,7 +18,7 @@
     "//build": "rollup --config",
     "clean": "npx rimraf --no-glob ./coverage ./tsconfig.tsbuildinfo",
     "//dev": "rollup --config --watch",
-    "lint": "eslint  --ext .ts,.js,.cjs,.mjs --cache --cache-location ../../.cache/eslint/eslint.eslintcache",
+    "lint": "pnpm eslint  --ext .ts,.js,.cjs,.mjs --cache --cache-location ../../.cache/eslint/eslint.eslintcache",
     "typecheck": "tsc --project tsconfig.json --noEmit"
   }
 }

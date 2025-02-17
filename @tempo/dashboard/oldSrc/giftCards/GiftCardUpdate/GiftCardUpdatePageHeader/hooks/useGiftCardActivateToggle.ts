@@ -1,14 +1,13 @@
-
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 
-import { GIFT_CARD_DETAILS_QUERY } from '../../queries';
-import { giftCardEnableDisableSectionMessages as messages } from '../messages';
 import {
   GiftCardActivateDocument,
   GiftCardDeactivateDocument,
 } from '@tempo/api/generated/graphql';
+import { GIFT_CARD_DETAILS_QUERY } from '../../queries';
+import { giftCardEnableDisableSectionMessages as messages } from '../messages';
 
 interface useGiftCardActivateToggleProps {
   onActivateActionComplete?: () => void | undefined;
@@ -28,7 +27,7 @@ const useGiftCardActivateToggle = ({
       const errors = data?.activateGiftCard?.errors;
 
       if (errors?.length) {
-        notify((m.dashboard_unknownError() ?? 'Unknown error'), {
+        notify(m.dashboard_unknownError() ?? 'Unknown error', {
           type: 'error',
         });
 
@@ -36,9 +35,9 @@ const useGiftCardActivateToggle = ({
       }
 
       notify(
-        (m.dashboard_successfullyEnabledTitle({
+        m.dashboard_successfullyEnabledTitle({
           type: 'success',
-        }) ?? messages.successfullyEnabledTitle.defaultMessage)
+        }) ?? messages.successfullyEnabledTitle.defaultMessage
       );
 
       if (onActivateActionComplete) {
@@ -53,7 +52,7 @@ const useGiftCardActivateToggle = ({
       const errors = data?.deactivateGiftCard?.errors;
 
       if (errors?.length) {
-        notify((m.dashboard_unknownError() ?? 'Unknown error'), {
+        notify(m.dashboard_unknownError() ?? 'Unknown error', {
           type: 'error',
         });
         return;

@@ -2,16 +2,7 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import Form from '@tempo/dashboard/components/forms/Form';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { CountryWithCodeFragment } from '@tempo/api/generated/graphql';
-import {
-  getCountrySelectionMap,
-  isRestWorldCountriesSelected,
-} from '@tempo/dashboard/oldSrc/shipping/handlers';
-import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
 import {
   Dialog,
   DialogActions,
@@ -29,6 +20,15 @@ import type { FC } from 'react';
 
 import { createCountryChangeHandler, createRestOfTheWorldChangeHandler } from './handlers';
 import styles from './index.module.css';
+import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
+import {
+  getCountrySelectionMap,
+  isRestWorldCountriesSelected,
+} from '@tempo/dashboard/oldSrc/shipping/handlers';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import Form from '@tempo/dashboard/components/forms/Form';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 interface FormData {
   countries: string[];

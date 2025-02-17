@@ -1,7 +1,6 @@
-
 import * as m from '@paraglide/messages';
-import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { MediaType } from '@tempo/api/generated/graphql';
+import type { FilterElement, IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { MediaListUrlFilters, MediaListUrlSort } from '@tempo/dashboard/oldSrc/media/urls';
 import { MediaListUrlFiltersWithMultipleValues } from '@tempo/dashboard/oldSrc/media/urls';
 import type {
@@ -52,7 +51,7 @@ export function useFilterStructure(opts: MediaListFilterOpts): IFilter<MediaList
     {
       ...createAutocompleteField(
         MediaListFilterKeys.mediaTypes,
-        (m.dashboard_mediaType() ?? 'Media Types'),
+        m.dashboard_mediaType() ?? 'Media Types',
         opts.mediaType.value,
         opts.mediaType.displayValues,
         true,

@@ -1,5 +1,6 @@
 import urlJoin from 'url-join';
 
+import type { ProductAttributeType, ProductKlassKind } from '@tempo/api/generated/constants';
 import type {
   ActiveTab,
   BulkAction,
@@ -10,7 +11,6 @@ import type {
   Sort,
   TabActionDialog,
 } from '../types';
-import type { ProductAttributeType, ProductKlassKind } from '@tempo/api/generated/constants';
 
 const productKlassSection = '/product-types/';
 

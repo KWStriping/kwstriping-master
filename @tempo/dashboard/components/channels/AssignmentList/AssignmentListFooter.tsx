@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import CardAddItemsFooter from '@tempo/dashboard/components/products/ProductStocks/CardAddItemsFooter';
-import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 import type { AssignItem, AssignmentListProps } from './types';
+import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
+import CardAddItemsFooter from '@tempo/dashboard/components/products/ProductStocks/CardAddItemsFooter';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 
 const messages = {
   addItemTitle: {

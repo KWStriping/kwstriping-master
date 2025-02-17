@@ -1,7 +1,7 @@
 import * as m from '@paraglide/messages';
+import { CollectionPublished } from '@tempo/api/generated/constants';
 import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import { CollectionPublished } from '@tempo/api/generated/constants';
 import type { FilterOpts } from '@tempo/dashboard/oldSrc/types';
 import { createOptionsField } from '@tempo/dashboard/oldSrc/utils/filters/fields';
 
@@ -35,16 +35,16 @@ export function useFilterStructure(
     {
       ...createOptionsField(
         CollectionFilterKeys.status,
-        (m.dashboard_status() ?? 'Status'),
+        m.dashboard_status() ?? 'Status',
         [opts.status.value],
         false,
         [
           {
-            label: (m.dashboard_published() ?? 'Published'),
+            label: m.dashboard_published() ?? 'Published',
             value: CollectionPublished.Published,
           },
           {
-            label: (m.dashboard_hidden() ?? 'Hidden'),
+            label: m.dashboard_hidden() ?? 'Hidden',
             value: CollectionPublished.Hidden,
           },
         ]
@@ -55,7 +55,7 @@ export function useFilterStructure(
     {
       ...createOptionsField(
         CollectionFilterKeys.channel,
-        (m.dashboard_channel() ?? 'Channel'),
+        m.dashboard_channel() ?? 'Channel',
         [opts.channel?.value],
         false,
         opts.channel?.choices

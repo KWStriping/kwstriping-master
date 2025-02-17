@@ -1,9 +1,6 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import ChevronDown from '@dashboard/assets/images/ChevronDown.svg';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import AddIcon from '@mui/icons-material/Add';
 import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
@@ -15,6 +12,9 @@ import type { GetItemPropsOptions } from 'downshift';
 import { useEffect, useState, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 const menuItemHeight = 46;
 const maxMenuItems = 5;

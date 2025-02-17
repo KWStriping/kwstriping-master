@@ -14,31 +14,31 @@ import type {
 
 export type ProductListError =
   | {
-    __typename: 'DatagridError';
-    attributes: string[] | null;
-    error: ProductErrorCode;
-    productId: string;
-    type: 'variantData';
-  }
+      __typename: 'DatagridError';
+      attributes: string[] | null;
+      error: ProductErrorCode;
+      productId: string;
+      type: 'variantData';
+    }
   | {
-    __typename: 'DatagridError';
-    productId: string;
-    warehouseId: string;
-    type: 'stock';
-  }
+      __typename: 'DatagridError';
+      productId: string;
+      warehouseId: string;
+      type: 'stock';
+    }
   | {
-    __typename: 'DatagridError';
-    error: ProductErrorCode;
-    productId: string;
-    channelIds: string[];
-    type: 'channel';
-  }
+      __typename: 'DatagridError';
+      error: ProductErrorCode;
+      productId: string;
+      channelIds: string[];
+      type: 'channel';
+    }
   | {
-    __typename: 'DatagridError';
-    error: ProductErrorCode;
-    index: number;
-    type: 'create';
-  };
+      __typename: 'DatagridError';
+      error: ProductErrorCode;
+      index: number;
+      type: 'create';
+    };
 
 export function getProductListErrors(
   productChannelsUpdateResult: OperationResult<ProductChannelListingUpdateMutation>,
@@ -49,17 +49,14 @@ export function getProductListErrors(
     .flatMap((result) => {
       if (result.data?.updateProductChannelListing) {
         const data = result.data as ProductChannelListingUpdateMutation;
-        return data?.updateProductChannelListing?.errors.map<ProductListError>(
-          (error) => ({
-            __typename: 'DatagridError',
-            type: 'channel',
-            error: error.code,
-            productId: (
-              result.extensions.variables as ProductChannelListingUpdateMutationVariables
-            ).id,
-            channelIds: error.channels,
-          })
-        );
+        return data?.updateProductChannelListing?.errors.map<ProductListError>((error) => ({
+          __typename: 'DatagridError',
+          type: 'channel',
+          error: error.code,
+          productId: (result.extensions.variables as ProductChannelListingUpdateMutationVariables)
+            .id,
+          channelIds: error.channels,
+        }));
       }
 
       if (result.data?.updateProductStocks) {

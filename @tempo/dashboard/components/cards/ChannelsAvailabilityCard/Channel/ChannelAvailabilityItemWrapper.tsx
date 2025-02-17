@@ -3,10 +3,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode } from 'react';
+import type { Messages } from '../types';
 import Label from '@tempo/dashboard/components/orders/OrderHistory/Label';
 import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
-
-import type { Messages } from '../types';
 
 // const useExpanderStyles = makeStyles(
 //   (theme) => ({

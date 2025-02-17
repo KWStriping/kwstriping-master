@@ -3,17 +3,17 @@ import { getById } from '@tempo/utils';
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import type { ChangeEvent, FC } from 'react';
+import type {
+  AccountErrorFragment,
+  AddressFragment,
+  OrderErrorFragment,
+} from '@tempo/api/generated/graphql';
 import { AddressInputOption } from './form';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import CustomerAddressChoiceCard from '@tempo/dashboard/components/customers/CustomerAddressChoiceCard';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import AddressEdit from '@tempo/dashboard/components/forms/AddressEdit';
 import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import type {
-  AccountErrorFragment,
-  AddressFragment,
-  OrderErrorFragment,
-} from '@tempo/api/generated/graphql';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { AddressTypeInput } from '@tempo/dashboard/oldSrc/customers/types';
 

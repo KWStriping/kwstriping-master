@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
-import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 import DialogContentText from '@mui/material/DialogContentText';
 import type { FC } from 'react';
+import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
+import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 
 export interface DeleteShippingRateDialogProps {
   confirmButtonState: ConfirmButtonTransitionState;

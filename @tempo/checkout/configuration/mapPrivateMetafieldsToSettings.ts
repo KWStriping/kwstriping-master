@@ -1,4 +1,5 @@
 import reduce from 'lodash-es/reduce';
+import { decryptSetting } from './encryption';
 import { defaultPrivateSettings } from '@tempo/checkout/config/defaults';
 import type {
   PrivateMetafieldsValues,
@@ -7,7 +8,6 @@ import type {
   UnknownPrivateSettingsValues,
 } from '@tempo/checkout/types/api';
 import { allSettingID } from '@tempo/checkout/types/common';
-import { decryptSetting } from './encryption';
 
 const readSettingsValues = (
   subSettings: Record<string, SettingValue | string | undefined>,

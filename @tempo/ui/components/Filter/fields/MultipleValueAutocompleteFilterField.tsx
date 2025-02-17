@@ -1,11 +1,11 @@
+import MenuItem from '@mui/material/MenuItem';
+import type { FC } from 'react';
+import type { FilterData } from '../types';
 import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import { MultipleValueAutocomplete } from '@tempo/ui/components/inputs/MultipleValueAutocomplete';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import MenuItem from '@mui/material/MenuItem';
-import type { FC } from 'react';
 
 // import useStyles from '../styles';
-import type { FilterData } from '../types';
 
 export interface FilterContentProps {
   filter: FilterData;

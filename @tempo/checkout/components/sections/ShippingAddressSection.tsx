@@ -10,7 +10,6 @@ import { useShopSettings } from '@tempo/ui/providers';
 import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import { useSectionState } from '@tempo/checkout/hooks/state';
 import type { AddressFormProps } from '../forms/AddressForm';
 import { AddressForm } from '../forms/AddressForm';
 import { SavedAddressSelectionList } from '../SavedAddressSelectionList';
@@ -18,6 +17,7 @@ import { AddressFormWithMap } from '../forms/AddressFormWithMap';
 import { MapContextProvider } from '../Map';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection from './CheckoutSection';
+import { useSectionState } from '@tempo/checkout/hooks/state';
 
 type ShippingAddressSectionProps = CommonCheckoutSectionProps &
   Pick<AddressFormProps, 'omitHumanContactData'>;

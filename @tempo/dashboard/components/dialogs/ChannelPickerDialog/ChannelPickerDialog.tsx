@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { Autocomplete } from '@tempo/ui/components/inputs/Autocomplete';
+import MenuItem from '@mui/material/MenuItem';
+import type { FC } from 'react';
 import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
 import useChoiceSearch from '@tempo/dashboard/hooks/useChoiceSearch';
 import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
-import MenuItem from '@mui/material/MenuItem';
-import type { FC } from 'react';
 
 export interface ChannelPickerDialogProps {
   channelsChoices: Array<Choice<string, string>>;

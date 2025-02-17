@@ -1,9 +1,3 @@
-import GiftCardListPageDeleteDialog from '@tempo/dashboard/components/giftCards/GiftCardDeleteDialog/GiftCardListPageDeleteDialog';
-import GiftCardBulkCreateDialog from '@tempo/dashboard/oldSrc/giftCards/GiftCardBulkCreateDialog';
-import GiftCardCreateDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog';
-import GiftCardExportDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardExportDialogContent';
-import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
-import useDialogActionHandlers from '@tempo/dashboard/oldSrc/utils/handlers/dialogActionHandlers';
 import Dialog from '@mui/material/Dialog';
 import { useRouter } from 'next/navigation';
 import { createContext, useContext } from 'react';
@@ -12,6 +6,12 @@ import type { MouseEvent, FC, ReactNode } from 'react';
 import { GIFT_CARD_LIST_QUERY } from '../../queries';
 import type { GiftCardListUrlQueryParams } from '../../types';
 import { GiftCardListActionParamsEnum } from '../../types';
+import useDialogActionHandlers from '@tempo/dashboard/oldSrc/utils/handlers/dialogActionHandlers';
+import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
+import GiftCardExportDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardExportDialogContent';
+import GiftCardCreateDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog';
+import GiftCardBulkCreateDialog from '@tempo/dashboard/oldSrc/giftCards/GiftCardBulkCreateDialog';
+import GiftCardListPageDeleteDialog from '@tempo/dashboard/components/giftCards/GiftCardDeleteDialog/GiftCardListPageDeleteDialog';
 
 interface GiftCardListDialogsProviderProps {
   children: ReactNode;

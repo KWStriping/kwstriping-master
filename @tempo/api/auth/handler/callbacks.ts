@@ -1,14 +1,15 @@
-import type { RefreshTokenMutation, RefreshTokenMutationVariables } from '@tempo/api/generated/graphql';
-import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
 import debounce from 'lodash-es/debounce';
 import type { NextApiRequest } from 'next';
-import type { Account, CallbacksOptions, User } from 'next-auth';
+import type { Account, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
 import { assert } from 'tsafe/assert';
 import { ACCESS_TOKEN_TTL } from '../constants';
+import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
+
+import { getClient } from '@tempo/api/client';
 
 // https://next-auth.js.org/configuration/callbacks
-const signIn: CallbacksOptions['signIn'] = async ({
+const signIn = async ({
   user: _user,
   account,
   profile,
@@ -21,9 +22,9 @@ const signIn: CallbacksOptions['signIn'] = async ({
     const _profile = profile as { email_verified: boolean };
     if (!_profile?.email_verified) return false;
   }
-  // const client = getServerSideClient();
+  // const client = getClient();
   // TODO
-  // const { data } = await client.mutate<AuthorizeMutation, AuthorizeMutationVariables>({
+  // const { data } = await client.mutate({
   //   mutation: AuthorizeDocument,
   //   // TODO: Add login details
   //   variables: {
@@ -45,7 +46,7 @@ const signIn: CallbacksOptions['signIn'] = async ({
 };
 
 // https://next-auth.js.org/configuration/callbacks
-const redirect: CallbacksOptions['redirect'] = async ({ url, baseUrl: _baseUrl }) => {
+const redirect = async ({ url, baseUrl: _baseUrl }) => {
   const baseUrl = _baseUrl;
   console.log('🔑 redirect', { url, baseUrl });
   // console.log(process.env.AUTH_URL);
@@ -82,8 +83,8 @@ const readTokenDataFromUser = (user: User): Partial<JWT> => {
   };
 };
 
-const getJwtCallback: (req: NextApiRequest) => CallbacksOptions['jwt'] =
-  (req) =>
+const getJwtCallback =
+  (req: NextApiRequest) =>
   async ({ token, user, account }) => {
     // The account is only passed the first time this callback is called on a new session.
     // In subsequent calls, only the token is available.
@@ -107,7 +108,7 @@ const getJwtCallback: (req: NextApiRequest) => CallbacksOptions['jwt'] =
     return token;
   };
 
-const session: CallbacksOptions['session'] = async ({ session, token }) => {
+const session = async ({ session, token }) => {
   /*
       Attach the access token (and other desired data) to the session.
 
@@ -148,7 +149,7 @@ const session: CallbacksOptions['session'] = async ({ session, token }) => {
 };
 
 // https://next-auth.js.org/configuration/callbacks
-export const getCallbacks: (req: NextApiRequest) => CallbacksOptions = (req) => ({
+export const getCallbacks = (req: NextApiRequest) => ({
   signIn,
   redirect,
   jwt: getJwtCallback(req),
@@ -170,13 +171,14 @@ const refreshAccessToken = debounce(
         'csrfToken and refreshToken are required'
       );
       const client = getClient();
-      const result = await client
-        .mutation<RefreshTokenMutation, RefreshTokenMutationVariables>(RefreshTokenDocument, {
+      const result = await client.mutate({
+        mutation: RefreshTokenDocument,
+        variables: {
           refreshToken: token.refreshToken,
           csrfToken: token.csrfToken,
           // pluginId: undefined, // TODO
-        })
-        .toPromise();
+        },
+      });
       assert(!!result.data?.refreshToken);
       assert(
         !result.data?.refreshToken?.errors?.length,

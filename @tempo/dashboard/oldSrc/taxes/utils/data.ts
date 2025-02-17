@@ -1,4 +1,3 @@
-import type { TaxClassesPageFormData } from '../types';
 import type {
   CountryCode,
   CountryRateInput,
@@ -6,6 +5,7 @@ import type {
   TaxClassFragment,
   TaxClassUpdateInput,
 } from '@tempo/api/generated/graphql';
+import type { TaxClassesPageFormData } from '../types';
 import type { FormsetAtomicData } from '@tempo/dashboard/hooks/useFormset';
 import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 

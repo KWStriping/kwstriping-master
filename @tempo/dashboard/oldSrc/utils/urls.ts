@@ -1,6 +1,6 @@
-import { getAppDefaultMountPath, getAppMountPath } from '@tempo/dashboard/oldSrc/config';
 import isArray from 'lodash-es/isArray';
 import { stringify } from 'qs';
+import { getAppDefaultMountPath, getAppMountPath } from '@tempo/dashboard/oldSrc/config';
 
 export function stringifyQs(params: unknown, arrayFormat?: string): string {
   if (!params) return '';

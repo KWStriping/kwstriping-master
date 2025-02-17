@@ -51,13 +51,8 @@ export const generate = ({
     eslint: {
       ignoreDuringBuilds: !!process.env.NEXTJS_IGNORE_ESLINT,
     },
+    outputFileTracingRoot: workspaceRoot,
     experimental: {
-      // https://nextjs.org/docs/app/building-your-application/configuring/typescript#statically-typed-links
-      typedRoutes: true,
-      // https://nextjs.org/docs/messages/import-esm-externals
-      esmExternals: 'loose',
-      externalDir: true,
-      outputFileTracingRoot: workspaceRoot,
       swcPlugins: ENABLE_CLIENT_PRESET_OPTIMIZER
         ? [
             [
@@ -91,7 +86,6 @@ export const generate = ({
     },
     output: 'standalone',
     reactStrictMode: true,
-    swcMinify: true,
     transpilePackages: packagesToTranspile,
     typescript: {
       ignoreBuildErrors: !!process.env.NEXTJS_IGNORE_TYPECHECK,
@@ -156,7 +150,6 @@ export const generate = ({
         // Prevent multiple instances of React or libraries that themselves import React.
         react: path.resolve('node_modules', 'react'),
         'react-dom': path.resolve('node_modules', 'react-dom'),
-        '@urql/next': path.resolve('node_modules', '@urql/next'),
         // react: path.resolve(workspaceRoot, 'node_modules', 'react'),
         // 'react-dom': path.resolve(workspaceRoot, 'node_modules', 'react-dom'),
         // '@emotion': path.resolve('node_modules', '@emotion'),

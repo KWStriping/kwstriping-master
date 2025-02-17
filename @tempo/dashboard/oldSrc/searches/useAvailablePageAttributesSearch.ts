@@ -1,10 +1,4 @@
-import makeSearch from '@tempo/api/hooks/useSearch';
 import { gql } from '@tempo/api/gql';
-import type {
-  SearchAvailablePageAttributesQuery,
-  SearchAvailablePageAttributesQueryVariables,
-} from '@tempo/api/generated/graphql';
-import { SearchAvailablePageAttributesDocument } from '@tempo/api/generated/graphql';
 
 export const searchPageAttributes = gql(`
   query SearchAvailablePageAttributes(

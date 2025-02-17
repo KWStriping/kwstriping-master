@@ -1,8 +1,5 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
-import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type { CustomerDetailsQuery } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
@@ -10,6 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissions';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

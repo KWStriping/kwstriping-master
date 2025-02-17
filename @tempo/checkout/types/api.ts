@@ -1,13 +1,5 @@
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
 import type { ErrorCode } from '@tempo/next/types/errors';
-import type { Errors } from '@tempo/checkout/payments/types';
-import type {
-  PaymentMethod,
-  PaymentMethodID,
-  PaymentProvider,
-  PaymentProviderSettingID,
-  PaymentProviderID,
-} from '@tempo/checkout/types/payments';
 import type {
   CustomizationID,
   CustomizationSettingID,
@@ -16,6 +8,14 @@ import type {
   PublicSettingID,
   SettingsType,
 } from './common';
+import type { Errors } from '@tempo/checkout/payments/types';
+import type {
+  PaymentMethod,
+  PaymentMethodID,
+  PaymentProvider,
+  PaymentProviderSettingID,
+  PaymentProviderID,
+} from '@tempo/checkout/types/payments';
 
 export interface SettingValue {
   value: string;
@@ -79,8 +79,8 @@ export type PublicSettingsValues = {
   [P in PublicSettingID[number]]: P extends 'customizations'
     ? CustomizationSettingsValues
     : P extends 'channelActivePaymentProviders'
-    ? ChannelActivePaymentProviders
-    : UnknownPublicSettingsValues;
+      ? ChannelActivePaymentProviders
+      : UnknownPublicSettingsValues;
 };
 export type PrivateSettingsValues<E extends SettingReadMode> = {
   [P in PrivateSettingID[number]]: P extends 'paymentProviders'

@@ -3,6 +3,16 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 
+import type { CollectionDetailsQuery } from '@tempo/api/generated/graphql';
+import { renderCollection } from '@tempo/ui/utils';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Card from '@mui/material/Card';
+import Skeleton from '@mui/material/Skeleton';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableFooter from '@mui/material/TableFooter';
+import TableRow from '@mui/material/TableRow';
 import { ChannelsAvailabilityDropdown } from '@tempo/dashboard/components/channels/ChannelsAvailabilityDropdown';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
@@ -12,19 +22,9 @@ import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar'
 import { AVATAR_MARGIN } from '@tempo/dashboard/components/tables/TableCellAvatar/Avatar';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
-import type { CollectionDetailsQuery } from '@tempo/api/generated/graphql';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import { renderCollection } from '@tempo/ui/utils';
 import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import type { ListActions, PageListProps } from '@tempo/dashboard/oldSrc/types';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Card from '@mui/material/Card';
-import Skeleton from '@mui/material/Skeleton';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableFooter from '@mui/material/TableFooter';
-import TableRow from '@mui/material/TableRow';
 import type { ReactNode, FC, MouseEvent } from 'react';
 
 const useStyles = makeStyles(
@@ -82,9 +82,9 @@ const CollectionProducts: FC<CollectionProductsProps> = (props) => {
       <CardTitle
         title={
           collection ? (
-            m._dnWE_({
+            (m._dnWE_({
               name: collection.name ?? '...',
-            }) ?? 'Products in {name}'
+            }) ?? 'Products in {name}')
           ) : (
             <Skeleton />
           )

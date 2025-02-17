@@ -3,11 +3,11 @@ import type { TFunction } from '@tempo/next/i18n';
 import type { IMessage } from '@dashboard/components/messages';
 import { Temporal } from '@js-temporal/polyfill';
 
+import type { GiftCardCreateMutation } from '@tempo/api/generated/graphql';
+import { TimePeriodType } from '@tempo/api/generated/constants';
 import type { GiftCardCreateCommonFormData } from '../GiftCardBulkCreateDialog/types';
 import { updateGiftCardFormMessages } from '../GiftCardsList/messages';
 import { createGiftCardMessages as messages } from './messages';
-import type { GiftCardCreateMutation } from '@tempo/api/generated/graphql';
-import { TimePeriodType } from '@tempo/api/generated/constants';
 
 const addToCurrentDate = (
   currentDate: number,
@@ -67,7 +67,7 @@ export const getGiftCardCreateOnCompletedMessage = (
   return errors?.length
     ? {
         type: 'error',
-        text: (m.dashboard_unknownError() ?? 'Unknown error'),
+        text: m.dashboard_unknownError() ?? 'Unknown error',
       }
     : successGiftCardMessage;
 };

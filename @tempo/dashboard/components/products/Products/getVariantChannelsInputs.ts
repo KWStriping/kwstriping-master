@@ -1,9 +1,8 @@
+import { getColumnChannel, getColumnChannelAvailability } from './columnData';
 import type {
   DatagridChange,
   DatagridChangeOpts,
 } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
-
-import { getColumnChannel, getColumnChannelAvailability } from './columnData';
 
 const byCurrentRowByIndex =
   (index: number, data: DatagridChangeOpts) => (change: DatagridChange) => {

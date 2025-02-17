@@ -3,13 +3,13 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { VoucherFragment } from '@tempo/api/generated/graphql';
 import VoucherList from '../VoucherList';
 import type { VoucherFilterKeys, VoucherListFilterOpts } from './filters';
 import { useFilterStructure } from './filters';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 import { getByName } from '@tempo/dashboard/components/core/Filter/utils';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { VoucherFragment } from '@tempo/api/generated/graphql';
 import type { VoucherListUrlOrdering } from '@tempo/dashboard/oldSrc/discounts/urls';
 import type {
   ChannelProps,

@@ -1,16 +1,9 @@
 import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
-import { RadioGroupField } from '@tempo/dashboard/components/fields/RadioGroupField';
-import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { WarehouseClickAndCollectOption } from '@tempo/api/generated/constants';
 import type { WarehouseWithShippingFragment } from '@tempo/api/generated/graphql';
 import { renderCollection } from '@tempo/ui/utils';
-import { shippingZoneUrl } from '@tempo/dashboard/oldSrc/shipping/urls';
-import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
@@ -20,6 +13,13 @@ import { useEffect } from 'react';
 import type { ChangeEvent, FC } from 'react';
 
 import type { WarehouseDetailsPageFormData } from '../WarehouseDetailsPage';
+import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
+import { shippingZoneUrl } from '@tempo/dashboard/oldSrc/shipping/urls';
+import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import { RadioGroupField } from '@tempo/dashboard/components/fields/RadioGroupField';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 export interface WarehouseSettingsProps {
   zones: RelayToFlat<WarehouseWithShippingFragment['shippingZones']>;

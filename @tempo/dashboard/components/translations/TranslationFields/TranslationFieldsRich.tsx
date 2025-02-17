@@ -4,13 +4,13 @@ import RichTextEditor, {
   RichTextEditorLoading,
   RichTextEditorContent,
 } from '@tempo/ui/components/inputs/RichTextEditor';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { OutputData } from '@editorjs/editorjs';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import TranslationFieldsSave from './TranslationFieldsSave';
 import { useRichTextSubmit } from './useRichTextSubmit';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 
 interface TranslationFieldsRichProps {
   disabled: boolean;

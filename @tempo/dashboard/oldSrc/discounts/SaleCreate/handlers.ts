@@ -1,7 +1,6 @@
 import { extractMutationErrors, getMutationErrors } from '@tempo/api/utils';
 import { joinDateTime } from '@tempo/utils/datetime';
 import type { OperationResult } from '@urql/core';
-import type { FormData } from '@tempo/dashboard/components/discounts/SaleCreatePage';
 import { DiscountValueType } from '@tempo/api/generated/constants';
 import type {
   SaleChannelListingUpdateMutation,
@@ -10,6 +9,7 @@ import type {
   SaleCreateMutationVariables,
   SaleType,
 } from '@tempo/api/generated/graphql';
+import type { FormData } from '@tempo/dashboard/components/discounts/SaleCreatePage';
 import { getSaleChannelsVariables } from '@tempo/dashboard/oldSrc/discounts/handlers';
 import { decimal } from '@tempo/dashboard/oldSrc/misc';
 

@@ -1,10 +1,10 @@
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
 import type {
   UpdateMetadataMutationFn,
   UpdatePrivateMetadataMutationFn,
 } from '@tempo/api/generated/graphql';
 
 import { filterMetadataArray } from './filterMetadataArray';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata/types';
 
 export interface CreateMetadataHandlerFunctionResult<TError> {
   id?: string;

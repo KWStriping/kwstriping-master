@@ -1,10 +1,10 @@
+import type { UseComboboxGetItemPropsOptions } from 'downshift';
+import { useCombobox, useMultipleSelection } from 'downshift';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import type { Choice } from '@tempo/ui/components/Filter';
 import { useTextWidth } from '@tempo/ui/components/tools/useTextWidth';
 import type { SyntheticChangeEvent } from '@tempo/ui/utils';
 import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
-import type { UseComboboxGetItemPropsOptions } from 'downshift';
-import { useCombobox, useMultipleSelection } from 'downshift';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 export interface UseMultipleValueAutocomplete {
   choices: Choice[];

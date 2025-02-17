@@ -1,5 +1,24 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import Grid from '@tempo/ui/components/Grid';
+import { AllocationStrategy, PermissionCode } from '@tempo/api/generated/constants';
+import type {
+  ChannelDetailsFragment,
+  ChannelErrorFragment,
+  CountryCode,
+  CountryFragment,
+  SearchWarehousesQuery,
+  StockSettingsInput,
+} from '@tempo/api/generated/graphql';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import {
+  createShippingZoneAddHandler,
+  createShippingZoneRemoveHandler,
+  createWarehouseAddHandler,
+  createWarehouseRemoveHandler,
+  createWarehouseReorderHandler,
+} from './handlers';
+import type { ChannelShippingZones, ChannelWarehouses } from './types';
 import ChannelAllocationStrategy from '@tempo/dashboard/components/channels/ChannelAllocationStrategy';
 import type { FormData } from '@tempo/dashboard/components/channels/ChannelForm';
 import { ChannelForm } from '@tempo/dashboard/components/channels/ChannelForm';
@@ -11,32 +30,12 @@ import RequirePermissions from '@tempo/dashboard/components/core/RequirePermissi
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import Form from '@tempo/dashboard/components/forms/Form';
-import { AllocationStrategy, PermissionCode } from '@tempo/api/generated/constants';
-import type {
-  ChannelDetailsFragment,
-  ChannelErrorFragment,
-  CountryCode,
-  CountryFragment,
-  SearchWarehousesQuery,
-  StockSettingsInput,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import { validateChannelFormData } from '@tempo/dashboard/oldSrc/channels/validation';
 import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import createSingleAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/singleAutocompleteSelectChangeHandler';
 import { mapCountriesToChoices } from '@tempo/dashboard/oldSrc/utils/maps';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
-import {
-  createShippingZoneAddHandler,
-  createShippingZoneRemoveHandler,
-  createWarehouseAddHandler,
-  createWarehouseRemoveHandler,
-  createWarehouseReorderHandler,
-} from './handlers';
-import type { ChannelShippingZones, ChannelWarehouses } from './types';
 
 export interface ChannelDetailsPageProps<TErrors extends ChannelErrorFragment[]> {
   channel?: ChannelDetailsFragment;

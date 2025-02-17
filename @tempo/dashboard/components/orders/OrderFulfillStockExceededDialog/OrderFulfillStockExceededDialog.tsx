@@ -1,18 +1,10 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { renderCollection } from '@tempo/ui/utils';
-import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
-import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type {
   FulfillmentFragment,
   OrderFulfillmentLineFragment,
 } from '@tempo/api/generated/graphql';
-import type { OrderFulfillStockFormsetData } from '@tempo/dashboard/oldSrc/orders/utils/data';
-import {
-  getFulfillmentFormsetQuantity,
-  getOrderLineAvailableQuantity,
-} from '@tempo/dashboard/oldSrc/orders/utils/data';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
@@ -21,6 +13,14 @@ import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import OrderFulfillStockExceededDialogLine from '../OrderFulfillStockExceededDialogLine';
 import { useStyles } from './styles';
+import {
+  getFulfillmentFormsetQuantity,
+  getOrderLineAvailableQuantity,
+} from '@tempo/dashboard/oldSrc/orders/utils/data';
+import type { OrderFulfillStockFormsetData } from '@tempo/dashboard/oldSrc/orders/utils/data';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
+import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
 
 export interface OrderFulfillStockExceededDialogProps {
   lines: Array<FulfillmentFragment['lines'][0] | OrderFulfillmentLineFragment>;

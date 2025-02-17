@@ -1,10 +1,10 @@
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { LOCALES } from '@tempo/utils/regions';
 import { useRouter } from 'next/navigation';
 
 import type { HorizontalAlignment } from './BaseRegionsDropdown';
 import { BaseRegionsDropdown } from './BaseRegionsDropdown';
 import { BaseRegionsDropdownItem } from './BaseRegionsDropdownItem';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 interface DropdownOption {
   label: string;

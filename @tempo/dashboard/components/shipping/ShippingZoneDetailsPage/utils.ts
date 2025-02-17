@@ -1,7 +1,6 @@
 import type { ShippingZoneQuery } from '@tempo/api/generated/graphql';
-import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
-
 import type { ShippingZoneUpdateFormData } from './types';
+import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 
 export const getInitialFormData = (
   shippingZone?: ShippingZoneQuery['shippingZone']

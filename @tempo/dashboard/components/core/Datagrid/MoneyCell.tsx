@@ -4,9 +4,8 @@ import type {
   ProvideEditorCallback,
 } from '@glideapps/glide-data-grid';
 import { getMiddleCenterBias } from '@glideapps/glide-data-grid';
-import { usePriceField } from '@tempo/dashboard/components/fields/PriceField/usePriceField';
-
 import type { Locale } from '../Locale';
+import { usePriceField } from '@tempo/dashboard/components/fields/PriceField/usePriceField';
 
 interface MoneyCellProps {
   readonly kind: 'money-cell';

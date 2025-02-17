@@ -1,4 +1,4 @@
-import type { MutationFunction } from '@tempo/api';;
+import type { MutationFunction } from '@tempo/api';
 import type { TFunction } from '@tempo/next/i18n';
 import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
 

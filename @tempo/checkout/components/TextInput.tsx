@@ -9,7 +9,7 @@ import { useWatch } from 'react-hook-form';
 
 export type TextInputProps<
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 > = Omit<TextFieldProps, 'error' | 'ref'> &
   Omit<AllHTMLAttributes<HTMLInputElement>, 'onBlur' | 'onChange' | 'name' | 'ref'> &
   Omit<UseFormRegisterReturn, 'ref'> & {
@@ -23,7 +23,7 @@ export type TextInputProps<
 
 const TextInputComponent = <
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 >(
   props: TextInputProps<TControl, TFormData>,
   ref: ForwardedRef<HTMLInputElement>
@@ -42,7 +42,7 @@ const TextInputComponent = <
 
 export const TextInput = forwardRef(TextInputComponent) as <
   TControl extends Control,
-  TFormData extends ControlFormData<TControl>
+  TFormData extends ControlFormData<TControl>,
 >(
   props: TextInputProps<TControl, TFormData> & {
     ref?: ForwardedRef<HTMLInputElement>;

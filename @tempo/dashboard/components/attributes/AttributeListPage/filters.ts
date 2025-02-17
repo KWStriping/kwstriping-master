@@ -45,11 +45,11 @@ export function useFilterStructure(opts: AttributeListFilterOpts): IFilter<Attri
     {
       ...createBooleanField(
         AttributeFilterKeys.filterableInStorefront,
-        (m.dashboard_filterableInStorefront() ?? 'Filterable in Storefront'),
+        m.dashboard_filterableInStorefront() ?? 'Filterable in Storefront',
         opts.filterableInStorefront.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.filterableInStorefront.active,
@@ -57,11 +57,11 @@ export function useFilterStructure(opts: AttributeListFilterOpts): IFilter<Attri
     {
       ...createBooleanField(
         AttributeFilterKeys.isVariantOnly,
-        (m.dashboard_sVariantOnly() ?? 'Variant Only'),
+        m.dashboard_sVariantOnly() ?? 'Variant Only',
         opts.isVariantOnly.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.isVariantOnly.active,
@@ -69,11 +69,11 @@ export function useFilterStructure(opts: AttributeListFilterOpts): IFilter<Attri
     {
       ...createBooleanField(
         AttributeFilterKeys.valueRequired,
-        (m.dashboard_valueRequired() ?? 'Value Required'),
+        m.dashboard_valueRequired() ?? 'Value Required',
         opts.valueRequired.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.valueRequired.active,
@@ -81,11 +81,11 @@ export function useFilterStructure(opts: AttributeListFilterOpts): IFilter<Attri
     {
       ...createBooleanField(
         AttributeFilterKeys.visibleInStorefront,
-        (m.dashboard_isibleInStorefront() ?? 'Visible on Product Page in Storefront'),
+        m.dashboard_isibleInStorefront() ?? 'Visible on Product Page in Storefront',
         opts.visibleInStorefront.value,
         {
-          negative: (m.dashboard_no() ?? 'No'),
-          positive: (m.dashboard_yes() ?? 'Yes'),
+          negative: m.dashboard_no() ?? 'No',
+          positive: m.dashboard_yes() ?? 'Yes',
         }
       ),
       active: opts.visibleInStorefront.active,

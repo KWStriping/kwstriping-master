@@ -1,17 +1,7 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PriceField from '@tempo/dashboard/components/fields/PriceField';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { ProductChannelListingErrorFragment } from '@tempo/api/generated/graphql';
-import type {
-  ChannelData,
-  ChannelPriceAndPreorderArgs,
-  ChannelPriceArgs,
-} from '@tempo/dashboard/oldSrc/channels/utils';
-import { getFormChannelError, getFormChannelErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getProductErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/product';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
@@ -21,6 +11,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import getProductErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/product';
+import { getFormChannelError, getFormChannelErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import type {
+  ChannelData,
+  ChannelPriceAndPreorderArgs,
+  ChannelPriceArgs,
+} from '@tempo/dashboard/oldSrc/channels/utils';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import PriceField from '@tempo/dashboard/components/fields/PriceField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   () => ({
@@ -87,8 +87,8 @@ const ProductPrice: FC<ProductPriceProps> = (props) => {
           <Typography variant="caption">
             {disabledMessage
               ? m[disabledMessage]
-              : m.e__Igh() ??
-                'Assign this variant to a channel in the product channel manager to define prices'}
+              : (m.e__Igh() ??
+                'Assign this variant to a channel in the product channel manager to define prices')}
           </Typography>
         </CardContent>
       </Card>

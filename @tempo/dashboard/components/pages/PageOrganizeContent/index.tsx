@@ -1,19 +1,18 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { PageDetailsFragment, ErrorFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
-
 import type { PageFormData } from '../PageDetailsPage/form';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
 
 export interface PageOrganizeContentProps {
   canChangeType: boolean;

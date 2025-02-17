@@ -1,5 +1,4 @@
 import type { UrlObject } from 'url';
-import { isExternalURL } from '@tempo/ui/utils/urls';
 import type { TypographyProps } from '@mui/material/Typography';
 import Typography from '@mui/material/Typography';
 
@@ -14,6 +13,7 @@ import type {
   Ref,
 } from 'react';
 import styles from './index.module.css';
+import { isExternalURL } from '@tempo/ui/utils/urls';
 
 type Href = string | UrlObject;
 
@@ -66,7 +66,7 @@ function InnerLink(
           }
         : {}),
     target,
-    rel: rel ?? (href && opensNewTab && isExternalURL(href)) ? 'noopener noreferer' : '',
+    rel: (rel ?? (href && opensNewTab && isExternalURL(href))) ? 'noopener noreferer' : '',
     ...linkProps,
   };
 

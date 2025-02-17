@@ -2,7 +2,6 @@ import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import Grid from '@tempo/ui/components/Grid';
-import AccountGroups from '@tempo/dashboard/components/groups/AccountGroups';
 import { getUserName } from '@tempo/utils/user';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,9 +9,16 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import type {
+  SearchGroupsQuery,
+  StaffErrorFragment,
+  StaffMemberDetailsFragment,
+  UserFragment,
+} from '@tempo/api/generated/graphql';
 import StaffPassword from '../StaffPassword';
 import StaffPreferences from '../StaffPreferences';
 import StaffProperties from '../StaffProperties';
+import AccountGroups from '@tempo/dashboard/components/groups/AccountGroups';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
@@ -20,12 +26,6 @@ import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import Form from '@tempo/dashboard/components/forms/Form';
 import UserStatus from '@tempo/dashboard/components/staff/UserStatus';
-import type {
-  SearchGroupsQuery,
-  StaffErrorFragment,
-  StaffMemberDetailsFragment,
-  UserFragment,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import { getMemberGroups, isMemberActive } from '@tempo/dashboard/oldSrc/staff/utils';

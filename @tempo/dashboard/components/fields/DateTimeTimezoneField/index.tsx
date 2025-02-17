@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import type { DateTimeI } from '@tempo/types/datetime';
 import { joinDateTime, splitDateTime } from '@tempo/utils/datetime';
-import ErrorNoticeBar from '@tempo/dashboard/components/bars/ErrorNoticeBar';
 import TextField from '@mui/material/TextField';
 import type { TextFieldProps } from '@mui/material/TextField';
 import type { ReactNode, FC } from 'react';
 import { useEffect, useState } from 'react';
 
 import styles from './index.module.css';
+import ErrorNoticeBar from '@tempo/dashboard/components/bars/ErrorNoticeBar';
 
 type DateTimeFieldProps = Omit<TextFieldProps, 'label' | 'error'> & {
   onChange: (value: string) => void;

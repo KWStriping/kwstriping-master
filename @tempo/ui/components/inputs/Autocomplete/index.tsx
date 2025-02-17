@@ -1,7 +1,3 @@
-import type { Choice } from '@tempo/ui/components/Filter';
-import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools';
-import type { SyntheticChangeEvent } from '@tempo/ui/utils';
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grow from '@mui/material/Grow';
@@ -15,6 +11,10 @@ import type { UseComboboxGetItemPropsOptions } from 'downshift';
 import { useCombobox } from 'downshift';
 import { useRef, useEffect } from 'react';
 import type { CSSProperties, FC, ReactNode } from 'react';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
+import type { SyntheticChangeEvent } from '@tempo/ui/utils';
+import { isScrolledToBottom, useElementScroll } from '@tempo/ui/components/tools';
+import type { Choice } from '@tempo/ui/components/Filter';
 
 // import useStyles from './styles';
 

@@ -1,16 +1,8 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useQuery } from '@tempo/api/hooks';
-import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
 import { CustomerGiftCardListDocument } from '@tempo/api/generated/graphql';
-import { useCustomerDetails } from '@tempo/dashboard/oldSrc/customers/hooks/useCustomerDetails';
-import GiftCardCreateDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog/GiftCardCreateDialogContent';
-import { getExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/utils';
-import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
-import { getFullName } from '@tempo/dashboard/oldSrc/misc';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { Card, CardActions, Dialog } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
@@ -21,6 +13,14 @@ import type { FC } from 'react';
 import CustomerGiftCardsCardListItem from './CustomerGiftCardsCardListItem';
 import { giftCardCustomerCardMessages as messages } from './messages';
 import { CUSTOMER_GIFT_CARD_LIST_QUERY } from './queries';
+import { getFullName } from '@tempo/dashboard/oldSrc/misc';
+import { giftCardListUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
+import { getExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/utils';
+import GiftCardCreateDialogContent from '@tempo/dashboard/oldSrc/giftCards/GiftCardCreateDialog/GiftCardCreateDialogContent';
+import { useCustomerDetails } from '@tempo/dashboard/oldSrc/customers/hooks/useCustomerDetails';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import CollectionWithDividers from '@tempo/dashboard/components/collections/CollectionWithDividers';
 // import { useCardActionsStyles } from "./styles";
 
 const CustomerGiftCardsCard: FC = () => {

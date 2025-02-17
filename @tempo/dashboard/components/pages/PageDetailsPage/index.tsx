@@ -1,16 +1,7 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
-import VisibilityCard from '@tempo/dashboard/components/cards/VisibilityCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
-import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
 import type {
   PageDetailsFragment,
   PageErrorWithAttributesFragment,
@@ -19,6 +10,22 @@ import type {
   SearchPageKlassesQuery,
   SearchProductsQuery,
 } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import PageInfo from '../PageInfo';
+import PageOrganizeContent from '../PageOrganizeContent';
+import type { PageData, PageUpdateHandlers } from './form';
+import PageForm from './form';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
+import VisibilityCard from '@tempo/dashboard/components/cards/VisibilityCard';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
+import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
 import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import {
@@ -27,14 +34,6 @@ import {
 } from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import type { FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-
-import PageInfo from '../PageInfo';
-import PageOrganizeContent from '../PageOrganizeContent';
-import type { PageData, PageUpdateHandlers } from './form';
-import PageForm from './form';
 
 export interface PageDetailsPageProps {
   loading: boolean;
@@ -137,7 +136,7 @@ const PageDetailsPage: FC<PageDetailsPageProps> = ({
           <Container>
             <Backlink href={'/pages'}>{m.dashboard_pages() ?? 'Pages'}</Backlink>
             <PageHeader
-              title={!pageExists ? m.dashboard_title() ?? 'Create Page' : page?.title}
+              title={!pageExists ? (m.dashboard_title() ?? 'Create Page') : page?.title}
             />
             <Grid>
               <div>

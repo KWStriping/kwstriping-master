@@ -11,7 +11,7 @@ function getHelpModeActions(
   if (query !== '') {
     return [
       {
-        label: (m.dashboard_oResults() ?? 'No Results'),
+        label: m.dashboard_oResults() ?? 'No Results',
         onClick: () => true,
         type: 'action',
       },
@@ -20,7 +20,7 @@ function getHelpModeActions(
 
   return [
     {
-      label: (m.dashboard_elpDefaultMode() ?? 'Search Views and Actions'),
+      label: m.dashboard_elpDefaultMode() ?? 'Search Views and Actions',
       onClick: () => {
         setMode('default');
         return true;
@@ -29,7 +29,7 @@ function getHelpModeActions(
       type: 'action',
     },
     {
-      label: (m.dashboard_elpCommandsMode() ?? 'Search Command'),
+      label: m.dashboard_elpCommandsMode() ?? 'Search Command',
       onClick: () => {
         setMode('commands');
         return true;
@@ -38,7 +38,7 @@ function getHelpModeActions(
       type: 'action',
     },
     {
-      label: (m.dashboard_elpOrdersMode() ?? 'Search Orders'),
+      label: m.dashboard_elpOrdersMode() ?? 'Search Orders',
       onClick: () => {
         setMode('orders');
         return true;
@@ -47,7 +47,7 @@ function getHelpModeActions(
       type: 'action',
     },
     {
-      label: (m.dashboard_elpCustomersMode() ?? 'Search Customers'),
+      label: m.dashboard_elpCustomersMode() ?? 'Search Customers',
       onClick: () => {
         setMode('customers');
         return true;
@@ -56,7 +56,7 @@ function getHelpModeActions(
       type: 'action',
     },
     {
-      label: (m.dashboard_elpCatalogMode() ?? 'Search in Catalog'),
+      label: m.dashboard_elpCatalogMode() ?? 'Search in Catalog',
       onClick: () => {
         setMode('catalog');
         return true;
@@ -65,7 +65,7 @@ function getHelpModeActions(
       type: 'action',
     },
     {
-      label: (m.dashboard_elpMode() ?? 'Display Help'),
+      label: m.dashboard_elpMode() ?? 'Display Help',
       onClick: () => {
         setMode('help');
         return true;

@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
+import { GiftCardUpdateDocument } from '@tempo/api/generated/graphql';
 import { giftCardsListTableMessages as tableMessages } from '../../GiftCardsList/messages';
 import { useDialogFormReset } from '../GiftCardResendCodeDialog/utils';
 import { getGiftCardErrorMessage } from '../messages';
@@ -13,7 +14,6 @@ import useGiftCardDetails from '../providers/GiftCardDetailsProvider/hooks/useGi
 import { updateGiftCardBalanceDialogMessages as messages } from './messages';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import useForm from '@tempo/dashboard/hooks/useForm';
-import { GiftCardUpdateDocument } from '@tempo/api/generated/graphql';
 import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 // import { useUpdateBalanceDialogStyles as useStyles } from "./styles";

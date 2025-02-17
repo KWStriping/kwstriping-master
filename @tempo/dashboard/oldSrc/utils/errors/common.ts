@@ -39,12 +39,12 @@ export function getCommonFormFieldErrorMessage<ErrorCode>(
       case 'GRAPHQL_ERROR':
         return t('dashboard_graphqlError', commonErrorMessages.graphqlError.defaultMessage);
       case 'REQUIRED':
-        return (m.dashboard_requiredField() ?? 'This field is required');
+        return m.dashboard_requiredField() ?? 'This field is required';
       case 'INVALID':
         return t('dashboard_invalid', commonErrorMessages.invalid.defaultMessage);
 
       default:
-        return (m.dashboard_unknownError() ?? 'Unknown error');
+        return m.dashboard_unknownError() ?? 'Unknown error';
     }
   }
 

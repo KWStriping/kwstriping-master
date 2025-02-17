@@ -1,8 +1,7 @@
 import type { VoucherDetailsPageFormData } from '@dashboard/components/VoucherDetailsPage';
 import type { VoucherChannelListingAddInput } from '@tempo/api/generated/graphql';
-import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
-
 import { RequirementsPicker } from './types';
+import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 
 const getChannelDiscountValue = (
   channel: ChannelVoucherData,

@@ -1,11 +1,6 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
-import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
 import { ProductKlassKind } from '@tempo/api/generated/constants';
-import type { UserError } from '@tempo/dashboard/oldSrc/types';
-import { getFieldError } from '@tempo/dashboard/oldSrc/utils/errors';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
@@ -14,6 +9,11 @@ import Typography from '@mui/material/Typography';
 import type { ChangeEvent, FC, ChangeEvent } from 'react';
 
 import { messages } from './messages';
+import { getFieldError } from '@tempo/dashboard/oldSrc/utils/errors';
+import type { UserError } from '@tempo/dashboard/oldSrc/types';
+import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

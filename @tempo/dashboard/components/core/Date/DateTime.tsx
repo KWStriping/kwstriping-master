@@ -1,10 +1,10 @@
 import { Tooltip } from '@tempo/ui/components/Tooltip';
-import { useTimezone } from '@tempo/dashboard/components/core/Timezone';
 import { Temporal, Intl } from '@js-temporal/polyfill';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
 import { useDate } from './DateContext';
+import { useTimezone } from '@tempo/dashboard/components/core/Timezone';
 
 interface FormattedDateTimeProps {
   date: string;

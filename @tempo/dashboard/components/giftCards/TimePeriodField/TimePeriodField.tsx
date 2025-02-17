@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
-import TextWithSelectField from '@tempo/dashboard/components/fields/TextWithSelectField';
 import { TimePeriod } from '@tempo/api/generated/constants';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { FC } from 'react';
+import TextWithSelectField from '@tempo/dashboard/components/fields/TextWithSelectField';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 interface TimePeriodFieldProps {
   change: FormChange;

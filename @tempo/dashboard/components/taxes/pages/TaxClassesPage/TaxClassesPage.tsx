@@ -1,21 +1,11 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { List, ListHeader, ListItem, ListItemCell } from '@tempo/ui/components/list/List';
 import { PageTab, PageTabs } from '@tempo/ui/components/PageTabs';
 import { getById } from '@tempo/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import { parseQuery } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/utils';
-import TaxInput from '@tempo/dashboard/components/taxes/TaxInput';
 import type { TaxClassFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import { taxesMessages } from '@tempo/dashboard/oldSrc/taxes/messages';
-import type { TaxClassesPageFormData } from '@tempo/dashboard/oldSrc/taxes/types';
-import { useAutofocus } from '@tempo/dashboard/oldSrc/taxes/utils/useAutofocus';
 import { isLastElement } from '@tempo/dashboard/oldSrc/taxes/utils/utils';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getTaxesErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/taxes';
@@ -33,6 +23,16 @@ import { Fragment, useMemo, useState } from 'react';
 
 import TaxClassesForm from './form';
 import TaxClassesMenu from './TaxClassesMenu';
+import { useAutofocus } from '@tempo/dashboard/oldSrc/taxes/utils/useAutofocus';
+import type { TaxClassesPageFormData } from '@tempo/dashboard/oldSrc/taxes/types';
+import { taxesMessages } from '@tempo/dashboard/oldSrc/taxes/messages';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import TaxInput from '@tempo/dashboard/components/taxes/TaxInput';
+import { parseQuery } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/utils';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface TaxClassesPageProps {
   taxClasses: TaxClassFragment[] | undefined;

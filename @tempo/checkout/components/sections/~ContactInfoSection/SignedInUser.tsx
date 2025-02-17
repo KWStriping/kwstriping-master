@@ -9,10 +9,10 @@ import { localeToLanguageCode } from '@tempo/utils';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { contactMessages } from './messages';
 import { SignInFormContainer } from './SignInFormContainer';
 import type { SignInFormContainerProps } from './SignInFormContainer';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 interface SignedInUserProps extends Pick<SignInFormContainerProps, 'onSectionChange'> {
   onSignOutSuccess: () => void;

@@ -2,8 +2,6 @@ import * as m from '@paraglide/messages';
 import Button from '@tempo/ui/components/buttons/Button';
 import { DialogHeader } from '@tempo/ui/components/dialog/DialogHeader';
 import type { CountryFragment } from '@tempo/api/generated/graphql';
-import { useLocalSearch } from '@tempo/dashboard/hooks/useLocalSearch';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Dialog,
@@ -17,6 +15,8 @@ import {
 } from '@mui/material';
 import type { FC } from 'react';
 import { Fragment, useState } from 'react';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import { useLocalSearch } from '@tempo/dashboard/hooks/useLocalSearch';
 
 interface TaxCountryDialogProps {
   open: boolean;

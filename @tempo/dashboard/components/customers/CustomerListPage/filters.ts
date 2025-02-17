@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
-import type { IFilter } from '@tempo/dashboard/components/core/Filter';
-import { hasPermissions } from '@tempo/dashboard/components/core/RequirePermissions';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type { UserFragment } from '@tempo/api/generated/graphql';
+import type { IFilter } from '@tempo/dashboard/components/core/Filter';
+import { hasPermissions } from '@tempo/dashboard/components/core/RequirePermissions';
 import type { FilterOpts, MinMax } from '@tempo/dashboard/oldSrc/types';
 import { createDateField, createNumberField } from '@tempo/dashboard/oldSrc/utils/filters/fields';
 
@@ -24,7 +24,7 @@ export function useFilterStructure(
     {
       ...createDateField(
         CustomerFilterKeys.joined,
-        (m.dashboard_oinDate() ?? 'Join Date'),
+        m.dashboard_oinDate() ?? 'Join Date',
         opts.joined.value
       ),
       active: opts.joined.active,
@@ -32,7 +32,7 @@ export function useFilterStructure(
     {
       ...createNumberField(
         CustomerFilterKeys.numberOfOrders,
-        (m.dashboard_umberOfOrders() ?? 'Number of Orders'),
+        m.dashboard_umberOfOrders() ?? 'Number of Orders',
         opts.numberOfOrders.value
       ),
       active: opts.numberOfOrders.active,

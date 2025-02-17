@@ -1,15 +1,15 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { FC, ChangeEvent } from 'react';
+import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 const messages = {
   descriptionCharacterLimit: {

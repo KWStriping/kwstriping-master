@@ -6,13 +6,16 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
+import { GiftCardAddNoteDocument, GiftCardEventsEnum } from '@tempo/api/generated/constants';
 import { GIFT_CARD_DETAILS_QUERY } from '../queries';
 import GiftCardTimelineEvent from './GiftCardTimelineEvent';
 import useGiftCardHistoryEvents from './hooks/useGiftCardHistoryEvents';
 import { giftCardHistoryMessages as messages } from './messages';
-import { GiftCardAddNoteDocument, GiftCardEventsEnum } from '@tempo/api/generated/constants';
 import Form from '@tempo/dashboard/components/forms/Form';
-import Timeline, { TimelineAddNote, TimelineNote } from '@tempo/dashboard/components/core/Timeline';
+import Timeline, {
+  TimelineAddNote,
+  TimelineNote,
+} from '@tempo/dashboard/components/core/Timeline';
 
 interface FormData {
   message: string;

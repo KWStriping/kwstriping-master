@@ -23,17 +23,17 @@ export const getProductKindOpts = (
       case ProductKlassKind.GiftCard:
         return {
           ...kind,
-          label: (m.dashboard_giftCardLabel() ?? 'Gift Card'),
+          label: m.dashboard_giftCardLabel() ?? 'Gift Card',
         };
       case ProductKlassKind.Normal:
         return {
           ...kind,
-          label: (m.dashboard_normalLabel() ?? 'Normal'),
+          label: m.dashboard_normalLabel() ?? 'Normal',
         };
       default:
         return {
           ...kind,
-          label: (m.dashboard_normalLabel() ?? 'Normal'),
+          label: m.dashboard_normalLabel() ?? 'Normal',
         };
     }
   });

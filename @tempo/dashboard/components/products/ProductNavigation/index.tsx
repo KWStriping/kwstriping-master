@@ -1,20 +1,26 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { SortableTableBody, SortableTableRow } from '@tempo/dashboard/components/tables/SortableTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type { ProductCreateDataQuery, ProductDetailsQuery } from '@tempo/api/generated/graphql';
 
 import { renderCollection } from '@tempo/ui/utils';
-import { productVariantAddUrl, productVariantEditUrl } from '@tempo/dashboard/oldSrc/products/urls';
-import type { ReorderAction } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import type { ReorderAction } from '@tempo/dashboard/oldSrc/types';
+import {
+  productVariantAddUrl,
+  productVariantEditUrl,
+} from '@tempo/dashboard/oldSrc/products/urls';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import {
+  SortableTableBody,
+  SortableTableRow,
+} from '@tempo/dashboard/components/tables/SortableTable';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface ProductNavigationProps {
   current?: string;

@@ -1,15 +1,7 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
-import { ProductDetailsChannelsAvailabilityCard } from '@tempo/dashboard/components/products/ProductChannels/ChannelsAvailabilityCard';
 import { ProductAttributeScope } from '@tempo/api/generated/constants';
 import type {
   ProductErrorWithAttributesFragment,
@@ -19,11 +11,6 @@ import type {
   SearchProductsQuery,
   SearchWarehousesQuery,
 } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import {
-  getReferenceAttributeEntityTypeFromAttribute,
-  mergeValues,
-} from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import type { FetchMoreProps, RelayToFlat, ReorderAction } from '@tempo/dashboard/oldSrc/types';
 import Container from '@mui/material/Container';
@@ -40,6 +27,19 @@ import ProductNavigation from '../ProductNavigation';
 import ProductPrice from '../ProductPrice';
 import type { ProductCreateData, ProductCreateHandlers } from './form';
 import ProductCreateForm from './form';
+import {
+  getReferenceAttributeEntityTypeFromAttribute,
+  mergeValues,
+} from '@tempo/dashboard/oldSrc/attributes/utils/data';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import { ProductDetailsChannelsAvailabilityCard } from '@tempo/dashboard/components/products/ProductChannels/ChannelsAvailabilityCard';
+import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 
 const messages = {
   attributesHeader: {

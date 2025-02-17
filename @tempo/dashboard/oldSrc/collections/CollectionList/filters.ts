@@ -1,10 +1,13 @@
 import { findValueInEnum } from '@tempo/utils/enums';
-import type { CollectionListFilterOpts } from '@tempo/dashboard/components/collections/CollectionListPage';
-import { CollectionFilterKeys } from '@tempo/dashboard/components/collections/CollectionListPage';
-import type { FilterElement, FilterElementRegular } from '@tempo/dashboard/components/core/Filter';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import { CollectionPublished } from '@tempo/api/generated/constants';
 import type { CollectionFilter } from '@tempo/api/generated/graphql';
+import type { CollectionListFilterOpts } from '@tempo/dashboard/components/collections/CollectionListPage';
+import { CollectionFilterKeys } from '@tempo/dashboard/components/collections/CollectionListPage';
+import type {
+  FilterElement,
+  FilterElementRegular,
+} from '@tempo/dashboard/components/core/Filter';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type {
   CollectionListUrlFilters,
   CollectionListUrlQueryParams,

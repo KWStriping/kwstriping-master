@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
+import { FileUploadDocument } from '@tempo/api/generated/graphql';
+import type { FC } from 'react';
+import { useState } from 'react';
 import FileUploadField from '@tempo/dashboard/components/fields/FileUploadField';
 import { RadioGroupField } from '@tempo/dashboard/components/fields/RadioGroupField';
 import { ColorPicker } from '@tempo/dashboard/components/widgets/ColorPicker';
-import { FileUploadDocument } from '@tempo/api/generated/graphql';
 import type { UseFormResult } from '@tempo/dashboard/hooks/useForm';
 import type { ValueEditDialogFormData } from '@tempo/dashboard/oldSrc/attributes/utils/data';
-import type { FC } from 'react';
-import { useState } from 'react';
 
 type AttributeSwatchFieldProps<T> = Pick<
   UseFormResult<T>,

@@ -52,10 +52,7 @@ export const permissionsDiff = (
 /**
  * Return lists of users which have to be added and removed from group.
  */
-export const usersDiff = (
-  group: GroupDetailsFragment,
-  formData: GroupDetailsPageFormData
-) => {
+export const usersDiff = (group: GroupDetailsFragment, formData: GroupDetailsPageFormData) => {
   const newUsers = formData.users.map((u) => u.id);
   const oldUsers = group?.users.map((u) => u.id);
 
@@ -68,10 +65,7 @@ export const usersDiff = (
 /**
  * Permissions are exceeded when group has permission which is not handled by user
  */
-export const arePermissionsExceeded = (
-  group: GroupDetailsFragment,
-  user: UserFragment
-) => {
+export const arePermissionsExceeded = (group: GroupDetailsFragment, user: UserFragment) => {
   const groupPermissions = extractPermissionCodes(group);
   const userPermissions = user.userPermissions.map((p) => p.code);
   return difference(groupPermissions, userPermissions).length > 0;

@@ -1,4 +1,3 @@
-import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
 import urlJoin from 'url-join';
 
 import type {
@@ -10,6 +9,7 @@ import type {
   Sort,
   TabActionDialog,
 } from '../types';
+import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
 
 const collectionSectionUrl = '/collections/';
 

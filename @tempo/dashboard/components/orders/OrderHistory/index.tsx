@@ -1,12 +1,4 @@
 import * as m from '@paraglide/messages';
-import {
-  Timeline,
-  TimelineAddNote,
-  TimelineEvent,
-  TimelineNote,
-} from '@tempo/dashboard/components/core/Timeline';
-import type { TimelineEventProps } from '@tempo/dashboard/components/core/Timeline';
-import Form from '@tempo/dashboard/components/forms/Form';
 import type { OrderEventFragment } from '@tempo/api/generated/graphql';
 import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
@@ -17,6 +9,14 @@ import LinkedTimelineEvent from './LinkedTimelineEvent';
 import { getEventMessage } from './messages';
 import { useStyles } from './styles';
 import { getEventSecondaryTitle, isTimelineEventOfType } from './utils';
+import Form from '@tempo/dashboard/components/forms/Form';
+import type { TimelineEventProps } from '@tempo/dashboard/components/core/Timeline';
+import {
+  Timeline,
+  TimelineAddNote,
+  TimelineEvent,
+  TimelineNote,
+} from '@tempo/dashboard/components/core/Timeline';
 
 export interface FormData {
   message: string;

@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import { emptyCartLabels, emptyCartMessages } from './messages';
 
 export const EmptyCartPage = () => {
-  // eslint-disable-next-line no-restricted-globals
   const goBack = () => history.back();
 
   return (

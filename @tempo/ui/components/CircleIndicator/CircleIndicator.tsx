@@ -1,8 +1,8 @@
-import type { PillColor } from '@tempo/ui/components/pill/Pill';
-import { CircleIndicatorIcon, SuccessCircleIndicatorIcon } from '@tempo/ui/icons';
 import { useColorScheme } from '@mui/material/styles';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import { CircleIndicatorIcon, SuccessCircleIndicatorIcon } from '@tempo/ui/icons';
+import type { PillColor } from '@tempo/ui/components/pill/Pill';
 
 // import useStyles from './styles';
 

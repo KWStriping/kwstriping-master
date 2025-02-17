@@ -1,7 +1,7 @@
 import { findValueInEnum } from '@tempo/utils/enums';
+import { OrderingDirection } from '@tempo/api/generated/constants';
 import type { Sort } from '../types';
 import type { TableCellHeaderArrowDirection } from '@tempo/dashboard/components/tables/TableCellHeader';
-import { OrderingDirection } from '@tempo/api/generated/constants';
 
 export function getSortUrlVariables<TSortKey extends string>(
   field: TSortKey,

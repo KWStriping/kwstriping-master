@@ -1,9 +1,9 @@
-import type { IMoney } from '@tempo/dashboard/components/core/Money';
-import Money from '@tempo/dashboard/components/core/Money';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import styles from './index.module.css';
+import Money from '@tempo/dashboard/components/core/Money';
+import type { IMoney } from '@tempo/dashboard/components/core/Money';
 
 interface DiscountedPriceProps {
   regularPrice: IMoney;

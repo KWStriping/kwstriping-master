@@ -1,13 +1,3 @@
-import { subtractMoney } from '@tempo/dashboard/components/core/Money';
-import type { IMoney } from '@tempo/dashboard/components/core/Money';
-import type {
-  LineItemData,
-  OrderReturnFormData,
-} from '@tempo/dashboard/components/orders/OrderReturnPage/form';
-import {
-  getAllOrderFulfilledLines,
-  getAllOrderWaitingLines,
-} from '@tempo/dashboard/components/orders/OrderReturnPage/utils';
 import type {
   AddressFragment,
   AddressUpdateInput,
@@ -22,8 +12,18 @@ import type {
 } from '@tempo/api/generated/graphql';
 import type { CountryCode } from '@tempo/api/generated/constants';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
-import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
 import { getById } from '@tempo/utils';
+import { subtractMoney } from '@tempo/dashboard/components/core/Money';
+import type { IMoney } from '@tempo/dashboard/components/core/Money';
+import type {
+  LineItemData,
+  OrderReturnFormData,
+} from '@tempo/dashboard/components/orders/OrderReturnPage/form';
+import {
+  getAllOrderFulfilledLines,
+  getAllOrderWaitingLines,
+} from '@tempo/dashboard/components/orders/OrderReturnPage/utils';
+import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
 
 export type OrderWithTotalAndTotalCaptured = Pick<
   OrderRefundDataQuery['order'],
@@ -105,15 +105,15 @@ const selectItemPriceAndQuantity = (
   }
   return isFulfillment
     ? getItemPriceAndQuantity({
-      id,
-      itemsQuantities: fulfilledItemsQuantities,
-      orderLines: getAllOrderFulfilledLines(order),
-    })
+        id,
+        itemsQuantities: fulfilledItemsQuantities,
+        orderLines: getAllOrderFulfilledLines(order),
+      })
     : getItemPriceAndQuantity({
-      id,
-      itemsQuantities: unfulfilledItemsQuantities,
-      orderLines: order.lines,
-    });
+        id,
+        itemsQuantities: unfulfilledItemsQuantities,
+        orderLines: order.lines,
+      });
 };
 
 export const getReplacedProductsAmount = (
@@ -265,7 +265,7 @@ export function mergeRepeatedOrderLines(
 }
 
 export function addressToAddressInput<T>(address: T & AddressFragment): AddressUpdateInput {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line ts/no-unused-vars
   const { id, __typename, ...rest } = address;
   return {
     ...rest,

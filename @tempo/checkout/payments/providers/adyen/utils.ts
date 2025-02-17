@@ -9,12 +9,12 @@ import type {
 } from '@tempo/api/generated/graphql';
 import currency from 'currency.js';
 import invariant from 'ts-invariant';
+import { failedEvents } from './consts';
 import {
   getTransactionAmountGetterAsMoney,
   getIntegerAmountFromTempo,
   getTempoAmountFromInteger,
 } from '@tempo/checkout/payments/utils';
-import { failedEvents } from './consts';
 
 const OperationsEnum = Types.notification.NotificationRequestItem.OperationsEnum;
 const EventCodeEnum = Types.notification.NotificationRequestItem.EventCodeEnum;

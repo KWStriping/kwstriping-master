@@ -1,4 +1,3 @@
-
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -24,9 +23,9 @@ function useOnSetDefaultVariant(productId: string, variant: Node) {
         );
         if (defaultVariant) {
           notify(
-            (m.dashboard_SQ_Ge({
+            m.dashboard_SQ_Ge({
               name: defaultVariant.name,
-            }) ?? 'Variant {name} has been set as default.'),
+            }) ?? 'Variant {name} has been set as default.',
             {
               type: 'success',
             }

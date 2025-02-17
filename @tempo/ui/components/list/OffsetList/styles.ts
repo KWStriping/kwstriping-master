@@ -4,6 +4,7 @@ import type {
 } from '@tempo/ui/components/list/BaseList';
 import { makeStyles } from '@tempo/ui/theme/styles';
 
+// eslint-disable-next-line ts/no-empty-object-type
 export const useStyles = makeStyles<{}, BaseListItemCellClassKey | BaseListItemClassKey | 'body'>(
   (theme) => {
     const outerPadding = {

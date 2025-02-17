@@ -1,9 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": [
-    "apps/**/*",
     "@tempo/**/*",
-    "scripts/*"
+    "app/**/*",
+    "scripts/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
@@ -54,6 +55,9 @@
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
       "@tempo/api": [
+        "@tempo/api"
+      ],
+      "@tempo/api/*": [
         "@tempo/api/*"
       ],
       "@tempo/blog": [
@@ -78,11 +82,16 @@
         "@tempo/utils/*"
       ],
       "@paraglide/*": [
-        "apps/kwstriping/paraglide/*"
+        "paraglide/*"
       ],
       "@kwstriping/*": [
-        "apps/kwstriping/*"
+        "*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }

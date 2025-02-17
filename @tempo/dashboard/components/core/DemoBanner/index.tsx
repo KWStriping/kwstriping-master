@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import { useTranslation, Trans } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Link from '@tempo/ui/components/Link';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';

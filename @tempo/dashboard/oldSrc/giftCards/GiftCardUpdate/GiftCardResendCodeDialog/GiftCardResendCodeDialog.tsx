@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import type { ChangeEvent, FC } from 'react';
 
+import { ChannelsDocument, GiftCardResendDocument } from '@tempo/api/generated/graphql';
 import { getGiftCardErrorMessage } from '../messages';
 import useGiftCardDetails from '../providers/GiftCardDetailsProvider/hooks/useGiftCardDetails';
 import { resendGiftCardCodeDialogMessages as messages } from './messages';
@@ -17,7 +18,6 @@ import { useDialogFormReset } from './utils';
 import { mapSlugNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import useForm from '@tempo/dashboard/hooks/useForm';
-import { ChannelsDocument, GiftCardResendDocument } from '@tempo/api/generated/graphql';
 import { useGiftCardDeleteDialogContentStyles as useProgressStyles } from '@tempo/dashboard/components/giftCards/GiftCardDeleteDialog/styles';
 import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';

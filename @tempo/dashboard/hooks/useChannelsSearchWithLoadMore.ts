@@ -1,11 +1,11 @@
 import { useQuery } from '@tempo/api/hooks';
 import { BaseChannelsDocument } from '@tempo/api/generated/graphql';
-import type { ChannelsWithLoadMoreProps } from '@tempo/dashboard/hooks/useChannelsSearch';
-import { useChannelsSearch } from '@tempo/dashboard/hooks/useChannelsSearch';
 import chunk from 'lodash-es/chunk';
 import compact from 'lodash-es/compact';
 import concat from 'lodash-es/concat';
 import { useEffect, useState } from 'react';
+import { useChannelsSearch } from '@tempo/dashboard/hooks/useChannelsSearch';
+import type { ChannelsWithLoadMoreProps } from '@tempo/dashboard/hooks/useChannelsSearch';
 
 const DEFAULT_ITEMS_PER_PAGE = 6;
 const INITIAL_INDEX = 0;

@@ -1,6 +1,6 @@
+import type { TooltipProps } from './Tooltip';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import type { Theme } from '@tempo/ui/theme/types';
-import type { TooltipProps } from './Tooltip';
 
 type Side = 'top' | 'right' | 'bottom' | 'left';
 

@@ -66,7 +66,7 @@ export const useChannelPaymentOptionsList = (
       const activeProviderId =
         channelActiveProviders?.[method.id as keyof typeof channelActiveProviders] ?? null;
       const activeProvider = activeProviderId
-        ? findById(methodProviders, activeProviderId) ?? null
+        ? (findById(methodProviders, activeProviderId) ?? null)
         : null;
 
       return {

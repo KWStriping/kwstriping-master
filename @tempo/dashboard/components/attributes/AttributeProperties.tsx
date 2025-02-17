@@ -1,13 +1,6 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import ControlledSwitch from '@tempo/dashboard/components/widgets/ControlledSwitch';
 import { AttributeType } from '@tempo/api/generated/constants';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
-import { ATTRIBUTE_TYPES_WITH_CONFIGURABLE_FACED_NAVIGATION } from '@tempo/dashboard/oldSrc/attributes/utils/data';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
@@ -15,6 +8,13 @@ import Typography from '@mui/material/Typography';
 import type { FC, ChangeEvent } from 'react';
 
 import type { AttributePageFormData } from '../AttributePage';
+import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import { ATTRIBUTE_TYPES_WITH_CONFIGURABLE_FACED_NAVIGATION } from '@tempo/dashboard/oldSrc/attributes/utils/data';
+import ControlledSwitch from '@tempo/dashboard/components/widgets/ControlledSwitch';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const messages = {
   availableInGrid: {

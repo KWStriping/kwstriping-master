@@ -1,17 +1,17 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { FC } from 'react';
 import { useState } from 'react';
-import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
-import CardMenu from '@tempo/dashboard/components/core/CardMenu';
 import type { CustomerGiftCardFragment } from '@tempo/api/generated/graphql';
-import { giftCardsListTableMessages } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/messages';
-import useGiftCardActivateToggle from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/GiftCardUpdatePageHeader/hooks/useGiftCardActivateToggle';
-import type { ExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/types';
 import GiftCardStatusChip from '../GiftCardStatusChip/GiftCardStatusChip';
 import useGiftCardSingleDelete from '../GiftCardDeleteDialog/useGiftCardSingleDelete';
 import GiftCardDeleteDialogContent from '../GiftCardDeleteDialog/GiftCardDeleteDialogContent';
 import { CUSTOMER_GIFT_CARD_LIST_QUERY } from './queries';
+import type { CardMenuItem } from '@tempo/dashboard/components/core/CardMenu';
+import CardMenu from '@tempo/dashboard/components/core/CardMenu';
+import { giftCardsListTableMessages } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/messages';
+import useGiftCardActivateToggle from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/GiftCardUpdatePageHeader/hooks/useGiftCardActivateToggle';
+import type { ExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/types';
 
 // import { useListWrapperStyles } from "./styles";
 

@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { ChangeEvent, FC } from 'react';
 
 import type { OrderSettingsFormData } from '../OrderSettingsPage/form';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface OrderFulfillmentSettingsProps {
   data: OrderSettingsFormData;

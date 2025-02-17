@@ -3,13 +3,12 @@ import { score } from 'fuzzaldrin';
 import type { NextRouter } from 'next/router';
 import type { TFunction } from '@tempo/next/i18n';
 import type { SearchCatalogQuery } from '@tempo/api/generated/graphql';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
+import type { QuickSearchAction, QuickSearchActionInput } from '../types';
+import { sortScores } from './utils';
 import { categoryUrl } from '@tempo/dashboard/oldSrc/categories/urls';
 import { collectionUrl } from '@tempo/dashboard/oldSrc/collections/urls';
 import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-
-import type { QuickSearchAction, QuickSearchActionInput } from '../types';
-import { sortScores } from './utils';
 
 const maxActions = 5;
 
@@ -21,7 +20,7 @@ export function searchInCatalog(
 ): QuickSearchAction[] {
   const categories: QuickSearchActionInput[] = (mapEdgesToItems(catalog?.categories) || [])
     .map<QuickSearchActionInput>((category) => ({
-      caption: (m.dashboard_category() ?? 'Category'),
+      caption: m.dashboard_category() ?? 'Category',
       label: category.name,
       onClick: () => {
         void router.push(categoryUrl(category.id));
@@ -35,7 +34,7 @@ export function searchInCatalog(
 
   const collections: QuickSearchActionInput[] = (mapEdgesToItems(catalog?.collections) || [])
     .map<QuickSearchActionInput>((collection) => ({
-      caption: (m.dashboard_collection() ?? 'Collection'),
+      caption: m.dashboard_collection() ?? 'Collection',
       label: collection.name,
       onClick: () => {
         void router.push(collectionUrl(collection.id));
@@ -49,7 +48,7 @@ export function searchInCatalog(
 
   const products: QuickSearchActionInput[] = (mapEdgesToItems(catalog?.products) || [])
     .map<QuickSearchActionInput>((product) => ({
-      caption: (m.dashboard_product() ?? 'Product'),
+      caption: m.dashboard_product() ?? 'Product',
       extraInfo: product.category.name,
       label: product.name,
       onClick: () => {

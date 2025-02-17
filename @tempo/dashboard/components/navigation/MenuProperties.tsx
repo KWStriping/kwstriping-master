@@ -3,12 +3,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { MenuErrorFragment } from '@tempo/api/generated/graphql';
+import type { MenuDetailsFormData } from '../MenuDetailsPage';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import getMenuErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/menu';
-
-import type { MenuDetailsFormData } from '../MenuDetailsPage';
 
 export interface MenuPropertiesProps {
   data: MenuDetailsFormData;

@@ -1,6 +1,6 @@
 import * as m from '@paraglide/messages';
-import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import { ProductKlassConfigurable } from '@tempo/api/generated/constants';
+import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { FilterOpts } from '@tempo/dashboard/oldSrc/types';
 import { createOptionsField } from '@tempo/dashboard/oldSrc/utils/filters/fields';
 
@@ -44,16 +44,16 @@ export function useFilterStructure(
     {
       ...createOptionsField(
         ProductKlassFilterKeys.configurable,
-        (m.dashboard_configurable() ?? 'Configurable'),
+        m.dashboard_configurable() ?? 'Configurable',
         [opts.configurable.value],
         false,
         [
           {
-            label: (m.dashboard_yes() ?? 'Yes'),
+            label: m.dashboard_yes() ?? 'Yes',
             value: ProductKlassConfigurable.Configurable,
           },
           {
-            label: (m.dashboard_no() ?? 'No'),
+            label: m.dashboard_no() ?? 'No',
             value: ProductKlassConfigurable.Simple,
           },
         ]
@@ -63,16 +63,16 @@ export function useFilterStructure(
     {
       ...createOptionsField(
         ProductKlassFilterKeys.type,
-        (m.dashboard_type() ?? 'Type'),
+        m.dashboard_type() ?? 'Type',
         [opts.type.value],
         false,
         [
           {
-            label: (m.dashboard_igital() ?? 'Digital'),
+            label: m.dashboard_igital() ?? 'Digital',
             value: 'DIGITAL',
           },
           {
-            label: (m.dashboard_shippable() ?? 'Shippable'),
+            label: m.dashboard_shippable() ?? 'Shippable',
             value: 'SHIPPABLE',
           },
         ]

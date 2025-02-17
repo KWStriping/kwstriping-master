@@ -42,16 +42,16 @@ interface CustomPaletteOptions {
 }
 
 declare module '@mui/material/styles' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface SimplePaletteColorOptions extends CustomSimplePaletteColorOptions {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type SimplePaletteColorOptions = CustomSimplePaletteColorOptions;
 
   type CustomPaletteColorOptions = SimplePaletteColorOptions & ColorPartial;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PaletteColorOptions extends CustomPaletteColorOptions {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type PaletteColorOptions = CustomPaletteColorOptions;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PaletteColor extends Required<CustomPaletteColorOptions> {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type PaletteColor = Required<CustomPaletteColorOptions>;
 
   /* MUI -----------------------
   export interface PaletteOptions {
@@ -74,14 +74,14 @@ declare module '@mui/material/styles' {
   }
   */
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface PaletteOptions extends CustomPaletteOptions {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type PaletteOptions = CustomPaletteOptions;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface Palette extends Required<PaletteOptions> {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type Palette = Required<PaletteOptions>;
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface Theme extends CssVarsTheme {}
+  // eslint-disable-next-line ts/no-empty-interface
+  type Theme = CssVarsTheme;
 }
 
 export type SimplePaletteColorOptions = MuiSimplePaletteColorOptions &
@@ -89,16 +89,16 @@ export type SimplePaletteColorOptions = MuiSimplePaletteColorOptions &
 
 export type PaletteColorOptions = SimplePaletteColorOptions & ColorPartial;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// eslint-disable-next-line ts/no-empty-interface
 export interface PaletteOptions extends MuiPaletteOptions, CustomPaletteOptions {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+// eslint-disable-next-line ts/no-empty-interface
 export interface PaletteColor extends MuiPaletteColor, Required<PaletteColorOptions> {}
 
 export type { ColorPartial, SupportedColorScheme };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Palette extends Required<PaletteOptions> {}
+// eslint-disable-next-line ts/no-empty-interface
+export type Palette = Required<PaletteOptions>;
 
 type MuiCssVarsTheme = Omit<MuiBaseTheme, 'palette'> & CssVarsTheme;
 
@@ -111,9 +111,39 @@ export interface Theme extends MuiCssVarsTheme {
 
 // prettier-multiline-arrays-set-line-pattern: 11
 export const REQUIRED_SPACING_STEPS = [
-  '0', '0.5', '1', '1.5', '2', '2.5', '3', '3.5', '4', '5', '6',
-  '7', '8', '9', '10', '12', '14', '16', '20', '24', '28', '32',
-  '36', '40', '44', '48', '52', '56', '60', '64', '72', '80', '96',
+  '0',
+  '0.5',
+  '1',
+  '1.5',
+  '2',
+  '2.5',
+  '3',
+  '3.5',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '12',
+  '14',
+  '16',
+  '20',
+  '24',
+  '28',
+  '32',
+  '36',
+  '40',
+  '44',
+  '48',
+  '52',
+  '56',
+  '60',
+  '64',
+  '72',
+  '80',
+  '96',
 ] as const;
 
 export type SpacingStep = (typeof REQUIRED_SPACING_STEPS)[number];

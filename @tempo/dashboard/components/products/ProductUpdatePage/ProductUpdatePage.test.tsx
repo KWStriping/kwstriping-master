@@ -11,7 +11,8 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import ProductUpdatePage, { ProductUpdatePageProps } from './ProductUpdatePage';
+import type { ProductUpdatePageProps } from './ProductUpdatePage';
+import ProductUpdatePage from './ProductUpdatePage';
 
 const product = productFixture(placeholderImage);
 

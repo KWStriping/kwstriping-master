@@ -14,12 +14,12 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import type { GroupMemberFragment } from '@tempo/api/generated/graphql';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
-import type { GroupMemberFragment } from '@tempo/api/generated/graphql';
 import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
 import { sortMembers } from '@tempo/dashboard/oldSrc/groups/sort';
 import { MembersListUrlOrdering } from '@tempo/dashboard/oldSrc/groups/urls';
@@ -213,9 +213,9 @@ const GroupMemberList: FC<GroupMemberListProps> = (props) => {
                         {!user ? (
                           <Skeleton />
                         ) : user.isActive ? (
-                          m.dashboard_staffMemberStatus_active() ?? 'Active'
+                          (m.dashboard_staffMemberStatus_active() ?? 'Active')
                         ) : (
-                          m.dashboard_staffMemberStatus_inactive() ?? 'Inactive'
+                          (m.dashboard_staffMemberStatus_inactive() ?? 'Inactive')
                         )}
                       </Typography>
                     </TableCell>

@@ -1,14 +1,14 @@
 import * as m from '@paraglide/messages';
 import { getById } from '@tempo/utils';
-import type { ActionDialogProps } from '@tempo/dashboard/components/dialogs/ActionDialog';
-import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
-import DeleteWarningDialogConsentContent from '@tempo/dashboard/components/dialogs/TypeDeleteWarningDialog/DeleteWarningDialogConsentContent';
 import type { GiftCardDataFragment } from '@tempo/api/generated/graphql';
-import type { GiftCardsListConsumerProps } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/providers/GiftCardListProvider';
-import type { ExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/types';
 import { CircularProgress, DialogContentText } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import type { ActionDialogProps } from '@tempo/dashboard/components/dialogs/ActionDialog';
+import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
+import DeleteWarningDialogConsentContent from '@tempo/dashboard/components/dialogs/TypeDeleteWarningDialog/DeleteWarningDialogConsentContent';
+import type { GiftCardsListConsumerProps } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/providers/GiftCardListProvider';
+import type { ExtendedGiftCard } from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/types';
 
 /// / import { useGiftCardDeleteDialogContentStyles as useStyles } from "./styles";
 

@@ -1,6 +1,9 @@
+import type { CollectionDetailsFragment } from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import { useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
 import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
-import type { CollectionDetailsFragment } from '@tempo/api/generated/graphql';
 import type { CommonUseFormResultWithHandlers, FormChange } from '@tempo/dashboard/hooks/useForm';
 import useForm from '@tempo/dashboard/hooks/useForm';
 import useHandleFormSubmit from '@tempo/dashboard/hooks/useHandleFormSubmit';
@@ -13,9 +16,6 @@ import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/use
 import type { RichTextContextValues } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import { RichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import useRichText from '@tempo/dashboard/oldSrc/utils/richText/useRichText';
-import type { OutputData } from '@editorjs/editorjs';
-import { useEffect } from 'react';
-import type { FC, ReactNode } from 'react';
 
 export interface CollectionUpdateFormData extends MetadataFormData {
   backgroundImageAlt: string;

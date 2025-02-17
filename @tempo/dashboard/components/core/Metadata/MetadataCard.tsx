@@ -1,10 +1,8 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { MetadataInput } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import DeleteIcon from '@mui/icons-material/Delete';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import {
@@ -26,6 +24,8 @@ import { useEffect, useState, useRef } from 'react';
 
 import styles from './index.module.css';
 import { EventDataAction, EventDataField } from './types';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface MetadataCardProps {
   data: MetadataInput[];
@@ -61,8 +61,8 @@ export const MetadataCard: FC<MetadataCardProps> = ({ data, isPrivate, onChange 
         title={
           <>
             {isPrivate
-              ? m.dashboard_THnjq() ?? 'Private Metadata'
-              : m.dashboard_cI() + Zh ?? 'Metadata'}
+              ? (m.dashboard_THnjq() ?? 'Private Metadata')
+              : (m.dashboard_cI() + Zh ?? 'Metadata')}
             <IconButton
               className={clsx(styles.expandBtn, expanded && styles.rotate)}
               hoverOutline={false}

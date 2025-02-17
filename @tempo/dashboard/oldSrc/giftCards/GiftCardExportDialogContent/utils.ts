@@ -1,5 +1,5 @@
-import type { ExportSettingsFormData } from '@tempo/dashboard/components/products/ProductExportDialog/types';
 import { ExportScope } from '@tempo/api/generated/graphql';
+import type { ExportSettingsFormData } from '@tempo/dashboard/components/products/ProductExportDialog/types';
 
 interface ExportGiftCardsInputProps {
   ids: string[] | null;

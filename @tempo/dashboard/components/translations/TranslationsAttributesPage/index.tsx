@@ -1,11 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
+import { LanguageCode } from '@tempo/api/generated/constants';
+import type { AttributeTranslationDetailsFragment } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import type { FC } from 'react';
+import TranslationFields from '../TranslationFields';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { ListSettingsUpdate } from '@tempo/dashboard/components/tables/TablePagination';
 import LanguageSwitch from '@tempo/dashboard/components/widgets/LanguageSwitch';
-import { LanguageCode } from '@tempo/api/generated/constants';
-import type { AttributeTranslationDetailsFragment } from '@tempo/api/generated/graphql';
 import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 import type { TranslationsEntitiesPageProps } from '@tempo/dashboard/oldSrc/translations/types';
 import {
@@ -15,10 +18,6 @@ import {
 } from '@tempo/dashboard/oldSrc/translations/urls';
 import { getTranslationFields } from '@tempo/dashboard/oldSrc/translations/utils';
 import type { ListSettings } from '@tempo/dashboard/oldSrc/types';
-import Container from '@mui/material/Container';
-import type { FC } from 'react';
-
-import TranslationFields from '../TranslationFields';
 
 export interface TranslationsAttributesPageProps extends TranslationsEntitiesPageProps {
   data: Maybe<AttributeTranslationDetailsFragment>;

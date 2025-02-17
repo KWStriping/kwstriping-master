@@ -5,10 +5,6 @@ import {
   SearchCatalogDocument,
   SearchCustomersDocument,
 } from '@tempo/api/generated/graphql';
-import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
-import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
-import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -19,6 +15,10 @@ import { getGqlOrderId, isQueryValidOrderNumber } from './modes/orders';
 import { getMode } from './modes/utils';
 import useCheckIfOrderExists from './queries/useCheckIfOrderExists';
 import type { QuickSearchAction, QuickSearchMode } from './types';
+import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
+import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export const searchCustomers = gql(`
   query SearchCustomers($after: String, $first: Int!, $query: String!) {

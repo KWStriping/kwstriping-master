@@ -2,6 +2,15 @@ import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+import type { CategoryDetailsQuery, ProductErrorFragment } from '@tempo/api/generated/graphql';
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import CategoryBackground from '../CategoryBackground';
+import CategoryProducts from '../CategoryProducts';
+import type { CategoryUpdateData } from './form';
+import CategoryUpdateForm from './form';
 import CategoryDetailsForm from '@tempo/dashboard/components/categories/CategoryDetailsForm';
 import CategoryList from '@tempo/dashboard/components/categories/CategoryList';
 import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
@@ -11,19 +20,10 @@ import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import { Tab, TabContainer } from '@tempo/dashboard/components/core/Tab';
 import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
-import type { CategoryDetailsQuery, ProductErrorFragment } from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import { categoryAddUrl, categoryUrl } from '@tempo/dashboard/oldSrc/categories/urls';
 
 import type { RelayToFlat, TabListActions } from '@tempo/dashboard/oldSrc/types';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-import CategoryBackground from '../CategoryBackground';
-import CategoryProducts from '../CategoryProducts';
-import type { CategoryUpdateData } from './form';
-import CategoryUpdateForm from './form';
 
 export enum CategoryPageTab {
   categories = 'categories',

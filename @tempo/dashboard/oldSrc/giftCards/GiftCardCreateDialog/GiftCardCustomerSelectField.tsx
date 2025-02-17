@@ -2,10 +2,10 @@ import * as m from '@paraglide/messages';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useSearch } from '@tempo/api/hooks';
 import type { ChangeEvent, FC } from 'react';
+import { SearchCustomersDocument } from '@tempo/api/generated/graphql';
 import { createGiftCardMessages as messages } from './messages';
 import type { GiftCardCreateFormCustomer } from './types';
 import SingleAutocompleteSelectField from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { SearchCustomersDocument } from '@tempo/api/generated/graphql';
 import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
 import { getFullName } from '@tempo/dashboard/oldSrc/misc';
 

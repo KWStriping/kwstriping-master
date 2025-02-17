@@ -1,19 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Chip from '@tempo/ui/components/chip/Chip';
-import ChannelsAvailabilityDialogChannelsList from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogChannelsList';
-import ChannelsAvailabilityDialogContentWrapper from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogWrapper';
 import type { AccordionProps } from '@tempo/ui/components/Accordion/AltAccordion';
 import Accordion from '@tempo/ui/components/Accordion/AltAccordion';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import { useChannelsSearch } from '@tempo/dashboard/components/dialogs/ChannelsAvailabilityDialog/utils';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import { ProductField } from '@tempo/api/generated/constants';
 import type { ChannelFragment, ExportProductsInput } from '@tempo/api/generated/graphql';
-import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
-import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
@@ -24,6 +15,15 @@ import { makeStyles } from '@tempo/ui/theme/styles';
 import type { FC, ReactNode } from 'react';
 
 import useProductExportFieldMessages from './messages';
+import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import type { ChangeEvent, FormChange } from '@tempo/dashboard/hooks/useForm';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import { useChannelsSearch } from '@tempo/dashboard/components/dialogs/ChannelsAvailabilityDialog/utils';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ChannelsAvailabilityDialogContentWrapper from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogWrapper';
+import ChannelsAvailabilityDialogChannelsList from '@tempo/dashboard/components/channels/ChannelsAvailabilityDialogChannelsList';
 
 export const attributeNamePrefix = 'attribute-';
 export const warehouseNamePrefix = 'warehouse-';

@@ -1,5 +1,4 @@
 import * as m from '@paraglide/messages';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
@@ -7,6 +6,7 @@ import type { FC } from 'react';
 import { Fragment } from 'react';
 
 import type { Channel, ProductChannelListing } from '../types';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 
 type ChannelsListItemProps = Pick<Channel, 'id' | 'name'> & {
   listings: ProductChannelListing;

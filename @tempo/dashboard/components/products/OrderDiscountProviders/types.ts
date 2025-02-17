@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import type { OrderDiscountCommonInput } from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/types';
 import type { MoneyFragment, TaxedMoneyFragment } from '@tempo/api/generated/graphql';
 
 import type { OrderLineDiscountContextConsumerProps } from './OrderLineDiscountProvider';
+import type { OrderDiscountCommonInput } from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/types';
 
 export interface OrderDiscountData extends OrderDiscountCommonInput {
   amount: Maybe<MoneyFragment>;

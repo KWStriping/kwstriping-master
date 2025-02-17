@@ -1,6 +1,3 @@
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   ProductErrorWithAttributesFragment,
   ProductCreateDataQuery,
@@ -8,6 +5,17 @@ import type {
   SearchProductsQuery,
   SearchWarehousesQuery,
 } from '@tempo/api/generated/graphql';
+import { useEffect, useState } from 'react';
+import type { FC, ReactNode } from 'react';
+import type { ProductStockFormsetData, ProductStockInput } from '../ProductStocks';
+import {
+  concatChannelsBySelection,
+  createChannelsWithPreorderInfo,
+  validateChannels,
+} from '../ProductChannels/formOperations';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   CommonUseFormResultWithHandlers,
   FormChange,
@@ -46,15 +54,6 @@ import { validateVariantData } from '@tempo/dashboard/oldSrc/products/utils/vali
 import type { FetchMoreProps, RelayToFlat, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
 import { useMultipleRichText } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
-import { useEffect, useState } from 'react';
-import type { FC, ReactNode } from 'react';
-
-import type { ProductStockFormsetData, ProductStockInput } from '../ProductStocks';
-import {
-  concatChannelsBySelection,
-  createChannelsWithPreorderInfo,
-  validateChannels,
-} from '../ProductChannels/formOperations';
 
 export interface ProductCreateFormData extends MetadataFormData {
   sku: string;

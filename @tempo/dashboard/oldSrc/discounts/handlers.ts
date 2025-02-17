@@ -1,17 +1,16 @@
+import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
+import { DiscountErrorCode, SaleType, VoucherType } from '@tempo/api/generated/constants';
+import { getAddedChannelsInputFromFormData } from './data';
 import type {
   ChannelSaleFormData,
   SaleDetailsPageFormData,
 } from '@tempo/dashboard/components/discounts/SaleDetailsPage';
 import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
-import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
-import { DiscountErrorCode, SaleType, VoucherType } from '@tempo/api/generated/constants';
 import type { ChangeEvent, FormChange, SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 import { validateSalePrice, validateVoucherPrice } from '@tempo/dashboard/oldSrc/channels/utils';
 import { DiscountType } from '@tempo/dashboard/oldSrc/discounts/types';
 import { arrayDiff } from '@tempo/dashboard/oldSrc/utils/arrays';
-
-import { getAddedChannelsInputFromFormData } from './data';
 
 export interface ChannelArgs {
   discountValue: string;
@@ -59,8 +58,8 @@ export function createChannelsChangeHandler(
         ...(minSpent !== undefined
           ? { minSpent }
           : {
-            discountValue,
-          }),
+              discountValue,
+            }),
       },
       ...channelListings.slice(channelIndex + 1),
     ];
@@ -154,14 +153,14 @@ export function createSaleUpdateHandler(
       .map((channel) => channel.id);
     const localErrors: DiscountErrorFragment[] = invalidChannelListings?.length
       ? [
-        {
-          __typename: 'DiscountError',
-          code: DiscountErrorCode.Invalid,
-          field: 'value',
-          channels: invalidChannelListings,
-          message: 'Invalid discount value',
-        },
-      ]
+          {
+            __typename: 'DiscountError',
+            code: DiscountErrorCode.Invalid,
+            field: 'value',
+            channels: invalidChannelListings,
+            message: 'Invalid discount value',
+          },
+        ]
       : [];
 
     setLocalErrors(localErrors);
@@ -186,14 +185,14 @@ export function createVoucherUpdateHandler(
       .map((channel) => channel.id);
     const localErrors: DiscountErrorFragment[] = invalidChannelListings?.length
       ? [
-        {
-          __typename: 'DiscountError',
-          code: DiscountErrorCode.Invalid,
-          field: 'discountValue',
-          channels: invalidChannelListings,
-          message: 'Invalid discount value',
-        },
-      ]
+          {
+            __typename: 'DiscountError',
+            code: DiscountErrorCode.Invalid,
+            field: 'discountValue',
+            channels: invalidChannelListings,
+            message: 'Invalid discount value',
+          },
+        ]
       : [];
 
     setLocalErrors(localErrors);

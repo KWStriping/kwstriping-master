@@ -5,10 +5,10 @@ import { IconButton } from '@tempo/ui/components/buttons/IconButton';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import ClearIcon from '@mui/icons-material/Clear';
 import type { FC } from 'react';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { summaryLabels } from './messages';
 import { SummaryMoneyRow } from './SummaryMoneyRow';
 import type { SummaryMoneyRowProps } from './SummaryMoneyRow';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 interface SummaryPromoCodeRowProps extends SummaryMoneyRowProps {
   promoCode?: string;

@@ -3,19 +3,9 @@ import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { SearchStaffMembersQuery } from '@tempo/api/generated/graphql';
-import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
 import { getUserInitials, getUserName } from '@tempo/utils/user';
 import { renderCollection } from '@tempo/ui/utils';
-import type {
-  DialogProps,
-  FetchMoreProps,
-  RelayToFlat,
-  SearchPageProps,
-} from '@tempo/dashboard/oldSrc/types';
 import {
   Checkbox,
   CircularProgress,
@@ -34,6 +24,16 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import type {
+  DialogProps,
+  FetchMoreProps,
+  RelayToFlat,
+  SearchPageProps,
+} from '@tempo/dashboard/oldSrc/types';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import useElementScroll, { isScrolledToBottom } from '@tempo/dashboard/hooks/useElementScroll';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -255,9 +255,9 @@ const AssignMembersDialog: FC<AssignMembersDialogProps> = ({
                         <Typography variant={'caption'} className={styles.statusText ?? ''}>
                           {member ? (
                             member.isActive ? (
-                              m.dashboard_staffActive() ?? 'Active'
+                              (m.dashboard_staffActive() ?? 'Active')
                             ) : (
-                              m.dashboard_staffInactive() ?? 'Inactive'
+                              (m.dashboard_staffInactive() ?? 'Inactive')
                             )
                           ) : (
                             <Skeleton />

@@ -1,15 +1,13 @@
 // import * as m from '@paraglide/messages';
-import type { Exchange } from '@urql/core';
 import { toast } from 'react-toastify';
 import { mapExchange } from 'urql';
-import type { CombinedError } from '../types';
 import { isJwtError, isTokenExpired } from '@tempo/api/auth/errors';
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 // const DEBUG = IS_DEV && process.env.DEBUG_URQL === 'true' && false; // TODO
 const DEBUG = false;
 
-export const resultExchange: Exchange = mapExchange({
+export const resultExchange = mapExchange({
   onOperation(operation) {
     if (!DEBUG) return;
     const operationDefinition = operation.query.definitions[0] as any;
@@ -30,7 +28,7 @@ export const resultExchange: Exchange = mapExchange({
       // console.log(`${operationId} result:`, result.data);
     }
   },
-  onError: (error: CombinedError) => {
+  onError: (error) => {
     // NOTE: Primary error handling is done in the `useMutation` hook:
     // packages/urql/hooks/useMutation.ts
     const isAuthError = error.graphQLErrors.some(isJwtError);

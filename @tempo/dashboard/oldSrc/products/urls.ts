@@ -1,6 +1,5 @@
 import urlJoin from 'url-join';
 
-import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
 import type {
   ActiveTab,
   BulkAction,
@@ -15,6 +14,7 @@ import type {
   TabActionDialog,
 } from '../types';
 import { stringifyQs } from '../utils/urls';
+import type { ChannelsAction } from '@tempo/dashboard/oldSrc/channels/urls';
 
 const productSection = '/products/';
 
@@ -68,11 +68,11 @@ export enum ProductListUrlOrdering {
 export type ProductListUrlSort = Sort<ProductListUrlOrdering>;
 export interface ProductListUrlQueryParams
   extends BulkAction,
-  Dialog<ProductListUrlDialog>,
-  ProductListUrlFilters,
-  ProductListUrlSort,
-  Pagination,
-  ActiveTab {
+    Dialog<ProductListUrlDialog>,
+    ProductListUrlFilters,
+    ProductListUrlSort,
+    Pagination,
+    ActiveTab {
   attributeId?: string;
 }
 export const productListUrl = (params?: ProductListUrlQueryParams): string => ({

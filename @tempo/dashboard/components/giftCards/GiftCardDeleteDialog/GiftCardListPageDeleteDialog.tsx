@@ -1,13 +1,12 @@
 import type { FC } from 'react';
+import GiftCardDeleteDialogContent, { SINGLE } from './GiftCardDeleteDialogContent';
+import useGiftCardBulkDelete from './useGiftCardBulkDelete';
+import useGiftCardSingleDelete from './useGiftCardSingleDelete';
 import type { ActionDialogProps } from '@tempo/dashboard/components/dialogs/ActionDialog';
 import { useGiftCardListDialogs } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/providers/GiftCardListDialogsProvider';
 import { useGiftCardList } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/providers/GiftCardListProvider';
 import { GIFT_CARD_LIST_QUERY } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/queries';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
-
-import GiftCardDeleteDialogContent, { SINGLE } from './GiftCardDeleteDialogContent';
-import useGiftCardBulkDelete from './useGiftCardBulkDelete';
-import useGiftCardSingleDelete from './useGiftCardSingleDelete';
 
 interface GiftCardDeleteDialogProps extends DialogProps {
   refetchQueries?: string[];

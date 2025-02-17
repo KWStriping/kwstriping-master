@@ -20,7 +20,7 @@ export function useFilterStructure(
     {
       ...createDateField(
         OrderDraftFilterKeys.created,
-        (m.dashboard_created() ?? 'Created'),
+        m.dashboard_created() ?? 'Created',
         opts.created.value
       ),
       active: opts.created.active,
@@ -28,7 +28,7 @@ export function useFilterStructure(
     {
       ...createTextField(
         OrderDraftFilterKeys.customer,
-        (m.dashboard_customer() ?? 'Customer'),
+        m.dashboard_customer() ?? 'Customer',
         opts.customer.value
       ),
       active: opts.customer.active,

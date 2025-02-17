@@ -1,11 +1,14 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
+import type { PageKlassFragment } from '@tempo/api/generated/graphql';
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import type { FC } from 'react';
+import PageKlassList from './PageKlassList';
 import SearchBar from '@tempo/dashboard/components/bars/SearchBar';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { PageKlassFragment } from '@tempo/api/generated/graphql';
 import type { PageKlassListUrlOrdering } from '@tempo/dashboard/oldSrc/pageKlasses/urls';
-import { pageKlassAddUrl } from '@tempo/dashboard/oldSrc/pageKlasses/urls';
 
 import type {
   ListActions,
@@ -14,10 +17,6 @@ import type {
   SortPage,
   TabPageProps,
 } from '@tempo/dashboard/oldSrc/types';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import type { FC } from 'react';
-import PageKlassList from './PageKlassList';
 
 export interface PageKlassListPageProps
   extends PageListProps,

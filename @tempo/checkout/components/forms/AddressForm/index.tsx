@@ -296,7 +296,7 @@ export function AddressForm({
               rules={{ required: true }}
               render={({ field }) => (
                 <TextField
-                  label={m.checkout_streetAddress_() ?? 'Address'}
+                  label={m.checkout_streetAddress1() ?? 'Address'}
                   id="streetAddress1"
                   fullWidth
                   spellCheck={false}
@@ -318,7 +318,7 @@ export function AddressForm({
               rules={{ required: false }}
               render={({ field }) => (
                 <TextField
-                  label={m.checkout_streetAddress_() ?? 'Address (line 2)'}
+                  label={m.checkout_streetAddress2() ?? 'Address (line 2)'}
                   id="streetAddress2"
                   fullWidth
                   spellCheck={false}

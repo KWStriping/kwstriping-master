@@ -1,7 +1,6 @@
-
 import * as m from '@paraglide/messages';
-import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import { StaffMemberStatus } from '@tempo/api/generated/constants';
+import type { IFilter } from '@tempo/dashboard/components/core/Filter';
 import type { FilterOpts } from '@tempo/dashboard/oldSrc/types';
 import { createOptionsField } from '@tempo/dashboard/oldSrc/utils/filters/fields';
 
@@ -18,16 +17,16 @@ export function useFilterStructure(opts: StaffListFilterOpts): IFilter<StaffFilt
     {
       ...createOptionsField(
         StaffFilterKeys.status,
-        (m.dashboard_status() ?? 'Status'),
+        m.dashboard_status() ?? 'Status',
         [opts.status.value],
         false,
         [
           {
-            label: (m.dashboard_active() ?? 'Active'),
+            label: m.dashboard_active() ?? 'Active',
             value: StaffMemberStatus.Active,
           },
           {
-            label: (m.dashboard_deactivated() ?? 'Deactivated'),
+            label: m.dashboard_deactivated() ?? 'Deactivated',
             value: StaffMemberStatus.Deactivated,
           },
         ]

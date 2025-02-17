@@ -1,9 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import type { GetCellContentOpts } from '@tempo/dashboard/components/core/Datagrid/_Datagrid';
-import Datagrid from '@tempo/dashboard/components/core/Datagrid/_Datagrid';
-import type { DatagridChangeOpts } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
-import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
 import type {
   ProductDetailsVariantFragment,
   ProductFragment,
@@ -11,15 +7,18 @@ import type {
   WarehouseFragment,
 } from '@tempo/api/generated/graphql';
 import { AttributeInputType } from '@tempo/api/generated/constants';
-import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
-import EditIcon from '@tempo/dashboard/oldSrc/icons/Edit';
-import type { ProductListError } from '@tempo/dashboard/oldSrc/products/ProductUpdate/handlers/errors';
 import type { Item } from '@glideapps/glide-data-grid';
 import type { FC } from 'react';
 import { useCallback, useMemo } from 'react';
-// import { isLimitReached } from "@tempo/utils/limits";
-
 import { getColumnData, getData, getError } from './utils';
+import type { GetCellContentOpts } from '@tempo/dashboard/components/core/Datagrid/_Datagrid';
+import Datagrid from '@tempo/dashboard/components/core/Datagrid/_Datagrid';
+import type { DatagridChangeOpts } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
+import type { Choice } from '@tempo/dashboard/components/fields/SingleSelectField';
+import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
+import EditIcon from '@tempo/dashboard/oldSrc/icons/Edit';
+import type { ProductListError } from '@tempo/dashboard/oldSrc/products/ProductUpdate/handlers/errors';
+// import { isLimitReached } from "@tempo/utils/limits";
 
 interface ProductsProps {
   channels: ChannelData[];
@@ -111,7 +110,7 @@ export const Products: FC<ProductsProps> = ({
       menuItems={(index) => [
         {
           label: 'Edit Variant',
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          // eslint-disable-next-line ts/no-non-null-assertion
           onSelect: () => variants[index] && onRowClick(variants[index]!.id),
           Icon: <EditIcon />,
         },

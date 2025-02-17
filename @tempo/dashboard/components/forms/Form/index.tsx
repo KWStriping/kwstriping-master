@@ -1,8 +1,7 @@
+import type { FormEvent, HTMLProps, ReactNode } from 'react';
+import type { FormId } from './ExitFormDialogProvider';
 import type { SubmitPromise, UseFormResult } from '@tempo/dashboard/hooks/useForm';
 import useForm from '@tempo/dashboard/hooks/useForm';
-import type { FormEvent, HTMLProps, ReactNode } from 'react';
-
-import type { FormId } from './ExitFormDialogProvider';
 
 export type CheckIfSaveIsDisabledFnType<T> = (data: T) => boolean;
 

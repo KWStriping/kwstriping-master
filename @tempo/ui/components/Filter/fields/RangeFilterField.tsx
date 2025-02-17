@@ -1,4 +1,3 @@
-import { useFilterActions } from '@tempo/ui/components/Filter/context';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -7,6 +6,7 @@ import type { ChangeEvent, FC } from 'react';
 
 // import useStyles from '../styles';
 import type { EventTarget, FilterData, FilterLabels } from '../types';
+import { useFilterActions } from '@tempo/ui/components/Filter/context';
 
 export interface FilterContentProps {
   filter: FilterData;

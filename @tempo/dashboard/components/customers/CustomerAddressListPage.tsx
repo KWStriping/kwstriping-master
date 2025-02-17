@@ -2,16 +2,16 @@ import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { AddressType, CustomerAddressesFragment } from '@tempo/api/generated/graphql';
-import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
-import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
 import { renderCollection } from '@tempo/ui/utils';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import CustomerAddress from './CustomerAddress';
+import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
+import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 export interface CustomerAddressListPageProps {
   customer: Maybe<CustomerAddressesFragment>;
@@ -94,17 +94,17 @@ const CustomerAddressListPage: FC<CustomerAddressListPageProps> = (props) => {
     <Container>
       <Backlink href={customerUrl(customer?.id)}>
         {fullName.trim().length > 0
-          ? m.dashboard_fullNameDetail({ fullName }) ?? '{{fullName}} Details'
-          : m.dashboard_oNameToShow() ?? 'Address Book'}
+          ? (m.dashboard_fullNameDetail({ fullName }) ?? '{{fullName}} Details')
+          : (m.dashboard_oNameToShow() ?? 'Address Book')}
       </Backlink>
       {!isEmpty && (
         <PageHeader
           title={
             fullName.trim().length > 0
-              ? m.dashboard_fullNameAddress({
+              ? (m.dashboard_fullNameAddress({
                   fullName,
-                }) ?? "{{fullName}}'s Address Book"
-              : m.dashboard_oNameToShow() ?? 'Address Book'
+                }) ?? "{{fullName}}'s Address Book")
+              : (m.dashboard_oNameToShow() ?? 'Address Book')
           }
         >
           <Button color="primary" onClick={onAdd} data-test-id="add-address">

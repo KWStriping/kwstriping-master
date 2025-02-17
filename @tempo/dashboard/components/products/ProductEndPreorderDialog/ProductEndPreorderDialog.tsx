@@ -2,9 +2,8 @@ import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import DialogContentText from '@mui/material/DialogContentText';
 import type { FC } from 'react';
-import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
-
 import { productVariantEndPreorderDialogMessages } from './messages';
+import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 
 export interface ProductEndPreorderDialogProps {
   confirmButtonState: ConfirmButtonTransitionState;

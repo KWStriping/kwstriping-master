@@ -5,9 +5,9 @@ import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { notNullable } from '@tempo/ui/utils/money';
 import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
-import { CartSummary } from '@tempo/checkout/components/CartSummary';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 import { CheckoutProductList } from './CheckoutProductList';
+import { CartSummary } from '@tempo/checkout/components/CartSummary';
 
 interface CheckoutSidebarProps {
   checkout: Maybe<CheckoutFragment>;

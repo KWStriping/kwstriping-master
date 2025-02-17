@@ -1,20 +1,12 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { Tooltip } from '@tempo/ui/components/Tooltip';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { SortableTableBody, SortableTableRow } from '@tempo/dashboard/components/tables/SortableTable';
-import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import type { ProductAttributeType } from '@tempo/api/generated/constants';
 import type { ProductKlassDetailsQuery } from '@tempo/api/generated/graphql';
-import { attributeUrl } from '@tempo/dashboard/oldSrc/attributes/urls';
-import type { ListActions, ReorderAction } from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HelpOutline from '@mui/icons-material/HelpOutline';
 import Card from '@mui/material/Card';
@@ -24,6 +16,17 @@ import TableRow from '@mui/material/TableRow';
 import capitalize from 'lodash-es/capitalize';
 import type { FC } from 'react';
 import { useEffect } from 'react';
+import type { ListActions, ReorderAction } from '@tempo/dashboard/oldSrc/types';
+import { attributeUrl } from '@tempo/dashboard/oldSrc/attributes/urls';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
+import {
+  SortableTableBody,
+  SortableTableRow,
+} from '@tempo/dashboard/components/tables/SortableTable';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

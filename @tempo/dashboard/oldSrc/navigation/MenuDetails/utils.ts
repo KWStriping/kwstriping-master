@@ -1,12 +1,12 @@
-import type { MenuDetailsSubmitData } from '@tempo/dashboard/components/navigation/MenuDetailsPage';
-import type { MenuItemDialogFormData } from '@tempo/dashboard/components/navigation/MenuItemDialog';
-import { unknownTypeError } from '@tempo/dashboard/components/navigation/MenuItems';
 import type {
   MenuItemCreationInput,
   MenuItemFragment,
   MenuItemInput,
   MenuItemMoveInput,
 } from '@tempo/api/generated/graphql';
+import type { MenuDetailsSubmitData } from '@tempo/dashboard/components/navigation/MenuDetailsPage';
+import type { MenuItemDialogFormData } from '@tempo/dashboard/components/navigation/MenuItemDialog';
+import { unknownTypeError } from '@tempo/dashboard/components/navigation/MenuItems';
 
 export function getMenuItemInputData(data: MenuItemDialogFormData): MenuItemInput {
   const variables: MenuItemInput = {

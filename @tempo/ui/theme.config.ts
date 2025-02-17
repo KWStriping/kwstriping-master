@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import type { PaletteOptions, ThemeConfig, SpacingStep } from './theme/types';
 import { REQUIRED_SPACING_STEPS } from './theme/types';
 

@@ -1,7 +1,7 @@
 import { assertUnreachable } from '@tempo/utils';
 import invariant from 'ts-invariant';
-import type { ReuseExistingVendorSessionFn } from '@tempo/checkout/payments/types';
 import { getStripeClient } from './stripeClient';
+import type { ReuseExistingVendorSessionFn } from '@tempo/checkout/payments/types';
 
 export const verifyStripeSession = async (session: string) => {
   const {

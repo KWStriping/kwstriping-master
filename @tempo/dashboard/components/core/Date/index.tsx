@@ -1,10 +1,10 @@
 import { Tooltip } from '@tempo/ui/components/Tooltip';
 import { useLocale } from '@tempo/ui/hooks/useLocale';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 import { Temporal, Intl } from '@js-temporal/polyfill';
 import type { FC } from 'react';
 
 import { useDate } from './DateContext';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 
 interface DateProps {
   date: Maybe<string>;

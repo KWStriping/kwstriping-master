@@ -5,12 +5,12 @@ import { useFormDebouncedSubmit } from '@tempo/ui/hooks/useFormDebouncedSubmit';
 import { useGetInputProps } from '@tempo/ui/hooks/useGetInputProps';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { useGuestUserForm } from '@tempo/checkout/components/sections/~ContactInfoSection/useGuestUserForm';
-import type { GuestUserFormData } from '@tempo/checkout/components/sections/~ContactInfoSection/useGuestUserForm';
-import { TextInput } from '@tempo/checkout/components/TextInput';
 import { contactMessages } from './messages';
 import { SignInFormContainer } from './SignInFormContainer';
 import type { SignInFormContainerProps } from './SignInFormContainer';
+import { useGuestUserForm } from '@tempo/checkout/components/sections/~ContactInfoSection/useGuestUserForm';
+import type { GuestUserFormData } from '@tempo/checkout/components/sections/~ContactInfoSection/useGuestUserForm';
+import { TextInput } from '@tempo/checkout/components/TextInput';
 
 type AnonymousCustomerFormProps = Pick<SignInFormContainerProps, 'onSectionChange'>;
 

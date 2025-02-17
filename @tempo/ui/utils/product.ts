@@ -1,4 +1,7 @@
-import type { ProductDetailsFragment, AttributeDetailsFragment } from '@tempo/api/generated/graphql';
+import type {
+  ProductDetailsFragment,
+  AttributeDetailsFragment,
+} from '@tempo/api/generated/graphql';
 
 /**
  * When a variant is selected, the variant attributes are shown together with
@@ -27,7 +30,7 @@ export const getSelectedProductID = (product: ProductDetailsFragment, router?: N
   }
   if (product?.variants?.length === 1) {
     // case, where product has only one variant to choose from, so we pre-select it
-    return product.variants[0]!.id; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    return product.variants[0]!.id; // eslint-disable-line ts/no-non-null-assertion
   }
   // there are multiple variants and user has not chosen any
   return null;

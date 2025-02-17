@@ -9,6 +9,8 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import { PermissionCode } from '@tempo/api/generated/constants';
+import type { ListCustomersQuery } from '@tempo/api/generated/graphql';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import RequirePermissions, {
   hasPermissions,
@@ -17,10 +19,13 @@ import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable'
 import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
-import { PermissionCode } from '@tempo/api/generated/constants';
-import type { ListCustomersQuery } from '@tempo/api/generated/graphql';
 import { CustomerListUrlOrdering, customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
-import type { ListActions, ListProps, RelayToFlat, SortPage } from '@tempo/dashboard/oldSrc/types';
+import type {
+  ListActions,
+  ListProps,
+  RelayToFlat,
+  SortPage,
+} from '@tempo/dashboard/oldSrc/types';
 import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
 
 const useStyles = makeStyles(

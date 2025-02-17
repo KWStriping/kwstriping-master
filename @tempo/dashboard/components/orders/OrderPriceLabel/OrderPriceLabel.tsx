@@ -1,8 +1,8 @@
-import Money from '@tempo/dashboard/components/core/Money';
-import DiscountedPrice from '@tempo/dashboard/components/discounts/DiscountedPrice';
 import type { SearchOrderVariantQuery } from '@tempo/api/generated/graphql';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import DiscountedPrice from '@tempo/dashboard/components/discounts/DiscountedPrice';
+import Money from '@tempo/dashboard/components/core/Money';
 
 interface OrderPriceLabelProps {
   pricing: SearchOrderVariantQuery['search']['edges'][0]['node']['variants'][0]['pricing'];

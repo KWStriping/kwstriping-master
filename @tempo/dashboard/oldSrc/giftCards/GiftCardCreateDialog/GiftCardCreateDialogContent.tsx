@@ -6,6 +6,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 import type { FC } from 'react';
 
+import type { GiftCardCreationInput } from '@tempo/api/generated/graphql';
+import { ChannelCurrenciesDocument, GiftCardCreateDocument } from '@tempo/api/generated/graphql';
 import ContentWithProgress from './ContentWithProgress';
 import GiftCardCreateDialogCodeContent from './GiftCardCreateDialogCodeContent';
 import type { GiftCardCreateFormData } from './GiftCardCreateDialogForm';
@@ -15,8 +17,6 @@ import type { GiftCardCreateFormCustomer } from './types';
 import { getGiftCardCreateOnCompletedMessage, getGiftCardExpiryInputData } from './utils';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
-import type { GiftCardCreationInput } from '@tempo/api/generated/graphql';
-import { ChannelCurrenciesDocument, GiftCardCreateDocument } from '@tempo/api/generated/graphql';
 
 interface GiftCardCreateDialogContentProps extends Pick<DialogProps, 'onClose'> {
   refetchQueries: string[];

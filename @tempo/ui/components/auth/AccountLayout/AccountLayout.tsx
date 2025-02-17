@@ -1,10 +1,10 @@
 import { useUser } from '@tempo/api/auth/react/hooks';
+import { useRouter } from 'next/navigation';
+import type { ReactNode } from 'react';
 import { Layout } from '@tempo/ui/components/Layout';
 import { NavigationPanel } from '@tempo/ui/components/Layout/NavigationPanel';
 import { Spinner } from '@tempo/ui/components/Spinner';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { useRouter } from 'next/navigation';
-import type { ReactNode } from 'react';
 
 export interface AccountLayoutProps {
   children: ReactNode;

@@ -5,15 +5,15 @@ ARG API_URL
 
 ARG ROOT_DIR=/root
 
-ARG NODE_VERSION=20
+ARG NODE_VERSION=22
 ARG ALPINE_VERSION=3.17
-ARG PNPM_VERSION=9.1.2
+ARG PNPM_VERSION=10.2.1
 
 ###################################################################
 # Stage 0: Base image                                             #
 ###################################################################
 
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
+FROM node:${NODE_VERSION}-alpine AS base
 
 ARG APP
 ARG ROOT_DIR
@@ -30,20 +30,9 @@ RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
 RUN npm i -g turbo
 
-RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/apps/${APP}
+RUN mkdir -p ${ROOT_DIR}/scripts
 
 WORKDIR ${ROOT_DIR}
-
-###################################################################
-# Stage 1: Copy files and prune                                   #
-###################################################################
-
-FROM base AS files
-
-# Copy and prune files
-# https://turbo.build/repo/docs/handbook/deploying-with-docker
-COPY . .
-RUN ls && turbo prune --scope=@tempo/dashboard --docker
 
 ###################################################################
 # Stage 2: Build                                                  #
@@ -61,21 +50,22 @@ ARG ROOT_DIR
 RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # https://github.com/vercel/turbo/issues/4105
-COPY --from=files ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
+COPY ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
 
-COPY --from=files ${ROOT_DIR}/out/json/ .
-COPY --from=files ${ROOT_DIR}/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY package.json pnpm-lock.yaml ./
 
 RUN pnpm install --ignore-scripts
 
-# Copy all files necessary for building
-COPY --from=files ${ROOT_DIR}/out/full/ .
-COPY --from=files ${ROOT_DIR}/turbo.json .
-COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
-# TODO
-COPY scripts ${ROOT_DIR}/scripts
-COPY apps/${APP}/messages ${ROOT_DIR}/apps/${APP}/messages
-COPY apps/${APP}/paraglide ${ROOT_DIR}/apps/${APP}/paraglide
+COPY . .
+
+# # Copy all files necessary for building
+# COPY --from=files ${ROOT_DIR}/out/full/ .
+# COPY --from=files ${ROOT_DIR}/turbo.json .
+# COPY --from=files ${ROOT_DIR}/@tempo/data ./@tempo/data
+# # TODO
+# COPY scripts ${ROOT_DIR}/scripts
+# COPY messages ${ROOT_DIR}/messages
+# COPY paraglide ${ROOT_DIR}/paraglide
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 RUN ls && ls scripts

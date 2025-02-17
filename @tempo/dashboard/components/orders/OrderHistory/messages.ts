@@ -1,7 +1,6 @@
 import * as m from '@paraglide/messages';
-import { OrderEventType } from '@tempo/api/generated/constants';
+import { OrderEventType, OrderEventEmailType } from '@tempo/api/generated/constants';
 import type { TFunction } from '@tempo/next/i18n';
-import { OrderEventEmailType } from '@tempo/api/generated/constants';
 import type { OrderEventFragment } from '@tempo/api/generated/graphql';
 
 export const getEventMessage = (event: OrderEventFragment, t: TFunction) => {
@@ -16,14 +15,14 @@ export const getEventMessage = (event: OrderEventFragment, t: TFunction) => {
 
   switch (event.type) {
     case OrderEventType.Canceled:
-      return (m.dashboard_orderEvents_orderWasCancelled() ?? 'Order was cancelled');
+      return m.dashboard_orderEvents_orderWasCancelled() ?? 'Order was cancelled';
     case OrderEventType.AddedProducts:
       return t(
         'dashboard_orderEvents_productsWereAddedToAnOrder',
         'Products were added to an order'
       );
     case OrderEventType.DraftCreated:
-      return (m.dashboard_orderEvents_draftOrderWasCreated() ?? 'Draft order was created');
+      return m.dashboard_orderEvents_draftOrderWasCreated() ?? 'Draft order was created';
     case OrderEventType.RemovedProducts:
       return t(
         'dashboard_orderEvents_productsWereRemovedFromAnOrder',
@@ -77,11 +76,11 @@ export const getEventMessage = (event: OrderEventFragment, t: TFunction) => {
             'Order refund information was sent to customer'
           );
         default:
-          return (m.dashboard_orderEvents_unknownEmailSent() ?? 'Unknown email was sent');
+          return m.dashboard_orderEvents_unknownEmailSent() ?? 'Unknown email was sent';
       }
     }
     case OrderEventType.FulfillmentCanceled:
-      return (m.dashboard_orderEvents_fulfillmentWasCancelled() ?? 'Fulfillment was cancelled');
+      return m.dashboard_orderEvents_fulfillmentWasCancelled() ?? 'Fulfillment was cancelled';
     case OrderEventType.InvoiceRequested:
       return t(
         'dashboard_orderEvents_invoiceWasRequested',
@@ -116,61 +115,69 @@ export const getEventMessage = (event: OrderEventFragment, t: TFunction) => {
         }
       );
     case OrderEventType.FulfillmentAwaitsApproval:
-      return (m.dashboard_orderEvents_fulfillmentAwaitsApproval() ?? 'Fulfillment awaits approval');
+      return m.dashboard_orderEvents_fulfillmentAwaitsApproval() ?? 'Fulfillment awaits approval';
     case OrderEventType.FulfillmentFulfilledItems:
-      return (m.dashboard_orderEvents_fulfilledItems({
-        quantity: event.quantity,
-      }) ?? 'Fulfilled {{quantity}} items');
+      return (
+        m.dashboard_orderEvents_fulfilledItems({
+          quantity: event.quantity,
+        }) ?? 'Fulfilled {{quantity}} items'
+      );
     case OrderEventType.FulfillmentRefunded:
-      return (m.dashboard_orderEvents_orderWasRefunded({
-        refundedBy: getUserOrApp(),
-      }) ?? 'Order was refunded by {{refundedBy}}');
+      return (
+        m.dashboard_orderEvents_orderWasRefunded({
+          refundedBy: getUserOrApp(),
+        }) ?? 'Order was refunded by {{refundedBy}}'
+      );
     case OrderEventType.FulfillmentRestockedItems:
-      return (m.dashboard_orderEvents_restockedItems({
-        quantity: event.quantity,
-      }) ?? 'Restocked {{quantity}} items');
+      return (
+        m.dashboard_orderEvents_restockedItems({
+          quantity: event.quantity,
+        }) ?? 'Restocked {{quantity}} items'
+      );
     case OrderEventType.NoteAdded:
-      return (m.dashboard_orderEvents_noteWasAddedToOrder() ?? 'Note was added to the order');
+      return m.dashboard_orderEvents_noteWasAddedToOrder() ?? 'Note was added to the order';
     case OrderEventType.OrderFullyPaid:
-      return (m.dashboard_orderEvents_orderWasFullyPaid() ?? 'Order was fully paid');
+      return m.dashboard_orderEvents_orderWasFullyPaid() ?? 'Order was fully paid';
     case OrderEventType.OrderMarkedAsPaid:
-      return (m.dashboard_orderEvents_orderWasMarkedAsPaid() ?? 'Order was marked as paid');
+      return m.dashboard_orderEvents_orderWasMarkedAsPaid() ?? 'Order was marked as paid';
     case OrderEventType.Other:
       return event.message;
     case OrderEventType.OversoldItems:
-      return (m.dashboard_orderEvents_oversoldItems({
-        quantity: event.quantity,
-      }) ?? 'Oversold {{quantity}} items');
+      return (
+        m.dashboard_orderEvents_oversoldItems({
+          quantity: event.quantity,
+        }) ?? 'Oversold {{quantity}} items'
+      );
     case OrderEventType.PaymentCaptured:
-      return (m.dashboard_orderEvents_paymentWasCaptured() ?? 'Payment was captured');
+      return m.dashboard_orderEvents_paymentWasCaptured() ?? 'Payment was captured';
     case OrderEventType.PaymentFailed:
-      return (m.dashboard_orderEvents_paymentFailed() ?? 'Payment failed');
+      return m.dashboard_orderEvents_paymentFailed() ?? 'Payment failed';
     case OrderEventType.PaymentRefunded:
-      return (m.dashboard_orderEvents_paymentWasRefunded() ?? 'Payment was refunded');
+      return m.dashboard_orderEvents_paymentWasRefunded() ?? 'Payment was refunded';
     case OrderEventType.PaymentVoided:
-      return (m.dashboard_orderEvents_paymentWasVoided() ?? 'Payment was voided');
+      return m.dashboard_orderEvents_paymentWasVoided() ?? 'Payment was voided';
     case OrderEventType.Placed:
-      return (m.dashboard_orderEvents_orderWasPlaced() ?? 'Order was placed');
+      return m.dashboard_orderEvents_orderWasPlaced() ?? 'Order was placed';
     case OrderEventType.PlacedFromDraft:
-      return (m.dashboard_orderEvents_orderWasCreatedFromDraft() ?? 'Order was created from draft');
+      return m.dashboard_orderEvents_orderWasCreatedFromDraft() ?? 'Order was created from draft';
     case OrderEventType.TrackingUpdated:
       return t(
         'dashboard_orderEvents_updatedFulfillmentGroupTrackingNumber',
         "Updated fulfillment group's tracking number"
       );
     case OrderEventType.UpdatedAddress:
-      return (m.dashboard_orderEvents_orderAddressWasUpdated() ?? 'Order address was updated');
+      return m.dashboard_orderEvents_orderAddressWasUpdated() ?? 'Order address was updated';
     case OrderEventType.PaymentAuthorized:
-      return (m.dashboard_orderEvents_paymentWasAuthorized() ?? 'Payment was authorized');
+      return m.dashboard_orderEvents_paymentWasAuthorized() ?? 'Payment was authorized';
     case OrderEventType.Confirmed:
-      return (m.dashboard_orderEvents_orderWasConfirmed() ?? 'Order was confirmed');
+      return m.dashboard_orderEvents_orderWasConfirmed() ?? 'Order was confirmed';
     case OrderEventType.TransactionRefundRequested:
       return t(
         'dashboard_orderEvents_transactionRefundRequested',
         'Transaction refund requested'
       );
     case OrderEventType.TransactionVoidRequested:
-      return (m.dashboard_orderEvents_transactionVoidRequested() ?? 'Transaction void requested');
+      return m.dashboard_orderEvents_transactionVoidRequested() ?? 'Transaction void requested';
     case OrderEventType.TransactionCaptureRequested:
       return t(
         'dashboard_orderEvents_transactionCaptureRequested',
@@ -179,6 +186,6 @@ export const getEventMessage = (event: OrderEventFragment, t: TFunction) => {
     case OrderEventType.ExternalServiceNotification:
       return event.message;
     default:
-      return (m.dashboard_orderEvents_unknownEvent() ?? 'Unknown event');
+      return m.dashboard_orderEvents_unknownEvent() ?? 'Unknown event';
   }
 };

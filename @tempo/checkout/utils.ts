@@ -1,4 +1,4 @@
-import type { CombinedError } from '@tempo/api';;
+import type { CombinedError } from '@tempo/api';
 import type {
   PublicMetafieldsValues,
   UnknownPublicSettingsValues,
@@ -65,10 +65,7 @@ export const mapNodesToItems = (nodes?: NamedNode[]): Item[] => nodes?.map(mapNo
 
 export const getCommonErrors = (error?: Partial<CombinedError>) =>
   error?.graphQLErrors || error?.networkError
-    ? [
-        ...(error?.graphQLErrors || []),
-        ...(error?.networkError ? [error.networkError] : []),
-      ]
+    ? [...(error?.graphQLErrors || []), ...(error?.networkError ? [error.networkError] : [])]
     : [...(error ? [error] : [])];
 
 export const getMetafield = (

@@ -1,4 +1,4 @@
-import type { OrderQuery, OrderQueryVariables, OrderFragment } from '@tempo/api/generated/graphql';
+import type { OrderQueryVariables, OrderFragment } from '@tempo/api/generated/graphql';
 import { OrderDocument } from '@tempo/api/generated/graphql';
 import { getServerSideClient } from '@tempo/api/client';
 import type { Errors } from './types';

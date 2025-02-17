@@ -1,12 +1,15 @@
 import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   FileFragment,
   MediaItemDetailsFragment,
   MediaErrorFragment,
 } from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import type { ChangeEvent, ReactNode, FC } from 'react';
+import { useEffect, useState } from 'react';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   CommonUseFormResultWithHandlers,
   FormChange,
@@ -23,9 +26,6 @@ import getMetadata from '@tempo/dashboard/oldSrc/utils/metadata/getMetadata';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
 import { RichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import useRichText from '@tempo/dashboard/oldSrc/utils/richText/useRichText';
-import type { OutputData } from '@editorjs/editorjs';
-import type { ChangeEvent, ReactNode, FC } from 'react';
-import { useEffect, useState } from 'react';
 
 const UPLOAD_PREEMPTIVELY = false;
 

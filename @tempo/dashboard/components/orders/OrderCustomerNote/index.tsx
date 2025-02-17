@@ -1,10 +1,10 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface OrderCustomerNoteProps {
   note: Maybe<string>;

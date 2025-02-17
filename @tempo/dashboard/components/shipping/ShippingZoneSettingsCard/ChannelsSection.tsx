@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
+import type { ChannelFragment } from '@tempo/api/generated/graphql';
+import type { FC } from 'react';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import MultiAutocompleteSelectField from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type { ChannelFragment } from '@tempo/api/generated/graphql';
 import { useChannelsSearch } from '@tempo/dashboard/hooks/useChannelsSearch';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-import type { FC } from 'react';
 
 const messages = {
   subtitle: {

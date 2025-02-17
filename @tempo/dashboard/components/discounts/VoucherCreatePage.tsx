@@ -5,6 +5,8 @@ import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
+import { PermissionCode, VoucherType } from '@tempo/api/generated/constants';
+import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
 import VoucherDates from './VoucherDates';
 import type { VoucherDetailsPageFormData } from './VoucherDetailsPage';
 import VoucherInfo from './VoucherInfo';
@@ -18,8 +20,6 @@ import Metadata from '@tempo/dashboard/components/core/Metadata';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import Form from '@tempo/dashboard/components/forms/Form';
-import { PermissionCode, VoucherType } from '@tempo/api/generated/constants';
-import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import type { ChannelVoucherData } from '@tempo/dashboard/oldSrc/channels/utils';
 import {

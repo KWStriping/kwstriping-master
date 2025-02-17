@@ -1,7 +1,5 @@
 import * as m from '@paraglide/messages';
 import Link from '@tempo/ui/components/Link';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
@@ -11,6 +9,8 @@ import type { FC } from 'react';
 import type { MultiAutocompleteChoiceType } from '../../fields/MultiAutocompleteSelectField';
 import styles from './index.module.css';
 import type { FieldType, FilterFieldBaseProps } from './types';
+import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 interface FilterAutocompleteFieldProps
   extends FilterFieldBaseProps<string, FieldType.autocomplete> {

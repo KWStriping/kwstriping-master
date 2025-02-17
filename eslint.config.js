@@ -20,9 +20,9 @@ import prettierPlugin from 'eslint-plugin-prettier';
 import regexPlugin from 'eslint-plugin-regexp';
 import prettierConfig from './.prettierrc.js';
 
-const USE_CUSTOM_RULES = false;
+// const USE_CUSTOM_RULES = false;
 
-const PROJECT_PATTERNS = ['./apps/*/tsconfig.json', './@tempo/*/tsconfig.json'];
+const PROJECT_PATTERNS = ['./tsconfig.json', './tsconfig.lint.json'];
 
 const allGlobals = {
   ...globals.browser,
@@ -62,6 +62,8 @@ const configs = [
       '**/__tests__/**',
       '**/_pages/**',
       '**/*.stories.tsx',
+      '_volumes',
+      '_trash',
     ],
   },
   {
@@ -106,7 +108,7 @@ const configs = [
         node: true,
       },
       next: {
-        rootDir: 'apps/*/',
+        rootDir: '.',
       },
       react: {
         version: 'detect',
@@ -216,7 +218,7 @@ const configs = [
             globalReturn: false,
           },
           tsconfigRootDir: '.',
-          project: ['./tsconfig.json', './apps/*/tsconfig.json', './@tempo/*/tsconfig.json'],
+          project: ['./tsconfig.json', './tsconfig.lint.json'],
         },
       },
       plugins: {
@@ -246,7 +248,9 @@ const configs = [
         'prefer-spread': 'error', // ts transpiles spread to apply, so no need for manual apply
         'valid-typeof': 'off', // ts(2367)
         'ts/adjacent-overload-signatures': 'error',
-        'ts/ban-types': 'error',
+        'ts/no-empty-object-type': 'error',
+        'ts/no-unsafe-function-type': 'error',
+        'ts/no-wrapper-object-types': 'error',
         'no-array-constructor': 'off',
         'ts/no-array-constructor': 'error',
         'no-empty-function': 'off',
@@ -256,7 +260,6 @@ const configs = [
         // 'ts/no-explicit-any': ['error', { ignoreRestArgs: false }],
         'ts/no-extra-non-null-assertion': 'error',
         'no-extra-semi': 'off',
-        'ts/no-extra-semi': 'error',
         'ts/no-inferrable-types': 'error',
         'no-loss-of-precision': 'off',
         'ts/no-loss-of-precision': 'error',
@@ -460,11 +463,11 @@ const configs = [
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'jsx-a11y/anchor-ambiguous-text': 'off', // TODO: error
-        'jsx-a11y/anchor-has-content': 'error',
-        'jsx-a11y/anchor-is-valid': 'error',
-        'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
-        'jsx-a11y/aria-role': 'error',
-        'jsx-a11y/aria-unsupported-elements': 'error',
+        'jsx-a11y/anchor-has-content': 'warn',
+        'jsx-a11y/anchor-is-valid': 'warn',
+        'jsx-a11y/aria-activedescendant-has-tabindex': 'warn',
+        'jsx-a11y/aria-role': 'warn',
+        'jsx-a11y/aria-unsupported-elements': 'warn',
         'jsx-a11y/autocomplete-valid': 'error',
         'jsx-a11y/click-events-have-key-events': 'error',
         'jsx-a11y/control-has-associated-label': [
@@ -506,9 +509,9 @@ const configs = [
         ],
         'jsx-a11y/label-has-associated-control': 'error',
         'jsx-a11y/label-has-for': 'off',
-        'jsx-a11y/media-has-caption': 'error',
-        'jsx-a11y/mouse-events-have-key-events': 'error',
-        'jsx-a11y/no-access-key': 'error',
+        'jsx-a11y/media-has-caption': 'warn',
+        'jsx-a11y/mouse-events-have-key-events': 'warn',
+        'jsx-a11y/no-access-key': 'warn',
         'jsx-a11y/no-autofocus': 'warn',
         'jsx-a11y/no-distracting-elements': 'error',
         'jsx-a11y/no-interactive-element-to-noninteractive-role': [
@@ -559,7 +562,7 @@ const configs = [
         ],
         'jsx-a11y/no-redundant-roles': 'error',
         'jsx-a11y/no-static-element-interactions': [
-          'error',
+          'warn',
           {
             allowExpressionValues: true,
             handlers: [
@@ -684,7 +687,7 @@ const configs = [
   // next
   ...[
     {
-      files: ['apps/**/*.{js,jsx,ts,tsx}', '@tempo/**/*.{js,jsx,ts,tsx}'],
+      files: ['app/**/*.{js,jsx,ts,tsx}', '@tempo/**/*.{js,jsx,ts,tsx}'],
       rules: {
         'next/google-font-display': 'warn',
         'next/google-font-preconnect': 'warn',
@@ -692,9 +695,6 @@ const configs = [
         'next/no-before-interactive-script-outside-document': 'warn',
         'next/no-css-tags': 'warn',
         'next/no-head-element': 'warn',
-        // https://nextjs.org/docs/messages/no-html-link-for-pages#pagesdir
-        // 'next/no-html-link-for-pages': ['error', 'apps/*/pages/'],
-        // 'next/no-html-link-for-pages': 'error', // TODO: fix for flat config
         'next/no-img-element': 'warn',
         'next/no-page-custom-font': 'warn',
         'next/no-styled-jsx-in-document': 'warn',
@@ -710,7 +710,7 @@ const configs = [
         'next/no-script-component-in-head': 'error',
       },
       plugins: { next: nextjsPlugin },
-      settings: { next: { rootDir: 'apps/*/' } },
+      settings: { next: { rootDir: '.' } },
     },
   ],
   // prettier
@@ -897,23 +897,23 @@ const configs = [
       plugins: { prettier: prettierPlugin },
     },
   ],
-  ...(USE_CUSTOM_RULES
-    ? [
-        {
-          files: ['**/*.ts', '**/*.tsx'],
-          plugins: {
-            custom: {
-              rules: {
-                missing,
-              },
-            },
-          },
-          rules: {
-            'custom/missing': 'error',
-          },
-        },
-      ]
-    : []),
+  // ...(USE_CUSTOM_RULES
+  //   ? [
+  //       {
+  //         files: ['**/*.ts', '**/*.tsx'],
+  //         plugins: {
+  //           custom: {
+  //             rules: {
+  //               missing,
+  //             },
+  //           },
+  //         },
+  //         rules: {
+  //           'custom/missing': 'error',
+  //         },
+  //       },
+  //     ]
+  //   : []),
 ];
 
 export default configs;

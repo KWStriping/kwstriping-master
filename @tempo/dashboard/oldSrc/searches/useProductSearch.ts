@@ -5,8 +5,8 @@ import type {
   SearchProductsQueryVariables,
 } from '@tempo/api/generated/graphql';
 import { SearchProductsDocument } from '@tempo/api/generated/graphql';
-import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
 import type { UseSearchOptions } from './../../../../@tempo/urql/hooks/useSearch';
+import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
 
 export const searchProducts = gql(`
   query SearchProducts($after: String, $first: Int!, $query: String!) {

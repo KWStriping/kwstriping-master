@@ -1,11 +1,11 @@
 import * as m from '@paraglide/messages';
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import Label from '@tempo/dashboard/components/orders/OrderHistory/Label';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode } from 'react';
 import styles from './index.module.css';
+import Label from '@tempo/dashboard/components/orders/OrderHistory/Label';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 
 export const messages = {
   selectTitle: {

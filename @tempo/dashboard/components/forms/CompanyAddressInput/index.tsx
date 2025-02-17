@@ -3,10 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
 import type { FC } from 'react';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 import type { CompanyAddressFormProps } from './CompanyAddressForm';
 import CompanyAddressForm from './CompanyAddressForm';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface CompanyAddressInputProps extends CompanyAddressFormProps {
   className?: string;

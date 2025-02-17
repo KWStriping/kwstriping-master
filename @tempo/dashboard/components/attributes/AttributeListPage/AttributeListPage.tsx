@@ -1,12 +1,13 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import AttributeList from '@tempo/dashboard/components/attributes/AttributeList';
-import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { AttributeFragment } from '@tempo/api/generated/graphql';
-import type { AttributeListUrlOrdering } from '@tempo/dashboard/oldSrc/attributes/urls';
 
+import Card from '@mui/material/Card';
+import Container from '@mui/material/Container';
+import type { FC } from 'react';
+import type { AttributeFilterKeys, AttributeListFilterOpts } from './filters';
+import { useFilterStructure } from './filters';
 import type {
   FilterPageProps,
   ListActions,
@@ -14,11 +15,10 @@ import type {
   SortPage,
   TabPageProps,
 } from '@tempo/dashboard/oldSrc/types';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import type { FC } from 'react';
-import type { AttributeFilterKeys, AttributeListFilterOpts } from './filters';
-import { useFilterStructure } from './filters';
+import type { AttributeListUrlOrdering } from '@tempo/dashboard/oldSrc/attributes/urls';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
+import AttributeList from '@tempo/dashboard/components/attributes/AttributeList';
 
 export interface AttributeListPageProps
   extends PageListProps,

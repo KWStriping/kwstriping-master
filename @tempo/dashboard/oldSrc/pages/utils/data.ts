@@ -1,10 +1,10 @@
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 import type { PageDetailsFragment } from '@tempo/api/generated/graphql';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 import {
   getSelectedValues,
   mergeChoicesWithValues,
 } from '@tempo/dashboard/oldSrc/attributes/utils/data';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 
 export function getAttributeInputFromPage(page: PageDetailsFragment): AttributeInput[] {
   return page?.attributes.map((attribute) => ({

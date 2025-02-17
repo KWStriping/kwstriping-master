@@ -1,20 +1,20 @@
 import * as m from '@paraglide/messages';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Date from '@tempo/dashboard/components/core/Date';
-import Money from '@tempo/dashboard/components/core/Money';
-import Percent from '@tempo/dashboard/components/core/Percent';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { SaleType } from '@tempo/api/generated/constants';
 import type { SaleDetailsFragment } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import type { ChannelProps } from '@tempo/dashboard/oldSrc/types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { ReactNode, FC } from 'react';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import Date from '@tempo/dashboard/components/core/Date';
+import Money from '@tempo/dashboard/components/core/Money';
+import Percent from '@tempo/dashboard/components/core/Percent';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import type { ChannelProps } from '@tempo/dashboard/oldSrc/types';
 
 export interface SaleSummaryProps extends ChannelProps {
   sale: Maybe<SaleDetailsFragment>;

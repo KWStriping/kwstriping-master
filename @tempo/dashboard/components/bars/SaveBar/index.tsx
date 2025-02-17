@@ -4,10 +4,10 @@ import type {
   ConfirmButtonLabels,
   ConfirmButtonTransitionState,
 } from '@tempo/ui/components/buttons/ConfirmButton';
-import { ActionBar } from '@tempo/dashboard/components/bars/ActionBar';
 import clsx from 'clsx';
 import type { FC } from 'react';
 import { ButtonTooltipDecorator } from './ButtonTooltipDecorator';
+import { ActionBar } from '@tempo/dashboard/components/bars/ActionBar';
 
 export type SaveBarLabels = ConfirmButtonLabels & Record<'delete' | 'cancel', string>;
 export type SaveBarTooltips = Partial<Record<'confirm' | 'delete' | 'cancel', string>>;

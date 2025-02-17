@@ -1,15 +1,15 @@
-import type { ChannelOpts } from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard/types';
 import type {
   ProductChannelListingAddInput,
   ProductChannelListingUpdateInput,
   ProductFragment,
 } from '@tempo/api/generated/graphql';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import uniq from 'lodash-es/uniq';
 import uniqBy from 'lodash-es/uniqBy';
 import { useCallback, useRef } from 'react';
 
 import type { ProductChannelsListingDialogSubmit } from './ProductChannelsListingsDialog';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import type { ChannelOpts } from '@tempo/dashboard/components/cards/ChannelsAvailabilityCard/types';
 
 const emptyListing: Omit<ProductChannelListingAddInput, 'channelId'> = {
   availableForPurchaseDate: null,
@@ -29,7 +29,9 @@ export const updateChannelsInput = (
       return {
         ...listing,
         ...data,
-        availableForPurchaseDate: data?.isAvailableForPurchase ? data?.availableForPurchase : null,
+        availableForPurchaseDate: data?.isAvailableForPurchase
+          ? data?.availableForPurchase
+          : null,
       };
     }
     return listing;

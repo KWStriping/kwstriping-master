@@ -1,6 +1,6 @@
+import type { ChangeEvent } from 'react';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import type { ChangeEvent } from 'react';
 
 export interface SingleAutocompleteSelectedChangeHandlerProps {
   change: FormChange;

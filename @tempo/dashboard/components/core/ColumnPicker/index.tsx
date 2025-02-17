@@ -1,9 +1,6 @@
 import type { IconButtonProps } from '@tempo/ui/components/buttons/IconButton/IconButton';
 import IconButton from '@tempo/ui/components/buttons/IconButton/IconButton';
 import type { Choice } from '@tempo/ui/components/Filter';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import ColumnsIcon from '@mui/icons-material/ViewColumn';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -16,6 +13,9 @@ import type { MultiAutocompleteChoiceType } from '../../fields/MultiAutocomplete
 import type { ColumnPickerContentProps } from './ColumnPickerContent';
 import ColumnPickerContent from './ColumnPickerContent';
 import styles from './index.module.css';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
+import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export interface ColumnPickerProps
   extends FetchMoreProps,

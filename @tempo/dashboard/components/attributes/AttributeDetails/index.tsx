@@ -1,15 +1,7 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import { NumericUnits } from '@tempo/dashboard/components/attributes/AttributeDetails/NumericUnits';
-import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { AttributeEntityType, AttributeInputType } from '@tempo/api/generated/constants';
 import type { AttributeErrorFragment } from '@tempo/api/generated/graphql';
-import type { UseFormResult } from '@tempo/dashboard/hooks/useForm';
-import { getAttributeSlugErrorMessage } from '@tempo/dashboard/oldSrc/attributes/errors';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
@@ -18,6 +10,14 @@ import type { ChangeEvent, FC } from 'react';
 import slugify from 'slugify';
 
 import type { AttributePageFormData } from '../AttributePage';
+import getAttributeErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/attribute';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import { getAttributeSlugErrorMessage } from '@tempo/dashboard/oldSrc/attributes/errors';
+import type { UseFormResult } from '@tempo/dashboard/hooks/useForm';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import SingleSelectField from '@tempo/dashboard/components/fields/SingleSelectField';
+import { NumericUnits } from '@tempo/dashboard/components/attributes/AttributeDetails/NumericUnits';
 
 const entityTypeMessages = {
   page: {

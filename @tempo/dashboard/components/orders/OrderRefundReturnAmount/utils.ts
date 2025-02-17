@@ -1,6 +1,8 @@
-import type { IMoney } from '@tempo/dashboard/components/core/Money';
 import type { OrderDetailsFragment, OrderRefundDataQuery } from '@tempo/api/generated/graphql';
-import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
+
+import type { OrderRefundFormData } from '../OrderRefundPage/form';
+import type { LineItemData, OrderReturnFormData } from '../OrderReturnPage/form';
+import type { OrderRefundAmountValuesProps } from './OrderRefundReturnAmountValues';
 import {
   getAllFulfillmentLinesPriceSum,
   getPreviouslyRefundedPrice,
@@ -8,10 +10,8 @@ import {
   getReplacedProductsAmount,
   getReturnSelectedProductsAmount,
 } from '@tempo/dashboard/oldSrc/orders/utils/data';
-
-import type { OrderRefundFormData } from '../OrderRefundPage/form';
-import type { LineItemData, OrderReturnFormData } from '../OrderReturnPage/form';
-import type { OrderRefundAmountValuesProps } from './OrderRefundReturnAmountValues';
+import type { FormsetData } from '@tempo/dashboard/hooks/useFormset';
+import type { IMoney } from '@tempo/dashboard/components/core/Money';
 
 export const getMiscellaneousAmountValues = (
   order: OrderRefundDataQuery['order']

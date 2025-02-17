@@ -39,15 +39,7 @@ services:
       - DEBUG=1
       - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
     healthcheck:
-      test:
-        [
-          "CMD",
-          "curl",
-          "--silent",
-          "--insecure",
-          "--fail",
-          "https://${DOMAIN}/health"
-        ]
+      test: [ "CMD", "curl", "--silent", "--insecure", "--fail", "https://${DOMAIN}/health" ]
       interval: 10s
       timeout: 1s
       retries: 30
@@ -61,7 +53,7 @@ services:
       - ./.config/nginx/certs:/etc/ssl/certs:ro
       - ./_volumes/media:/var/www/${DOMAIN}/_volumes/media:ro
       - ./_volumes/static:/var/www/${DOMAIN}/_volumes/static:ro
-      - ./apps/${APP}/public:/var/www/${DOMAIN}/public
+      - ./public:/var/www/${DOMAIN}/public
   tempo:
     # command: python manage.py dev
     # build:
@@ -72,7 +64,7 @@ services:
     pull_policy: never
     volumes:
       - ./tempo:/root/tempo
-      - ./apps/${APP}/fixtures:/root/apps/${APP}/fixtures
+      - ./fixtures:/root/fixtures
   worker:
     depends_on:
       <<: *services
@@ -115,15 +107,7 @@ services:
     # container_name: mailhog
     healthcheck:
       # NOTE: This is an Alpine-based image without curl; use wget instead.
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8025/"
-        ]
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8025/" ]
       interval: 20s
       timeout: 5s
       retries: 3

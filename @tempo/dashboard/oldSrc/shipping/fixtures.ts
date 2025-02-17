@@ -3,7 +3,7 @@ import type {
   ShippingZoneFragment,
   ShippingZoneQuery,
 } from '@tempo/api/generated/graphql';
-import { } from '@tempo/api/generated/graphql';
+import {} from '@tempo/api/generated/graphql';
 import { WeightUnit, PostalCodeRuleInclusionType } from '@tempo/api/generated/constants';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 

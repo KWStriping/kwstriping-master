@@ -1,11 +1,8 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { Pill } from '@tempo/ui/components/pill/Pill';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Money from '@tempo/dashboard/components/core/Money';
 import { OrderAction, OrderDiscountType, OrderStatus } from '@tempo/api/generated/constants';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import { transformPaymentStatus } from '@tempo/dashboard/oldSrc/misc';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -16,6 +13,9 @@ import type { FC } from 'react';
 import { useStyles } from './styles';
 
 import { extractOrderGiftCardUsedAmount, extractRefundedAmount } from './utils';
+import { transformPaymentStatus } from '@tempo/dashboard/oldSrc/misc';
+import Money from '@tempo/dashboard/components/core/Money';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface OrderPaymentProps {
   order: Maybe<OrderDetailsFragment>;
@@ -53,8 +53,8 @@ const OrderPayment: FC<OrderPaymentProps> = ({
 
     if (order.shippingMethodName === null) {
       return order.collectionPointName == null
-        ? m.dashboard_shippingDoesNotApply() ?? 'does not apply'
-        : m.dashboard_lickAndCollectShippingMethod() ?? 'click&collect';
+        ? (m.dashboard_shippingDoesNotApply() ?? 'does not apply')
+        : (m.dashboard_lickAndCollectShippingMethod() ?? 'click&collect');
     }
     return order.shippingMethodName;
   };
@@ -80,8 +80,8 @@ const OrderPayment: FC<OrderPaymentProps> = ({
               {m.dashboard_discount() ?? 'Discount'}
               <span className={styles.supportText ?? ''}>
                 {discount.type === OrderDiscountType.Manual
-                  ? m.dashboard_staffAdded() ?? 'Staff added'
-                  : m.dashboard_voucher() ?? 'Voucher'}
+                  ? (m.dashboard_staffAdded() ?? 'Staff added')
+                  : (m.dashboard_voucher() ?? 'Voucher')}
               </span>
               <span className={clsx('ml-auto', styles.smallFont ?? '', styles.supportText)}>
                 {m.dashboard_includedInSubtotal() ?? 'Included in subtotal'}
@@ -172,8 +172,8 @@ const OrderPayment: FC<OrderPaymentProps> = ({
             {m.dashboard_outstanding() ?? 'Outstanding Balance'}
             <div className={'ml-auto'}>
               {order?.totalBalance.amount === 0
-                ? m.dashboard_settled() ?? 'Settled'
-                : <Money money={order?.totalBalance} /> ?? <Skeleton />}
+                ? (m.dashboard_settled() ?? 'Settled')
+                : (<Money money={order?.totalBalance} /> ?? <Skeleton />)}
               {}
             </div>
           </div>

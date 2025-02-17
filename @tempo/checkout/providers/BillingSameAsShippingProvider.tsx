@@ -22,10 +22,8 @@ export const BillingSameAsShippingProvider: FC<{
     !checkout?.billingAddress
   );
 
-  const [
-    hasBillingSameAsShippingAddressChanged,
-    setHasBillingSameAsShippingAddressChanged,
-  ] = useState(false);
+  const [hasBillingSameAsShippingAddressChanged, setHasBillingSameAsShippingAddressChanged] =
+    useState(false);
 
   const providerValues: BillingSameAsShippingContextConsumerProps = {
     isBillingSameAsShippingAddress,

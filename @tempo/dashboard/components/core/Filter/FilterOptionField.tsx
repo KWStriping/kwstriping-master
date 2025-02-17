@@ -1,5 +1,3 @@
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import clsx from 'clsx';
@@ -7,6 +5,8 @@ import type { FC } from 'react';
 
 import styles from './index.module.css';
 import type { FieldType, FilterFieldBaseProps } from './types';
+import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 const FilterOptionField: FC<FilterFieldBaseProps<string, FieldType.options>> = ({
   filter,

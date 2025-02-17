@@ -1,10 +1,21 @@
+import type { ProductFragment } from '@tempo/api/generated/graphql';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import type { FC } from 'react';
+import { useProductChannelListingsForm } from './formChannels';
+import type {
+  ProductUpdateData,
+  ProductUpdateFormProps,
+  ProductUpdateSubmitData,
+  SubmitResult,
+  UseProductUpdateFormOpts,
+  UseProductUpdateFormOutput,
+} from './types';
 import type { DatagridChangeOpts } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
 import {
   DatagridChangeStateContext,
   useDatagridChangeState,
 } from '@tempo/dashboard/components/core/Datagrid/useDatagridChange';
 import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
-import type { ProductFragment } from '@tempo/api/generated/graphql';
 import useForm from '@tempo/dashboard/hooks/useForm';
 import useFormset from '@tempo/dashboard/hooks/useFormset';
 import useHandleFormSubmit from '@tempo/dashboard/hooks/useHandleFormSubmit';
@@ -35,18 +46,6 @@ import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/use
 import { RichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import { useMultipleRichText } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
 import useRichText from '@tempo/dashboard/oldSrc/utils/richText/useRichText';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import type { FC } from 'react';
-
-import { useProductChannelListingsForm } from './formChannels';
-import type {
-  ProductUpdateData,
-  ProductUpdateFormProps,
-  ProductUpdateSubmitData,
-  SubmitResult,
-  UseProductUpdateFormOpts,
-  UseProductUpdateFormOutput,
-} from './types';
 
 function useProductUpdateForm(
   product: ProductFragment,

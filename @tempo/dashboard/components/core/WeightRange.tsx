@@ -23,15 +23,15 @@ const WeightRange: FC<WeightRangeProps> = ({ from, to }) => {
               }
             )
           : from && !to
-            ? m.dashboard_fromWeight({
+            ? (m.dashboard_fromWeight({
                 unit: from.unit,
                 value: from.value,
-              }) ?? 'from {{value}} {{unit}}'
+              }) ?? 'from {{value}} {{unit}}')
             : !from && to
-              ? m.dashboard_oWeight({
+              ? (m.dashboard_oWeight({
                   unit: to.unit,
                   value: to.value,
-                }) ?? 'to {{value}} {{unit}}'
+                }) ?? 'to {{value}} {{unit}}')
               : '-'}
       </span>
     </>

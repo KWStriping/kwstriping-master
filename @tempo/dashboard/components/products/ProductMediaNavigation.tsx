@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 import clsx from 'clsx';
 import Image from 'next/image';
 import type { FC } from 'react';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const messages = {
   allMedia: {

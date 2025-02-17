@@ -1,8 +1,3 @@
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type {
-  ChoiceValue,
-  SingleAutocompleteChoiceType,
-} from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type {
   CountryFragment,
   CountryWithCodeFragment,
@@ -10,6 +5,11 @@ import type {
   MetadataItemFragment,
   SearchPagesQuery,
 } from '@tempo/api/generated/graphql';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import type {
+  ChoiceValue,
+  SingleAutocompleteChoiceType,
+} from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import { getFullName } from '@tempo/dashboard/oldSrc/misc';
 import type { Node, RelayToFlat, SlugNode, TagNode } from '@tempo/dashboard/oldSrc/types';
 

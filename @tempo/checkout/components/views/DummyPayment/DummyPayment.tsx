@@ -56,7 +56,7 @@ const useDummyPay = (): UseDummyPayValues => {
       const error =
         typeof e === 'string'
           ? e
-          : m[dummyPaymentMessages.error.id] ?? dummyPaymentMessages.error.defaultMessage;
+          : (m[dummyPaymentMessages.error.id] ?? dummyPaymentMessages.error.defaultMessage);
       showError(error);
     }
   };
@@ -145,10 +145,10 @@ export const DummyPayment = () => {
               }
             >
               {dummyPayResult.fetching
-                ? m[dummyPaymentMessages.loadingWithDots.id] ??
-                  dummyPaymentMessages.loadingWithDots.defaultMessage
-                : m[dummyPaymentMessages.dummyPay.id] ??
-                  dummyPaymentMessages.dummyPay.defaultMessage}
+                ? (m[dummyPaymentMessages.loadingWithDots.id] ??
+                  dummyPaymentMessages.loadingWithDots.defaultMessage)
+                : (m[dummyPaymentMessages.dummyPay.id] ??
+                  dummyPaymentMessages.dummyPay.defaultMessage)}
             </Button>
           </form>
         </div>

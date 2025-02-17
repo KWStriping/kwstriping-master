@@ -11,12 +11,12 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, FC, ChangeEvent, MutableRefObject } from 'react';
 
+import type { MoneyFragment } from '@tempo/api/generated/graphql';
+import { DiscountValueType } from '@tempo/api/generated/constants';
 import ModalTitle from './ModalTitle';
 import type { OrderDiscountCommonInput, OrderDiscountType } from './types';
 import { ORDER_LINE_DISCOUNT } from './types';
 import { useUpdateEffect } from '@tempo/dashboard/hooks/useUpdateEffect';
-import type { MoneyFragment } from '@tempo/api/generated/graphql';
-import { DiscountValueType } from '@tempo/api/generated/constants';
 import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
 import PriceField from '@tempo/dashboard/components/fields/PriceField';
 import DialogButtons from '@tempo/dashboard/components/dialogs/ActionDialog/DialogButtons';

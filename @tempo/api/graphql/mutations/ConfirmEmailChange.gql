@@ -1,4 +1,4 @@
-mutation confirmEmailChange($token: String!, $channel: String!) {
+mutation confirmEmailChange($token: String!, $channel: String) {
   confirmEmailChange(token: $token, channel: $channel) {
     result {
       ...UserDetails

@@ -2,13 +2,7 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import Form from '@tempo/dashboard/components/forms/Form';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { CountryWithCodeFragment } from '@tempo/api/generated/graphql';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
 import {
   Dialog,
   DialogActions,
@@ -23,6 +17,12 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { filter } from 'fuzzaldrin';
 import type { FC } from 'react';
+import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import Form from '@tempo/dashboard/components/forms/Form';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 
 interface FormData {
   allCountries: boolean;

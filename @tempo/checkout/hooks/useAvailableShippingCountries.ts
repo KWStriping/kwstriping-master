@@ -1,9 +1,9 @@
 import type { CountryCode } from '@tempo/api/generated/graphql';
 import { ChannelDocument } from '@tempo/api/generated/graphql';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { useMemo } from 'react';
 import { assert } from 'tsafe/assert';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 interface UseAvailableShippingCountries {
   availableShippingCountries: CountryCode[];

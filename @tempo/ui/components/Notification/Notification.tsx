@@ -1,13 +1,3 @@
-import { Button } from '@tempo/ui/components/buttons/Button';
-import IconButton from '@tempo/ui/components/buttons/IconButton';
-import {
-  CloseIcon,
-  CompleteIcon,
-  ExpandIcon,
-  InfoIcon,
-  NotAllowedIcon,
-  WarningIcon,
-} from '@tempo/ui/icons';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
@@ -16,7 +6,12 @@ import { useState } from 'react';
 
 // import useStyles from './styles';
 
+import CloseIcon from '@mui/icons-material/Close';
+import ExpandIcon from '@mui/icons-material/Expand';
 import type { NotificationProps, NotificationType } from './types';
+import { CompleteIcon, InfoIcon, NotAllowedIcon, WarningIcon } from '@tempo/ui/icons';
+import IconButton from '@tempo/ui/components/buttons/IconButton';
+import { Button } from '@tempo/ui/components/buttons/Button';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   type: NotificationType;

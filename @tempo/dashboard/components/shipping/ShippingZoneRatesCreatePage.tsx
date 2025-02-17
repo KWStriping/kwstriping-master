@@ -1,5 +1,5 @@
-import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
+import * as m from '@paraglide/messages';
 // import { useTranslation } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import Grid from '@tempo/ui/components/Grid';
@@ -8,6 +8,15 @@ import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { FC, FormEventHandler } from 'react';
+import type { ShippingMethod } from '@tempo/api/generated/constants';
+import { PermissionCode } from '@tempo/api/generated/constants';
+import type {
+  PostalCodeRuleInclusionType,
+  ShippingChannelsErrorFragment,
+  ShippingErrorFragment,
+  ShippingMethodFragment,
+  TaxClassBaseFragment,
+} from '@tempo/api/generated/graphql';
 import ShippingMethodTaxes from './ShippingMethodTaxes';
 import ShippingZonePostalCodes from './ShippingZonePostalCodes';
 import type { ShippingZoneRateCommonFormData } from './ShippingZoneRatesPage/types';
@@ -20,15 +29,6 @@ import OrderValue from '@tempo/dashboard/components/shipping/OrderValue';
 import OrderWeight from '@tempo/dashboard/components/shipping/OrderWeight';
 import PricingCard from '@tempo/dashboard/components/shipping/PricingCard';
 import ShippingRateInfo from '@tempo/dashboard/components/shipping/ShippingRateInfo';
-import type { ShippingMethod } from '@tempo/api/generated/constants';
-import { PermissionCode } from '@tempo/api/generated/constants';
-import type {
-  PostalCodeRuleInclusionType,
-  ShippingChannelsErrorFragment,
-  ShippingErrorFragment,
-  ShippingMethodFragment,
-  TaxClassBaseFragment,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useForm from '@tempo/dashboard/hooks/useForm';
 import useHandleFormSubmit from '@tempo/dashboard/hooks/useHandleFormSubmit';

@@ -3,11 +3,10 @@ import type {
   PageErrorWithAttributesFragment,
   ProductErrorWithAttributesFragment,
 } from '@tempo/api/generated/graphql';
+import type { AttributeInput } from './Attributes';
 import type { FormsetChange } from '@tempo/dashboard/hooks/useFormset';
 import type { FetchMoreProps, ReorderEvent } from '@tempo/dashboard/oldSrc/types';
 import type { RichTextGetters } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
-
-import type { AttributeInput } from './Attributes';
 
 export enum ProductAttributeScope {
   All = 'ALL',

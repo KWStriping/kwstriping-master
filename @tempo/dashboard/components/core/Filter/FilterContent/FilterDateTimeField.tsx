@@ -1,12 +1,11 @@
 import * as m from '@paraglide/messages';
 import { splitDateTime } from '@tempo/utils/datetime';
+import TextField from '@mui/material/TextField';
+import type { FC } from 'react';
+import { filterTestingContext, getDateFilterValue, getDateTimeFilterValue } from './utils';
 import type { FilterFieldBaseProps } from '@tempo/dashboard/components/core/Filter';
 import { FieldType } from '@tempo/dashboard/components/core/Filter';
 import Arrow from '@tempo/dashboard/components/core/Filter/Arrow';
-import TextField from '@mui/material/TextField';
-import type { FC } from 'react';
-
-import { filterTestingContext, getDateFilterValue, getDateTimeFilterValue } from './utils';
 
 type FilterDateTimeFieldProps = FilterFieldBaseProps<string, FieldType.dateTime | FieldType.date>;
 

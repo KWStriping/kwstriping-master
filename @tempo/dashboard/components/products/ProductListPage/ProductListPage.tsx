@@ -5,6 +5,16 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
 import { useMemo } from 'react';
+import type {
+  GridAttributesQuery,
+  ProductListQuery,
+  RefreshLimitsQuery,
+  SearchAvailableInGridAttributesQuery,
+} from '@tempo/api/generated/graphql';
+import ProductList from '../ProductList';
+import { getAttributeColumnValue } from './utils';
+import { useFilterStructure } from './filters';
+import type { ProductFilterKeys, ProductListFilterOpts } from './filters';
 import LimitReachedAlert from '@tempo/dashboard/components/alerts/LimitReachedAlert';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 import CardMenu from '@tempo/dashboard/components/core/CardMenu';
@@ -12,12 +22,6 @@ import ColumnPicker from '@tempo/dashboard/components/core/ColumnPicker';
 import { getByName } from '@tempo/dashboard/components/core/Filter/utils';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type {
-  GridAttributesQuery,
-  ProductListQuery,
-  RefreshLimitsQuery,
-  SearchAvailableInGridAttributesQuery,
-} from '@tempo/api/generated/graphql';
 import type { ProductListColumns } from '@tempo/dashboard/oldSrc/config';
 import type { ProductListUrlOrdering } from '@tempo/dashboard/oldSrc/products/urls';
 import type {
@@ -30,10 +34,6 @@ import type {
   SortPage,
 } from '@tempo/dashboard/oldSrc/types';
 import { hasLimits, isLimitReached } from '@tempo/dashboard/oldSrc/utils/limits';
-import ProductList from '../ProductList';
-import { getAttributeColumnValue } from './utils';
-import { useFilterStructure } from './filters';
-import type { ProductFilterKeys, ProductListFilterOpts } from './filters';
 
 export interface ProductListPageProps
   extends PageListProps<ProductListColumns>,

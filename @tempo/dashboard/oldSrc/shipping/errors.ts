@@ -1,7 +1,7 @@
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
 import { ShippingErrorCode } from '@tempo/api/generated/constants';
-import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
 import type { TFunction } from '@tempo/next/i18n';
+import getShippingErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/shipping';
 
 const messages = {
   invalid: {

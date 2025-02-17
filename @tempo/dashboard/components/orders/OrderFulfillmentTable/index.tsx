@@ -1,10 +1,7 @@
 import * as m from '@paraglide/messages';
 import { renderCollection } from '@tempo/ui/utils';
-import OrderFulfillmentLine from '@tempo/dashboard/components/orders/OrderFulfillmentTable/OrderFulfillmentLine';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { OrderDetailsFragment, WarehouseFragment } from '@tempo/api/generated/graphql';
 
-import { getToFulfillOrderLines } from '@tempo/dashboard/oldSrc/orders/utils/data';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
@@ -13,6 +10,9 @@ import clsx from 'clsx';
 import type { FC } from 'react';
 
 import { useStyles } from './styles';
+import { getToFulfillOrderLines } from '@tempo/dashboard/oldSrc/orders/utils/data';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import OrderFulfillmentLine from '@tempo/dashboard/components/orders/OrderFulfillmentTable/OrderFulfillmentLine';
 
 interface OrderFulfillmentTableProps {
   order: Maybe<Pick<OrderDetailsFragment, 'lines'>>;

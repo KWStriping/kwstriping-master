@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { assert } from 'tsafe/assert';
 import type { LoginFormData } from './form';
 import LoginForm from './form';
-export * from './types';
+export type * from './types';
 
 export interface LoginProps {
   loading: boolean;

@@ -1,12 +1,4 @@
 import type {
-  AttributeInput,
-  AttributeInputData,
-} from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
-import type {
   ProductErrorWithAttributesFragment,
   ProductKlassQuery,
   SearchPagesQuery,
@@ -14,6 +6,18 @@ import type {
   SearchProductKlassesQuery,
   SearchWarehousesQuery,
 } from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import { useEffect, useState } from 'react';
+import type { SetStateAction, Dispatch, FC, ReactNode } from 'react';
+import type { ProductStockFormsetData, ProductStockInput } from '../ProductStocks';
+import type {
+  AttributeInput,
+  AttributeInputData,
+} from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   CommonUseFormResultWithHandlers,
   FormChange,
@@ -62,11 +66,6 @@ import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/use
 import { RichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import { useMultipleRichText } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
 import useRichText from '@tempo/dashboard/oldSrc/utils/richText/useRichText';
-import type { OutputData } from '@editorjs/editorjs';
-import { useEffect, useState } from 'react';
-import type { SetStateAction, Dispatch, FC, ReactNode } from 'react';
-
-import type { ProductStockFormsetData, ProductStockInput } from '../ProductStocks';
 
 export interface ProductCreateFormData extends MetadataFormData {
   category: string;

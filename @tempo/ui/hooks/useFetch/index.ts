@@ -1,2 +1,2 @@
 export * from './useFetch';
-export * from './types';
+export type * from './types';

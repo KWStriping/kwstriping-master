@@ -1,4 +1,4 @@
-import type { OrderPaymentDetailsQuery, OrderPaymentDetailsQueryVariables } from '@tempo/api/generated/graphql';
+import type { OrderPaymentDetailsQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderPaymentDetailsDocument } from '@tempo/api/generated/graphql';
 import { getServerSideClient } from '@tempo/api/client';
 

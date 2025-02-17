@@ -1,9 +1,23 @@
-import * as m from '@paraglide/messages';
 import type { UrlObject } from 'url';
+import * as m from '@paraglide/messages';
 // import { useTranslation } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
+import type { ShippingZoneUpdateFormData } from '@dashboard/components/ShippingZoneDetailsPage/types';
+import type {
+  ChannelFragment,
+  ShippingErrorFragment,
+  ShippingZoneDetailsFragment,
+  ShippingZoneQuery,
+} from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import ShippingZoneInfo from '../ShippingZoneInfo';
+import ShippingZoneRates from '../ShippingZoneRates';
+import ShippingZoneSettingsCard from '../ShippingZoneSettingsCard';
+import { getInitialFormData } from './utils';
 import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import CountryList from '@tempo/dashboard/components/core/CountryList';
 import Metadata from '@tempo/dashboard/components/core/Metadata';
@@ -12,13 +26,6 @@ import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import Form from '@tempo/dashboard/components/forms/Form';
-import type { ShippingZoneUpdateFormData } from '@dashboard/components/ShippingZoneDetailsPage/types';
-import type {
-  ChannelFragment,
-  ShippingErrorFragment,
-  ShippingZoneDetailsFragment,
-  ShippingZoneQuery,
-} from '@tempo/api/generated/graphql';
 import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';
@@ -26,14 +33,6 @@ import type { ChannelProps, FetchMoreProps, SearchProps } from '@tempo/dashboard
 import createMultiAutocompleteSelectHandler from '@tempo/dashboard/oldSrc/utils/handlers/multiAutocompleteSelectChangeHandler';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-
-import ShippingZoneInfo from '../ShippingZoneInfo';
-import ShippingZoneRates from '../ShippingZoneRates';
-import ShippingZoneSettingsCard from '../ShippingZoneSettingsCard';
-import { getInitialFormData } from './utils';
 
 export interface ShippingZoneDetailsPageProps extends FetchMoreProps, SearchProps, ChannelProps {
   disabled: boolean;

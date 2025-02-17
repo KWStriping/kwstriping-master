@@ -160,7 +160,7 @@ const AttributePage: FC<AttributePageProps> = ({
                 title={
                   attribute
                     ? attribute.name
-                    : m.dashboard_createNewAttributePageHeader() ?? 'Create New Attribute'
+                    : (m.dashboard_createNewAttributePageHeader() ?? 'Create New Attribute')
                 }
               />
               <Grid>

@@ -1,8 +1,3 @@
-import type {
-  ChannelSaleFormData,
-  SaleDetailsPageFormData,
-} from '@tempo/dashboard/components/discounts/SaleDetailsPage';
-import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { SaleType } from '@tempo/api/generated/constants';
 import type {
   ChannelDetailsFragment,
@@ -15,10 +10,15 @@ import type {
   ShippingZoneQuery,
   VoucherDetailsFragment,
 } from '@tempo/api/generated/graphql';
+import uniqBy from 'lodash-es/uniqBy';
+import type {
+  ChannelSaleFormData,
+  SaleDetailsPageFormData,
+} from '@tempo/dashboard/components/discounts/SaleDetailsPage';
+import type { VoucherDetailsPageFormData } from '@tempo/dashboard/components/discounts/VoucherDetailsPage';
 import { RequirementsPicker } from '@tempo/dashboard/oldSrc/discounts/types';
 import { validatePrice } from '@tempo/dashboard/oldSrc/products/utils/validation';
 import { mapNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-import uniqBy from 'lodash-es/uniqBy';
 
 export interface Channel {
   id: string;
@@ -389,10 +389,10 @@ export const getChannelsCurrencyChoices = (
 ) =>
   id
     ? mapNodeToChoice(
-      channelsList?.filter(
-        (channel) => channel.id !== id && channel.currencyCode === selectedChannel?.currencyCode
+        channelsList?.filter(
+          (channel) => channel.id !== id && channel.currencyCode === selectedChannel?.currencyCode
+        )
       )
-    )
     : [];
 
 export const validateSalePrice = (data: SaleDetailsPageFormData, channel: ChannelSaleFormData) =>

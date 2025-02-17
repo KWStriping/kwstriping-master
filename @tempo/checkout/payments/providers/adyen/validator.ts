@@ -6,7 +6,6 @@ export const adyenHmacValidator = new hmacValidator();
 // wrap exceptions from validator in promise
 export const validateHmac: (
   ...params: Parameters<HmacValidator['validateHMAC']>
-) => // eslint-disable-next-line require-await
-Promise<boolean> = async (notificationRequestItem, hmac) => {
+) => Promise<boolean> = async (notificationRequestItem, hmac) => {
   return adyenHmacValidator.validateHMAC(notificationRequestItem, hmac);
 };

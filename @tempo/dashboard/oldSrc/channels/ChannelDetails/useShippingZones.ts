@@ -1,11 +1,11 @@
 import { useUserPermissions } from '@tempo/api/auth/react/hooks/permissions';
 import { useQuery } from '@tempo/api/hooks/useQuery';
-import { hasPermissions } from '@tempo/dashboard/components/core/RequirePermissions';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import {
   ChannelShippingZonesDocument,
   ShippingZonesCountDocument,
 } from '@tempo/api/generated/graphql';
+import { hasPermissions } from '@tempo/dashboard/components/core/RequirePermissions';
 
 export const useShippingZones = (channelId?: string) => {
   const userPermissions = useUserPermissions();

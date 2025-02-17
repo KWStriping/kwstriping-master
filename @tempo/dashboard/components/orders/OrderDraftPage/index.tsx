@@ -1,12 +1,6 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
-import CardMenu from '@tempo/dashboard/components/core/CardMenu';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 import Grid from '@tempo/ui/components/Grid';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import OrderChannelSectionCard from '@tempo/dashboard/components/orders/OrderChannelSectionCard';
 import type { OrderDetailsFragment, OrderErrorFragment } from '@tempo/api/generated/graphql';
 import Container from '@mui/material/Container';
 import Skeleton from '@mui/material/Skeleton';
@@ -18,6 +12,12 @@ import OrderCustomer from '../OrderCustomer';
 import OrderDraftDetails from '../OrderDraftDetails';
 import OrderHistory from '../OrderHistory';
 import OrderDraftAlert from './OrderDraftAlert';
+import OrderChannelSectionCard from '@tempo/dashboard/components/orders/OrderChannelSectionCard';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import CardMenu from '@tempo/dashboard/components/core/CardMenu';
 
 export interface OrderDraftPageProps {
   id: string;

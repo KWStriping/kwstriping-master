@@ -1,11 +1,10 @@
 import * as m from '@paraglide/messages';
+import TextField from '@mui/material/TextField';
+import type { FC } from 'react';
+import { filterTestingContext } from './utils';
 import type { FilterFieldBaseProps } from '@tempo/dashboard/components/core/Filter';
 import { FieldType } from '@tempo/dashboard/components/core/Filter';
 import Arrow from '@tempo/dashboard/components/core/Filter/Arrow';
-import TextField from '@mui/material/TextField';
-import type { FC } from 'react';
-
-import { filterTestingContext } from './utils';
 
 type FilterNumericFieldProps = FilterFieldBaseProps<
   string,

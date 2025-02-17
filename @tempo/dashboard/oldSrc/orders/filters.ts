@@ -1,4 +1,6 @@
 import { findInEnum, findValueInEnum } from '@tempo/utils/enums';
+import { OrderStatusFilter, ChargeStatus } from '@tempo/api/generated/constants';
+import type { OrderFilter } from '@tempo/api/generated/graphql';
 import type {
   FilterElement,
   FilterElementKeyValue,
@@ -10,10 +12,11 @@ import {
   OrderFilterGiftCard,
   OrderFilterKeys,
 } from '@tempo/dashboard/components/orders/OrderListPage/filters';
-import { OrderStatusFilter, ChargeStatus } from '@tempo/api/generated/constants';
-import type { OrderFilter } from '@tempo/api/generated/graphql';
 
-import type { OrderListUrlFilters, OrderListUrlQueryParams } from '@tempo/dashboard/oldSrc/orders/urls';
+import type {
+  OrderListUrlFilters,
+  OrderListUrlQueryParams,
+} from '@tempo/dashboard/oldSrc/orders/urls';
 import {
   OrderListFitersWithKeyValueValues,
   OrderListUrlFiltersEnum,
@@ -48,9 +51,9 @@ export function getFilterOpts(
     },
     channel: channels
       ? {
-        active: params?.channel !== undefined,
-        value: channels,
-      }
+          active: params?.channel !== undefined,
+          value: channels,
+        }
       : null,
     created: {
       active: [params?.createdFrom, params?.createdTo].some((field) => field !== undefined),

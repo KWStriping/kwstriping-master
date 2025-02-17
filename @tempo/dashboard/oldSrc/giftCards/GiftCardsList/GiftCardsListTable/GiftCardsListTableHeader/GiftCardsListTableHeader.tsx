@@ -84,7 +84,7 @@ const GiftCardsListTableHeader: FC<GiftCardsListTableHeaderProps> = ({ isCurrenc
     ),
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line ts/no-unused-vars
   const { title, ...headerTooltipItemProps } = headerTooltipItem;
 
   return (

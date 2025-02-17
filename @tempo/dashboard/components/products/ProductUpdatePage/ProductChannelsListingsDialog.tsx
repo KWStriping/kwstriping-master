@@ -1,13 +1,12 @@
 import * as m from '@paraglide/messages';
 import type { FC } from 'react';
-import ChannelsAvailabilityDialog from '@tempo/dashboard/components/dialogs/ChannelsAvailabilityDialog';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
+import type { ProductUpdateData } from './types';
+import ChannelsAvailabilityDialog from '@tempo/dashboard/components/dialogs/ChannelsAvailabilityDialog';
 import useStateFromProps from '@tempo/dashboard/hooks/useStateFromProps';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import { arrayDiff } from '@tempo/dashboard/oldSrc/utils/arrays';
 import { toggle } from '@tempo/dashboard/oldSrc/utils/lists';
-
-import type { ProductUpdateData } from './types';
 
 export type ProductChannelsListingDialogSubmit = (
   update: Record<'added' | 'removed', string[]>

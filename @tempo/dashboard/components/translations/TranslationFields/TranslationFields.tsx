@@ -1,16 +1,10 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import Button from '@tempo/ui/components/buttons/Button';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Grid from '@tempo/ui/components/Grid';
-import TablePaginationWithContext from '@tempo/dashboard/components/tables/TablePagination';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
-import { TranslationFieldType } from '@tempo/dashboard/oldSrc/translations/types';
-import type { TranslationField } from '@tempo/dashboard/oldSrc/translations/types';
-import type { ListProps } from '@tempo/dashboard/oldSrc/types';
 import type { OutputData } from '@editorjs/editorjs';
 import ArrowIcon from '@mui/icons-material/ArrowDropDown';
 import Card from '@mui/material/Card';
@@ -25,6 +19,12 @@ import type { FC } from 'react';
 import TranslationFieldsLong from './TranslationFieldsLong';
 import TranslationFieldsRich from './TranslationFieldsRich';
 import TranslationFieldsShort from './TranslationFieldsShort';
+import type { ListProps } from '@tempo/dashboard/oldSrc/types';
+import type { TranslationField } from '@tempo/dashboard/oldSrc/translations/types';
+import { TranslationFieldType } from '@tempo/dashboard/oldSrc/translations/types';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import TablePaginationWithContext from '@tempo/dashboard/components/tables/TablePagination';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 type Pagination = Pick<ListProps, Exclude<keyof ListProps, 'getRowHref' | 'disabled'>>;
 

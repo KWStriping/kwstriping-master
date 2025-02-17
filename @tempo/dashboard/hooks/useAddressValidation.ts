@@ -4,10 +4,10 @@ import type {
   AddressUpdateInput,
   AddressType,
 } from '@tempo/api/generated/graphql';
+import { useState } from 'react';
 import type { AddressTypeInput } from '@tempo/dashboard/oldSrc/customers/types';
 import { transformFormToAddressInput } from '@tempo/dashboard/oldSrc/misc';
 import { add, remove } from '@tempo/dashboard/oldSrc/utils/lists';
-import { useState } from 'react';
 
 interface UseAddressValidation<TInput, TOutput> {
   errors: AccountErrorFragment[];

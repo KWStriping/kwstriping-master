@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
 
+import type { OrderDraftListQuery, RefreshLimitsQuery } from '@tempo/api/generated/graphql';
 import OrderDraftList from '../OrderDraftList';
 import OrderLimitReached from '../OrderLimitReached';
 import type { OrderDraftFilterKeys, OrderDraftListFilterOpts } from './filters';
@@ -18,7 +19,6 @@ import type {
   TabPageProps,
 } from '@tempo/dashboard/oldSrc/types';
 import type { OrderDraftListUrlOrdering } from '@tempo/dashboard/oldSrc/orders/urls';
-import type { OrderDraftListQuery, RefreshLimitsQuery } from '@tempo/api/generated/graphql';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 
@@ -58,10 +58,10 @@ const OrderDraftListPage: FC<OrderDraftListPageProps> = ({
         title={m.dashboard_orderDrafts() ?? 'Draft Orders'}
         subtitle={
           hasLimits(limits, 'orders')
-            ? m.dashboard__eTzO({
+            ? (m.dashboard__eTzO({
                 count: limits.currentUsage.orders,
                 max: limits.allowedUsage.orders,
-              }) ?? '{{count}}/{{max}} orders'
+              }) ?? '{{count}}/{{max}} orders')
             : undefined
         }
       >

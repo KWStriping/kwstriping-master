@@ -8,9 +8,8 @@ import { loadStripe } from '@stripe/stripe-js/pure';
 import { useRouter } from 'next/navigation';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-
 import { CompleteCheckoutButton } from '../../CompleteCheckoutButton';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 export const STRIPE_GATEWAY = 'api.payments.stripe';
 

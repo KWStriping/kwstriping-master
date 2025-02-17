@@ -6,9 +6,6 @@ import type {
   FilterElementKeyValue,
   FilterElementRegular,
 } from '@dashboard/components/Filter';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
-import type { ProductListFilterOpts } from '@tempo/dashboard/components/products/ProductListPage';
-import { ProductFilterKeys } from '@tempo/dashboard/components/products/ProductListPage';
 import { AttributeInputType, StockAvailability } from '@tempo/api/generated/constants';
 import type {
   AttributeFragment,
@@ -26,6 +23,10 @@ import type {
   SearchProductKlassesQuery,
   SearchProductKlassesQueryVariables,
 } from '@tempo/api/generated/graphql';
+import { getProductGiftCardFilterParam } from './utils';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
+import type { ProductListFilterOpts } from '@tempo/dashboard/components/products/ProductListPage';
+import { ProductFilterKeys } from '@tempo/dashboard/components/products/ProductListPage';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import type {
   ProductListUrlFilters,
@@ -52,7 +53,6 @@ import {
 } from '@tempo/dashboard/oldSrc/utils/filters';
 
 import { mapNodeToChoice, mapSlugNodeToChoice } from '@tempo/dashboard/oldSrc/utils/maps';
-import { getProductGiftCardFilterParam } from './utils';
 
 export const PRODUCT_FILTERS_KEY = 'productFilters';
 

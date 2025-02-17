@@ -1,8 +1,5 @@
 import type { FC, ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   ProductErrorWithAttributesFragment,
   ProductFragment,
@@ -10,6 +7,14 @@ import type {
   SearchProductsQuery,
   SearchWarehousesQuery,
 } from '@tempo/api/generated/graphql';
+import type { ProductStockInput } from '../ProductStocks';
+import {
+  concatChannelsBySelection,
+  extractChannelPricesFromVariantChannel,
+} from '../ProductChannels/formOperations';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   CommonUseFormResultWithHandlers,
   FormChange,
@@ -59,12 +64,6 @@ import { mapMetadataItemToInput } from '@tempo/dashboard/oldSrc/utils/maps';
 import getMetadata from '@tempo/dashboard/oldSrc/utils/metadata/getMetadata';
 import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/useMetadataChangeTrigger';
 import { useMultipleRichText } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
-
-import type { ProductStockInput } from '../ProductStocks';
-import {
-  concatChannelsBySelection,
-  extractChannelPricesFromVariantChannel,
-} from '../ProductChannels/formOperations';
 
 export interface ProductUpdateFormData extends MetadataFormData {
   sku: string;

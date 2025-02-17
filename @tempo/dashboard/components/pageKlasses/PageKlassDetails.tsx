@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { PageErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { ChangeEvent, FC } from 'react';
+import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface PageKlassDetailsProps {
   data?: {

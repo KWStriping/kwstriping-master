@@ -1,5 +1,5 @@
 import type {
-  TransactionActionEnum,
+  TransactionAction,
   TransactionActionPayloadFragment,
   TransactionItem,
 } from '@tempo/api/generated/graphql';
@@ -61,7 +61,7 @@ export const getActionsAfterRefund = (
     authorized: transaction?.amountAuthorized.amount,
   });
 
-  const transactionActions: TransactionActionEnum[] = [];
+  const transactionActions: TransactionAction[] = [];
 
   if (getTransactionAmount('charged') < Number(refundAmount)) {
     // Some money in transaction was not refunded

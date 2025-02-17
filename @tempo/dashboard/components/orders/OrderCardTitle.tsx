@@ -1,11 +1,11 @@
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { CircleIndicator } from '@tempo/ui/components/CircleIndicator';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import DefaultCardTitle from '@tempo/dashboard/components/core/CardTitle';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
-import { StatusType } from '@tempo/dashboard/oldSrc/types';
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode } from 'react';
+import { StatusType } from '@tempo/dashboard/oldSrc/types';
+import DefaultCardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

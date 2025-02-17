@@ -1,6 +1,4 @@
 import Link from '@tempo/ui/components/Link';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import ArrowDropdown from '@tempo/dashboard/oldSrc/icons/ArrowDropdown';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
@@ -12,6 +10,8 @@ import { useState, useRef } from 'react';
 
 import type { SingleAutocompleteChoiceType } from '../SingleAutocompleteSelectField';
 import styles from './index.module.css';
+import ArrowDropdown from '@tempo/dashboard/oldSrc/icons/ArrowDropdown';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export interface LinkChoiceProps {
   className?: string;

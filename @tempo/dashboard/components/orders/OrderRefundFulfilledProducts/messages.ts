@@ -23,10 +23,10 @@ export const messages = {
 export const getTitle = (fulfillmentStatus: FulfillmentStatus, t: TFunction) => {
   switch (fulfillmentStatus) {
     case FulfillmentStatus.Returned:
-      return (m.dashboard_ulfillmentReturned() ?? 'Fulfillment returned');
+      return m.dashboard_ulfillmentReturned() ?? 'Fulfillment returned';
     case FulfillmentStatus.WaitingForApproval:
-      return (m.dashboard_ulfillmentWaitingForApproval() ?? 'Fulfillment waiting for approval');
+      return m.dashboard_ulfillmentWaitingForApproval() ?? 'Fulfillment waiting for approval';
     default:
-      return (m.dashboard_ulfillment() ?? 'Fulfillment');
+      return m.dashboard_ulfillment() ?? 'Fulfillment';
   }
 };

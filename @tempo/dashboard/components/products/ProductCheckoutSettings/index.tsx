@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
 import type { ProductErrorFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import type { FC } from 'react';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface ProductCheckoutSettingsProps {
   data: {

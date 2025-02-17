@@ -1,8 +1,7 @@
-import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
-
 import { nameSeparator } from './MetadataCard';
 import type { EventData } from './types';
 import { EventDataAction, EventDataField } from './types';
+import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
 
 export function parseEventData(event: ChangeEvent): EventData {
   let action: EventDataAction;

@@ -1,17 +1,10 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import RichTextEditor, {
   RichTextEditorLoading,
 } from '@tempo/ui/components/inputs/RichTextEditor';
-import FileUploadField from '@tempo/dashboard/components/fields/FileUploadField';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import { MediaType } from '@tempo/api/generated/constants';
 import type { MediaErrorFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getMediaErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/media';
-import { useRichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
@@ -19,6 +12,13 @@ import type { FC, ChangeEvent } from 'react';
 import { useMemo } from 'react';
 
 import type { MediaData } from '../MediaItemDetailsPage/form';
+import { useRichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
+import getMediaErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/media';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import FileUploadField from '@tempo/dashboard/components/fields/FileUploadField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface MediaInfoProps {
   data: MediaData;

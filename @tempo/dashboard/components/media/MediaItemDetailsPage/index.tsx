@@ -1,19 +1,12 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import VisibilityCard from '@tempo/dashboard/components/cards/VisibilityCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import type {
   MediaItemDetailsFragment,
   MediaErrorFragment,
   useFileUploadMutation,
 } from '@tempo/api/generated/graphql';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
-import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
 import Container from '@mui/material/Container';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
@@ -21,6 +14,13 @@ import type { FC } from 'react';
 import MediaInfo from '../MediaInfo';
 import type { MediaData } from './form';
 import MediaForm from './form';
+import type { SubmitPromise } from '@tempo/dashboard/hooks/useForm';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import VisibilityCard from '@tempo/dashboard/components/cards/VisibilityCard';
 
 export interface MediaItemDetailsPageProps {
   loading: boolean;
@@ -72,7 +72,9 @@ const MediaItemDetailsPage: FC<MediaItemDetailsPageProps> = ({
         return (
           <Container>
             <Backlink href={'/media'}>{m.dashboard_media() ?? 'Media'}</Backlink>
-            <PageHeader title={!itemExists ? m.dashboard_title() ?? 'Add Media' : item?.title} />
+            <PageHeader
+              title={!itemExists ? (m.dashboard_title() ?? 'Add Media') : item?.title}
+            />
             <Grid>
               <div>
                 <MediaInfo

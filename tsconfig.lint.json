@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "include": [
+    "*.ts",
+    "@tempo/**/*",
+    "scripts/*",
+    "middleware.ts",
+    "next-env.d.ts",
+    "tailwind.config.ts",
+    "theme.config.ts",
+    "jest.config.js",
+    "next-sitemap.config.js",
+    "next.config.mjs",
+    "sentry.client.config.js",
+    "instrumentation.ts",
+    "cypress.config.ts",
+    "paraglide",
+    "app",
+    "components",
+    "cypress",
+    "hooks",
+    "lib"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "baseUrl": ".",
+    "composite": false,
+    "declaration": false,
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": false,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "incremental": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
+    "strict": true,
+    "target": "ESNext",
+    "noPropertyAccessFromIndexSignature": false,
+    "paths": {
+      "@tempo/api": [
+        "@tempo/api/*"
+      ],
+      "@tempo/blog": [
+        "@tempo/blog/*"
+      ],
+      "@tempo/checkout": [
+        "@tempo/checkout/*"
+      ],
+      "@tempo/data": [
+        "@tempo/data/*"
+      ],
+      "@tempo/forms": [
+        "@tempo/forms/*"
+      ],
+      "@tempo/next": [
+        "@tempo/next/*"
+      ],
+      "@tempo/ui": [
+        "@tempo/ui/*"
+      ],
+      "@tempo/utils": [
+        "@tempo/utils/*"
+      ]
+    }
+  }
+}

@@ -5,10 +5,10 @@ import { useUser } from '@tempo/api/auth/react/hooks';
 import { useAuthorizedQuery } from '@tempo/api/hooks/useQuery';
 import { getUserName } from '@tempo/utils/user';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import HomePage from '@tempo/dashboard/components/home/HomePage';
-import useAppChannel from '@tempo/dashboard/components/layout/Layout/AppChannelContext';
 import { OrderStatusFilter, StockAvailability } from '@tempo/api/generated/constants';
 import { gql } from '@tempo/api';
+import HomePage from '@tempo/dashboard/components/home/HomePage';
+import useAppChannel from '@tempo/dashboard/components/layout/Layout/AppChannelContext';
 
 import { getDatePeriod } from '@tempo/dashboard/oldSrc/misc';
 import { orderListUrl } from '@tempo/dashboard/oldSrc/orders/urls';

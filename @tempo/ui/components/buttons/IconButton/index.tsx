@@ -1,9 +1,9 @@
-import { isExternalURL } from '@tempo/ui/utils/urls';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { forwardRef } from 'react';
 import RawIconButton from './IconButton';
 import type { IconButtonProps as RawIconButtonProps } from './IconButton';
+import { isExternalURL } from '@tempo/ui/utils/urls';
 
 export interface IconButtonProps extends RawIconButtonProps {
   href?: string;

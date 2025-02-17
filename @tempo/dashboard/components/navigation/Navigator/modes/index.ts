@@ -1,5 +1,5 @@
 import type { TFunction } from '@tempo/next/i18n';
-import type { MutationFunction } from '@tempo/api';;
+import type { MutationFunction } from '@tempo/api';
 import type { OrderDraftCreateMutation } from '@tempo/api/generated/graphql';
 import type { NextRouter } from 'next/router';
 import type { QuickSearchAction, QuickSearchMode } from '../types';

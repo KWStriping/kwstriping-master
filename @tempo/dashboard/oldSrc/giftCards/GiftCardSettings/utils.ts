@@ -1,6 +1,6 @@
-import type { GiftCardSettingsFormData } from './types';
 import { GiftCardSettingsExpiryType } from '@tempo/api/generated/constants';
 import type { GiftCardSettingsUpdateInput } from '@tempo/api/generated/graphql';
+import type { GiftCardSettingsFormData } from './types';
 
 export const getGiftCardSettingsInputData = ({
   expiryPeriodActive,

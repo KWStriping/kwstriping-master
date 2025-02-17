@@ -2,14 +2,7 @@ import * as m from '@paraglide/messages';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type { SearchProductsQuery } from '@tempo/api/generated/graphql';
-import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
-import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
-import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
-import type { DialogProps, FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import {
   CircularProgress,
   Dialog,
@@ -24,6 +17,13 @@ import TableRow from '@mui/material/TableRow';
 import { useState, useEffect } from 'react';
 import type { FC } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import useModalDialogOpen from '@tempo/dashboard/hooks/useModalDialogOpen';
+import useSearchQuery from '@tempo/dashboard/hooks/useSearchQuery';
+import useScrollableDialogStyle from '@tempo/dashboard/oldSrc/styles/useScrollableDialogStyle';
+import type { DialogProps, FetchMoreProps, RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 
 export interface AssignProductDialogFormData {
   products: RelayToFlat<NonNullable<SearchProductsQuery['search']>>;

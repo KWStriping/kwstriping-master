@@ -1,5 +1,4 @@
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -7,6 +6,7 @@ import type { FC, ReactNode } from 'react';
 
 import DialogButtons from './DialogButtons';
 import type { ActionDialogVariant, Size } from './types';
+import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 
 export interface ActionDialogProps extends DialogProps {
   children?: ReactNode;

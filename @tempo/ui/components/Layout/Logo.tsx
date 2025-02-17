@@ -1,6 +1,6 @@
-import { useShopSettings } from '@tempo/ui';
 import Image from 'next/image';
 import type { FC } from 'react';
+import { useShopSettings } from '@tempo/ui';
 
 interface LogoProps {
   className?: string;

@@ -1,7 +1,5 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
-import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import type { Channel } from '@tempo/dashboard/oldSrc/channels/utils';
+import { Trans } from '@tempo/next/i18n';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -9,6 +7,8 @@ import { filter } from 'fuzzaldrin';
 import type { FC } from 'react';
 import { useState } from 'react';
 import styles from './index.module.css';
+import type { Channel } from '@tempo/dashboard/oldSrc/channels/utils';
+import { ControlledCheckbox } from '@tempo/dashboard/components/forms/ControlledCheckbox';
 
 export interface ChannelsAvailabilityContentProps {
   isSelected: (option: Channel) => boolean;

@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
+import styles from './index.module.css';
 import type { SearchBarProps } from '@tempo/dashboard/components/bars/SearchBar';
 import SearchInput from '@tempo/dashboard/components/bars/SearchBar/SearchInput';
 import Filter from '@tempo/dashboard/components/core/Filter';
 import type { FilterProps, FilterErrorMessages } from '@tempo/dashboard/components/core/Filter';
 import FilterTab from '@tempo/dashboard/components/tables/TableFilter/FilterTab';
 import FilterTabs from '@tempo/dashboard/components/tables/TableFilter/FilterTabs';
-import styles from './index.module.css';
 
 export interface FilterBarProps<TKeys extends string = string>
   extends FilterProps<TKeys>,

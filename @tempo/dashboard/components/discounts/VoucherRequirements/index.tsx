@@ -1,16 +1,6 @@
 import * as m from '@paraglide/messages';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PriceField from '@tempo/dashboard/components/fields/PriceField';
-import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
-import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
-import type { ChannelInput } from '@tempo/dashboard/oldSrc/discounts/handlers';
-import { RequirementsPicker } from '@tempo/dashboard/oldSrc/discounts/types';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
@@ -22,6 +12,16 @@ import Typography from '@mui/material/Typography';
 import type { ChangeEvent } from 'react';
 
 import type { VoucherDetailsPageFormData } from '../VoucherDetailsPage';
+import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import { RequirementsPicker } from '@tempo/dashboard/oldSrc/discounts/types';
+import type { ChannelInput } from '@tempo/dashboard/oldSrc/discounts/handlers';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import { FormSpacer } from '@tempo/dashboard/components/forms/Form/FormSpacer';
+import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
+import PriceField from '@tempo/dashboard/components/fields/PriceField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface VoucherRequirementsProps {
   data: VoucherDetailsPageFormData;

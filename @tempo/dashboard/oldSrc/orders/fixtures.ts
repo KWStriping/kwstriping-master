@@ -8,7 +8,7 @@ import {
   FulfillmentStatus,
   OrderStatus,
 } from '@tempo/api/generated/constants';
-import { } from '@tempo/api/generated/graphql';
+import {} from '@tempo/api/generated/graphql';
 import type {
   ChannelUsabilityDataQuery,
   CountryWithCodeFragment,
@@ -23,10 +23,9 @@ import type {
   SearchWarehousesQuery,
   ShopOrderSettingsFragment,
 } from '@tempo/api/generated/graphql';
+import { transformOrderStatus, transformPaymentStatus } from '../misc';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
 import { warehouseForPickup, warehouseList } from '@tempo/dashboard/oldSrc/warehouses/fixtures';
-
-import { transformOrderStatus, transformPaymentStatus } from '../misc';
 
 export const countries: CountryWithCodeFragment[] = [
   { __typename: 'Country', code: 'AF', country: 'Afghanistan' },
@@ -1983,185 +1982,185 @@ export const shippingMethods = [
 export const orderLineSearch = (
   placeholderImage: string
 ): RelayToFlat<NonNullable<SearchOrderVariantQuery['search']>> => [
-    {
-      __typename: 'Product' as const,
-      id: 'UHJvZHVjdDo3Mg==',
-      name: 'Apple Juice',
-      thumbnail: {
-        __typename: 'Image' as const,
-        url: placeholderImage,
-      },
-      variants: [
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjAy',
-          name: '500ml',
-          sku: '93855755',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-          },
-        },
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjAz',
-          name: '1l',
-          sku: '43226647',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-          },
-        },
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjA0',
-          name: '2l',
-          sku: '80884671',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-          },
-        },
-      ],
+  {
+    __typename: 'Product' as const,
+    id: 'UHJvZHVjdDo3Mg==',
+    name: 'Apple Juice',
+    thumbnail: {
+      __typename: 'Image' as const,
+      url: placeholderImage,
     },
-    {
-      __typename: 'Product' as const,
-      id: 'UHJvZHVjdDo3NQ==',
-      name: 'Pineapple Juice',
-      thumbnail: {
-        __typename: 'Image' as const,
-        url: placeholderImage,
+    variants: [
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjAy',
+        name: '500ml',
+        sku: '93855755',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+        },
       },
-      variants: [
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjEx',
-          name: '500ml',
-          sku: '43200242',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjAz',
+        name: '1l',
+        sku: '43226647',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
             },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
             },
           },
         },
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjEy',
-          name: '1l',
-          sku: '79129513',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
+      },
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjA0',
+        name: '2l',
+        sku: '80884671',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
             },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
             },
           },
         },
-        {
-          __typename: 'Product' as const,
-          id: 'UHJvZHVjdFZhcmlhbnQ6MjEz',
-          name: '2l',
-          sku: '75799450',
-          pricing: {
-            __typename: 'ProductPricingInfo',
-            onSale: false,
-            price: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-            priceUndiscounted: {
-              __typename: 'TaxedMoney',
-              gross: {
-                amount: 1,
-                currency: 'USD',
-                __typename: 'Money',
-              },
-            },
-          },
-        },
-      ],
+      },
+    ],
+  },
+  {
+    __typename: 'Product' as const,
+    id: 'UHJvZHVjdDo3NQ==',
+    name: 'Pineapple Juice',
+    thumbnail: {
+      __typename: 'Image' as const,
+      url: placeholderImage,
     },
-  ];
+    variants: [
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjEx',
+        name: '500ml',
+        sku: '43200242',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+        },
+      },
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjEy',
+        name: '1l',
+        sku: '79129513',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+        },
+      },
+      {
+        __typename: 'Product' as const,
+        id: 'UHJvZHVjdFZhcmlhbnQ6MjEz',
+        name: '2l',
+        sku: '75799450',
+        pricing: {
+          __typename: 'ProductPricingInfo',
+          onSale: false,
+          price: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+          priceUndiscounted: {
+            __typename: 'TaxedMoney',
+            gross: {
+              amount: 1,
+              currency: 'USD',
+              __typename: 'Money',
+            },
+          },
+        },
+      },
+    ],
+  },
+];
 
 export const invoices: InvoiceFragment[] = [
   {

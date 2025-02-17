@@ -1,20 +1,20 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import PhotoIcon from '@dashboard/assets/images/photo-icon.svg';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type {
   StaffErrorFragment,
   StaffMemberDetailsFragment,
   UserFragment,
 } from '@tempo/api/generated/graphql';
 import { getUserInitials } from '@tempo/utils/user';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getStaffErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/staff';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC, ChangeEvent } from 'react';
+import getStaffErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/staff';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

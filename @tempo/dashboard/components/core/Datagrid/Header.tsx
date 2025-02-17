@@ -1,11 +1,11 @@
 import Button from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import PlusSmallIcon from '@mui/icons-material/Add';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import FullScreenIcon from '@tempo/dashboard/oldSrc/icons/FullScreenIcon';
 import clsx from 'clsx';
 import type { MouseEventHandler, FC, PropsWithChildren, ReactNode } from 'react';
 import styles from './index.module.css';
+import FullScreenIcon from '@tempo/dashboard/oldSrc/icons/FullScreenIcon';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 interface ButtonFullScreenProps {
   isOpen: boolean;

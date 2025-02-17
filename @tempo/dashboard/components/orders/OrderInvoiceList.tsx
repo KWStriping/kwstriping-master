@@ -1,9 +1,6 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Date from '@tempo/dashboard/components/core/Date';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { InvoiceFragment } from '@tempo/api/generated/graphql';
 import { CardActions } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -15,6 +12,9 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import Date from '@tempo/dashboard/components/core/Date';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   () => ({

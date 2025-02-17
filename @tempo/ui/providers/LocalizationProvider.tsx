@@ -7,8 +7,8 @@ import type { Channel } from '@tempo/utils/regions';
 import { CHANNELS, DEFAULT_CHANNEL } from '@tempo/utils/regions';
 import { createContext, useContext } from 'react';
 import type { ReactNode, Context } from 'react';
-import { formatAsMoney } from '@tempo/ui/utils/money';
 import { useLocale } from '../hooks/useLocale';
+import { formatAsMoney } from '@tempo/ui/utils/money';
 
 export interface LocalizationConsumerProps {
   channels: Channel[];

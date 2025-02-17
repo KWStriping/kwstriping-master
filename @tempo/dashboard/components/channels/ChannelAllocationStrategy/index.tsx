@@ -1,8 +1,5 @@
 import * as m from '@paraglide/messages';
 import { Tooltip } from '@tempo/ui/components/Tooltip';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
-import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
 import { AllocationStrategy } from '@tempo/api/generated/constants';
 import type { StockSettingsInput } from '@tempo/api/generated/graphql';
 import HelpOutline from '@mui/icons-material/HelpOutline';
@@ -13,6 +10,9 @@ import type { FC, ChangeEvent } from 'react';
 
 import { messages } from './messages';
 import { useStyles } from './styles';
+import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
+import PreviewPill from '@tempo/dashboard/components/core/PreviewPill';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const strategyOptions = [
   {

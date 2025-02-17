@@ -1,7 +1,7 @@
 import type { FilterElement } from '@dashboard/components/orders/Filter';
+import type { OrderDraftFilter } from '@tempo/api/generated/graphql';
 import type { OrderDraftListFilterOpts } from '@tempo/dashboard/components/orders/OrderDraftListPage';
 import { OrderDraftFilterKeys } from '@tempo/dashboard/components/orders/OrderDraftListPage';
-import type { OrderDraftFilter } from '@tempo/api/generated/graphql';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 
 import type {

@@ -11,9 +11,9 @@ import OrdersIcon from '@dashboard/assets/images/menu-orders-icon.svg';
 import PagesIcon from '@dashboard/assets/images/menu-pages-icon.svg';
 import PhotoFilmIcon from '@dashboard/assets/images/menu-photo-film-icon.svg';
 import TranslationIcon from '@dashboard/assets/images/menu-translation-icon.svg';
-import type { SidebarMenuItem } from '@tempo/dashboard/components/layout/Sidebar/types';
 import { PermissionCode } from '@tempo/api/generated/constants';
 import type { UserFragment } from '@tempo/api/generated/graphql';
+import type { SidebarMenuItem } from '@tempo/dashboard/components/layout/Sidebar/types';
 import { getConfigMenuItemsPermissions } from '@tempo/dashboard/oldSrc/configuration/utils';
 import { mediaListPath } from '@tempo/dashboard/oldSrc/media/urls';
 import { pageListPath } from '@tempo/dashboard/oldSrc/pages/urls';
@@ -39,7 +39,7 @@ function useMenuStructure(
     {
       ariaLabel: 'home',
       icon: HomeIcon,
-      label: (m.dashboard_home() ?? 'Home'),
+      label: m.dashboard_home() ?? 'Home',
       id: 'home',
       url: '/',
     },
@@ -48,21 +48,21 @@ function useMenuStructure(
       children: [
         {
           ariaLabel: 'products',
-          label: (m.dashboard_products() ?? 'Products'),
+          label: m.dashboard_products() ?? 'Products',
           id: 'products',
           url: '/products',
           permissions: [PermissionCode.ManageProducts],
         },
         {
           ariaLabel: 'categories',
-          label: (m.dashboard_categories() ?? 'Categories'),
+          label: m.dashboard_categories() ?? 'Categories',
           id: 'categories',
           url: '/categories',
           permissions: [PermissionCode.ManageProducts],
         },
         {
           ariaLabel: 'collections',
-          label: (m.dashboard_collections() ?? 'Collections'),
+          label: m.dashboard_collections() ?? 'Collections',
           id: 'collections',
           url: '/collections',
           permissions: [PermissionCode.ManageProducts],
@@ -71,7 +71,7 @@ function useMenuStructure(
           ? [
               {
                 ariaLabel: 'giftCards',
-                label: (m.dashboard_giftCards() ?? 'Gift Cards'),
+                label: m.dashboard_giftCards() ?? 'Gift Cards',
                 id: 'giftCards',
                 url: '/gift-cards',
                 permissions: [PermissionCode.ManageGiftCard],
@@ -80,7 +80,7 @@ function useMenuStructure(
           : []),
       ],
       icon: CatalogIcon,
-      label: (m.dashboard_atalog() ?? 'Catalog'),
+      label: m.dashboard_atalog() ?? 'Catalog',
       permissions: [PermissionCode.ManageGiftCard, PermissionCode.ManageProducts],
       id: 'catalogue',
     },
@@ -89,21 +89,21 @@ function useMenuStructure(
       children: [
         {
           ariaLabel: 'orders',
-          label: (m.dashboard_orders() ?? 'Orders'),
+          label: m.dashboard_orders() ?? 'Orders',
           permissions: [PermissionCode.ManageOrders],
           id: 'orders',
           url: '/orders',
         },
         {
           ariaLabel: 'order drafts',
-          label: (m.dashboard_drafts() ?? 'Drafts'),
+          label: m.dashboard_drafts() ?? 'Drafts',
           permissions: [PermissionCode.ManageOrders],
           id: 'order-drafts',
           url: '/orders/drafts',
         },
       ],
       icon: OrdersIcon,
-      label: (m.dashboard_orders() ?? 'Orders'),
+      label: m.dashboard_orders() ?? 'Orders',
       permissions: [PermissionCode.ManageOrders],
       id: 'orders',
     },
@@ -111,7 +111,7 @@ function useMenuStructure(
       ariaLabel: 'customers',
       // children: [],
       icon: CustomerIcon,
-      label: (m.dashboard_customers() ?? 'Customers'),
+      label: m.dashboard_customers() ?? 'Customers',
       permissions: [PermissionCode.ManageUsers],
       id: 'customers',
       url: '/customers',
@@ -123,19 +123,19 @@ function useMenuStructure(
             children: [
               {
                 ariaLabel: 'sales',
-                label: (m.dashboard_sales() ?? 'Sales'),
+                label: m.dashboard_sales() ?? 'Sales',
                 id: 'sales',
                 url: '/discounts/sales',
               },
               {
                 ariaLabel: 'vouchers',
-                label: (m.dashboard_vouchers() ?? 'Vouchers'),
+                label: m.dashboard_vouchers() ?? 'Vouchers',
                 id: 'vouchers',
                 url: '/discounts/vouchers',
               },
             ],
             icon: DiscountsIcon,
-            label: (m.dashboard_discounts() ?? 'Discounts'),
+            label: m.dashboard_discounts() ?? 'Discounts',
             permissions: [PermissionCode.ManageDiscounts],
             id: 'discounts',
           },
@@ -145,7 +145,7 @@ function useMenuStructure(
       ariaLabel: 'pages',
       // children: [],
       icon: PagesIcon,
-      label: (m.dashboard_pages() ?? 'Pages'),
+      label: m.dashboard_pages() ?? 'Pages',
       permissions: [PermissionCode.ManagePages],
       id: 'pages',
       url: pageListPath,
@@ -156,7 +156,7 @@ function useMenuStructure(
             ariaLabel: 'translations',
             // children: [],
             icon: TranslationIcon,
-            label: (m.dashboard_translations() ?? 'Translations'),
+            label: m.dashboard_translations() ?? 'Translations',
             permissions: [PermissionCode.ManageTranslations],
             id: 'translations',
             url: languageListUrl,
@@ -167,7 +167,7 @@ function useMenuStructure(
       ariaLabel: 'media',
       // children: [],
       icon: PhotoFilmIcon,
-      label: (m.dashboard_media() ?? 'Media'),
+      label: m.dashboard_media() ?? 'Media',
       permissions: [PermissionCode.ManageMedia],
       id: 'media',
       url: mediaListPath,
@@ -176,7 +176,7 @@ function useMenuStructure(
     {
       ariaLabel: 'configure',
       icon: ConfigurationIcon,
-      label: (m.dashboard_configuration() ?? 'Configuration'),
+      label: m.dashboard_configuration() ?? 'Configuration',
       permissions: getConfigMenuItemsPermissions(t),
       id: 'configure',
       url: '/configuration/',

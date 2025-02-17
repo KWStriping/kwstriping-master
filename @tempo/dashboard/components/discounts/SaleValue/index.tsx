@@ -1,10 +1,6 @@
 import * as m from '@paraglide/messages';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { DiscountErrorFragment } from '@tempo/api/generated/graphql';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
-import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
@@ -20,6 +16,10 @@ import type { SaleDetailsPageFormData } from '../SaleDetailsPage';
 
 import SaleValueTextField from './SaleValueTextField';
 import type { SaleValueInputOnChangeType } from './types';
+import getDiscountErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/discounts';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface SaleValueProps {
   data: SaleDetailsPageFormData;

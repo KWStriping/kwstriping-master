@@ -1,10 +1,10 @@
 import type { UrlObject } from 'url';
-import { isExternalURL } from '@tempo/ui/utils/urls';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { forwardRef } from 'react';
 import type { ButtonProps as RawButtonProps } from './Button';
 import RawButton from './Button';
+import { isExternalURL } from '@tempo/ui/utils/urls';
 
 export interface ButtonProps extends Omit<RawButtonProps, 'href'> {
   href?: string | UrlObject;

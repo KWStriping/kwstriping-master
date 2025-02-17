@@ -26,10 +26,7 @@ export function getAttributeSlugErrorMessage(err: AttributeErrorFragment, t: TFu
 export function getValueErrorMessage(err: AttributeErrorFragment, t: TFunction): string {
   switch (err?.code) {
     case AttributeErrorCode.AlreadyExists:
-      return t(
-        'dashboard_valueAlreadyExists',
-        messages.valueAlreadyExists.defaultMessage
-      );
+      return t('dashboard_valueAlreadyExists', messages.valueAlreadyExists.defaultMessage);
     default:
       return getAttributeErrorMessage(err, t);
   }

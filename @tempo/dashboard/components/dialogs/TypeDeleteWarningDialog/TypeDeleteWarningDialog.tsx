@@ -1,13 +1,13 @@
 import * as m from '@paraglide/messages';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { getById } from '@tempo/utils';
-import ModalTitle from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/ModalTitle';
 import { Card, CardContent, CircularProgress, Modal } from '@mui/material';
 import styles from './index.module.css';
 
 /// / import { useTypeDeleteWarningDialogStyles as useStyles } from "./styles";
 import ProductKlassDeleteWarningDialogContent from './TypeDeleteWarningDialogContent';
 import type { CommonTypeDeleteWarningMessages, TypeDeleteWarningMessages } from './types';
+import ModalTitle from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/ModalTitle';
 
 export interface TypeBaseData {
   id: string;

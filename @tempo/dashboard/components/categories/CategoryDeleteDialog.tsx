@@ -1,5 +1,5 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import BackButton from '@tempo/ui/components/buttons/BackButton';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';

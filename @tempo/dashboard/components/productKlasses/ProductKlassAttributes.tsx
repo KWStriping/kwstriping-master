@@ -3,21 +3,24 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import Checkbox from '@tempo/dashboard/components/core/Checkbox';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { SortableTableBody, SortableTableRow } from '@tempo/dashboard/components/tables/SortableTable';
-import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
-import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import type { ProductAttributeType } from '@tempo/api/generated/constants';
 import type { AttributeFragment } from '@tempo/api/generated/graphql';
-import { attributeUrl } from '@tempo/dashboard/oldSrc/attributes/urls';
-import type { ListActions, ReorderAction } from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import TableCell from '@mui/material/TableCell';
 import type { FC } from 'react';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
+import Checkbox from '@tempo/dashboard/components/core/Checkbox';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import {
+  SortableTableBody,
+  SortableTableRow,
+} from '@tempo/dashboard/components/tables/SortableTable';
+import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButtonWrapper/TableButtonWrapper';
+import TableHead from '@tempo/dashboard/components/tables/TableHead';
+import { attributeUrl } from '@tempo/dashboard/oldSrc/attributes/urls';
+import type { ListActions, ReorderAction } from '@tempo/dashboard/oldSrc/types';
 
 const useStyles = makeStyles(
   {

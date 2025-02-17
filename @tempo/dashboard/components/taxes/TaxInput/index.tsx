@@ -1,10 +1,9 @@
-import { findPriceSeparator } from '@tempo/dashboard/components/fields/PriceField/utils';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import type TextFieldProps from '@mui/material/TextFieldProps';
 import type { FC } from 'react';
-
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import { findPriceSeparator } from '@tempo/dashboard/components/fields/PriceField/utils';
 
 interface TaxInputProps {
   placeholder?: string;

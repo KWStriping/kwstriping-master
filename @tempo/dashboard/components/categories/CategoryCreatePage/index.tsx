@@ -1,19 +1,18 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+import type { ProductErrorFragment } from '@tempo/api/generated/graphql';
+import Container from '@mui/material/Container';
+import { useRouter } from 'next/navigation';
+import type { FC } from 'react';
+import type { CategoryCreateData } from './form';
+import CategoryCreateForm from './form';
 import CategoryDetailsForm from '@tempo/dashboard/components/categories/CategoryDetailsForm';
 import { CardSpacer } from '@tempo/dashboard/components/core/CardSpacer';
 import Metadata from '@tempo/dashboard/components/core/Metadata';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import SaveBar from '@tempo/dashboard/components/core/SaveBar';
 import SeoForm from '@tempo/dashboard/components/forms/SeoForm';
-import type { ProductErrorFragment } from '@tempo/api/generated/graphql';
-import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
-import type { FC } from 'react';
-
-import type { CategoryCreateData } from './form';
-import CategoryCreateForm from './form';
 
 export interface CategoryCreatePageProps {
   errors: ProductErrorFragment[];

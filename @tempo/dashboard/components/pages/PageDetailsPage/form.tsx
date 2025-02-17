@@ -1,6 +1,3 @@
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   PageDetailsFragment,
   PageErrorWithAttributesFragment,
@@ -8,6 +5,12 @@ import type {
   SearchPageKlassesQuery,
   SearchProductsQuery,
 } from '@tempo/api/generated/graphql';
+import type { OutputData } from '@editorjs/editorjs';
+import { useEffect, useState } from 'react';
+import type { ReactNode, FC } from 'react';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import { useExitFormDialog } from '@tempo/dashboard/components/forms/Form/useExitFormDialog';
 import type {
   CommonUseFormResultWithHandlers,
   FormChange,
@@ -47,9 +50,6 @@ import useMetadataChangeTrigger from '@tempo/dashboard/oldSrc/utils/metadata/use
 import { RichTextContext } from '@tempo/dashboard/oldSrc/utils/richText/context';
 import { useMultipleRichText } from '@tempo/dashboard/oldSrc/utils/richText/useMultipleRichText';
 import useRichText from '@tempo/dashboard/oldSrc/utils/richText/useRichText';
-import type { OutputData } from '@editorjs/editorjs';
-import { useEffect, useState } from 'react';
-import type { ReactNode, FC } from 'react';
 
 export interface PageFormData extends MetadataFormData {
   isPublished: boolean;

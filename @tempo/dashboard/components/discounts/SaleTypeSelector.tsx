@@ -3,12 +3,12 @@ import { makeStyles } from '@tempo/ui/theme/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import type { FC } from 'react';
+import { SaleType } from '@tempo/api/generated/constants';
+import type { SaleDetailsPageFormData } from './SaleDetailsPage';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { RadioGroupFieldChoice } from '@tempo/dashboard/components/fields/RadioGroupField';
 import RadioGroupField from '@tempo/dashboard/components/fields/RadioGroupField';
-import { SaleType } from '@tempo/api/generated/constants';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
-import type { SaleDetailsPageFormData } from './SaleDetailsPage';
 
 export interface SaleTypeProps {
   data: SaleDetailsPageFormData;

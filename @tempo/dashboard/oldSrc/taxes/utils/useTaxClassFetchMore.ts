@@ -1,9 +1,9 @@
 import { useQuery } from '@tempo/api/hooks';
 import { TaxClassAssignDocument } from '@tempo/api/generated/graphql';
 import type { TaxClassBaseFragment } from '@tempo/api/generated/graphql';
-import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useMemo } from 'react';
+import type { FetchMoreProps } from '@tempo/dashboard/oldSrc/types';
 
 interface UseTaxClassFetchMoreHookResult {
   taxClasses: Maybe<TaxClassBaseFragment[]>;

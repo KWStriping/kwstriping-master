@@ -3,14 +3,11 @@ import { ResponsiveTable } from '@tempo/ui/components/table/ResponsiveTable';
 import { makeStyles } from '@tempo/ui/theme/styles';
 import { renderCollection } from '@tempo/ui/utils';
 import { getById } from '@tempo/utils';
-import Money from '@tempo/dashboard/components/core/Money';
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type {
   OrderDetailsFragment,
   OrderErrorFragment,
   OrderLineFragment,
 } from '@tempo/api/generated/graphql';
-import type { FormsetChange } from '@tempo/dashboard/hooks/useFormset';
 import { Card, Checkbox } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
@@ -26,6 +23,9 @@ import type { FormsetQuantityData, FormsetReplacementData } from '../form';
 import { getQuantityDataFromItems, getReplacementDataFromItems } from '../utils';
 import MaximalButton from './MaximalButton';
 import ProductErrorCell from './ProductErrorCell';
+import type { FormsetChange } from '@tempo/dashboard/hooks/useFormset';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
+import Money from '@tempo/dashboard/components/core/Money';
 
 const useStyles = makeStyles(
   (theme) => {

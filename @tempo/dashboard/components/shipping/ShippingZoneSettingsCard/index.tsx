@@ -1,9 +1,6 @@
 import * as m from '@paraglide/messages';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
 import type { ShippingZoneUpdateFormData } from '@dashboard/components/ShippingZoneDetailsPage/types';
 import type { ChannelFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
@@ -11,6 +8,9 @@ import type { FC } from 'react';
 
 import ChannelsSection from './ChannelsSection';
 import WarehousesSection from './WarehousesSection';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import type { MultiAutocompleteChoiceType } from '@tempo/dashboard/components/fields/MultiAutocompleteSelectField';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const messages = {
   title: {

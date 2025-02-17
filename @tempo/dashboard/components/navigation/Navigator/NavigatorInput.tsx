@@ -86,13 +86,13 @@ const NavigatorInput: FC<NavigatorInputProps> = forwardRef<HTMLInputElement, Nav
           className={styles.input ?? ''}
           placeholder={
             mode === 'orders'
-              ? m.dashboard_navigatorPlaceholders_orderNumber() ?? 'Order Number'
+              ? (m.dashboard_navigatorPlaceholders_orderNumber() ?? 'Order Number')
               : mode === 'commands'
-                ? m.dashboard_navigatorPlaceholders_typeCommand() ?? 'Type Command'
+                ? (m.dashboard_navigatorPlaceholders_typeCommand() ?? 'Type Command')
                 : mode === 'catalog'
-                  ? m.dashboard_navigatorPlaceholders_searchInCatalog() ?? 'Search in Catalog'
+                  ? (m.dashboard_navigatorPlaceholders_searchInCatalog() ?? 'Search in Catalog')
                   : mode === 'customers'
-                    ? m.dashboard_navigatorPlaceholders_searchCustomer() ?? 'Search Customer'
+                    ? (m.dashboard_navigatorPlaceholders_searchCustomer() ?? 'Search Customer')
                     : mode === 'default'
                       ? t(
                           'dashboard_navigatorPlaceholders_typeToSeeAvailableActions',

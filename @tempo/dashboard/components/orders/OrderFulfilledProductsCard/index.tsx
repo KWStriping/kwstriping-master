@@ -1,10 +1,6 @@
 import { renderCollection } from '@tempo/ui/utils';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import { FulfillmentStatus } from '@tempo/api/generated/constants';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import TrashIcon from '@tempo/dashboard/oldSrc/icons/Trash';
-import { mergeRepeatedOrderLines } from '@tempo/dashboard/oldSrc/orders/utils/data';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
@@ -16,6 +12,10 @@ import TableHeader from '../OrderProductsCardElements/OrderProductsCardHeader';
 import TableLine from '../OrderProductsCardElements/OrderProductsTableRow';
 import ActionButtons from './ActionButtons';
 import ExtraInfoLines from './ExtraInfoLines';
+import { mergeRepeatedOrderLines } from '@tempo/dashboard/oldSrc/orders/utils/data';
+import TrashIcon from '@tempo/dashboard/oldSrc/icons/Trash';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 interface OrderFulfilledProductsCardProps {
   fulfillment: OrderDetailsFragment['fulfillments'][0];

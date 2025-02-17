@@ -1,10 +1,6 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { renderCollection } from '@tempo/ui/utils';
-import type { ListProps } from '@tempo/dashboard/oldSrc/types';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import clsx from 'clsx';
 import type { ReactNode, FC } from 'react';
+import type { ListProps } from '@tempo/dashboard/oldSrc/types';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 
 export interface TranslatableEntity {
   id: string;

@@ -6,7 +6,7 @@ import _withBundleAnalyzer from '@next/bundle-analyzer';
 import _withPWA from 'next-pwa';
 import { generate, workspaceRoot, withSentryConfig } from '@tempo/next/config';
 
-const PROJECT_DIR = path.resolve(workspaceRoot, 'apps', 'dashboard');
+const PROJECT_DIR = path.resolve(workspaceRoot, '@tempo', 'dashboard');
 
 const withBundleAnalyzer = _withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',

@@ -1,12 +1,12 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 
 import { useStyles } from './styles';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ChannelStatusProps {
   isActive: boolean;

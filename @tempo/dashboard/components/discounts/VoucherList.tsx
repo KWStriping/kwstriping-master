@@ -9,6 +9,8 @@ import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import clsx from 'clsx';
 import type { ReactNode, FC } from 'react';
+import { DiscountValueType } from '@tempo/api/generated/constants';
+import type { VoucherFragment } from '@tempo/api/generated/graphql';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import Date from '@tempo/dashboard/components/core/Date';
 import Money from '@tempo/dashboard/components/core/Money';
@@ -18,12 +20,15 @@ import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader'
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
 import TooltipTableCellHeader from '@tempo/dashboard/components/tables/TooltipTableCellHeader';
-import { DiscountValueType } from '@tempo/api/generated/constants';
-import type { VoucherFragment } from '@tempo/api/generated/graphql';
 import { canBeSorted } from '@tempo/dashboard/oldSrc/discounts/sort';
 import { VoucherListUrlOrdering, voucherUrl } from '@tempo/dashboard/oldSrc/discounts/urls';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
-import type { ChannelProps, ListActions, ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';
+import type {
+  ChannelProps,
+  ListActions,
+  ListProps,
+  SortPage,
+} from '@tempo/dashboard/oldSrc/types';
 import { getArrowDirection } from '@tempo/dashboard/oldSrc/utils/sort';
 
 export interface VoucherListProps

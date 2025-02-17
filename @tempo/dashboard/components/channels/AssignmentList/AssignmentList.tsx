@@ -1,6 +1,4 @@
-import { Trans, useTranslation } from '@tempo/next/i18n';
-import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
-import type { ReorderEvent } from '@tempo/dashboard/oldSrc/types';
+import { Trans } from '@tempo/next/i18n';
 import Accordion from '@mui/material/Accordion';
 import Divider from '@mui/material/Divider';
 import Skeleton from '@mui/material/Skeleton';
@@ -12,6 +10,8 @@ import AssignmentListHeader from './AssignmentListHeader';
 import Item from './Item';
 import { useExpanderStyles, useStyles } from './styles';
 import type { AssignmentListProps } from './types';
+import type { ReorderEvent } from '@tempo/dashboard/oldSrc/types';
+import SortableContainer from '@tempo/dashboard/components/core/SortableContainer';
 
 const messages = {
   allSelectedMessage: {

@@ -1,6 +1,4 @@
 import type { PermissionCode } from '@tempo/api/generated/graphql';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
-import type { Channel as ChannelList, ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
@@ -14,6 +12,8 @@ import ChannelsAvailabilityCardWrapper from './ChannelsAvailabilityCardWrapper';
 import styles from './index.module.css';
 import type { ChannelOpts, ChannelsAvailabilityError, Messages } from './types';
 import { getChannelsAvailabilityMessages } from './utils';
+import type { Channel as ChannelList, ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
 
 export interface ChannelsAvailability
   extends Omit<ChannelsAvailabilityWrapperProps, 'children' | 'selectedChannelsCount'> {

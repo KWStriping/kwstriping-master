@@ -1,5 +1,5 @@
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import type { ChangeEvent } from 'react';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export function createPageKlassSelectHandler(
   setPageKlass: (pageKlassId: string) => void,

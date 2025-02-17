@@ -1,18 +1,18 @@
-import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 import type {
   FulfillmentFragment,
   OrderFulfillmentLineFragment,
 } from '@tempo/api/generated/graphql';
-import type { OrderFulfillStockFormsetData } from '@tempo/dashboard/oldSrc/orders/utils/data';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
+import type { FC } from 'react';
 import {
   getAttributesCaption,
   getFulfillmentFormsetQuantity,
   getOrderLineAvailableQuantity,
 } from '@tempo/dashboard/oldSrc/orders/utils/data';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import type { FC } from 'react';
+import type { OrderFulfillStockFormsetData } from '@tempo/dashboard/oldSrc/orders/utils/data';
+import TableCellAvatar from '@tempo/dashboard/components/tables/TableCellAvatar';
 
 // import { useStyles } from "../OrderFulfillStockExceededDialog/styles";
 

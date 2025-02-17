@@ -1,6 +1,3 @@
-import GiftCardUpdatePageDeleteDialog from '@tempo/dashboard/components/giftCards/GiftCardDeleteDialog/GiftCardUpdatePageDeleteDialog';
-import { giftCardsListPath, giftCardUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
-import useDialogActionHandlers from '@tempo/dashboard/oldSrc/utils/handlers/dialogActionHandlers';
 import { useRouter } from 'next/navigation';
 import type { FC, ReactNode } from 'react';
 import { createContext } from 'react';
@@ -10,6 +7,9 @@ import GiftCardUpdateBalanceDialog from '../../GiftCardUpdateBalanceDialog';
 import type { GiftCardUpdatePageUrlQueryParams } from '../../types';
 import { GiftCardUpdatePageActionParamsEnum } from '../../types';
 import useGiftCardDetails from '../GiftCardDetailsProvider/hooks/useGiftCardDetails';
+import useDialogActionHandlers from '@tempo/dashboard/oldSrc/utils/handlers/dialogActionHandlers';
+import { giftCardsListPath, giftCardUrl } from '@tempo/dashboard/oldSrc/giftCards/urls';
+import GiftCardUpdatePageDeleteDialog from '@tempo/dashboard/components/giftCards/GiftCardDeleteDialog/GiftCardUpdatePageDeleteDialog';
 
 interface GiftCardUpdateDialogsProviderProps {
   children: ReactNode;

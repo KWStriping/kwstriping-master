@@ -7,19 +7,6 @@ import { extractMutationErrors } from '@tempo/api/utils';
 import type { OrderUrlDialog, OrderUrlQueryParams } from '@dashboard/oldSrc/urls';
 import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
-import { WindowTitle } from '@tempo/dashboard/components/core/WindowTitle';
-import OrderAddressFields from '@tempo/dashboard/components/orders/OrderAddressFields';
-import type { CustomerEditData } from '@tempo/dashboard/components/orders/OrderCustomer';
-import type { OrderCustomerAddressesEditDialogOutput } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/types';
-import { CustomerChangeActionEnum } from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/form';
-import type { OrderCustomerChangeData } from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/form';
-import OrderCustomerChangeDialog from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/OrderCustomerChangeDialog';
-import OrderDraftCancelDialog from '@tempo/dashboard/components/orders/OrderDraftCancelDialog';
-import OrderDraftPage from '@tempo/dashboard/components/orders/OrderDraftPage';
-import OrderProductAddDialog from '@tempo/dashboard/components/orders/OrderProductAddDialog';
-import OrderShippingMethodEditDialog from '@tempo/dashboard/components/orders/OrderShippingMethodEditDialog';
-import { OrderDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
-import { OrderLineDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
 import { StockAvailability } from '@tempo/api/generated/constants';
 import {
   ChannelUsabilityDataDocument,
@@ -37,6 +24,19 @@ import type {
   OrderLineUpdateMutation,
   OrderLineUpdateMutationVariables,
 } from '@tempo/api/generated/graphql';
+import { WindowTitle } from '@tempo/dashboard/components/core/WindowTitle';
+import OrderAddressFields from '@tempo/dashboard/components/orders/OrderAddressFields';
+import type { CustomerEditData } from '@tempo/dashboard/components/orders/OrderCustomer';
+import type { OrderCustomerAddressesEditDialogOutput } from '@tempo/dashboard/components/orders/OrderCustomerAddressesEditDialog/types';
+import { CustomerChangeActionEnum } from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/form';
+import type { OrderCustomerChangeData } from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/form';
+import OrderCustomerChangeDialog from '@tempo/dashboard/components/orders/OrderCustomerChangeDialog/OrderCustomerChangeDialog';
+import OrderDraftCancelDialog from '@tempo/dashboard/components/orders/OrderDraftCancelDialog';
+import OrderDraftPage from '@tempo/dashboard/components/orders/OrderDraftPage';
+import OrderProductAddDialog from '@tempo/dashboard/components/orders/OrderProductAddDialog';
+import OrderShippingMethodEditDialog from '@tempo/dashboard/components/orders/OrderShippingMethodEditDialog';
+import { OrderDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderDiscountProvider';
+import { OrderLineDiscountProvider } from '@tempo/dashboard/components/products/OrderDiscountProviders/OrderLineDiscountProvider';
 import { DEFAULT_INITIAL_SEARCH_DATA } from '@tempo/dashboard/oldSrc/config';
 import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 import { getStringOrPlaceholder } from '@tempo/dashboard/oldSrc/misc';

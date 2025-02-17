@@ -2,7 +2,7 @@ import type { Exact, LanguageCode } from '@tempo/api/generated/graphql';
 import type { FormDataBase } from '@tempo/next/types';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
 import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
-import type { OperationResult } from '@tempo/api';;
+import type { OperationResult } from '@tempo/api';
 import { extractMutationErrors } from '@tempo/api/utils';
 import type { Locale } from '@tempo/utils';
 import { localeToLanguageCode } from '@tempo/utils';
@@ -33,7 +33,7 @@ export type SubmitReturnWithErrors<TData extends FormDataBase> = Promise<{
 
 interface UseSubmitProps<
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>
+  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
 > {
   scope: CheckoutSectionKey;
   onSubmit: (vars: MutationVars<TMutationFn>) => Promise<MutationData<TMutationFn>>;
@@ -49,7 +49,7 @@ type SubmitFn<TData extends FormDataBase> = (formData: TData) => SubmitReturnWit
 
 export const useSubmit = <
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>
+  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
 >({
   onSuccess,
   onError,

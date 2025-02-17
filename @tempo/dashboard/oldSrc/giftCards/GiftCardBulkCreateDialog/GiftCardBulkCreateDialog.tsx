@@ -8,6 +8,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useState } from 'react';
 import type { FC } from 'react';
 
+import type { GiftCardBulkCreationInput } from '@tempo/api/generated/graphql';
+import {
+  ChannelCurrenciesDocument,
+  GiftCardBulkCreateDocument,
+} from '@tempo/api/generated/graphql';
 import ContentWithProgress from '../GiftCardCreateDialog/ContentWithProgress';
 import GiftCardBulkCreateSuccessDialog from '../GiftCardCreateDialog/GiftCardBulkCreateSuccessDialog';
 import {
@@ -23,11 +28,6 @@ import { validateForm } from './utils';
 import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
 import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
-import type { GiftCardBulkCreationInput } from '@tempo/api/generated/graphql';
-import {
-  ChannelCurrenciesDocument,
-  GiftCardBulkCreateDocument,
-} from '@tempo/api/generated/graphql';
 
 const GiftCardBulkCreateDialog: FC<DialogProps> = ({ onClose, open }) => {
   const notify = useNotifier();

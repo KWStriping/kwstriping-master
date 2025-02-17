@@ -1,9 +1,9 @@
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Typography from '@mui/material/Typography';
 import type { FC, ReactNode, ChangeEvent } from 'react';
 
 import ControlledCheckbox from '../../forms/ControlledCheckbox';
 import styles from './index.module.css';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 interface DeleteWarningDialogConsentContentProps {
   description: string | ReactNode[] | readonly ReactNode[];

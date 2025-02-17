@@ -1,9 +1,9 @@
 import * as m from '@paraglide/messages';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
+import type { GiftCardSettingsErrorFragment, TimePeriod } from '@tempo/api/generated/graphql';
 import TimePeriodField from '../TimePeriodField/TimePeriodField';
 import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import type { GiftCardSettingsErrorFragment, TimePeriod } from '@tempo/api/generated/graphql';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { getGiftCardSettingsErrorMessage } from '@tempo/dashboard/oldSrc/giftCards/GiftCardSettings/messages';
 

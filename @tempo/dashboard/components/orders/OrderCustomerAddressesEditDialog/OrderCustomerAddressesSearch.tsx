@@ -3,10 +3,8 @@ import Button from '@tempo/ui/components/buttons/Button';
 import { ConfirmButton } from '@tempo/ui/components/buttons/ConfirmButton';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import { getById } from '@tempo/utils';
-import CustomerAddressChoiceCard from '@tempo/dashboard/components/customers/CustomerAddressChoiceCard';
 import { AddressType } from '@tempo/api/generated/constants';
 import type { AddressFragment } from '@tempo/api/generated/graphql';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Checkbox,
@@ -21,6 +19,8 @@ import type { ChangeEvent, FC } from 'react';
 
 import { dialogMessages as messages } from './messages';
 import { parseQuery, stringifyAddress } from './utils';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
+import CustomerAddressChoiceCard from '@tempo/dashboard/components/customers/CustomerAddressChoiceCard';
 
 export interface OrderCustomerAddressesSearchProps {
   type: AddressType;
@@ -98,7 +98,7 @@ const OrderCustomerAddressesSearch: FC<OrderCustomerAddressesSearchProps> = (pro
         />
         <div className={styles.scrollableWrapper ?? ''}>
           {filteredCustomerAddresses.length === 0
-            ? m.dashboard_oResultsFound() ?? 'No results found'
+            ? (m.dashboard_oResultsFound() ?? 'No results found')
             : filteredCustomerAddresses?.map((address) => (
                 <Fragment key={address.id}>
                   <CustomerAddressChoiceCard

@@ -3,6 +3,7 @@ import { ButtonWithSelect } from '@tempo/ui/components/buttons/ButtonWithSelect'
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import type { FC } from 'react';
+import type { OrderListQuery, RefreshLimitsQuery } from '@tempo/api/generated/graphql';
 import OrderLimitReached from '../OrderLimitReached';
 import OrderList from '../OrderList';
 import type { OrderFilterKeys, OrderListFilterOpts } from './filters';
@@ -10,7 +11,6 @@ import { useFilterStructure } from './filters';
 import FilterBar from '@tempo/dashboard/components/bars/FilterBar';
 import CardMenu from '@tempo/dashboard/components/core/CardMenu';
 import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import type { OrderListQuery, RefreshLimitsQuery } from '@tempo/api/generated/graphql';
 import type { OrderListUrlOrdering } from '@tempo/dashboard/oldSrc/orders/urls';
 import type {
   FilterPageProps,

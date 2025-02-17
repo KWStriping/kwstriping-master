@@ -1,4 +1,4 @@
 export * from './common';
-export * from './api';
-export * from './refunds';
+export type * from './api';
+export type * from './refunds';
 export * from './payments';

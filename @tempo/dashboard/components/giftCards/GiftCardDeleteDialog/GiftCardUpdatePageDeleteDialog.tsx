@@ -1,10 +1,9 @@
 import type { FC } from 'react';
+import GiftCardDeleteDialogContent from './GiftCardDeleteDialogContent';
+import useGiftCardSingleDelete from './useGiftCardSingleDelete';
 import { GIFT_CARD_LIST_QUERY } from '@tempo/dashboard/oldSrc/giftCards/GiftCardsList/queries';
 import useGiftCardDetails from '@tempo/dashboard/oldSrc/giftCards/GiftCardUpdate/providers/GiftCardDetailsProvider/hooks/useGiftCardDetails';
 import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
-
-import GiftCardDeleteDialogContent from './GiftCardDeleteDialogContent';
-import useGiftCardSingleDelete from './useGiftCardSingleDelete';
 
 type GiftCardUpdatePageDeleteDialogProps = DialogProps & {
   onDelete: () => void;

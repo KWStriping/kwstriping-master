@@ -1,16 +1,7 @@
 import * as m from '@paraglide/messages';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
-import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
-import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 import Grid from '@tempo/ui/components/Grid';
-import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
-import Metadata from '@tempo/dashboard/components/core/Metadata';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
-import { VariantDetailsChannelsAvailabilityCard } from '@tempo/dashboard/components/products/ProductChannels/ChannelsAvailabilityCard';
 import { ProductAttributeScope } from '@tempo/api/generated/constants';
 import type {
   ProductChannelListingErrorFragment,
@@ -21,10 +12,6 @@ import type {
   SearchProductsQuery,
   WarehouseFragment,
 } from '@tempo/api/generated/graphql';
-import {
-  getReferenceAttributeEntityTypeFromAttribute,
-  mergeValues,
-} from '@tempo/dashboard/oldSrc/attributes/utils/data';
 import type { ChannelPriceData } from '@tempo/dashboard/oldSrc/channels/utils';
 import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import { getSelectedMedia } from '@tempo/dashboard/oldSrc/products/utils/data';
@@ -49,6 +36,19 @@ import ProductPrice from '../ProductPrice';
 import ProductSetDefault from '../ProductSetDefault';
 import type { ProductUpdateData, ProductUpdateHandlers, ProductUpdateSubmitData } from './form';
 import ProductUpdateForm from './form';
+import {
+  getReferenceAttributeEntityTypeFromAttribute,
+  mergeValues,
+} from '@tempo/dashboard/oldSrc/attributes/utils/data';
+import { VariantDetailsChannelsAvailabilityCard } from '@tempo/dashboard/components/products/ProductChannels/ChannelsAvailabilityCard';
+import AssignValueDialog from '@tempo/dashboard/components/dialogs/AssignValueDialog';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import Metadata from '@tempo/dashboard/components/core/Metadata';
+import type { MetadataFormData } from '@tempo/dashboard/components/core/Metadata';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
+import Attributes from '@tempo/dashboard/components/attributes/AttributesCard';
+import type { AttributeInput } from '@tempo/dashboard/components/attributes/AttributesCard';
 
 const messages = {
   nonSelectionAttributes: {

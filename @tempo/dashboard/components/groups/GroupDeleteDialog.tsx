@@ -1,11 +1,11 @@
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import DialogContentText from '@mui/material/DialogContentText';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
-import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import { GroupErrorCode } from '@tempo/api/generated/constants';
 import type { GroupErrorFragment } from '@tempo/api/generated/graphql';
+import ActionDialog from '@tempo/dashboard/components/dialogs/ActionDialog';
 import getGroupErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/groups';
 
 export interface PermissionDeleteDialogProps {

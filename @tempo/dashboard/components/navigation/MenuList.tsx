@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import type { ReactNode, FC } from 'react';
+import type { MenuFragment } from '@tempo/api/generated/graphql';
 import Checkbox from '@tempo/dashboard/components/core/Checkbox';
 import IconButtonTableCell from '@tempo/dashboard/components/tables/IconButtonTableCell';
 import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
@@ -17,7 +18,6 @@ import { TableButtonWrapper } from '@tempo/dashboard/components/tables/TableButt
 import TableCellHeader from '@tempo/dashboard/components/tables/TableCellHeader';
 import TableHead from '@tempo/dashboard/components/tables/TableHead';
 import { TablePaginationWithContext } from '@tempo/dashboard/components/tables/TablePagination';
-import type { MenuFragment } from '@tempo/api/generated/graphql';
 import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { MenuListUrlOrdering, menuUrl } from '@tempo/dashboard/oldSrc/navigation/urls';
 import type { ListActions, ListProps, SortPage } from '@tempo/dashboard/oldSrc/types';

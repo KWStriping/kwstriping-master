@@ -1,9 +1,5 @@
 import { getById } from '@tempo/utils';
 import type { Dispatch, SetStateAction } from 'react';
-import type { OrderCustomerAddressesEditData, OrderCustomerAddressesEditHandlers } from './form';
-import type { OrderCustomerAddressEditProps } from './OrderCustomerAddressEdit';
-import type { OrderCustomerSearchAddressState } from './types';
-import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type {
   AccountErrorFragment,
   AddressFragment,
@@ -12,6 +8,10 @@ import type {
   OrderErrorFragment,
 } from '@tempo/api/generated/graphql';
 import { AddressType } from '@tempo/api/generated/constants';
+import type { OrderCustomerAddressesEditData, OrderCustomerAddressesEditHandlers } from './form';
+import type { OrderCustomerAddressEditProps } from './OrderCustomerAddressEdit';
+import type { OrderCustomerSearchAddressState } from './types';
+import type { SingleAutocompleteChoiceType } from '@tempo/dashboard/components/fields/SingleAutocompleteSelectField';
 import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 import { flatten } from '@tempo/dashboard/oldSrc/misc';
 
@@ -23,7 +23,7 @@ interface AddressEditCommonProps {
 }
 
 export const stringifyAddress = (address: Partial<AddressFragment>): string => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line ts/no-unused-vars
   const { id, ...addressWithoutId } = address;
   return Object.values(flatten(addressWithoutId)).join(' ');
 };

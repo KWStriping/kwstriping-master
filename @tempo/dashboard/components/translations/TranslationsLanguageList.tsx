@@ -1,10 +1,7 @@
 import * as m from '@paraglide/messages';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type { LanguageFragment } from '@tempo/api/generated/graphql';
-import { maybe } from '@tempo/dashboard/oldSrc/misc';
 import { renderCollection } from '@tempo/ui/utils';
-import { languageEntitiesUrl } from '@tempo/dashboard/oldSrc/translations/urls';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import TableBody from '@mui/material/TableBody';
@@ -12,6 +9,9 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import type { FC, ReactNode } from 'react';
+import { languageEntitiesUrl } from '@tempo/dashboard/oldSrc/translations/urls';
+import { maybe } from '@tempo/dashboard/oldSrc/misc';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 
 export interface TranslationsLanguageListProps {
   languages: LanguageFragment[];

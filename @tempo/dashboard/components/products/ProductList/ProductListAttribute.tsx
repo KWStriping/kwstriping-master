@@ -1,9 +1,9 @@
-import Date from '@tempo/dashboard/components/core/Date';
 import type { ProductListAttributeFragment } from '@tempo/api/generated/graphql';
 import Skeleton from '@mui/material/Skeleton';
 import type { FC } from 'react';
 
 import { getAttributeIdFromColumnValue } from '../ProductListPage/utils';
+import Date from '@tempo/dashboard/components/core/Date';
 
 export interface ProductListAttributeProps {
   attribute: string;

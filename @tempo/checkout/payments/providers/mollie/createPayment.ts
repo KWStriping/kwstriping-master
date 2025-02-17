@@ -1,7 +1,4 @@
 import type { Address } from '@tempo/api/generated/graphql';
-import type { CreatePaymentData } from '@tempo/checkout/payments/types';
-import { formatRedirectUrl } from '@tempo/checkout/payments/utils';
-
 import {
   getDiscountLines,
   getShippingLines,
@@ -9,6 +6,8 @@ import {
   parseAmountToString,
   getMollieClient,
 } from './utils';
+import type { CreatePaymentData } from '@tempo/checkout/payments/types';
+import { formatRedirectUrl } from '@tempo/checkout/payments/utils';
 
 export const createMolliePayment = async ({ order, redirectUrl, appUrl }: CreatePaymentData) => {
   const discountLines = getDiscountLines(order.discounts);

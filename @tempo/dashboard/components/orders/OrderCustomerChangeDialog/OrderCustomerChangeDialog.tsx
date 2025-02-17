@@ -1,6 +1,5 @@
 import * as m from '@paraglide/messages';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
-import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 import {
   Dialog,
   DialogActions,
@@ -15,6 +14,7 @@ import type { FC } from 'react';
 
 import type { OrderCustomerChangeData } from './form';
 import OrderCustomerChangeForm, { CustomerChangeActionEnum } from './form';
+import FormSpacer from '@tempo/dashboard/components/forms/Form/FormSpacer';
 
 export interface OrderCustomerChangeDialogProps {
   open: boolean;

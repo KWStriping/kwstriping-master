@@ -1,9 +1,8 @@
 import type { EditableGridCell, Item } from '@glideapps/glide-data-grid';
 import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { createContext, useCallback, useContext, useRef, useState } from 'react';
-import { updateAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
-
 import type { AvailableColumn } from './types';
+import { updateAtIndex } from '@tempo/dashboard/oldSrc/utils/lists';
 
 export interface DatagridChange {
   data: unknown;
@@ -78,12 +77,7 @@ function useDatagridChange(
           : updateAtIndex(update, changes.current, existingIndex);
       notify(changes.current, added, removed);
     },
-    [
-      availableColumns,
-      notify,
-      added,
-      removed,
-    ]
+    [availableColumns, notify, added, removed]
   );
 
   const onRowsRemoved = useCallback(
@@ -117,12 +111,7 @@ function useDatagridChange(
     const newAdded = [...added, rows - removed.length + added.length];
     setAdded(newAdded);
     notify(changes.current, newAdded, removed);
-  }, [
-    added,
-    notify,
-    removed,
-    rows,
-  ]);
+  }, [added, notify, removed, rows]);
 
   return {
     added,

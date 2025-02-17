@@ -1,7 +1,5 @@
 import * as m from '@paraglide/messages';
 import { renderCollection } from '@tempo/ui/utils';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import FormattedDateTime from '@tempo/dashboard/components/core/Date';
 import { gql } from '@tempo/api';
 import type { ActivityFragment } from '@tempo/api/generated/graphql';
 import { Card, List, ListItem, ListItemText } from '@mui/material';
@@ -9,6 +7,8 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { getActivityMessage } from './activityMessages';
+import FormattedDateTime from '@tempo/dashboard/components/core/Date';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export const ACTIVITY_FRAGMENT = gql(`
   fragment Activity on OrderEvent {

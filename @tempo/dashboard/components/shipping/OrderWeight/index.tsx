@@ -1,11 +1,6 @@
 import * as m from '@paraglide/messages';
 import { useShopSettings } from '@tempo/ui/hooks/useShopSettings';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
 import type { ShippingErrorFragment } from '@tempo/api/generated/graphql';
-import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
-import { getShippingWeightRateErrorMessage } from '@tempo/dashboard/oldSrc/shipping/errors';
-import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,6 +8,11 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import styles from './index.module.css';
+import { getFormErrors } from '@tempo/dashboard/oldSrc/utils/errors';
+import { getShippingWeightRateErrorMessage } from '@tempo/dashboard/oldSrc/shipping/errors';
+import type { ChangeEvent } from '@tempo/dashboard/hooks/useForm';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface OrderWeightProps {
   disabled: boolean;

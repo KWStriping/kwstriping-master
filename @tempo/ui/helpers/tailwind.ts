@@ -34,8 +34,8 @@ export const generateTailwindConfig = (theme: ThemeConfig): Config => {
         contrast: colorSpec['contrastText']
           ? colorSpec['contrastText']
           : getContrastRatio(main, '#fff') > 4.5
-          ? '#fff'
-          : '#000',
+            ? '#fff'
+            : '#000',
         ...colorSpec,
       };
       if (expandedColorSpec['contrastText']) delete expandedColorSpec['contrastText'];

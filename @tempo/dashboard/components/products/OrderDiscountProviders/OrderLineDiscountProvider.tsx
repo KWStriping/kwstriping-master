@@ -5,6 +5,8 @@ import { getById } from '@tempo/utils';
 import { createContext, useState } from 'react';
 import type { FC, ReactNode } from 'react';
 
+import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
+import { OrderLineDiscountRemoveDocument } from '@tempo/api/generated/graphql';
 import type {
   GetOrderLineDiscountContextConsumerProps,
   OrderDiscountConsumerCommonProps,
@@ -12,8 +14,6 @@ import type {
   OrderLineDiscountData,
 } from './types';
 import { getOrderLineDiscount, getParsedDiscountData, useDiscountDialog } from './utils';
-import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import { OrderLineDiscountRemoveDocument } from '@tempo/api/generated/graphql';
 import type { OrderDiscountCommonInput } from '@tempo/dashboard/components/orders/OrderDiscountCommonModal/types';
 
 export interface OrderLineDiscountContextConsumerProps extends OrderDiscountConsumerCommonProps {

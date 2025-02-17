@@ -3,20 +3,9 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 import { makeStyles } from '@tempo/ui/theme/styles';
 
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
-import { SortableTableBody, SortableTableRow } from '@tempo/dashboard/components/tables/SortableTable';
-import TablePagination from '@tempo/dashboard/components/tables/TablePagination';
 import { AttributeInputType } from '@tempo/api/generated/constants';
 import type { ValueFragment, ValueListFragment } from '@tempo/api/generated/graphql';
 import { renderCollection } from '@tempo/ui/utils';
-import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
-import type {
-  ListProps,
-  PaginateListProps,
-  RelayToFlat,
-  ReorderAction,
-} from '@tempo/dashboard/oldSrc/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
@@ -25,6 +14,20 @@ import TableFooter from '@mui/material/TableFooter';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import type { FC } from 'react';
+import type {
+  ListProps,
+  PaginateListProps,
+  RelayToFlat,
+  ReorderAction,
+} from '@tempo/dashboard/oldSrc/types';
+import { stopPropagation } from '@tempo/dashboard/oldSrc/misc';
+import TablePagination from '@tempo/dashboard/components/tables/TablePagination';
+import {
+  SortableTableBody,
+  SortableTableRow,
+} from '@tempo/dashboard/components/tables/SortableTable';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 export interface ValuesProps
   extends Pick<ListProps, Exclude<keyof ListProps, 'getRowHref'>>,

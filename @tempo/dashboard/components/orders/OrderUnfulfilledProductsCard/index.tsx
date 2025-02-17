@@ -2,9 +2,6 @@ import * as m from '@paraglide/messages';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { renderCollection } from '@tempo/ui/utils';
 import { useMutation } from '@tempo/api/hooks';
-import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
-import OrderFulfillmentTable from '@tempo/dashboard/components/orders/OrderFulfillmentTable';
-import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
 import type {
   OrderFulfillDataQuery,
   OrderLineFragment,
@@ -12,9 +9,6 @@ import type {
 } from '@tempo/api/generated/graphql';
 import { FulfillOrderDocument } from '@tempo/api/generated/graphql';
 
-import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
-
-import createMetadataUpdateHandler from '@tempo/dashboard/oldSrc/utils/handlers/metadataUpdateHandler';
 import { Card } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import TableBody from '@mui/material/TableBody';
@@ -26,6 +20,11 @@ import OrderCardTitle from '../OrderCardTitle';
 import TableHeader from '../OrderProductsCardElements/OrderProductsCardHeader';
 import TableLine from '../OrderProductsCardElements/OrderProductsTableRow';
 import styles from './index.module.css';
+import createMetadataUpdateHandler from '@tempo/dashboard/oldSrc/utils/handlers/metadataUpdateHandler';
+import { orderUrl } from '@tempo/dashboard/oldSrc/orders/urls';
+import ResponsiveTable from '@tempo/dashboard/components/tables/ResponsiveTable';
+import OrderFulfillmentTable from '@tempo/dashboard/components/orders/OrderFulfillmentTable';
+import CardSpacer from '@tempo/dashboard/components/core/CardSpacer';
 
 interface OrderUnfulfilledProductsCardProps {
   order: OrderFulfillDataQuery['order'];

@@ -2,20 +2,7 @@ import * as m from '@paraglide/messages';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import ExportDialogSettings from '@tempo/dashboard/components/products/ProductExportDialog/ExportDialogSettings';
-import {
-  exportSettingsInitialFormData,
-  exportSettingsInitialFormDataWithIds,
-} from '@tempo/dashboard/components/products/ProductExportDialog/types';
-import type { ExportSettingsFormData } from '@tempo/dashboard/components/products/ProductExportDialog/types';
-import {
-  ExportGiftCardsDocument,
-  useGiftCardTotalCountQuery,
-} from '@tempo/api/generated/graphql';
-import useBackgroundTask from '@tempo/dashboard/hooks/useBackgroundTask';
-import useForm from '@tempo/dashboard/hooks/useForm';
-import { Task } from '@tempo/dashboard/oldSrc/containers/BackgroundTasks/types';
-import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
+import { ExportGiftCardsDocument } from '@tempo/api/generated/graphql';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -26,6 +13,16 @@ import ContentWithProgress from '../GiftCardCreateDialog/ContentWithProgress';
 import { useGiftCardList } from '../GiftCardsList/providers/GiftCardListProvider';
 import { giftCardExportDialogMessages as messages } from './messages';
 import { getExportGiftCardsInput } from './utils';
+import type { DialogProps } from '@tempo/dashboard/oldSrc/types';
+import { Task } from '@tempo/dashboard/oldSrc/containers/BackgroundTasks/types';
+import useForm from '@tempo/dashboard/hooks/useForm';
+import useBackgroundTask from '@tempo/dashboard/hooks/useBackgroundTask';
+import type { ExportSettingsFormData } from '@tempo/dashboard/components/products/ProductExportDialog/types';
+import {
+  exportSettingsInitialFormData,
+  exportSettingsInitialFormDataWithIds,
+} from '@tempo/dashboard/components/products/ProductExportDialog/types';
+import ExportDialogSettings from '@tempo/dashboard/components/products/ProductExportDialog/ExportDialogSettings';
 
 const GiftCardExportDialog: FC<
   Pick<DialogProps, 'onClose'> & {

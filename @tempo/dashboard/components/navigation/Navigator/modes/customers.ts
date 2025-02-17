@@ -1,10 +1,9 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
 import type { SearchCustomersQuery } from '@tempo/api/generated/graphql';
+import type { QuickSearchAction } from '../types';
 import { customerUrl } from '@tempo/dashboard/oldSrc/customers/urls';
 import type { RelayToFlat } from '@tempo/dashboard/oldSrc/types';
-
-import type { QuickSearchAction } from '../types';
 
 export function searchInCustomers(
   t: TFunction,

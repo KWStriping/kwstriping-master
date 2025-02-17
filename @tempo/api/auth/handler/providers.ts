@@ -8,6 +8,7 @@ import InstagramProvider from 'next-auth/providers/instagram';
 import { assert } from 'tsafe/assert';
 import { LoginDocument } from '@tempo/api/generated/graphql';
 import { gql } from '@tempo/api';
+import { getClient } from '@tempo/api/client';
 
 const USE_CLIENT_SIDE_AUTH = true;
 
@@ -110,7 +111,7 @@ if (useMockProviders) {
     }),
     // https://next-auth.js.org/providers/credentials
     USE_CLIENT_SIDE_AUTH
-      ? CredentialsProvider<Credentials<true>>({
+      ? CredentialsProvider({
           id: 'credentials',
           name: 'Credentials', // name to display on the sign-in form ('Sign in with ____')
           credentials: {
@@ -120,12 +121,13 @@ if (useMockProviders) {
             refreshToken: { label: 'Refresh Token', type: 'text', placeholder: '' },
             csrfToken: { label: 'CSRF Token', type: 'text', placeholder: '' },
           },
-          async authorize(credentials) {
+          // TODO
+          async authorize(credentials: any) {
             if (!credentials?.accessToken || !credentials?.csrfToken) return null;
             return pick(credentials, ['id', 'email', 'accessToken', 'refreshToken', 'csrfToken']);
           },
         })
-      : CredentialsProvider<Credentials<false>>({
+      : CredentialsProvider({
           id: 'credentials',
           name: 'Credentials', // name to display on the sign-in form ('Sign in with ____')
           credentials: {
@@ -138,13 +140,14 @@ if (useMockProviders) {
             if (credentialsAreValid) {
               const client = getClient();
               assert(!!client);
-              const { data, error } = await client
-                .mutation(LoginDocument, {
-                  email: credentials.email,
-                  password: credentials.password,
-                })
-                .toPromise();
-              console.log('🔑 error', error);
+              const { data, errors } = await client.mutate({
+                mutation: LoginDocument,
+                variables: {
+                  email: credentials.email as string,
+                  password: credentials.password as string,
+                },
+              });
+              console.log('🔑 error', errors);
               if (data?.obtainToken?.result.accessToken && data?.obtainToken?.result.csrfToken) {
                 const { user, accessToken, csrfToken } = data?.obtainToken.result ?? {};
                 assert(!!user?.email);

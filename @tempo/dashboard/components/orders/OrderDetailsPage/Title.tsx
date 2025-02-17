@@ -1,8 +1,8 @@
 import * as m from '@paraglide/messages';
 import { Pill } from '@tempo/ui/components/pill/Pill';
 import type { OrderDetailsFragment } from '@tempo/api/generated/graphql';
-import { transformOrderStatus } from '@tempo/dashboard/oldSrc/misc';
 import type { FC } from 'react';
+import { transformOrderStatus } from '@tempo/dashboard/oldSrc/misc';
 
 export interface TitleProps {
   order?: Maybe<OrderDetailsFragment>;

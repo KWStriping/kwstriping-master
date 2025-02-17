@@ -3,12 +3,7 @@ import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/
 import Grid from '@tempo/ui/components/Grid';
 import { Backlink } from '@tempo/ui/components/Layout/Backlink';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
-import SaveBar from '@tempo/dashboard/components/core/SaveBar';
-import Form from '@tempo/dashboard/components/forms/Form';
 import { ProductMediaType } from '@tempo/api/generated/constants';
-import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
@@ -19,6 +14,11 @@ import { useRouter } from 'next/navigation';
 import type { FC } from 'react';
 
 import ProductMediaNavigation from './ProductMediaNavigation';
+import { productUrl } from '@tempo/dashboard/oldSrc/products/urls';
+import Form from '@tempo/dashboard/components/forms/Form';
+import SaveBar from '@tempo/dashboard/components/core/SaveBar';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

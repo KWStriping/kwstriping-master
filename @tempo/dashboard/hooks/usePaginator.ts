@@ -1,8 +1,8 @@
-import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 import type { Context } from 'react';
 import { createContext, useContext, useMemo } from 'react';
 
 import type { Pagination } from '../oldSrc/types';
+import { stringifyQs } from '@tempo/dashboard/oldSrc/utils/urls';
 
 export interface PageInfo {
   endCursor?: string;

@@ -1,9 +1,9 @@
 import type TextFieldProps from '@mui/material/TextFieldProps';
 import { useMemo } from 'react';
-import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 import { SEPARATOR_CHARACTERS } from './consts';
 import { findPriceSeparator, getCurrencyDecimalPoints } from './utils';
+import type { FormChange } from '@tempo/dashboard/hooks/useForm';
 
 export function usePriceField(currency: string, onChange: FormChange) {
   const minValue = 0;

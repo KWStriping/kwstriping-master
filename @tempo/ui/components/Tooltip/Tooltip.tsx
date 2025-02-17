@@ -1,4 +1,3 @@
-import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 import type { Placement, Side } from '@floating-ui/react-dom-interactions';
 import {
   arrow,
@@ -20,6 +19,7 @@ import { cloneElement, useMemo, useState, useRef, useCallback } from 'react';
 import type { MouseEventHandler, ReactElement, Ref, FC, ReactNode } from 'react';
 
 import { Arrow } from './Arrow';
+import { mergeRefs } from '@tempo/ui/utils/mergeRefs';
 // import useStyles from './styles';
 
 export interface TooltipProps {

@@ -1,10 +1,4 @@
 import * as m from '@paraglide/messages';
-import RadioSwitchField from '@tempo/dashboard/components/fields/RadioSwitchField';
-import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
-import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
-import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
-import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
-import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -14,6 +8,12 @@ import type { FC } from 'react';
 
 import styles from '../index.module.css';
 import type { ChannelOpts, ChannelsAvailabilityError, Messages } from '../types';
+import { getFormErrors, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
+import type { ChannelData } from '@tempo/dashboard/oldSrc/channels/utils';
+import useDateLocalize from '@tempo/dashboard/hooks/useDateLocalize';
+import useCurrentDate from '@tempo/dashboard/hooks/useCurrentDate';
+import ControlledCheckbox from '@tempo/dashboard/components/forms/ControlledCheckbox';
+import RadioSwitchField from '@tempo/dashboard/components/fields/RadioSwitchField';
 
 export interface ChannelContentProps {
   disabled?: boolean;

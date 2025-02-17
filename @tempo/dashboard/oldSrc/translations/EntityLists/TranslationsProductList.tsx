@@ -1,12 +1,15 @@
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { useQuery } from '@tempo/api/hooks';
 import type { FC } from 'react';
-import TranslationsEntitiesList from '@tempo/dashboard/components/translations/TranslationsEntitiesList';
 import { ProductTranslationsDocument } from '@tempo/api/generated/graphql';
-import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePaginator';
-import { languageEntityUrl, TranslatableEntities } from '@tempo/dashboard/oldSrc/translations/urls';
 import { sumCompleted } from './utils';
 import type { TranslationsEntityListProps } from './types';
+import TranslationsEntitiesList from '@tempo/dashboard/components/translations/TranslationsEntitiesList';
+import usePaginator, { PaginatorContext } from '@tempo/dashboard/hooks/usePaginator';
+import {
+  languageEntityUrl,
+  TranslatableEntities,
+} from '@tempo/dashboard/oldSrc/translations/urls';
 
 const TranslationsProductList: FC<TranslationsEntityListProps> = ({ params, variables }) => {
   const [{ data, fetching: loading }] = useQuery(ProductTranslationsDocument, {

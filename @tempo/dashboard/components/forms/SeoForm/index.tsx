@@ -1,14 +1,11 @@
 import * as m from '@paraglide/messages';
-import { Trans, useTranslation } from '@tempo/next/i18n';
+import { Trans } from '@tempo/next/i18n';
 import { Button } from '@tempo/ui/components/buttons/Button';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type {
   CollectionErrorFragment,
   PageErrorFragment,
   ProductErrorFragment,
 } from '@tempo/api/generated/graphql';
-import { getFieldError, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
-import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
@@ -20,6 +17,9 @@ import slugify from 'slugify';
 
 import FormSpacer from '../Form/FormSpacer';
 import styles from './index.module.css';
+import getPageErrorMessage from '@tempo/dashboard/oldSrc/utils/errors/page';
+import { getFieldError, getProductErrorMessage } from '@tempo/dashboard/oldSrc/utils/errors';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 enum SeoField {
   slug = 'slug',

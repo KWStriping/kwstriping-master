@@ -1,8 +1,8 @@
 import type { Types } from '@adyen/api-library';
 import type { AdditionalData } from '@adyen/api-library/lib/src/typings/notification/additionalData';
 import { NotificationRequestItem as AdyenNotificationRequestItem } from '@adyen/api-library/lib/src/typings/notification/notificationRequestItem';
-import { adyenHmacValidator } from '@tempo/checkout/payments/providers/adyen/validator';
 import { testingVars } from '../consts';
+import { adyenHmacValidator } from '@tempo/checkout/payments/providers/adyen/validator';
 
 declare class NotificationRequestItem extends AdyenNotificationRequestItem {
   'additionalData': AdditionalData & {

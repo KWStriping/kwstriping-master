@@ -1,9 +1,7 @@
 import * as m from '@paraglide/messages';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import ImageUpload from '@tempo/ui/components/inputs/ImageUpload';
-import MediaTile from '@tempo/dashboard/components/media/MediaTile';
 import type { CategoryDetailsFragment } from '@tempo/api/generated/graphql';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -14,6 +12,8 @@ import type { FC, ChangeEvent } from 'react';
 import { useRef } from 'react';
 
 import type { CategoryUpdateData } from '../CategoryUpdatePage/form';
+import MediaTile from '@tempo/dashboard/components/media/MediaTile';
+import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 
 const useStyles = makeStyles(
   (theme) => ({

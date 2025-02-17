@@ -1,15 +1,15 @@
 import * as m from '@paraglide/messages';
 import { NavigationCard } from '@tempo/ui/components/Layout/NavigationCard';
 import { makeStyles } from '@tempo/ui/theme/styles';
-import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 import type { UserFragment } from '@tempo/api/generated/graphql';
-import type { MenuSection } from '@tempo/dashboard/oldSrc/configuration/types';
-import { hasUserMenuItemPermissions } from '@tempo/dashboard/oldSrc/configuration/utils';
-import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import type { FC } from 'react';
+import { sectionNames } from '@tempo/dashboard/oldSrc/intl';
+import { hasUserMenuItemPermissions } from '@tempo/dashboard/oldSrc/configuration/utils';
+import type { MenuSection } from '@tempo/dashboard/oldSrc/configuration/types';
+import PageHeader from '@tempo/dashboard/components/core/PageHeader';
 
 const useStyles = makeStyles(
   (theme) => ({

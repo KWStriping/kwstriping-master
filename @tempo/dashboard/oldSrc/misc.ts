@@ -1,6 +1,8 @@
 import * as m from '@paraglide/messages';
 import type { TFunction } from '@tempo/next/i18n';
 import { Temporal } from '@js-temporal/polyfill';
+import { OrderStatus, ChargeStatus } from '@tempo/api/generated/constants';
+import type { AddressUpdateInput, DateRangeInput } from '@tempo/api/generated/graphql';
 import type { AddressTypeInput } from './customers/types';
 import {
   commonStatusMessages,
@@ -8,8 +10,6 @@ import {
   orderStatusMessages,
   paymentStatusMessages,
 } from './intl';
-import { OrderStatus, ChargeStatus } from '@tempo/api/generated/constants';
-import type { AddressUpdateInput, DateRangeInput } from '@tempo/api/generated/graphql';
 import { StatusType } from '@tempo/dashboard/oldSrc/types';
 import type { UserError } from '@tempo/dashboard/oldSrc/types';
 
@@ -184,7 +184,8 @@ export const parseLogMessage = ({
       field &&
       (m.dashboard_odeErrorFieldMessage({
         fieldName: field,
-      }) ?? errorMessages.codeErrorFieldMessage.defaultMessage),
+      }) ??
+        errorMessages.codeErrorFieldMessage.defaultMessage),
   }) ?? errorMessages.baseCodeErrorMessage.defaultMessage;
 
 interface AnyEventWithPropagation {
