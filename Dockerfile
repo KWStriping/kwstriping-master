@@ -6,14 +6,13 @@ ARG API_URL
 ARG ROOT_DIR=/root
 
 ARG NODE_VERSION=22
-ARG ALPINE_VERSION=3.17
 ARG PNPM_VERSION=10.2.1
 
 ###################################################################
 # Stage 0: Base image                                             #
 ###################################################################
 
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS base
+FROM node:${NODE_VERSION}-alpine AS base
 
 ARG APP
 ARG ROOT_DIR
