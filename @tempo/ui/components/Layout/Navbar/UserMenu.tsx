@@ -1,7 +1,5 @@
-import * as m from '@paraglide/messages';
 import type { UserDetailsFragment } from '@tempo/api/generated/graphql';
 import { useLogout } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';
@@ -30,14 +28,14 @@ function UserMenu({ user, className, ...rest }: UserMenuProps) {
       <div className={styles['user-menu'] ?? ''}>
         <MenuItem className={styles['user-menu-item'] ?? ''}>
           <Link href={'/account/preferences'} tabIndex={0}>
-            <Typography>{m.menuAccountPreferences() ?? 'Account preferences'}</Typography>
+            <Typography>{'Account preferences'}</Typography>
           </Link>
         </MenuItem>
         <Divider />
         <MenuItem className={styles['user-menu-item'] ?? ''}>
           {user?.isStaff && DASHBOARD_URL && (
             <Typography component="a" href={DASHBOARD_URL}>
-              {m.dashboard_link() ?? 'Dashboard'}
+              {'Dashboard'}
             </Typography>
           )}
         </MenuItem>
@@ -47,7 +45,7 @@ function UserMenu({ user, className, ...rest }: UserMenuProps) {
           tabIndex={-1}
           className={styles['user-menu-item'] ?? ''}
         >
-          <Typography>{m.logOut() ?? 'Log out'}</Typography>
+          <Typography>{'Log out'}</Typography>
         </MenuItem>
       </div>
     </div>

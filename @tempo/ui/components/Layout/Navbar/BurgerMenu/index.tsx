@@ -1,4 +1,3 @@
-import * as m from '@paraglide/messages';
 import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql';
 import { useUser, useLogout } from '@tempo/api/auth/react/hooks';
 // import { useTranslation } from '@tempo/next/i18n';
@@ -47,7 +46,7 @@ export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
                   tabIndex={0}
                   className={styles['burger-link'] ?? ''}
                 >
-                  {m.menuAccountPreferences() ?? 'Account preferences'}
+                  {'Account preferences'}
                 </Link>
                 <button
                   type="button"
@@ -55,7 +54,7 @@ export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
                   tabIndex={-1}
                   className={styles['burger-link'] ?? ''}
                 >
-                  {m.logOut() ?? 'Log out'}
+                  {'Log out'}
                 </button>
               </>
             ) : (
@@ -66,7 +65,7 @@ export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
                   tabIndex={-1}
                   className={styles['burger-link'] ?? ''}
                 >
-                  {m.logIn() ?? 'Log in'}
+                  {'Log in'}
                 </button>
               )
             )}
