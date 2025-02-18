@@ -29,7 +29,7 @@ RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
 RUN npm i -g turbo
 
-RUN mkdir -p ${ROOT_DIR}/scripts
+RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/paraglide/generated
 
 WORKDIR ${ROOT_DIR}
 
