@@ -18,6 +18,7 @@
 !/pyproject.toml
 !/tsconfig.json
 !/tsconfig.*.json
+!/graphql.config.ts
 !/turbo.json
 !/.env
 !/.gitignore

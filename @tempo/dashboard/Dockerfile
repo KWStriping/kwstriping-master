@@ -6,7 +6,6 @@ ARG API_URL
 ARG ROOT_DIR=/root
 
 ARG NODE_VERSION=22
-ARG ALPINE_VERSION=3.17
 ARG PNPM_VERSION=10.2.1
 
 ###################################################################
@@ -28,9 +27,8 @@ ENV NEXTJS_IGNORE_TYPECHECK=1
 
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
-RUN npm i -g turbo
 
-RUN mkdir -p ${ROOT_DIR}/scripts
+RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/paraglide/generated
 
 WORKDIR ${ROOT_DIR}
 
@@ -49,8 +47,7 @@ ARG ROOT_DIR
 # Setup pnpm package manager
 RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
-# https://github.com/vercel/turbo/issues/4105
-COPY ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
+# COPY ${ROOT_DIR}/.env ${ROOT_DIR}/tsconfig.json ./
 
 COPY package.json pnpm-lock.yaml ./
 

@@ -27,7 +27,6 @@ ENV NEXTJS_IGNORE_TYPECHECK=1
 
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
-RUN npm i -g turbo
 
 RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/paraglide/generated
 
@@ -56,8 +55,7 @@ ARG ROOT_DIR
 # Setup pnpm package manager
 RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
-# https://github.com/vercel/turbo/issues/4105
-COPY .env tsconfig.json tsconfig.base.json ./
+# COPY .env tsconfig.json tsconfig.base.json ./
 
 COPY package.json pnpm-lock.yaml ./
 
