@@ -70,7 +70,6 @@
     "@mui/material-nextjs": "^5.15.11",
     "@mui/styles": "^5.15.10",
     "@mui/system": "^5.15.15",
-    "@sentry/nextjs": "8.2.1",
     "@stripe/react-stripe-js": "2.7.1",
     "@stripe/stripe-js": "3.4.0",
     "graphql": "16.8.1",

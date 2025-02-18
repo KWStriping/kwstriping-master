@@ -3,12 +3,18 @@
   "include": [
     "app/**/*",
     "@tempo/**/*",
-    "scripts/*"
+    "scripts/*",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ],
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -78,6 +84,9 @@
         "@tempo/ui/*"
       ],
       "@tempo/utils": [
+        "@tempo/utils"
+      ],
+      "@tempo/utils/*": [
         "@tempo/utils/*"
       ]
     }

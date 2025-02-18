@@ -1,14 +1,21 @@
 import type { Metadata } from 'next';
 import OrderPage from './order';
-import Layout from '@kwstriping/app/client/Layout';
+import { OrderDocument } from '@tempo/api/generated/graphql';
+
+import { query } from '@tempo/api/server';
+import Layout from '@kwstriping/app/ServerLayout';
+import { auth } from '@tempo/api/auth';
 
 export const metadata: Metadata = {
   title: 'Orders',
 };
 
 export default async function Page({ params: { id } }: { params: { id: string } }) {
-  // const order = await getClient().query(OrderByIdDocument, { id }).toPromise();
-  const order = null;
+  const session = await auth();
+  if (!session) return null;
+  const response = await query({ query: OrderDocument, variables: { id } });
+  const order = response.data?.order;
+  if (!order) return { notFound: true };
   return (
     <Layout>
       <OrderPage order={order} />

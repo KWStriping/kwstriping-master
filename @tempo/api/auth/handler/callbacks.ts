@@ -6,7 +6,7 @@ import { assert } from 'tsafe/assert';
 import { ACCESS_TOKEN_TTL } from '../constants';
 import { RefreshTokenDocument } from '@tempo/api/generated/graphql';
 
-import { getClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 // https://next-auth.js.org/configuration/callbacks
 const signIn = async ({

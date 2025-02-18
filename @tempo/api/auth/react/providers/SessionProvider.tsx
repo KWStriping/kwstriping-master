@@ -1,7 +1,7 @@
 import debounce from 'lodash-es/debounce';
 import type { SessionProviderProps as _SessionProviderProps } from 'next-auth/react';
 import { SessionProvider as Provider, useSession } from 'next-auth/react';
-import type { FC, ReactElement } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useMemo, useEffect } from 'react';
 import { useLogout } from '@tempo/api/auth/react/hooks';
 import { REFRESH_BUFFER } from '@tempo/api/auth/constants';
@@ -9,7 +9,7 @@ import { REFRESH_BUFFER } from '@tempo/api/auth/constants';
 const ENABLE_SESSION_REFRESH_PROVIDER = false;
 
 interface SessionProviderProps extends Omit<_SessionProviderProps, 'children'> {
-  children: ReactElement;
+  children: ReactNode;
 }
 
 export const SessionProvider: FC<SessionProviderProps> = ({ children, session, ...props }) => {

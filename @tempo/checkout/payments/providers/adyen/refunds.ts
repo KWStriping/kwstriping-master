@@ -11,31 +11,35 @@ export async function handleAdyenRefund(
   transaction: TransactionActionPayloadFragment['transaction']
 ) {
   const { id, amount, currency } = refund;
-  const { checkout, config } = await getAdyenClient();
+  const { payments, config } = await getAdyenClient();
 
   invariant(transaction?.id, 'Transaction id is missing');
-
   const transactionActions = getActionsAfterRefund(transaction, amount);
-
-  const [refundError, refundResult] = await unpackPromise(
-    checkout.refunds(id, {
-      amount: {
-        currency,
-        value: getIntegerAmountFromTempo(amount),
-      },
-      merchantAccount: config.merchantAccount,
-    })
-  );
-
+  const refundRequest = {
+    originalReference: 'TODO', // TODO: The pspReference of the original payment
+    modificationAmount: {
+      currency,
+      value: getIntegerAmountFromTempo(amount),
+    },
+    merchantAccount: config.merchantAccount,
+    reference: 'TODO', // TODO: Your reference for the refund
+  };
+  const [refundError, refundResult] = await unpackPromise(payments.refund(refundRequest));
+  if (!refundResult?.pspReference) {
+    console.error('No pspReference');
+  }
+  const status = refundError ? 'FAILURE' : 'PENDING';
   const updateSucceeded = await updateTransaction({
     id: transaction.id,
     transaction: {
       availableActions: transactionActions,
+      status,
+      type: '', // TODO
     },
     transactionEvent: {
-      status: refundError ? 'FAILURE' : 'PENDING',
+      status,
       name: 'REQUEST_REFUND',
-      reference: refundError?.message ?? refundResult?.pspReference,
+      reference: refundError?.message ?? refundResult?.pspReference ?? '',
     },
   });
 

@@ -11,8 +11,7 @@ import { LocaleDropdown } from '../../regionDropdowns/LocaleDropdown';
 import styles from './index.module.css';
 import { getLinkPath } from '@tempo/ui/utils/menus';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
   logo?: ReactNode;
@@ -24,11 +23,11 @@ export type FooterProps = HTMLAttributes<HTMLElement> & {
 const fixMenuItemLocalhostUrl = (url: string) => url.replace(/^https?:\/\/localhost:8000\//, '/');
 
 export function Footer({ className, logo, ...rest }: FooterProps) {
-  const paths = usePaths();
   const { enableLocaleSwitcher, name: shopName } = useShopSettings();
-  const { query } = useLocalization();
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
 
-  const [{ data, error }] = useQuery(FooterMenuDocument, { variables: { ...query } });
+  const { data, error } = useQuery(FooterMenuDocument, { variables: { ...query } });
 
   if (error) {
     console.error('Footer component error', error.message);
@@ -41,7 +40,7 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
     <footer className={clsx(styles.footer, className)} {...rest}>
       <Box className={styles['footer-inner'] ?? ''}>
         <div className="flex mb-14 sm:mb-10">
-          <Link href={paths.home()} className="hidden sm:inline-block">
+          <Link href={''} className="hidden sm:inline-block">
             <div style={{ width: '14rem' }} className="mt-px group block h-16 grayscale relative">
               {!logo || logoIsString ? (
                 <Image

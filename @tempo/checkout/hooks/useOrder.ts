@@ -1,8 +1,13 @@
-import type { OrderFragment } from '@tempo/api/generated/graphql';
-import { useOrderQuery } from '@tempo/api/generated/graphql';
+import {
+  OrderDocument,
+  type OrderFragment,
+  type OrderQuery,
+  type OrderQueryVariables,
+} from '@tempo/api/generated/graphql';
+import { useQuery } from '@tempo/api/hooks';
 
 export const useOrder = (id: string) => {
-  const [{ data, fetching: loading }] = useOrderQuery({
+  const { data, loading } = useQuery(OrderDocument, {
     variables: { id },
   });
 

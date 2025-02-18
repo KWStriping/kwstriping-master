@@ -1,8 +1,16 @@
+import type {
+  CreateCheckoutPaymentMutation,
+  CreateCheckoutPaymentMutationVariables,
+  CompleteCheckoutMutation,
+  CompleteCheckoutMutationVariables,
+  CheckoutFragment,
+} from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import type { CheckoutFragment } from '@tempo/api/generated/graphql';
-import { CheckoutPaymentCreateDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import {
+  CreateCheckoutPaymentDocument,
+  CompleteCheckoutDocument,
+} from '@tempo/api/generated/graphql';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useRouter } from 'next/navigation';
@@ -29,10 +37,10 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
   const paths = usePaths();
   const router = useRouter();
   const { formatPrice } = useLocalization();
-  const [createCheckoutPaymentMutation] = useMutation(CheckoutPaymentCreateDocument);
-  const [completeCheckoutMutation] = useMutation(CheckoutCompleteDocument);
+  const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);
+  const [completeCheckoutMutation] = useMutation(CompleteCheckoutDocument);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
-  const totalPrice = checkout.totalPrice?.gross;
+  const totalPrice = checkout?.totalPrice?.gross;
   const payLabel =
     m.checkout_checkout_paymentButton({
       total: formatPrice(totalPrice),
@@ -58,9 +66,9 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
 
   const handleSubmit = handleSubmitCard(async (formData: CardForm) => {
     setIsPaymentProcessing(true);
-
+    if (!checkout) return;
     // Create Tempo payment
-    const { error: paymentCreateErrors } = await createCheckoutPaymentMutation({
+    const { errors: paymentCreateErrors } = await createCheckoutPaymentMutation({
       checkoutId: checkout.id,
       paymentInput: {
         gateway: DUMMY_CREDIT_CARD_GATEWAY,
@@ -76,8 +84,8 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
     }
 
     // Try to complete the checkout
-    const { data: completeData, error: completeErrors } = await completeCheckoutMutation({
-      checkoutId: checkout.id,
+    const { data: completeData, errors: completeErrors } = await completeCheckoutMutation({
+      checkoutId: checkout?.id,
     });
     if (completeErrors) {
       console.error('complete errors:', completeErrors);
@@ -155,10 +163,7 @@ export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInter
             </div>
           </div>
         </div>
-        <CompleteCheckoutButton
-          isProcessing={isPaymentProcessing}
-          isDisabled={isPaymentProcessing}
-        >
+        <CompleteCheckoutButton isProcessing={isPaymentProcessing} disabled={isPaymentProcessing}>
           {payLabel}
         </CompleteCheckoutButton>
       </form>

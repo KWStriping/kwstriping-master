@@ -1,8 +1,10 @@
 import { Open_Sans } from 'next/font/google';
 import './global.css';
-import CssProvider from '@tempo/ui/providers/CssProvider';
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { ApolloWrapper } from './ApolloWrapper';
+import CssProvider from '@tempo/ui/providers/CssProvider';
 import theme from '@kwstriping/app/theme';
 
 // If loading a variable font, you don't need to specify the font weight
@@ -39,7 +41,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang={'en'}>
       <CssProvider theme={theme}>
         <body id="__next" className={openSans.className}>
-          {children}
+          <ApolloWrapper>
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </ApolloWrapper>
         </body>
       </CssProvider>
     </html>

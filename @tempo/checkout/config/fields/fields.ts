@@ -178,7 +178,7 @@ export const fields: Record<SettingID[number], Record<string, CommonField[]>> = 
 };
 
 export const usePaymentMethods = (): PaymentMethod[] => {
-  return withNames(t, paymentMethodsMessages, paymentMethods);
+  return withNames(paymentMethodsMessages, paymentMethods);
 };
 
 export const useMolliePaymentProvider = (): PaymentProvider<'mollie'> => {
@@ -187,7 +187,7 @@ export const useMolliePaymentProvider = (): PaymentProvider<'mollie'> => {
     label:
       m[paymentProvidersMessages.mollie.id] ?? paymentProvidersMessages.mollie.defaultMessage,
     logo: MollieIcon,
-    settings: withLabels(t, molliePaymentProviderMessages, molliePaymentProvider),
+    settings: withLabels(molliePaymentProviderMessages, molliePaymentProvider),
   };
 };
 
@@ -196,7 +196,7 @@ export const useAdyenPaymentProvider = (): PaymentProvider<'adyen'> => {
     id: 'adyen',
     label: m[paymentProvidersMessages.adyen.id] ?? paymentProvidersMessages.adyen.defaultMessage,
     logo: AdyenIcon,
-    settings: withLabels(t, adyenPaymentProviderMessages, adyenPaymentProvider),
+    settings: withLabels(adyenPaymentProviderMessages, adyenPaymentProvider),
   };
 };
 
@@ -206,7 +206,7 @@ export const useStripePaymentProvider = (): PaymentProvider<'stripe'> => {
     label:
       m[paymentProvidersMessages.stripe.id] ?? paymentProvidersMessages.stripe.defaultMessage,
     logo: StripeIcon,
-    settings: withLabels(t, stripePaymentProviderMessages, stripePaymentProvider),
+    settings: withLabels(stripePaymentProviderMessages, stripePaymentProvider),
   };
 };
 
@@ -228,7 +228,7 @@ export const useBrandingCustomization = (): Customization<'branding'> => {
   return {
     id: 'branding',
     label: m[customizationMessages.branding.id] ?? customizationMessages.branding.defaultMessage,
-    settings: withLabels(t, brandingCustomizationMessages, brandingCustomization),
+    settings: withLabels(brandingCustomizationMessages, brandingCustomization),
   };
 };
 
@@ -238,7 +238,7 @@ export const useSectionsCustomization = (): Customization<'productSettings'> => 
     label:
       m[customizationMessages.productSettings.id] ??
       customizationMessages.productSettings.defaultMessage,
-    settings: withLabels(t, sectionsCustomizationMessages, sectionsCustomization),
+    settings: withLabels(sectionsCustomizationMessages, sectionsCustomization),
   };
 };
 

@@ -25,7 +25,7 @@ export const getLinkPath = (
     return ALLOW_ROOT_LEVEL_PATHS ? `/${path}` : paths.pageBySlug(path);
   }
 
-  return paths.home();
+  return '/';
 };
 
 export default getLinkPath;

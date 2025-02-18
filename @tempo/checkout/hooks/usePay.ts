@@ -23,7 +23,7 @@ const getRedirectUrl = () => {
 };
 
 type UsePayReturnType = [
-  (body: PaymentRequestBody) => Promise<{ ok?: boolean }>,
+  (body: PaymentRequestBody) => Promise<PaySuccessResult | null>,
   {
     loading: boolean;
     error: any; // TODO

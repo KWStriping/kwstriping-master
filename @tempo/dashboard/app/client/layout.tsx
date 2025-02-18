@@ -6,7 +6,7 @@ import { MainMenuDocument } from '@tempo/api/generated/graphql';
 import type { LayoutProps as CoreLayoutProps } from '@tempo/ui/components/Layout';
 import CoreLayout from '@tempo/ui/components/Layout';
 
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import Image from 'next/image';
 import { ToastContainer } from 'react-toastify';
@@ -15,8 +15,9 @@ import ContextProvider from './context';
 type LayoutProps = Pick<CoreLayoutProps, 'children' | 'transparentBg'>;
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
-  const { query } = useLocalization();
-  const [{ data }] = useQuery(MainMenuDocument, {
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
+  const { data } = useQuery(MainMenuDocument, {
     variables: { ...query },
   });
   const navbarItems = useMemo(

@@ -9,7 +9,7 @@ import Link from '@tempo/ui/components/Link';
 import { AttributeDetails } from '@tempo/ui/components/product/AttributeDetails';
 import { ProductGallery } from '@tempo/ui/components/product/ProductGallery';
 import { useShopSettings } from '@tempo/ui/providers';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
 import type { ReactNode } from 'react';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -17,7 +17,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
-import { usePaths } from '@kwstriping/hooks/usePaths';
+// import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
 const DISPLAY_PRICES = false;
@@ -36,7 +36,7 @@ interface ProductPageProps {
 
 function ProductPage({ product, price, displayPrice, details }: ProductPageProps) {
   const router = useRouter();
-  const paths = usePaths();
+  // const paths = usePaths();
   const { currentChannel, formatPrice } = useLocalization();
   const { displayProductImages } = useShopSettings();
   const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();

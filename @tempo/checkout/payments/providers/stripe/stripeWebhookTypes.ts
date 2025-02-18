@@ -90,7 +90,7 @@ export type StripeWebhookEvents =
   | StripeWebhookEvent<'invoice.voided', Stripe.Invoice>
   | StripeWebhookEvent<'invoiceitem.created', Stripe.InvoiceItem>
   | StripeWebhookEvent<'invoiceitem.deleted', Stripe.InvoiceItem>
-  | StripeWebhookEvent<'invoiceitem.updated', Stripe.InvoiceItem>
+  // | StripeWebhookEvent<'invoiceitem.updated', Stripe.InvoiceItem>
   | StripeWebhookEvent<'issuing_authorization.created', Stripe.Issuing.Authorization>
   | StripeWebhookEvent<'issuing_authorization.request', Stripe.Issuing.Authorization>
   | StripeWebhookEvent<'issuing_authorization.updated', Stripe.Issuing.Authorization>
@@ -106,7 +106,7 @@ export type StripeWebhookEvents =
   | StripeWebhookEvent<'issuing_transaction.created', Stripe.Issuing.Transaction>
   | StripeWebhookEvent<'issuing_transaction.updated', Stripe.Issuing.Transaction>
   | StripeWebhookEvent<'mandate.updated', Stripe.Mandate>
-  | StripeWebhookEvent<'order.created', Stripe.Order>
+  // | StripeWebhookEvent<'order.created', Stripe.Order>
   | StripeWebhookEvent<'payment_intent.amount_capturable_updated', Stripe.PaymentIntent>
   | StripeWebhookEvent<'payment_intent.canceled', Stripe.PaymentIntent>
   | StripeWebhookEvent<'payment_intent.created', Stripe.PaymentIntent>
@@ -143,9 +143,9 @@ export type StripeWebhookEvents =
   | StripeWebhookEvent<'quote.finalized', Stripe.Quote>
   | StripeWebhookEvent<'radar.early_fraud_warning.created', Stripe.Radar.EarlyFraudWarning>
   | StripeWebhookEvent<'radar.early_fraud_warning.updated', Stripe.Radar.EarlyFraudWarning>
-  | StripeWebhookEvent<'recipient.created', Stripe.Customer>
-  | StripeWebhookEvent<'recipient.deleted', Stripe.Customer>
-  | StripeWebhookEvent<'recipient.updated', Stripe.Customer>
+  // | StripeWebhookEvent<'recipient.created', Stripe.Customer>
+  // | StripeWebhookEvent<'recipient.deleted', Stripe.Customer>
+  // | StripeWebhookEvent<'recipient.updated', Stripe.Customer>
   | StripeWebhookEvent<'reporting.report_run.failed', Stripe.Reporting.ReportRun>
   | StripeWebhookEvent<'reporting.report_run.succeeded', Stripe.Reporting.ReportRun>
   | StripeWebhookEvent<'reporting.report_type.updated', Stripe.Reporting.ReportType>
@@ -157,9 +157,9 @@ export type StripeWebhookEvents =
   | StripeWebhookEvent<'setup_intent.setup_failed', Stripe.SetupIntent>
   | StripeWebhookEvent<'setup_intent.succeeded', Stripe.SetupIntent>
   | StripeWebhookEvent<'sigma.scheduled_query_run.created', Stripe.Sigma.ScheduledQueryRun>
-  | StripeWebhookEvent<'sku.created', Stripe.Sku>
-  | StripeWebhookEvent<'sku.deleted', Stripe.Sku>
-  | StripeWebhookEvent<'sku.updated', Stripe.Sku>
+  // | StripeWebhookEvent<'sku.created', Stripe.Sku>
+  // | StripeWebhookEvent<'sku.deleted', Stripe.Sku>
+  // | StripeWebhookEvent<'sku.updated', Stripe.Sku>
   | StripeWebhookEvent<'source.canceled', Stripe.Source>
   | StripeWebhookEvent<'source.chargeable', Stripe.Source>
   | StripeWebhookEvent<'source.failed', Stripe.Source>

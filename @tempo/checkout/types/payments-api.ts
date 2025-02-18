@@ -2,7 +2,7 @@ import type { LanguageCode } from '@tempo/api/generated/graphql';
 import type { PaymentMethodID, PaymentProviderID } from './payments';
 
 interface BasePaymentBody {
-  languageCode: LanguageCode;
+  languageCode?: LanguageCode;
   provider: PaymentProviderID;
   method: PaymentMethodID;
   // captureAmount?: number; // support for partial payments
@@ -10,7 +10,7 @@ interface BasePaymentBody {
 
 export interface OrderBody extends BasePaymentBody {
   orderId: string;
-  redirectUrl: string;
+  redirectUrl?: string;
 }
 
 export interface CheckoutBody extends BasePaymentBody {

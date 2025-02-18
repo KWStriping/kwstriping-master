@@ -1,8 +1,8 @@
+import { defaultActiveChannelPaymentProviders } from '@tempo/checkout/config/defaults';
+import type { PrivateSettingsValues, PublicSettingsValues } from '@tempo/checkout/types/api';
 import { mapPrivateMetafieldsToSettings } from './mapPrivateMetafieldsToSettings';
 import { mapPrivateSettingsToMetadata } from './mapPrivateSettingsToMetadata';
 import { mergeChannelsWithPaymentProvidersSettings } from './utils';
-import type { PrivateSettingsValues, PublicSettingsValues } from '@tempo/checkout/types/api';
-import { defaultActiveChannelPaymentProviders } from '@tempo/checkout/config/defaults';
 
 export const getActivePaymentProvidersSettings = async () => {
   const settings = {} as PublicSettingsValues; // TODO

@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-import { usePaths } from '@kwstriping/hooks/usePaths';
+// import { usePaths } from '@kwstriping/hooks/usePaths';
 import Checkout from '@kwstriping/components/Checkout';
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const paths = usePaths();
+  // const paths = usePaths();
   const { checkout, loading: fetching } = useCheckout();
   const [loading, setLoading] = useState(true);
 

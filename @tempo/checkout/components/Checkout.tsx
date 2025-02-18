@@ -71,8 +71,8 @@ function Checkout({ checkout, loading }: CheckoutProps) {
     const result = await createOrderFromCheckout({
       id: checkout.id,
     });
-    if (result.error) {
-      toast(result.error.message, { type: 'error' });
+    if (result.errors?.length) {
+      toast(result.errors[0]?.message, { type: 'error' });
     } else if (!result.data?.createOrderFromCheckout?.result) {
       toast('Error creating order', { type: 'error' });
     } else {

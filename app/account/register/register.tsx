@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import * as m from '@paraglide/messages';
-import { usePaths } from '@kwstriping/hooks/usePaths';
+// import { usePaths } from '@kwstriping/hooks/usePaths';
 
 export interface RegisterFormData {
   email: string;
@@ -12,7 +12,7 @@ export interface RegisterFormData {
 
 function RegisterPage() {
   const router = useRouter();
-  const paths = usePaths();
+  // const paths = usePaths();
   const [register] = useRegister();
   const {
     register: registerForm,

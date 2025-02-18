@@ -1,8 +1,10 @@
-import * as m from '@paraglide/messages';
+import type {
+  CheckoutContactInfoUpdateMutation,
+  CheckoutContactInfoUpdateMutationVariables,
+} from '@tempo/api/generated/graphql';
 import { CheckoutContactInfoUpdateDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import { useShopSettings } from '@tempo/ui/providers';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { assert } from 'tsafe/assert';
 import Button from '@tempo/ui/components/buttons/Button';
@@ -18,7 +20,8 @@ export function ContactInfoSection({
   className,
   disabled,
 }: CommonCheckoutSectionProps) {
-  const { query } = useLocalization();
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
   const { enablePointsOfContact } = useShopSettings();
   const [{ editing }, updateState] = useSectionState('contactInfo');
 
@@ -44,11 +47,11 @@ export function ContactInfoSection({
       },
       // languageCode: query.languageCode,
     });
-    const mutationErrors = result.data?.updateCheckoutContactInfo?.errors || [];
-    if (mutationErrors?.length) {
-      mutationErrors.forEach((e) => setError('email', { message: e.message || '' }));
-      return;
-    }
+    // const mutationErrors = result.data?.updateCheckoutContactInfo?.errors || [];
+    // if (mutationErrors?.length) {
+    //   mutationErrors.forEach((e) => setError('email', { message: e.message || '' }));
+    //   return;
+    // }
     // setEditing(false);
     updateState({ validating: true });
   };
@@ -61,14 +64,19 @@ export function ContactInfoSection({
   return (
     <CheckoutSection
       sectionId="contactInfo"
-      header={m.checkout_contactInfo_header() ?? 'Contact info'}
+      header={'Contact info'}
       validate={validate}
       className={className}
     >
       {editing ? (
         <>
           <ContactInfoForm
-            poc={checkout}
+            poc={{
+              firstName: checkout?.customerFirstName,
+              lastName: checkout?.customerLastName,
+              email: checkout?.customerEmail,
+              phone: checkout?.customerPhone,
+            }}
             onChange={saveCheckoutContactInfo}
             // onSubmit={saveCheckoutContactInfo}
             defaultValues={{
@@ -99,7 +107,7 @@ export function ContactInfoSection({
                     throw new Error('Not yet implemented');
                   }}
                 >
-                  {m.checkout_contactInfo_addPointOfContact() ?? 'Add point of contact'}
+                  {'Add point of contact'}
                 </Button>
               </div>
             </>
@@ -108,9 +116,9 @@ export function ContactInfoSection({
             <Button
               disabled={disabled}
               className={'w-full mt-2'}
-              onClick={handleSubmit(saveCheckoutContactInfo)}
+              // onClick={handleSubmit(saveCheckoutContactInfo)}
             >
-              {m.checkout_contactInfo_save() ?? 'Save'}
+              {'Save'}
             </Button>
           )}
         </>

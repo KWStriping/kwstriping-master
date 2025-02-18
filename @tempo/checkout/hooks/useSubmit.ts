@@ -1,24 +1,14 @@
-import type { Exact, LanguageCode } from '@tempo/api/generated/graphql';
+import type { LanguageCode } from '@tempo/api/generated/graphql';
 import type { FormDataBase } from '@tempo/next/types';
 import { useAlerts } from '@tempo/ui/hooks/useAlerts';
-import type { ApiErrors } from '@tempo/ui/hooks/useErrors';
-import type { OperationResult } from '@tempo/api';
-import { extractMutationErrors } from '@tempo/api/utils';
-import type { Locale } from '@tempo/utils';
 import { localeToLanguageCode } from '@tempo/utils';
-import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { useLocale } from '@tempo/ui/hooks/useLocale';
+import type { MutationFunction, GraphQLErrors } from '@tempo/api/types';
+import type { SingleExecutionResult } from '@apollo/client';
 import { useSectionState } from '@tempo/checkout/hooks/state';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import type { CheckoutSectionKey } from '@tempo/checkout/types';
-
-type MutationVars<MutationFn> = MutationFn extends (vars: Exact<infer Vars>) => any
-  ? Vars
-  : never;
-
-type MutationData<MutationFn> = MutationFn extends (vars: any) => Promise<infer Data>
-  ? Data
-  : never;
 
 const commonVars = ['languageCode', 'channel', 'checkoutId'] as const;
 
@@ -28,20 +18,23 @@ type CommonVars = Record<CommonVar, string> & { languageCode: LanguageCode };
 
 export type SubmitReturnWithErrors<TData extends FormDataBase> = Promise<{
   hasErrors: boolean;
-  errors: ApiErrors<TData>;
+  errors: Maybe<GraphQLErrors>;
 }>;
+
+type MutationData = any; // TODO
+type MutationVars = any; // TODO
 
 interface UseSubmitProps<
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
+  TMutationFn extends MutationFunction<MutationData, MutationVars>,
 > {
   scope: CheckoutSectionKey;
-  onSubmit: (vars: MutationVars<TMutationFn>) => Promise<MutationData<TMutationFn>>;
-  formDataParse: (data: TData & CommonVars) => MutationVars<TMutationFn>;
+  onSubmit: (vars: any) => Promise<SingleExecutionResult<MutationData, MutationVars>>;
+  formDataParse: (data: TData & CommonVars) => MutationVars;
   shouldAbort?: ((formData: TData) => Promise<boolean>) | ((formData: TData) => boolean);
   onAbort?: (FormData: TData) => void;
-  onSuccess?: (formData: TData, result: MutationData<TMutationFn>) => void;
-  onError?: (errors: ApiErrors<TData>, formData: TData) => void;
+  onSuccess?: (formData: TData, result: MutationData) => void;
+  onError?: (errors: Maybe<GraphQLErrors>, formData: TData) => void;
   onEnter?: (formData: TData) => void;
 }
 
@@ -49,7 +42,7 @@ type SubmitFn<TData extends FormDataBase> = (formData: TData) => SubmitReturnWit
 
 export const useSubmit = <
   TData extends FormDataBase,
-  TMutationFn extends (vars: any) => Promise<OperationResult<any, any>>,
+  TMutationFn extends MutationFunction<any, any>,
 >({
   onSuccess,
   onError,
@@ -63,7 +56,7 @@ export const useSubmit = <
   const { checkout } = useCheckout();
   const [, updateState] = useSectionState(scope);
   const { showErrors } = useAlerts('updateCheckoutFulfillmentMethod');
-  const { locale = 'en-US' } = useRouter();
+  const locale = useLocale();
   return useCallback(
     async (formData: TData = {} as TData) => {
       if (!checkout) throw new Error('Checkout is not defined');
@@ -79,13 +72,13 @@ export const useSubmit = <
         return { hasErrors: false, errors: [] };
       }
       const commonData: CommonVars = {
-        languageCode: localeToLanguageCode(locale as Locale),
+        languageCode: localeToLanguageCode(locale.languageCode as any), // TODO
         channel: checkout.channel.slug,
         checkoutId: checkout.id,
       };
-      const result = onSubmit(formDataParse({ ...formData, ...commonData }));
-      const errors = (await extractMutationErrors(result)) as unknown as ApiErrors<TData>; // TODO
-      const hasErrors = errors?.length > 0;
+      const result = await onSubmit(formDataParse({ ...formData, ...commonData }));
+      const errors = result.errors; // TODO
+      const hasErrors = !!errors?.length;
       if (!hasErrors) {
         typeof onSuccess === 'function' && onSuccess(formData, await result);
         updateState({ validating: true }); // TODO: check if this is needed

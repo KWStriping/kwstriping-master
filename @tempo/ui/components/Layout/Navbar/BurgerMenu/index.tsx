@@ -64,7 +64,7 @@ export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
               enableLogin && (
                 <button
                   type="button"
-                  onClick={() => router.push(paths.login())}
+                  onClick={() => router.push('/auth/signin')}
                   tabIndex={-1}
                   className={styles['burger-link'] ?? ''}
                 >

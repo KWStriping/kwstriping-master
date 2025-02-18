@@ -79,7 +79,7 @@ export function useQuery<TData, TVariables extends OperationVariables>(
   // * const { data } = useSuspenseQuery(query, id ? { variables: { id } } : skipToken);
   const { data, fetchMore, error, ...rest } = useSuspenseQuery(query, {
     variables,
-    // pause,
+    skip: pause,
     fetchPolicy,
   });
 

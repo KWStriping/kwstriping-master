@@ -1,12 +1,17 @@
 import type { Metadata } from 'next';
 import SignInPage from './signin';
-export { getProviders } from '@tempo/api/auth';
+import { getProviders } from '@tempo/api/auth';
+import Layout from '@kwstriping/app/ServerLayout';
 
 export const metadata: Metadata = {
   title: 'Sign in',
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page() {
   const providers = getProviders();
-  return <SignInPage providers={providers} />;
+  return (
+    <Layout>
+      <SignInPage providers={providers} />
+    </Layout>
+  );
 }

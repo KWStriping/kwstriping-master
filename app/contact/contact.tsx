@@ -1,16 +1,17 @@
 'use client';
 
-import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-
 import MailIcon from '@mui/icons-material/Mail';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Typography from '@mui/material/Typography';
-import Layout from '@kwstriping/app/client/Layout';
 
-function Contact() {
-  const { shopPhone, shopEmail } = useShopSettings();
+interface ContactPageProps {
+  shopPhone?: string;
+  shopEmail?: string;
+}
+
+function Contact({ shopPhone, shopEmail }: ContactPageProps) {
   return (
-    <Layout>
+    <>
       <div className="h-full flex justify-center items-center min-w-[50%] min-h-[20%] bg-white/75 p-10">
         <div className="h-full w-full flex flex-col items-center justify-center">
           <Typography variant={'h1'} className={'mb-4'}>
@@ -36,7 +37,7 @@ function Contact() {
           )}
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

@@ -19,7 +19,7 @@ export const ShopContext: Context<ShopContextType | undefined> = createContext<
 export const ShopProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { authenticated, user } = useUser();
   console.log('>>> authenticated', authenticated);
-  const [{ data }] = useQuery(ShopInfoDocument, {
+  const { data } = useQuery(ShopInfoDocument, {
     pause: !authenticated || !user,
   });
 

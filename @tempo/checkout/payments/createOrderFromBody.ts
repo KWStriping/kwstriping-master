@@ -1,10 +1,10 @@
 import type { OrderFragment } from '@tempo/api/generated/graphql';
 import type { RequestContext } from '@tempo/api/types';
+import { PAYMENT_METHODS, PAYMENT_PROVIDERS } from '@tempo/checkout/types/payments';
+import type { PayRequestBody } from '@tempo/checkout/types/payments-api';
 import { createOrder } from './createOrder';
 import { KnownPaymentError } from './errors';
 import { getOrder } from './getOrderDetails';
-import type { PayRequestBody } from '@tempo/checkout/types/payments-api';
-import { PAYMENT_METHODS, PAYMENT_PROVIDERS } from '@tempo/checkout/types/payments';
 
 export const createOrderFromBodyOrId = async (
   body: PayRequestBody,

@@ -4,8 +4,8 @@ import React from 'react';
 import AbstractProductPage from './abstractproduct';
 import ConcreteProductPage from './concreteproduct';
 import { gql } from '@tempo/api';
-import Layout from '@kwstriping/app/client/Layout';
-import { getClient } from '@kwstriping/app/ApolloClient';
+import Layout from '@kwstriping/app/ServerLayout';
+import { getClient } from '@tempo/api/server';
 
 export const metadata: Metadata = {
   title: 'Page',

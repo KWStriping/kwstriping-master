@@ -1,14 +1,19 @@
 import type { FileUploadMutation } from '@tempo/api/generated/graphql';
-import type { OperationResult } from '@tempo/api';
 import { merge, reduce } from 'lodash-es';
+import type { MutationState } from '../api';
 import type {
   CustomizationSettingsFiles,
   CustomizationSettingsValues,
 } from '@tempo/checkout/types/api';
 
-type UploadFileFunction = (variables?: {
-  file: any;
-}) => Promise<OperationResult<FileUploadMutation>>;
+type UploadFileFunction = (variables?: { file: any }) => Promise<
+  MutationState<
+    FileUploadMutation,
+    {
+      file: any;
+    }
+  >
+>;
 
 type FileSetting = {
   [x: string]: File;
@@ -20,9 +25,9 @@ const uploadSettingFile = async (setting: FileSetting, uploadFile: UploadFileFun
   const uploadFileResult = await uploadFile({
     file: setting[settingIdx],
   });
-  if (uploadFileResult.data?.fileUpload) {
+  if (uploadFileResult.data?.uploadFile) {
     return {
-      [settingIdx]: uploadFileResult.data?.fileUpload?.uploadedFile?.url,
+      [settingIdx]: uploadFileResult.data?.uploadFile?.result?.url,
     };
   }
   return {
@@ -66,7 +71,7 @@ export const uploadSettingsFiles = async ({
     dataFiles,
     async (settings, subSettings, idx) => {
       const uploadedSettings = await settings;
-      const uploadedSubSettings = await gather(
+      const uploadedSubSettings = await Promise.all(
         mapSettingsObjectToArray(subSettings).map((setting) =>
           uploadSettingFile(setting, uploadFile)
         )

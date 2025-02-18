@@ -3,11 +3,10 @@
 import { useMemo } from 'react';
 
 import Image from 'next/image';
-import ContextProvider from './context';
+// import ContextProvider from './context';
 import type { LayoutProps as CoreLayoutProps } from '@tempo/ui/components/Layout';
 import CoreLayout from '@tempo/ui/components/Layout';
 
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { gql } from '@tempo/api';
 
@@ -25,8 +24,9 @@ const mainMenuQuery = gql(`
 `);
 
 export default function ClientLayout({ children, ...props }: LayoutProps) {
-  const { query } = useLocalization();
-  const [{ data }] = useQuery(mainMenuQuery, {
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
+  const { data } = useQuery(mainMenuQuery, {
     variables: { ...query },
   });
   const navbarItems = useMemo(
@@ -41,7 +41,7 @@ export default function ClientLayout({ children, ...props }: LayoutProps) {
     [data?.menu?.items]
   );
   return (
-    <ContextProvider>
+    <>
       <CoreLayout
         logo={
           <Image src="/logo-black.svg" alt="KW Striping logo" height="48" width="192" priority />
@@ -51,6 +51,6 @@ export default function ClientLayout({ children, ...props }: LayoutProps) {
       >
         {children}
       </CoreLayout>
-    </ContextProvider>
+    </>
   );
 }

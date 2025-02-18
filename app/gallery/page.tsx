@@ -5,7 +5,7 @@ import GalleryPage from './gallery';
 import { getClient } from '@tempo/api/server';
 
 import { gql } from '@tempo/api';
-import Layout from '@kwstriping/app/client/Layout';
+import Layout from '@kwstriping/app/ServerLayout';
 
 console.log('react cache');
 console.log(React.cache);
@@ -48,7 +48,7 @@ const galleryMediaQuery = gql(`
 `);
 
 export default async function Page() {
-  const result = await getClient().query(galleryMediaQuery, { first: 100 }).toPromise();
+  const result = await getClient().query({ query: galleryMediaQuery, variables: { first: 100 } });
   console.log(result);
   if (!result.data) throw new Error('Failed to load gallery media');
 

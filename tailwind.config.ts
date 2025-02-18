@@ -9,8 +9,8 @@ const config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{jsx,tsx,css,mdx}',
-    '../../@tempo/ui/components/jsx,tsx,css}',
-    '../../@tempo/checkout/components/**/*.{jsx,tsx,css}',
+    '@tempo/ui/components/jsx,tsx,css}',
+    '@tempo/checkout/components/**/*.{jsx,tsx,css}',
   ],
 } satisfies Config;
 

@@ -1,4 +1,3 @@
-import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import type { NextApiRequest } from 'next';
 import type {
   ApolloError as BaseApolloError,
@@ -7,7 +6,10 @@ import type {
   OperationVariables,
   SingleExecutionResult,
 } from '@apollo/client';
-import type { GraphQLErrors } from '@apollo/client/errors';
+import type { GraphQLFormattedError } from 'graphql';
+import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
+
+export type GraphQLErrors = ReadonlyArray<GraphQLFormattedError>;
 
 export type Data = Record<string, unknown>;
 

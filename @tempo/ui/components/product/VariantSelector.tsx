@@ -5,7 +5,7 @@ import type {
 import { RadioGroup } from '@headlessui/react';
 import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
 import { useShopSettings } from '@tempo/ui/providers';
 
