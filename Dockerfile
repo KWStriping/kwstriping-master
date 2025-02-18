@@ -66,7 +66,7 @@ COPY . .
 
 # RUN ls && echo "" && echo ${NEXT_PUBLIC_API_URL} && echo "" && exit 1
 # RUN ls && ls scripts && exit 1
-RUN NEXT_PUBLIC_API_URL=${API_URL} NEXTJS_IGNORE_ESLINT=1 NEXTJS_IGNORE_TYPECHECK=1 READ_DOTENV=1 pnpm build && rm .env
+RUN DOCKER=1 NEXT_PUBLIC_API_URL=${API_URL} NEXTJS_IGNORE_ESLINT=1 NEXTJS_IGNORE_TYPECHECK=1 READ_DOTENV=1 pnpm build && rm .env
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #
