@@ -1,5 +1,5 @@
 // import { alpha } from "@mui/system";
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { createTheme as extendTheme } from '@mui/material/styles';
 import { shadows } from './shadows';
 import type { PaletteOptions, SupportedColorScheme } from '@tempo/ui/theme/types';
 import { breakpoints, getSpacing, fonts } from '@tempo/ui/theme.config';
@@ -34,6 +34,9 @@ export const createTheme = ({ colorSchemes: _ }: CreateThemeArgs) => {
   //   },
   // };
   return extendTheme({
+    cssVariables: {
+      colorSchemeSelector: 'class',
+    },
     breakpoints: { values: breakpoints },
     colorSchemes: {
       light: { palette: colorSchemes.light },

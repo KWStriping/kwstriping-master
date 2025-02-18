@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={'en'}>
+    <html lang={'en'} suppressHydrationWarning>
       <CssProvider theme={theme}>
         <body id="__next" className={openSans.className}>
           <ApolloWrapper>
