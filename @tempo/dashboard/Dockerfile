@@ -6,7 +6,7 @@ ARG API_URL
 ARG ROOT_DIR=/root
 
 ARG NODE_VERSION=22
-ARG PNPM_VERSION=10.2.1
+ARG PNPM_VERSION=10.4.1
 
 ###################################################################
 # Stage 0: Base image                                             #
