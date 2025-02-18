@@ -1,28 +1,18 @@
-# ignore everything
-*
+_*
+.config
+.github
+.husky
+.vscode
+cypress
+fixtures
+.*
+docker*
+*.config.js
+*.md
 
-# Allow these files & directories
-!/@tempo
-!/app
-!/components
-!/hooks
-!/lib
-!/messages
-!/paraglide
-!/public
-!/scripts
-!/tempo
-!/package.json
-!/pnpm-lock.yaml
-!/pnpm-workspace.yaml
-!/pyproject.toml
-!/tsconfig.json
-!/tsconfig.*.json
-!/graphql.config.ts
-!/turbo.json
-!/.env
-!/.gitignore
-!/.npmrc
+!.env
+!.npmrc
+!.jwt_rsa.pem
 
 # Ignore from allowed directories
 **/*~

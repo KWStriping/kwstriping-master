@@ -10,7 +10,6 @@ export async function register() {
       dsn: SENTRY_DSN || 'https://bb1e9be5f6234ee095ebdd6c359806cb@glitchtip.orega.org/7',
       tracesSampleRate: 0.2,
       sendClientReports: false,
-      // autoSessionTracking: false,
       // ...
       // Note: if you want to override the automatic release value, do not set a
       // `release` value here - use the environment variable `SENTRY_RELEASE`, so
@@ -23,7 +22,6 @@ export async function register() {
       dsn: SENTRY_DSN || 'YOUR DSN HERE',
       tracesSampleRate: 1.0,
       sendClientReports: false,
-      // autoSessionTracking: false,
     });
   }
 }
