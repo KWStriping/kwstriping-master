@@ -187,7 +187,6 @@ jobs:
       - uses: actions/setup-node@v4.2.0
         with:
           node-version: "22"
-          cache: "pnpm"
       - name: Generate required files
         run: pnpm prebuild
       - name: Build storefront image

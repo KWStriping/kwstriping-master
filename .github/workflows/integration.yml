@@ -161,7 +161,6 @@ jobs:
     - uses: actions/setup-node@v4.2.0
       with:
         node-version: "22"
-        cache: "pnpm"
     - name: Restore dotenv
       uses: actions/download-artifact@v4.1.8
       with:
@@ -210,8 +209,7 @@ jobs:
 
   #     - uses: actions/setup-node@v3
   #       with:
-  #         node-version: "16"
-  #         cache: "pnpm"
+  #         node-version: "22"
 
   #     - name: Turbo Cache
   #       id: turbo-cache
