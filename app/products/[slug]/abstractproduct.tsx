@@ -11,10 +11,10 @@ import Link from '@tempo/ui/components/Link';
 import { ProductGallery } from '@tempo/ui/components/product/ProductGallery';
 import { VariantSelector } from '@tempo/ui/components/product/VariantSelector';
 import { useShopSettings } from '@tempo/ui/providers';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
 import Spinner from '@tempo/ui/components/Spinner';
-import { usePaths } from '@kwstriping/hooks/usePaths';
+// import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
 const DISPLAY_PRICES = false;
@@ -30,7 +30,7 @@ interface ProductPageProps {
 
 function AbstractProductDetails({ product }: ProductPageProps) {
   const router = useRouter();
-  const paths = usePaths();
+  // const paths = usePaths();
   const { currentChannel, formatPrice } = useLocalization();
   const { displayProductImages } = useShopSettings();
   const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();

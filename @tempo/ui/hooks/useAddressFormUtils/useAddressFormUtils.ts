@@ -18,7 +18,7 @@ export const useAddressFormUtils = (_countryCode: CountryCode) => {
   const { defaultCountry } = useShopSettings();
   const countryCode = _countryCode || defaultCountry;
 
-  const [{ data }] = useQuery(AddressValidationRulesDocument, {
+  const { data } = useQuery(AddressValidationRulesDocument, {
     variables: { countryCode },
   });
 

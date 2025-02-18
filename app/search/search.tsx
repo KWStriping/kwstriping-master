@@ -4,7 +4,6 @@ import { useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
-import Layout from '@kwstriping/app/client/Layout';
 import * as m from '@paraglide/messages';
 
 function SearchPage() {
@@ -24,7 +23,7 @@ function SearchPage() {
   );
 
   return (
-    <Layout>
+    <>
       <main className="container w-full px-8 mt-5">
         <p className="font-semibold text-xl mb-5">{m.search_searchHeader() ?? 'Search'}</p>
         <input
@@ -37,7 +36,7 @@ function SearchPage() {
         />
         <ProductCollection filter={debouncedFilter} />
       </main>
-    </Layout>
+    </>
   );
 }
 

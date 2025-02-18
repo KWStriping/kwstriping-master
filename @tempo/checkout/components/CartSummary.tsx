@@ -1,8 +1,7 @@
-import * as m from '@paraglide/messages';
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
+import * as m from '@paraglide/messages';
 import { CheckoutAddPromoCodeDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -73,12 +72,12 @@ export function CartSummary({ checkout }: CartSummaryProps) {
         <dl className="text-sm my-0">
           {!!checkout?.discount?.amount && (
             <div className="py-2 flex items-center justify-between">
-              <dt className="text-gray-600">{m.cart_discount() ?? 'Discount'}</dt>
+              <dt className="text-gray-600">{'Discount'}</dt>
               <dd className="font-medium text-gray-900">{formatPrice(checkout.discount)}</dd>
             </div>
           )}
           <div className="py-2 flex items-center justify-between">
-            <dt className="text-gray-600">{m.cart_subtotal() ?? 'Subtotal'}</dt>
+            <dt className="text-gray-600">{'Subtotal'}</dt>
             <dd className="font-medium text-gray-900">
               {formatPrice(checkout?.subtotalPrice.net)}
             </dd>
@@ -90,13 +89,13 @@ export function CartSummary({ checkout }: CartSummaryProps) {
             </dd>
           </div>
           <div className="py-2 flex items-center justify-between">
-            <dt className="text-gray-600">{m.cart_tax() ?? 'Tax'}</dt>
+            <dt className="text-gray-600">{'Tax'}</dt>
             <dd className="font-medium text-gray-900">
               {formatPrice(checkout?.subtotalPrice.tax)}
             </dd>
           </div>
           <div className="pt-4 flex items-center justify-between border-t border-gray-300">
-            <dt className="text-lg font-bold text-gray-900">{m.cart_total() ?? 'Total'}</dt>
+            <dt className="text-lg font-bold text-gray-900">{'Total'}</dt>
             <dd className="text-lg font-bold text-gray-900">
               {formatPrice(checkout?.totalPrice.gross)}
             </dd>

@@ -2,15 +2,17 @@ import type { FetchResponse } from '@tempo/ui/hooks/useFetch';
 import join from 'url-join';
 import type {
   PaymentStatusResponse,
+  DummyPayRequestResult,
+  DummyPayRequestBody,
+} from '@tempo/checkout';
+import type {
   AdyenDropInCreateSessionResponse,
   PostDropInAdyenSessionsBody,
   PostDropInAdyenPaymentsBody,
   PostAdyenDropInPaymentsResponse,
   PostDropInAdyenPaymentsDetailsBody,
   PostAdyenDropInPaymentsDetailsResponse,
-  DummyPayRequestResult,
-  DummyPayRequestBody,
-} from '@tempo/checkout';
+} from '@tempo/checkout/adyen-drop-in';
 
 export const urlJoinTrailingSlash = (...parts: string[]): string => {
   return join(...parts, '/');

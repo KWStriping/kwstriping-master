@@ -13,7 +13,7 @@ export interface AccountLayoutProps {
 export function AccountLayout({ children }: AccountLayoutProps) {
   const router = useRouter();
   const paths = usePaths();
-  const { authenticated, authenticating } = useUser();
+  const { authenticated, loading: authenticating } = useUser();
   if (authenticating) {
     return (
       <Layout logo={null} navbarItems={[]}>

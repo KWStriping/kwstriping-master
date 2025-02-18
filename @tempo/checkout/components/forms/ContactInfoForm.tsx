@@ -27,7 +27,7 @@ export function ContactInfoForm({
   defaultValues,
   disabled,
 }: ContactInfoFormProps) {
-  const contactInfoSchema = Yup.object().shape({
+  const contactInfoSchema = Yup.object({
     firstName: Yup.string().optional(),
     lastName: Yup.string().optional(),
     email: Yup.string().required(), // TODO - config
@@ -45,7 +45,7 @@ export function ContactInfoForm({
   } = useForm<PointOfContact>({
     mode: 'all',
     criteriaMode: 'all',
-    resolver: yupResolver(contactInfoSchema),
+    resolver: yupResolver(contactInfoSchema) as any, // TODO
     defaultValues,
   });
 
@@ -108,7 +108,7 @@ export function ContactInfoForm({
                   fullWidth
                   required
                   name="email"
-                  label={m.checkout_email() ?? 'Email'}
+                  label={'Email'}
                   value={value ?? ''}
                   onChange={onChange}
                   disabled={disabled}

@@ -8,7 +8,7 @@ import InstagramProvider from 'next-auth/providers/instagram';
 import { assert } from 'tsafe/assert';
 import { LoginDocument } from '@tempo/api/generated/graphql';
 import { gql } from '@tempo/api';
-import { getClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 const USE_CLIENT_SIDE_AUTH = true;
 

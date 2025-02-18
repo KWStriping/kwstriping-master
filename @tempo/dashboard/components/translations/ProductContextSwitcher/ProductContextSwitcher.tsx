@@ -67,7 +67,7 @@ const ProductContextSwitcher: FC<ProductContextSwitcherProps> = ({
   selectedId,
 }) => {
   const router = useRouter();
-  const [{ data }] = useQuery(ProductListDocument, {
+  const { data } = useQuery(ProductListDocument, {
     variables: { id: productId },
   });
   // const styles = useStyles();

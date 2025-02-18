@@ -7,13 +7,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { signIn, signOut, useSession } from '@tempo/api/auth/react';
 import type { FunctionComponent } from 'react';
 import { Suspense, useEffect, useState } from 'react';
+import { signIn, signOut, useSession } from '@tempo/api/auth/react';
 import { useRouter, useSearchParams } from '@tempo/ui/navigation';
 import SocialLogin from '@tempo/ui/components/auth/SocialLogin';
 import type { Providers } from '@tempo/api/auth';
-import Layout from '@kwstriping/app/client/Layout';
 
 interface SignInPageProps {
   providers: Providers;
@@ -26,7 +25,7 @@ const SignIn: FunctionComponent<SignInPageProps> = ({ providers }: SignInPagePro
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const _callbackUrl = query?.get('callbackUrl');
+  const _callbackUrl = query.get('callbackUrl');
   const provider = query?.get('provider');
   const callbackUrl = Array.isArray(_callbackUrl) ? _callbackUrl[0] : _callbackUrl;
   useEffect(() => {
@@ -61,7 +60,7 @@ const SignIn: FunctionComponent<SignInPageProps> = ({ providers }: SignInPagePro
     }
   };
   return (
-    <Layout>
+    <>
       {/* <NextSeo
         title={'Sign in'}
         canonical={'/auth/signin'}
@@ -144,7 +143,7 @@ const SignIn: FunctionComponent<SignInPageProps> = ({ providers }: SignInPagePro
           </div>
         )}
       </Box>
-    </Layout>
+    </>
   );
 };
 

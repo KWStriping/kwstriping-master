@@ -3,6 +3,7 @@ import stateNames from '@tempo/data/stateNames.json';
 import { useCallback } from 'react';
 import Typography from '@mui/material/Typography';
 import AddressDisplay from '@tempo/ui/components/AddressDisplay';
+import type { AddressFragment } from '@tempo/api/generated/graphql';
 import Map, { useMap } from '../Map';
 import { AddressForm } from './AddressForm';
 import type { AddressFormProps } from './AddressForm';
@@ -18,7 +19,6 @@ export function AddressFormWithMap(props: AddressFormProps) {
       // TODO: handle null place?
       if (place && mapRef?.current && markerRef?.current) {
         // Update the map to display the selected place.
-        markerRef.current.setVisible(false);
         if (!place.geometry?.location) {
           // User entered the name of a Place that was not suggested and
           // pressed the Enter key, or the Place Details request failed.
@@ -28,8 +28,10 @@ export function AddressFormWithMap(props: AddressFormProps) {
         // If the place has a geometry, then present it on a map.
         mapRef.current.setCenter(place.geometry.location);
         mapRef.current.setZoom(18);
-        markerRef.current.setPosition(place.geometry.location);
-        markerRef.current.setVisible(true);
+        markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+          position: place.geometry.location,
+          map: markerRef.current.map,
+        });
       }
     },
     [mapIsEnabled, mapRef, markerRef]
@@ -37,7 +39,7 @@ export function AddressFormWithMap(props: AddressFormProps) {
   return (
     <AddressForm autocomplete={mapIsEnabled} onPlaceChange={onPlaceChange} {...props}>
       {props.initialData?.streetAddress1 ? (
-        <AddressDisplay address={props.initialData} />
+        <AddressDisplay address={props.initialData as AddressFragment} /> // TODO
       ) : mapIsEnabled ? (
         <>
           <Map

@@ -1,4 +1,3 @@
-import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 import type { OperationVariables, ApolloError, SingleExecutionResult } from '@apollo/client';
 import type { GraphQLFormattedError } from 'graphql';
 import type {
@@ -8,6 +7,7 @@ import type {
   MutationFunction,
   MutationState,
 } from './types';
+import type { ConfirmButtonTransitionState } from '@tempo/ui/components/buttons/ConfirmButton';
 
 export function hasErrors(errorList: any[] | null): boolean {
   return !(errorList === undefined || errorList === null || errorList.length === 0);

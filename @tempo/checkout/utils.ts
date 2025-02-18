@@ -1,4 +1,4 @@
-import type { CombinedError } from '@tempo/api';
+import type { ApolloError } from '@tempo/api';
 import type {
   PublicMetafieldsValues,
   UnknownPublicSettingsValues,
@@ -10,6 +10,27 @@ import type {
   PublicMetafieldID,
   PublicSettingID,
 } from '@tempo/checkout/types/common';
+import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
+import type { ChannelActivePaymentProvidersByChannel } from '@tempo/checkout/types/payments-api';
+
+export const getParsedPaymentMethods = (
+  activePaymentProvidersByChannel: Maybe<ChannelActivePaymentProvidersByChannel>
+): PaymentMethodID[] => {
+  if (!activePaymentProvidersByChannel) return [];
+  return Object.entries(activePaymentProvidersByChannel)
+    .filter(([, paymentProviderId]) => !!paymentProviderId)
+    .map(([paymentMethodId]) => paymentMethodId) as PaymentMethodID[];
+};
+
+export const getParsedPaymentProviders = (
+  activePaymentProvidersByChannel: Maybe<ChannelActivePaymentProvidersByChannel>
+): readonly PaymentProviderID[] => {
+  if (!activePaymentProvidersByChannel) return [];
+  return Object.values(activePaymentProvidersByChannel).filter(
+    (paymentProviderId): paymentProviderId is Exclude<typeof paymentProviderId, ''> =>
+      !!paymentProviderId
+  );
+};
 
 export const flattenSettingId = (
   groupId: PublicSettingID[number],
@@ -63,7 +84,7 @@ export const mapNodeToItem = (node: NamedNode): Item => ({
 });
 export const mapNodesToItems = (nodes?: NamedNode[]): Item[] => nodes?.map(mapNodeToItem) || [];
 
-export const getCommonErrors = (error?: Partial<CombinedError>) =>
+export const getCommonErrors = (error?: Partial<ApolloError>) =>
   error?.graphQLErrors || error?.networkError
     ? [...(error?.graphQLErrors || []), ...(error?.networkError ? [error.networkError] : [])]
     : [...(error ? [error] : [])];

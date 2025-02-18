@@ -1,14 +1,15 @@
 import type { OrderTransactionsQueryVariables } from '@tempo/api/generated/graphql';
 import { OrderTransactionsDocument } from '@tempo/api/generated/graphql';
-import { getServerSideClient } from '@tempo/api/client';
+import { getClient } from '@tempo/api/server';
 
 export const getOrderTransactions = async (args: OrderTransactionsQueryVariables) => {
   // @todo handle errors
-  const { data, error: _error } = await getServerSideClient()
-    .query(OrderTransactionsDocument, args)
-    .toPromise();
+  const { data, errors } = await getClient().query({
+    query: OrderTransactionsDocument,
+    variables: args,
+  });
 
-  if (data?.order?.errors?.length === 0) {
+  if (errors?.length === 0) {
     return data?.order?.transactions;
   }
 

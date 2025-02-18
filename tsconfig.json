@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": [
-    "@tempo/**/*",
     "app/**/*",
+    "@tempo/**/*",
     "scripts/*",
     ".next/types/**/*.ts"
   ],
@@ -10,6 +10,11 @@
     "node_modules"
   ],
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -79,6 +84,9 @@
         "@tempo/ui/*"
       ],
       "@tempo/utils": [
+        "@tempo/utils"
+      ],
+      "@tempo/utils/*": [
         "@tempo/utils/*"
       ],
       "@paraglide/*": [
@@ -87,11 +95,6 @@
       "@kwstriping/*": [
         "*"
       ]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    }
   }
 }

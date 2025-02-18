@@ -30,7 +30,7 @@ export const useLogout = (): UseLogoutResult => {
     //   console.log('>>>>', name);
     //   if (name.includes('next-auth')) deleteCookie(name);
     // });
-    await router.push(paths.home());
+    await router.push('/');
   }, [paths, resetCheckoutId, router]);
   return { logout, backendState: logoutBackendResult };
 };

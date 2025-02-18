@@ -1,9 +1,9 @@
 import reduce from 'lodash-es/reduce';
-import { encryptSetting } from './encryption';
 import type { CommonField } from '@tempo/checkout/config/fields';
 import { fields } from '@tempo/checkout/config/fields';
 import type { PrivateSettingsValues, SettingValue } from '@tempo/checkout/types/api';
 import type { PrivateSettingID } from '@tempo/checkout/types/common';
+import { encryptSetting } from './encryption';
 
 const encryptSubSettings = (
   subSetting: Record<string, string> | undefined,

@@ -15,7 +15,7 @@ import clsx from 'clsx';
 import { ProductCard } from '../product/ProductCard';
 import { Pagination } from '../Pagination';
 import { Spinner } from '@tempo/ui/components/Spinner';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 
 export interface ProductCollectionProps {
@@ -35,7 +35,8 @@ export function ProductCollection({
   perPage = 4,
   className,
 }: ProductCollectionProps) {
-  const { query } = useLocalization();
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
 
   const variables: ProductCollectionQueryVariables = {
     ...(filter && { filter }),

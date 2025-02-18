@@ -40,7 +40,7 @@
   padding-bottom: calc(theme('spacing.12') - theme('borderWidth.DEFAULT'));
 }
 
-.dropdown:hover :local .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   @apply visible;
 }
 
@@ -75,7 +75,7 @@
   @apply relative;
 }
 
-.user-menu-container:hover :local .user-menu {
+.user-menu-container:hover .user-menu {
   @apply visible;
 }
 

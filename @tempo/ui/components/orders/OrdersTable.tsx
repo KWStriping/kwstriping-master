@@ -2,7 +2,7 @@
 
 import type { OrderFragment } from '@tempo/api/generated/graphql';
 import { useRouter } from 'next/navigation';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 export interface OrdersTableProps {

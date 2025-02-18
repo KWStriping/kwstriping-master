@@ -4,6 +4,8 @@ import type { MenuItemWithChildrenFragment } from '@tempo/api/generated/graphql'
 import type { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
 import NextNProgress from 'next13-progressbar';
+import { SessionProvider } from '@tempo/api/auth/react';
+import { Suspense } from 'react';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
@@ -24,9 +26,11 @@ export function Layout({
   navbarHeight = NAVBAR_HEIGHT,
 }: LayoutProps) {
   return (
-    <>
+    <SessionProvider>
       <NextNProgress color="#5B68E4" options={{ showSpinner: false }} />
-      <Navbar logo={logo} height={navbarHeight} items={navbarItems} />
+      <Suspense>
+        <Navbar logo={logo} height={navbarHeight} items={navbarItems} />
+      </Suspense>
       <div
         className={`grow flex flex-col shrink-0 align-middle justify-center items-center`}
         style={{
@@ -43,7 +47,7 @@ export function Layout({
         <div className="flex flex-col grow items-center w-full pt-1">{children}</div>
         <Footer logo={logo} />
       </div>
-    </>
+    </SessionProvider>
   );
 }
 

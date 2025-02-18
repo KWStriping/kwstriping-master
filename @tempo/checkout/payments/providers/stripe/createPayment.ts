@@ -98,13 +98,12 @@ const tempoPaymentMethodIdToStripePaymentMethodId = (
     case 'creditCard':
       return 'card';
     case 'applePay':
-      // @todo https://github.com/tempo/react-storefront/issues/390
       return null;
-    case 'paypal':
-      // @todo https://github.com/tempo/react-storefront/issues/390
-      return null;
-    case 'dropin':
-      return null;
+    // TODO
+    // case 'paypal':
+    //   return null;
+    // case 'dropin':
+    //   return null;
     case 'dummy':
       return null;
     default:
@@ -113,37 +112,40 @@ const tempoPaymentMethodIdToStripePaymentMethodId = (
 };
 
 const createStripeCustomerFromOrder = (stripeClient: Stripe, order: OrderFragment) => {
-  const name = [order.billingAddress?.firstName.trim(), order.billingAddress?.lastName.trim()]
+  const name = [order.billingAddress?.firstName?.trim(), order.billingAddress?.lastName?.trim()]
     .filter(Boolean)
     .join(' ');
 
-  return stripeClient.customers.create({
-    email: order.userEmail ?? undefined,
-    name,
-    address: order.billingAddress
-      ? {
-          city: order.billingAddress.city,
-          country: order.billingAddress.country.code,
-          line1: order.billingAddress.streetAddress1,
-          line2: order.billingAddress.streetAddress2,
-          postal_code: order.billingAddress.postalCode,
-          state: order.billingAddress.countryArea,
-        }
-      : null,
-    phone: order.billingAddress?.phone || order.shippingAddress?.phone || undefined,
-    shipping: order.shippingAddress
-      ? {
-          name: order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
-          phone: order.shippingAddress.phone ?? undefined,
-          address: {
-            city: order.shippingAddress.city,
-            country: order.shippingAddress.country.code,
-            line1: order.shippingAddress.streetAddress1,
-            line2: order.shippingAddress.streetAddress2,
-            postal_code: order.shippingAddress.postalCode,
-            state: order.shippingAddress.countryArea,
-          },
-        }
-      : null,
-  });
+  return stripeClient.customers.create(
+    {
+      email: order.userEmail ?? undefined,
+      name,
+      address: order.billingAddress
+        ? {
+            city: order.billingAddress.city,
+            country: order.billingAddress.country.code,
+            line1: order.billingAddress.streetAddress1,
+            line2: order.billingAddress.streetAddress2 ?? undefined,
+            postal_code: order.billingAddress.postalCode,
+            state: order.billingAddress.countryArea ?? undefined,
+          }
+        : null,
+      phone: order.billingAddress?.phone || order.shippingAddress?.phone || undefined,
+      shipping: order.shippingAddress
+        ? {
+            name: order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
+            phone: order.shippingAddress.phone ?? undefined,
+            address: {
+              city: order.shippingAddress.city,
+              country: order.shippingAddress.country.code,
+              line1: order.shippingAddress.streetAddress1,
+              line2: order.shippingAddress.streetAddress2 ?? undefined,
+              postal_code: order.shippingAddress.postalCode,
+              state: order.shippingAddress.countryArea ?? undefined,
+            },
+          }
+        : null,
+    },
+    {}
+  );
 };

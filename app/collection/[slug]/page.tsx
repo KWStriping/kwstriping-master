@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
+import CollectionPage from './collection';
 import { getClient } from '@tempo/api/server';
-
-import React from 'react';
 
 import type { AttributeFilterFragment } from '@tempo/api/generated/graphql';
 import {
@@ -12,8 +11,7 @@ import {
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 
 import { contextToRegionQuery } from '@tempo/utils/regions';
-import CollectionPage from './collection';
-import Layout from '@kwstriping/app/client/Layout';
+import Layout from '@kwstriping/app/ServerLayout';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');
@@ -24,17 +22,18 @@ export const metadata: Metadata = {
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const client = getClient();
-  const result = await client.query(CollectionBySlugDocument, { slug }).toPromise();
+  const result = await client.query({ query: CollectionBySlugDocument, variables: { slug } });
 
   const collection = result?.data?.collection;
   if (!collection) return { notFound: true };
   const collectionId = collection.id;
-  const attributesResponse = await client
-    .query(FilteringAttributesDocument, {
+  const attributesResponse = await client.query({
+    query: FilteringAttributesDocument,
+    variables: {
       ...contextToRegionQuery(context),
       filter: { inCollection: collectionId ? [collectionId] : [] },
-    })
-    .toPromise();
+    },
+  });
 
   let attributes: AttributeFilterFragment[] =
     mapEdgesToItems(attributesResponse.data?.attributes) ?? [];

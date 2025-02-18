@@ -10,7 +10,7 @@ import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
 import BrightnessLowIcon from '@mui/icons-material/BrightnessLow';
 import { useColorScheme } from '@mui/material/styles';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useSearchParams, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
@@ -35,21 +35,21 @@ const ENABLE_GRAPHQL_PLAYGROUND = process.env.NODE_ENV === 'development';
 
 export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
   const paths = usePaths();
-  const router = useRouter();
   const { enableCart, enableLogin, enableSearch } = useShopSettings();
   const [isBurgerOpen, setBurgerOpen] = useState(false);
   const { authenticated, loading, user } = useUser();
   const { checkout } = useCheckout();
   const { mode, setMode } = useColorScheme();
 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     // Close side menu after changing the page
-    router.events.on('routeChangeStart', () => {
-      if (isBurgerOpen) {
-        setBurgerOpen(false);
-      }
-    });
-  });
+    if (isBurgerOpen) {
+      setBurgerOpen(false);
+    }
+  }, [pathname, searchParams]);
 
   const counter =
     checkout?.lines?.reduce(
@@ -65,7 +65,7 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
         <div className={styles.inner ?? ''} style={{ height }}>
           <div className="h-full xs:flex items-center relative mx-2">
             <Link
-              href={paths.home()}
+              href={'/'}
               className={`${styles.logo} relative w-full h-full flex items-center`}
             >
               {logo}
@@ -97,7 +97,7 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
               </IconButton>
             )}
             {enableCart && (
-              <Link href={paths.cart()} className="hidden xs:flex">
+              <Link href={'/cart'} className="hidden xs:flex">
                 <NavIconButton icon="bag" aria-hidden="true" counter={counter} />
               </Link>
             )}
@@ -105,7 +105,7 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
               <UserMenu user={user} />
             ) : (
               enableLogin && (
-                <Link href={paths.login()} className={clsx(loading && 'invisible')}>
+                <Link href={'/auth/signin'} className={clsx(loading && 'invisible')}>
                   <NavIconButton icon="login" aria-hidden="true" />
                 </Link>
               )

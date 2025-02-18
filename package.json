@@ -15,7 +15,6 @@
     "cypress": "cypress open",
     "dev": "docker system prune -f && docker compose up -d --wait web && next dev --turbo",
     "dev:paths": "pathpida --ignorePath .gitignore --watch",
-    "///dev": "npx dotenv-run-script ../../.env -- _dev",
     "generate:paths": "pathpida --ignorePath .gitignore",
     "generate": "dotenv -e .env -c -- turbo run generate",
     "lint": "pnpm eslint .",
@@ -56,6 +55,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@headlessui/react": "2.2.0",
     "@heroicons/react": "^2.0.18",
     "@hookform/error-message": "^2.0.1",
@@ -63,16 +63,16 @@
     "@inlang/paraglide-js": "^1.9.0",
     "@inlang/paraglide-next": "0.7.9",
     "@js-temporal/polyfill": "^0.4.4",
-    "@mollie/api-client": "^3.7.0",
     "@marsidev/react-turnstile": "0.6.1",
     "@mdx-js/loader": "3.0.1",
     "@mdx-js/react": "3.0.1",
+    "@mollie/api-client": "^3.7.0",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.16.14",
     "@mui/material-nextjs": "^5.16.14",
     "@mui/styles": "^5.15.10",
     "@mui/system": "^5.15.15",
-    "@sentry/nextjs": "8.54.0",
+    "@sentry/nextjs": "9.1.0",
     "@stripe/react-stripe-js": "2.7.1",
     "@stripe/stripe-js": "3.4.0",
     "clsx": "^2.1.1",
@@ -90,8 +90,8 @@
     "gray-matter": "^4.0.3",
     "libphonenumber-js": "^1.10.52",
     "lodash-es": "^4.17.21",
-    "next": "15.1.6",
-    "next-auth": "5.0.0-beta.17",
+    "next": "15.1.7",
+    "next-auth": "5.0.0-beta.25",
     "next-mdx-remote": "^4.4.1",
     "next-sitemap": "^4.2.3",
     "next13-progressbar": "^1.2.1",
@@ -107,6 +107,7 @@
     "react-toastify": "10.0.5",
     "react-use": "^17.4.2",
     "rooks": "^7.14.1",
+    "server-only": "^0.0.1",
     "sharp": "^0.33.1",
     "stripe": "15.7.0",
     "swc-plugin-graphql-codegen-client-preset-optimizer-test": "^0.1.4",
@@ -118,6 +119,7 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@0no-co/graphql.web": "^1.0.7",
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1",
     "@graphql-codegen/add": "^5.0.3",
@@ -125,9 +127,12 @@
     "@graphql-codegen/client-preset": "^4.6.1",
     "@graphql-codegen/introspection": "^4.0.3",
     "@graphql-codegen/typescript": "^4.1.3",
+    "@graphql-codegen/typescript-generic-sdk": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.4.1",
     "@graphql-codegen/typescript-resolvers": "^4.4.2",
     "@graphql-codegen/typescript-urql": "^4.0.0",
     "@graphql-codegen/urql-introspection": "^3.0.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@inlang/paraglide-js": "^1.11.8",
     "@next/bundle-analyzer": "15.1.6",
     "@next/eslint-plugin-next": "15.1.6",
@@ -221,11 +226,11 @@
     "web-vitals": "4.2.4",
     "wonka": "^6.2.3"
   },
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=22.0.0",
     "npm": ">=7.0.0",
-    "pnpm": ">=10.2.1"
+    "pnpm": ">=10.4.1"
   },
   "pnpm": {
     "supportedArchitectures": {
@@ -237,7 +242,16 @@
         "darwin",
         "linux"
       ]
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@sentry/cli",
+      "core-js",
+      "core-js-pure",
+      "cypress",
+      "esbuild",
+      "msw",
+      "sharp"
+    ]
   },
   "postcss": {
     "plugins": {

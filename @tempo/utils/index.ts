@@ -4,6 +4,7 @@ export * from './address';
 export * from './regions';
 
 import type { Node } from '@tempo/api/generated/graphql';
+import type { ObjectSchema } from 'yup';
 
 export const getById =
   <T extends { id: string } = Node>(idToCompare: string | undefined) =>
@@ -41,6 +42,17 @@ export const safeJsonParse = <R = unknown>(json: string) => {
     return [wrapError(err), null] as const;
   }
 };
+
+export const createParseAndValidateBody =
+  <S extends ObjectSchema<{}>>(schema: S) =>
+  (reqBody: unknown) => {
+    try {
+      const maybeBody = typeof reqBody === 'string' ? JSON.parse(reqBody) : reqBody;
+      return [null, schema.validateSync(maybeBody)] as const;
+    } catch (err) {
+      return [wrapError(err), null] as const;
+    }
+  };
 
 export function assertUnreachable(value: never): never {
   throw new Error(`Unexpected case: ${value}`);

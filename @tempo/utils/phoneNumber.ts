@@ -1,4 +1,4 @@
-import type { CountryCode } from '@tempo/api';
+import type { CountryCode } from '@tempo/api/generated/graphql';
 
 import type {
   CountryCode as PhoneNumberLibCountryCode,

@@ -1,7 +1,8 @@
+'use client';
+
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import { CheckoutDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-import { useLocale } from '@tempo/ui/hooks/useLocale';
 import { useQuery } from '@tempo/api/hooks/useQuery';
 import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
@@ -23,13 +24,18 @@ interface CheckoutProviderProps {
 }
 
 export function CheckoutProvider({ children }: CheckoutProviderProps) {
-  const { languageCode } = useLocale();
+  // const { languageCode } = useLocale();
   const { authenticated, user } = useUser();
   const [checkoutId, setCheckoutId] = useCheckoutId();
 
   // TODO: get checkout from db if not in localstorage
-  const [{ data, fetching, error: checkoutError }, refetch] = useQuery(CheckoutDocument, {
-    variables: { id: checkoutId as string, languageCode },
+  const {
+    data,
+    loading: fetching,
+    error: checkoutError,
+    fetchMore: refetch,
+  } = useQuery(CheckoutDocument, {
+    variables: { id: checkoutId as string },
     pause: !checkoutId || !!user?.checkout,
   });
 
@@ -39,7 +45,7 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
         setCheckoutId(null);
       } else if (checkoutId) {
         // TODO: associate checkout with user!
-        refetch();
+        refetch({ variables: { id: checkoutId as string } });
       }
     }
   }, [authenticated, user, checkoutId, setCheckoutId, refetch]);

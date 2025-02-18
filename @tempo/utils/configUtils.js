@@ -7,8 +7,8 @@
  */
 module.exports.localhostHttp = (url) => {
   try {
-    if (new URL(url).hostname === 'localhost') {
-      return url.replace(/^https:/, 'http:');
+    if (new URL(url).hostname === "localhost") {
+      return url.replace(/^https:/, "http:");
     }
     return url;
   } catch (e) {

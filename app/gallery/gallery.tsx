@@ -1,11 +1,10 @@
 'use client';
 
-import type { GalleryMediaQuery } from '@tempo/api/generated/graphql';
-
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { useWindowSize } from 'rooks';
+import type { GalleryMediaQuery } from '@tempo/api/generated/graphql';
 
 interface GalleryPageProps {
   media: NonNullable<GalleryMediaQuery['media']>;

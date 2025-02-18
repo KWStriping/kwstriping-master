@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import CartPage from './cart';
-import Layout from '@kwstriping/app/client/Layout';
+import Layout from '@kwstriping/app/ServerLayout';
 
 export const metadata: Metadata = {
   title: 'Cart',
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page({ params: _ }: { params: { locale: string } }) {
   return (
     <Layout>
-      <CartPage />
+      {/* TODO: Not yet implemented */}
+      <CartPage displayPrices={false} />
     </Layout>
   );
 }

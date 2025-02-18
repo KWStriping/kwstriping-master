@@ -3,8 +3,6 @@ import { SelectBox } from '@tempo/ui/components/inputs/SelectBox';
 import { SelectBoxGroup } from '@tempo/ui/components/inputs/SelectBoxGroup';
 import Typography from '@mui/material/Typography';
 import { useCallback, useEffect, useMemo } from 'react';
-import type { CommonCheckoutSectionProps } from '../CheckoutSection';
-import CheckoutSection from '../CheckoutSection';
 import {
   useCheckoutActions,
   useSectionState,
@@ -12,6 +10,8 @@ import {
 } from '@tempo/checkout/hooks/state';
 import { usePaymentMethods } from '@tempo/checkout/hooks/usePaymentMethods';
 import type { PaymentMethodID, PaymentProviderID } from '@tempo/checkout/types/payments';
+import type { CommonCheckoutSectionProps } from '../CheckoutSection';
+import CheckoutSection from '../CheckoutSection';
 
 const PAYMENT_PROVIDERS: { id: string; label: string; description?: string }[] = [
   {

@@ -3,7 +3,7 @@ import React from 'react';
 import FlatPage from './flatpage';
 import { getClient } from '@tempo/api/server';
 import { PageDocument } from '@tempo/api/generated/graphql';
-import Layout from '@kwstriping/app/client/Layout';
+import Layout from '@kwstriping/app/ServerLayout';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is not set.');

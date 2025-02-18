@@ -54,11 +54,6 @@ const introspectionCodegenConfig = {
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
-  // plugins: [
-  //   'typescript',
-  //   'typescript-operations',
-  //   'typescript-urql',
-  // ],
   config: {
     dedupeFragments: true,
     enumsAsTypes: true,
@@ -90,13 +85,25 @@ const constantsConfig = {
   },
 };
 
+/* eslint-disable ts/naming-convention */
 const apiCodegenConfig = {
   generates: {
-    '@tempo/api/generated/introspection.json': {
-      plugins: ['urql-introspection'],
-    },
     '@tempo/api/generated/': {
       ...clientPreset,
+    },
+    '@tempo/api/generated/types.ts': {
+      plugins: ['typescript', 'typescript-operations', 'typescript-generic-sdk'],
+      config: {
+        dedupeFragments: true,
+        enumsAsTypes: true,
+        nonOptionalTypename: true,
+        scalars: SCALAR_TYPES,
+        strictScalars: true,
+        useTypeImports: true,
+      },
+      hooks: {
+        afterOneFileWrite: ['eslint --fix', 'ts-node scripts/fix-generated-types.ts'],
+      },
     },
     '@tempo/api/generated/constants.ts': {
       ...constantsConfig,
@@ -204,5 +211,6 @@ const config = {
     },
   },
 } satisfies IGraphQLConfig;
+/* eslint-enable ts/naming-convention */
 
 export default config;

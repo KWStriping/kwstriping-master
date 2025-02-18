@@ -1,11 +1,10 @@
 import * as m from '@paraglide/messages';
 import { CheckoutBillingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { useShopSettings } from '@tempo/ui/providers';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 
@@ -21,7 +20,8 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
   const { countries } = useShopSettings();
   const [{ editing }, updateState] = useSectionState('billingAddress');
   const [updateBillingAddress] = useMutation(CheckoutBillingAddressUpdateDocument);
-  const { query } = useLocalization();
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
 
   const { billingAddress } = checkout ?? {};
 
@@ -29,7 +29,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
     console.log('BillingAddressSection.handleBillingAddressUpdate');
     assert(!!checkout);
     const { state, countryArea, ...address } = formData;
-    const { data, error } = await updateBillingAddress({
+    const { data, errors } = await updateBillingAddress({
       address: {
         ...address,
         countryArea: state || countryArea,
@@ -38,7 +38,7 @@ export function BillingAddressSection({ checkout, className }: CommonCheckoutSec
       // languageCode: query.languageCode,
     });
     console.log('>>>> data', data);
-    if (!error && !data?.updateCheckoutBillingAddress?.errors?.length)
+    if (!errors && !data?.updateCheckoutBillingAddress?.errors?.length)
       updateState({ validating: true });
     return data?.updateCheckoutBillingAddress?.errors?.filter(notNullable) || [];
   };

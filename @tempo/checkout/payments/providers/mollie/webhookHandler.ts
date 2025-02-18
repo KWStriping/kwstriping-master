@@ -39,6 +39,7 @@ export const verifyPayment = async (
         transactionEvent: {
           status: 'PENDING',
           name: eventName,
+          reference,
         },
       };
     case OrderStatus.canceled:
@@ -54,6 +55,7 @@ export const verifyPayment = async (
         transactionEvent: {
           status: 'FAILURE',
           name: eventName,
+          reference,
         },
       };
     case OrderStatus.authorized:
@@ -72,6 +74,7 @@ export const verifyPayment = async (
         transactionEvent: {
           status: 'PENDING',
           name: eventName,
+          reference: id,
         },
       };
     case OrderStatus.paid: {
@@ -100,10 +103,14 @@ export const verifyPayment = async (
           transactionEvent: {
             status: 'FAILURE',
             name: getMollieEventName('payment refunded'),
+            reference: id,
           },
         };
       }
+      break;
     }
+    default:
+      console.error(status);
   }
   return {
     id: metadata?.orderId,
@@ -124,6 +131,7 @@ export const verifyPayment = async (
     transactionEvent: {
       status: 'SUCCESS',
       name: eventName,
+      reference: id,
     },
   };
 };

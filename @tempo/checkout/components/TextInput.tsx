@@ -1,4 +1,4 @@
-import type { Error } from '@tempo/types/errors';
+import type { Error } from '@tempo/next/types/errors';
 import type { ControlFormData } from '@tempo/ui/hooks/useGetInputProps';
 import type { TextFieldProps } from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';

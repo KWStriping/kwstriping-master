@@ -1,7 +1,6 @@
-import * as m from '@paraglide/messages';
 import type { CountryCode } from '@tempo/api/generated/graphql';
+import * as m from '@paraglide/messages';
 import { UpdateCheckoutFulfillmentMethodDocument } from '@tempo/api/generated/graphql';
-// import { useTranslation } from '@tempo/next/i18n';
 import DateTimeField from '@tempo/ui/components/inputs/DateTimeField';
 import { SelectBox } from '@tempo/ui/components/inputs/SelectBox';
 import { SelectBoxGroup } from '@tempo/ui/components/inputs/SelectBoxGroup';
@@ -13,12 +12,12 @@ import { getById } from '@tempo/utils';
 import { Intl, Temporal } from '@js-temporal/polyfill';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { useRouter } from 'next/navigation';
 import type { FC, ReactNode } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useLocale } from '@tempo/ui/hooks/useLocale';
 import type { CommonCheckoutSectionProps } from './CheckoutSection';
 import CheckoutSection from './CheckoutSection';
 import { useSubmit } from '@tempo/checkout/hooks/useSubmit';
@@ -31,7 +30,7 @@ interface FulfillmentSectionFormData {
 }
 
 export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, className }) => {
-  const { locale } = useRouter();
+  const { locale } = useLocale();
   const { enableFulfillmentDeadline, displayPrices } = useShopSettings();
   const { availableShippingMethods, shippingAddress, fulfillmentMethod, fulfillmentDeadline } =
     checkout || {};
@@ -107,7 +106,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
     fulfillmentDeadline,
   };
 
-  const fulfillmentSchema = Yup.object().shape({
+  const fulfillmentSchema = Yup.object({
     selectedMethodId: Yup.string().required(),
     fulfillmentDeadline: Yup.string().required(),
   });
@@ -122,7 +121,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
   } = useForm<FulfillmentSectionFormData>({
     mode: 'all',
     criteriaMode: 'all',
-    resolver: yupResolver(fulfillmentSchema),
+    resolver: yupResolver(fulfillmentSchema) as any, // TODO
     defaultValues: defaultFormData,
   });
 
@@ -196,8 +195,8 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
         }) ?? '{{min}}-{{max}} business days'
       );
     }
-    if (min) return m.checkout_minDays({ min: min.toString() }) ?? 'In {{min}}+ business days';
-    if (max) return m.checkout_maxDays({ max: max.toString() }) ?? 'Within {{max}} business days';
+    if (min) return `In ${min}+ business days`;
+    if (max) return `Within ${max} business days`;
     return '';
   };
 
@@ -242,7 +241,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
                   render={({ field: { onChange, value } }) => (
                     <DateTimeField
                       name="fulfillmentDeadline"
-                      label={m.checkout_fulfillmentDeadline() ?? 'Fulfillment deadline'}
+                      label={'Fulfillment deadline'}
                       value={value ?? ''}
                       onChange={(newValue) => {
                         onChange(newValue);
@@ -278,7 +277,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
                     name="selectedMethodId"
                     value={selectedMethodId ?? ''}
                     onChange={onChange}
-                    label={m.checkout_fulfillmentSection_methods() ?? ''}
+                    label={''}
                     hideRadioButtons={true}
                     readOnly={enableFulfillmentDeadline}
                   >
@@ -323,9 +322,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
         <div>
           {enableFulfillmentDeadline && (
             <div className="flex flex-wrap justify-between gap-8 mt-2">
-              <Typography>
-                {m.checkout_fulfillmentSection_fulfillmentDeadline() ?? 'Fulfillment deadline'}
-              </Typography>
+              <Typography>{'Fulfillment deadline'}</Typography>
               <Typography className="mb-2">
                 {fulfillmentDeadline
                   ? Intl.DateTimeFormat(locale).format(
@@ -336,9 +333,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
             </div>
           )}
           <div className="flex flex-wrap justify-between gap-8 mt-2">
-            <Typography>
-              {m.checkout_fulfillmentSection_shippingMethod() ?? 'Fulfillment method'}
-            </Typography>
+            <Typography>{'Fulfillment method'}</Typography>
             <div>
               <Typography className="font-bold">{selectedMethod?.name}</Typography>
               <Typography className={'text-sm'}>
@@ -354,9 +349,7 @@ export const FulfillmentSection: FC<CommonCheckoutSectionProps> = ({ checkout, c
           </div>
           {!!selectedMethod?.price.amount && displayPrices && (
             <div className="flex justify-between">
-              <Typography className="mb-2">
-                {m.checkout_fulfillmentSection_price() ?? 'Price'}
-              </Typography>
+              <Typography className="mb-2">{'Price'}</Typography>
               <Typography className="mb-2">
                 {selectedMethodId && getFormattedMoney(selectedMethod?.price)}
               </Typography>

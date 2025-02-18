@@ -1,19 +1,18 @@
 'use client';
 
-import { OrdersDocument } from '@tempo/api/generated/graphql';
-import { useUser } from '@tempo/api/auth/react/hooks';
 import { OrdersTable } from '@tempo/ui/components/orders/OrdersTable';
 import { Pagination } from '@tempo/ui/components/Pagination';
 import { Spinner } from '@tempo/ui/components/Spinner';
 import { mapEdgesToItems } from '@tempo/ui/utils/maps';
-import { useQuery } from '@tempo/api/hooks/useQuery';
+import type { OrdersQuery } from '@tempo/api/generated/graphql';
 
-function OrdersPage() {
-  const { authenticated } = useUser();
-  const [{ data: ordersCollection, fetching: loading, error }, fetch] = useQuery(OrdersDocument, {
-    pause: !authenticated,
-  });
+interface OrdersPageProps {
+  data: NonNullable<OrdersQuery['me']>;
+  loading?: boolean;
+  error?: any;
+}
 
+function OrdersPage({ data, loading = false, error = undefined }: OrdersPageProps) {
   if (loading) {
     return <Spinner />;
   }
@@ -27,24 +26,16 @@ function OrdersPage() {
     );
   }
 
-  const orders = mapEdgesToItems(ordersCollection?.me?.orders);
-
-  const onLoadMore = () => {
-    return fetch({
-      variables: {
-        after: ordersCollection?.me?.orders?.pageInfo.endCursor,
-      },
-    });
-  };
+  const orders = mapEdgesToItems(data?.orders);
 
   return (
     <>
       <OrdersTable orders={orders} />
       <Pagination
-        onLoadMore={onLoadMore}
-        pageInfo={ordersCollection?.me?.orders?.pageInfo}
-        itemsCount={ordersCollection?.me?.orders?.edges.length}
-        totalCount={ordersCollection?.me?.orders?.totalCount || undefined}
+        onLoadMore={() => null}
+        pageInfo={data?.orders?.pageInfo}
+        itemsCount={data?.orders?.edges.length}
+        totalCount={data?.orders?.totalCount || undefined}
       />
     </>
   );

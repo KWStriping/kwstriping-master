@@ -1,4 +1,4 @@
-import { PageHeader } from '@tempo/checkout/components/PageHeader';
+import { PageHeader } from '@tempo/ui/components/PageHeader';
 import Skeleton from '@mui/material/Skeleton';
 import { SummarySkeleton } from '@tempo/checkout/components/sections/Summary/SummarySkeleton';
 
@@ -6,7 +6,9 @@ export const OrderConfirmationSkeleton = () => {
   return (
     <div className="page">
       <header>
-        <PageHeader />
+        <PageHeader>
+          <Skeleton />
+        </PageHeader>
         <Skeleton className="title h-4 w-72 mb-6" />
         <Skeleton />
         <Skeleton className="w-2/3" />

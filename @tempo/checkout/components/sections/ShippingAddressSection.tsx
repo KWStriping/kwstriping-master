@@ -1,13 +1,12 @@
+import type { CheckoutError, CountryCode } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
-import type { CountryCode } from '@tempo/api/generated/graphql';
 import { CheckoutShippingAddressUpdateDocument } from '@tempo/api/generated/graphql';
 import { useUser } from '@tempo/api/auth/react/hooks';
-// import { useTranslation } from '@tempo/next/i18n';
 import type { AddressFormData } from '@tempo/next/types/addresses';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useShopSettings } from '@tempo/ui/providers';
-import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { AddressFormProps } from '../forms/AddressForm';
@@ -35,7 +34,8 @@ export function ShippingAddressSection({
     omitNameFromShippingAddress,
     allowedStates,
   } = useShopSettings();
-  const { query } = useLocalization();
+  // const { query } = useLocalization();
+  const query = { channel: 'default' };
   const { authenticated } = useUser();
   const [{ editing }, updateState] = useSectionState('shippingAddress');
   const [updateShippingAddress, { error }] = useMutation(CheckoutShippingAddressUpdateDocument);
@@ -43,7 +43,7 @@ export function ShippingAddressSection({
   const { shippingAddress, billingAddress } = checkout;
   const onSameAsBilling = async () => {
     if (!billingAddress) return;
-    const { data, error } = await updateShippingAddress({
+    const { data, errors } = await updateShippingAddress({
       address: {
         firstName: billingAddress.firstName || '',
         lastName: billingAddress.lastName || '',
@@ -58,9 +58,10 @@ export function ShippingAddressSection({
       id: checkout.id,
       // languageCode: query.languageCode,
     });
-    if (error ?? data?.updateCheckoutShippingAddress?.errors?.length) {
+    if (errors) {
+      // ?? data?.updateCheckoutShippingAddress?.errors?.length) {
       // todo: add error handling
-      console.error(error);
+      console.error(errors);
       return;
     }
     // Successfully updated the shipping address
@@ -69,7 +70,7 @@ export function ShippingAddressSection({
   const handleShippingAddressUpdate = async (formData: AddressFormData) => {
     // console.log('>>>> handleShippingAddressUpdate', formData);
     const { state, countryArea, ...addressFields } = formData;
-    const { data } = await updateShippingAddress({
+    const { data, errors } = await updateShippingAddress({
       address: {
         ...addressFields,
         countryArea: state || countryArea,
@@ -78,7 +79,7 @@ export function ShippingAddressSection({
       // languageCode: query.languageCode,
     });
     updateState({ validating: true });
-    return data?.updateCheckoutShippingAddress?.errors?.filter(notNullable) || [];
+    return (errors?.filter(notNullable) as unknown as CheckoutError[]) || []; // TODO
   };
   // TODO
   const validate = () => {

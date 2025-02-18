@@ -35,7 +35,7 @@ export const getErrorsAsObject = <TFormData extends Record<string, unknown>>(
 
 export const useValidationResolver = <
   TFormData extends FormDataBase,
-  TShape extends Record<keyof TFormData, unknown>,
+  TShape extends Record<keyof TFormData, unknown>
 >(
   schema: ObjectSchema<TShape>
 ) =>
