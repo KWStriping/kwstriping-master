@@ -1,10 +1,8 @@
-
 import * as m from '@paraglide/messages';
 import ConfirmButton from '@tempo/ui/components/buttons/ConfirmButton';
 import useNotifier from '@tempo/ui/hooks/useNotifier';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { IMessage } from '@dashboard/components/messages';
-import { getByIds } from '@tempo/dashboard/components/orders/OrderReturnPage/utils';
 import {
   GiftCardBulkActivateDocument,
   GiftCardBulkDeactivateDocument,
@@ -14,6 +12,7 @@ import type { FC } from 'react';
 import { useGiftCardList } from '../../providers/GiftCardListProvider';
 import { GIFT_CARD_LIST_QUERY } from '../../queries';
 import { bulkEnableDisableSectionMessages as messages } from './messages';
+import { getByIds } from '@tempo/dashboard/components/orders/OrderReturnPage/utils';
 
 const BulkEnableDisableSection: FC = () => {
   const notify = useNotifier();
@@ -42,7 +41,7 @@ const BulkEnableDisableSection: FC = () => {
 
       const notifierData: IMessage = errors?.length
         ? {
-            type: 'error'
+            type: 'error',
             text: t(
               'dashboard_errorActivateAlertText',
               messages.errorActivateAlertText.defaultMessage,
@@ -124,7 +123,7 @@ const BulkEnableDisableSection: FC = () => {
           transitionState={activateGiftCardsOpts?.status}
           data-test-id="activate-gift-cards"
         >
-          {(m.dashboard_enableLabel() ?? messages.enableLabel.defaultMessage)}
+          {m.dashboard_enableLabel() ?? messages.enableLabel.defaultMessage}
         </ConfirmButton>
       )}
       {(areAllSelectedCardsActive || isSelectionMixed) && (
@@ -134,7 +133,7 @@ const BulkEnableDisableSection: FC = () => {
           transitionState={deactivateGiftCardsOpts?.status}
           data-test-id="deactivate-gift-cards"
         >
-          {(m.dashboard_disableLabel() ?? messages.disableLabel.defaultMessage)}
+          {m.dashboard_disableLabel() ?? messages.disableLabel.defaultMessage}
         </ConfirmButton>
       )}
     </>

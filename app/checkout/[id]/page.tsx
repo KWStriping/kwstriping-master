@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Checkout',
 };
 
-export default async function Page({ params }: { params: { locale: string } }) {
+export default async function Page() {
   return (
     <Layout>
       <CheckoutPage />

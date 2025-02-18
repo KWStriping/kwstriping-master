@@ -4,7 +4,6 @@ import type { ReactNode } from 'react';
 import { Layout } from '@tempo/ui/components/Layout';
 import { NavigationPanel } from '@tempo/ui/components/Layout/NavigationPanel';
 import { Spinner } from '@tempo/ui/components/Spinner';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 export interface AccountLayoutProps {
   children: ReactNode;
@@ -12,7 +11,6 @@ export interface AccountLayoutProps {
 
 export function AccountLayout({ children }: AccountLayoutProps) {
   const router = useRouter();
-  const paths = usePaths();
   const { authenticated, loading: authenticating } = useUser();
   if (authenticating) {
     return (

@@ -147,7 +147,7 @@ export function getSelectedValues(
     | ProductFragment['attributes'][0]
     | SelectedVariantAttributeFragment
 ) {
-  switch (attribute.attribute.inputType) {
+  switch (attribute.inputType) {
     case AttributeInputType.Reference:
       return attribute.values.map((value) => value.reference);
 
@@ -223,7 +223,7 @@ export const mergeChoicesWithValues = (
     | PageSelectedAttributeFragment
     | SelectedVariantAttributeFragment
 ) => {
-  const choices = mapEdgesToItems(attribute.attribute.values) || [];
+  const choices = mapEdgesToItems(attribute.values) || [];
   const valuesToConcat = attribute.values.filter(
     (value) => !choices.some((choice) => choice.id === value.id)
   );

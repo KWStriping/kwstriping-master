@@ -25,6 +25,10 @@ export function Layout({
   children,
   navbarHeight = NAVBAR_HEIGHT,
 }: LayoutProps) {
+  console.log('logo');
+  console.log(logo);
+  console.log('navbarItems');
+  console.log(navbarItems);
   return (
     <SessionProvider>
       <NextNProgress color="#5B68E4" options={{ showSpinner: false }} />

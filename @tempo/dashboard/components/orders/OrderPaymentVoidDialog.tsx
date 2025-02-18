@@ -39,7 +39,7 @@ const OrderPaymentVoidDialog: FC<OrderPaymentVoidDialogProps> = ({
       </DialogTitle>
       <DialogContent>
         <DialogContentText>
-          {m.dashboard_uRfu+ ?? 'Are you sure you want to void this payment?'}
+          {'Are you sure you want to void this payment?'}
         </DialogContentText>
         {!!errors?.length && (
           <>

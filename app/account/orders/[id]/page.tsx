@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   title: 'Orders',
 };
 
-export default async function Page({ params: { id } }: { params: { id: string } }) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const session = await auth();
   if (!session) return null;
   const response = await query({ query: OrderDocument, variables: { id } });

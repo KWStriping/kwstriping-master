@@ -6,14 +6,12 @@ import Link from 'next/link';
 import { NavigationAnchor } from '../NavigationAnchor';
 import styles from './index.module.css';
 import { getLinkPath } from '@tempo/ui/utils/menus';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 interface DropdownProps {
   menuItem: Omit<MenuItemWithChildrenFragment, '__typename'>;
 }
 
 function Dropdown({ menuItem }: DropdownProps) {
-  const paths = usePaths();
   return (
     <div className={styles.dropdown ?? ''}>
       <NavigationAnchor menuItem={menuItem} className={styles['dropdown-trigger'] ?? ''} />
@@ -33,10 +31,7 @@ function Dropdown({ menuItem }: DropdownProps) {
                       {item?.name}
                     </a>
                   ) : (
-                    <Link
-                      href={getLinkPath(item, paths)}
-                      className={styles['dropdown-main'] ?? ''}
-                    >
+                    <Link href={getLinkPath(item)} className={styles['dropdown-main'] ?? ''}>
                       {item?.name}
                     </Link>
                   )}
@@ -44,10 +39,7 @@ function Dropdown({ menuItem }: DropdownProps) {
                     <ul className={styles['dropdown-ul'] ?? ''}>
                       {item?.children?.map((sub) => (
                         <li key={sub?.id}>
-                          <Link
-                            href={getLinkPath(sub, paths)}
-                            className={styles['dropdown-link'] ?? ''}
-                          >
+                          <Link href={getLinkPath(sub)} className={styles['dropdown-link'] ?? ''}>
                             {sub?.name}
                           </Link>
                         </li>

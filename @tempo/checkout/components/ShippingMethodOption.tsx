@@ -1,5 +1,5 @@
 import type { ShippingMethodFragment } from '@tempo/api/generated/graphql';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { Radio, Label, Description } from '@headlessui/react';
 import clsx from 'clsx';
 

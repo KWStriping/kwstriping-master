@@ -23,16 +23,14 @@ export const collectionPaths = async () => {
     let endCursor = '';
 
     while (hasNextPage) {
-      const response = await client
-        .query(
-          CollectionPathsDocument,
-          {
-            channel: channelSlug,
-            after: endCursor,
-          },
-          { requestPolicy: 'network-only' }
-        )
-        .toPromise();
+      const response = await client.query({
+        query: CollectionPathsDocument,
+        variables: {
+          channel: channelSlug,
+          after: endCursor,
+        },
+        requestPolicy: 'network-only',
+      });
 
       const edges = response.data?.collections?.edges;
       if (!edges) {

@@ -4,12 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import Spinner from '@tempo/ui/components/Spinner';
-// import { usePaths } from '@kwstriping/hooks/usePaths';
 import Checkout from '@kwstriping/components/Checkout';
 
 function CheckoutPage() {
   const router = useRouter();
-  // const paths = usePaths();
   const { checkout, loading } = useCheckout();
 
   useEffect(() => {

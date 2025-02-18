@@ -12,7 +12,7 @@ export function useNotifier() {
     const timeout = options.type === 'error' ? false : options.autohide;
     toast(content, {
       type: options.type ?? 'info',
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: 'bottom-right',
       ...(timeout ? { autoClose: timeout } : {}),
     });
   };

@@ -19,7 +19,6 @@ import { getUser } from '@tempo/api/auth/server/user';
 //       slug: HOMEPAGE_MENU,
 //       ...contextToRegionQuery(context),
 //     })
-//     .toPromise();
 //   return {
 //     props: generateStaticRenderingProps(ssrCache),
 //     revalidate: 60 * 60,
@@ -31,7 +30,6 @@ interface HomeProps {
 }
 
 function Home({ user }: HomeProps) {
-  // const paths = usePaths();
   const shopName = 'KW Striping'; // TODO
   // const { name: shopName } = useShopSettings();
   const shopDescription =

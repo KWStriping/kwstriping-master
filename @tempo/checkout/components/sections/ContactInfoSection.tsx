@@ -4,7 +4,7 @@ import type {
 } from '@tempo/api/generated/graphql';
 import { CheckoutContactInfoUpdateDocument } from '@tempo/api/generated/graphql';
 import { useShopSettings } from '@tempo/ui/providers';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { assert } from 'tsafe/assert';
 import Button from '@tempo/ui/components/buttons/Button';

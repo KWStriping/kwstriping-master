@@ -1,4 +1,4 @@
-import type { OrderingDirection, ProductOrderField } from '@tempo/api/generated/graphql';
+import type { OrderingDirection, ProductOrdering } from '@tempo/api/generated/graphql';
 import { Menu, Transition } from '@headlessui/react';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -9,7 +9,7 @@ import type { UrlSorting } from './sorting';
 import { getSortingOptions } from './sorting';
 
 export interface SortingDropdownProps {
-  optionToggle: (field?: ProductOrderField, direction?: OrderingDirection) => void;
+  optionToggle: (field?: ProductOrdering, direction?: OrderingDirection) => void;
   chosen: Maybe<UrlSorting>;
 }
 

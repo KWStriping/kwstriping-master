@@ -6,7 +6,7 @@ import type { AddressFormData } from '@tempo/next/types/addresses';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { Button } from '@tempo/ui/components/buttons/Button';
 import { useShopSettings } from '@tempo/ui/providers';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import type { AddressFormProps } from '../forms/AddressForm';

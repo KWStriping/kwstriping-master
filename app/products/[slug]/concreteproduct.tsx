@@ -12,12 +12,10 @@ import { Button } from '@tempo/ui/components/buttons/Button';
 import Link from '@tempo/ui/components/Link';
 import { VariantSelector } from '@tempo/ui/components/product/VariantSelector';
 import { useShopSettings } from '@tempo/ui/providers';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks';
-// import { useMutation } from '@urql/next';
 import Spinner from '@tempo/ui/components/Spinner';
 import { gql } from '@tempo/api';
-// import { usePaths } from '@kwstriping/hooks/usePaths';
 import * as m from '@paraglide/messages';
 
 const DISPLAY_CATEGORY = false; // TODO
@@ -49,7 +47,6 @@ interface ProductPageProps {
 
 function ConcreteProductDetails({ product }: ProductPageProps) {
   const router = useRouter();
-  // const paths = usePaths();
   const { currentChannel, formatPrice } = useLocalization();
   const { displayProductImages } = useShopSettings();
   const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();
@@ -228,7 +225,7 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
         <div className={'flex flex-col justify-between gap-8'}>
           <p className="text-green-600">{addToCartSuccess}</p>
           <p>
-            <Link href={paths.checkout.$url()}>{'Proceed to checkout?'}</Link>
+            <Link href={'/checkout'}>{'Proceed to checkout?'}</Link>
           </p>
         </div>
       )}

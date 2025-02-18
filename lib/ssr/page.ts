@@ -21,9 +21,11 @@ export const pagePaths = async () => {
   const client = getClient();
 
   while (hasNextPage) {
-    const response = await client
-      .query(PagePathsDocument, { after: endCursor }, { requestPolicy: 'network-only' })
-      .toPromise();
+    const response = await client.query({
+      query: PagePathsDocument,
+      variables: { after: endCursor },
+      requestPolicy: 'network-only',
+    });
 
     const edges = response.data?.pages?.edges;
     if (!edges) {

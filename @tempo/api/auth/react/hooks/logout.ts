@@ -1,9 +1,8 @@
 'use client';
 
-import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { signOut } from '@tempo/api/auth/react';
 import type { LogoutMutation } from '@tempo/api/generated/graphql';
 import { useMutation } from '@tempo/api/hooks/useMutation';
@@ -19,7 +18,6 @@ export const useLogout = (): UseLogoutResult => {
   // console.log('>>> useLogout');
   const { resetCheckoutId } = useCheckout();
   const router = useRouter();
-  const paths = usePaths();
   const [logoutBackend, logoutBackendResult] = useMutation(LogoutDocument);
   const logout = useCallback(async () => {
     console.log('Signing out...');
@@ -31,7 +29,7 @@ export const useLogout = (): UseLogoutResult => {
     //   if (name.includes('next-auth')) deleteCookie(name);
     // });
     await router.push('/');
-  }, [paths, resetCheckoutId, router]);
+  }, [resetCheckoutId, router]);
   return { logout, backendState: logoutBackendResult };
 };
 

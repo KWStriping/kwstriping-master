@@ -10,10 +10,8 @@ import styles from './BurgerMenu.module.css';
 import type { CollapseMenuProps } from './CollapseMenu';
 import { translate } from '@tempo/ui/utils/translations';
 import { getLinkPath } from '@tempo/ui/utils/menus';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 function SubCollapseMenu({ menuItem }: CollapseMenuProps) {
-  const paths = usePaths();
   const [open, setOpen] = useState(false);
 
   const shouldDisplayAnchor = !menuItem.children?.length;
@@ -41,7 +39,7 @@ function SubCollapseMenu({ menuItem }: CollapseMenuProps) {
                       {sub.name}
                     </a>
                   ) : (
-                    <Link href={getLinkPath(sub, paths)}>{sub.name}</Link>
+                    <Link href={getLinkPath(sub)}>{sub.name}</Link>
                   )}
                 </li>
               ))}

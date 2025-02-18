@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Contact',
 };
 
-export default async function Page({ params: _ }: { params: { locale: string } }) {
+export default async function Page() {
   // const result = await getClient().query({
   //   query: productBySlugQueryDocument,
   //   variables: { slug },

@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 import Link from 'next/link';
 import Layout from '@kwstriping/app/ServerLayout';
-// import { usePaths } from '@kwstriping/hooks/usePaths';
 
 export const metadata: Metadata = {
   title: 'Order',

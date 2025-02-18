@@ -11,7 +11,6 @@ import { LocaleDropdown } from '../../regionDropdowns/LocaleDropdown';
 import styles from './index.module.css';
 import { getLinkPath } from '@tempo/ui/utils/menus';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 export type FooterProps = HTMLAttributes<HTMLElement> & {
   logo?: ReactNode;
@@ -67,7 +66,7 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
                     {item?.name}
                   </a>
                 ) : (
-                  <Link href={getLinkPath(item, paths)} className={styles['menu-heading'] ?? ''}>
+                  <Link href={'/'} className={styles['menu-heading'] ?? ''}>
                     {item?.name}
                   </Link>
                 )}
@@ -86,7 +85,7 @@ export function Footer({ className, logo, ...rest }: FooterProps) {
                         </a>
                       ) : (
                         <Link
-                          href={getLinkPath(sub, paths)}
+                          href={getLinkPath(sub)}
                           className={styles['menu-link'] ?? ''}
                           data-testid={`footerInternalLinks${sub?.name}`}
                         >

@@ -9,8 +9,7 @@ import {
   CreateCheckoutPaymentDocument,
   CompleteCheckoutDocument,
 } from '@tempo/api/generated/graphql';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { CardElement, Elements, useElements, useStripe } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js/pure';
@@ -31,7 +30,6 @@ function StripeCardForm({ checkout }: StripeCardFormInterface) {
   const elements = useElements();
   const { formatPrice } = useLocalization();
   const router = useRouter();
-  const paths = usePaths();
   const { resetCheckoutId: resetCheckoutToken } = useCheckout();
   const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);
   const [completeCheckoutMutation] = useMutation(CompleteCheckoutDocument);

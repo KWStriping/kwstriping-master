@@ -19,9 +19,8 @@ import styles from './index.module.css';
 import { Menu } from './Menu';
 import NavIconButton from './NavIconButton';
 import UserMenu from './UserMenu';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useShopSettings } from '@tempo/ui/providers';
-import GraphqlIcon from '@tempo/ui/icons/GraphQLIcon.svg';
+// import GraphqlIcon from '@tempo/ui/icons/GraphQLIcon.svg';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 interface NavbarProps {
@@ -34,7 +33,6 @@ const ENABLE_COLOR_MODE_TOGGLE = process.env.NODE_ENV === 'development';
 const ENABLE_GRAPHQL_PLAYGROUND = process.env.NODE_ENV === 'development';
 
 export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
-  const paths = usePaths();
   const { enableCart, enableLogin, enableSearch } = useShopSettings();
   const [isBurgerOpen, setBurgerOpen] = useState(false);
   const { authenticated, loading, user } = useUser();
@@ -76,7 +74,7 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
           </div>
           <div className="flex-1 flex items-center justify-end gap-3">
             {enableSearch && (
-              <Link href={paths.search()} className="hidden lg:flex ml-2">
+              <Link href={'/search'} className="hidden lg:flex ml-2">
                 <NavIconButton icon="spyglass" data-testid="searchIcon" />
               </Link>
             )}
@@ -86,9 +84,10 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
                 href={`${process.env.NEXT_PUBLIC_STOREFRONT_URL}/graphql/`}
                 rel="noreferrer"
               >
-                <IconButton>
+                API
+                {/* <IconButton>
                   <GraphqlIcon />
-                </IconButton>
+                </IconButton> */}
               </a>
             )}
             {enableColorModeToggle && (

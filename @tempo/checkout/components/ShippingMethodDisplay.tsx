@@ -1,6 +1,6 @@
 import type { ShippingMethodFragment } from '@tempo/api/generated/graphql';
 
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 export interface ShippingMethodDisplayProps {
   method: Maybe<ShippingMethodFragment>;

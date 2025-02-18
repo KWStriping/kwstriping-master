@@ -4,7 +4,6 @@ import Skeleton from '@mui/material/Skeleton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { translate } from '@tempo/ui/utils/translations';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useShopSettings } from '@tempo/ui/providers';
 
 export interface ProductCardProps {
@@ -13,9 +12,7 @@ export interface ProductCardProps {
 
 const getCardSecondaryDescription = (product: Maybe<ProductCardFragment>) => {
   if (!product) return '';
-  const artistAttribute = product.attributes.find(
-    (attribute) => attribute.attribute.slug === 'artist'
-  );
+  const artistAttribute = product.attributes.find((attribute) => attribute.slug === 'artist');
   const mainValue = artistAttribute?.values[0];
   if (mainValue?.name) return mainValue.name;
   if (product.category) return translate(product.category, 'name');
@@ -26,14 +23,13 @@ const DISPLAY_SECONDARY_DESCRIPTION = false;
 
 export function ProductCard({ product }: ProductCardProps) {
   const { displayProductImages } = useShopSettings();
-  const { productBySlug } = usePaths();
 
   const secondaryDescription = getCardSecondaryDescription(product);
   const thumbnailUrl = product?.media?.find((media) => media.type === 'IMAGE')?.url;
   return (
     <li className="w-full max-w-screen-sm">
       {product ? (
-        <Link href={productBySlug(product.slug)} prefetch={false}>
+        <Link href={`/products/${product.slug}`} prefetch={false}>
           {displayProductImages && (
             <div className="bg-main active:bg-brand w-full aspect-1">
               <div className="bg-white w-full h-full relative object-contain flex items-end">

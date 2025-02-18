@@ -6,7 +6,7 @@ import type {
 import * as m from '@paraglide/messages';
 import { CheckoutLineDeleteDocument } from '@tempo/api/generated/graphql';
 import Button from '@tempo/ui/components/buttons/Button';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useShopSettings } from '@tempo/ui/providers/ShopSettingsProvider';
 import { translate } from '@tempo/ui/utils/translations';
 import { useMutation } from '@tempo/api/hooks/useMutation';
