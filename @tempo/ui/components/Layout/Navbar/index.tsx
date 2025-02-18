@@ -20,7 +20,6 @@ import { Menu } from './Menu';
 import NavIconButton from './NavIconButton';
 import UserMenu from './UserMenu';
 import { useShopSettings } from '@tempo/ui/providers';
-// import GraphqlIcon from '@tempo/ui/icons/GraphQLIcon.svg';
 import IconButton from '@tempo/ui/components/buttons/IconButton';
 
 interface NavbarProps {
@@ -77,18 +76,6 @@ export function Navbar({ logo, items, height = '7rem' }: NavbarProps) {
               <Link href={'/search'} className="hidden lg:flex ml-2">
                 <NavIconButton icon="spyglass" data-testid="searchIcon" />
               </Link>
-            )}
-            {enableGraphQLPlayground && (
-              <a
-                target="_blank"
-                href={`${process.env.NEXT_PUBLIC_STOREFRONT_URL}/graphql/`}
-                rel="noreferrer"
-              >
-                API
-                {/* <IconButton>
-                  <GraphqlIcon />
-                </IconButton> */}
-              </a>
             )}
             {enableColorModeToggle && (
               <IconButton onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}>
