@@ -187,8 +187,6 @@ jobs:
       - uses: actions/setup-node@v4.2.0
         with:
           node-version: "22"
-      - name: Generate required files
-        run: pnpm prebuild
       - name: Build storefront image
         uses: docker/build-push-action@v6.13.0
         with:
