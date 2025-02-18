@@ -28,7 +28,7 @@ ENV NEXTJS_IGNORE_TYPECHECK=1
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 RUN apk add --no-cache libc6-compat curl
 
-RUN mkdir -p ${ROOT_DIR}/scripts ${ROOT_DIR}/paraglide/generated
+RUN mkdir -p ${ROOT_DIR}/scripts
 
 WORKDIR ${ROOT_DIR}
 
