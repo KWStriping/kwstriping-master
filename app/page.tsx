@@ -34,7 +34,6 @@ function Home({ user }: HomeProps) {
   // const { name: shopName } = useShopSettings();
   const shopDescription =
     'We offer reliable, precise field-painting services throughout the state of Utah.';
-  const learnMoreCta = 'Learn more';
   const catalogCta = user?.isStaff ? 'Request service' : 'Contact us';
   const productSlug = 'striping-service';
   const catalogHref = user?.isStaff ? `/products/${productSlug}` : `/contact`;
@@ -59,13 +58,10 @@ function Home({ user }: HomeProps) {
             {shopDescription}
           </Typography>
           <div className="text-center flex flex-wrap xs:gap-3 sm:gap-12 m-2 text-white items-center">
-            <Link href={'#about'}>
-              <Button className="p-6 py-3">{learnMoreCta}</Button>
-            </Link>
-            <Typography className={'text-black-outline'}>{' or '}</Typography>
-            <Link href={catalogHref}>
+            {/* <Link href={catalogHref}>
               <Button className="p-6 py-3">{catalogCta}</Button>
             </Link>
+            <Typography className={'text-black-outline'}>{' or '}</Typography> */}
             <Link href={'/request'}>
               <Button className="p-6 py-3">{'Request service'}</Button>
             </Link>
