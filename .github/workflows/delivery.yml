@@ -220,7 +220,7 @@ jobs:
       - name: Deploy to server
         uses: iacobfred/deploy-docker-ssh@v0.5.1
         with:
-          host: ${{ vars.DOMAIN }}
+          host: kred.duckdns.org
           user: jacob
           target-dir: /var/www/${{ vars.DOMAIN }}
           files: '.env docker-compose.yml scripts'
