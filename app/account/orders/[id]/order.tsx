@@ -1,6 +1,6 @@
 import type { OrderQuery } from '@tempo/api/generated/graphql';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 

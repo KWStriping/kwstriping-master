@@ -1,7 +1,7 @@
 import type { CheckoutFragment } from '@tempo/api/generated/graphql';
 import * as m from '@paraglide/messages';
 import { CheckoutAddPromoCodeDocument } from '@tempo/api/generated/graphql';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

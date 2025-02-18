@@ -1,9 +1,7 @@
-import { useRouter } from 'next/navigation';
-
 import type { HorizontalAlignment } from './BaseRegionsDropdown';
 import { BaseRegionsDropdown } from './BaseRegionsDropdown';
 import { BaseRegionsDropdownItem } from './BaseRegionsDropdownItem';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 
 interface DropdownOption {
   label: string;
@@ -16,8 +14,7 @@ export interface ChannelDropdownProps {
 }
 
 export function ChannelDropdown({ horizontalAlignment }: ChannelDropdownProps) {
-  const router = useRouter();
-  const { locale, channels, currentChannel, setCurrentChannel } = useLocalization();
+  const { channels, currentChannel, setCurrentChannel } = useLocalization();
 
   const channelOptions: DropdownOption[] = channels.map((ch) => ({
     label: ch.name,
@@ -30,14 +27,14 @@ export function ChannelDropdown({ horizontalAlignment }: ChannelDropdownProps) {
     setCurrentChannel(channelSlug).catch(console.error);
 
     // Update current URL to use the chosen channel
-    void router.push({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        channel: channelSlug,
-        locale,
-      },
-    });
+    // void router.push({
+    //   pathname: router.pathname,
+    //   query: {
+    //     ...router.query,
+    //     channel: channelSlug,
+    //     locale,
+    //   },
+    // });
   };
 
   return (

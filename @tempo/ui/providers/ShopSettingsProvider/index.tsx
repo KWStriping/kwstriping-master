@@ -123,6 +123,8 @@ const DEFAULTS: ShopSettings = {
     name: '', // TODO
   },
   defaultLocale: DEFAULT_LOCALE,
+  defaultWeightUnit: 'LB',
+  trackInventoryByDefault: false,
   demoMode: DEMO_MODE,
   domain: '',
   displayProductImages: true,
@@ -147,8 +149,8 @@ const DEFAULTS: ShopSettings = {
   logo: {
     __typename: 'Image',
     url: '/logo-black.svg',
-    height: '48',
-    width: '192',
+    height: 48,
+    width: 192,
     alt: 'Logo',
   },
   name: STOREFRONT_NAME,

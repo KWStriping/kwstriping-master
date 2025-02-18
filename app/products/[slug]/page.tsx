@@ -5,7 +5,7 @@ import AbstractProductPage from './abstractproduct';
 import ConcreteProductPage from './concreteproduct';
 import { gql } from '@tempo/api';
 import Layout from '@kwstriping/app/ServerLayout';
-import { getClient } from '@tempo/api/server';
+import { query } from '@tempo/api/server';
 
 export const metadata: Metadata = {
   title: 'Page',
@@ -45,8 +45,12 @@ const productBySlugQueryDocument = gql(`
   }
 `);
 
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const result = await getClient().query(productBySlugQueryDocument, { slug }).toPromise();
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const result = await query({
+    query: productBySlugQueryDocument,
+    variables: { slug, channel: 'default' }, // TODO
+  });
   const product = result?.data?.product;
   if (!product) return { notFound: true };
   return (

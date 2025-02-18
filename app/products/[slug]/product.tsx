@@ -1,23 +1,19 @@
 'use client';
 
+import type { ReactNode } from 'react';
+import clsx from 'clsx';
+import { useState } from 'react';
 import type { ProductDetailsFragment } from '@tempo/api/generated/graphql';
 import { CheckoutAddProductLineDocument } from '@tempo/api/generated/graphql';
-import { useUser } from '@tempo/api/auth/react/hooks';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import { RichText } from '@tempo/ui/components/inputs/RichText';
 import Link from '@tempo/ui/components/Link';
 import { AttributeDetails } from '@tempo/ui/components/product/AttributeDetails';
 import { ProductGallery } from '@tempo/ui/components/product/ProductGallery';
 import { useShopSettings } from '@tempo/ui/providers';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
-import type { ReactNode } from 'react';
 import { useMutation } from '@tempo/api/hooks/useMutation';
-import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import Spinner from '@tempo/ui/components/Spinner';
-// import { usePaths } from '@kwstriping/hooks/usePaths';
 
 const DISPLAY_CATEGORY = false; // TODO
 const DISPLAY_PRICES = false;
@@ -35,13 +31,13 @@ interface ProductPageProps {
 }
 
 function ProductPage({ product, price, displayPrice, details }: ProductPageProps) {
-  const router = useRouter();
-  // const paths = usePaths();
-  const { currentChannel, formatPrice } = useLocalization();
+  // TODO
+  const currentChannel = 'default';
+  // const formatPrice = 'USD';
+  // const { currentChannel, formatPrice } = useLocalization();
+
   const { displayProductImages } = useShopSettings();
   const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();
-
-  const { user } = useUser();
 
   const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
 
@@ -78,7 +74,7 @@ function ProductPage({ product, price, displayPrice, details }: ProductPageProps
               )}
               {DISPLAY_CATEGORY && !!product.category?.slug && (
                 <p className="text-md mt-2 font-medium text-gray-600">
-                  <Link href={paths.catalog._slug(product?.category?.slug).$url()}>
+                  <Link href={`/catalog/${product.category.slug}`}>
                     {translate(product.category, 'name')}
                   </Link>
                 </p>

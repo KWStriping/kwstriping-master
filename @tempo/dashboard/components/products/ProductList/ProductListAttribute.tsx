@@ -19,7 +19,7 @@ const ProductListAttribute: FC<ProductListAttributeProps> = ({
   }
 
   const productAttribute = productAttributes.find(
-    (attribute) => attribute.attribute.id === getAttributeIdFromColumnValue(gridAttribute)
+    (attribute) => attribute.id === getAttributeIdFromColumnValue(gridAttribute)
   );
   if (productAttribute) {
     if (productAttribute.values.length) {

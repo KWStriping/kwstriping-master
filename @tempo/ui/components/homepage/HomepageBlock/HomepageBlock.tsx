@@ -5,7 +5,6 @@ import type { HomepageBlockFragment, ProductFilter } from '@tempo/api/generated/
 import Link from 'next/link';
 import { RichText } from '@tempo/ui/components/inputs/RichText';
 import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { translate } from '@tempo/ui/utils/translations';
 
 export interface HomepageBlockProps {
@@ -13,7 +12,6 @@ export interface HomepageBlockProps {
 }
 
 export function HomepageBlock({ menuItem }: HomepageBlockProps) {
-  const paths = usePaths();
   const filter: ProductFilter = {};
   if (menuItem.page?.id) {
     const content = translate(menuItem.page, 'content');
@@ -22,11 +20,11 @@ export function HomepageBlock({ menuItem }: HomepageBlockProps) {
   let url: string | UrlObject = {};
   if (menuItem.category?.id) {
     filter.categories = [menuItem.category?.id];
-    url = paths.categoryBySlug(menuItem.category.slug);
+    url = `/catalog/${menuItem.category.slug}`;
   }
   if (menuItem.collection?.id) {
     filter.collections = [menuItem.collection?.id];
-    url = paths.collectionBySlug(menuItem.collection.slug);
+    url = `/collections/${menuItem.collection.slug}`;
   }
   return (
     <div className="pb-8" data-testid="category">

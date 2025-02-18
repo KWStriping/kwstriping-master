@@ -10,7 +10,6 @@ import Link from '@tempo/ui/components/Link';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { CreateOrderDocument } from '@tempo/api/generated/graphql';
 import { useRouter } from 'next/navigation';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useSelectedPaymentMethod } from '../hooks/state';
 import { usePay } from '../hooks/usePay';
 import styles from './Checkout.module.css';
@@ -29,7 +28,6 @@ export interface CheckoutProps {
 
 function Checkout({ checkout, loading }: CheckoutProps) {
   const router = useRouter();
-  const paths = usePaths();
   const { languageCode } = useLocale();
   const { enablePointsOfContact, displayPrices: initiallyDisplayPrices } = useShopSettings();
   const [displayPrices, setDisplayPrices] = useState(initiallyDisplayPrices);
@@ -82,7 +80,6 @@ function Checkout({ checkout, loading }: CheckoutProps) {
   }, [
     checkout,
     router,
-    paths,
     createOrderFromCheckout,
     languageCode,
     processPayment,

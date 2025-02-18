@@ -21,16 +21,14 @@ export const productPaths = async () => {
     let endCursor = '';
 
     while (hasNextPage) {
-      const response = await client
-        .query(
-          ProductPathsDocument,
-          {
-            channel: channelSlug,
-            after: endCursor,
-          },
-          { requestPolicy: 'network-only' }
-        )
-        .toPromise();
+      const response = await client.query({
+        query: ProductPathsDocument,
+        variables: {
+          channel: channelSlug,
+          after: endCursor,
+        },
+        requestPolicy: 'network-only',
+      });
 
       const edges = response.data?.products?.edges;
       if (!edges) break;

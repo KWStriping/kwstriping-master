@@ -5,8 +5,7 @@ import {
   CheckoutLineDeleteDocument,
 } from '@tempo/api/generated/graphql';
 import Button from '@tempo/ui/components/buttons/Button';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { translate } from '@tempo/ui/utils/translations';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import clsx from 'clsx';
@@ -21,7 +20,6 @@ interface CheckoutLineItemProps {
 }
 
 export function CheckoutLineItem({ line }: CheckoutLineItemProps) {
-  const paths = usePaths();
   const { query, formatPrice } = useLocalization();
   const { checkoutId } = useCheckout();
   const [updateCheckoutLines, { loading: loadingLineUpdate }] = useMutation(

@@ -21,15 +21,13 @@ export const categoryPaths = async () => {
   const client = getClient();
 
   while (hasNextPage) {
-    const response = await client
-      .query(
-        CategoryPathsDocument,
-        {
-          after: endCursor,
-        },
-        { requestPolicy: 'network-only' }
-      )
-      .toPromise();
+    const response = await client.query({
+      query: CategoryPathsDocument,
+      variables: {
+        after: endCursor,
+      },
+      requestPolicy: 'network-only',
+    });
 
     const edges = response.data?.categories?.edges;
     if (!edges) {

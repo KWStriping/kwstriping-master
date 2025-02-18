@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation';
 import NavIconButton from '../NavIconButton';
 import styles from './BurgerMenu.module.css';
 import { CollapseMenu } from './CollapseMenu';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { useShopSettings } from '@tempo/ui/providers';
 import { LocaleDropdown } from '@tempo/ui/components/regionDropdowns/LocaleDropdown';
 import { ChannelDropdown } from '@tempo/ui/components/regionDropdowns/ChannelDropdown';
@@ -21,7 +20,6 @@ export interface BurgerMenuProps {
 }
 
 export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
-  const paths = usePaths();
   const { authenticated } = useUser();
   const { enableLogin, enableTranslations } = useShopSettings();
   const router = useRouter();
@@ -45,7 +43,7 @@ export function BurgerMenu({ open, onCloseClick, items }: BurgerMenuProps) {
             {authenticated ? (
               <>
                 <Link
-                  href={paths.accountPreferences()}
+                  href={'/account/preferences'}
                   tabIndex={0}
                   className={styles['burger-link'] ?? ''}
                 >

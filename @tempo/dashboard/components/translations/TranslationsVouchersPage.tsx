@@ -66,7 +66,7 @@ const TranslationsVouchersPage: FC<TranslationsVouchersPageProps> = ({
         title={m.dashboard_generalInformation() ?? 'General Information'}
         fields={[
           {
-            displayName: (m.dashboard_fErC+ ?? 'Voucher Name'),
+            displayName: ('Voucher Name'),
             name: fieldNames.name,
             translation: data?.translation?.name || null,
             type: 'short' as const,

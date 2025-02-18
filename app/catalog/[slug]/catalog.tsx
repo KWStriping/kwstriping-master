@@ -12,7 +12,6 @@ interface CatalogPageProps {
 }
 
 function CategoryPage({ category, attributeFiltersData }: CatalogPageProps) {
-  // const paths = usePaths();
   // const router = useRouter();
   // const subcategories = mapEdgesToItems(category.children);
   // const navigateToCategory = (categorySlug: string) => {

@@ -1,16 +1,14 @@
 import * as m from '@paraglide/messages';
 import Link from 'next/link';
 // import { useTranslation } from '@tempo/next/i18n';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 export function NavigationPanel() {
-  const paths = usePaths();
 
   const linkClassname =
     'text-black flex p-4 items-center w-full rounded-md shadow-sm hover:text-blue-500';
   return (
     <div className="group w-full md:w-4/5 cursor-default rounded-md bg-white">
-      <Link href={paths.accountPreferences()} className={linkClassname}>
+      <Link href={'/account/preferences'} className={linkClassname}>
         {m.menuAccountPreferences() ?? 'Account preferences'}
       </Link>
       <Link href={paths.accountAddressBook()} className={linkClassname}>

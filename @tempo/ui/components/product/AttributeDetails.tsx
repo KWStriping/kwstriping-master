@@ -21,7 +21,7 @@ export function AttributeDetails({ product, selectedVariant }: AttributeDetailsP
           {attributes.map((attribute) => (
             <tr key={attribute.id}>
               <th scope="row" className={'text-left border border-solid p-2 px-3'}>
-                {translate(attribute.attribute, 'name')}
+                {attribute.name}
               </th>
               <td className={'border border-solid p-2'}>
                 {attribute.values.map((value, index) => {

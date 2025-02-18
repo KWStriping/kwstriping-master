@@ -94,7 +94,7 @@ const ProductContextSwitcher: FC<ProductContextSwitcherProps> = ({
   return (
     <div className={styles.container ?? ''}>
       <Typography className={styles.label ?? ''}>
-        {m.dashboard_Ulsq+ ?? 'Translating'}:
+        {'Translating'}:
       </Typography>
       <div ref={anchor}>
         <Card

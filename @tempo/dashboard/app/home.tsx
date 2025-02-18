@@ -80,7 +80,7 @@ export const homeQuery = gql(`
 // export const getServerSideProps: GetServerSideProps = async (ctx) => {
 //   const [client, ssrExchange] = getServerSideClientAndSsrExchange(ctx);
 //   if (!ctx) throw new Error('No ctx');
-//   await client.query(homeQuery, {}).toPromise();
+//   await client.query(homeQuery, {});
 //   return {
 //     props: generateStaticRenderingProps(ssrExchange),
 //   };

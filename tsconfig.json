@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": [
     "app/**/*",
-    "@tempo/**/*",
     "scripts/*",
     ".next/types/**/*.ts"
   ],

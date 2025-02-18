@@ -8,7 +8,7 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { useState, useRef } from 'react';
 import { ProductMediaType } from '@tempo/api/generated/constants';
-import type { ProductMediaFragment } from '@tempo/api/generated/graphql';
+import type { ProductMediaItemFragment } from '@tempo/api/generated/graphql';
 import styles from './index.module.css';
 import CardTitle from '@tempo/dashboard/components/core/CardTitle';
 import type { SortableContainerProps } from '@tempo/dashboard/components/core/SortableContainer';
@@ -34,8 +34,8 @@ const SortableMedia = ({ media, editHref, onDelete }: SortableMediaProps) => (
 
 interface MediaListContainerProps extends Omit<SortableContainerProps, 'items'> {
   className: string;
-  media: ProductMediaFragment[];
-  preview: ProductMediaFragment[];
+  media: ProductMediaItemFragment[];
+  preview: ProductMediaItemFragment[];
   onDelete: (id: string) => () => void;
   getEditHref: (id: string) => string;
 }
@@ -66,7 +66,7 @@ const MediaListContainer = ({
 
 interface ProductMediaProps {
   placeholderImage?: string;
-  media: ProductMediaFragment[];
+  media: ProductMediaItemFragment[];
   loading?: boolean;
   getImageEditUrl: (id: string) => string;
   onImageDelete: (id: string) => () => void;
@@ -87,7 +87,7 @@ const ProductMediaItem: FC<ProductMediaProps> = (props) => {
   } = props;
   const imagesUpload = useRef<HTMLInputElement | null>(null);
   const anchor = useRef<HTMLButtonElement>();
-  const [imagesToUpload, setImagesToUpload] = useState<ProductMediaFragment[]>([]);
+  const [imagesToUpload, setImagesToUpload] = useState<ProductMediaItemFragment[]>([]);
   const [popperOpenStatus, setPopperOpenStatus] = useState(false);
 
   const handleImageUpload = createMultiFileUploadHandler(onImageUpload, {

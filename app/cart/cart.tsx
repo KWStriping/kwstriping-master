@@ -14,7 +14,6 @@ interface CartPageProps {
 }
 
 function CartPage({ displayPrices }: CartPageProps) {
-  // const paths = usePaths();
   const { checkout, loading } = useCheckout();
   if (loading) {
     return (

@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import styles from './index.module.css';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 import { getLinkPath } from '@tempo/ui/utils/menus';
 import { translate } from '@tempo/ui/utils/translations';
 import { usePathname } from '@tempo/ui/navigation';
@@ -16,9 +15,8 @@ interface NavigationAnchorProps {
 }
 
 export function NavigationAnchor({ menuItem, className }: NavigationAnchorProps) {
-  const paths = usePaths();
   const pathname = usePathname();
-  const href = getLinkPath(menuItem, paths);
+  const href = getLinkPath(menuItem);
   const isActive = pathname.startsWith(href.toString());
   const activeClass = isActive ? 'underline' : '';
   return (

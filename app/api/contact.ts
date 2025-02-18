@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { sendMail } from '@utils/email';
 
 const contact = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body;
@@ -11,15 +10,16 @@ const contact = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   // Send an email containing the message body to the admin's email address.
-  await sendMail({
-    to: process.env.ADMIN_EMAIL as string,
-    from: body.email,
-    subject: `Message from ${body.name ?? body.email}`,
-    text: body.message,
-  }).catch((error) => {
-    console.error(error);
-    return res.status(500).json({ data: 'Something went wrong.' });
-  });
+  // TODO
+  // await sendMail({
+  //   to: process.env.ADMIN_EMAIL as string,
+  //   from: body.email,
+  //   subject: `Message from ${body.name ?? body.email}`,
+  //   text: body.message,
+  // }).catch((error) => {
+  //   console.error(error);
+  //   return res.status(500).json({ data: 'Something went wrong.' });
+  // });
 
   // Send an HTTP success code.
   res.status(200).json({ ok: true });

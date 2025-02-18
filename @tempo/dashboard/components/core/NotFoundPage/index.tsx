@@ -21,12 +21,12 @@ const NotFoundPage: FC<NotFoundPageProps> = (props) => {
         <div className={styles.innerContainer ?? ''}>
           <div>
             <Typography className={styles.header ?? ''} variant="h3">
-              {m.dashboard_H56V+ ?? 'Oops!...'}
+              {'Oops!...'}
             </Typography>
             <Typography className={styles.header ?? ''} variant="h4">
               {m.dashboard_j_pTd() ?? "Something's missing"}
             </Typography>
-            <Typography>{m.dashboard_RiOg+ ?? 'Sorry, the page was not found'}</Typography>
+            <Typography>{'Sorry, the page was not found'}</Typography>
           </div>
           <div>
             <Button

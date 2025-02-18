@@ -4,7 +4,7 @@ import { useUser } from '@tempo/api/auth/react/hooks';
 import type { AddressFormData } from '@tempo/next/types';
 import { AddressDisplay } from '@tempo/ui/components/AddressDisplay';
 import { useShopSettings } from '@tempo/ui/providers';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { notNullable } from '@tempo/ui/utils/money';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 

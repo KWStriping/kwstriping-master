@@ -46,11 +46,8 @@ export const metadata: Metadata = {
   title: 'Catalog',
 };
 
-export default async function Page({
-  params: { slug },
-}: {
-  params: { slug: string; locale: string };
-}) {
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const client = getClient();
   const response = await client.query({
     query: CategoryBySlugDocument,

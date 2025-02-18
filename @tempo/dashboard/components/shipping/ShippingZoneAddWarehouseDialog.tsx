@@ -100,7 +100,7 @@ const ShippingZoneAddWarehouseDialog: FC<ShippingZoneAddWarehouseDialogProps> = 
               <DialogContent className={styles.overflow ?? ''}>
                 <TextField
                   fullWidth
-                  label={m.dashboard_lBnr+ ?? 'Warehouse Name'}
+                  label={'Warehouse Name'}
                   name="name"
                   value={data?.name}
                   onChange={change}

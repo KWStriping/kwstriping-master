@@ -9,15 +9,15 @@ import {
 export function getAttributeInputFromPage(page: PageDetailsFragment): AttributeInput[] {
   return page?.attributes.map((attribute) => ({
     data: {
-      entityType: attribute.attribute.entityType,
-      inputType: attribute.attribute.inputType,
-      isRequired: attribute.attribute.valueRequired,
+      entityType: attribute.entityType,
+      inputType: attribute.inputType,
+      isRequired: attribute.valueRequired,
       selectedValues: attribute.values,
       values: mergeChoicesWithValues(attribute),
-      unit: attribute.attribute.unit,
+      unit: attribute.unit,
     },
-    id: attribute.attribute.id,
-    label: attribute.attribute.name,
+    id: attribute.id,
+    label: attribute.name,
     value: getSelectedValues(attribute),
   }));
 }

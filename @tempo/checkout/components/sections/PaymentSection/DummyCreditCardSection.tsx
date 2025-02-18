@@ -10,8 +10,7 @@ import {
   CreateCheckoutPaymentDocument,
   CompleteCheckoutDocument,
 } from '@tempo/api/generated/graphql';
-// import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
+import { useLocalization } from '@tempo/ui/providers/LocalizationProvider';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -34,7 +33,6 @@ interface DummyCreditCardSectionInterface {
 
 export function DummyCreditCardSection({ checkout }: DummyCreditCardSectionInterface) {
   const { resetCheckoutId: resetCheckoutToken } = useCheckout();
-  const paths = usePaths();
   const router = useRouter();
   const { formatPrice } = useLocalization();
   const [createCheckoutPaymentMutation] = useMutation(CreateCheckoutPaymentDocument);

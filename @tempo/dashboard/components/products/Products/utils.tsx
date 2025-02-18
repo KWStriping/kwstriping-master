@@ -276,7 +276,7 @@ export function getData({
       change?.value ??
       mapNodeToChoice(
         dataRow?.attributes.find(
-          (attribute) => attribute.attribute.id === getColumnAttribute(columnId)
+          (attribute) => attribute.id === getColumnAttribute(columnId)
         )?.values
       )[0] ??
       emptyDropdownCellValue;

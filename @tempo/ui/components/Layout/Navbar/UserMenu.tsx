@@ -11,7 +11,6 @@ import Link from 'next/link';
 import type { HTMLAttributes } from 'react';
 import styles from './index.module.css';
 import NavIconButton from './NavIconButton';
-import { usePaths } from '@tempo/ui/providers/PathsProvider';
 
 interface UserMenuProps extends Pick<HTMLAttributes<HTMLDivElement>, 'className'> {
   user: Maybe<Pick<UserDetailsFragment, 'avatar' | 'firstName' | 'isStaff'>>;
@@ -20,7 +19,6 @@ interface UserMenuProps extends Pick<HTMLAttributes<HTMLDivElement>, 'className'
 const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL ?? '';
 
 function UserMenu({ user, className, ...rest }: UserMenuProps) {
-  const paths = usePaths();
   const { logout } = useLogout();
   return (
     <div className={clsx(styles['user-menu-container'], className)} {...rest}>
@@ -31,7 +29,7 @@ function UserMenu({ user, className, ...rest }: UserMenuProps) {
       )}
       <div className={styles['user-menu'] ?? ''}>
         <MenuItem className={styles['user-menu-item'] ?? ''}>
-          <Link href={paths.accountPreferences()} tabIndex={0}>
+          <Link href={'/account/preferences'} tabIndex={0}>
             <Typography>{m.menuAccountPreferences() ?? 'Account preferences'}</Typography>
           </Link>
         </MenuItem>

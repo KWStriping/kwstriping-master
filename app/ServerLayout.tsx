@@ -27,6 +27,8 @@ export default async function ServerLayout({ children, ...props }: LayoutProps) 
   });
   const data = response.data;
   const navbarItems = data?.menu?.items;
+  console.log('>> navbarItems ');
+  console.log(navbarItems);
   return (
     <CoreLayout
       logo={
