@@ -9,12 +9,11 @@ const API_URL = process.env.API_URL;
 if (!API_URL) throw new Error('API_URL is undefined.');
 
 // const LOCAL_SCHEMA = './tempo/api/generated/schema.graphql';
-// const INTROSPECTION_SCHEMA = './@tempo/api/generated/graphql.schema.json';
 
 // https://the-guild.dev/graphql/codegen/docs/config-reference/documents-field
 const documents = [
-  'app/**/*.{ts,tsx}',
-  '@tempo/**/*.{ts,tsx,gql}',
+  'src/app/**/*.{ts,tsx}',
+  'src/@tempo/**/*.{ts,tsx,gql}',
   // '!**/dashboard/**',
   '!**/generated/**',
   '!**/node_modules/**',
@@ -41,16 +40,6 @@ const SCALAR_TYPES = {
   _Any: 'any',
 };
 
-const introspectionCodegenConfig = {
-  generates: {
-    '@tempo/api/generated/graphql.schema.json': {
-      plugins: ['introspection'],
-      config: { minify: true },
-    },
-  },
-  overwrite: true,
-};
-
 // https://the-guild.dev/graphql/codegen/plugins/presets/preset-client
 const clientPreset = {
   preset: 'client',
@@ -71,65 +60,8 @@ const clientPreset = {
   },
 };
 
-const constantsConfig = {
-  plugins: ['typescript'],
-  config: {
-    enumsAsConst: true,
-    onlyEnums: true,
-    // namingConvention: {
-    //   enumValues: "./.config/enumKeyCase",
-    // }
-  },
-  hooks: {
-    afterOneFileWrite: ['eslint --fix'],
-  },
-};
-
-/* eslint-disable ts/naming-convention */
-const apiCodegenConfig = {
-  generates: {
-    '@tempo/api/generated/': {
-      ...clientPreset,
-    },
-    '@tempo/api/generated/types.ts': {
-      plugins: ['typescript', 'typescript-operations', 'typescript-generic-sdk'],
-      config: {
-        dedupeFragments: true,
-        enumsAsTypes: true,
-        nonOptionalTypename: true,
-        scalars: SCALAR_TYPES,
-        strictScalars: true,
-        useTypeImports: true,
-      },
-      hooks: {
-        afterOneFileWrite: ['eslint --fix', 'ts-node scripts/fix-generated-types.ts'],
-      },
-    },
-    '@tempo/api/generated/constants.ts': {
-      ...constantsConfig,
-    },
-    '@tempo/api/generated/resolvers.ts': {
-      plugins: [
-        {
-          add: {
-            content: '/// <reference path="./graphql.ts" />',
-          },
-        },
-        'typescript-resolvers',
-      ],
-      config: {
-        useTypeImports: true,
-      },
-    },
-  },
-  overwrite: true,
-};
-
 const dashboardCodegenConfig = {
   generates: {
-    '@tempo/dashboard/generated/introspection.json': {
-      plugins: ['urql-introspection'],
-    },
     // "generated/fragments.ts": {
     //   plugins: ["fragment-matcher"],
     //   config: {
@@ -165,11 +97,21 @@ const dashboardCodegenConfig = {
     //     enumsAsTypes: false, // TODO
     //   },
     // },
-    '@tempo/dashboard/generated/': {
+    'src/@tempo/dashboard/generated/': {
       ...clientPreset,
     },
-    '@tempo/dashboard/generated/constants.ts': {
-      ...constantsConfig,
+    'src/@tempo/dashboard/generated/constants.ts': {
+      plugins: ['typescript'],
+      config: {
+        enumsAsConst: true,
+        onlyEnums: true,
+        // namingConvention: {
+        //   enumValues: "./.config/enumKeyCase",
+        // }
+      },
+      hooks: {
+        afterOneFileWrite: ['eslint --fix'],
+      },
     },
   },
   overwrite: true,
@@ -186,9 +128,39 @@ const config = {
       extensions: {
         codegen: {
           generates: {
-            ...introspectionCodegenConfig.generates,
-            ...apiCodegenConfig.generates,
-            // ...dashboardCodegenConfig.generates,
+            'src/@tempo/api/generated/': {
+              ...clientPreset,
+            },
+            // 'src/@tempo/api/generated/types.ts': {
+            //   plugins: ['typescript', 'typescript-operations', 'typescript-generic-sdk'],
+            //   config: {
+            //     dedupeFragments: true,
+            //     enumsAsTypes: true,
+            //     nonOptionalTypename: true,
+            //     scalars: SCALAR_TYPES,
+            //     strictScalars: true,
+            //     useTypeImports: true,
+            //   },
+            //   hooks: {
+            //     afterOneFileWrite: [
+            //       'eslint --fix',
+            //       `replace-in-file "import gql from 'graphql-tag'" "import { graphql as gql } from './gql'`,
+            //     ],
+            //   },
+            // },
+            'src/@tempo/api/generated/constants.ts': {
+              plugins: ['typescript'],
+              config: {
+                enumsAsConst: true,
+                onlyEnums: true,
+                // namingConvention: {
+                //   enumValues: "./.config/enumKeyCase",
+                // }
+              },
+              hooks: {
+                afterOneFileWrite: ['eslint --fix'],
+              },
+            },
           },
           overwrite: true,
         },
@@ -197,9 +169,9 @@ const config = {
     dashboard: {
       schema: [API_URL],
       documents: [
-        '@tempo/ui/**/*.{ts,tsx}',
-        '@tempo/dashboard/oldSrc/fragments/*.{ts,tsx}',
-        '@tempo/dashboard/**/*.{ts,tsx}',
+        'src/@tempo/ui/**/*.{ts,tsx}',
+        'src/@tempo/dashboard/oldSrc/fragments/*.{ts,tsx}',
+        'src/@tempo/dashboard/**/*.{ts,tsx}',
         '!**/generated/**',
         '!**/node_modules/**',
       ],
@@ -211,6 +183,5 @@ const config = {
     },
   },
 } satisfies IGraphQLConfig;
-/* eslint-enable ts/naming-convention */
 
 export default config;

@@ -2,9 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": [
     "*.ts",
-    "@tempo/**/*",
+    "src/**/*",
     "scripts/*",
-    "middleware.ts",
     "next-env.d.ts",
     "tailwind.config.ts",
     "theme.config.ts",
@@ -14,12 +13,7 @@
     "sentry.client.config.js",
     "instrumentation.ts",
     "cypress.config.ts",
-    "paraglide",
-    "app",
-    "components",
     "cypress",
-    "hooks",
-    "lib"
   ],
   "exclude": [
     "node_modules"

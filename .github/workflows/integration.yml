@@ -174,8 +174,6 @@ jobs:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Generate required files
-      run: pnpm prebuild
     - name: Build storefront image
       uses: docker/build-push-action@v6.13.0
       with:

@@ -1,13 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": [
-    "app/**/*",
-    "@tempo/**/*",
+    "src/**/*",
     "scripts/*",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "tailwind.config.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/@tempo/**/*"
   ],
   "compilerOptions": {
     "plugins": [
@@ -59,41 +60,38 @@
     "target": "ESNext",
     "noPropertyAccessFromIndexSignature": false,
     "paths": {
-      "@tempo/api": [
-        "@tempo/api"
-      ],
       "@tempo/api/*": [
-        "@tempo/api/*"
+        "src/@tempo/api/*"
       ],
-      "@tempo/blog": [
-        "@tempo/blog/*"
+      "@tempo/blog/*": [
+        "src/@tempo/blog/*"
       ],
-      "@tempo/checkout": [
-        "@tempo/checkout/*"
+      "@tempo/checkout/*": [
+        "src/@tempo/checkout/*"
       ],
-      "@tempo/data": [
-        "@tempo/data/*"
+      "@tempo/data/*": [
+        "src/@tempo/data/*"
       ],
-      "@tempo/forms": [
-        "@tempo/forms/*"
+      "@tempo/forms/*": [
+        "src/@tempo/forms/*"
       ],
-      "@tempo/next": [
-        "@tempo/next/*"
+      "@tempo/next/*": [
+        "src/@tempo/next/*"
       ],
-      "@tempo/ui": [
-        "@tempo/ui/*"
-      ],
-      "@tempo/utils": [
-        "@tempo/utils"
+      "@tempo/ui/*": [
+        "src/@tempo/ui/*"
       ],
       "@tempo/utils/*": [
-        "@tempo/utils/*"
+        "src/@tempo/utils/*"
       ],
-      "@paraglide/*": [
-        "paraglide/*"
+      "@tempo/utils": [
+        "src/@tempo/utils"
       ],
-      "@kwstriping/*": [
-        "*"
+      "@/*": [
+        "src/*"
+      ],
+      "@paraglide/messages": [
+        "src/paraglide/messages.js"
       ]
     }
   }

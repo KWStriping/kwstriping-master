@@ -3,26 +3,14 @@ import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import mergePatch from 'json-merge-patch';
-import baseTsConfig from '../tsconfig.base.json';
 
 dotenvExpand.expand(dotenv.config());
 const APP = process.env.APP;
 const ROOT_DIR = process.env.ROOT_DIR;
+const SRC_DIR = `${process.env.ROOT_DIR}/src`;
 
-function generateTsConfig() {
-  const outputFile = 'tsconfig.json';
-  const tsConfig = baseTsConfig;
-  if (APP) {
-    const newPaths = {
-      '@paraglide/*': [`paraglide/*`],
-    };
-    newPaths[`@${APP}/*`] = [`*`];
-    tsConfig.compilerOptions.paths = {
-      ...tsConfig.compilerOptions.paths,
-      ...newPaths,
-    };
-  }
-  fs.writeFileSync(outputFile, JSON.stringify(tsConfig, null, 2));
+if (!fs.existsSync(SRC_DIR)) {
+  throw new Error(`${SRC_DIR} does not exist.`);
 }
 
 function generateMessages() {
@@ -30,59 +18,41 @@ function generateMessages() {
     console.error('APP is not defined.');
     return;
   }
-  const appDir = ROOT_DIR;
-  const messagesDir = `${appDir}/messages`;
-  const inlangDir = `${messagesDir}/${APP}.inlang`;
-  const inlangSettingsFile = `${inlangDir}/settings.json`;
+  const messagesDir = `${ROOT_DIR}/messages`;
+  const inlangDir = `${ROOT_DIR}/project.inlang`;
   if (!fs.existsSync(messagesDir)) fs.mkdirSync(messagesDir);
   if (!fs.existsSync(inlangDir)) fs.mkdirSync(inlangDir);
-  if (!fs.existsSync(inlangSettingsFile)) {
-    const inlangSettings = {
-      $schema: 'https://inlang.com/schema/project-settings',
-      sourceLanguageTag: 'en',
-      languageTags: ['en'],
-      modules: [
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-valid-js-identifier@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@latest/dist/index.js',
-      ],
-      'plugin.inlang.messageFormat': {
-        pathPattern: `${ROOT_DIR}/paraglide/generated/{languageTag}.json`,
-      },
-    };
-    fs.writeFileSync(`${inlangDir}/settings.json`, JSON.stringify(inlangSettings, null, 2));
-  }
-
-  const files = [`${messagesDir}/en.json`, `@tempo/next/messages/common.json`];
-  const output = `${appDir}/paraglide/generated/en.json`;
-
+  const files = [`${messagesDir}/en.json`, `${SRC_DIR}/@tempo/next/messages/common.json`];
+  const paraglideDir = `${SRC_DIR}/paraglide`;
+  const output = `${messagesDir}/generated/en.json`;
   const merged = files
     .map((file) => {
       const fileContents = fs.readFileSync(file, 'utf8');
       return JSON.parse(fileContents);
     })
     .reduce((a, b) => mergePatch.apply(a, b));
-
   const sorted = Object.fromEntries(Object.entries(merged).sort());
-
   fs.writeFileSync(output, JSON.stringify(sorted, null, 2));
 
   // stderr is sent to stderr of parent process
   // you can set options.stdio if you want it to go elsewhere
-  const stdout = execSync(`paraglide-js compile --project ${inlangDir} --outdir paraglide`);
+  const stdout = execSync(`paraglide-js compile --project ${inlangDir} --outdir ${paraglideDir}`);
   console.log(stdout.toString());
+  const gitIgnoreFilepath = `${paraglideDir}/.gitignore`;
+  if (fs.existsSync(gitIgnoreFilepath)) {
+    fs.unlinkSync(gitIgnoreFilepath);
+  } else {
+    console.log(`No .gitignore found in ${paraglideDir}.`);
+  }
 }
 
 export default function main() {
-  if (APP && ROOT_DIR) {
-    if (!fs.existsSync(`${ROOT_DIR}/.env`)) {
-      fs.symlinkSync(`${ROOT_DIR}/.env`, `${ROOT_DIR}/.env`, 'file');
-    }
-  }
-  generateTsConfig();
+  // if (APP && ROOT_DIR) {
+  //   if (!fs.existsSync(`${ROOT_DIR}/.env`)) {
+  //     fs.symlinkSync(`${ROOT_DIR}/.env`, `${ROOT_DIR}/.env`, 'file');
+  //   }
+  // }
+  // generateTsConfig();
   generateMessages();
 }
 

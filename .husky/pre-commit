@@ -11,6 +11,11 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
+paraglideGitIgnore="src/paraglide/.gitignore"
+if [ -f "$paraglideGitIgnore" ] ; then
+    rm "$paraglideGitIgnore"
+fi
+
 # npx lint-staged
 
 # npm test

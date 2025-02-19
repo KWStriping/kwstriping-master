@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const workspaceRoot = path.resolve(__dirname);
 const messagesDir = path.resolve(workspaceRoot, `messages`);
-const paraglideDir = path.resolve(workspaceRoot, `paraglide`);
+const paraglideDir = path.resolve(workspaceRoot, `src/paraglide`);
 if (process.env.DOCKER) {
   console.log('Running in Docker.');
   if (!fs.existsSync(paraglideDir)) {
@@ -95,7 +95,7 @@ const withSentryConfig = (nextConfig = {}) => {
 /** @type {import('next').NextConfig} */
 let config = paraglide({
   paraglide: {
-    project: path.resolve(messagesDir, `${process.env.APP}.inlang`),
+    project: path.resolve(messagesDir, `project.inlang`),
     outdir: paraglideDir,
   },
   eslint: {
