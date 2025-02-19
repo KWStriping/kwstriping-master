@@ -24,7 +24,7 @@ export const pagePaths = async () => {
     const response = await client.query({
       query: PagePathsDocument,
       variables: { after: endCursor },
-      requestPolicy: 'network-only',
+      fetchPolicy: 'network-only',
     });
 
     const edges = response.data?.pages?.edges;

@@ -29,7 +29,7 @@ export const collectionPaths = async () => {
           channel: channelSlug,
           after: endCursor,
         },
-        requestPolicy: 'network-only',
+        fetchPolicy: 'network-only',
       });
 
       const edges = response.data?.collections?.edges;

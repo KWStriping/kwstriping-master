@@ -26,7 +26,7 @@ export const categoryPaths = async () => {
       variables: {
         after: endCursor,
       },
-      requestPolicy: 'network-only',
+      fetchPolicy: 'network-only',
     });
 
     const edges = response.data?.categories?.edges;
