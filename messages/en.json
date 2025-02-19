@@ -112,5 +112,6 @@
   "cart_subtotal": "",
   "cart_tax": "",
   "cart_total": "",
-  "time": ""
+  "time": "",
+  "readOnly": "Read only"
 }

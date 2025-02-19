@@ -54,7 +54,6 @@ const configs = [
       '**/sw.js',
       'pnpm-lock.yaml',
       '**/graphql.schema.json',
-      '**/introspection.json',
       '**/$path.ts',
       // TODO
       '**/cypress/**',

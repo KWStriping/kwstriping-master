@@ -1,16 +1,14 @@
-// @ts-check
-
 import type { Config } from 'tailwindcss';
-import { generateTailwindConfig } from './@tempo/ui/helpers/tailwind';
-import theme from './theme.config';
+import { generateTailwindConfig } from './src/@tempo/ui/helpers/tailwind';
+import theme from './src/theme.config';
 
 const config = {
   ...generateTailwindConfig(theme),
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{jsx,tsx,css,mdx}',
-    '@tempo/ui/components/jsx,tsx,css}',
-    '@tempo/checkout/components/**/*.{jsx,tsx,css}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{jsx,tsx,css,mdx}',
+    './src/@tempo/ui/components/jsx,tsx,css}',
+    './src/@tempo/checkout/components/**/*.{jsx,tsx,css}',
   ],
 } satisfies Config;
 
