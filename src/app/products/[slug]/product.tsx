@@ -37,7 +37,7 @@ function ProductPage({ product, price, displayPrice, details }: ProductPageProps
   // const { currentChannel, formatPrice } = useLocalization();
 
   const { displayProductImages } = useShopSettings();
-  const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();
+  const { checkoutId, setCheckoutId, checkout } = useCheckout();
 
   const [addProductToCheckout] = useMutation(CheckoutAddProductLineDocument);
 

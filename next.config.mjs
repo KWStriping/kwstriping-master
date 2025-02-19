@@ -95,7 +95,7 @@ const withSentryConfig = (nextConfig = {}) => {
 /** @type {import('next').NextConfig} */
 let config = paraglide({
   paraglide: {
-    project: path.resolve(messagesDir, `${process.env.APP}.inlang`),
+    project: path.resolve(messagesDir, `project.inlang`),
     outdir: paraglideDir,
   },
   eslint: {

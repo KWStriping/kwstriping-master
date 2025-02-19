@@ -62,27 +62,9 @@ export type UseAuthorizedQueryHookOptions<TVariables extends OperationVariables,
 export type UseQueryResponse<
   TData,
   TVariables extends OperationVariables,
-> = UseSuspenseQueryResult<TData, TVariables> & { loading: boolean };
+> = UseSuspenseQueryResult<TData, TVariables>;
 
 export { useSuspenseQuery as useQuery };
-// export function useQuery<TData, TVariables extends OperationVariables>(
-//   query: TypedDocumentNode<TData, TVariables>,
-//   {
-//     variables,
-//     pause = false,
-//     fetchPolicy = 'cache-and-network',
-//     displayLoader = true,
-//   }: UseQueryOptions<TData, TVariables>
-// ): UseQueryResponse<TData, TVariables> {
-//   // TODO
-//   // * import { skipToken, useSuspenseQuery } from '@apollo/client';
-//   // *
-//   // * const { data } = useSuspenseQuery(query, id ? { variables: { id } } : skipToken);
-//   const { data, fetchMore, error, ...rest } = useSuspenseQuery(query, {
-//     variables,
-//     skip: pause,
-//     fetchPolicy,
-//   });
 
 //   // const loadMore = (
 //   //   mergeFunc: (previousResults: TData, fetchMoreResult: TData) => TData,
@@ -129,7 +111,7 @@ export function useAuthorizedQuery<TData, TVariables extends OperationVariables>
     displayLoader,
   } as UseQueryOptions<TData, TVariables>;
 
-  const { data, fetchMore, ...rest } = useQuery<TData, TVariables>(query, queryOptions);
+  const { data, fetchMore, ...rest } = useSuspenseQuery<TData, TVariables>(query, queryOptions);
 
   // const loadMore = (
   //   mergeFunc: (previousResults: TData, fetchMoreResult: TData) => TData,

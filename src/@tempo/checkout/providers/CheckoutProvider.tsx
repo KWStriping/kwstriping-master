@@ -14,7 +14,6 @@ export interface CheckoutConsumerProps<Required extends boolean = false> {
   resetCheckoutId: () => void;
   checkout: Required extends true ? CheckoutFragment : CheckoutFragment | undefined | null;
   checkoutError: Error | undefined;
-  loading: boolean;
 }
 
 const CheckoutContext = createContext({} as CheckoutConsumerProps);
@@ -68,7 +67,6 @@ export function CheckoutProvider({ children }: CheckoutProviderProps) {
         setCheckoutId,
         resetCheckoutId,
         checkout,
-        loading: fetching,
         checkoutError,
       }}
     >

@@ -7,26 +7,19 @@ import { CheckoutProductList } from '@tempo/checkout/components/sidebar/Checkout
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 import { Button } from '@tempo/ui/components/buttons/Button';
-import { Spinner } from '@tempo/ui/components/Spinner';
 
 interface CartPageProps {
   displayPrices: boolean;
 }
 
 function CartPage({ displayPrices }: CartPageProps) {
-  const { checkout, loading } = useCheckout();
-  if (loading) {
-    return (
-      <>
-        <Spinner />
-      </>
-    );
-  }
+  const { checkout } = useCheckout();
+
   return (
     <>
       <div className="w-full flex justify-center h-full items-center">
         <div className={'bg-white/90 p-10'}>
-          {loading ? null : !checkout?.lines?.length ? (
+          {!checkout?.lines?.length ? (
             <>
               <h1 className="text-3xl font-bold my-8">Your cart is empty</h1>
               <p className="text-sm text-center">

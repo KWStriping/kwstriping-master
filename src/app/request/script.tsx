@@ -1,5 +1,4 @@
 export default function Scripts() {
-  console.log('Rendering scripts!');
   return (
     <>
       <link

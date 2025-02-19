@@ -1,4 +1,4 @@
-import type { TaxedMoney } from '@tempo/api';
+import type { TaxedMoney } from '@tempo/api/generated/graphql';
 
 export type GrossMoney = Pick<TaxedMoney, 'gross'>;
 export type GrossMoneyWithTax = Pick<TaxedMoney, 'gross' | 'tax'>;

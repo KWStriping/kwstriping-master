@@ -10,6 +10,7 @@ import Link from '@tempo/ui/components/Link';
 import { useMutation } from '@tempo/api/hooks/useMutation';
 import { CreateOrderDocument } from '@tempo/api/generated/graphql';
 import { useRouter } from 'next/navigation';
+import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 import { useSelectedPaymentMethod } from '../hooks/state';
 import { usePay } from '../hooks/usePay';
 import styles from './Checkout.module.css';
@@ -19,7 +20,6 @@ import { ContactInfoSection } from './sections/ContactInfoSection';
 import { FulfillmentSection } from './sections/FulfillmentSection';
 import { PaymentSection } from './sections/PaymentSection';
 import { ShippingAddressSection } from './sections/ShippingAddressSection';
-import { CheckoutSidebar } from '@tempo/checkout/components/sidebar/CheckoutSidebar';
 
 export interface CheckoutProps {
   checkout: Maybe<CheckoutFragment>;
@@ -74,7 +74,7 @@ function Checkout({ checkout, loading }: CheckoutProps) {
     } else if (!result.data?.createOrderFromCheckout?.result) {
       toast('Error creating order', { type: 'error' });
     } else {
-      router.push(paths.orderById(result.data.createOrderFromCheckout.result.id));
+      router.push(`/account/orders/${result.data.createOrderFromCheckout.result.id}`);
     }
     setSubmitting(false);
   }, [

@@ -1,31 +1,11 @@
 'use client';
 
 import Divider from '@mui/material/Divider';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Spinner from '@tempo/ui/components/Spinner';
 import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 import Checkout from '@/components/Checkout';
 
 export default function CheckoutPage() {
-  const router = useRouter();
-  const { checkout, loading: fetching } = useCheckout();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Redirect to cart if theres no checkout data
-    if (!fetching && !!checkout) {
-      setLoading(false);
-    }
-  }, [checkout, fetching, router]);
-
-  if (loading) {
-    return (
-      <>
-        <Spinner />
-      </>
-    );
-  }
+  const { checkout } = useCheckout();
 
   if (!checkout || checkout.lines?.length === 0) {
     return null;

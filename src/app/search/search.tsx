@@ -4,7 +4,7 @@ import { useQueryState } from 'nuqs';
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import { ProductCollection } from '@tempo/ui/components/products/ProductCollection';
-import * as m from '@paraglide/messages';
+import * as m from '@/paraglide/messages.js';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useQueryState('q');

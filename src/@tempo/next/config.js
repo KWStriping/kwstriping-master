@@ -45,7 +45,7 @@ export const generate = ({
 } = {}) =>
   paraglide({
     paraglide: {
-      project: path.resolve(messagesDir, `${process.env.APP}.inlang`),
+      project: path.resolve(workspaceRoot, `project.inlang`),
       outdir: paraglideDir,
     },
     eslint: {

@@ -49,7 +49,7 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
   const router = useRouter();
   const { currentChannel, formatPrice } = useLocalization();
   const { displayProductImages } = useShopSettings();
-  const { checkoutId, setCheckoutId, checkout, loading: loadingCheckout } = useCheckout();
+  const { checkoutId, setCheckoutId, checkout } = useCheckout();
 
   const [createCheckout] = useMutation(createCheckoutMutation);
   const { user } = useUser();
@@ -65,12 +65,12 @@ function ConcreteProductDetails({ product }: ProductPageProps) {
   const [addToCartSuccess, setAddToCartSuccess] = useState('');
 
   useEffect(() => {
-    if (product?.isAvailableForPurchase && !loadingCheckout) {
+    if (product?.isAvailableForPurchase) {
       setOneClickCheckoutEnabled(true);
     } else if (oneClickCheckoutEnabled) {
       setOneClickCheckoutEnabled(false);
     }
-  }, [product, checkout, loadingCheckout, oneClickCheckoutEnabled]);
+  }, [product, checkout, oneClickCheckoutEnabled]);
 
   const [selectedProductSlug, setSelectedProductSlug] = useState(product.slug);
 

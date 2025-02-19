@@ -19,43 +19,19 @@ function generateMessages() {
     return;
   }
   const messagesDir = `${ROOT_DIR}/messages`;
-  const inlangDir = `${messagesDir}/${APP}.inlang`;
-  const inlangSettingsFile = `${inlangDir}/settings.json`;
+  const inlangDir = `${ROOT_DIR}/project.inlang`;
   if (!fs.existsSync(messagesDir)) fs.mkdirSync(messagesDir);
   if (!fs.existsSync(inlangDir)) fs.mkdirSync(inlangDir);
-  if (!fs.existsSync(inlangSettingsFile)) {
-    const inlangSettings = {
-      $schema: 'https://inlang.com/schema/project-settings',
-      sourceLanguageTag: 'en',
-      languageTags: ['en'],
-      modules: [
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-valid-js-identifier@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js',
-        'https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@latest/dist/index.js',
-      ],
-      'plugin.inlang.messageFormat': {
-        pathPattern: `${SRC_DIR}/paraglide/generated/{languageTag}.json`,
-      },
-    };
-    fs.writeFileSync(`${inlangDir}/settings.json`, JSON.stringify(inlangSettings, null, 2));
-  }
-
   const files = [`${messagesDir}/en.json`, `${SRC_DIR}/@tempo/next/messages/common.json`];
   const paraglideDir = `${SRC_DIR}/paraglide`;
-  const output = `${paraglideDir}/generated/en.json`;
-
+  const output = `${messagesDir}/generated/en.json`;
   const merged = files
     .map((file) => {
       const fileContents = fs.readFileSync(file, 'utf8');
       return JSON.parse(fileContents);
     })
     .reduce((a, b) => mergePatch.apply(a, b));
-
   const sorted = Object.fromEntries(Object.entries(merged).sort());
-
   fs.writeFileSync(output, JSON.stringify(sorted, null, 2));
 
   // stderr is sent to stderr of parent process

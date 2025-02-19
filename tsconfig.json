@@ -90,8 +90,8 @@
       "@/*": [
         "src/*"
       ],
-      "@paraglide/*": [
-        "src/paraglide/*"
+      "@paraglide/messages": [
+        "src/paraglide/messages.js"
       ]
     }
   }

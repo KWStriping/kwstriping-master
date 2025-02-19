@@ -9,7 +9,7 @@
 // import { useCheckout } from '@tempo/checkout/providers/CheckoutProvider';
 
 // export const useCustomerAttach = () => {
-//   const { checkout, loading } = useCheckout();
+//   const { checkout } = useCheckout();
 //   const { user, authenticated } = useUser();
 
 //   const [customerAttach, { fetching }] = useMutation(AttachCustomerToCheckoutDocument);

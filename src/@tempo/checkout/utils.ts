@@ -1,4 +1,4 @@
-import type { ApolloError } from '@tempo/api';
+import type { ApolloError } from '@tempo/api/types';
 import type {
   PublicMetafieldsValues,
   UnknownPublicSettingsValues,

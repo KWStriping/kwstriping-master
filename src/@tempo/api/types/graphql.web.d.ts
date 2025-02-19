@@ -5,13 +5,7 @@ declare module '@0no-co/graphql.web' {
   interface Extensions {
     code: string;
   }
-  declare class GraphQLError extends BaseGraphQLError {
+  class GraphQLError extends BaseGraphQLError {
     extensions: Extensions;
   }
 }
-
-// declare module '@urql/core' {
-//   class ApolloError extends BaseApolloError {
-//     graphQLErrors: GraphQLError$1[];
-//   }
-// }

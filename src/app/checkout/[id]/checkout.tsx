@@ -8,7 +8,8 @@ import Checkout from '@/components/Checkout';
 
 function CheckoutPage() {
   const router = useRouter();
-  const { checkout, loading } = useCheckout();
+  const loading = false; // TODO
+  const { checkout } = useCheckout();
 
   useEffect(() => {
     // Redirect to cart if theres no checkout data

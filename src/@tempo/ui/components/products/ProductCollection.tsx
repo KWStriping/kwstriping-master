@@ -12,10 +12,9 @@ import { useQuery } from '@tempo/api/hooks/useQuery';
 import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 import clsx from 'clsx';
+import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 import { ProductCard } from '../product/ProductCard';
 import { Pagination } from '../Pagination';
-import { Spinner } from '@tempo/ui/components/Spinner';
-import { mapEdgesToItems } from '@tempo/ui/utils/maps';
 
 export interface ProductCollectionProps {
   filter?: ProductFilter;
@@ -66,11 +65,11 @@ export function ProductCollection({
     });
   };
 
-  if (loading) return <Spinner />;
+  // if (loading) return <Spinner />;
   // if (error) return <p>Error</p>;
 
   const products = mapEdgesToItems(data?.products);
-  console.log('>>>', { data, loading, error });
+  console.log('>>>', { data, error });
   return (
     <div className={className}>
       {products?.length === 0 ? (

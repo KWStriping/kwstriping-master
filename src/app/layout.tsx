@@ -1,3 +1,5 @@
+import { LanguageProvider } from "@inlang/paraglide-next"
+import { languageTag } from "@/paraglide/runtime.js"
 import { Open_Sans } from 'next/font/google';
 import './global.css';
 import type { ReactNode } from 'react';
@@ -38,7 +40,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={'en'} suppressHydrationWarning>
+    <LanguageProvider>
+   <html lang={'en'} suppressHydrationWarning>
       <CssProvider theme={theme}>
         <body id="__next" className={openSans.className}>
           <ApolloWrapper>
@@ -47,5 +50,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </body>
       </CssProvider>
     </html>
+ </LanguageProvider>
   );
 }
