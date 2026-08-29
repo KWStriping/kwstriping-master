@@ -90,7 +90,7 @@
     "gray-matter": "^4.0.3",
     "libphonenumber-js": "^1.10.52",
     "lodash-es": "^4.17.21",
-    "next": "15.1.7",
+    "next": "15.5.24",
     "next-auth": "5.0.0-beta.25",
     "next-mdx-remote": "^4.4.1",
     "next-sitemap": "^4.2.3",
