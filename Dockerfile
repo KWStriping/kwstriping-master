@@ -96,6 +96,11 @@ EXPOSE ${PORT}
 
 ENV PORT ${PORT}
 
+# The standalone server binds to HOSTNAME, which Docker sets to the container id.
+# It then listens on that address alone, so the health check below cannot reach it
+# over localhost and the container reports unhealthy while serving traffic fine.
+ENV HOSTNAME 0.0.0.0
+
 # Define health check.
 HEALTHCHECK --interval=30s --timeout=7s --start-period=60s --retries=3 \
   CMD ["sh", "-c", "curl --fail http://localhost:${PORT}/ || exit 1"]
