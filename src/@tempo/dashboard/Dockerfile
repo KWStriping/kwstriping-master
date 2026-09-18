@@ -95,7 +95,7 @@ ENV PORT ${PORT}
 
 # Define health check.
 HEALTHCHECK --interval=30s --timeout=7s --start-period=60s --retries=3 \
-  CMD ["sh", "-c", "curl --fail http://localhost:${PORT}/ || exit 1"]
+  CMD ["sh", "-c", "curl --fail http://localhost:${PORT}/dashboard || exit 1"]
 
 # Start the app.
 CMD node @tempo/dashboard/server.mjs
