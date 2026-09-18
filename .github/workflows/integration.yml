@@ -103,48 +103,8 @@ jobs:
     outputs:
       key: ${{ steps.generate-dotenv.outputs.key }}
 
-  build-dashboard:
-    name: Build dashboard image
-    needs: [changed-files, create-dotenv]
-    #  && contains(needs.changed-files.outputs.all_changed_files, 'dashboard')
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out main branch
-      uses: actions/checkout@v4.2.2
-      with:
-        fetch-depth: 0
-        submodules: 'true'
-        token: ${{ secrets.KWSTRIPING_PAT }}
-    - name: Restore dotenv
-      uses: actions/download-artifact@v4.1.8
-      with:
-        name: dotenv-${{ github.sha }}-${{ github.run_id }}
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v3.9.0
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v3.3.0
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build dashboard image
-      uses: docker/build-push-action@v6.13.0
-      with:
-        builder: ${{ steps.buildx.outputs.name }}
-        context: .
-        file: ./src/@tempo/dashboard/Dockerfile
-        build-args: |
-          ORG=${{ vars.ORG }}
-          APP=${{ vars.APP }}
-          PORT=${{ vars.PORT_DASHBOARD }}
-          API_URL=${{ vars.API_URL }}
-        push: true
-        cache-from: type=gha,scope=${{ vars.APP }}-dashboard
-        cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
-        tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
-
+  # The dashboard image is not built here: it has not built since the Feb 2025 move
+  # into src/, and the tower runs a pinned May 2024 image (see docker-compose.yml).
   build:
     name: Build storefront image
     needs: [changed-files, create-dotenv]

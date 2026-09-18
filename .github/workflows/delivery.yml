@@ -117,48 +117,8 @@ jobs:
     outputs:
       key: ${{ steps.generate-dotenv.outputs.key }}
 
-  build-dashboard:
-    name: Build dashboard image
-    needs: [changed-files, create-dotenv]
-    #  && contains(needs.changed-files.outputs.all_changed_files, 'dashboard')
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    continue-on-error: true
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out main branch
-        uses: actions/checkout@v4
-        with:
-          submodules: 'true'
-          token: ${{ secrets.KWSTRIPING_PAT }}
-      - name: Restore dotenv
-        uses: actions/download-artifact@v4
-        with:
-          name: dotenv-${{ github.sha }}-${{ github.run_id }}
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3.1.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build dashboard image
-        uses: docker/build-push-action@v5
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          context: .
-          file: ./src/@tempo/dashboard/Dockerfile
-          build-args: |
-            ORG=${{ vars.ORG }}
-            APP=${{ vars.APP }}
-            PORT=${{ vars.PORT_DASHBOARD }}
-            API_URL=${{ vars.API_URL }}
-          push: true
-          cache-from: type=gha,scope=${{ vars.APP }}-dashboard
-          cache-to: type=gha,mode=max,scope=${{ vars.APP }}-dashboard
-          tags: ghcr.io/${{ vars.ORG }}/${{ vars.APP }}-dashboard:${{ github.sha }}
-
+  # The dashboard image is not built here: it has not built since the Feb 2025 move
+  # into src/, and the tower runs a pinned May 2024 image (see docker-compose.yml).
   build-front:
     name: Build front image
     needs: [changed-files, create-dotenv]
@@ -205,7 +165,7 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: [changed-files, create-dotenv, build-front, build-dashboard]
+    needs: [changed-files, create-dotenv, build-front]
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
@@ -218,15 +178,19 @@ jobs:
       - name: Deploy to server
         uses: iacobfred/deploy-docker-ssh@v0.5.1
         with:
-          host: kred.duckdns.org
+          host: kfred.dyndns.org
           user: jacob
           target-dir: /var/www/${{ vars.DOMAIN }}
           files: '.env docker-compose.yml scripts'
           ssh-port: ${{ vars.SSH_PORT }}
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           # echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
+          # Every image in docker-compose.yml is pinned to what the tower runs, and the
+          # storefront image is built on the tower, so it is not in the registry.
+          # Pull and start only the dashboard; the default would also pull tempo:latest
+          # and fail pulling the storefront.
           command: |
-            python3 scripts/deploy.py ${{ vars.APP }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }}
+            python3 scripts/deploy.py ${{ vars.APP }} --sha ${{ github.sha }} --token ${{ secrets.GITHUB_TOKEN }} --services-to-pull dashboard --services-to-start dashboard
     # - run: |
     #     echo "github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }}";
     #     echo "github.sha: ${{ github.sha }}";

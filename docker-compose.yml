@@ -16,10 +16,19 @@ x-services: &services
 name: ${APP}
 
 services:
-  front:
+  services:
+    image: tianon/true
+    restart: "no"
+    depends_on:
+      <<: *services
+  storefront:
     container_name: ${APP}
+    # command: node apps/kwstriping/server.mjs
     command: node server.mjs
-    image: "ghcr.io/kwstriping/${APP}:${SHA}"
+    # image: "ghcr.io/kwstriping/${APP}:${SHA}"
+    image: "ghcr.io/kwstriping/kwstriping:next-15.5.24"
+    restart: unless-stopped
+    # image: "ghcr.io/kwstriping/${APP}:4712389f562ccd917b0f119ad9c03bdb26d5019e@sha256:5162aae3df01649c47592fa6ff2c2d2d9ac2c660900c8d44df617ae5e60a52e8"
     depends_on:
       - tempo
       - dashboard
@@ -28,6 +37,7 @@ services:
     environment:
       <<: *common-env-vars
       PORT: ${PORT_STOREFRONT}
+      HOSTNAME: 0.0.0.0
     ports:
       - ${PORT_STOREFRONT}:${PORT_STOREFRONT}
     volumes:
@@ -36,7 +46,15 @@ services:
   tempo:
     # TODO: select tempo version
     image: "ghcr.io/sokaisolutions/tempo:latest"
-    command: [ "gunicorn", "--workers", "4", "--worker-class", "core.asgi.UvicornWorker", "core.asgi:application" ]
+    command:
+      [
+        "gunicorn",
+        "--workers",
+        "4",
+        "--worker-class",
+        "core.asgi.UvicornWorker",
+        "core.asgi:application"
+      ]
     env_file:
       - .env
     environment:
@@ -88,8 +106,12 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   dashboard:
-    command: node @tempo/dashboard/server.mjs
-    image: "ghcr.io/kwstriping/${APP}-dashboard:${SHA}"
+    command: node packages/dashboard/server.mjs
+    healthcheck:
+      # The dashboard is served under /dashboard (basePath); "/" returns 404.
+      test: ["CMD", "sh", "-c", "curl --fail http://localhost:$${PORT}/dashboard || exit 1"]
+    image: "ghcr.io/kwstriping/kwstriping-dashboard:7d7e04f962fb35caf7715c41d269de43eb2a794c"
+    restart: unless-stopped
     env_file:
       - .env
     environment:
@@ -97,7 +119,6 @@ services:
       PORT: ${PORT_DASHBOARD}
     ports:
       - ${PORT_DASHBOARD}:${PORT_DASHBOARD}
-    restart: unless-stopped
     depends_on:
       - tempo
 
@@ -119,7 +140,7 @@ services:
     command: python manage.py run_huey -w 2
     depends_on:
       - redis
-    image: "ghcr.io/sokaisolutions/tempo:${SHA}"
+    image: "ghcr.io/sokaisolutions/tempo:7d7e04f962fb35caf7715c41d269de43eb2a794c"
     env_file:
       - .env
     restart: unless-stopped
@@ -176,7 +197,29 @@ services:
     image: docker.elastic.co/apm/apm-server:7.16.2
     user: apm-server
     restart: always
-    command: [ "--strict.perms=false", "-e", "-E", "apm-server.host=0.0.0.0:8200", "-E", "apm-server.kibana.enabled=true", "-E", "apm-server.kibana.host=kibana:5601", "-E", "apm-server.kibana.username=elastic", "-E", "apm-server.kibana.password=changeme", "-E", "output.elasticsearch.hosts=['elasticsearch:9200']", "-E", "output.elasticsearch.enabled=true", "-E", "output.elasticsearch.username=elastic", "-E", "output.elasticsearch.password=changeme" ]
+    command:
+      [
+        "--strict.perms=false",
+        "-e",
+        "-E",
+        "apm-server.host=0.0.0.0:8200",
+        "-E",
+        "apm-server.kibana.enabled=true",
+        "-E",
+        "apm-server.kibana.host=kibana:5601",
+        "-E",
+        "apm-server.kibana.username=elastic",
+        "-E",
+        "apm-server.kibana.password=changeme",
+        "-E",
+        "output.elasticsearch.hosts=['elasticsearch:9200']",
+        "-E",
+        "output.elasticsearch.enabled=true",
+        "-E",
+        "output.elasticsearch.username=elastic",
+        "-E",
+        "output.elasticsearch.password=changeme"
+      ]
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -210,15 +253,3 @@ volumes:
 # networks:
 #   backend:
 #     driver: bridge
-
-# services:
-#   storefront:
-#     container_name: kwstriping
-#     build:
-#       context: ..
-#       dockerfile: apps/Dockerfile
-#       args:
-#         - APP=kwstriping
-#     ports:
-#       - 3000:3000
-#     command: sh -c 'pnpm turbo run start --filter=storefront...'
